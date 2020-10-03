@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'Vimal A R'
 SITENAME = 'arvimal.github.io'
-SITEURL = ''
+SITEURL = 'https://arvimal.github.io/'
 
 PATH = 'content'
 
