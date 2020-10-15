@@ -1,0 +1,22 @@
+How does Ceph write data onto the disks?
+########################################
+:date: 2016-05-13 16:43
+:author: arvimal
+:slug: 875
+:status: draft
+
+Ceph does writes in two parts.
+
+1)  When an OSD receives a write IO, it will first perform this write using O_DSYNC to the journal.  The write will always be sequential since it's just added to the end of the journal.  The journal itself can live as a file on a filesystem or it can target a block device (or a partition on a block device).  Journal writes are performed via libaio and may be coalesced slightly.  While this is happening, if the OSD is the primary OSD and there are replicas set, the OSD will forward the request on to the secondary OSDs which will each also start writing data out to their journals.  As soon as a write hits the journal, an ack can be sent back to the primary OSD.  Once all secondaries and the primary have completed their journal writes, an ack can be sent back to the client that the write completed.
+
+2) Once an IO is successfully is written to the journal, the OSD will write it to the underlying XFS file system via buffered IO in a nested directory structure based on the PG the object belongs to.  This is generally the same speed or slower than doing the journal writes since it's no longer sequential and often can't achieve the same amount of write coalescing and low head movement.  The result is that the journal writes often get ahead of the data writes.  For this reason we have to throttle the journals.  There's a tension here, by letting the journals get farther ahead there are more opportunities for reordering or coalescing writes.  On the other hand, the farther ahead the journal gets, the longer it can take the sync the journal if you run out of space (say if the journal fills up) potentially resulting in spiky client behavior.
+
+The other important thing to consider is that ceph is based on pseudo-random distribution of writes based on the number of PGs in the pool.  Random distributions are inherently "clumpy" meaning that you can get in situations where one OSD may have a bit more traffic going to it than others.  Some OSDs also may be somewhat faster than others (this is especially true when drives are on the verge of failing).  This can result in IOs backing up on specific OSDs and others being starved.  One critical aspect of tuning ceph performance is making sure that the OSDs are well balanced.
+
+When the customer says:
+
+"- that makes sense to coalesce writes and exploit locality of writes via disk elevator/scheduler (e.g. write blocks 10,15,100 instead of 10,100,15)"
+
+This sort of gets to the heart of the journal throttling trade-off. When writes hit the journal, you can leave them there for longer with the hope that more of them will get coalesced by the IO elevator, but potentially this can cause client IO stalls if the journal fills up and the OSD has to reject IO until it's flushed.  The strategy right now is to, by default, perform smaller flushes more often to try and avoid this scenario.  Sandisk has spent some time in the past 6 months working on improving all of this, but we're a little hesitant to make major changes to filestore at this point since we're working on a new OSD backend that works totally differently called Bluestore.  It doesn't use any of our old journaling code anymore, but rather uses a block device directly with RocksDB for metadata and write-ahead-logging of small IO.
+
+ 

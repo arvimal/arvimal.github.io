@@ -1,0 +1,10 @@
+Generator functions in Python.
+##############################
+:date: 2016-10-13 18:33
+:author: arvimal
+:slug: 1920
+:status: draft
+
+Generator functions are those functions which have a ``yield`` directive in it.
+
+Video 26 of Python epiphanies

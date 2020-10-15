@@ -1,0 +1,14 @@
+@property in Python
+###################
+:date: 2016-07-28 22:34
+:author: arvimal
+:slug: 1884
+:status: draft
+
+https://stackoverflow.com/questions/17330160/how-does-the-property-decorator-work
+
+blaag.haard.se/What-s-the-point-of-properties-in-Python/
+
+www.blog.pythonlibrary.org/2014/01/20/python-201-properties/
+
+ 

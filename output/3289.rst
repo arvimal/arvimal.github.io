@@ -1,0 +1,8 @@
+Ephemeral mounts in Ansible
+###########################
+:date: 2020-05-18 15:22
+:author: arvimal
+:slug: 3289
+:status: draft
+
+

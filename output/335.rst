@@ -1,0 +1,158 @@
+How are Ceph OSD disks mounted at boot time?
+############################################
+:date: 2015-08-17 19:29
+:author: arvimal
+:category: Ceph
+:tags: ceph, osd
+:slug: 335
+:status: draft
+
+**C**\ eph OSD disks are not specified in ``/etc/fstab``, then how are they mounted at boot time? The answer lies in a specific method in which the disks are probed.
+
+It could be : ceph-osd process -> ceph-disk -> 'the following process'. Check/Confirm with Kefu.
+
+From 01581039
+
+-----
+
+I had a look at the sosreport, just out of curiosity since Vikhyat and I have got a few cases with sysvinit scripts in upstream Hammer and systemd in RHEL7. We have a sosreport from this machine, and it seems only this machine in the whole cluster is getting stuck at boot.
+
+Just a few thoughts on this, below:
+
+From 'ceph osd tree' in the sosreport, I see that all the OSDs (OSD.0 to OSD.70) on 'pistore-as-b02' are down. And no other node in the cluster has OSDs down. Most probably they've disabled the ceph sysvinit script for now and booted up the machine.
+
+All the OSDs in this node got a termination signal at Feb 19:03 and 19:47 since there was a node reboot at that time. This is evident and can be mapped with the logs from the ceph-osd.\* logs as well as rsyslog messages.
+
+As an example, for the first reboot at 19:03, osd.0 shows:
+
+| ~~~
+| 403 2016-02-09 19:03:20.697611 7f6731e7b700 -1 osd.0 20201 \**\* Got signal Terminated \**\* <-- \*OSD receives a termination signal due to the first node restart.\*
+| 404 2016-02-09 19:03:20.697786 7f6731e7b700 0 osd.0 20201 prepare_to_stop telling mon we are shutting down
+| 405 2016-02-09 19:05:52.814679 7f23bfd5a880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 1631 <-- \*ceph-osd starting at boot\*
+| 406 2016-02-09 19:06:23.459567 7f3c6eb03880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 2542
+| 407 2016-02-09 19:06:53.968018 7fba9437c880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 2746
+| 408 2016-02-09 19:18:42.836989 7fc412b70880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 1783
+| 409 2016-02-09 19:19:13.374974 7faa6f720880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 2559
+| ...
+| .....
+| 493 2016-02-09 19:46:19.470999 7fef4bdb5880 0 filestore(/var/lib/ceph/osd/ceph-0) backend xfs (magic 0x58465342) <-- \*Reading the 'magic' metadata from the OSD disk\*
+| 494 2016-02-09 19:46:21.872944 7fef4bdb5880 0 genericfilestorebackend(/var/lib/ceph/osd/ceph-0) detect_features: FIEMAP ioctl is supported and appears to work
+| 495 2016-02-09 19:46:21.872959 7fef4bdb5880 0 genericfilestorebackend(/var/lib/ceph/osd/ceph-0) detect_features: FIEMAP ioctl is disabled via 'filestore fiemap' config option
+| 496 2016-02-09 19:46:21.900731 7fef4bdb5880 0 genericfilestorebackend(/var/lib/ceph/osd/ceph-0) detect_features: syncfs(2) syscall fully supported (by glibc and kernel)
+| 497 2016-02-09 19:46:21.900952 7fef4bdb5880 0 xfsfilestorebackend(/var/lib/ceph/osd/ceph-0) detect_feature: extsize is supported and kernel 3.10.0-327.4.4.el7.x86_64 >= 3.5
+| 498 2016-02-09 19:46:23.206633 7fef4bdb5880 0 filestore(/var/lib/ceph/osd/ceph-0) mount: enabling WRITEAHEAD journal mode: checkpoint is not enabled
+| 499 2016-02-09 19:46:24.602429 7fef4bdb5880 0 <cls> cls/hello/cls_hello.cc:271: loading cls_hello
+| ~~~
+
+From the above logs, it seems that ceph process has been trying to start up normally after the machine booted up, but took a bit of time to get the underlying disk return the 'magic' number. The ceph-osd process is starting up, but perhaps due to the underlying storage not responding (not sure about that part), it dies off(?) and seems to start another instance(?), hence multiple PID listings.
+
+\* For the second reboot:
+
+| ~~~
+| 510 2016-02-09 19:47:19.806617 7fef0d73f700 -1 osd.0 20289 \**\* Got signal Terminated \**\* <-- \*OSD receives a termination signal due to the second node restart.\*
+| 511 2016-02-09 19:47:19.806754 7fef0d73f700 0 osd.0 20289 prepare_to_stop telling mon we are shutting down
+| 512 2016-02-09 19:49:38.324256 7fe7c7352880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 1661 <-- \*ceph-osd starting at boot\*
+| 513 2016-02-09 19:50:08.751181 7f1e67da6880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 2562
+| 514 2016-02-09 19:50:39.200282 7fc03c202880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 2768
+| 515 2016-02-09 19:51:09.686850 7fd41f3ec880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 4031
+| 516 2016-02-09 19:51:40.271701 7f21d7c2c880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 4286
+| 517 2016-02-09 19:52:10.778115 7f23cc404880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 4503
+| 518 2016-02-09 19:52:39.325839 7f1263f89880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 4737
+| 519 2016-02-09 19:52:40.216183 7f1c51e34880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 4934
+| 520 2016-02-09 19:52:40.233087 7f2a8494c880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 4937
+| 521 2016-02-09 19:54:41.919855 7fa4cc234880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 6545
+| 522 2016-02-09 19:54:41.920001 7fa4cc234880 -1 ^[[0;31m \*\* ERROR: unable to open OSD superblock on /var/lib/ceph/osd/ceph-0: (2) No such file or directory^[[0m <-- \*Error\*
+| 523 2016-02-09 20:02:52.159923 7fb042ffc880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 1780
+| 524 2016-02-09 20:03:22.655723 7fa66d355880 0 ceph version 0.94.5 (9764da52395923e0b32908d83a9f7304401fee43), process ceph-osd, pid 2553
+| ..
+| ....
+| ~~~
+
+In this reboot, the same thing happens. The OSD process is starting up but can't get to open the underlying OSD filesystem it seems.
+
+In the process of starting up the OSD we can see it's hitting an error "ERROR: unable to open OSD superblock on /var/lib/ceph/osd/ceph-0: (2) No such file or directory". This specific message comes up when information such as fsid, whoami, etc.. are tried to be read from the filestore but fails.
+
+The said message is logged from 'src/ceph_osd.cc' when the OSD is being read for the metadata ceph is looking for in an OSD.
+
+\* From 'src/ceph_osd.cc':
+
+| ~~~
+| 331 int r = OSD::peek_meta(store, magic, cluster_fsid, osd_fsid, w);
+| 332 if (r < 0) {
+| 333 derr << TEXT_RED << " \*\* ERROR: unable to open OSD superblock on "
+| 334 << g_conf->osd_data << ": " << cpp_strerror(-r)
+| 335 << TEXT_NORMAL << dendl;
+| 336 if (r == -ENOTSUP) {
+| 337 derr << TEXT_RED << " \*\* please verify that underlying storage "
+| 338 << "supports xattrs" << TEXT_NORMAL << dendl;
+| 339 }
+| 340 exit(1);
+| ~~~
+
+Here, the instance 'r' is getting a value less that '0', and hence the error printed. Looking at what "OSD::peek_meta" does in "src/osd/OSD.cc":
+
+| ~~~
+| int OSD::peek_meta(ObjectStore \*store, std::string& magic,
+| uuid_d& cluster_fsid, uuid_d& osd_fsid, int& whoami)
+| {
+| string val;
+
+| int r = store->read_meta("magic", &val);
+| if (r < 0)
+| return r;
+| magic = val;
+
+| r = store->read_meta("whoami", &val);
+| if (r < 0)
+| return r;
+| whoami = atoi(val.c_str());
+
+| r = store->read_meta("ceph_fsid", &val);
+| if (r < 0)
+| return r;
+| r = cluster_fsid.parse(val.c_str());
+| if (!r)
+| return -EINVAL;
+
+| r = store->read_meta("fsid", &val);
+| if (r < 0) {
+| osd_fsid = uuid_d();
+| } else {
+| r = osd_fsid.parse(val.c_str());
+| if (!r)
+| return -EINVAL;
+| }
+
+| return 0;
+| }
+| ~~~
+
+'peek_meta' is defined in 'src/os/ObjectStore.h', which shows it does a simple read on the metadata files.
+
+| ~~~
+| /*\*
+| \* read_meta - read a simple configuration key out-of-band
+| \*
+| \* Read a simple key value to an unopened/mounted store.
+| \*
+| \* Trailing whitespace is stripped off.
+| \*
+| \* @param key key name
+| \* @param value pointer to value string
+| \* @returns 0 for success, or an error code
+| \*/
+| virtual int read_meta(const std::string& key,
+| std::string \*value);
+| ~~~
+
+This is trying to read the metadata info such as 'magic', 'whoami', 'ceph_fsid' and 'fsid' from the OSD disk, and it should return a value of r<0 if any one of these reads fail, and hence will hit the ERROR message "unable to open OSD superblock on /var/lib/ceph/osd/osd.<X>". You'd be able to see the said information ('magic', 'whoami', 'ceph_fsid' and 'fsid') under /var/lib/ceph/osd/ceph-<X> on a properly mounted OSD.
+
+If I understand correct, ceph-osd starts up the process but it's ceph-disk that actually mounts the OSD. So perhaps it can be something like 'ceph-osd' starts up but can't get 'ceph-disk' to activate the OSD disk and mount it properly? Either something with the disks or with ceph-disk itself.
+
+From yum.log, they updated the Ceph packages to 0.94.5 (upstream Hammer) on "Jan 29 21:41:14", but I don't see a restart of the ceph-osd process after that. So this node restart maybe the first restart after they updated the package, and this problem surfaced.
+
+It'd be good to know if they've restarted other OSD nodes after update, if they've updated the Ceph packages on all the nodes, etc.. to isolate this.
+
+Vimal
+
+ 

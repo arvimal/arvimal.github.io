@@ -1,0 +1,10 @@
+Filestore split and merge in Ceph
+#################################
+:date: 2016-08-13 11:30
+:author: arvimal
+:category: Ceph
+:tags: bluestore, ceph, filesystem, merge, objects, split
+:slug: 1896
+:status: draft
+
+**C**\ eph uses a backend filestore to store the objects on disk. Right now,

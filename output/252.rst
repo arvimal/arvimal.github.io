@@ -1,0 +1,14 @@
+How to enable debugging in a Ceph mon/osd node?
+###############################################
+:date: 2015-05-27 20:38
+:author: arvimal
+:slug: 252
+:status: draft
+
+In cases where something goes wrong with a piece of software, it's always great to have logs with increased debug level.
+
+Ceph has a similar configuration which can help considerably in debugging problems. The only gripe is the level at which it logs. It can fill the filesystem pretty quickly, if you dare to leave it enabled.
+
+To enable it dynamically (without any restarts), you can use 'ceph tell'.
+
+   # ceph tell osd.\* injectargs '--debug-mon 5 --debug-auth 5 --debug-ms 1'
