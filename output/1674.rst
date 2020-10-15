@@ -1,0 +1,18 @@
+Inheritance and overloading of magic methods - Object Oriented Programming
+##########################################################################
+:date: 2016-07-01 11:32
+:author: arvimal
+:category: Programming, Python
+:tags: inheritance, magic methods, Object Oriented Programming, overloading
+:slug: 1674
+:status: draft
+
+We talked about magic methods in an earlier post. In the light of the previous post on Inheritance and method overloading, this post discusses about overloading magic methods in python.
+
+ 
+
+ 
+
+http://www.programiz.com/python-programming/operator-overloading
+
+http://www.python-course.eu/python3_magic_methods.php

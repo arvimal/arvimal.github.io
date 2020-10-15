@@ -1,0 +1,14 @@
+`inspect` module
+################
+:date: 2017-02-25 15:22
+:author: arvimal
+:category: Programming, Python
+:tags: inspect module, module, objects, python, python objects
+:slug: 2584
+:status: draft
+
+The ``inspect`` module can be used for a variety of stuff.
+
+ 
+
+ 

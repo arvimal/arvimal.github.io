@@ -1,0 +1,68 @@
+User IDs and User switching in Linux
+####################################
+:date: 2017-09-16 17:13
+:author: arvimal
+:slug: 3235
+:status: draft
+
+-  User IDs and linux
+
+id
+==
+
+whoami
+======
+
+Normal ID range is mentioned in /etc/login.defs
+
+-  Switching users
+
+Two ways to switch:
+
+1. setuid executables (sudo, su, passwd etc..)
+
+ 
+
+#. setuid() syscall
+
+Put in some stuff from man 2 setuid
+
+sudo, su, passwd calls setuid() internally with the uid of the executable.
+
+Try an strace on a sudo command.
+
+#sudo strace -fxvttT sudo cat /etc/shadow &> /tmp/new.txt
+
+-  Real User ID, Effective User ID, and Saved UID
+
+ 
+
+Put stuff from https://stackoverflow.com/questions/32455684/difference-between-real-user-id-effective-user-id-and-saved-user-id and ``man 2 setuid``
+
+Refer 7.8 Understanding User IDs and User Switching, in ``How Linux Works 2``.
+
+Refer http://www.makelinux.net/alp/083
+
+| getuid(), geteuid()
+| From ``https://stackoverflow.com/questions/32455684/difference-between-real-user-id-effective-user-id-and-saved-user-id`` :
+
+~~~
+
+.. container:: post-text
+
+   The distinction between a real and an effective user id is made because you may have the need to temporarily take another user's identity (most of the time, that would be ``root``, but it could be any user). If you only had one user id, then there would be no way of changing back to your original user id afterwards (other than taking your word for granted, and in case you are ``root``, using ``root``'s privileges to change to any user).
+
+   So, the real user id is who you really are (the one who owns the process), and the effective user id is what the operating system looks at to make a decision whether or not you are allowed to do something (most of the time, there are some exceptions).
+
+   When you log in, the login shell sets both the real and effective user id to the same value (your real user id) as supplied by the password file.
+
+   | Now, it also happens that you execute a setuid program, and besides running as another user (e.g. ``root``) the setuid program is *also* supposed to do something on your behalf. How does this work?
+   | After executing the setuid program, it will have your real id (since you're the process owner) and the effective user id of the file owner (for example ``root``) since it is setuid.
+
+   The program does whatever magic it needs to do with superuser privileges and then wants to do something on your behalf. That means, attempting to do something that you shouldn't be able to do *should fail*. How does it do that? Well, obviously by changing its effective user id to the real user id!
+
+   Now that setuid program has no way of switching back since all the kernel knows is your id and... *your id*. Bang, you're dead.
+
+   This is what the saved set-user id is for.
+
+ 

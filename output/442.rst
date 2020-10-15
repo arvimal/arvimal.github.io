@@ -1,0 +1,18 @@
+Placement Groups and Peering
+############################
+:date: 2015-10-11 15:30
+:author: arvimal
+:category: Ceph
+:tags: ceph, peering, pg, placement groups
+:slug: 442
+:status: draft
+
+# Placement Groups and Peering
+
+Peering is simply a process the Placement Group goes through, in order to understand the state of objects within the replica set.
+
+It tries to probe each object in the PG, confirm that it has the said replica available, ensure that the epochs are matching, and mark the objects needed to by synced. 
+
+A 'ceph -s' should show the state of PGs as "peering" depending on the number of placement groups undergoing peering at any given time. 
+
+Since peering is a complex mechanism and is one of the core process in a Ceph cluster, 

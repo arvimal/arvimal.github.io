@@ -1,0 +1,8 @@
+How can we get information of the operations in flight onto a particular OSD?
+#############################################################################
+:date: 2015-06-04 23:35
+:author: arvimal
+:slug: 304
+:status: draft
+
+https://access.redhat.com/solutions/1467373

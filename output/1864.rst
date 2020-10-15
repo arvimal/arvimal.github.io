@@ -1,0 +1,15 @@
+if __name__ == "__main__":
+##########################
+:date: 2016-07-22 11:38
+:author: arvimal
+:slug: 1864
+:status: draft
+
+**W**\ e may have seen the following line of code, in many occassions:
+
+| [code language="python"]
+| if \__name_\_ == "__main__":
+
+[/code]
+
+This means that

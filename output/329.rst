@@ -1,0 +1,12 @@
+How can we create a pool entirely on a set of SSD disks, rather than HDD disks?
+###############################################################################
+:date: 2015-08-12 23:57
+:author: arvimal
+:slug: 329
+:status: draft
+
+SSDs are far more faster than traditional HDDs, and are used in many implementation which require more speed than HDDs. Ceph suggests using SSDs for its OSD journals, so that the initial writes are quick, and the latter writes can be done in normal speeds after that.
+
+SSD disks see other use cases as well, in Ceph. The most important one is of creating a faster tier, built entirely with SSDs. A pool can then be created on the SSD disks, ie.. the pool will use the SSD disks as its underlying OSDs, which will have much lower latency. This caters to scenarios where faster reads and writes are required.
+
+The idea is to create a bucket of OSDs, create a ruleset consisting of the OSD buckets, and create a pool with this ruleset. We'll see how this is possible.

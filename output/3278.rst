@@ -1,0 +1,10 @@
+UEFI, Libvirt and some more
+###########################
+:date: 2019-11-12 11:48
+:author: arvimal
+:slug: 3278
+:status: draft
+
+UEFI emulation on libvirt is something
+
+

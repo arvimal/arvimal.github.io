@@ -1,0 +1,47 @@
+The get() and setdefault() methods of Python dictionaries.
+##########################################################
+:date: 2018-06-06 10:04
+:author: arvimal
+:category: Programming, Python
+:slug: 3269
+:status: draft
+
+| In [36]: birthdays
+| Out[36]:
+| {'Alice': 'April 1',
+| 'Bob': 'December 12',
+| 'Carol': 'March 4'}
+
+| In [37]: "Test" in birthdays.keys()
+| Out[37]: False
+
+In [38]: print("{}".format(birthdays["Test"]))
+----------------------------------------------
+
+| KeyError Traceback (most recent call last)
+| <ipython-input-38-3ec84aa0d486> in <module>()
+| ----> 1 print("{}".format(birthdays["Test"]))
+
+KeyError: 'Test'
+
+-  The get() method
+
+| In [39]: print("{}".format(birthdays.get("Test")))
+| None
+
+ 
+
+-  The setdefault() method
+
+| if "Vimal" not in birthdays.keys():
+| birthdays["Vimal"] = "Oct 15"
+
+| In [35]: birthdays.setdefault("Vimal", "Oct 15")
+| In [36]: birthdays
+| Out[36]:
+| {'Alice': 'April 1',
+| 'Bob': 'December 12',
+| 'Carol': 'March 4',
+| 'Vimal': 'Oct 15'}
+
+**NOTE:** The setdefault() method won't work if the Key already exist, ie. it won't overwrite an existing key with the new value.

@@ -1,0 +1,8 @@
+Python and duck typing
+######################
+:date: 2016-01-18 17:00
+:author: arvimal
+:slug: 544
+:status: draft
+
+

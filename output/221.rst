@@ -1,0 +1,10 @@
+How to map an RBD image as a block device from a Ceph cluster?
+##############################################################
+:date: 2015-05-01 09:19
+:author: arvimal
+:category: Ceph
+:tags: block device, ceph, cluster, rbd
+:slug: 221
+:status: draft
+
+An RBD (Rados Block Device) device is an image file created on the Ceph cluster and exported to a client machine, which can then be used as a block device. This block device can be partitioned, formatted, and used as a regular disk.

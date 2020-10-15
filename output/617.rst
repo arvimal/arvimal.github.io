@@ -1,0 +1,14 @@
+Ceph OSD full/near-full ratio and PG full/near-full ratio
+#########################################################
+:date: 2016-04-01 15:37
+:author: arvimal
+:slug: 617
+:status: draft
+
+mon_osd_near_full_ratio and mon_osd_full_ratio
+
+ceph pg set_full_ratio and ceph pg_set_near_full_ratio
+
+::
+
+

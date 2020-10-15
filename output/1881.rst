@@ -1,0 +1,16 @@
+__slots__ in Python
+###################
+:date: 2016-07-28 22:33
+:author: arvimal
+:slug: 1881
+:status: draft
+
+www.elfsternberg.com/2009/07/06/python-what-the-hell-is-a-slot/
+
+book.pythontips.com/en/latest/__slots__magic.html
+
+tech.oyster.com/save-ram-with-python-slots/
+
+www.python-course.eu/python3_slots.php
+
+ 

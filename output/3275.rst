@@ -1,0 +1,8 @@
+UEFI on QEMU/KVM
+################
+:date: 2019-11-05 17:27
+:author: arvimal
+:slug: 3275
+:status: draft
+
+
