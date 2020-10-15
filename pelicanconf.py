@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'Vimal A R'
-SITENAME = 'arvimal.github.io'
-SITEURL = 'https://arvimal.github.io/'
+SITENAME = 'arvimal.blog'
+SITEURL = ''
 
 PATH = 'content'
 
