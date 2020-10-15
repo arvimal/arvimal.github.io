@@ -1,8 +1,0 @@
-Understanding python's __init__() function
-##########################################
-:date: 2016-01-18 16:58
-:author: arvimal
-:slug: 539
-:status: draft
-
-

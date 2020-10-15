@@ -1,8 +1,0 @@
-How to enable RBD caching?
-##########################
-:date: 2015-05-27 20:39
-:author: arvimal
-:slug: 254
-:status: draft
-
-https://access.redhat.com/solutions/1359473
