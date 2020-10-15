@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>"Error: open /tmp/docker-import-123456789/repo/bin/json: no such file or directory"</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li class="active"><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/error-open-tmpdocker-import-repobinjson-no-such-file-or-directory.html" rel="bookmark"
+           title="Permalink to "Error: open /tmp/docker-import-123456789/repo/bin/json: no such file or directory"">&quot;Error: open /tmp/docker-import-123456789/repo/bin/json: no such file or directory&quot;</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-08-16T20:55:00+02:00">
+                Published: Sat 16 August 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/techno.html">Techno</a>.</p>
+
+</footer><!-- /.post-info -->      <p>I've been trying to create a minimal docker image for RHEL versions, for one of my projects. The following were the steps I followed:</p>
+<ol class="loweralpha simple">
+<li>Installed a RHEL6.5 server with 'Minimal Installation'.</li>
+<li>Registered it to the local satellite.</li>
+<li>Created a tar-ball of the filesystem with the command below:</li>
+</ol>
+<p>[sourcecode language=&quot;bash&quot; gutter=&quot;false&quot;]</p>
+<p># tar --numeric-owner --exclude=/proc --exclude=/sys --exclude=/mnt --exclude=/var/cache</p>
+<p>--exclude=/usr/share/doc --exclude=/tmp --exclude=/var/log -zcvf /mnt/rhel6.5-base.tar.gz /</p>
+<p>[/sourcecode]</p>
+<ol class="loweralpha simple" start="4">
+<li>Load the tar.gz image using 'docker load' (as per the man page of 'docker load')</li>
+</ol>
+<p>[sourcecode language=&quot;bash&quot; gutter=&quot;false&quot;]</p>
+<p># docker load -i rhel6.5-base.tar.gz</p>
+<p>[/sourcecode]</p>
+<p>This is where it erred with the message:</p>
+<p>[sourcecode language=&quot;bash&quot; gutter=&quot;false&quot;]</p>
+<p>2014/08/16 20:37:42 Error: open /tmp/docker-import-123456789/repo/bin/json: no such file or directory</p>
+<p>[/sourcecode]</p>
+<p>After a bit of searching and testing, I found that 'docker load -i' doesn't work as expected. The workaround is to cat and pipe the tar.gz file, as shown below:</p>
+<p>[sourcecode language=&quot;bash&quot; gutter=&quot;false&quot;]</p>
+<p># cat rhel6.5-base.tar.gz | docker import - rhel6/6.5</p>
+<p>[/sourcecode]</p>
+<p>This ends up with the image showing up in 'docker images'</p>
+<p>[sourcecode language=&quot;bash&quot; gutter=&quot;false&quot;]</p>
+<p># docker images</p>
+<div class="line-block">
+<div class="line">REPOSITORY&nbsp;&nbsp; TAG&nbsp;&nbsp;&nbsp; IMAGE ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CREATED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIRTUAL SIZE</div>
+<div class="line">rhel6/6.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; latest&nbsp; 32b4b345454a&nbsp; About a minute ago 1.251 GB</div>
+</div>
+<p>[/sourcecode]</p>
+<p>Update: 'docker load -i &lt;image-file&gt;' would only work if the image is created as a layered docker image. If the &lt;image-file&gt; is a tar ball created from a root filesystem, you would need to use 'cat &lt;image-file&gt; | docker import &lt;name&gt;'</p>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

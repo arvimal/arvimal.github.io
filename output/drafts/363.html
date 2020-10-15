@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>How to use the 'ceph_objectstore_tool' utility?</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li class="active"><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/drafts/363.html" rel="bookmark"
+           title="Permalink to How to use the 'ceph_objectstore_tool' utility?">How to use the 'ceph_objectstore_tool' utility?</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-08-30T20:48:00+02:00">
+                Published: Sun 30 August 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/misc.html">misc</a>.</p>
+
+</footer><!-- /.post-info -->      <p>At this point in time we do not believe it would be wise to change the crush map</p>
+<p>in the cluster. Since the two pools you mention are sharing the same crush rule</p>
+<p>with pool 12 (the one we are working on), adjusting the crush rule will change</p>
+<p>the way they find the right pg/osds for an object.</p>
+<p>&gt;Also are there any pgs in these pools that require fixing.</p>
+<p>This is unknown at this time however it is possible. We can not predict what</p>
+<p>corrupted pgs these two OSDs have in their store.</p>
+<p>In order to proceed we would like you to download the following rpm to a</p>
+<p>working directory.</p>
+<p><a class="reference external" href="http://ceph.com/rpm-giant/el7/x86_64/ceph-test-0.87.2-0.el7.centos.x86_64.rpm">http://ceph.com/rpm-giant/el7/x86_64/ceph-test-0.87.2-0.el7.centos.x86_64.rpm</a></p>
+<p>Once you have it please run the following commands to extract the</p>
+<p>ceph_objectstore_tool.</p>
+<p># mkdir tmp</p>
+<p># cd tmp</p>
+<p># rpm2cpio ../ceph-test-0.87.2-0.el7.centos.x86_64.rpm|cpio -div</p>
+<p># mv -i ./usr/bin/ceph_objectstore_tool ..</p>
+<p># cd ..</p>
+<p>We have identified the following pgs which are causing the OSDs to crash.</p>
+<p>OSD.12 pg 12.5d7</p>
+<p>OSD.57 pg 12.393</p>
+<p>We would like to do this one OSD at a time and starting with OSD.57.</p>
+<p>Please verify you have enough space in your working directory to export the pg.</p>
+<p>You should be able to verify this with &nbsp;the following command.</p>
+<p># du -sh /lib/ceph/osd/ceph-57/current/12.393_head</p>
+<p>Once you verify this proceed with the following command which will export this</p>
+<p>pg from the disk to a file, 12.393.export for backup before we proceed.</p>
+<p># ./ceph_objectstore_tool --op export --pgid 12.393 --data-path /lib/ceph/osd/ceph-57 --journal-path /lib/ceph/osd/ceph-57/journal --file 12.393.export</p>
+<p>If that is successful you can move onto remove the pg with the following</p>
+<p>command.</p>
+<p># ./ceph_objectstore_tool --op remove --pgid 12.393 --data-path /lib/ceph/osd/ceph-57 --journal-path /lib/ceph/osd/ceph-57/journal</p>
+<p>Once that is done try to start the OSD again and if it crashes again please</p>
+<p>upload a debug log so we can identify which pg is involved. Once we get OSD.57</p>
+<p>back up we can check the status of the cluster and move on as necessary.</p>
+<p>Please note that there may be multiple more corrupted pgs in this store and</p>
+<p>we are unable to predict how many.</p>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

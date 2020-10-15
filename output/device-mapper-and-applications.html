@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Device Mapper and applications</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li class="active"><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/device-mapper-and-applications.html" rel="bookmark"
+           title="Permalink to Device Mapper and applications">Device Mapper and applications</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-12-23T05:11:00+01:00">
+                Published: Thu 23 December 2010
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/techno.html">Techno</a>.</p>
+
+</footer><!-- /.post-info -->      <p>What is<a class="reference external" href="http://en.wikipedia.org/wiki/Device_mapper">device-mapper</a>?</p>
+<p><strong>D</strong>evice mapper is a modular driver for the <a class="reference external" href="http://www.kernel.org/">linux kernel 2.6</a>. It can be said as a framework which helps to create or map logical sectors of a pseudo <a class="reference external" href="http://en.wikipedia.org/wiki/Device_file">block device</a> to an underlying physical block device. So what device-mapper do is keep a table of mappings which equate the logical block devices to the physical block devices.</p>
+<p>Applications such as LVM2, <a class="reference external" href="http://evms.sourceforge.net/">EVMS</a>, software raid aka dmraid, multipathing, block encryption mechanisms such as cryptsetup etc... use device-mapper to work. All these applications excluding EVMS use the libdevmapper library to communicate with device-mapper.</p>
+<p>The applications communicate with device-mapper's <a class="reference external" href="http://en.wikipedia.org/wiki/Application_programming_interface">API</a> to create the mapping. Due to this feature, device-mapper does not need to know what <a class="reference external" href="http://en.wikipedia.org/wiki/Logical_Volume_Manager_%28Linux%29">LVM</a> or dmraid is, how it works, what LVM metadata is, etc... It is upto the application to create the pseudo devices pointing to the physical volumes using one of device-mapper's targets and then update the mapper table.</p>
+<p>The device-mapper mapping table :</p>
+<p>The mapping table used by device-mapper doesn't take too much space and is a list created using a 'btree'. A btree or a '<a class="reference external" href="http://en.wikipedia.org/wiki/Binary_search_tree">Binary Search Tree</a>' is a data-structure from which data can be added, removed or queried.</p>
+<p>In order to know more on what a btree is and the concept behind it, read :</p>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Binary_search_tree">http://en.wikipedia.org/wiki/Binary_search_tree</a></p>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/B-tree">http://en.wikipedia.org/wiki/B-tree</a></p>
+<p>Types of device-mapper targets :</p>
+<p>Applications which use device-mapper actually use one or more of its target methods to achieve their purpose. Targets can be said as a method or type of mapping used by device-mapper. The general mapping targets are :</p>
+<ol class="loweralpha simple">
+<li>Linear - Used by linear logical volumes, ie.. the default data layout method used by LVM2.</li>
+<li>Striped - Used by striped logical volumes as well as software <a class="reference external" href="http://en.wikipedia.org/wiki/Standard_RAID_levels">RAID0</a>.</li>
+<li>Mirror - Used by software RAID1 and LVM mirroring.</li>
+<li>Crypt - Used by disk encryption utilties.</li>
+<li>Snapshot - Used to take online snapshots of block devices, an example is LVM snapshot.</li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Multipath_I/O">Multipath</a> - Used by device-mapper-multipath.</li>
+<li>RAID45 - <a class="reference external" href="http://en.wikipedia.org/wiki/RAID">Software raid</a> using device-mapper, ie.. dmraid</li>
+<li>Error - Sectors of the pseudo device mapped with this target causes the I/O to fail.</li>
+</ol>
+<p>There are a few more mappings such as 'flaky' which is not used much.</p>
+<p>I'll write on how device-mapper works in LVM, in the next post...</p>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

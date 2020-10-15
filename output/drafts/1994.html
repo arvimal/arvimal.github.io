@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>How to fetch journal stats of a Ceph OSD?</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li class="active"><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/drafts/1994.html" rel="bookmark"
+           title="Permalink to How to fetch journal stats of a Ceph OSD?">How to fetch journal stats of a Ceph OSD?</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-11-17T21:03:00+01:00">
+                Published: Thu 17 November 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/misc.html">misc</a>.</p>
+
+</footer><!-- /.post-info -->      <p><strong>C</strong>eph suggests using journals (preferably SSDs) so that the client can dump the data onto the primary OSD j</p>
+<div class="line-block">
+<div class="line">$ sudo ceph --admin-daemon /var/run/ceph/ceph-osd.1.asok perf dump | grep journal</div>
+<div class="line">&quot;journal_queue_ops&quot;: 0,</div>
+<div class="line">&quot;journal_queue_bytes&quot;: 0,</div>
+<div class="line">&quot;journal_ops&quot;: 0,</div>
+<div class="line">&quot;journal_bytes&quot;: 0,</div>
+<div class="line">&quot;journal_latency&quot;: {</div>
+<div class="line">&quot;journal_wr&quot;: 5,</div>
+<div class="line">&quot;journal_wr_bytes&quot;: {</div>
+<div class="line">&quot;journal_full&quot;: 0,</div>
+</div>
+<p>journal_full is the counter on how many times the journal hit full.</p>
+<p>journal_bytes refer to the current journal usage.</p>
+<div class="line-block">
+<div class="line">&lt;hklein&gt; the perf schema says it is a counter, but in code it seems to get incremented and decremented</div>
+<div class="line">&lt;hklein&gt; it's incremented in FileJournal::read_entry() with &quot;amount_to_take&quot;</div>
+<div class="line">&lt;hklein&gt; also incremented in ::submit_entry()</div>
+</div>
+<p><a class="reference external" href="https://access.redhat.com/solutions/2771951">https://access.redhat.com/solutions/2771951</a></p>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

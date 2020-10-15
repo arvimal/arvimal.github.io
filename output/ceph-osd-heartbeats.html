@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Ceph OSD heartbeats</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/ceph-osd-heartbeats.html" rel="bookmark"
+           title="Permalink to Ceph OSD heartbeats">Ceph OSD heartbeats</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-05-09T19:10:00+02:00">
+                Published: Mon 09 May 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/ceph.html">Ceph</a>.</p>
+<p>tags: <a href="/tag/ceph.html">ceph</a> <a href="/tag/monitors.html">monitors</a> </p>
+</footer><!-- /.post-info -->      <p>Ceph OSD daemons need to ensure that the neighbouring OSDs are functioning properly so that the cluster remains in a healthy state.</p>
+<p>For this, each Ceph OSD process (ceph-osd) sends a heartbeat signal to the neighbouring OSDs. By default, the heartbeat signal is sent every 6 seconds [1], which is configurable of course.</p>
+<p>If the heartbeat check from one OSD doesn't hear from the other within the set value for `osd_heartbeat_grace` [2], which is set to 20 seconds by default, the OSD that sends the heartbeat check reports the other OSD (the one that didn't respond within 20 seconds) as down, to the MONs. Once an OSD reports three times that the non-responding OSD is indeed `down`, the MON acknowledges it and mark the OSD as down.</p>
+<p>The Monitor will update the Cluster map and send it over to the participating nodes in the cluster.</p>
+<p><img alt="OSD-heartbeat-1" class="alignnone size-full wp-image-810" src="https://arvimal.files.wordpress.com/2016/05/osd-heartbeat-1.png" style="width: 470px; height: 490px;" /></p>
+<p>When an OSD can't reach another OSD for a heartbeat, it reports the following in the OSD logs:</p>
+<blockquote>
+osd.510 1497 heartbeat_check: no reply from osd.11 since back 2016-04-28 20:49:42.088802</blockquote>
+<p>In Ceph Jewel, the MONs require a minimum of two ceph OSDs report a specific OSD as down from two nodes which are in different CRUSH subtrees, in order to actually mark the OSD as down. These are controlled by the following tunables :</p>
+<p>From 'common/config_opts.h':</p>
+<p><strong>[1] OPTION(mon_osd_min_down_reporters, OPT_INT, 2) // number of OSDs from different subtrees who need to report a down OSD for it to count</strong></p>
+<p><strong>[2] OPTION(mon_osd_reporter_subtree_level , OPT_STR, &quot;host&quot;) // in which level of parent bucket the reporters are counted</strong></p>
+<p>Image Courtsey :&nbsp;<a class="reference external" href="https://access.redhat.com/documentation/en/red-hat-ceph-storage/version-1.3/red-hat-ceph-storage-13-ceph-configuration-guide/#osd-check-heartbeats">Red Hat Ceph Storage 1.3.2 Configuration guide</a></p>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

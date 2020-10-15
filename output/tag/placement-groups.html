@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>arvimal.blog - placement groups</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/how-can-we-map-a-pg-to-a-pool.html">Mapping Placement Groups and Pools</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-08-17T19:17:00+02:00">
+                Published: Mon 17 August 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/ceph.html">Ceph</a>.</p>
+<p>tags: <a href="/tag/ceph.html">ceph</a> <a href="/tag/placement-groups.html">placement groups</a> <a href="/tag/pool.html">pool</a> </p>
+</footer><!-- /.post-info --><p>Understanding the mapping of Pools and Placement Groups can be very useful while troubleshooting Ceph problems.</p>
+<p>A direct method is to dump information on the PGs via :</p>
+<blockquote>
+# ceph pg dump</blockquote>
+<p>This command should output something like the following:</p>
+<blockquote>
+<div class="line-block">
+<div class="line">pg_stat&nbsp;&nbsp;&nbsp; objects&nbsp;&nbsp;&nbsp; mip&nbsp;&nbsp;&nbsp; degr&nbsp;&nbsp;&nbsp; unf&nbsp;&nbsp;&nbsp; bytes&nbsp;&nbsp;&nbsp; log&nbsp;&nbsp;&nbsp; disklog &nbsp; state</div>
+<div class="line">5.7a &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0 &nbsp; &nbsp; &nbsp; &nbsp; 0&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 0 &nbsp; &nbsp; &nbsp; &nbsp;0 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;active+clean</div>
+</div>
+</blockquote>
+<p>The output will have more information, and I've omitted it for the sake of explanation.</p>
+<p>The first field is the PG ID, which are two values separated by a single dot (.). The left side value is the POOL ID, while the right side value is the actual PG number. It means that a specific PG can only be present under a specific pool, ie.. no PGs can be shared across pools. But please note that OSDs can be shared across multiple PGs.</p>
+<p>To get the pools and associated numbers, use:</p>
+<blockquote>
+<p># ceph osd lspools</p>
+<p>0 data,1 metadata,2 rbd,5 ssdtest,6 ec_pool,</p>
+</blockquote>
+<p>So, the PG 5.7a belongs to the pool numbered '5', ie.. 'ssdtest', and the PG number is '7a'.</p>
+<p>The output of 'ceph pg dump' also shows various important informations such as the Acting OSD set, the primary OSD, the last time the PG was reported, the state of the PG, the time at which a normal scrub as well as a deep-scrub was run etc..</p>
+                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

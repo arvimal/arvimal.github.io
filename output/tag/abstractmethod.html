@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>arvimal.blog - abstractmethod</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/inheritance-and-method-overloading-object-oriented-programming.html">Inheritance and Method overloading - Object Oriented Programming</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-06-29T18:24:00+02:00">
+                Published: Wed 29 June 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/programming-python.html">Programming, Python</a>.</p>
+<p>tags: <a href="/tag/abstract-methods.html">abstract methods</a> <a href="/tag/abstractmethod.html">abstractmethod</a> <a href="/tag/builtins.html">builtins</a> <a href="/tag/inheritance.html">inheritance</a> <a href="/tag/method-overloading.html">method overloading</a> </p>
+</footer><!-- /.post-info --><p><strong>I</strong>nheritance is a usual&nbsp;theme in Object Oriented Programming. Because of Inheritance, the functions/methods defined in parent classes can be called in Child classes which enables code reuse, and several other features. In this article, we try to understand some of those features that come up with Inheritance.</p>
+<p>We've discussed <a class="reference external" href="https://arvimal.wordpress.com/2016/06/14/abstract-base-classesmethods-object-oriented-programming/">Abstract Methods</a>&nbsp;in an earlier post, which is a feature part of Inheritance, and can be applied on child classes that inherits from a Parent class.</p>
+<p>E&nbsp;the methods which are inherited can also be seen as another feature or possibility in Inheritance. In many cases, it's required to override or specialize&nbsp;the methods inherited from the Parent class. This is of course possible, and is&nbsp;called as 'Method Overloading'.</p>
+<p>Consider the two classes and its&nbsp;methods defined below:</p>
+<p><strong>Example 0:</strong></p>
+<div class="line-block">
+<div class="line">[code language=&quot;python&quot;]</div>
+<div class="line">import abc</div>
+</div>
+<p>class MyClass(object):</p>
+<p>__metaclass__ = abc.ABCMeta</p>
+<div class="line-block">
+<div class="line">def __init__(self):</div>
+<div class="line">pass</div>
+</div>
+<div class="line-block">
+<div class="line">def my_set_method(self, value):</div>
+<div class="line">self.value = value</div>
+</div>
+<div class="line-block">
+<div class="line">def my_get_method(self):</div>
+<div class="line">return self.value</div>
+</div>
+<div class="line-block">
+<div class="line">&#64;abc.abstractmethod</div>
+<div class="line">def printdoc(self):</div>
+<div class="line">return</div>
+</div>
+<p>class MyChildClass(MyClass):</p>
+<div class="line-block">
+<div class="line">def my_set_method(self, value):</div>
+<div class="line">if not isinstance(value, int):</div>
+<div class="line">value = 0</div>
+<div class="line">super(MyChildClass, self).my_set_method(self)</div>
+</div>
+<div class="line-block">
+<div class="line">def printdoc(self):</div>
+<div class="line">print(&quot;nDocumentation for MyChildClass()&quot;)</div>
+</div>
+<div class="line-block">
+<div class="line">instance_1 = MyChildClass()</div>
+<div class="line">instance_1.my_set_method(10)</div>
+<div class="line">print(instance_1.my_get_method())</div>
+<div class="line">instance_1.printdoc()</div>
+<div class="line">[/code]</div>
+</div>
+<p>We have two classes, the parent class being&nbsp;<tt class="docutils literal">MyClass</tt>&nbsp;and the child class being&nbsp;<tt class="docutils literal">MyChildClass</tt>.</p>
+<p><tt class="docutils literal">MyClass</tt>&nbsp;has three methods defined.</p>
+<ul class="simple">
+<li>my_set_method()</li>
+<li>my_get_method()</li>
+<li>printdoc()</li>
+</ul>
+<p>The <tt class="docutils literal">printdoc()</tt>&nbsp;method is an&nbsp;<a class="reference external" href="https://arvimal.wordpress.com/2016/06/14/abstract-base-classesmethods-object-oriented-programming/">Abstract method</a>, and hence should be implemented in the Child class as a mandatory method.</p>
+<p>The child class <tt class="docutils literal">MyChildClass</tt>&nbsp;inherits from <tt class="docutils literal">MyClass</tt>&nbsp;and has access to all it's methods.</p>
+<p>Normally, we can just go ahead and use the methods defined in <tt class="docutils literal">MyClass</tt>&nbsp;, in <tt class="docutils literal">MyChildClass</tt>. But there can be situations when we want to improve or build upon the methods inherited. As said earlier, this is called&nbsp;<strong>Method Overloading.</strong></p>
+<p><tt class="docutils literal">MyChildClass</tt>&nbsp;extends the parent's <tt class="docutils literal">my_set_method()</tt>&nbsp;function by it's own implementation. In this example, it does an additional check to understand if the input value is an <tt class="docutils literal">int</tt>&nbsp;or not, and then calls the <tt class="docutils literal">my_set_method()</tt>&nbsp;of it's parent class using <tt class="docutils literal">super</tt>. Hence, this method in the child class extends the functionality prior calling method in the parent. A post on <tt class="docutils literal">super</tt>&nbsp;is set for a later time.</p>
+<p>Even though this is a trivial example, it helps to understand how the features inherited from other classes can be extended or improved upon via method overloading.</p>
+<p>The <tt class="docutils literal">my_get_method()</tt>&nbsp;is not overridden in the child class but still called from the instance, as <tt class="docutils literal">instance_1.my_get_method()</tt>. We're using it as it is available via Inheritance. Since it's defined in the parent class, it works in the child class' instance when called, even if not overridden.</p>
+<p>The <tt class="docutils literal">printdoc()</tt>&nbsp;method is an abstract method and hence is mandatory to be implemented in the child class, and can be overridden with what we choose to do.</p>
+<p>Inheritance is possible from python builtins, and can be overridden as well. Let's check out another example:</p>
+<p><strong>Example 1:</strong></p>
+<div class="line-block">
+<div class="line">[code language=&quot;python&quot;]</div>
+<div class="line">class MyList(list):</div>
+</div>
+<div class="line-block">
+<div class="line">def __getitem__(self, index):</div>
+<div class="line">if index == 0:</div>
+<div class="line">raise IndexError</div>
+<div class="line">if index &amp;gt; 0:</div>
+<div class="line">index -= 1</div>
+<div class="line">return list.__getitem__(self, index)</div>
+</div>
+<div class="line-block">
+<div class="line">def __setitem__(self, index, value):</div>
+<div class="line">if index == 0:</div>
+<div class="line">raise IndexError</div>
+<div class="line">if index &amp;gt; 0:</div>
+<div class="line">index -= 1</div>
+<div class="line">list.__setitem__(self, index, value)</div>
+</div>
+<div class="line-block">
+<div class="line">x = MyList(['a', 'b', 'c'])</div>
+<div class="line">print(x)</div>
+<div class="line">print(&quot;-&quot; * 10)</div>
+</div>
+<div class="line-block">
+<div class="line">x.append('d')</div>
+<div class="line">print(x)</div>
+<div class="line">print(&quot;-&quot; * 10)</div>
+</div>
+<div class="line-block">
+<div class="line">x.__setitem__(4, 'e')</div>
+<div class="line">print(x)</div>
+<div class="line">print(&quot;-&quot; * 10)</div>
+</div>
+<div class="line-block">
+<div class="line">print(x[1])</div>
+<div class="line">print(x.__getitem__(1))</div>
+<div class="line">print(&quot;-&quot; * 10)</div>
+</div>
+<div class="line-block">
+<div class="line">print(x[4])</div>
+<div class="line">print(x.__getitem__(4))</div>
+<div class="line">[/code]</div>
+<div class="line">This outputs:</div>
+</div>
+<div class="line-block">
+<div class="line">[code language=&quot;python&quot;]</div>
+<div class="line">['a', 'b', 'c']</div>
+<div class="line">----------</div>
+<div class="line">['a', 'b', 'c', 'd']</div>
+<div class="line">----------</div>
+<div class="line">['a', 'b', 'c', 'e']</div>
+<div class="line">----------</div>
+<div class="line">a</div>
+<div class="line">a</div>
+<div class="line">----------</div>
+<div class="line">e</div>
+<div class="line">e</div>
+<div class="line">[/code]</div>
+</div>
+<div class="section" id="how-does-the-code-work">
+<h2>How does the code work?</h2>
+<p>The class <tt class="docutils literal">MyList()</tt>&nbsp;inherits from the builtin <tt class="docutils literal">list</tt>. Because of the inheritance, we can use list's available magic methods such as <tt class="docutils literal">__getitem__()</tt>&nbsp;, <tt class="docutils literal">__setitem__()</tt>&nbsp;etc..</p>
+<p><strong>NOTE: In order to see the available methods in ``list``, use ``dir(list)``.</strong></p>
+<ol class="arabic simple">
+<li>We create two functions/methods named `__getitem__()` and `__setitem__()` to override the inherited methods.</li>
+<li>Within these functions/methods, we set our own conditions.</li>
+<li>Wie later call the builtin methods directly within these functions, using<ol class="arabic">
+<li>list.__getitem__()</li>
+<li>list.__setitem__()</li>
+</ol>
+</li>
+<li>We create an instance named <tt class="docutils literal">x</tt>&nbsp;from <tt class="docutils literal">MyList()</tt>.</li>
+<li>We understand that<ol class="arabic">
+<li><tt class="docutils literal">x[1]</tt>&nbsp;and <tt class="docutils literal">x.__getitem__(1)</tt>&nbsp;are same.</li>
+<li><tt class="docutils literal">x[4, 'e']</tt> and <tt class="docutils literal">x.__setitem__(4, 'e')</tt>&nbsp;are same.</li>
+<li><tt class="docutils literal">x.append(f)</tt>&nbsp;is same as <tt class="docutils literal"><span class="pre">x.__setitem__(&lt;n&gt;,</span> f)</tt>&nbsp;where &lt;n&gt; is the element to the extreme right which the python interpreter iterates and find on its own.</li>
+</ol>
+</li>
+</ol>
+<p>Hence, in Inheritance, child classes can:</p>
+<ul class="simple">
+<li>Inherit from parent classes and use those methods.<ul>
+<li>Parent classes can either be user-defined classes or buitins like <tt class="docutils literal">list</tt>&nbsp;, <tt class="docutils literal">dict</tt>&nbsp;etc..</li>
+</ul>
+</li>
+<li>Override (or Overload) an inherited method.</li>
+<li>Extend an inherited method in its own way.</li>
+<li>Implement an Abstract method the parent class requires.</li>
+</ul>
+</div>
+<div class="section" id="reference">
+<h2>Reference:</h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://shop.oreilly.com/product/0636920040057.do">Python beyond the basics - Object Oriented Programming</a></li>
+</ol>
+</div>
+                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

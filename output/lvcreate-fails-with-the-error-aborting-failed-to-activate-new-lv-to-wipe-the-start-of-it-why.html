@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>lvcreate fails with the error "Aborting. Failed to activate new LV to wipe the start of it.". Why ??</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li class="active"><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/lvcreate-fails-with-the-error-aborting-failed-to-activate-new-lv-to-wipe-the-start-of-it-why.html" rel="bookmark"
+           title="Permalink to lvcreate fails with the error "Aborting. Failed to activate new LV to wipe the start of it.". Why ??">lvcreate fails with the error &quot;Aborting. Failed to activate new LV to wipe the start of it.&quot;. Why ??</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-11-02T19:00:00+01:00">
+                Published: Mon 02 November 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/techno.html">Techno</a>.</p>
+
+</footer><!-- /.post-info -->      <p>In case anyone out there gets an error message like &quot;Aborting. Failed to activate new LV to wipe the start of it.&quot; while doing an 'lvcreate', check (/etc/lvm/lvm.conf) once more.</p>
+<p>Most probably, a 'volume_list' would have been defined in there, which in turns want you to specify the 'volume_list' tag specified along with the lvcreate command.</p>
+<p>Excerpt from /etc/lvm/lvm.conf:</p>
+<blockquote>
+<div class="line-block">
+<div class="line"># If volume_list is defined, each LV is only activated if there is a</div>
+<div class="line"># match against the list.</div>
+<div class="line">#&nbsp;&nbsp; vgname and vgname/lvname are matched exactly.</div>
+<div class="line">#&nbsp;&nbsp; &#64;tag matches any tag set in the LV or VG.</div>
+<div class="line">#&nbsp;&nbsp; &#64;* matches if any tag defined on the host is also set in the LV or VG</div>
+<div class="line">#</div>
+<div class="line"># volume_list = [ vg1, vg2/lvol1, &#64;tag1, &#64;* ]</div>
+<div class="line">volume_list = [ VG01, &#64;foo.com ]</div>
+</div>
+</blockquote>
+<p>In this case, you will have to use the 'lvcreate' command as follows, which will create the logical volume properly.</p>
+<blockquote>
+# lvcreate --addtag &#64;foo.com&nbsp;&nbsp;&nbsp; ... following-options</blockquote>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

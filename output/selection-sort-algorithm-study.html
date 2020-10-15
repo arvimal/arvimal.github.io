@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Selection Sort - Algorithm Study</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li class="active"><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/selection-sort-algorithm-study.html" rel="bookmark"
+           title="Permalink to Selection Sort - Algorithm Study">Selection Sort - Algorithm Study</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2017-02-11T16:15:00+01:00">
+                Published: Sat 11 February 2017
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a>.</p>
+<p>tags: <a href="/tag/algorithms.html">Algorithms</a> <a href="/tag/python.html">python</a> </p>
+</footer><!-- /.post-info -->      <p><strong>S</strong>election Sort is a sorting algorithm used to sort a data set either in incremental or decremental order.</p>
+<p>It goes through the entire elements one by one and hence it's not a very efficient algorithm to work on large data sets.</p>
+<div class="section" id="how-does-selection-sort-work">
+<h2>How does Selection sort work?</h2>
+<p>Selection sort starts with an unsorted data set. With each iteration, it builds up a sub dataset with the sorted data.</p>
+<p>By the end of the sorting process, the sub dataset contains the entire elements in a sorted order.</p>
+<div class="line-block">
+<div class="line">1. Iterate through the data set one element at a time.</div>
+<div class="line">2. Find the biggest element in the data set (Append it to another if needed)</div>
+<div class="line">3. Reduce the sample space by the biggest element just found. The new data set becomes `n - 1` compared to the previous iteration.</div>
+<div class="line">4. Start over the iteration again, on the reduced sample space.</div>
+<div class="line">5. Continue till we have a sorted data set, either incremental or decremental</div>
+</div>
+</div>
+<div class="section" id="how-does-the-data-sample-change-in-each-iteration">
+<h2>How does the data sample change&nbsp;in each iteration?</h2>
+<p>Consider the data set [10, 4, 9, 3, 6, 19, 8]</p>
+<div class="line-block">
+<div class="line">[10, 4, 9, 3, 6, 19, 8] &nbsp; &nbsp; &nbsp;- Data set</div>
+<div class="line">[10, 4, 9, 3, 6, 8] - [19] - After Iteration 1</div>
+<div class="line">[4, 9, 3, 6, 8] - [10, 19] - After Iteration 2</div>
+<div class="line">[4, 3, 6, 8] - [9, 10, 19] - After Iteration 3</div>
+<div class="line">[4, 3, 6] - [8, 9, 10, 19] - After Iteration 4</div>
+<div class="line">[4, 3] - [6, 8, 9, 10, 19] - After Iteration 5</div>
+<div class="line">[3] - [4, 6, 8, 9, 10, 19] - After Iteration 6</div>
+<div class="line">[3, 4, 6, 8, 9, 10, 19] &nbsp; &nbsp; &nbsp;- After Iteration 7 - Sorted data set</div>
+</div>
+<p>Let's check what the Selection Sort algorithm has to go through in each iteration.</p>
+<div class="line-block">
+<div class="line">Dataset - [10, 4, 9, 3, 6, 19, 8]</div>
+<div class="line">Iter 1 - [10, 4, 9, 3, 6, 8]</div>
+<div class="line">Iter 2 - [4, 9, 3, 6, 8]</div>
+<div class="line">Iter 3 - [4, 3, 6, 8]</div>
+<div class="line">Iter 4 - [4, 3, 6]</div>
+<div class="line">Iter 5 - [4, 3]</div>
+<div class="line">Iter 6 - [3]</div>
+</div>
+<p>Sorted Dataset -&nbsp;[3, 4, 6, 8, 9, 10, 19]</p>
+</div>
+<div class="section" id="performance-time-complexity">
+<h2>Performance / Time Complexity</h2>
+<p>Selection Sort has to go through all the elements in the data set, no matter what.</p>
+<p>Hence, the Worst case, Best case and Average Time Complexity would be O(n^2).</p>
+<p>Since `Selection Sort` takes in `n` elements while starting, and goes through the data set `n` times (each step reducing the data set size by 1 member), the iterations would be:</p>
+<p><strong>n + [ (n - 1) + (n - 2) + (n - 3) + (n - 4) + ... + 2 + 1 ]</strong></p>
+<p>We are more interested in the worse-case scenario. In a very large data set, an `n - 1`, `n - 2` etc.. won't make a difference.</p>
+<p>Hence we can re-write the above iterations as:</p>
+<p><strong>n + [n + n + n + n ..... n]</strong></p>
+<p>Or also as:</p>
+<p><strong>n * n = (n^2)</strong></p>
+</div>
+<div class="section" id="code">
+<h2>Code</h2>
+<div class="line-block">
+<div class="line">[code language=&quot;python&quot;]</div>
+<div class="line">def find_smallest(my_list):</div>
+<div class="line">smallest = my_list[0]</div>
+<div class="line">smallest_index = 0</div>
+</div>
+<div class="line-block">
+<div class="line">for i in range(1, len(my_list)):</div>
+<div class="line">if my_list[i] &lt; smallest:</div>
+<div class="line">smallest = my_list[i]</div>
+<div class="line">smallest_index = i</div>
+<div class="line">return smallest_index</div>
+</div>
+<div class="line-block">
+<div class="line">def selection_sort(my_list):</div>
+<div class="line">new_list = []</div>
+<div class="line">for i in range(len(my_list)):</div>
+<div class="line">smallest = find_smallest(my_list)</div>
+<div class="line">new_list.append(my_list.pop(smallest))</div>
+<div class="line">return new_list</div>
+<div class="line">[/code]</div>
+</div>
+</div>
+<div class="section" id="observations">
+<h2>Observations:</h2>
+<div class="line-block">
+<div class="line">1.Selection Sort is an algorithm to sort a data set, but it is not particularly fast.</div>
+<div class="line">2. It takes `n` iterations in each step to find the biggest element in that iteration.</div>
+<div class="line">3. The next iteration has to run on a data set of `n - 1` elements compared to the previous iteration.</div>
+<div class="line">4. For `n` elements in a sample space, Selection Sort takes `n x n` iterations to sort the data set.</div>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References:</h2>
+<div class="line-block">
+<div class="line">1. <a class="reference external" href="https://en.wikipedia.org/wiki/Selection_sort">https://en.wikipedia.org/wiki/Selection_sort</a>2.&nbsp;<a class="reference external" href="http://bigocheatsheet.com">http://bigocheatsheet.com</a></div>
+<div class="line">3.&nbsp;<a class="reference external" href="https://github.com/egonschiele/grokking_algorithms">https://github.com/egonschiele/grokking_algorithms</a></div>
+</div>
+</div>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

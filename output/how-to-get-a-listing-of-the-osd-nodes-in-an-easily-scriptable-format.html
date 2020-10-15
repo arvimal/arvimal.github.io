@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>OSD information in a scriptable format</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/how-to-get-a-listing-of-the-osd-nodes-in-an-easily-scriptable-format.html" rel="bookmark"
+           title="Permalink to OSD information in a scriptable format">OSD information in a scriptable format</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-09-18T19:05:00+02:00">
+                Published: Fri 18 September 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/ceph.html">Ceph</a>.</p>
+<p>tags: <a href="/tag/ceph.html">ceph</a> <a href="/tag/osd.html">osd</a> </p>
+</footer><!-- /.post-info -->      <p>In case you are trying to get the OSD ID and the corresponding node IP address mappings in a script-able format, use the following command:</p>
+<blockquote>
+# ceph osd find &lt;OSD-num&gt;</blockquote>
+<p>This will print the OSD number, the IP address, the host name, and the default root in the CRUSH map, as a python dictionary.</p>
+<blockquote>
+<div class="line-block">
+<div class="line"># ceph osd find 2</div>
+<div class="line">{ &quot;osd&quot;: 2,</div>
+<div class="line">&quot;ip&quot;: &quot;192.168.122.112:6800/5311&quot;,</div>
+<div class="line">&quot;crush_location&quot;: { &quot;host&quot;: &quot;node4&quot;,&nbsp;&quot;root&quot;: &quot;default&quot;}}</div>
+</div>
+</blockquote>
+<p>The output is in json format, which has a key:value format. This can be parsed using awk/sed, or any programming languages that support json. All recent ones do.</p>
+<p>For a listing of all the OSDs and related information, get the number of OSDs in the cluster, and then use that number to probe the OSDs.</p>
+<blockquote>
+<p># for i in `seq 0 $(ceph osd stat | awk {'print $3'})`;&nbsp;do</p>
+<p>ceph osd find $i; echo; done</p>
+</blockquote>
+<p>This should output:</p>
+<blockquote>
+<div class="line-block">
+<div class="line">{ &quot;osd&quot;: 0,</div>
+<div class="line">&quot;ip&quot;: &quot;192.168.122.244:6805/2579&quot;,</div>
+<div class="line">&quot;crush_location&quot;: { &quot;host&quot;: &quot;node3&quot;,</div>
+<div class="line">&quot;root&quot;: &quot;ssd&quot;}}</div>
+<div class="line">{ &quot;osd&quot;: 1,</div>
+<div class="line">&quot;ip&quot;: &quot;192.168.122.244:6800/955&quot;,</div>
+<div class="line">&quot;crush_location&quot;: { &quot;host&quot;: &quot;node3&quot;,</div>
+<div class="line">&quot;root&quot;: &quot;ssd&quot;}}</div>
+<div class="line">{ &quot;osd&quot;: 2,</div>
+<div class="line">&quot;ip&quot;: &quot;192.168.122.112:6800/5311&quot;,</div>
+<div class="line">&quot;crush_location&quot;: { &quot;host&quot;: &quot;node4&quot;,</div>
+<div class="line">&quot;root&quot;: &quot;default&quot;}}</div>
+<div class="line">{ &quot;osd&quot;: 3,</div>
+<div class="line">&quot;ip&quot;: &quot;192.168.122.112:6805/5626&quot;,</div>
+<div class="line">&quot;crush_location&quot;: { &quot;host&quot;: &quot;node4&quot;,</div>
+<div class="line">&quot;root&quot;: &quot;default&quot;}}</div>
+<div class="line">{ &quot;osd&quot;: 4,</div>
+<div class="line">&quot;ip&quot;: &quot;192.168.122.82:6800/4194&quot;,</div>
+<div class="line">&quot;crush_location&quot;: { &quot;host&quot;: &quot;node5&quot;,</div>
+<div class="line">&quot;root&quot;: &quot;default&quot;}}</div>
+<div class="line">{ &quot;osd&quot;: 5,</div>
+<div class="line">&quot;ip&quot;: &quot;192.168.122.82:6805/4521&quot;,</div>
+<div class="line">&quot;crush_location&quot;: { &quot;host&quot;: &quot;node5&quot;,</div>
+<div class="line">&quot;root&quot;: &quot;default&quot;}}</div>
+<div class="line">{ &quot;osd&quot;: 6,</div>
+<div class="line">&quot;ip&quot;: &quot;192.168.122.73:6801/5614&quot;,</div>
+<div class="line">&quot;crush_location&quot;: { &quot;host&quot;: &quot;node2&quot;,</div>
+<div class="line">&quot;root&quot;: &quot;ssd&quot;}}</div>
+<div class="line">{ &quot;osd&quot;: 7,</div>
+<div class="line">&quot;ip&quot;: &quot;192.168.122.73:6800/1719&quot;,</div>
+<div class="line">&quot;crush_location&quot;: { &quot;host&quot;: &quot;node2&quot;,</div>
+<div class="line">&quot;root&quot;: &quot;ssd&quot;}}</div>
+<div class="line">{ &quot;osd&quot;: 8,</div>
+<div class="line">&quot;ip&quot;: &quot;192.168.122.10:6805/5842&quot;,</div>
+<div class="line">&quot;crush_location&quot;: { &quot;host&quot;: &quot;node6&quot;,</div>
+<div class="line">&quot;root&quot;: &quot;default&quot;}}</div>
+<div class="line">{ &quot;osd&quot;: 9,</div>
+<div class="line">&quot;ip&quot;: &quot;192.168.122.10:6800/4356&quot;,</div>
+<div class="line">&quot;crush_location&quot;: { &quot;host&quot;: &quot;node6&quot;,</div>
+<div class="line">&quot;root&quot;: &quot;default&quot;}}</div>
+<div class="line">{ &quot;osd&quot;: 10,</div>
+<div class="line">&quot;ip&quot;: &quot;192.168.122.109:6800/4517&quot;,</div>
+<div class="line">&quot;crush_location&quot;: { &quot;host&quot;: &quot;node7&quot;,</div>
+<div class="line">&quot;root&quot;: &quot;default&quot;}}</div>
+<div class="line">{ &quot;osd&quot;: 11,</div>
+<div class="line">&quot;ip&quot;: &quot;192.168.122.109:6805/4821&quot;,</div>
+<div class="line">&quot;crush_location&quot;: { &quot;host&quot;: &quot;node7&quot;,</div>
+<div class="line">&quot;root&quot;: &quot;default&quot;}}</div>
+</div>
+</blockquote>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

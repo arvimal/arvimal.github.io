@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>arvimal.blog - Techno</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li class="active"><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/structure-of-the-cached-content-in-fscache.html">FSCache and the on-disk structure of the cached data</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-11-12T05:31:00+01:00">
+                Published: Wed 12 November 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/techno.html">Techno</a>.</p>
+<p>tags: <a href="/tag/cachefilesd.html">cachefilesd</a> <a href="/tag/cachefs.html">cachefs</a> <a href="/tag/fscache.html">FSCache</a> </p>
+</footer><!-- /.post-info --><p>The 'cachefilesd' kernel module will create two directories at the location specified in /etc/cachefilesd.conf. By default it's /var/cache/fscache/.</p>
+<blockquote>
+<div class="line-block">
+<div class="line"><strong>[root&#64;montypython ~]# lsmod |grep -i cache</strong></div>
+<div class="line">cachefiles&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 40871&nbsp; 1</div>
+<div class="line">fscache&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 62354&nbsp; 3 nfs,cachefiles,nfsv4</div>
+</div>
+</blockquote>
+<p>Those are <em>/var/cache/fscache/cache</em> and <em>/var/cache/fscache/graveyard</em>.</p>
+<p>The cache structure is maintained inside '/var/cache/fscache/cache/', while anything that is retired or culled is moved to 'graveyard'. The 'cachefilesd' daemon monitors 'graveyard' using 'dnotify' and will delete anything that is in there.</p>
+<p>We'll try an example. Consider an NFS share mounted with fscache support. The share contains the following files, with some random text.</p>
+<blockquote>
+<div class="line-block">
+<div class="line"><strong># ls /vol1</strong></div>
+<div class="line">files1.txt&nbsp; files2.txt&nbsp; files3.txt&nbsp; files4.txt</div>
+</div>
+</blockquote>
+<ol class="loweralpha">
+<li><p class="first">Configure 'cachefiles' by editing '/etc/cachefilesd.conf', and start the 'cachefilesd' daemon.</p>
+<p><strong># systemctl start cachefilesd</strong></p>
+</li>
+<li><p class="first">Mount the NFS share on the client with the 'fsc' mount option, to enable 'fscache' support.</p>
+<p><strong># sudo mount localhost:/vol1 /vol1-backup/ -o fsc</strong></p>
+</li>
+</ol>
+<ol class="loweralpha simple" start="4">
+<li>Access the data from the mount point, and fscache will create the backed caching index at the location specified in <em>/etc/cachefilesd.conf</em>. By default, its <em>/var/cache/fscache/</em></li>
+<li>Once the files are accessed on the client side, fscache builds an index as following:</li>
+</ol>
+<p>NOTE: The index structure is <strong>dependent</strong>&nbsp;on the netfs (NFS in our case). The netfs driver can structure the cache index as it seems fit.</p>
+<p>Explanation of the caching structure:</p>
+<blockquote>
+<div class="line-block">
+<div class="line"># tree /var/cache/fscache/</div>
+<div class="line">/var/cache/fscache/cache/</div>
+<div class="line">└── &#64;4a</div>
+<div class="line">└── I03nfs</div>
+<div class="line">├── &#64;22</div>
+<div class="line">│&nbsp;&nbsp; └── Jo00000008400000000000000000000000400</div>
+<div class="line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── &#64;59</div>
+<div class="line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── J110000000000000000w080000000000000000000000</div>
+<div class="line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── &#64;53</div>
+<div class="line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; │&nbsp;&nbsp; └── EE0g00sgwB-90600000000ww000000000000000</div>
+<div class="line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── &#64;5e</div>
+<div class="line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; │&nbsp;&nbsp; └── EE0g00sgwB-90600000000ww000000000000000</div>
+<div class="line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── &#64;61</div>
+<div class="line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; │&nbsp;&nbsp; └── EE0g00sgwB-90600000000ww000000000000000</div>
+<div class="line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── &#64;62</div>
+<div class="line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; │&nbsp;&nbsp; └── EE0g00sgwB-90600000000ww000000000000000</div>
+<div class="line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── &#64;70</div>
+<div class="line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; │&nbsp;&nbsp; └── EE0g00sgwB-90600000000ww000000000000000</div>
+<div class="line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── &#64;7c</div>
+<div class="line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; │&nbsp;&nbsp; └── EE0g00sgwB-90600000000ww000000000000000</div>
+<div class="line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── &#64;e8</div>
+<div class="line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── EE0g00sgwB-90600000000ww0000000000000000</div>
+<div class="line">└── &#64;42</div>
+<div class="line">└── Jc000000000000EggDj00</div>
+<div class="line">└── &#64;0a</div>
+</div>
+</blockquote>
+<ol class="loweralpha simple">
+<li>The '<strong>cache</strong>' directory under <em>/var/cache/fscache/</em> is a special index and can be seen as the root of the entire cache index structure.</li>
+<li>Data objects (actual cached files) are represented as files if they have no children, or folders if they have. If represented as a directory, data objects will have a file inside named 'data' which holds the data.</li>
+<li>The '<strong>cachefiles</strong>' kernel module represents :</li>
+</ol>
+<ol class="lowerroman simple">
+<li>&nbsp; '<strong>index</strong>' objects as '<strong>directories</strong>', starting with either '<strong>I</strong>' or '<strong>J</strong>'.</li>
+<li>&nbsp;Data objects are represented with filenames, beginning with '<strong>D</strong>' or '<strong>E</strong>'.</li>
+<li>Special objects are similar to data objects, and start with '<strong>S</strong>' or '<strong>T</strong>'.</li>
+</ol>
+<p>In general, any object would be represented as a folder, if that object has children.</p>
+<ol class="loweralpha simple" start="7">
+<li>In the directory hierarchy, immediately between the parent object and its child object, are directories named with *<strong>hash values</strong>* of the immediate child object keys, starting with an '<strong>&#64;</strong>'.</li>
+</ol>
+<p>The child objects are placed inside this directory.These child objects would be folders, if it has child objects, or files if its the cached data itself. This can go on till the end of the path and reaches the file where the cached data is.</p>
+<p>Representation of the object indexes (For NFS, in this case)</p>
+<blockquote>
+<div class="line-block">
+<div class="line">INDEX&nbsp;&nbsp;&nbsp;&nbsp; INDEX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; INDEX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATA FILES</div>
+<div class="line">========= ========== ================================= ================</div>
+<div class="line"><a class="reference external" href="mailto:cache/&#64;4a/I03nfs">cache/&#64;4a/I03nfs</a><a class="reference external" href="mailto:/&#64;30/Ji000000000000000--fHg8hi8400">/&#64;30/Ji000000000000000--fHg8hi8400</a></div>
+<div class="line"><a class="reference external" href="mailto:cache/&#64;4a/I03nfs">cache/&#64;4a/I03nfs</a><a class="reference external" href="mailto:/&#64;30/Ji000000000000000--fHg8hi8400">/&#64;30/Ji000000000000000--fHg8hi8400</a><a class="reference external" href="mailto:/&#64;75/Es0g000w...DB1ry">/&#64;75/Es0g000w...DB1ry</a></div>
+<div class="line"><a class="reference external" href="mailto:cache/&#64;4a/I03nfs">cache/&#64;4a/I03nfs</a><a class="reference external" href="mailto:/&#64;30/Ji000000000000000--fHg8hi8400">/&#64;30/Ji000000000000000--fHg8hi8400</a><a class="reference external" href="mailto:/&#64;75/Es0g000w...N22ry">/&#64;75/Es0g000w...N22ry</a></div>
+<div class="line"><a class="reference external" href="mailto:cache/&#64;4a/I03nfs">cache/&#64;4a/I03nfs</a><a class="reference external" href="mailto:/&#64;30/Ji000000000000000--fHg8hi8400">/&#64;30/Ji000000000000000--fHg8hi8400</a><a class="reference external" href="mailto:/&#64;75/Es0g000w...FP1ry">/&#64;75/Es0g000w...FP1ry</a></div>
+</div>
+</blockquote>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/fs-cache-and-cachefs-what-are-the-differences.html" rel="bookmark"
+                           title="Permalink to FS-Cache and CacheFS, what are the differences?">FS-Cache and CacheFS, what are the differences?</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-09-14T15:49:00+02:00">
+                Published: Sun 14 September 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/techno.html">Techno</a>.</p>
+<p>tags: <a href="/tag/cachefs.html">cachefs</a> <a href="/tag/fs-cache.html">fs-cache</a> </p>
+</footer><!-- /.post-info -->                <p>FS-Cache and CacheFS. Are there any differences between these two? Initially, I thought both were same. But no, it's not.</p>
+<p>CacheFS is the backend implementation which caches the data onto the disk and mainpulates it, while FS-Cache is an interface which talks to CacheFS.</p>
+<p>So why do we need two …</p>
+                <a class="readmore" href="/fs-cache-and-cachefs-what-are-the-differences.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/fs-cache-and-fuse.html" rel="bookmark"
+                           title="Permalink to FS-Cache and FUSE">FS-Cache and FUSE</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-09-14T13:51:00+02:00">
+                Published: Sun 14 September 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/techno.html">Techno</a>.</p>
+<p>tags: <a href="/tag/cachefilesd.html">cachefilesd</a> <a href="/tag/fs-cache.html">fs-cache</a> <a href="/tag/fuse.html">fuse</a> </p>
+</footer><!-- /.post-info -->                <p>I would be working on enabling FS-Cache support in the FUSE kernel module, as part of my under graduate project.</p>
+<p>Niels De Vos, from Red Hat Engineering, would act as my mentor and guide throughout this project. He would also be presenting this idea in the 'Linux Plumbers Conference' being …</p>
+                <a class="readmore" href="/fs-cache-and-fuse.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/error-open-tmpdocker-import-repobinjson-no-such-file-or-directory.html" rel="bookmark"
+                           title="Permalink to "Error: open /tmp/docker-import-123456789/repo/bin/json: no such file or directory"">&quot;Error: open /tmp/docker-import-123456789/repo/bin/json: no such file or directory&quot;</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-08-16T20:55:00+02:00">
+                Published: Sat 16 August 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/techno.html">Techno</a>.</p>
+
+</footer><!-- /.post-info -->                <p>I've been trying to create a minimal docker image for RHEL versions, for one of my projects. The following were the steps I followed:</p>
+<ol class="loweralpha simple">
+<li>Installed a RHEL6.5 server with 'Minimal Installation'.</li>
+<li>Registered it to the local satellite.</li>
+<li>Created a tar-ball of the filesystem with the command below:</li>
+</ol>
+<p>[sourcecode language …</p>
+                <a class="readmore" href="/error-open-tmpdocker-import-repobinjson-no-such-file-or-directory.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation.html" rel="bookmark"
+                           title="Permalink to lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?">lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-12-23T07:53:00+01:00">
+                Published: Thu 23 December 2010
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/techno.html">Techno</a>.</p>
+<p>tags: <a href="/tag/anaconda.html">anaconda</a> <a href="/tag/installation.html">installation</a> <a href="/tag/lsusb.html">lsusb</a> <a href="/tag/rhel.html">rhel</a> <a href="/tag/strace.html">strace</a> <a href="/tag/usb.html">usb</a> </p>
+</footer><!-- /.post-info -->                <p><strong>T</strong>he binary '/sbin/lsusb' in a chroot-ed environment have problems running properly. I have not checked this in a manually created chroot environment or using tools like 'mock'.</p>
+<p>The scenario is as following :</p>
+<p>We were trying to check the output of 'lsusb' in the %post section of a kickstart …</p>
+                <a class="readmore" href="/lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/device-mapper-and-applications.html" rel="bookmark"
+                           title="Permalink to Device Mapper and applications">Device Mapper and applications</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-12-23T05:11:00+01:00">
+                Published: Thu 23 December 2010
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/techno.html">Techno</a>.</p>
+
+</footer><!-- /.post-info -->                <p>What is<a class="reference external" href="http://en.wikipedia.org/wiki/Device_mapper">device-mapper</a>?</p>
+<p><strong>D</strong>evice mapper is a modular driver for the <a class="reference external" href="http://www.kernel.org/">linux kernel 2.6</a>. It can be said as a framework which helps to create or map logical sectors of a pseudo <a class="reference external" href="http://en.wikipedia.org/wiki/Device_file">block device</a> to an underlying physical block device. So what device-mapper do is keep a table …</p>
+                <a class="readmore" href="/device-mapper-and-applications.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/lvcreate-fails-with-the-error-aborting-failed-to-activate-new-lv-to-wipe-the-start-of-it-why.html" rel="bookmark"
+                           title="Permalink to lvcreate fails with the error "Aborting. Failed to activate new LV to wipe the start of it.". Why ??">lvcreate fails with the error &quot;Aborting. Failed to activate new LV to wipe the start of it.&quot;. Why ??</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2009-11-02T19:00:00+01:00">
+                Published: Mon 02 November 2009
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/techno.html">Techno</a>.</p>
+
+</footer><!-- /.post-info -->                <p>In case anyone out there gets an error message like &quot;Aborting. Failed to activate new LV to wipe the start of it.&quot; while doing an 'lvcreate', check (/etc/lvm/lvm.conf) once more.</p>
+<p>Most probably, a 'volume_list' would have been defined in there, which in turns want you to specify …</p>
+                <a class="readmore" href="/lvcreate-fails-with-the-error-aborting-failed-to-activate-new-lv-to-wipe-the-start-of-it-why.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/how-to-map-pci-devices-in-linux.html" rel="bookmark"
+                           title="Permalink to How to map PCI devices in Linux ?">How to map PCI devices in Linux ?</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2008-07-19T00:32:00+02:00">
+                Published: Sat 19 July 2008
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/techno.html">Techno</a>.</p>
+
+</footer><!-- /.post-info -->                <p>From the output of the command 'lspci -n' (The number after the colon, here '1679' from the below snip)</p>
+<div class="line-block">
+<div class="line">0a:04.0 0200: 14e4:1679 (rev a3)</div>
+<div class="line">Subsystem: 103c:703c</div>
+<div class="line">Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B-</div>
+<div class="line">Status: Cap+ 66MHz+ UDF- FastB2B+ ParErr- DEVSEL=medium …</div></div>
+                <a class="readmore" href="/how-to-map-pci-devices-in-linux.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/creating-a-swap-space-in-linux.html" rel="bookmark"
+                           title="Permalink to Creating a SWAP space in Linux">Creating a SWAP space in Linux</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2008-02-15T17:25:00+01:00">
+                Published: Fri 15 February 2008
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/techno.html">Techno</a>.</p>
+<p>tags: <a href="/tag/swap-space.html">swap space</a> </p>
+</footer><!-- /.post-info -->                <p><strong>Adding Swap Space:</strong></p>
+<p>Sometimes it is necessary to add more swap space after installation. For example, you may upgrade the amount of RAM in your system from 64 MB to 128 MB, but there is only 128 MB of swap space. It might be advantageous to increase the amount of …</p>
+                <a class="readmore" href="/creating-a-swap-space-in-linux.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/zombie-processes.html" rel="bookmark"
+                           title="Permalink to Zombie processes">Zombie processes</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2008-01-01T17:56:00+01:00">
+                Published: Tue 01 January 2008
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/techno.html">Techno</a>.</p>
+<p>tags: <a href="/tag/runaway-process.html">runaway process</a> <a href="/tag/zombie.html">zombie</a> </p>
+</footer><!-- /.post-info -->                <p><strong>Why can't I kill a process with the signal 9?</strong></p>
+<p>A process can be sleeping in kernel code. Usually that's because of faulty hardware or a badly written driver- or maybe a little of both. A device that isn't set to the interrupt the driver thinks it is can cause …</p>
+                <a class="readmore" href="/zombie-processes.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

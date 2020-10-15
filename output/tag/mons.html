@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>arvimal.blog - mons</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/how-to-list-all-the-configuration-settings-in-a-ceph-cluster-monitor.html">How to list all the configuration settings in a Ceph cluster monitor?</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-05-06T12:03:00+02:00">
+                Published: Wed 06 May 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/ceph.html">Ceph</a>.</p>
+<p>tags: <a href="/tag/admin_socket.html">admin_socket</a> <a href="/tag/ceph.html">ceph</a> <a href="/tag/ceph-admin-socket.html">ceph admin socket</a> <a href="/tag/ceph-conf.html">ceph-conf</a> <a href="/tag/monitors.html">monitors</a> <a href="/tag/mons.html">mons</a> </p>
+</footer><!-- /.post-info --><p>It can be really helpful to have a single command to list all the configuration settings in a monitor node, in a Ceph cluster.</p>
+<p>This is possible by interacting directly with the monitor's unix socket file. This can be found under /var/run/ceph/. By default, the admin socket for the monitor will be in the path /var/run/ceph/ceph-mon.&lt;hostname-s&gt;.asok.</p>
+<p>The default location can vary in case you have defined it to be a different one, at the time of the installation. To know the actual socket path, use the following command:</p>
+<p>[sourcecode language=&quot;bash&quot; gutter=&quot;false&quot;]</p>
+<p># ceph-conf --name mon.$(hostname -s) --show-config-value admin_socket</p>
+<p>[/sourcecode]</p>
+<p>This should print the location of the admin socket. In most cases, it should be something like /var/run/ceph/ceph-mon.$(hostname -s).asok</p>
+<p>Once you have the monitor admin socket, use that location to show the various configuration settings with:</p>
+<p>[sourcecode language=&quot;bash&quot; gutter=&quot;false&quot;]</p>
+<p># ceph daemon /var/run/ceph/ceph-mon.*.asok config show</p>
+<p>[/sourcecode]</p>
+<p>The output would be long, and won't fit in a single screen. You can either pipe it to 'less' or grep for a specific value in case you know what you are looking for.</p>
+<p>For example, if I need to look at the ratio at which the OSD would be considered full, I'll be using:</p>
+<p>[sourcecode language=&quot;bash&quot; gutter=&quot;false&quot;]</p>
+<p>#&nbsp; ceph daemon /var/run/ceph/ceph-mon.*.asok config show | grep mon_osd_full_ratio</p>
+<p>[/sourcecode]</p>
+                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>arvimal.blog - grub</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/bootloader-checker.html">Bootloader checker</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2008-02-15T17:40:00+01:00">
+                Published: Fri 15 February 2008
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/programming.html">Programming</a>.</p>
+<p>tags: <a href="/tag/boot-loader-checker.html">boot loader checker</a> <a href="/tag/grub.html">grub</a> <a href="/tag/lilo.html">lilo</a> </p>
+</footer><!-- /.post-info --><p>A bash code snippet that helps to check if the installed bootloader is Grub or LILO.</p>
+<div class="line-block">
+<div class="line">[code language=&quot;bash&quot;]</div>
+<div class="line">#!/bin/bash</div>
+</div>
+<div class="line-block">
+<div class="line">A=`mount | awk '{print $1}' | grep -n /dev/ | grep &quot;1:&quot; | cut -f2 -d &quot;:&quot; | cut -c 1-8`</div>
+<div class="line">B=`mount | awk '{print $1}' | grep -n /dev/ | grep &quot;1:&quot; | cut -f2 -d &quot;:&quot;`</div>
+</div>
+<div class="line-block">
+<div class="line">echo ; echo -e &quot; / mounted on $B \n&quot;;</div>
+<div class="line">dd if=$A bs=512 count=1 2&gt;&amp;1 | grep GRUB &gt; /dev/null;</div>
+<div class="line">if [ $? = 0 ] ; then echo -e &quot;The installed bootloader is GRUB.n&quot; ; fi</div>
+</div>
+<div class="line-block">
+<div class="line">dd if=$A bs=512 count=1 2&gt;&amp;1 | grep LILO &gt; /dev/null;</div>
+<div class="line">if [ $? = 0 ] ; then echo -e &quot;The installed bootloader is LILO.n&quot; ; fi</div>
+<div class="line">[/code]</div>
+</div>
+                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

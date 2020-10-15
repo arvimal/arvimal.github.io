@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>How does Ceph write data onto the disks?</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li class="active"><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/drafts/875.html" rel="bookmark"
+           title="Permalink to How does Ceph write data onto the disks?">How does Ceph write data onto the disks?</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-05-13T16:43:00+02:00">
+                Published: Fri 13 May 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/misc.html">misc</a>.</p>
+
+</footer><!-- /.post-info -->      <p>Ceph does writes in two parts.</p>
+<p>1)&nbsp; When an OSD receives a write IO, it will first perform this write using O_DSYNC to the journal.&nbsp; The write will always be sequential since it's just added to the end of the journal.&nbsp; The journal itself can live as a file on a filesystem or it can target a block device (or a partition on a block device).&nbsp; Journal writes are performed via libaio and may be coalesced slightly.&nbsp; While this is happening, if the OSD is the primary OSD and there are replicas set, the OSD will forward the request on to the secondary OSDs which will each also start writing data out to their journals.&nbsp; As soon as a write hits the journal, an ack can be sent back to the primary OSD.&nbsp; Once all secondaries and the primary have completed their journal writes, an ack can be sent back to the client that the write completed.</p>
+<ol class="arabic simple" start="2">
+<li>Once an IO is successfully is written to the journal, the OSD will write it to the underlying XFS file system via buffered IO in a nested directory structure based on the PG the object belongs to.&nbsp; This is generally the same speed or slower than doing the journal writes since it's no longer sequential and often can't achieve the same amount of write coalescing and low head movement.&nbsp; The result is that the journal writes often get ahead of the data writes.&nbsp; For this reason we have to throttle the journals.&nbsp; There's a tension here, by letting the journals get farther ahead there are more opportunities for reordering or coalescing writes.&nbsp; On the other hand, the farther ahead the journal gets, the longer it can take the sync the journal if you run out of space (say if the journal fills up) potentially resulting in spiky client behavior.</li>
+</ol>
+<p>The other important thing to consider is that ceph is based on pseudo-random distribution of writes based on the number of PGs in the pool.&nbsp; Random distributions are inherently &quot;clumpy&quot; meaning that you can get in situations where one OSD may have a bit more traffic going to it than others.&nbsp; Some OSDs also may be somewhat faster than others (this is especially true when drives are on the verge of failing).&nbsp; This can result in IOs backing up on specific OSDs and others being starved.&nbsp; One critical aspect of tuning ceph performance is making sure that the OSDs are well balanced.</p>
+<p>When the customer says:</p>
+<p>&quot;- that makes sense to coalesce writes and exploit locality of writes via disk elevator/scheduler (e.g. write blocks 10,15,100 instead of 10,100,15)&quot;</p>
+<p>This sort of gets to the heart of the journal throttling trade-off. When writes hit the journal, you can leave them there for longer with the hope that more of them will get coalesced by the IO elevator, but potentially this can cause client IO stalls if the journal fills up and the OSD has to reject IO until it's flushed.&nbsp; The strategy right now is to, by default, perform smaller flushes more often to try and avoid this scenario.&nbsp; Sandisk has spent some time in the past 6 months working on improving all of this, but we're a little hesitant to make major changes to filestore at this point since we're working on a new OSD backend that works totally differently called Bluestore.&nbsp; It doesn't use any of our old journaling code anymore, but rather uses a block device directly with RocksDB for metadata and write-ahead-logging of small IO.</p>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

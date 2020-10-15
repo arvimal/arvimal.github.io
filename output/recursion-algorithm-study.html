@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Recursion - Algorithm Study</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li class="active"><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/recursion-algorithm-study.html" rel="bookmark"
+           title="Permalink to Recursion - Algorithm Study">Recursion - Algorithm Study</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2017-06-27T12:02:00+02:00">
+                Published: Tue 27 June 2017
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a>.</p>
+<p>tags: <a href="/tag/algorithms.html">Algorithms</a> <a href="/tag/programming.html">programming</a> <a href="/tag/python.html">python</a> <a href="/tag/recursion.html">recursion</a> </p>
+</footer><!-- /.post-info -->      <p><strong>R</strong>ecursion is a technique by which a function calls itself until a condition is met.</p>
+<div class="section" id="introduction">
+<h2>Introduction</h2>
+<p>Loops or repetitive execution based on certain conditions are inevitable in programs. Usual loops include <tt class="docutils literal">if</tt>, <tt class="docutils literal">while</tt>&nbsp;and <tt class="docutils literal">for</tt>&nbsp;loops. <tt class="docutils literal">Recursion</tt>&nbsp;is an entirely different way to deal with such situations, and in many cases, easier.</p>
+<p><tt class="docutils literal">Recursion</tt>&nbsp;is a when&nbsp;a function calls itself in each iteration&nbsp;till&nbsp;a condition is met. Ideally, the data set in each iteration gets smaller until it reach the required condition, after which the recursive function exists.</p>
+<p>A typical example of recursion is a <tt class="docutils literal">factorial</tt>&nbsp;function.</p>
+</div>
+<div class="section" id="how-does-recursion-work">
+<h2>How does Recursion work?</h2>
+<p>A <tt class="docutils literal">recursive</tt>&nbsp;function ideally&nbsp;contains a <tt class="docutils literal">Base</tt>&nbsp;case and a <tt class="docutils literal">Recursive</tt>&nbsp;case.</p>
+<p>A&nbsp;<tt class="docutils literal">Recursive</tt>&nbsp;case is when the function calls itself, until the <tt class="docutils literal">Base</tt>&nbsp;case is met. Each&nbsp;level of iteration in the <tt class="docutils literal">Recursive</tt>&nbsp;case&nbsp;moves the control to the next level.</p>
+<p>Once a specific level finishes execution, the control is passed back to the previous level of execution. A <tt class="docutils literal">Recursive</tt>&nbsp;function can go several layers deep until the <tt class="docutils literal">Base</tt>&nbsp;condition is met. In short, a <tt class="docutils literal">Recursive</tt>&nbsp;case is a loop in which the function calls itself.</p>
+<p>The <tt class="docutils literal">Base</tt>&nbsp;case&nbsp;is required so that the function doesn't continue running in the <tt class="docutils literal">Recursive</tt>&nbsp;loop forever. Once the <tt class="docutils literal">Base</tt>&nbsp;case is met, the control moves out of the <tt class="docutils literal">Recursive</tt>&nbsp;case, executes the conditions in the <tt class="docutils literal">Base</tt>&nbsp;case (if any), and exits.</p>
+<p>As mentioned in the <tt class="docutils literal">Introduction</tt>, a factorial function can be seen as an example of recursion.</p>
+<div class="section" id="note">
+<h3>NOTE:</h3>
+<p>The <tt class="docutils literal">Base</tt>&nbsp;case for a factorial function is when <tt class="docutils literal">n == 1</tt></p>
+<p>Consider <tt class="docutils literal">n!</tt>:</p>
+<p><tt class="docutils literal">n!</tt>&nbsp;can be&nbsp;written as:</p>
+<p><strong>n x (n - 1) x (n - 2) x (n - 3) x .... x 1</strong></p>
+<p><tt class="docutils literal">n!</tt>&nbsp;can also be represented as:</p>
+<div class="line-block">
+<div class="line">[code language=&quot;bash&quot;]</div>
+<div class="line">n! = n * (n - 1)! ---&gt; [Step 1]</div>
+<div class="line">(n - 1)! = (n - 1) * (n - 2)! ---&gt; [Step 2]</div>
+<div class="line">(n - 2)! = (n - 2) * (n - 3)! ---&gt; [Step 3]</div>
+<div class="line">.</div>
+<div class="line">..</div>
+<div class="line">...</div>
+<div class="line">(n - (n - 1)) = 1 ---&gt; [Base case]</div>
+<div class="line">[/code]</div>
+</div>
+<p>Each level/step is a product of a value and all the levels below it. Hence, <tt class="docutils literal">Step 1</tt> will end up moving to <tt class="docutils literal">Step 2</tt> to get the factorial of elements below it, then to <tt class="docutils literal">Step 3</tt>&nbsp;and so on.</p>
+<p>ie.. the control of execution move as:</p>
+<p><strong>[Step 1] -&gt; [Step 2] -&gt; [Step 3] -&gt; ..... [Step n]</strong></p>
+<p>In a much easier-to-grasp example, a <tt class="docutils literal">5!</tt>&nbsp;would be:</p>
+<div class="line-block">
+<div class="line">[code language=&quot;bash&quot;]</div>
+<div class="line">5! = 5 * 4! ---&gt; [Step 1]</div>
+<div class="line">4! = 4 * 3! ---&gt; [Step 2]</div>
+<div class="line">3! = 3 * 2! ---&gt; [Step 3]</div>
+<div class="line">2! = 2 * 1! ---&gt; [Step 4]</div>
+<div class="line">1! = 1 ---&gt; [Step 5] / [Base case]</div>
+<div class="line">[/code]</div>
+</div>
+<p>The order of execution will be :</p>
+<p><strong>[Step 1] -&gt; [Step 2] -&gt; [Step 3] -&gt; [Step 4] -&gt; [Step 5]</strong></p>
+<p>As we know, in <tt class="docutils literal">Recursion</tt>, each layer pause itself and pass the control to the next level. Once it reach the end or the&nbsp;<tt class="docutils literal">Base</tt>&nbsp;case, it returns the result back to the previous level one by one until it reaches where it started off.</p>
+<p>In this example, once the control of execution reaches&nbsp;<tt class="docutils literal">Step 5 / Base case</tt>&nbsp;, &nbsp;the control is returned back to&nbsp;its previous level&nbsp;<tt class="docutils literal">Step 4</tt>&nbsp;. This level returns the result back to <tt class="docutils literal">Step 3</tt>&nbsp;which&nbsp;completes its execution and returns to <tt class="docutils literal">Step 2</tt>&nbsp;,&nbsp;so on and so forth until it reach &nbsp;<tt class="docutils literal">Step 1</tt>&nbsp;.</p>
+<p>The return control flow would be as:</p>
+<p><strong>[Base case / Step 5] -&gt; [Step 4] -&gt; [Step 3] -&gt; [Step 2] -&gt; [Step 1] -&gt; Result.</strong></p>
+<p>This can be summed up using an awesome pictorial representation, from the book <tt class="docutils literal">Grokking Algorithms</tt>&nbsp;by Adit. Please check out&nbsp;the <tt class="docutils literal">References</tt>&nbsp;section for the link for more information about this awesome book.</p>
+<p><img alt="factorial_recursion" class="alignnone size-full wp-image-2734" src="https://arvimal.files.wordpress.com/2017/02/factorial_recursion.png" style="width: 1999px; height: 2404px;" /></p>
+<p><em>Figure 1: Recursion, Recursive case and Base case (Copyright Manning Publications, drawn by adit.io)</em></p>
+</div>
+</div>
+<div class="section" id="code">
+<h2>&nbsp;Code</h2>
+<div class="section" id="example-1">
+<h3>Example 1:</h3>
+<ul class="simple">
+<li>A <tt class="docutils literal">factorial</tt>&nbsp;function in a <tt class="docutils literal">while</tt>&nbsp;loop</li>
+</ul>
+<div class="line-block">
+<div class="line">[code language=&quot;python&quot;]</div>
+<div class="line">def fact(n):</div>
+<div class="line">factorial = 1</div>
+<div class="line">while n &gt; 1:</div>
+<div class="line">factorial = factorial * n</div>
+<div class="line">n = n - 1</div>
+<div class="line">return factorial</div>
+</div>
+<div class="line-block">
+<div class="line">print(&quot;Factorial of {0} is {1}&quot;.format(10, fact(10)))</div>
+<div class="line">print(&quot;Factorial of {0} is {1}&quot;.format(20, fact(20)))</div>
+<div class="line">[/code]</div>
+</div>
+<ul class="simple">
+<li>The same function above, in a <tt class="docutils literal">recursive</tt>&nbsp;loop</li>
+</ul>
+<div class="line-block">
+<div class="line">[code language=&quot;python&quot;]</div>
+<div class="line">def factorial(n):</div>
+<div class="line">if n == 0:</div>
+<div class="line">return 1</div>
+<div class="line">else:</div>
+<div class="line">return n * factorial(n - 1)</div>
+</div>
+<div class="line-block">
+<div class="line">print(&quot;Factorial of {0} is {1}&quot;.format(10, factorial(10)))</div>
+<div class="line">print(&quot;Factorial of {0} is {1}&quot;.format(20, factorial(20)))</div>
+<div class="line">[/code]</div>
+</div>
+</div>
+<div class="section" id="example-2">
+<h3>Example 2:</h3>
+<ul class="simple">
+<li>A function to sum numbers in a normal <tt class="docutils literal">for</tt>&nbsp;loop.</li>
+</ul>
+<div class="line-block">
+<div class="line">[code language=&quot;python&quot;]</div>
+<div class="line">def my_sum(my_list):</div>
+<div class="line">num = 0</div>
+<div class="line">for i in my_list:</div>
+<div class="line">num += i</div>
+<div class="line">return num</div>
+</div>
+<div class="line-block">
+<div class="line">print(my_sum([10, 23, 14, 12, 11, 94, 20]))</div>
+<div class="line">[/code]</div>
+</div>
+<ul class="simple">
+<li>The same function to add numbers, in a <tt class="docutils literal">recursive</tt>&nbsp;loop</li>
+</ul>
+<div class="line-block">
+<div class="line">[code language=&quot;python&quot;]</div>
+<div class="line">def my_sum(my_list):</div>
+<div class="line">if my_list == []:</div>
+<div class="line">return 0</div>
+<div class="line">else:</div>
+<div class="line">return my_list[0] + my_sum(my_list[1:])</div>
+</div>
+<div class="line-block">
+<div class="line">print(my_sum([10, 23, 14, 12, 11, 94, 20]))</div>
+<div class="line">[/code]</div>
+</div>
+</div>
+</div>
+<div class="section" id="code-explanation">
+<h2>Code explanation</h2>
+<p>Both <tt class="docutils literal">Example 1</tt>&nbsp;and <tt class="docutils literal">Example 2</tt>&nbsp;are represented as an iterative function as well as a recursive function.</p>
+<p>The iterative function calls the <tt class="docutils literal">next()</tt>&nbsp;function on the iterator <tt class="docutils literal">sum.__iter__()</tt>&nbsp;magic method&nbsp;iterate over the entire data set.&nbsp;The recursive function calls itself to reach a base case and return the result.</p>
+</div>
+<div class="section" id="observations">
+<h2>Observations:</h2>
+<p>While a recursive function does not necessarily give you an edge on performance, it is much easier to understand and the code is cleaner.</p>
+<p>Recursion has a disadvantage though, for large data sets. Each loop is put on a call stack until it reaches a <tt class="docutils literal">Base</tt> case. Once the <tt class="docutils literal">Base</tt> case is met, the call stack is rewound back to&nbsp;reach where it started, executing each of the previous levels on the way. The examples above showed a <tt class="docutils literal">sum</tt> function and a <tt class="docutils literal">factorial</tt> function. In large data sets, this can lead to a large call stack which in turns take a lot of memory.</p>
+</div>
+<div class="section" id="references">
+<h2>References:</h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://www.amazon.in/Grokking-Algorithms-illustrated-programmers-curious/dp/1617292230/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1486811444&amp;sr=1-1&amp;keywords=grokking+algorithms">Grokking Algorithms</a></li>
+<li><a class="reference external" href="https://www.amazon.com/Structures-Algorithms-Python-Michael-Goodrich/dp/812656217X/ref=sr_1_1?ie=UTF8&amp;qid=1487126103&amp;sr=8-1&amp;keywords=data+structures+and+algorithms+in+python">Data Structures and Algorithms in Python</a></li>
+</ol>
+</div>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

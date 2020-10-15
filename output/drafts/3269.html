@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>The get() and setdefault() methods of Python dictionaries.</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li class="active"><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/drafts/3269.html" rel="bookmark"
+           title="Permalink to The get() and setdefault() methods of Python dictionaries.">The get() and setdefault() methods of Python dictionaries.</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-06-06T10:04:00+02:00">
+                Published: Wed 06 June 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/programming-python.html">Programming, Python</a>.</p>
+
+</footer><!-- /.post-info -->      <div class="line-block">
+<div class="line">In [36]: birthdays</div>
+<div class="line">Out[36]:</div>
+<div class="line">{'Alice': 'April 1',</div>
+<div class="line">'Bob': 'December 12',</div>
+<div class="line">'Carol': 'March 4'}</div>
+</div>
+<div class="line-block">
+<div class="line">In [37]: &quot;Test&quot; in birthdays.keys()</div>
+<div class="line">Out[37]: False</div>
+</div>
+<div class="section" id="in-38-print-format-birthdays-test">
+<h2>In [38]: print(&quot;{}&quot;.format(birthdays[&quot;Test&quot;]))</h2>
+<div class="line-block">
+<div class="line">KeyError Traceback (most recent call last)</div>
+<div class="line">&lt;ipython-input-38-3ec84aa0d486&gt; in &lt;module&gt;()</div>
+<div class="line">----&gt; 1 print(&quot;{}&quot;.format(birthdays[&quot;Test&quot;]))</div>
+</div>
+<p>KeyError: 'Test'</p>
+<ul class="simple">
+<li>The get() method</li>
+</ul>
+<div class="line-block">
+<div class="line">In [39]: print(&quot;{}&quot;.format(birthdays.get(&quot;Test&quot;)))</div>
+<div class="line">None</div>
+</div>
+<ul class="simple">
+<li>The setdefault() method</li>
+</ul>
+<div class="line-block">
+<div class="line">if &quot;Vimal&quot; not in birthdays.keys():</div>
+<div class="line">birthdays[&quot;Vimal&quot;] = &quot;Oct 15&quot;</div>
+</div>
+<div class="line-block">
+<div class="line">In [35]:&nbsp;birthdays.setdefault(&quot;Vimal&quot;, &quot;Oct 15&quot;)</div>
+<div class="line">In [36]: birthdays</div>
+<div class="line">Out[36]:</div>
+<div class="line">{'Alice': 'April 1',</div>
+<div class="line">'Bob': 'December 12',</div>
+<div class="line">'Carol': 'March 4',</div>
+<div class="line">'Vimal': 'Oct 15'}</div>
+</div>
+<p><strong>NOTE:</strong> The setdefault() method won't work if the Key already exist, ie. it won't overwrite an existing key with the new value.</p>
+</div>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

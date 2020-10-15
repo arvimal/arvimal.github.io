@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Names, Namespaces, and Scopes in Python</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li class="active"><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/drafts/1907.html" rel="bookmark"
+           title="Permalink to Names, Namespaces, and Scopes in Python">Names, Namespaces, and Scopes in Python</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2017-08-09T08:06:00+02:00">
+                Published: Wed 09 August 2017
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/programming-python.html">Programming, Python</a>.</p>
+<p>tags: <a href="/tag/namespaces.html">namespaces</a> <a href="/tag/object-oriented-programming.html">Object Oriented Programming</a> <a href="/tag/python.html">python</a> </p>
+</footer><!-- /.post-info -->      <p><strong>N</strong>ames and namespaces are important concepts in Python required for a proper understanding of the language and its internals.</p>
+<p>This post tries to put together some very common knowledge in writing.</p>
+<div class="section" id="what-s-in-a-name">
+<h2>What's in a name?</h2>
+<p>A name is just a pointer that refers to&nbsp;an object in memory. It can be a string or an alphabet, but never a number</p>
+<p>NOTE: Refer the second and third chapter in Python Epiphanies.</p>
+<p>Scopes</p>
+<p>Search Order</p>
+<p>Function locals</p>
+<p>Local scopes</p>
+<p>Overriding Local scopes and more (builtin scopes for example)</p>
+<p>len is a builtin, but we can override this using <tt class="docutils literal">len = &quot;whatever&quot;</tt>. &nbsp;A <tt class="docutils literal">del len</tt>&nbsp;will restore this, since the original len is not defined in the current scope, but in the builtins..</p>
+<p>But a = 10, and then a = 20 will override a = 10.. But a del a won't restore the previous value because the name <tt class="docutils literal">a</tt>&nbsp;is being deleted from the local scope and both were defined in the local scope.. there were no two definitions at the same time, in the first place.. it was only a = 20..</p>
+</div>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

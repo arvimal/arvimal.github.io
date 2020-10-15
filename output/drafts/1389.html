@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>ceph df and disk space</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li class="active"><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/drafts/1389.html" rel="bookmark"
+           title="Permalink to ceph df and disk space"><cite>ceph df</cite> and disk space</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-06-16T17:35:00+02:00">
+                Published: Thu 16 June 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/misc.html">misc</a>.</p>
+
+</footer><!-- /.post-info -->      <div class="line-block">
+<div class="line"><a class="reference external" href="https://access.redhat.com/solutions/2273951">https://access.redhat.com/solutions/2273951</a> (Important)</div>
+<div class="line"><a class="reference external" href="https://access.redhat.com/solutions/1598473">https://access.redhat.com/solutions/1598473</a></div>
+</div>
+<div class="line-block">
+<div class="line">My findings:</div>
+<div class="line">-----------</div>
+<div class="line">The `GLOBAL` section of `ceph df` shows metrics of all the OSDs which are UP and IN, and this does not take the replica count into picture.</div>
+</div>
+<p>An example:</p>
+<div class="line-block">
+<div class="line">~~~</div>
+<div class="line"># ceph df</div>
+<div class="line">GLOBAL:</div>
+<div class="line">SIZE AVAIL RAW USED %RAW USED</div>
+<div class="line">27581M 27364M 217M 0.79</div>
+<div class="line">POOLS:</div>
+<div class="line">NAME ID USED %USED MAX AVAIL OBJECTS</div>
+<div class="line">rbd 0 0 0 6050M 0</div>
+<div class="line">images 1 0 0 6050M 0</div>
+<div class="line">volumes 2 0 0 6050M 0</div>
+<div class="line">vms 3 0 0 6050M 0</div>
+<div class="line">~~~</div>
+</div>
+<p>The output of `ceph osd df` gives us more information. Check the `TOTAL` size printed and compare it to `SIZE` in the GLOBAL section of the first output. (27581k is a typo, it should be in M. Will check that part)</p>
+<div class="line-block">
+<div class="line">~~~</div>
+<div class="line"># ceph osd df</div>
+<div class="line">ID WEIGHT REWEIGHT SIZE USE AVAIL %USE VAR</div>
+<div class="line">0 0.00998 1.00000 3060M 41036k 3020M 1.31 1.57</div>
+<div class="line">1 0.00999 1.00000 6132M 40240k 6093M 0.64 0.77</div>
+<div class="line">3 0.00998 1.00000 3060M 37688k 3024M 1.20 1.45</div>
+<div class="line">5 0.00999 1.00000 6132M 39816k 6094M 0.63 0.76</div>
+<div class="line">2 0.00998 1.00000 3060M 36904k 3024M 1.18 1.42</div>
+<div class="line">4 0.00999 1.00000 6132M 39320k 6094M 0.63 0.75</div>
+<div class="line">TOTAL 27581k 229M 27352M 0.83</div>
+<div class="line">MIN/MAX VAR: 0.75/1.57 STDDEV: 0.32</div>
+<div class="line">~~~</div>
+</div>
+<p>To test this, push an OSD out of the cluster. The SIZE field will display a different value, ie.. the total size minus the size of the OSD pushed out of the cluster. (27581 - 3026 = 24555 ~ 24520)</p>
+<div class="line-block">
+<div class="line">~~~</div>
+<div class="line"># ceph osd out osd.3 ; ceph df</div>
+<div class="line">marked out osd.3.</div>
+<div class="line">GLOBAL:</div>
+<div class="line">SIZE AVAIL RAW USED %RAW USED</div>
+<div class="line">24520M 24334M 186M 0.76</div>
+<div class="line">POOLS:</div>
+<div class="line">NAME ID USED %USED MAX AVAIL OBJECTS</div>
+<div class="line">rbd 0 0 0 6048M 0</div>
+<div class="line">images 1 0 0 6048M 0</div>
+<div class="line">volumes 2 0 0 6048M 0</div>
+<div class="line">vms 3 0 0 6048M 0</div>
+<div class="line">~~~</div>
+</div>
+<p>Pulling the OSD in will increase the SIZE back to the previous value. Just do a 'ceph osd in osd.3 ; sleep 5; ceph df'.</p>
+<p>I personally think that Horizon shouldn't be reporting the value under `GLOBAL` section as available since this is the sum of all the OSDs in the cluster. There can be cases where certain OSD nodes have more disks than others, and of different sizes as well.</p>
+<p>Ultimately, the writes are going into pools which are bound to rulesets. A ruleset is a set of rules which can include or exclude OSDs depending on various factors. With rulesets, the administrator can create pools to use specific rulesets and thus bind it to a set of OSDs.</p>
+<p>Since the writes are going to specific pools, and pools can be bounded to specific OSDs, I think it'd be good to show the pool size in Horizon to which the writes are going to, rather than the entire disk space given in the `GLOBAL` section.</p>
+<p>Suggestion:</p>
+<p>The `MAX AVAIL` space would be a better choice since it takes care of the replica size as well and is the actual available space per pool. Since this is the space available for a single replica, I think this should be the actual size displayed in Horizon.</p>
+<p>`MAX AVAIL` is calculated as following (documented in <a class="reference external" href="https://access.redhat.com/solutions/2273951">https://access.redhat.com/solutions/2273951</a>)</p>
+<p>`MAX AVAIL` = min(osd.avail for osd in OSD_up) * len(osd.avail for osd in OSD_up) / pool.size()</p>
+<p>* min(osd.avail for osd in OSD_up) : The Minimum space available in the OSDs which are UP and IN, for that particular pool (defined by a ruleset)</p>
+<p>* len(osd.avail for osd in OSD_up) : The number of OSDs UP and IN</p>
+<p>* pool.size() : The replication size of the pool in question.</p>
+<p>In the above example, all the pools have the same `MAX AVAIL` size since they're all using the default ruleset. Any pool can consume the space, and as per the consumption, the `MAX AVAIL` value reduces.</p>
+<p>The above 'ceph df' shows a `MAX AVAIL` of 6048M per pool. The min space available per OSD here is 3020M, the number of OSD disks are 6, and the replica count is 3.</p>
+<p>Hence `MAX AVAIL` is ((3020 * 6) / 3)) = 6040M which is approximately equal to the space per pool shown in `ceph df`.</p>
+<p>We're taking the minimum space available as 3020M since that's the minimum consistently available space per each OSD due to one OSD per each node smaller than the other OSD.</p>
+<p>If we had all the OSDs of the same size, the minimum available space would be different. We can test this out by pushing out all the smaller sized OSDs out of the cluster.</p>
+<div class="line-block">
+<div class="line">~~~</div>
+<div class="line">[<a class="reference external" href="mailto:root&#64;overcloud-cephstorage-0">root&#64;overcloud-cephstorage-0</a> ~]# ceph osd out osd.0</div>
+<div class="line">marked out osd.0.</div>
+<div class="line">[<a class="reference external" href="mailto:root&#64;overcloud-cephstorage-0">root&#64;overcloud-cephstorage-0</a> ~]# ceph osd out osd.3</div>
+<div class="line">marked out osd.3.</div>
+<div class="line">[<a class="reference external" href="mailto:root&#64;overcloud-cephstorage-0">root&#64;overcloud-cephstorage-0</a> ~]# ceph osd out osd.2</div>
+<div class="line">marked out osd.2.</div>
+</div>
+<div class="line-block">
+<div class="line"># ceph osd df</div>
+<div class="line">ID WEIGHT REWEIGHT SIZE USE AVAIL %USE VAR</div>
+<div class="line">0 0.00998 0 0 0 0 0 0</div>
+<div class="line">1 0.00999 1.00000 6132M 36564k 6097M 0.58 0.92</div>
+<div class="line">3 0.00998 0 0 0 0 0 0</div>
+<div class="line">5 0.00999 1.00000 6132M 41252k 6092M 0.66 1.04</div>
+<div class="line">2 0.00998 0 0 0 0 0 0</div>
+<div class="line">4 0.00999 1.00000 6132M 40772k 6093M 0.65 1.03</div>
+<div class="line">TOTAL 18398k 115M 18283M 0.63</div>
+<div class="line">MIN/MAX VAR: 0/1.04 STDDEV: 0.03</div>
+</div>
+<div class="line-block">
+<div class="line">[<a class="reference external" href="mailto:root&#64;overcloud-cephstorage-0">root&#64;overcloud-cephstorage-0</a> ~]# ceph df</div>
+<div class="line">GLOBAL:</div>
+<div class="line">SIZE AVAIL RAW USED %RAW USED</div>
+<div class="line">18398M 18283M 115M 0.63</div>
+<div class="line">POOLS:</div>
+<div class="line">NAME ID USED %USED MAX AVAIL OBJECTS</div>
+<div class="line">rbd 0 0 0 12176M 0</div>
+<div class="line">images 1 0 0 12176M 0</div>
+<div class="line">volumes 2 0 0 12176M 0</div>
+<div class="line">vms 3 0 0 12176M 0</div>
+<div class="line">~~~</div>
+</div>
+<p>Calculating the `MAX AVAIL` from the above output:</p>
+<div class="line-block">
+<div class="line">Minimum guaranteed space per OSD = 6092M</div>
+<div class="line">Number of OSDs which are UP = 6 (The three OSDs we pushed out are still UP and are part of the CRUSH map)</div>
+<div class="line">Number of replicas = 3</div>
+</div>
+<p>(6092 * 6) / 3 = 12184 ~ `MAX AVAIL`.</p>
+<p>Perhaps there is a reason why it was decided to make Horizon show values from the GLOBAL section of `ceph df`. But to more clearly depict the status, shouldn't it be showing the pool space that the component is writing to?</p>
+<p>Vimal</p>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

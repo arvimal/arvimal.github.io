@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>How to force peering on a placement group?</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/drafts/647.html" rel="bookmark"
+           title="Permalink to How to force peering on a placement group?">How to force peering on a placement group?</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2017-02-11T17:59:00+01:00">
+                Published: Sat 11 February 2017
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/ceph.html">Ceph</a>.</p>
+<p>tags: <a href="/tag/ceph.html">ceph</a> <a href="/tag/osd.html">osd</a> <a href="/tag/peering.html">peering</a> <a href="/tag/placement-groups.html">placement groups</a> </p>
+</footer><!-- /.post-info -->      <p><strong>P</strong>eering is the process</p>
+<p><strong>T</strong>here can be certain scenarios where the OSDs in a Placement Group doesn't peer properly, or if the peering is stuck indefinitely.</p>
+<p>For example, a case where the OSDs of a node goes down and get marked out. Usually, a <tt class="docutils literal">pg_temp</tt> list would be created as a new mapping. Sometimes, the pg_temp values may not get cleared even if the OSDs that were marked down comes back.</p>
+<p>In such a case, marking the primary OSD down of the PG in question is a way to force peering to start again. Marking an OSD <tt class="docutils literal">down</tt> will bring the OSD down&nbsp;but will immediately force it up since Ceph tries to heal the system automatically.</p>
+<p>Once the OSD comes up, a peering process is kicked in automatically which would assign the proper OSDs back, and eventually remove the <tt class="docutils literal">pg_temp</tt> list.</p>
+<p>A <tt class="docutils literal">ceph pg dump | grep &lt;pg.num&gt;</tt> on any of the PGs which had a <tt class="docutils literal">pg_temp</tt> value earlier should show the new set of OSDs properly.</p>
+<p>This procedure can also be helpful if all the OSDs are up/in but some of the PGs are stuck as <tt class="docutils literal">inactive</tt>. This means that the PGs cannot service read/write requests until it gets back to an <tt class="docutils literal">active</tt>&nbsp;state.</p>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = 'Vimal A R'
-SITENAME = 'arvimal.blog'
+AUTHOR = 'Vimal A.R'
+SITENAME = 'arvimal.github.io'
 SITEURL = ''
 
 PATH = 'content'

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>self in Python - Object Oriented Programming</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li class="active"><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/self-in-python.html" rel="bookmark"
+           title="Permalink to self in Python - Object Oriented Programming"><cite>self</cite> in Python - Object Oriented Programming</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-06-12T16:27:00+02:00">
+                Published: Sun 12 June 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/programming-python.html">Programming, Python</a>.</p>
+
+</footer><!-- /.post-info -->      <p><strong>T</strong>his article was&nbsp;long overdue and should have been published before many of the articles in this blog. Better late than never.</p>
+<p><tt class="docutils literal">self</tt>&nbsp;in Python is usually used in an Object Oriented nomenclature, to denote the instance/object created from a Class.</p>
+<p>In short, <tt class="docutils literal">self</tt>&nbsp;is the instance itself.</p>
+<p>Let's check the following example:</p>
+<div class="line-block">
+<div class="line">[code language=&quot;python&quot;]</div>
+<div class="line">class MyClass(object):</div>
+<div class="line">def __init__(self, name):</div>
+<div class="line">self.name = name</div>
+<div class="line">print(&quot;Initiating the instance!&quot;)</div>
+</div>
+<div class="line-block">
+<div class="line">def hello(self):</div>
+<div class="line">print(self.name)</div>
+</div>
+<p>myclass = MyClass(&quot;Dan Inosanto&quot;)</p>
+<div class="line-block">
+<div class="line"># Calling the `hello` method via the Instance `myclass`</div>
+<div class="line">myclass.hello()</div>
+</div>
+<div class="line-block">
+<div class="line"># Calling the `hello` method vai the class.</div>
+<div class="line">MyClass.hello(myclass)</div>
+<div class="line">[/code]</div>
+</div>
+<p>The code snippet above is trivial and stupid, but I think it gets the idea across.</p>
+<p>We have a class named <tt class="docutils literal">MyClass()</tt>&nbsp;which takes a <tt class="docutils literal">name</tt>&nbsp;value as an argument. It also prints the string&nbsp;&quot;Initiating the instance&quot;. &nbsp;The <tt class="docutils literal">name</tt>&nbsp;value is something that has to be passed while creating an instance.</p>
+<p>The function <tt class="docutils literal">hello()</tt>&nbsp;just prints the <tt class="docutils literal">name</tt>&nbsp;value that is passed while instantiating the class <tt class="docutils literal">MyClass()</tt>.</p>
+<p>We instantiate the class <tt class="docutils literal">MyClass()</tt>&nbsp;as <tt class="docutils literal">myclass</tt>&nbsp;and pass the string &nbsp;<strong>Dan Inosanto</strong> as an argument.&nbsp;Read about the great Inosanto&nbsp;<a class="reference external" href="https://en.wikipedia.org/wiki/Dan_Inosanto">here</a>.</p>
+<p>Next, we call the <tt class="docutils literal">hello()</tt> method through the instance. ie..</p>
+<div class="line-block">
+<div class="line">[code language=&quot;python&quot;]</div>
+<div class="line">myclass.hello()</div>
+<div class="line">[/code]</div>
+</div>
+<p>This should print the name we passed while instantiating <tt class="docutils literal">MyClass()</tt>&nbsp;as <tt class="docutils literal">myclass</tt>&nbsp;, which should be pretty obvious.</p>
+<p>The second and last instruction is doing the same thing, but in a different way.</p>
+<div class="line-block">
+<div class="line">[code language=&quot;python&quot;]</div>
+<div class="line">MyClass.hello(myclass)</div>
+<div class="line">[/code]</div>
+<div class="line">Here, we call the class <tt class="docutils literal">MyClass()</tt> directly as well as it's method <tt class="docutils literal">hello()</tt>. Let's check out what both prints:</div>
+</div>
+<div class="line-block">
+<div class="line">[code language=&quot;bash&quot;]</div>
+<div class="line"># python /tmp/test.py</div>
+</div>
+<div class="line-block">
+<div class="line">Initiating the instance!</div>
+<div class="line">Dan Inosanto</div>
+<div class="line">Dan Inosanto</div>
+<div class="line">[/code]</div>
+</div>
+<p>As we can see, both prints the same output. This means that :</p>
+<p><strong>myclass.hello(self) == MyClass.hello(myclass)</strong></p>
+<p>In general, we can say that:</p>
+<p><strong>&lt;instance-name&gt;.&lt;method&gt;(self) == &lt;Class&gt;.&lt;method&gt;(&lt;instance-name&gt;)</strong></p>
+<p>ie.. The keyword <tt class="docutils literal">self</tt>&nbsp;actually represents the instance being instantiated from the Class. Hence <tt class="docutils literal">self</tt>&nbsp;can be seen as Syntactic sugar.</p>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

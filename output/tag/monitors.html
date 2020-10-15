@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>arvimal.blog - monitors</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">arvimal.blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ceph.html">Ceph</a></li>
+                    <li><a href="/category/ceph-programming-python.html">Ceph, Programming, Python</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming.html">Data Structures and Algorithms, Programming</a></li>
+                    <li><a href="/category/data-structures-and-algorithms-programming-python.html">Data Structures and Algorithms, Programming, Python</a></li>
+                    <li><a href="/category/linux-programming.html">Linux, Programming</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                    <li><a href="/category/programming-python.html">Programming, Python</a></li>
+                    <li><a href="/category/techno.html">Techno</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/ceph-osd-heartbeats.html">Ceph OSD heartbeats</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-05-09T19:10:00+02:00">
+                Published: Mon 09 May 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/ceph.html">Ceph</a>.</p>
+<p>tags: <a href="/tag/ceph.html">ceph</a> <a href="/tag/monitors.html">monitors</a> </p>
+</footer><!-- /.post-info --><p>Ceph OSD daemons need to ensure that the neighbouring OSDs are functioning properly so that the cluster remains in a healthy state.</p>
+<p>For this, each Ceph OSD process (ceph-osd) sends a heartbeat signal to the neighbouring OSDs. By default, the heartbeat signal is sent every 6 seconds [1], which is configurable of course.</p>
+<p>If the heartbeat check from one OSD doesn't hear from the other within the set value for `osd_heartbeat_grace` [2], which is set to 20 seconds by default, the OSD that sends the heartbeat check reports the other OSD (the one that didn't respond within 20 seconds) as down, to the MONs. Once an OSD reports three times that the non-responding OSD is indeed `down`, the MON acknowledges it and mark the OSD as down.</p>
+<p>The Monitor will update the Cluster map and send it over to the participating nodes in the cluster.</p>
+<p><img alt="OSD-heartbeat-1" class="alignnone size-full wp-image-810" src="https://arvimal.files.wordpress.com/2016/05/osd-heartbeat-1.png" style="width: 470px; height: 490px;" /></p>
+<p>When an OSD can't reach another OSD for a heartbeat, it reports the following in the OSD logs:</p>
+<blockquote>
+osd.510 1497 heartbeat_check: no reply from osd.11 since back 2016-04-28 20:49:42.088802</blockquote>
+<p>In Ceph Jewel, the MONs require a minimum of two ceph OSDs report a specific OSD as down from two nodes which are in different CRUSH subtrees, in order to actually mark the OSD as down. These are controlled by the following tunables :</p>
+<p>From 'common/config_opts.h':</p>
+<p><strong>[1] OPTION(mon_osd_min_down_reporters, OPT_INT, 2) // number of OSDs from different subtrees who need to report a down OSD for it to count</strong></p>
+<p><strong>[2] OPTION(mon_osd_reporter_subtree_level , OPT_STR, &quot;host&quot;) // in which level of parent bucket the reporters are counted</strong></p>
+<p>Image Courtsey :&nbsp;<a class="reference external" href="https://access.redhat.com/documentation/en/red-hat-ceph-storage/version-1.3/red-hat-ceph-storage-13-ceph-configuration-guide/#osd-check-heartbeats">Red Hat Ceph Storage 1.3.2 Configuration guide</a></p>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/how-to-extract-view-change-and-inject-a-monitor-map-in-a-ceph-cluster.html" rel="bookmark"
+                           title="Permalink to Monitor maps, how to edit them?">Monitor maps, how to edit them?</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-09-01T12:54:00+02:00">
+                Published: Tue 01 September 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/ceph.html">Ceph</a>.</p>
+<p>tags: <a href="/tag/ceph.html">ceph</a> <a href="/tag/monitors.html">monitors</a> <a href="/tag/monmaptool.html">monmaptool</a> </p>
+</footer><!-- /.post-info -->                <p>The <strong>MON map</strong> is used by the monitors in a Ceph cluster, where they keep track of various attributes relevant to the working of the cluster.</p>
+<p>Similar to the <a class="reference external" href="http://ceph.com/papers/weil-crush-sc06.pdf">CRUSH</a>&nbsp;map, a monitor map can be pulled out of the cluster, inspected, changed, and injected back to the monitors, manually …</p>
+                <a class="readmore" href="/how-to-extract-view-change-and-inject-a-monitor-map-in-a-ceph-cluster.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/how-to-compact-a-ceph-monitor-store.html" rel="bookmark"
+                           title="Permalink to Compacting a Ceph monitor store">Compacting a Ceph monitor store</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-07-09T17:04:00+02:00">
+                Published: Thu 09 July 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/ceph.html">Ceph</a>.</p>
+<p>tags: <a href="/tag/ceph.html">ceph</a> <a href="/tag/leveldb.html">levelDB</a> <a href="/tag/monitors.html">monitors</a> </p>
+</footer><!-- /.post-info -->                <p>The Ceph monitor store growing to a big size is a common occurrence in a busy Ceph cluster.</p>
+<p>If a '<strong>ceph -s</strong>' takes considerable time to return information, one of the possibility is the monitor database being large.</p>
+<p>Other reasons included network lags between the client and the monitor, the …</p>
+                <a class="readmore" href="/how-to-compact-a-ceph-monitor-store.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/how-to-list-all-the-configuration-settings-in-a-ceph-cluster-monitor.html" rel="bookmark"
+                           title="Permalink to How to list all the configuration settings in a Ceph cluster monitor?">How to list all the configuration settings in a Ceph cluster monitor?</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-05-06T12:03:00+02:00">
+                Published: Wed 06 May 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/arvimal.html">arvimal</a>
+        </address>
+<p>In <a href="/category/ceph.html">Ceph</a>.</p>
+<p>tags: <a href="/tag/admin_socket.html">admin_socket</a> <a href="/tag/ceph.html">ceph</a> <a href="/tag/ceph-admin-socket.html">ceph admin socket</a> <a href="/tag/ceph-conf.html">ceph-conf</a> <a href="/tag/monitors.html">monitors</a> <a href="/tag/mons.html">mons</a> </p>
+</footer><!-- /.post-info -->                <p>It can be really helpful to have a single command to list all the configuration settings in a monitor node, in a Ceph cluster.</p>
+<p>This is possible by interacting directly with the monitor's unix socket file. This can be found under /var/run/ceph/. By default, the admin socket for …</p>
+                <a class="readmore" href="/how-to-list-all-the-configuration-settings-in-a-ceph-cluster-monitor.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
