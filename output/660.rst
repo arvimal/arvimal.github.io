@@ -1,8 +1,0 @@
-Linked Lists - Data Structures
-##############################
-:date: 2016-05-31 17:43
-:author: arvimal
-:slug: 660
-:status: draft
-
-

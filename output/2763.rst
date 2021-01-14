@@ -1,8 +1,0 @@
-Writing/Reading to/from /dev/{null, random, zero}
-#################################################
-:date: 2017-06-27 10:55
-:author: arvimal
-:slug: 2763
-:status: draft
-
-
