@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet/less" type="text/css" href="https://arvimal.github.io/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://arvimal.github.io/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://arvimal.github.io/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://arvimal.github.io/theme/pygments/monokai.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/solid.css">
+
+
+
+
+
+  
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333333">
+
+<meta name="author" content="Vimal A.R" />
+<meta name="description" content="- &#34;ceph&#34; In certain cases, a Ceph cluster may move away from an HEALTHY state due to “unfound” objects. A “ceph -s” should show if you have any unfound objects. So, what are unfound objects? How does an object become “unfound”? This article tries to explain why/how “unfound” objects come …" />
+<meta name="keywords" content="">
+
+
+<meta property="og:site_name" content="arvimal.github.io"/>
+<meta property="og:title" content="&#34;Ceph and unfound objects&#34;"/>
+<meta property="og:description" content="- &#34;ceph&#34; In certain cases, a Ceph cluster may move away from an HEALTHY state due to “unfound” objects. A “ceph -s” should show if you have any unfound objects. So, what are unfound objects? How does an object become “unfound”? This article tries to explain why/how “unfound” objects come …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://arvimal.github.io/ceph-and-unfound-objects.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-10-07 00:00:00+02:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://arvimal.github.io/author/vimal-ar.html">
+<meta property="article:section" content="misc"/>
+<meta property="og:image" content="">
+
+  <title>arvimal.github.io &ndash; &#34;Ceph and unfound objects&#34;</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="https://arvimal.github.io">
+        <img src="https://arvimal.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+
+      <h1>
+        <a href="https://arvimal.github.io"></a>
+      </h1>
+
+
+
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/arvimal" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-rss" href="/blog/feeds/all.atom.xml" target="_blank">
+              <i class="fas fa-rss"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://arvimal.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="ceph-and-unfound-objects">"Ceph and unfound objects"</h1>
+    <p>
+      Posted on October 07, 2015 in <a href="https://arvimal.github.io/category/misc.html">misc</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <h2>- "ceph"</h2>
+<p>In certain cases, a Ceph cluster may move away from an HEALTHY state due to “<strong>unfound</strong>” objects.</p>
+<p>A “<strong><em>ceph -s</em></strong>” should show if you have any unfound objects. So, what are unfound objects? How does an object become “<strong>unfound</strong>”? This article tries to explain why/how “<strong>unfound</strong>” objects come into existence.</p>
+<p>Let’s look into the life cycle of a write to a pool.</p>
+<ul>
+<li>The client contacts a Ceph monitor and fetches the CRUSH map, which includes:<ul>
+<li>MON map</li>
+<li>OSD map</li>
+<li>PG map</li>
+<li>CRUSH map</li>
+<li>MDS map</li>
+</ul>
+</li>
+</ul>
+<p>Once the client has the maps, the Ceph client-side algorithm breaks the data being written into objects (the object size depends on the client side configuration). Clients such as RBD and RGW uses a 4MB object size, but RADOS doesn’t actually have such a limitation.</p>
+<p>Each pool has a set of <strong>Placement Groups</strong> (<strong>PG</strong>) assigned to it at the time of creation, and the client always writes to a pool. Since the client has the maps which talks about the entire cluster, it knows the placement groups within the pool which it is writing to, and the OSDs assigned for each placement group. The client talks to the OSDs directly without going over any other path, such as a monitor.</p>
+<p>The PG map will have the <strong>ACTING</strong> and <strong>UP</strong> OSD sets for each PG. To understand the ACTING set and UP set for the PGs, as well as a plethora of other information, use :</p>
+<p>[code language="bash"] # ceph pg dump [/code]</p>
+<p>The ACTING set is the current active set of OSDs that stores the replica sets for that particular PG. The UP set is the set of OSDs that are currently up and running. Usually, the ACTING set and UP set are the same. When an OSD in the ACTING set is not reachable, other OSDs wait for 5 minutes (which is configurable) for it to come back online (this is checked with a hearbeat).</p>
+<p>The said OSD is removed out of the UP set when it is not accessible. If it doesn’t come back online within the configured period, the said OSD is marked out of the ACTING set, as well as the UP set. When it comes back, it is added back to the ACTING/UP set and a peering happens where the data is synced back.</p>
+<p>Let’s discuss the scenario where an “unfound” object came come into existence. Imagine a pool with a two replica configuration. A write that goes into the pool is split into objects and stored in the OSDs which are in the ACTIVE set of a PG.</p>
+<ul>
+<li>One OSD in the ACTING set goes down.</li>
+<li>The write is done on the second OSD which is UP and ACTING.</li>
+<li>The first OSD which went down, came back up.</li>
+<li>The peering process started between the first OSD (that came back), and the second OSD (that serviced the write).<ul>
+<li>Peering refers to the process of arriving at an understanding on the object states between the OSDs in an ACTING set, and sync up the metadata/data between them.</li>
+</ul>
+</li>
+<li>Both the OSDs reach an understanding on which objects needs to be synced.</li>
+<li>The second OSD that had the objects ready to be synced, went down before the sync process starts or is in midway.</li>
+</ul>
+<p>In this situation, the first OSD knows about the objects that was written to the second OSD, but cannot probe it. The first OSD will try to probe possible locations for copies, provided there are more replicas. If the OSD is able to find other locations, the data will be synced up.</p>
+<p>But in case there are no other copies, and the OSD with the only copy is not coming up anytime soon (perhaps a disk crash, file system corruption etc..) the only way is to either mark the object as “lost”, or revert it back to the previous version. Reverting to a previous version may not be possible for a new object, and in such cases the only way would be to mark it as “lost” or copy from a backup.</p>
+<p>1. For a new object without a previous version:</p>
+<p>[code language="bash"] # ceph pg {pg.num} mark_unfound_lost delete [/code]</p>
+<p>2. For an object which is likely to have a previous version:</p>
+<p>[code language="bash"] # ceph pg {pg.num} mark_unfound_lost revert [/code]</p>
+<p><strong>NOTE:</strong> The upstream Ceph documentation has an excellent write-up about “unfound” objects <a href="http://docs.ceph.com/docs/master/rados/troubleshooting/troubleshooting-pg/#unfound-objects">here</a>.</p>
+<p>I suggest reading the documentation prior taking any sort of action in a case where you see “unfound” objects in your cluster.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>
+  &copy; 2021  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://arvimal.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " arvimal.github.io ",
+  "url" : "https://arvimal.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
+
+
+</body>
+</html>

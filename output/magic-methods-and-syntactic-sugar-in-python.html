@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet/less" type="text/css" href="https://arvimal.github.io/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://arvimal.github.io/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://arvimal.github.io/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://arvimal.github.io/theme/pygments/monokai.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/solid.css">
+
+
+
+
+
+  
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333333">
+
+<meta name="author" content="Vimal A.R" />
+<meta name="description" content="&#34;programming&#34; &#34;python&#34; tags: &#34;programming&#34; &#34;python&#34; Magic methods _M_agic methods are special methods which can be defined (or already designed and available) to act on objects. Magic methods start and end with underscores &#34;__&#34;, and are not implicitly called by the user even though they can be. Most magic …" />
+<meta name="keywords" content="">
+
+
+<meta property="og:site_name" content="arvimal.github.io"/>
+<meta property="og:title" content="&#34;Magic methods and Syntactic sugar in Python&#34;"/>
+<meta property="og:description" content="&#34;programming&#34; &#34;python&#34; tags: &#34;programming&#34; &#34;python&#34; Magic methods _M_agic methods are special methods which can be defined (or already designed and available) to act on objects. Magic methods start and end with underscores &#34;__&#34;, and are not implicitly called by the user even though they can be. Most magic …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://arvimal.github.io/magic-methods-and-syntactic-sugar-in-python.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-06-02 00:00:00+02:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://arvimal.github.io/author/vimal-ar.html">
+<meta property="article:section" content="misc"/>
+<meta property="og:image" content="">
+
+  <title>arvimal.github.io &ndash; &#34;Magic methods and Syntactic sugar in Python&#34;</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="https://arvimal.github.io">
+        <img src="https://arvimal.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+
+      <h1>
+        <a href="https://arvimal.github.io"></a>
+      </h1>
+
+
+
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/arvimal" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-rss" href="/blog/feeds/all.atom.xml" target="_blank">
+              <i class="fas fa-rss"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://arvimal.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="magic-methods-and-syntactic-sugar-in-python">"Magic methods and Syntactic sugar in Python"</h1>
+    <p>
+      Posted on June 02, 2016 in <a href="https://arvimal.github.io/category/misc.html">misc</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <ul>
+<li>"programming"</li>
+<li>"python"
+tags:</li>
+<li>"programming"</li>
+<li>"python"</li>
+</ul>
+<hr>
+<h3>Magic methods</h3>
+<p>_<strong>M</strong>_agic methods are special methods which can be defined (or already designed and available) to act on objects.</p>
+<p>Magic methods start and end with underscores <code>"__"</code>, and are not implicitly called by the user even though they can be. Most magic methods are used as syntactic sugar by binding it to more clear/easy_to_understand keywords.</p>
+<p>Python is mostly objects and method calls done on objects. Many available functions in Python are actually tied to magic methods_<strong>.</strong>_ Let's checkout a few examples.</p>
+<p><em><strong>Example 0:</strong></em></p>
+<p>[code language="python"] In [1]: my_var = "Hello!"</p>
+<p>In [2]: print(my_var) Hello!</p>
+<p>In [3]: my_var.__repr__() Out[3]: "'Hello!'" [/code] As we can see, the <code>__repr__()</code> magic method can be called to print the object, ie.. it is bound to the <code>print()</code> keyword.</p>
+<p>This is true for many other builtin keywords/operators as well.</p>
+<p><em><strong>Example 1:</strong></em></p>
+<p>[code language="python"] In [22]: my_var = "Hello, " In [23]: my_var1 = "How are you?"</p>
+<p>In [24]: my_var + my_var1 Out[24]: 'Hello, How are you?'</p>
+<p>In [25]: my_var.__add__(my_var1) Out[25]: 'Hello, How are you?' [/code] Here, Python interprets the <code>+</code> sign as a mapping to the magic method <code>__add__()</code>, and calls it on the L-value (Left hand object value) <code>my_var</code>, with the R-value (Right hand object value) as the argument.</p>
+<p>When a builtin function is called on an object, in many cases it is mapped to the magic method.</p>
+<p><em><strong>Example 2:</strong></em></p>
+<p>[code language="python"] In [69]: my_list_1 = ['a', 'b', 'c', 'd']</p>
+<p>In [70]: 'a' in my_list_1 Out[70]: True</p>
+<p>In [71]: my_list_1.__contains__("a") Out[71]: True [/code]</p>
+<p>The <code>in</code> builtin is mapped to the <code>__contains__()</code>method.</p>
+<p>The methods available for an object should mostly be dependent on the type of the object.</p>
+<p><em><strong>Example 3:</strong></em></p>
+<p>[code language="python" wraplines="true"] In [59]: my_num = 1</p>
+<p>In [60]: type(my_num) Out[60]: int</p>
+<p>In [61]: my_num.__doc__ Out[61]: Out[61]: "int(x=0) -&gt; int or long\nint(x, base=10) -&gt; int or long\n\nConvert a number or string to an integer, or return 0 if no arguments\nare given. ....&gt;&gt;&gt;</p>
+<p>In [62]: help(my_num) class int(object) | int(x=0) -&gt; int or long | int(x, base=10) -&gt; int or long | | Convert a number or string to an integer, or return 0 if no arguments | are given. If x is floating point, the conversion truncates towards zero. | If x is outside the integer range, the function returns a long instead.</p>
+<p>[/code]</p>
+<p>From the tests above, we can understand that the <code>help()</code> function is actually mapped to the <code>object.__doc__</code> magic method. It's the same doc string that __doc__ and help() uses.</p>
+<p><strong><em>NOTE: Due to the syntax conversion (<code>+</code> to <code>__add__(),and other conversions</code>), operators like <code>+</code> , <code>in</code>, etc.. are also called Syntactic sugar.</em></strong></p>
+<h3>What is Syntactic sugar?</h3>
+<p>_<strong>A</strong>_ccording to <a href="https://en.wikipedia.org/wiki/Syntactic_sugar">Wikipedia</a>, Syntact sugar is:</p>
+<blockquote>
+<p>In <a href="https://en.wikipedia.org/wiki/Computer_science" title="Computer science">computer science</a>, <strong>syntactic sugar</strong> is <a href="https://en.wikipedia.org/wiki/Syntax_%28programming_languages%29" title="Syntax (programming languages)">syntax</a> within a <a href="https://en.wikipedia.org/wiki/Programming_language" title="Programming language">programming language</a> that is designed to make things easier to read or to express. It makes the language "sweeter" for human use: things can be expressed more clearly, more concisely, or in an alternative style that some may prefer.</p>
+</blockquote>
+<p>Hence, <em><strong>magic methods</strong></em> can be said to be <em><strong>Syntactic sugar.</strong></em> But it's not just magic methods that are mapped to syntactic sugar methods, but higher order features such as <a href="https://arvimal.wordpress.com/2016/05/30/decorators-object-oriented-programming/">Decorators</a> are as well.</p>
+<p><em><strong>Example 4:</strong></em></p>
+<p>[code language="python"] def my_decorator(my_function): def inner_decorator(): print("This happened before!") my_function() print("This happens after ") print("This happened at the end!") return inner_decorator</p>
+<p>def my_decorated(): print("This happened!")</p>
+<p>var = my_decorator(my_decorated)</p>
+<p>if __name__ == '__main__': var() [/code] The example above borrows from one of the examples in the post on <a href="https://arvimal.wordpress.com/2016/05/30/decorators-object-oriented-programming/">Decorators</a>.</p>
+<p>Here, <code>my_decorator()</code> is a decorator and is used to decorate <code>my_decorated()</code>. But rather than calling the decorator function <code>my_decorator()</code> with the argument <code>my_decorated()</code>, the above code can be syntactically sugar-coated as below:</p>
+<p>[code language="python"] def my_decorator(my_function): def inner_decorator(): print("This happened before!") my_function() print("This happens after ") print("This happened at the end!") return inner_decorator</p>
+<p>@my_decorator def my_decorated(): print("This happened!")</p>
+<p>if __name__ == '__main__': my_decorated() [/code] Observing both code snippets, the decorator is syntactically sugar coated and called as:</p>
+<p><strong>@my_decorator</strong></p>
+<p>instead of instantiating the decorator with the function to be decorated as an argument, ie..</p>
+<p><strong>var = my_decorator(my_decorated)</strong></p>
+<h3>A few syntax resolution methods:</h3>
+<ol>
+<li>'name' in my_list       -&gt;      my_list.__contains__('name')</li>
+<li>len(my_list)                  -&gt;      my_list.__len__()</li>
+<li>print(my_list)              -&gt;      my_list.__repr__()</li>
+<li>my_list == "value"     -&gt;      my_list.__eq__("value")</li>
+<li>my_list[5]                      -&gt;      my_list.__getitem__(5)</li>
+<li>my_list[5:10]                 -&gt;     my_list.__getslice__(5, 10)</li>
+</ol>
+<p><strong>NOTE: This article is written from the notes created while learning magic methods. The following articles (along with several others) were referred as part of the process.</strong></p>
+<ol>
+<li><strong><a href="http://www.rafekettler.com/magicmethods.pdf">A Guide to Python's Magic Methods</a>, by Rafe Kettler</strong></li>
+<li><strong><a href="https://docs.python.org/3/reference/datamodel.html#special-method-names">Special method names</a>, The Official Python 3 documentation</strong></li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>
+  &copy; 2021  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://arvimal.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " arvimal.github.io ",
+  "url" : "https://arvimal.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
+
+
+</body>
+</html>

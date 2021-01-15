@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet/less" type="text/css" href="https://arvimal.github.io/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://arvimal.github.io/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://arvimal.github.io/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://arvimal.github.io/theme/pygments/monokai.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/solid.css">
+
+
+
+
+
+  
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333333">
+
+<meta name="author" content="Vimal A.R" />
+<meta name="description" content="&#34;programming&#34; &#34;python&#34; tags: &#34;abstract-methods&#34; &#34;abstractmethod&#34; &#34;builtins&#34; &#34;inheritance&#34; &#34;method-overloading&#34; _I_nheritance is a usual theme in Object Oriented Programming. Because of Inheritance, the functions/methods defined in parent classes can be called in Child classes which enables code reuse, and several other features. In this article, we try to understand …" />
+<meta name="keywords" content="">
+
+
+<meta property="og:site_name" content="arvimal.github.io"/>
+<meta property="og:title" content="&#34;Inheritance and Method overloading - Object Oriented Programming&#34;"/>
+<meta property="og:description" content="&#34;programming&#34; &#34;python&#34; tags: &#34;abstract-methods&#34; &#34;abstractmethod&#34; &#34;builtins&#34; &#34;inheritance&#34; &#34;method-overloading&#34; _I_nheritance is a usual theme in Object Oriented Programming. Because of Inheritance, the functions/methods defined in parent classes can be called in Child classes which enables code reuse, and several other features. In this article, we try to understand …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://arvimal.github.io/inheritance-and-method-overloading-object-oriented-programming.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-06-29 00:00:00+02:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://arvimal.github.io/author/vimal-ar.html">
+<meta property="article:section" content="misc"/>
+<meta property="og:image" content="">
+
+  <title>arvimal.github.io &ndash; &#34;Inheritance and Method overloading - Object Oriented Programming&#34;</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="https://arvimal.github.io">
+        <img src="https://arvimal.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+
+      <h1>
+        <a href="https://arvimal.github.io"></a>
+      </h1>
+
+
+
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/arvimal" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-rss" href="/blog/feeds/all.atom.xml" target="_blank">
+              <i class="fas fa-rss"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://arvimal.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="inheritance-and-method-overloading-object-oriented-programming">"Inheritance and Method overloading - Object Oriented Programming"</h1>
+    <p>
+      Posted on June 29, 2016 in <a href="https://arvimal.github.io/category/misc.html">misc</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <ul>
+<li>"programming"</li>
+<li>"python"
+tags:</li>
+<li>"abstract-methods"</li>
+<li>"abstractmethod"</li>
+<li>"builtins"</li>
+<li>"inheritance"</li>
+<li>"method-overloading"</li>
+</ul>
+<hr>
+<p>_<strong>I</strong>_nheritance is a usual theme in Object Oriented Programming. Because of Inheritance, the functions/methods defined in parent classes can be called in Child classes which enables code reuse, and several other features. In this article, we try to understand some of those features that come up with Inheritance.</p>
+<p>We've discussed <a href="https://arvimal.wordpress.com/2016/06/14/abstract-base-classesmethods-object-oriented-programming/">Abstract Methods</a> in an earlier post, which is a feature part of Inheritance, and can be applied on child classes that inherits from a Parent class.</p>
+<p>E the methods which are inherited can also be seen as another feature or possibility in Inheritance. In many cases, it's required to override or specialize the methods inherited from the Parent class. This is of course possible, and is called as 'Method Overloading'.</p>
+<p>Consider the two classes and its methods defined below:</p>
+<p><em><strong>Example 0:</strong></em></p>
+<p>[code language="python"] import abc</p>
+<p>class MyClass(object):</p>
+<p>__metaclass__ = abc.ABCMeta</p>
+<p>def __init__(self): pass</p>
+<p>def my_set_method(self, value): self.value = value</p>
+<p>def my_get_method(self): return self.value</p>
+<p>@abc.abstractmethod def printdoc(self): return</p>
+<p>class MyChildClass(MyClass):</p>
+<p>def my_set_method(self, value): if not isinstance(value, int): value = 0 super(MyChildClass, self).my_set_method(self)</p>
+<p>def printdoc(self): print("\nDocumentation for MyChildClass()")</p>
+<p>instance_1 = MyChildClass() instance_1.my_set_method(10) print(instance_1.my_get_method()) instance_1.printdoc() [/code]</p>
+<p>We have two classes, the parent class being <code>MyClass</code> and the child class being <code>MyChildClass</code>.</p>
+<p><code>MyClass</code> has three methods defined.</p>
+<ul>
+<li>my_set_method()</li>
+<li>my_get_method()</li>
+<li>printdoc()</li>
+</ul>
+<p>The <code>printdoc()</code> method is an <a href="https://arvimal.wordpress.com/2016/06/14/abstract-base-classesmethods-object-oriented-programming/">Abstract method</a>, and hence should be implemented in the Child class as a mandatory method.</p>
+<p>The child class <code>MyChildClass</code> inherits from <code>MyClass</code> and has access to all it's methods.</p>
+<p>Normally, we can just go ahead and use the methods defined in <code>MyClass</code> , in <code>MyChildClass</code>. But there can be situations when we want to improve or build upon the methods inherited. As said earlier, this is called <em><strong>Method Overloading.</strong></em></p>
+<p><code>MyChildClass</code> extends the parent's <code>my_set_method()</code> function by it's own implementation. In this example, it does an additional check to understand if the input value is an <code>int</code> or not, and then calls the <code>my_set_method()</code> of it's parent class using <code>super</code>. Hence, this method in the child class extends the functionality prior calling method in the parent. A post on <code>super</code> is set for a later time.</p>
+<p>Even though this is a trivial example, it helps to understand how the features inherited from other classes can be extended or improved upon via method overloading.</p>
+<p>The <code>my_get_method()</code> is not overridden in the child class but still called from the instance, as <code>instance_1.my_get_method()</code>. We're using it as it is available via Inheritance. Since it's defined in the parent class, it works in the child class' instance when called, even if not overridden.</p>
+<p>The <code>printdoc()</code> method is an abstract method and hence is mandatory to be implemented in the child class, and can be overridden with what we choose to do.</p>
+<p>Inheritance is possible from python builtins, and can be overridden as well. Let's check out another example:</p>
+<p><em><strong>Example 1:</strong></em></p>
+<p>[code language="python"] class MyList(list):</p>
+<p>def __getitem__(self, index): if index == 0: raise IndexError if index &gt; 0: index -= 1 return list.__getitem__(self, index)</p>
+<p>def __setitem__(self, index, value): if index == 0: raise IndexError if index &gt; 0: index -= 1 list.__setitem__(self, index, value)</p>
+<p>x = MyList(['a', 'b', 'c']) print(x) print("-" * 10)</p>
+<p>x.append('d') print(x) print("-" * 10)</p>
+<p>x.__setitem__(4, 'e') print(x) print("-" * 10)</p>
+<p>print(x[1]) print(x.__getitem__(1)) print("-" * 10)</p>
+<p>print(x[4]) print(x.__getitem__(4)) [/code] This outputs:</p>
+<p>[code language="python"] ['a', 'b', 'c'] ---------- ['a', 'b', 'c', 'd'] ---------- ['a', 'b', 'c', 'e'] ---------- a a ---------- e e [/code]</p>
+<h3>How does the code work?</h3>
+<p>The class <code>MyList()</code> inherits from the builtin <code>list</code>. Because of the inheritance, we can use list's available magic methods such as <code>__getitem__()</code> , <code>__setitem__()</code> etc..</p>
+<p><strong><em>NOTE: In order to see the available methods in <code>list</code>, use <code>dir(list)</code>.</em></strong></p>
+<ol>
+<li>We create two functions/methods named `__getitem__()` and `__setitem__()` to override the inherited methods.</li>
+<li>Within these functions/methods, we set our own conditions.</li>
+<li>Wie later call the builtin methods directly within these functions, using<ol>
+<li>list.__getitem__()</li>
+<li>list.__setitem__()</li>
+</ol>
+</li>
+<li>We create an instance named <code>x</code> from <code>MyList()</code>.</li>
+<li>We understand that<ol>
+<li><code>x[1]</code> and <code>x.__getitem__(1)</code> are same.</li>
+<li><code>x[4, 'e']</code> and <code>x.__setitem__(4, 'e')</code> are same.</li>
+<li><code>x.append(f)</code> is same as <code>x.__setitem__(&lt;n&gt;, f)</code> where <n> is the element to the extreme right which the python interpreter iterates and find on its own.</li>
+</ol>
+</li>
+</ol>
+<p>Hence, in Inheritance, child classes can:</p>
+<ul>
+<li>Inherit from parent classes and use those methods.<ul>
+<li>Parent classes can either be user-defined classes or buitins like <code>list</code> , <code>dict</code> etc..</li>
+</ul>
+</li>
+<li>Override (or Overload) an inherited method.</li>
+<li>Extend an inherited method in its own way.</li>
+<li>Implement an Abstract method the parent class requires.</li>
+</ul>
+<h3>Reference:</h3>
+<ol>
+<li><a href="http://shop.oreilly.com/product/0636920040057.do">Python beyond the basics - Object Oriented Programming</a></li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>
+  &copy; 2021  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://arvimal.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " arvimal.github.io ",
+  "url" : "https://arvimal.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet/less" type="text/css" href="https://arvimal.github.io/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://arvimal.github.io/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://arvimal.github.io/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://arvimal.github.io/theme/pygments/monokai.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/solid.css">
+
+
+
+
+
+  
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333333">
+
+<meta name="author" content="Vimal A.R" />
+<meta name="description" content="&#34;programming&#34; &#34;python&#34; tags: &#34;inheritance&#34; &#34;method-resolution-order&#34; &#34;mro&#34; &#34;python&#34; &#34;bases&#34; &#34;base&#34; _M_ethod Resolution Order or &#39;MRO&#39; in short, denotes the way a programming language resolves a method or attribute. This post looks into how Method Resolution Order works, using Python. Python supports classes inheriting from other classes. The class being …" />
+<meta name="keywords" content="">
+
+
+<meta property="og:site_name" content="arvimal.github.io"/>
+<meta property="og:title" content="&#34;Method Resolution Order - Object Oriented Programming&#34;"/>
+<meta property="og:description" content="&#34;programming&#34; &#34;python&#34; tags: &#34;inheritance&#34; &#34;method-resolution-order&#34; &#34;mro&#34; &#34;python&#34; &#34;bases&#34; &#34;base&#34; _M_ethod Resolution Order or &#39;MRO&#39; in short, denotes the way a programming language resolves a method or attribute. This post looks into how Method Resolution Order works, using Python. Python supports classes inheriting from other classes. The class being …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://arvimal.github.io/method-resolution-order-object-oriented-programming.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-05-30 00:00:00+02:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://arvimal.github.io/author/vimal-ar.html">
+<meta property="article:section" content="misc"/>
+<meta property="og:image" content="">
+
+  <title>arvimal.github.io &ndash; &#34;Method Resolution Order - Object Oriented Programming&#34;</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="https://arvimal.github.io">
+        <img src="https://arvimal.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+
+      <h1>
+        <a href="https://arvimal.github.io"></a>
+      </h1>
+
+
+
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/arvimal" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-rss" href="/blog/feeds/all.atom.xml" target="_blank">
+              <i class="fas fa-rss"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://arvimal.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="method-resolution-order-object-oriented-programming">"Method Resolution Order - Object Oriented Programming"</h1>
+    <p>
+      Posted on May 30, 2016 in <a href="https://arvimal.github.io/category/misc.html">misc</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <ul>
+<li>"programming"</li>
+<li>"python"
+tags: </li>
+<li>"inheritance"</li>
+<li>"method-resolution-order"</li>
+<li>"mro"</li>
+<li>"python"</li>
+<li>"<strong>bases</strong>"</li>
+<li>"<strong>base</strong>"</li>
+</ul>
+<hr>
+<p>_<strong>M</strong>_ethod Resolution Order or 'MRO' in short, denotes the way a programming language resolves a method or attribute. This post looks into how Method Resolution Order works, using Python.</p>
+<p>Python supports classes inheriting from other classes. The class being inherited is called the Parent/Super class, while the class that inherits is called the Child/Sub class.</p>
+<p>While inheriting from another class, the interpreter needs a way to resolve the methods that are being called via an instance. Hence a method resolution order is needed.</p>
+<p><em><strong>Example 0:</strong></em></p>
+<p>[code language="python"]</p>
+<p>class A(object): def my_func(self): print("Doing this in class A")</p>
+<p>class B(A): def my_func(self): print("Doing this in class B")</p>
+<p>my_instance = B() my_instance.my_func() [/code]</p>
+<h3><strong>Structure:</strong></h3>
+<ol>
+<li>We've two classes,  <code>class A</code> and <code>class B</code>.</li>
+<li>Instantiate <code>class B</code> as <code>my_instance</code>.</li>
+<li>Call the <code>my_func()</code> method through the <code>my_instance</code> instance.</li>
+</ol>
+<p>Where is the method fetched from? From <code>class B</code> or <code>class A</code>?</p>
+<h3><strong>How does the code work?</strong></h3>
+<p>This should be pretty obvious, the answer would be <code>class B</code>. But why is it being called from <code>class B</code> and not from <code>class A</code>?</p>
+<p>Answer : The <strong>Method Resolution Order</strong> [MRO].</p>
+<p>To understand this in depth, let's check another example:</p>
+<p><em><strong>Example 1:</strong></em></p>
+<p>[code language="python"] class A(object): def my_func(self): print("Doing this in Class A")</p>
+<p>class B(A): pass</p>
+<p>class C(object): def my_func(self): print("Doing this in Class C")</p>
+<p>class D(B, C): pass</p>
+<p>my_instance = D() my_instance.my_func() [/code]</p>
+<h3><strong>Structure</strong><em><strong>:</strong></em></h3>
+<ol>
+<li>Four classes, class <code>A</code>, <code>B</code>, <code>C</code>, and <code>D</code>.</li>
+<li>Class <code>D</code> inherits from both <code>B</code> and <code>C</code></li>
+<li>Class <code>B</code> inherits from <code>A</code>.</li>
+<li>Class <code>A</code> and <code>C</code> doesn't inherit from any super classes, but from the <code>object</code> base class due to being new-style classes.</li>
+<li>Class <code>A</code> and class <code>C</code> both have a method/function named <code>my_func()</code>.</li>
+<li>Class <code>D</code> is instantiated through <code>my_instance</code></li>
+</ol>
+<p>If we were to call the method <code>my_func()</code> through the <code>my_instance()</code> instance, which class would it be called from? Would it be from class <code>A</code> or class <code>C</code>?</p>
+<h3><strong>How does the code work?</strong></h3>
+<p>This won't be as obvious as <em><strong>Example 0.</strong></em> </p>
+<ol>
+<li>The instance <code>my_instance()</code> is created from class <code>D</code>.</li>
+<li>Since class <code>D</code>inherits from both class <code>B</code> and <code>C</code>, the python interpreter searches for the method <code>my_func()</code> in both of these classes.</li>
+<li>The intrepreter finds that class <code>B</code> inherits from class <code>A</code>, and class <code>C</code> doesn't have any super classes other than the default <code>object</code> class.</li>
+<li>Class <code>A</code> and class <code>C</code> both has the method named <code>my_func()</code>, and hence has to be called from one of these.</li>
+<li><strong>Python follows a depth-first lookup order and hence ends up calling the method from class A.</strong></li>
+</ol>
+<p>Following the depth-first Method Resolution Order, the lookup would be in the order :</p>
+<p><em><strong>Class D -&gt; Class B -&gt; Class C</strong></em></p>
+<p>Let's check another example, which can be a bit more complex.</p>
+<p><em><strong>Example 2:</strong></em></p>
+<p>[code language="python"] class A(object): def my_func(self): print("Doing this in A")</p>
+<p>class B(A): pass</p>
+<p>class C(A): def my_func(self): print("doing this in C")</p>
+<p>class D(B, C): pass</p>
+<p>my_instance = D() my_instance.my_func() [/code]</p>
+<h3><strong>Structure:</strong></h3>
+<ol>
+<li>Four classes, class <code>A</code>, <code>B</code>, <code>C</code>, and <code>D</code></li>
+<li>Class <code>D</code> inherits from both <code>B</code> and <code>C</code></li>
+<li>Class <code>B</code> inherits from class <code>A</code>.</li>
+<li>Class <code>C</code> inherits from class <code>A</code>.</li>
+<li>Class <code>A</code> inherits from the default base class <code>object</code>.</li>
+</ol>
+<p><strong>This sort of inheritance is called the <code>Diamond Inheritance</code> or the <code>Deadly Diamond of death</code> and looks like the following:</strong></p>
+<p><img alt="220px-Diamond_inheritance.svg" src="images/220px-diamond_inheritance-svg.png"></p>
+<p><em>Image courtsey : <a href="https://en.wikipedia.org/wiki/Multiple_inheritance">Wikipedia</a></em></p>
+<h3><strong>How does the code work?</strong></h3>
+<p>Following the depth-first Method Resolution Order, the lookup would be in the order :</p>
+<p><em><strong>Class D -&gt; Class B -&gt; Class A -&gt; Class C -&gt; Class A</strong></em></p>
+<p>In order to avoid ambiguity while doing a lookup for a method where multiple classes are inherited and involved, the MRO lookup has changed slightly from Python 2.3 onwards.</p>
+<p>It still goes for the depth-first order, but if the occurrence of a class happens multiple times in the MRO path, it removes the initial occurrence and keeps the latter.</p>
+<p>Hence, the look up order in <em><strong>Example 2</strong></em> becomes:</p>
+<p><em><strong>Class D -&gt; Class B -&gt; Class C -&gt; Class A.</strong></em></p>
+<p><strong>NOTE: Python provides a method for a class to lookup the Method Resolution Order. Let's recheck Example 2 using that.</strong></p>
+<p>[code language="python"] class A(object): def my_func(self): print("Calling this from A")</p>
+<p>class B(A): pass</p>
+<p>class C(A): def my_func(self): print("\nCalling this from C")</p>
+<p>class D(B, C): pass</p>
+<p>my_instance = D() my_instance.my_func()</p>
+<p>print("\nPrint the Method Resolution Order") print(D.mro()) print(D.__bases__) [/code] This should print:</p>
+<p>[code language="python"] # python /tmp/Example-2.py</p>
+<p>Calling this from C</p>
+<p>Print the Method Resolution Order class '__main__.D', class '__main__.B', class '__main__.C', class '__main__.A', type 'object'</p>
+<p>(, ) [/code]</p>
+<h3>Takeaway:</h3>
+<ol>
+<li>Python follows a depth-first order for resolving methods and attributes.</li>
+<li>In case of multiple inheritances where the methods happen to occur more than once, python omits the first occurrence of a class in the Method Resolution Order.</li>
+<li>The <code>&lt;class&gt;.mro()</code>methods helps to understand the Medthod Resolution Order.</li>
+<li>The `__bases__` and `__base__` magic methods help to understand the Base/Parent classes of a Sub/Child class.</li>
+</ol>
+<h3>References:</h3>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Multiple_inheritance">https://en.wikipedia.org/wiki/Multiple_inheritance</a></li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>
+  &copy; 2021  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://arvimal.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " arvimal.github.io ",
+  "url" : "https://arvimal.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
+
+
+</body>
+</html>
