@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet/less" type="text/css" href="https://arvimal.github.io/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://arvimal.github.io/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://arvimal.github.io/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://arvimal.github.io/theme/pygments/monokai.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/solid.css">
+
+
+    <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Atom">
+
+
+
+  
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333333">
+
+<meta name="author" content="Vimal A.R" />
+<meta name="description" content="&#34;techno&#34; tags: &#34;runaway-process&#34; &#34;zombie&#34; Why can&#39;t I kill a process with the signal 9? A process can be sleeping in kernel code. Usually that&#39;s because of faulty hardware or a badly written driver- or maybe a little of both. A device that isn&#39;t set to the interrupt the driver thinks …" />
+<meta name="keywords" content="">
+
+
+<meta property="og:site_name" content="arvimal.github.io"/>
+<meta property="og:title" content="&#34;Zombie processes&#34;"/>
+<meta property="og:description" content="&#34;techno&#34; tags: &#34;runaway-process&#34; &#34;zombie&#34; Why can&#39;t I kill a process with the signal 9? A process can be sleeping in kernel code. Usually that&#39;s because of faulty hardware or a badly written driver- or maybe a little of both. A device that isn&#39;t set to the interrupt the driver thinks …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://arvimal.github.io/zombie-processes.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2008-01-01 00:00:00+01:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://arvimal.github.io/author/vimal-ar.html">
+<meta property="article:section" content="misc"/>
+<meta property="og:image" content="">
+
+  <title>arvimal.github.io &ndash; &#34;Zombie processes&#34;</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="https://arvimal.github.io">
+        <img src="https://arvimal.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+
+      <h1>
+        <a href="https://arvimal.github.io"></a>
+      </h1>
+
+
+
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/arvimal" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-rss" href="/blog/feeds/all.atom.xml" target="_blank">
+              <i class="fas fa-rss"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://arvimal.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://arvimal.github.io/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="zombie-processes">"Zombie processes"</h1>
+    <p>
+      Posted on January 01, 2008 in <a href="https://arvimal.github.io/category/misc.html">misc</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <ul>
+<li>"techno"
+tags:</li>
+<li>"runaway-process"</li>
+<li>"zombie"</li>
+</ul>
+<hr>
+<p><strong>Why can't I kill a process with the signal 9?</strong></p>
+<p>A process can be sleeping in kernel code. Usually that's because of faulty hardware or a badly written driver- or maybe a little of both. A device that isn't set to the interrupt the driver thinks it is can cause this, for example- the driver is waiting for something its never going to get. The process doesn't ignore your signal- it just never gets it.</p>
+<p>A zombie process doesn't react to signals because it's not really a process at all- it's just what's left over after it died. What's supposed to happen is that its parent process was to issue a "wait()" to collect the information about its exit. If the parent doesn't (programming error or just bad programming), you get a zombie. The zombie will go away if its parent dies- it will be "adopted" by init which will do the wait()- so if you see one hanging about, check its parent; if it is init, it will be gone soon, if not the only recourse is to kill the parent..which you may or may not want to do.</p>
+<p>Finally, a process that is being traced (by a debugger, for example) won't react to the KILL either then you do a ps, processes that have a status of Z are called "zombies". When people see a zombie process, the first thing they try to do is to kill the zombie, using kill or (horrors!) kill -9. This won't work, however: you can't kill a zombie, it's already dead.</p>
+<p>When a process has already terminated ("died") by receiving a signal to do so, it can stick around for a bit to finish up a few last tasks. These include closing open files and shutting down any allocated resources (memory, swap space, that sort of thing). These "housekeeping" tasks are supposed to happen very quickly. Once they're completed, the final thing that a process has to do before dying is to report its exit status to its parent. This is generally where things go wrong.</p>
+<p>Each process is assigned a unique Process ID (PID). Each process also has an associated parent process ID (PPID), which identifies the process that spawned it (or PPID of 1, meaning that the process has been inherited bythe init process, if the parent has already terminated). While the parent is still running, it can remember the PID's of all the children it has spawned. These PID's can not be re-used by other (new) processes until the parent knows that the child process is done.</p>
+<p>When a child terminates and has completed its housekeeping tasks, it sends a one-byte status code to its parent. If this status code never gets sent, the PID is kept alive (in "zombie" status) in order to reserve its PID ... the parent is waiting for the status code, and until it gets it, it doesn't want any new processes to try and reuse that PID number for themselves.</p>
+<p>To get rid of a zombie, you can try killing its parent, which will temporarily orphan the zombie. The init process will inherent the zombie, and this might allow the process to finish terminating since the init process is always in a wait() state (ready to receive exit status reports of children).</p>
+<p>Generally, though, zombies clean themselves up. Whatever the process was waiting for eventually occurs and the process can report its exit status to its parent and all is well.</p>
+<p>If a zombie is already owned by init, though, and it's still sticking around (like zombies are wont to do), then the process is almost certainly stuck in a device driver close routine, and will likely remain that way forever. You can reboot to clear out the zombies, but fixing the device driver is the only permanent solution. Killing the parent (init in this case) is highly unrecommended, since init is an extremely important process to keeping your system running..</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>
+  &copy; 2021  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://arvimal.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " arvimal.github.io ",
+  "url" : "https://arvimal.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
+
+
+</body>
+</html>

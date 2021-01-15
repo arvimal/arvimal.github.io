@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet/less" type="text/css" href="https://arvimal.github.io/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://arvimal.github.io/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://arvimal.github.io/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://arvimal.github.io/theme/pygments/monokai.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/solid.css">
+
+
+    <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Atom">
+
+
+
+  
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333333">
+
+<meta name="author" content="Vimal A.R" />
+<meta name="description" content="&#34;data-structures-and-algorithms&#34; &#34;programming&#34; &#34;python&#34; tags: &#34;algorithms&#34; &#34;python&#34; _S_election Sort is a sorting algorithm used to sort a data set either in incremental or decremental order. It goes through the entire elements one by one and hence it&#39;s not a very efficient algorithm to work on large data sets. How …" />
+<meta name="keywords" content="">
+
+
+<meta property="og:site_name" content="arvimal.github.io"/>
+<meta property="og:title" content="&#34;Selection Sort - Algorithm Study&#34;"/>
+<meta property="og:description" content="&#34;data-structures-and-algorithms&#34; &#34;programming&#34; &#34;python&#34; tags: &#34;algorithms&#34; &#34;python&#34; _S_election Sort is a sorting algorithm used to sort a data set either in incremental or decremental order. It goes through the entire elements one by one and hence it&#39;s not a very efficient algorithm to work on large data sets. How …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://arvimal.github.io/selection-sort-algorithm-study.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-02-11 00:00:00+01:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://arvimal.github.io/author/vimal-ar.html">
+<meta property="article:section" content="misc"/>
+<meta property="og:image" content="">
+
+  <title>arvimal.github.io &ndash; &#34;Selection Sort - Algorithm Study&#34;</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="https://arvimal.github.io">
+        <img src="https://arvimal.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+
+      <h1>
+        <a href="https://arvimal.github.io"></a>
+      </h1>
+
+
+
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/arvimal" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-rss" href="/blog/feeds/all.atom.xml" target="_blank">
+              <i class="fas fa-rss"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://arvimal.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://arvimal.github.io/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="selection-sort-algorithm-study">"Selection Sort - Algorithm Study"</h1>
+    <p>
+      Posted on February 11, 2017 in <a href="https://arvimal.github.io/category/misc.html">misc</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <ul>
+<li>"data-structures-and-algorithms"</li>
+<li>"programming"</li>
+<li>"python"
+tags:</li>
+<li>"algorithms"</li>
+<li>"python"</li>
+</ul>
+<hr>
+<p>_<strong>S</strong>_election Sort is a sorting algorithm used to sort a data set either in incremental or decremental order.</p>
+<p>It goes through the entire elements one by one and hence it's not a very efficient algorithm to work on large data sets.</p>
+<h2>How does Selection sort work?</h2>
+<p>Selection sort starts with an unsorted data set. With each iteration, it builds up a sub dataset with the sorted data.</p>
+<p>By the end of the sorting process, the sub dataset contains the entire elements in a sorted order.</p>
+<p>1. Iterate through the data set one element at a time. 2. Find the biggest element in the data set (Append it to another if needed) 3. Reduce the sample space by the biggest element just found. The new data set becomes `n - 1` compared to the previous iteration. 4. Start over the iteration again, on the reduced sample space. 5. Continue till we have a sorted data set, either incremental or decremental</p>
+<h2>How does the data sample change in each iteration?</h2>
+<p>Consider the data set [10, 4, 9, 3, 6, 19, 8]</p>
+<p>[10, 4, 9, 3, 6, 19, 8]      - Data set [10, 4, 9, 3, 6, 8] - [19] - After Iteration 1 [4, 9, 3, 6, 8] - [10, 19] - After Iteration 2 [4, 3, 6, 8] - [9, 10, 19] - After Iteration 3 [4, 3, 6] - [8, 9, 10, 19] - After Iteration 4 [4, 3] - [6, 8, 9, 10, 19] - After Iteration 5 [3] - [4, 6, 8, 9, 10, 19] - After Iteration 6 [3, 4, 6, 8, 9, 10, 19]      - After Iteration 7 - Sorted data set</p>
+<p>Let's check what the Selection Sort algorithm has to go through in each iteration.</p>
+<p>Dataset - [10, 4, 9, 3, 6, 19, 8] Iter 1 - [10, 4, 9, 3, 6, 8] Iter 2 - [4, 9, 3, 6, 8] Iter 3 - [4, 3, 6, 8] Iter 4 - [4, 3, 6] Iter 5 - [4, 3] Iter 6 - [3]</p>
+<p>Sorted Dataset - [3, 4, 6, 8, 9, 10, 19]</p>
+<h2>Performance / Time Complexity</h2>
+<p>Selection Sort has to go through all the elements in the data set, no matter what.</p>
+<p>Hence, the Worst case, Best case and Average Time Complexity would be O(n^2).</p>
+<p>Since `Selection Sort` takes in `n` elements while starting, and goes through the data set `n` times (each step reducing the data set size by 1 member), the iterations would be:</p>
+<p><em><strong>n + [ (n - 1) + (n - 2) + (n - 3) + (n - 4) + ... + 2 + 1 ]</strong></em></p>
+<p>We are more interested in the worse-case scenario. In a very large data set, an `n - 1`, `n - 2` etc.. won't make a difference.</p>
+<p>Hence we can re-write the above iterations as:</p>
+<p><em><strong>n + [n + n + n + n ..... n]</strong></em></p>
+<p>Or also as:</p>
+<p><em><strong>n * n = (n^2)</strong></em></p>
+<h2>Code</h2>
+<p>[code language="python"] def find_smallest(my_list): smallest = my_list[0] smallest_index = 0</p>
+<p>for i in range(1, len(my_list)): if my_list[i] &lt; smallest: smallest = my_list[i] smallest_index = i return smallest_index</p>
+<p>def selection_sort(my_list): new_list = [] for i in range(len(my_list)): smallest = find_smallest(my_list) new_list.append(my_list.pop(smallest)) return new_list [/code]</p>
+<h2>Observations:</h2>
+<p>1.Selection Sort is an algorithm to sort a data set, but it is not particularly fast. 2. It takes `n` iterations in each step to find the biggest element in that iteration. 3. The next iteration has to run on a data set of `n - 1` elements compared to the previous iteration. 4. For `n` elements in a sample space, Selection Sort takes `n x n` iterations to sort the data set.</p>
+<h2>References:</h2>
+<p>1. <a href="https://en.wikipedia.org/wiki/Selection_sort">https://en.wikipedia.org/wiki/Selection_sort</a> 2. <a href="http://bigocheatsheet.com">http://bigocheatsheet.com</a> 3. <a href="https://github.com/egonschiele/grokking_algorithms">https://github.com/egonschiele/grokking_algorithms</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>
+  &copy; 2021  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://arvimal.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " arvimal.github.io ",
+  "url" : "https://arvimal.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
+
+
+</body>
+</html>

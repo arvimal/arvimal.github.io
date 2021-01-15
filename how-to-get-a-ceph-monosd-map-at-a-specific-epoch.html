@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet/less" type="text/css" href="https://arvimal.github.io/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://arvimal.github.io/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://arvimal.github.io/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://arvimal.github.io/theme/pygments/monokai.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://arvimal.github.io/theme/font-awesome/css/solid.css">
+
+
+    <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Atom">
+
+
+
+  
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333333">
+
+<meta name="author" content="Vimal A.R" />
+<meta name="description" content="- &#34;ceph&#34; To get a MON map or an OSD map of a specific epoch, use: # ceph osd getmap # ceph mon getmap The map can be forwarded to a file as following: # ceph osd getmap -o /tmp/ceph_osd_getmap.bin This would be in a binary format, and hence will need to …" />
+<meta name="keywords" content="">
+
+
+<meta property="og:site_name" content="arvimal.github.io"/>
+<meta property="og:title" content="&#34;How to get a Ceph MON/OSD map at a specific epoch?&#34;"/>
+<meta property="og:description" content="- &#34;ceph&#34; To get a MON map or an OSD map of a specific epoch, use: # ceph osd getmap # ceph mon getmap The map can be forwarded to a file as following: # ceph osd getmap -o /tmp/ceph_osd_getmap.bin This would be in a binary format, and hence will need to …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://arvimal.github.io/how-to-get-a-ceph-monosd-map-at-a-specific-epoch.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-05-08 00:00:00+02:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://arvimal.github.io/author/vimal-ar.html">
+<meta property="article:section" content="misc"/>
+<meta property="og:image" content="">
+
+  <title>arvimal.github.io &ndash; &#34;How to get a Ceph MON/OSD map at a specific epoch?&#34;</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="https://arvimal.github.io">
+        <img src="https://arvimal.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+
+      <h1>
+        <a href="https://arvimal.github.io"></a>
+      </h1>
+
+
+
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/arvimal" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-rss" href="/blog/feeds/all.atom.xml" target="_blank">
+              <i class="fas fa-rss"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://arvimal.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://arvimal.github.io/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="how-to-get-a-ceph-monosd-map-at-a-specific-epoch">"How to get a Ceph MON/OSD map at a specific epoch?"</h1>
+    <p>
+      Posted on May 08, 2016 in <a href="https://arvimal.github.io/category/misc.html">misc</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <h2>- "ceph"</h2>
+<p>To get a MON map or an OSD map of a specific epoch, use:</p>
+<blockquote>
+<p># ceph osd getmap <epoch-value> # ceph mon getmap <epoch-value></p>
+</blockquote>
+<p>The map can be forwarded to a file as following:</p>
+<blockquote>
+<p># ceph osd getmap <epoch-value> -o /tmp/ceph_osd_getmap.bin</p>
+</blockquote>
+<p>This would be in a binary format, and hence will need to be dumped to a human-readable form.</p>
+<blockquote>
+<p># osdmaptool --print /tmp/ceph-osd-getmap.bin</p>
+</blockquote>
+<p>This will print the current OSD map, similar to the output of 'ceph osd dump'.</p>
+<p>Where this command shines is when you can fetch maps from previous epochs, and pull information on specific placement groups in those epochs.</p>
+<p>For example, I've had all the OSDs on one of my node down some time back (in a previous epoch). The ability to query a previous epoch gives the administrator the power to understand how exactly the cluster was at a specific time period.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>
+  &copy; 2021  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://arvimal.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " arvimal.github.io ",
+  "url" : "https://arvimal.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
+
+
+</body>
+</html>
