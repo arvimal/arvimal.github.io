@@ -10,7 +10,7 @@ PYGMENTS_STYLE = "monokai"
 
 ROBOTS = "index, follow"
 
-THEME = "/home/vimal/Dropbox/Study/arvimal.github.io/pelican-themes/bootlex"
+THEME = "pelican-themes/built-texts"
 DISPLAY_TAGS_ON_SIDEBAR_LIMIT = 10
 PATH = 'content'
 
