@@ -10,11 +10,11 @@ PYGMENTS_STYLE = "monokai"
 
 ROBOTS = "index, follow"
 
-THEME = "octopress"
+THEME = "/home/vimal/Dropbox/Study/arvimal.github.io/pelican-themes/bootlex"
 DISPLAY_TAGS_ON_SIDEBAR_LIMIT = 10
 PATH = 'content'
 
-TIMEZONE = 'Europe/Amsterdam'
+TIMEZONE = 'UTC'
 I18N_TEMPLATES_LANG = "en"
 DEFAULT_LANG = "en"
 OG_LOCALE = "en_US"
@@ -44,8 +44,9 @@ AUTHOR_FEED_RSS = None
 
 # Social widget
 SOCIAL = (
-    ("github", "https://github.com/arvimal"),
-    ("rss", "/blog/feeds/all.atom.xml"),
+    ("GitHub", "https://github.com/arvimal"),
+    ("LinkedIn", "https://www.linkedin.com/in/arvimal/"),
+    ("Blog", "https://arvimal.blog/"),
 )
 
 MENUITEMS = (
