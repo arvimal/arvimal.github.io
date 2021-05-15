@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "Monitor maps, how to edit them?"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/monitor-maps-how-to-edit-them.html" rel="bookmark"
+         title="Permalink to "Monitor maps, how to edit them?"">"Monitor maps, how to edit them?"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2015-09-01T00:00:00+02:00">
+      September 01, 2015
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"ceph"
+tags:</li>
+<li>"ceph"</li>
+<li>"monitors"</li>
+<li>"monmaptool"</li>
+</ul>
+<hr>
+<p>The <strong>MON map</strong> is used by the monitors in a Ceph cluster, where they keep track of various attributes relevant to the working of the cluster.</p>
+<p>Similar to the <a href="http://ceph.com/papers/weil-crush-sc06.pdf">CRUSH</a> map, a monitor map can be pulled out of the cluster, inspected, changed, and injected back to the monitors, manually. A frequent use-case is when the IP address of a monitor changes and the monitors cannot agree on a quorum.</p>
+<p>Monitors use the monitor map (<strong>monmap</strong>) to get the details of other monitors. So just changing the monitor address in '<strong>ceph.conf</strong>' and pushing the configuration to all the nodes won't help to propagate the changes.</p>
+<p>In most cases, starting the monitor with a wrong monitor map would make the monitors commit suicide, since they would find conflicting information about themself in the mon map due to the IP address change.</p>
+<p>There are two methods to fix this problem, the first being adding enough new monitors, let them form a quorum, and remove the faulty monitors. This doesn't need any explanation. The second and more crude way, is to edit the monitor map directly, set the new IP address, and upload the monmap back to the monitors.</p>
+<p>This article discusses the second method, ie.. how to edit the monmap, and re-inject it back. This can be done using the '<strong>monmap</strong>' tool.</p>
+<p>1. As the first step, login to one of the monitors, and get the monitor map:</p>
+<blockquote>
+<p><strong># ceph mon getmap -o /tmp/monitor_map.bin</strong></p>
+</blockquote>
+<p>2. Inspect what the monitor map contains:</p>
+<blockquote>
+<p><strong># monmaptool --print /tmp/monitor_map.bin</strong></p>
+</blockquote>
+<ul>
+<li>An example from my cluster :</li>
+</ul>
+<blockquote>
+<p><strong># monmaptool --print monmap</strong></p>
+<p>monmaptool: monmap file monmap epoch 1 fsid d978794d-5835-4ac3-8fe3-3855b18b9572 last_changed 0.000000 created 0.000000 0: 192.168.122.73:6789/0 mon.node2</p>
+</blockquote>
+<p>3. Remove the node which has the wrong IP address, referring it's hostname</p>
+<blockquote>
+<p><strong># monmaptool --rm node2 /tmp/monitor_map.bin</strong></p>
+</blockquote>
+<p>4. Inspect the monitor map to see if the monitor is indeed removed.</p>
+<blockquote>
+<p><strong># monmaptool --print /tmp/monitor_map.bin</strong></p>
+<p>monmaptool: monmap file monmap epoch 1 fsid d978794d-5835-4ac3-8fe3-3855b18b9572 last_changed 0.000000 created 0.000000</p>
+</blockquote>
+<p>5. Add a new monitor (or the existing monitor with it's new IP)</p>
+<blockquote>
+<p><strong># monmaptool --add node3  192.168.122.76:6789  /tmp/monitor_map.bin</strong></p>
+<p>monmaptool: monmap file monmap monmaptool: writing epoch 1 to monmap (1 monitors)</p>
+</blockquote>
+<p>6. Check the monitor map to confirm the changes</p>
+<blockquote>
+<p><strong># monmaptool --print monmap</strong></p>
+<p>monmaptool: monmap file monmap epoch 1 fsid d978794d-5835-4ac3-8fe3-3855b18b9572 last_changed 0.000000 created 0.000000 0: 192.168.122.76:6789/0 mon.node3</p>
+</blockquote>
+<p>7. Make sure the mon processes are not running on the monitor nodes</p>
+<blockquote>
+<p><strong># service ceph stop mon</strong></p>
+</blockquote>
+<p>8. Upload the changes</p>
+<blockquote>
+<p><strong># ceph-mon -i monitor_node --inject-monmap /tmp/mon_map.bin</strong></p>
+</blockquote>
+<p>9. Start the mon process on each monitor</p>
+<blockquote>
+<p><strong># service ceph start mon</strong></p>
+</blockquote>
+<p>10. Check if the cluster has taken in the changes.</p>
+<blockquote>
+<p><strong># ceph -s</strong></p>
+</blockquote>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

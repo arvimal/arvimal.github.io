@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "range() and enumerate()"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/range-and-enumerate.html" rel="bookmark"
+         title="Permalink to "range() and enumerate()"">"range() and enumerate()"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2015-10-12T00:00:00+02:00">
+      October 12, 2015
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"programming"</li>
+<li>"python"
+tags:</li>
+<li>"enumerate"</li>
+<li>"programming"</li>
+<li>"python"</li>
+<li>"range"</li>
+</ul>
+<hr>
+<p>The usual way to iterate over a range of numbers or a list in python, is to use <strong>range().</strong></p>
+<p><em><strong>Example 0:</strong></em></p>
+<p>[code language="python"] colors = ["yellow", "red", "blue", "white", "black"]</p>
+<p>for i in range(len(colors)): print(i, colors[i]) [/code]</p>
+<p>This should output:</p>
+<p>[code language="bash"] (0, 'yellow') (1, 'red') (2, 'blue') (3, 'white') (4, 'black') [/code]</p>
+<p><strong>print()</strong>, by default, returns a tuple. If we want to print it in a more presentable way, we’ll need to find the indice at which each value is, and print that as well. Re-write the code a bit, to achieve the desired output:</p>
+<p>[code language="python"] colors = ["yellow", "red", "blue", "white", "black"]</p>
+<p>for i in range(len(colors)): color = colors[i] print("%d: %s" % (i, color)) [/code]</p>
+<p>This should print:</p>
+<p>[code language="bash"] 0: yellow 1: red 2: blue 3: white 4: black [/code]</p>
+<p>We can see that the above output starts with ‘0’ since python starts counting from ‘0’. To change that to ‘1’, we’ll need to tweak the <strong>print()</strong> statement.</p>
+<p>[code language="python"] colors = ["yellow", "red", "blue", "white", "black"]</p>
+<p>for i in range(len(colors)): color = colors[i] print("%d: %s" % (i + 1, color)) [/code]</p>
+<p>This should print:</p>
+<p>[code language="bash"] 1: yellow 2: red 3: blue 4: white 5: black [/code]</p>
+<p>Even though the above code snippet isn’t that complex, a much better way exists to do this. This is where the builtin function <strong>enumerate()</strong> comes in.</p>
+<p><strong>enumerate()</strong> returns a tuple when passed an object which supports iteration, for example, a list. It also supports a second argument named '<strong>start</strong>' which default to 0, and can be changed depending on where to start the order. We’ll check what '<strong>start</strong>' is towards the end of this article.</p>
+<p>[code language="python"] colors = ["yellow", "red", "blue", "white", "black"] print(list(enumerate(colors))) [/code]</p>
+<p>This returns a list of a tuples.</p>
+<p>[code language="bash"] [(0, 'yellow'), (1, 'red'), (2, 'blue'), (3, 'white'), (4, 'black')] [/code]</p>
+<p>To get to what we desire, modify it as:</p>
+<p>[code language="python"] for i, color in enumerate(colors): print('%d: %s' % (i, color)) [/code]</p>
+<p>This outputs:</p>
+<p>[code language="bash"] 0: yellow 1: red 2: blue 3: white 4: black [/code]</p>
+<p>Remember that we talked about that <strong>enumerate()</strong> takes a second value named '<strong>start</strong>' which defaults to ‘0’? Let’s check how that’ll help here.</p>
+<p>The above output starts with ‘<strong>0</strong>’. '<strong>start'</strong> can help to change that.</p>
+<p>[code language="python"] for i, color in enumerate(colors, start=1): print('%d: %s' % (i, color)) [/code]</p>
+<p>This should change the output as:</p>
+<p>[code language="bash"] 1: yellow 2: red 3: blue 4: white 5: black [/code]</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

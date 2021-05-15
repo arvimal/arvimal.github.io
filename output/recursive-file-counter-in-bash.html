@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "Recursive file counter in bash"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/recursive-file-counter-in-bash.html" rel="bookmark"
+         title="Permalink to "Recursive file counter in bash"">"Recursive file counter in bash"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2008-02-15T00:00:00+01:00">
+      February 15, 2008
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"programming"
+tags:</li>
+<li>"file-counter"</li>
+</ul>
+<hr>
+<p>Most of the scripts presented in this journal have been created while learning bash and having nothing much to do...</p>
+<p>I think its usual to get crazy ideas and work trying to implement them, especially while learning any type of coding.  This  'File Counter' script came as such a  crazy idea. It was working at the time of its creation, but have not checked it recently.. should work..</p>
+<p>This script counts the entire number of files irrespective the folders under the main directory you specify for this script to work on. ie.. It recursively  counts the files under a directory tree.</p>
+<p>[code language="bash"] #!/bin/bash</p>
+<h1>Counts the number of files recursively inside a directory    # # echo ; clear echo -e "Please enter the directory location where you want the files to be counted...\n" ; echo</h1>
+<p>read dir ; echo ;  if [ ! -d $dir ] ; then echo -e "The location you specified doesn't exist.\n" ; exit 0; else cd $dir ; echo -e "Please wait for the files to be counted.....\n" ; echo ; fi</p>
+<p>X=`ls -l | wc -l` Y=`ls -l | grep ^d | awk '{print $9}'` B=`ls -l $Y | awk '{print $9}' | grep . | wc -l ` A=`expr $X + $B`</p>
+<p>echo -e "There are a total of $A files inside the directory $dir...\n"</p>
+<p>C=`ls -Rl | grep -v ./ | grep -v total | grep . | awk '{print $8}'`</p>
+<p>echo -e "Do you want to scan the directory for the file types?\n" echo -e "Y/N\n" ; read choice; if [ $choice = Y ] ; then cd $dir ; file $C | awk '{print $1,"=======&gt;&gt;", $2}' &gt; $HOME/Filetype.txt;echo -e "Output saved in file Filetype.txt.\n" elif [ $choice = N ] ; then echo -e "Thankyou $USER, Take care....\n" else echo ; echo -e "Invalid choice buddy...\n" ; echo -e "Exiting.....Bye..\n" ;  fi [/code]</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

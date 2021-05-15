@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "OSD information in a scriptable format"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/osd-information-in-a-scriptable-format.html" rel="bookmark"
+         title="Permalink to "OSD information in a scriptable format"">"OSD information in a scriptable format"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2015-09-18T00:00:00+02:00">
+      September 18, 2015
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"ceph"
+tags:</li>
+<li>"ceph"</li>
+<li>"osd"</li>
+</ul>
+<hr>
+<p>In case you are trying to get the OSD ID and the corresponding node IP address mappings in a script-able format, use the following command:</p>
+<blockquote>
+<p># ceph osd find <OSD-num></p>
+</blockquote>
+<p>This will print the OSD number, the IP address, the host name, and the default root in the CRUSH map, as a python dictionary.</p>
+<blockquote>
+<p># ceph osd find 2 { "osd": 2, "ip": "192.168.122.112:6800\/5311", "crush_location": { "host": "node4", "root": "default"}}</p>
+</blockquote>
+<p>The output is in json format, which has a key:value format. This can be parsed using awk/sed, or any programming languages that support json. All recent ones do.</p>
+<p>For a listing of all the OSDs and related information, get the number of OSDs in the cluster, and then use that number to probe the OSDs.</p>
+<blockquote>
+<p># for i in `seq 0 $(ceph osd stat | awk {'print $3'})`; do</p>
+<p>ceph osd find $i; echo; done</p>
+</blockquote>
+<p>This should output:</p>
+<blockquote>
+<p>{ "osd": 0, "ip": "192.168.122.244:6805\/2579", "crush_location": { "host": "node3", "root": "ssd"}} { "osd": 1, "ip": "192.168.122.244:6800\/955", "crush_location": { "host": "node3", "root": "ssd"}} { "osd": 2, "ip": "192.168.122.112:6800\/5311", "crush_location": { "host": "node4", "root": "default"}} { "osd": 3, "ip": "192.168.122.112:6805\/5626", "crush_location": { "host": "node4", "root": "default"}} { "osd": 4, "ip": "192.168.122.82:6800\/4194", "crush_location": { "host": "node5", "root": "default"}} { "osd": 5, "ip": "192.168.122.82:6805\/4521", "crush_location": { "host": "node5", "root": "default"}} { "osd": 6, "ip": "192.168.122.73:6801\/5614", "crush_location": { "host": "node2", "root": "ssd"}} { "osd": 7, "ip": "192.168.122.73:6800\/1719", "crush_location": { "host": "node2", "root": "ssd"}} { "osd": 8, "ip": "192.168.122.10:6805\/5842", "crush_location": { "host": "node6", "root": "default"}} { "osd": 9, "ip": "192.168.122.10:6800\/4356", "crush_location": { "host": "node6", "root": "default"}} { "osd": 10, "ip": "192.168.122.109:6800\/4517", "crush_location": { "host": "node7", "root": "default"}} { "osd": 11, "ip": "192.168.122.109:6805\/4821", "crush_location": { "host": "node7", "root": "default"}}</p>
+</blockquote>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

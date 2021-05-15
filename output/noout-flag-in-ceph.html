@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "'noout' flag in Ceph"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/noout-flag-in-ceph.html" rel="bookmark"
+         title="Permalink to "'noout' flag in Ceph"">"'noout' flag in Ceph"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2015-05-27T00:00:00+02:00">
+      May 27, 2015
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"ceph"
+tags:</li>
+<li>"ceph"</li>
+<li>"noout"</li>
+<li>"osd"</li>
+</ul>
+<hr>
+<p>You may have seen the '<strong>noout</strong>' flag set in the output of '<em><strong>ceph -s</strong></em>'. What does this actually mean?</p>
+<p>This is a global flag for the cluster, which means that if an OSD is out, the said OSD is not marked out of the cluster and data balancing shouldn't start to maintain the replica count. By default, the monitors mark the OSDs out of the acting set if it is not reachable for 300 seconds, ie.. 5 minutes.</p>
+<p>To know the default value set in your cluster, use:</p>
+<blockquote>
+<p># ceph daemon /var/run/ceph/ceph-mon.*.asok config show | grep mon_osd_report_timeout</p>
+</blockquote>
+<p>When an OSD is marked as out, another OSD takes its place and data replication starts to that OSD depending on the number of replica counts each pool has.</p>
+<p>If this flag (<strong>noout</strong>) is set, the monitor will not mark the OSDs out from the acting set. The PGs will be reporting an inconsistent state, but the OSD will still be in the acting set.</p>
+<p>This can be helpful when we want to remove an OSD from the server, but don't want the data objects to be replicated over to another OSD.</p>
+<p>To set the '<strong>noout</strong>' flag, use:</p>
+<blockquote>
+<p># ceph osd set noout</p>
+</blockquote>
+<p>Once everything you've planned has been done/finished, you can reset it back using:</p>
+<blockquote>
+<p># ceph osd unset noout</p>
+</blockquote>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

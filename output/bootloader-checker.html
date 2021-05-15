@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "Bootloader checker"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/bootloader-checker.html" rel="bookmark"
+         title="Permalink to "Bootloader checker"">"Bootloader checker"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2008-02-15T00:00:00+01:00">
+      February 15, 2008
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"programming"
+tags:</li>
+<li>"boot-loader-checker"</li>
+<li>"grub"</li>
+<li>"lilo"</li>
+</ul>
+<hr>
+<p>A bash code snippet that helps to check if the installed bootloader is Grub or LILO.</p>
+<p>[code language="bash"] #!/bin/bash</p>
+<p>A=`mount | awk '{print $1}' | grep -n /dev/ | grep "1:" | cut -f2 -d ":" | cut -c 1-8` B=`mount | awk '{print $1}' | grep -n /dev/ | grep "1:" | cut -f2 -d ":"`</p>
+<p>echo ; echo -e " / mounted on $B \n"; dd if=$A bs=512 count=1 2&gt;&amp;1 | grep GRUB &gt; /dev/null; if [ $? = 0 ] ; then echo -e "The installed bootloader is GRUB.\n" ; fi</p>
+<p>dd if=$A bs=512 count=1 2&gt;&amp;1 | grep LILO &gt; /dev/null; if [ $? = 0 ] ; then echo -e "The installed bootloader is LILO.\n" ; fi [/code]</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

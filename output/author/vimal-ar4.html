@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>arvimal.github.io - Articles by Vimal A.R</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content">
+<h2>Articles by Vimal A.R</h2>
+
+<ol id="post-list">
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="https://arvimal.github.io/osd-information-in-a-scriptable-format.html" rel="bookmark" title="Permalink to "OSD information in a scriptable format"">"OSD information in a scriptable format"</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2015-09-18T00:00:00+02:00"> September 18, 2015 </time>
+                    <address class="vcard author">By
+                        <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+                    </address>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <ul>
+<li>"ceph"
+tags:</li>
+<li>"ceph"</li>
+<li>"osd"</li>
+</ul>
+<hr>
+<p>In case you are trying to get the OSD ID and the corresponding node IP address mappings in a script-able format, use the following command:</p>
+<blockquote>
+<p># ceph osd find <OSD-num></p>
+</blockquote>
+<p>This will print the OSD number, the IP address, the host name, and the default root in the …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="https://arvimal.github.io/monitor-maps-how-to-edit-them.html" rel="bookmark" title="Permalink to "Monitor maps, how to edit them?"">"Monitor maps, how to edit them?"</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2015-09-01T00:00:00+02:00"> September 01, 2015 </time>
+                    <address class="vcard author">By
+                        <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+                    </address>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <ul>
+<li>"ceph"
+tags:</li>
+<li>"ceph"</li>
+<li>"monitors"</li>
+<li>"monmaptool"</li>
+</ul>
+<hr>
+<p>The <strong>MON map</strong> is used by the monitors in a Ceph cluster, where they keep track of various attributes relevant to the working of the cluster.</p>
+<p>Similar to the <a href="http://ceph.com/papers/weil-crush-sc06.pdf">CRUSH</a> map, a monitor map can be pulled out of the cluster, inspected, changed, and injected …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="https://arvimal.github.io/calculate-a-pg-id-from-the-hex-values-in-ceph-osd-debug-logs.html" rel="bookmark" title="Permalink to "Calculate a PG id from the hex values in Ceph OSD debug logs"">"Calculate a PG id from the hex values in Ceph OSD debug logs"</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2015-08-30T00:00:00+02:00"> August 30, 2015 </time>
+                    <address class="vcard author">By
+                        <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+                    </address>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <ul>
+<li>"ceph"</li>
+<li>"programming"</li>
+<li>"python"
+tags:</li>
+<li>"ceph"</li>
+<li>"pg"</li>
+<li>"python"</li>
+</ul>
+<hr>
+<p>Recently, I had an incident where the OSDs were crashing at the time of startup. Obviously, the next step was to enable debug logs for the OSDs and understand where they were crashing.</p>
+<p>Enabled OSD debug logs dynamically by injecting it with:</p>
+<blockquote>
+<p># ceph …</p></blockquote> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="https://arvimal.github.io/mapping-placement-groups-and-pools.html" rel="bookmark" title="Permalink to "Mapping Placement Groups and Pools"">"Mapping Placement Groups and Pools"</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2015-08-17T00:00:00+02:00"> August 17, 2015 </time>
+                    <address class="vcard author">By
+                        <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+                    </address>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <ul>
+<li>"ceph"
+tags:</li>
+<li>"ceph"</li>
+<li>"placement-groups"</li>
+<li>"pool"</li>
+</ul>
+<hr>
+<p>Understanding the mapping of Pools and Placement Groups can be very useful while troubleshooting Ceph problems.</p>
+<p>A direct method is to dump information on the PGs via :</p>
+<blockquote>
+<p># ceph pg dump</p>
+</blockquote>
+<p>This command should output something like the following:</p>
+<blockquote>
+<p>pg_stat    objects    mip    degr    unf    bytes    log …</p></blockquote> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="https://arvimal.github.io/how-to-identify-the-journal-disk-for-a-ceph-osd.html" rel="bookmark" title="Permalink to "How to identify the journal disk for a Ceph OSD?"">"How to identify the journal disk for a Ceph OSD?"</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2015-08-05T00:00:00+02:00"> August 05, 2015 </time>
+                    <address class="vcard author">By
+                        <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+                    </address>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>In many cases, one would like to understand the journal disk a particular OSD is using. There are two methods to understand this:</p>
+<p>a) This is the most direct method, and should give you details on the OSD disks and the corresponding journal disks.</p>
+<p>[sourcecode language="bash" gutter="false"]</p>
+<p># ceph-disk …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="https://arvimal.github.io/resetting-calamari-password.html" rel="bookmark" title="Permalink to "Resetting Calamari password"">"Resetting Calamari password"</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2015-07-13T00:00:00+02:00"> July 13, 2015 </time>
+                    <address class="vcard author">By
+                        <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+                    </address>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <ul>
+<li>"ceph"
+tags:</li>
+<li>"calamari"</li>
+<li>"ceph"</li>
+</ul>
+<hr>
+<p>'<strong>Calamari</strong>' is the monitoring interface for a Ceph cluster.</p>
+<p>The Calamari interface password can be reset/changed using the 'calamari-ctl' command.</p>
+<blockquote>
+<p># calamari-ctl change_password --password {password} {user-name}</p>
+</blockquote>
+<p><strong>calamari-ctl</strong> can also be used to add a user, as well as disable, enable, and rename the user account. A …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="https://arvimal.github.io/compacting-a-ceph-monitor-store.html" rel="bookmark" title="Permalink to "Compacting a Ceph monitor store"">"Compacting a Ceph monitor store"</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2015-07-09T00:00:00+02:00"> July 09, 2015 </time>
+                    <address class="vcard author">By
+                        <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+                    </address>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <ul>
+<li>"ceph"
+tags:</li>
+<li>"ceph"</li>
+<li>"leveldb"</li>
+<li>"monitors"</li>
+</ul>
+<hr>
+<p>The Ceph monitor store growing to a big size is a common occurrence in a busy Ceph cluster.</p>
+<p>If a '<em><strong>ceph -s</strong></em>' takes considerable time to return information, one of the possibility is the monitor database being large.</p>
+<p>Other reasons included network lags between the …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="https://arvimal.github.io/what-is-data-scrubbing.html" rel="bookmark" title="Permalink to "What is data scrubbing?"">"What is data scrubbing?"</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2015-07-08T00:00:00+02:00"> July 08, 2015 </time>
+                    <address class="vcard author">By
+                        <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+                    </address>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <ul>
+<li>"ceph"
+tags:</li>
+<li>"ceph"</li>
+<li>"osd"</li>
+<li>"scrubbing"</li>
+</ul>
+<hr>
+<p>Data Scrubbing is an error checking and correction method or routine check to ensure that the data on file systems are in pristine condition, and has no errors. Data integrity is of primary concern in today's conditions, given the humongous amounts of data being read …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="https://arvimal.github.io/another-method-to-dynamically-change-a-ceph-configuration.html" rel="bookmark" title="Permalink to "Another method to dynamically change a Ceph configuration"">"Another method to dynamically change a Ceph configuration"</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2015-06-03T00:00:00+02:00"> June 03, 2015 </time>
+                    <address class="vcard author">By
+                        <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+                    </address>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <ul>
+<li>"ceph"
+tags:</li>
+<li>"ceph"</li>
+</ul>
+<hr>
+<p>In a previous post, we saw how to dynamically change a tunable on a running Ceph cluster dynamically. Unfortunately, such a change is not permanent, and will revert back to the previous setting once ceph is restarted.</p>
+<p>Rather than using the command '<em><strong>ceph tell</strong></em>', I recently came …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="https://arvimal.github.io/how-to-dynamically-change-a-configuration-value-in-a-ceph-cluster.html" rel="bookmark" title="Permalink to "How to dynamically change a configuration value in a Ceph cluster?"">"How to dynamically change a configuration value in a Ceph cluster?"</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2015-05-27T00:00:00+02:00"> May 27, 2015 </time>
+                    <address class="vcard author">By
+                        <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+                    </address>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <ul>
+<li>"ceph"
+tags:</li>
+<li>"ceph"</li>
+<li>"ceph-tell"</li>
+</ul>
+<hr>
+<p>It is possible to change a particular configuration setting in a Ceph cluster dynamically, and I think it is a very neat and useful feature.</p>
+<p>Imagine the case where you want to change the replica count of a particular PG from 3 to 4. How would …</p> </div><!-- /.entry-content -->
+        </article></li>
+</ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="https://arvimal.github.io/author/vimal-ar.html">&#8647;</a>
+        <a href="https://arvimal.github.io/author/vimal-ar3.html">&laquo;</a>
+    Page 4 / 7
+        <a href="https://arvimal.github.io/author/vimal-ar5.html">&raquo;</a>
+        <a href="https://arvimal.github.io/author/vimal-ar7.html">&#8649;</a>
+</p>
+</section><!-- /#content -->
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

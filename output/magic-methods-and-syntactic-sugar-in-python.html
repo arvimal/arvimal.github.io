@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "Magic methods and Syntactic sugar in Python"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/magic-methods-and-syntactic-sugar-in-python.html" rel="bookmark"
+         title="Permalink to "Magic methods and Syntactic sugar in Python"">"Magic methods and Syntactic sugar in Python"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2016-06-02T00:00:00+02:00">
+      June 02, 2016
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"programming"</li>
+<li>"python"
+tags:</li>
+<li>"programming"</li>
+<li>"python"</li>
+</ul>
+<hr>
+<h3>Magic methods</h3>
+<p>_<strong>M</strong>_agic methods are special methods which can be defined (or already designed and available) to act on objects.</p>
+<p>Magic methods start and end with underscores <code>"__"</code>, and are not implicitly called by the user even though they can be. Most magic methods are used as syntactic sugar by binding it to more clear/easy_to_understand keywords.</p>
+<p>Python is mostly objects and method calls done on objects. Many available functions in Python are actually tied to magic methods_<strong>.</strong>_ Let's checkout a few examples.</p>
+<p><em><strong>Example 0:</strong></em></p>
+<p>[code language="python"] In [1]: my_var = "Hello!"</p>
+<p>In [2]: print(my_var) Hello!</p>
+<p>In [3]: my_var.__repr__() Out[3]: "'Hello!'" [/code] As we can see, the <code>__repr__()</code> magic method can be called to print the object, ie.. it is bound to the <code>print()</code> keyword.</p>
+<p>This is true for many other builtin keywords/operators as well.</p>
+<p><em><strong>Example 1:</strong></em></p>
+<p>[code language="python"] In [22]: my_var = "Hello, " In [23]: my_var1 = "How are you?"</p>
+<p>In [24]: my_var + my_var1 Out[24]: 'Hello, How are you?'</p>
+<p>In [25]: my_var.__add__(my_var1) Out[25]: 'Hello, How are you?' [/code] Here, Python interprets the <code>+</code> sign as a mapping to the magic method <code>__add__()</code>, and calls it on the L-value (Left hand object value) <code>my_var</code>, with the R-value (Right hand object value) as the argument.</p>
+<p>When a builtin function is called on an object, in many cases it is mapped to the magic method.</p>
+<p><em><strong>Example 2:</strong></em></p>
+<p>[code language="python"] In [69]: my_list_1 = ['a', 'b', 'c', 'd']</p>
+<p>In [70]: 'a' in my_list_1 Out[70]: True</p>
+<p>In [71]: my_list_1.__contains__("a") Out[71]: True [/code]</p>
+<p>The <code>in</code> builtin is mapped to the <code>__contains__()</code>method.</p>
+<p>The methods available for an object should mostly be dependent on the type of the object.</p>
+<p><em><strong>Example 3:</strong></em></p>
+<p>[code language="python" wraplines="true"] In [59]: my_num = 1</p>
+<p>In [60]: type(my_num) Out[60]: int</p>
+<p>In [61]: my_num.__doc__ Out[61]: Out[61]: "int(x=0) -&gt; int or long\nint(x, base=10) -&gt; int or long\n\nConvert a number or string to an integer, or return 0 if no arguments\nare given. ....&gt;&gt;&gt;</p>
+<p>In [62]: help(my_num) class int(object) | int(x=0) -&gt; int or long | int(x, base=10) -&gt; int or long | | Convert a number or string to an integer, or return 0 if no arguments | are given. If x is floating point, the conversion truncates towards zero. | If x is outside the integer range, the function returns a long instead.</p>
+<p>[/code]</p>
+<p>From the tests above, we can understand that the <code>help()</code> function is actually mapped to the <code>object.__doc__</code> magic method. It's the same doc string that __doc__ and help() uses.</p>
+<p><strong><em>NOTE: Due to the syntax conversion (<code>+</code> to <code>__add__(),and other conversions</code>), operators like <code>+</code> , <code>in</code>, etc.. are also called Syntactic sugar.</em></strong></p>
+<h3>What is Syntactic sugar?</h3>
+<p>_<strong>A</strong>_ccording to <a href="https://en.wikipedia.org/wiki/Syntactic_sugar">Wikipedia</a>, Syntact sugar is:</p>
+<blockquote>
+<p>In <a href="https://en.wikipedia.org/wiki/Computer_science" title="Computer science">computer science</a>, <strong>syntactic sugar</strong> is <a href="https://en.wikipedia.org/wiki/Syntax_%28programming_languages%29" title="Syntax (programming languages)">syntax</a> within a <a href="https://en.wikipedia.org/wiki/Programming_language" title="Programming language">programming language</a> that is designed to make things easier to read or to express. It makes the language "sweeter" for human use: things can be expressed more clearly, more concisely, or in an alternative style that some may prefer.</p>
+</blockquote>
+<p>Hence, <em><strong>magic methods</strong></em> can be said to be <em><strong>Syntactic sugar.</strong></em> But it's not just magic methods that are mapped to syntactic sugar methods, but higher order features such as <a href="https://arvimal.wordpress.com/2016/05/30/decorators-object-oriented-programming/">Decorators</a> are as well.</p>
+<p><em><strong>Example 4:</strong></em></p>
+<p>[code language="python"] def my_decorator(my_function): def inner_decorator(): print("This happened before!") my_function() print("This happens after ") print("This happened at the end!") return inner_decorator</p>
+<p>def my_decorated(): print("This happened!")</p>
+<p>var = my_decorator(my_decorated)</p>
+<p>if __name__ == '__main__': var() [/code] The example above borrows from one of the examples in the post on <a href="https://arvimal.wordpress.com/2016/05/30/decorators-object-oriented-programming/">Decorators</a>.</p>
+<p>Here, <code>my_decorator()</code> is a decorator and is used to decorate <code>my_decorated()</code>. But rather than calling the decorator function <code>my_decorator()</code> with the argument <code>my_decorated()</code>, the above code can be syntactically sugar-coated as below:</p>
+<p>[code language="python"] def my_decorator(my_function): def inner_decorator(): print("This happened before!") my_function() print("This happens after ") print("This happened at the end!") return inner_decorator</p>
+<p>@my_decorator def my_decorated(): print("This happened!")</p>
+<p>if __name__ == '__main__': my_decorated() [/code] Observing both code snippets, the decorator is syntactically sugar coated and called as:</p>
+<p><strong>@my_decorator</strong></p>
+<p>instead of instantiating the decorator with the function to be decorated as an argument, ie..</p>
+<p><strong>var = my_decorator(my_decorated)</strong></p>
+<h3>A few syntax resolution methods:</h3>
+<ol>
+<li>'name' in my_list       -&gt;      my_list.__contains__('name')</li>
+<li>len(my_list)                  -&gt;      my_list.__len__()</li>
+<li>print(my_list)              -&gt;      my_list.__repr__()</li>
+<li>my_list == "value"     -&gt;      my_list.__eq__("value")</li>
+<li>my_list[5]                      -&gt;      my_list.__getitem__(5)</li>
+<li>my_list[5:10]                 -&gt;     my_list.__getslice__(5, 10)</li>
+</ol>
+<p><strong>NOTE: This article is written from the notes created while learning magic methods. The following articles (along with several others) were referred as part of the process.</strong></p>
+<ol>
+<li><strong><a href="http://www.rafekettler.com/magicmethods.pdf">A Guide to Python's Magic Methods</a>, by Rafe Kettler</strong></li>
+<li><strong><a href="https://docs.python.org/3/reference/datamodel.html#special-method-names">Special method names</a>, The Official Python 3 documentation</strong></li>
+</ol>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "FSCache and the on-disk structure of the cached data"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/fscache-and-the-on-disk-structure-of-the-cached-data.html" rel="bookmark"
+         title="Permalink to "FSCache and the on-disk structure of the cached data"">"FSCache and the on-disk structure of the cached data"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2014-11-12T00:00:00+01:00">
+      November 12, 2014
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"techno"
+tags:</li>
+<li>"cachefilesd"</li>
+<li>"cachefs"</li>
+<li>"fscache"</li>
+</ul>
+<hr>
+<p>The 'cachefilesd' kernel module will create two directories at the location specified in /etc/cachefilesd.conf. By default it's /var/cache/fscache/.</p>
+<blockquote>
+<p><strong>[root@montypython ~]# lsmod |grep -i cache</strong> cachefiles             40871  1 fscache                62354  3 nfs,cachefiles,nfsv4</p>
+</blockquote>
+<p>Those are <em>/var/cache/fscache/cache</em> and <em>/var/cache/fscache/graveyard</em>.</p>
+<p>The cache structure is maintained inside '/var/cache/fscache/cache/', while anything that is retired or culled is moved to 'graveyard'. The 'cachefilesd' daemon monitors 'graveyard' using 'dnotify' and will delete anything that is in there.</p>
+<p>We'll try an example. Consider an NFS share mounted with fscache support. The share contains the following files, with some random text.</p>
+<blockquote>
+<p><strong># ls /vol1</strong> files1.txt  files2.txt  files3.txt  files4.txt</p>
+</blockquote>
+<p>a) Configure 'cachefiles' by editing '/etc/cachefilesd.conf', and start the 'cachefilesd' daemon.</p>
+<blockquote>
+<p><strong># systemctl start cachefilesd</strong></p>
+</blockquote>
+<p>b) Mount the NFS share on the client with the 'fsc' mount option, to enable 'fscache' support.</p>
+<blockquote>
+<p><strong># sudo mount localhost:/vol1 /vol1-backup/ -o fsc</strong></p>
+</blockquote>
+<p>d) Access the data from the mount point, and fscache will create the backed caching index at the location specified in <em>/etc/cachefilesd.conf</em>. By default, its <em>/var/cache/fscache/</em></p>
+<p>e) Once the files are accessed on the client side, fscache builds an index as following:</p>
+<p>NOTE: The index structure is <strong>dependent</strong> on the netfs (NFS in our case). The netfs driver can structure the cache index as it seems fit.</p>
+<p>Explanation of the caching structure:</p>
+<blockquote>
+<p># tree /var/cache/fscache/ /var/cache/fscache/cache/ └── @4a └── I03nfs ├── @22 │   └── Jo00000008400000000000000000000000400 │      └── @59 │           └── J110000000000000000w080000000000000000000000 │               ├── @53 │               │   └── EE0g00sgwB-90600000000ww000000000000000 │               ├── @5e │               │   └── EE0g00sgwB-90600000000ww000000000000000 │               ├── @61 │               │   └── EE0g00sgwB-90600000000ww000000000000000 │               ├── @62 │               │   └── EE0g00sgwB-90600000000ww000000000000000 │               ├── @70 │               │   └── EE0g00sgwB-90600000000ww000000000000000 │               ├── @7c │               │   └── EE0g00sgwB-90600000000ww000000000000000 │               └── @e8 │                   └── EE0g00sgwB-90600000000ww0000000000000000 └── @42 └── Jc000000000000EggDj00 └── @0a</p>
+</blockquote>
+<p>a) The '<strong>cache</strong>' directory under <em>/var/cache/fscache/</em> is a special index and can be seen as the root of the entire cache index structure.</p>
+<p>b) Data objects (actual cached files) are represented as files if they have no children, or folders if they have. If represented as a directory, data objects will have a file inside named 'data' which holds the data.</p>
+<p>c) The '<strong>cachefiles</strong>' kernel module represents :</p>
+<p>i)   '<strong>index</strong>' objects as '<strong>directories</strong>', starting with either '<strong>I</strong>' or '<strong>J</strong>'.</p>
+<p>ii)  Data objects are represented with filenames, beginning with '<strong>D</strong>' or '<strong>E</strong>'.</p>
+<p>iii) Special objects are similar to data objects, and start with '<strong>S</strong>' or '<strong>T</strong>'.</p>
+<p>In general, any object would be represented as a folder, if that object has children.</p>
+<p>g) In the directory hierarchy, immediately between the parent object and its child object, are directories named with *<strong>hash values</strong>* of the immediate child object keys, starting with an '<strong>@</strong>'.</p>
+<p>The child objects are placed inside this directory.These child objects would be folders, if it has child objects, or files if its the cached data itself. This can go on till the end of the path and reaches the file where the cached data is.</p>
+<p>Representation of the object indexes (For NFS, in this case)</p>
+<blockquote>
+<p>INDEX     INDEX      INDEX                             DATA FILES ========= ========== ================================= ================ cache/@4a/I03nfs/@30/Ji000000000000000--fHg8hi8400 cache/@4a/I03nfs/@30/Ji000000000000000--fHg8hi8400/@75/Es0g000w...DB1ry cache/@4a/I03nfs/@30/Ji000000000000000--fHg8hi8400/@75/Es0g000w...N22ry cache/@4a/I03nfs/@30/Ji000000000000000--fHg8hi8400/@75/Es0g000w...FP1ry</p>
+</blockquote>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

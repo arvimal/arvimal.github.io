@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "CHKROOTKIT install script (with functions)"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/chkrootkit-install-script-with-functions.html" rel="bookmark"
+         title="Permalink to "CHKROOTKIT install script (with functions)"">"CHKROOTKIT install script (with functions)"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2008-02-14T00:00:00+01:00">
+      February 14, 2008
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"programming"
+tags:</li>
+<li>"functions"</li>
+</ul>
+<hr>
+<p>This is an extension or a rebuild of the previous chkrootkit install script, just used functions so its somewhat simplified.... ( Or is it ..? :) )</p>
+<p>[code language="bash"]</p>
+<h1>!/bin/bash</h1>
+<p>DOWNLOAD_LOCATION='/root/Downloads' CHKROOTKIT_WGET='ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit.tar.gz' RESULT_FILE='/root/Server-Test.txt'</p>
+<p>clear;echo chkrootkit-install () {</p>
+<p>while true; do echo -e "@@@@@@@@@@@@@@@@@@ CHK-ROOTKIT INSTALL/CHECK SCRIPT @@@@@@@@@@@@@@@@@@@@\n" echo -e "Do you want to download and compile CHK-ROOTKIT [yes/no] ? : \c" | tee -a $RESULT_FILE; read answer; echo $answer &gt;&gt; $RESULT_FILE;</p>
+<p>case $answer in yes|YES) echo if [ ! -e $DOWNLOAD_LOCATION ]; then echo -e "$DOWNLOAD_LOCATION does not exist, creating.......\n";sleep 1s mkdir -p $DOWNLOAD_LOCATION; fi rm -rf $DOWNLOAD_LOCATION/chkrootkit* &gt; /dev/null; echo -e "Downloading CHK-ROOTKIT....\n" | tee -a $RESULT_FILE;sleep 1s cd $DOWNLOAD_LOCATION &amp;&amp; wget --progress=dot $CHKROOTKIT_WGET; if [ $? -eq 0 ] ; then echo -e "Download finished..\n"; else echo -e "Sorry...Download Failed..!!!\n";exit;fi;echo echo -e "Unpacking and compiling CHK-ROOTKIT..........\n";sleep 2s cd $DOWNLOAD_LOCATION &amp;&amp; tar -xvf chkrootkit*; mv $DOWNLOAD_LOCATION/chkrootkit*gz $DOWNLOAD_LOCATION/1-chkrootkit.tar.gz;sleep 2s cd $DOWNLOAD_LOCATION/chkrootki* &amp;&amp; make sense &gt; /dev/null; if [ $? -eq 0 ] ; then echo -e "CHK-ROOTKIT compiled successfully..\n"| tee -a $RESULT_FILE; break else echo -e "CHK-ROOTKIT compilation failed, Quiting....\n" | tee -a $RESULT_FILE; exit fi ;; no|NO) echo echo -e "Ok..As you wish....Aborting.\n"|tee -a $RESULT_FILE; exit ;; *) echo echo -e "Please enter either 'yes' OR 'no'..: \c" ;; esac done }</p>
+<p>chkrootkit-run () { if [ -d $DOWNLOAD_LOCATION/chkrootki* ]; then while true; do echo -e "Do you want to run CHK-ROOTKIT now [yes/no] ? : \c" | tee -a $RESULT_FILE; read reply echo $reply &gt;&gt; $RESULT_FILE;</p>
+<p>case $reply in yes|YES) echo echo -e "Starting CHK-ROOTKIT....\n" | tee -a $RESULT_FILE;sleep 2s;echo echo -e "----------------CHK-ROOTKIT SCAN RESULT-----------------\n" $DOWNLOAD_LOCATION/chkrootk*/chkrootkit | tee -a $RESULT_FILE;sleep 1s echo;echo -e "CHK-ROOTKIT check finished......\n";echo exit ;; no|NO) echo echo -e "DON'T FORGET TO RUN CHK-ROOTKIT PERIODICALLY.\n" exit ;; *) echo echo -e "Please enter either 'yes' OR 'no'..: \c" ;; esac done</p>
+<p>else echo -e "Chkrootkit not found in $DOWNLOAD_LOCATION, exiting..\n" fi</p>
+<p>}</p>
+<p>chkrootkit-install &amp;&amp; chkrootkit-run; echo -e "The result is saved in $RESULT_FILE for reference.\n" [/code]</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

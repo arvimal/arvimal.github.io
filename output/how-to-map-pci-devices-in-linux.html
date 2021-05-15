@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "How to map PCI devices in Linux ?"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/how-to-map-pci-devices-in-linux.html" rel="bookmark"
+         title="Permalink to "How to map PCI devices in Linux ?"">"How to map PCI devices in Linux ?"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2008-07-18T00:00:00+02:00">
+      July 18, 2008
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <h2>- "techno"</h2>
+<p>From the output of the command 'lspci -n' (The number after the colon, here '1679' from the below snip)</p>
+<p>0a:04.0 0200: 14e4:1679 (rev a3) Subsystem: 103c:703c Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- Status: Cap+ 66MHz+ UDF- FastB2B+ ParErr- DEVSEL=medium Latency: 64 (16000ns min), Cache Line Size: 64 bytes Interrupt: pin A routed to IRQ 138 Region 0: Memory at fdef0000 (64-bit, non-prefetchable) [size=64K] Region 2: Memory at fdee0000 (64-bit, non-prefetchable) [size=64K]</p>
+<p>IMPORTANT: -------------------</p>
+<p>In the above line "14e4:1679", '14e4' is the UID of the manufacturer and '1679' is the card model or hardware ID.</p>
+<p>The actual way to proceed is to open the pci.ids file ('/usr/share/hwdata/pci.ids' and '/lib/modules/`uname -r`/modules.pcimap') and check for the manufacturer UID, like '14e4' which is the 'Broadcom Corporation'. The file /lib/modules/`uname -r`/modules.pcimap would be more reliable since it is from the modules of the loaded kernel.</p>
+<p>Under that, check the card model, like '1679' which is 'NetXtreme BCM5715S Gigabit Ethernet'.</p>
+<p>Under that you can also have subdivisions, so in order to pin-point a particular card you will have to use the 'Subsystem' value from 'lspci'.</p>
+<p>In this example, 'Subsystem' is 103c:703c, which turns out to be 'NC326i PCIe Dual Port Gigabit Server Adapter'</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

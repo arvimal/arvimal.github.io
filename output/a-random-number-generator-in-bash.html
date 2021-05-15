@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "A random number generator in Bash"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/a-random-number-generator-in-bash.html" rel="bookmark"
+         title="Permalink to "A random number generator in Bash"">"A random number generator in Bash"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2008-02-13T00:00:00+01:00">
+      February 13, 2008
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"programming"
+tags:</li>
+<li>"bash"</li>
+<li>"random-number-generator"</li>
+</ul>
+<hr>
+<p>The bash environment variable 'RANDOM' is a pseudo-random number generator built in bash, and it can generate random numbers in the range of 0 - 32767.</p>
+<p>Using the command `echo $RANDOM`, we can generate a random number. Building a random number generator which emits a sequence of random numbers is pretty easy.</p>
+<p>[code language="bash"] #!/bin/bash for i in `seq 1 10`: do echo $RANDOM; sleep 1s; done [/code]</p>
+<p>The 'seq' or the 'sequential' can be used to generate a sequence of numbers.</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

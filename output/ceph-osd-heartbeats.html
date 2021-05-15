@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "Ceph OSD heartbeats"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/ceph-osd-heartbeats.html" rel="bookmark"
+         title="Permalink to "Ceph OSD heartbeats"">"Ceph OSD heartbeats"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2016-05-09T00:00:00+02:00">
+      May 09, 2016
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"ceph"
+tags:</li>
+<li>"ceph"</li>
+<li>"monitors"</li>
+</ul>
+<hr>
+<p>Ceph OSD daemons need to ensure that the neighbouring OSDs are functioning properly so that the cluster remains in a healthy state.</p>
+<p>For this, each Ceph OSD process (ceph-osd) sends a heartbeat signal to the neighbouring OSDs. By default, the heartbeat signal is sent every 6 seconds [1], which is configurable of course.</p>
+<p>If the heartbeat check from one OSD doesn't hear from the other within the set value for `osd_heartbeat_grace` [2], which is set to 20 seconds by default, the OSD that sends the heartbeat check reports the other OSD (the one that didn't respond within 20 seconds) as down, to the MONs. Once an OSD reports three times that the non-responding OSD is indeed `down`, the MON acknowledges it and mark the OSD as down.</p>
+<p>The Monitor will update the Cluster map and send it over to the participating nodes in the cluster.</p>
+<p><img alt="OSD-heartbeat-1" src="images/osd-heartbeat-1.png"></p>
+<p>When an OSD can't reach another OSD for a heartbeat, it reports the following in the OSD logs:</p>
+<blockquote>
+<p>osd.510 1497 heartbeat_check: no reply from osd.11 since back 2016-04-28 20:49:42.088802</p>
+</blockquote>
+<p>In Ceph Jewel, the MONs require a minimum of two ceph OSDs report a specific OSD as down from two nodes which are in different CRUSH subtrees, in order to actually mark the OSD as down. These are controlled by the following tunables :</p>
+<p>From 'common/config_opts.h':</p>
+<p><strong>[1] OPTION(mon_osd_min_down_reporters, OPT_INT, 2) // number of OSDs from different subtrees who need to report a down OSD for it to count</strong></p>
+<p><strong>[2] OPTION(mon_osd_reporter_subtree_level , OPT_STR, "host") // in which level of parent bucket the reporters are counted</strong></p>
+<p>Image Courtsey : <a href="https://access.redhat.com/documentation/en/red-hat-ceph-storage/version-1.3/red-hat-ceph-storage-13-ceph-configuration-guide/#osd-check-heartbeats">Red Hat Ceph Storage 1.3.2 Configuration guide</a></p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

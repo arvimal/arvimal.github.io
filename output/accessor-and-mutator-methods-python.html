@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "Accessor and Mutator methods - Python"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/accessor-and-mutator-methods-python.html" rel="bookmark"
+         title="Permalink to "Accessor and Mutator methods - Python"">"Accessor and Mutator methods - Python"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2016-12-18T00:00:00+01:00">
+      December 18, 2016
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"programming"</li>
+<li>"python"
+tags:</li>
+<li>"object-oriented-programming"</li>
+<li>"python"</li>
+</ul>
+<hr>
+<p><em><strong>A</strong></em> method defined within a class can either be an Accessor or a Mutator method.</p>
+<p>An <code>Accessor</code> method returns the information about the object, but do not change the state or the object.</p>
+<p>A <code>Mutator</code> method, also called an <code>Update</code> method, can change the state of the object.</p>
+<p>Consider the following example:</p>
+<p>[code language="python"] In [10]: a = [1,2,3,4,5]</p>
+<p>In [11]: a.count(1) Out[11]: 1</p>
+<p>In [12]: a.index(2) Out[12]: 1</p>
+<p>In [13]: a Out[13]: [1, 2, 3, 4, 5]</p>
+<p>In [14]: a.append(6)</p>
+<p>In [15]: a Out[15]: [1, 2, 3, 4, 5, 6] [/code]</p>
+<p>The methods <code>a.count()</code> and <code>a.index()</code> are both <code>Accessor</code> methods since it doesn't alter the object <code>a</code> in any sense, but only pulls the relevant information.</p>
+<p>But <code>a.append()</code> is a mutator method, since it effectively changes the object (list <code>a</code>) to a new one.</p>
+<p>In short, knowing the behavior of a method is helpful to understand how it alters the objects it acts upon.</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

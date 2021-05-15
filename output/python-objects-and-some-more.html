@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "Python, Objects, and some more.."</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/python-objects-and-some-more.html" rel="bookmark"
+         title="Permalink to "Python, Objects, and some more.."">"Python, Objects, and some more.."</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2016-10-20T00:00:00+02:00">
+      October 20, 2016
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"programming"</li>
+<li>"python"
+tags:</li>
+<li>"namespace"</li>
+<li>"objects"</li>
+<li>"programming"</li>
+<li>"python-namespace"</li>
+<li>"python-objects"</li>
+</ul>
+<hr>
+<p>_<strong>E</strong>_verything in Python is an object, what does that mean? This post tries to discuss some very basic concepts.</p>
+<p>What does the following assignment do?</p>
+<p>[code language="python"]</p>
+<p>a = 1 [/code] Of course, anyone dabbled in code knows this. The statement above creates a container `a` and stores the value `1` in it.</p>
+<p>But it seem that's not exactly what's happening, at least from Python's view-point.</p>
+<p>When <code>a = 1</code> is entered or executed by the python interpreter, the following happens in the backend, seemingly unknown to the user.</p>
+<ul>
+<li>The Python interpreter evaluates the literal <code>1</code> and tries to understand what data type can be assigned for it.<ul>
+<li>There are several in-built data types such as <code>str</code>, <code>float</code>, <code>bool</code>, <code>list</code>, <code>dict</code>, <code>set</code> etc..</li>
+<li>Builtin types are <strong>classes</strong> implemented in the python core.</li>
+<li>For a full list of types and explanation, read the python help at <code>python</code>-&gt; <code>help()</code>-&gt; <code>topics</code> -&gt; <code>TYPES</code></li>
+<li>Read the help sections for builtin types, eg.. <code>help(int)</code>, <code>help(list)</code> etc..</li>
+</ul>
+</li>
+<li>The interpreter finds the appropriate builtin type for the literal. Since the literal <code>1</code> fits the type <code>int</code>, the interpreter creates an instance from <code>class int()</code> in memory.<ul>
+<li>This instance is called an <code>object</code> since it's just a <code>blob</code> with some metadata.</li>
+<li>This object has a memory address, a value, a name in one or more namespace, some metadata etc..</li>
+<li><code>type(a)</code> helps in understanding the instance type.</li>
+<li>In short, an assignment statement simply creates an instance in memory from a pre-defined class.</li>
+</ul>
+</li>
+<li>The interpreter reads the LHS (Left hand side) of the statement <code>a = 1</code>, and creates the name <code>a</code> in the current namespace.<ul>
+<li>The name in the namespace is a reference to the object in memory.</li>
+<li>Through this reference, we can access the data portion as well as the attributes of that object.</li>
+<li>A single object can have multiple names (references).</li>
+</ul>
+</li>
+<li>The name <code>a</code> created in the current namespace is linked to the corresponding object in memory.</li>
+</ul>
+<p>When a name that's already defined is entered at the python prompt, the interpreter reads the namespace, finds the name (reference), goes to the memory location it's referring to, and pull the value of the object, and prints it on-screen.</p>
+<h4>Every object has the following features:</h4>
+<ul>
+<li>A single value, available in its data section.</li>
+</ul>
+<p>[code language="python"] In [1]: a = 1</p>
+<p>In [2]: a Out[2]: 1 [/code]</p>
+<ul>
+<li>A single type, since the object is an instance of a pre-defined type class such as <code>int</code> , <code>float</code> etc..</li>
+</ul>
+<p>[code language="python"] In [3]: type(a) Out[3]: int [/code]</p>
+<ul>
+<li>Attributes either inherited from the parent type class or defined by the user.</li>
+</ul>
+<p>[code language="python"] In [10]: dir(a) Out[10]: ['__abs__', '__add__', '__and__', '__bool__', '__ceil__', '__class__', '__delattr__', '__dir__', '__divmod__', '__doc__', '__eq__', '__float__', ...[content omitted] '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 'bit_length', 'conjugate', 'denominator', 'from_bytes', 'imag', 'numerator', 'real', 'to_bytes'] [/code]</p>
+<ul>
+<li>One or more base classes. All <a href="https://www.python.org/doc/newstyle/">new-stlye classes</a> in Python ultimately inherits from the <code>object</code> class.</li>
+</ul>
+<p>[code language="python"] In [4]: type(a) Out[4]: int</p>
+<p>In [5]: int.mro() Out[5]: [int, object] [/code]</p>
+<hr>
+<p><strong>NOTE:</strong> <code>a</code> is an instance of the <code>int</code> class, and <code>int</code> inturn inherits from the <code>object</code> class. Read more on <a href="https://arvimal.wordpress.com/2016/05/30/method-resolution-order-object-oriented-programming/">Method Resolution Order</a>.</p>
+<hr>
+<ul>
+<li>A unique ID representing the object.</li>
+</ul>
+<p>[code language="python"] In [6]: id(a) Out[6]: 140090033476640 [/code]</p>
+<ul>
+<li>Zero, One, or more names.<ul>
+<li>Use <code>dir()</code> to check the current namespace.</li>
+<li>Use <code>dir(&lt;object-name&gt;)</code> to refer the indirect namespace.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>Several other builtins are available in the default namespace without defining them specifically, possible due to the inclusion of the <code>builtin</code> module available under the reference <code>__builtin__</code> in the current namespace.</p>
+<p>For a full list of the pre-defined variables, refer <code>dir(__builtins__)</code>, <code>help(__builtin__)</code> or <code>help(builtins)</code> after an <code>import builtins</code>.</p>
+<h4>A few questions and observations:</h4>
+<p><strong>Q1.</strong> How can an assignment have zero names in the namespace?</p>
+<p><strong>Ans</strong>: An assignment such as <code>a = 1</code> creates an object in memory and creates a corresponding name (<code>a</code> in our case) in the namespace. <code>a</code> acts as a reference to the object in memory.</p>
+<p>But, simply entering <code>1</code> at the python prompt creates an object in memory which is an instance of a type class, without creating the reference in the namespace.</p>
+<p>Objects which don't have a reference from the current namespace are usually garbage-collected due to lack of references. Hence, an object which doesn't have a reference (a name), or had multiple references (more than one names) but had them deleted (for example, <code>del()</code> gets garbage-collected by python.</p>
+<p>If the assignment <code>1</code> happens to be at a python prompt, it echoes the literal back after creating the object and reference since the prompt is essentially a <code>REPL</code> (Read Eval Print loop)</p>
+<p><strong>Q2.</strong> Can an object have more than one name references?</p>
+<p><strong>Ans:</strong> It's perfectly fine to have more than one reference to a single object. The example below should explain things very well.</p>
+<p>[code language="python"] In [1]: a = 5000</p>
+<p>In [2]: id(a) Out[2]: 140441367080400</p>
+<p>In [3]: b = a</p>
+<p>In [4]: b Out[4]: 5000</p>
+<p>In [5]: id(b) Out[5]: 140441367080400</p>
+<p>In [6]: c = 5000</p>
+<p>In [7]: id(c) Out[7]: 140441367080432</p>
+<p>In [8]: a is b Out[8]: True</p>
+<p>In [9]: a == b Out[9]: True</p>
+<p>In [10]: a is c Out[10]: False</p>
+<p>In [11]: a == c Out[11]: True [/code]</p>
+<p>The example shown above creates an object with value <code>5000</code> and assign it a name <code>a</code> in the current namespace. We checked the identifier of the object using <code>id(a)</code> and found out it to be <code>140441367080400</code>.</p>
+<p>As the next step, we created another name in the namespace, ie.. <code>b</code> which takes in whatever <code>a</code> points to. Hence, <code>b</code> would default to <code>5000</code> and it will have the same identifier as <code>a</code>.</p>
+<p><em>This shows that an object in memory can have multiple references in a namespace.</em></p>
+<p>Another object of value <code>5000</code> is created with a name <code>c</code> , but we can see that the identifier differs from what <code>id(a)</code> and <code>id(b)</code> is. This shows that <code>c</code> points to an entirely different object in memory.</p>
+<p>To test if <code>a</code> is exactly the same object as <code>b</code>, use the keyword <code>is</code>. Meanwhile, if you want to test if two objects contain the same value, use the equality <code>==</code> symbol.</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

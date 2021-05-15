@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "lvcreate fails with the error \"Aborting. Failed to activate new LV to wipe the start of it.\". Why ??"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/lvcreate-fails-with-the-error-aborting-failed-to-activate-new-lv-to-wipe-the-start-of-it-why.html" rel="bookmark"
+         title="Permalink to "lvcreate fails with the error \"Aborting. Failed to activate new LV to wipe the start of it.\". Why ??"">"lvcreate fails with the error \"Aborting. Failed to activate new LV to wipe the start of it.\". Why ??"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2009-11-02T00:00:00+01:00">
+      November 02, 2009
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <h2>- "techno"</h2>
+<p>In case anyone out there gets an error message like "Aborting. Failed to activate new LV to wipe the start of it." while doing an 'lvcreate', check (/etc/lvm/lvm.conf) once more.</p>
+<p>Most probably, a 'volume_list' would have been defined in there, which in turns want you to specify the 'volume_list' tag specified along with the lvcreate command.</p>
+<p>Excerpt from /etc/lvm/lvm.conf:</p>
+<blockquote>
+<p># If volume_list is defined, each LV is only activated if there is a # match against the list. #   vgname and vgname/lvname are matched exactly. #   @tag matches any tag set in the LV or VG. #   @* matches if any tag defined on the host is also set in the LV or VG # # volume_list = [ vg1, vg2/lvol1, @tag1, @* ] volume_list = [ VG01, @foo.com ]</p>
+</blockquote>
+<p>In this case, you will have to use the 'lvcreate' command as follows, which will create the logical volume properly.</p>
+<blockquote>
+<p># lvcreate --addtag @foo.com    ... following-options</p>
+</blockquote>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

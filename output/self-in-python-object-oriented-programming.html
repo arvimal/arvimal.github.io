@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "`self` in Python - Object Oriented Programming"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/self-in-python-object-oriented-programming.html" rel="bookmark"
+         title="Permalink to "`self` in Python - Object Oriented Programming"">"`self` in Python - Object Oriented Programming"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2016-06-12T00:00:00+02:00">
+      June 12, 2016
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"programming"</li>
+<li>"python"</li>
+</ul>
+<hr>
+<p>_<strong>T</strong>_his article was long overdue and should have been published before many of the articles in this blog. Better late than never.</p>
+<p><code>self</code> in Python is usually used in an Object Oriented nomenclature, to denote the instance/object created from a Class.</p>
+<p>In short, <code>self</code> is the instance itself.</p>
+<p>Let's check the following example:</p>
+<p>[code language="python"] class MyClass(object): def __init__(self, name): self.name = name print("Initiating the instance!")</p>
+<p>def hello(self): print(self.name)</p>
+<p>myclass = MyClass("Dan Inosanto")</p>
+<p># Calling the `hello` method via the Instance `myclass` myclass.hello()</p>
+<p># Calling the `hello` method vai the class. MyClass.hello(myclass) [/code]</p>
+<p>The code snippet above is trivial and stupid, but I think it gets the idea across.</p>
+<p>We have a class named <code>MyClass()</code> which takes a <code>name</code> value as an argument. It also prints the string "Initiating the instance".  The <code>name</code> value is something that has to be passed while creating an instance.</p>
+<p>The function <code>hello()</code> just prints the <code>name</code> value that is passed while instantiating the class <code>MyClass()</code>.</p>
+<p>We instantiate the class <code>MyClass()</code> as <code>myclass</code> and pass the string  <em><strong>Dan Inosanto</strong></em> as an argument. Read about the great Inosanto <a href="https://en.wikipedia.org/wiki/Dan_Inosanto">here</a>.</p>
+<p>Next, we call the <code>hello()</code> method through the instance. ie..</p>
+<p>[code language="python"] myclass.hello() [/code]</p>
+<p>This should print the name we passed while instantiating <code>MyClass()</code> as <code>myclass</code> , which should be pretty obvious.</p>
+<p>The second and last instruction is doing the same thing, but in a different way.</p>
+<p>[code language="python"] MyClass.hello(myclass) [/code] Here, we call the class <code>MyClass()</code> directly as well as it's method <code>hello()</code>. Let's check out what both prints:</p>
+<p>[code language="bash"] # python /tmp/test.py</p>
+<p>Initiating the instance! Dan Inosanto Dan Inosanto [/code]</p>
+<p>As we can see, both prints the same output. This means that :</p>
+<p><strong>myclass.hello(self) == MyClass.hello(myclass)</strong></p>
+<p>In general, we can say that:</p>
+<p><strong><instance-name>.<method>(self) == <Class>.<method>(<instance-name>)</strong></p>
+<p>ie.. The keyword <code>self</code> actually represents the instance being instantiated from the Class. Hence <code>self</code> can be seen as Syntactic sugar.</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

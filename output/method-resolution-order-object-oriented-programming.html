@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "Method Resolution Order - Object Oriented Programming"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/method-resolution-order-object-oriented-programming.html" rel="bookmark"
+         title="Permalink to "Method Resolution Order - Object Oriented Programming"">"Method Resolution Order - Object Oriented Programming"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2016-05-30T00:00:00+02:00">
+      May 30, 2016
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"programming"</li>
+<li>"python"
+tags: </li>
+<li>"inheritance"</li>
+<li>"method-resolution-order"</li>
+<li>"mro"</li>
+<li>"python"</li>
+<li>"<strong>bases</strong>"</li>
+<li>"<strong>base</strong>"</li>
+</ul>
+<hr>
+<p>_<strong>M</strong>_ethod Resolution Order or 'MRO' in short, denotes the way a programming language resolves a method or attribute. This post looks into how Method Resolution Order works, using Python.</p>
+<p>Python supports classes inheriting from other classes. The class being inherited is called the Parent/Super class, while the class that inherits is called the Child/Sub class.</p>
+<p>While inheriting from another class, the interpreter needs a way to resolve the methods that are being called via an instance. Hence a method resolution order is needed.</p>
+<p><em><strong>Example 0:</strong></em></p>
+<p>[code language="python"]</p>
+<p>class A(object): def my_func(self): print("Doing this in class A")</p>
+<p>class B(A): def my_func(self): print("Doing this in class B")</p>
+<p>my_instance = B() my_instance.my_func() [/code]</p>
+<h3><strong>Structure:</strong></h3>
+<ol>
+<li>We've two classes,  <code>class A</code> and <code>class B</code>.</li>
+<li>Instantiate <code>class B</code> as <code>my_instance</code>.</li>
+<li>Call the <code>my_func()</code> method through the <code>my_instance</code> instance.</li>
+</ol>
+<p>Where is the method fetched from? From <code>class B</code> or <code>class A</code>?</p>
+<h3><strong>How does the code work?</strong></h3>
+<p>This should be pretty obvious, the answer would be <code>class B</code>. But why is it being called from <code>class B</code> and not from <code>class A</code>?</p>
+<p>Answer : The <strong>Method Resolution Order</strong> [MRO].</p>
+<p>To understand this in depth, let's check another example:</p>
+<p><em><strong>Example 1:</strong></em></p>
+<p>[code language="python"] class A(object): def my_func(self): print("Doing this in Class A")</p>
+<p>class B(A): pass</p>
+<p>class C(object): def my_func(self): print("Doing this in Class C")</p>
+<p>class D(B, C): pass</p>
+<p>my_instance = D() my_instance.my_func() [/code]</p>
+<h3><strong>Structure</strong><em><strong>:</strong></em></h3>
+<ol>
+<li>Four classes, class <code>A</code>, <code>B</code>, <code>C</code>, and <code>D</code>.</li>
+<li>Class <code>D</code> inherits from both <code>B</code> and <code>C</code></li>
+<li>Class <code>B</code> inherits from <code>A</code>.</li>
+<li>Class <code>A</code> and <code>C</code> doesn't inherit from any super classes, but from the <code>object</code> base class due to being new-style classes.</li>
+<li>Class <code>A</code> and class <code>C</code> both have a method/function named <code>my_func()</code>.</li>
+<li>Class <code>D</code> is instantiated through <code>my_instance</code></li>
+</ol>
+<p>If we were to call the method <code>my_func()</code> through the <code>my_instance()</code> instance, which class would it be called from? Would it be from class <code>A</code> or class <code>C</code>?</p>
+<h3><strong>How does the code work?</strong></h3>
+<p>This won't be as obvious as <em><strong>Example 0.</strong></em> </p>
+<ol>
+<li>The instance <code>my_instance()</code> is created from class <code>D</code>.</li>
+<li>Since class <code>D</code>inherits from both class <code>B</code> and <code>C</code>, the python interpreter searches for the method <code>my_func()</code> in both of these classes.</li>
+<li>The intrepreter finds that class <code>B</code> inherits from class <code>A</code>, and class <code>C</code> doesn't have any super classes other than the default <code>object</code> class.</li>
+<li>Class <code>A</code> and class <code>C</code> both has the method named <code>my_func()</code>, and hence has to be called from one of these.</li>
+<li><strong>Python follows a depth-first lookup order and hence ends up calling the method from class A.</strong></li>
+</ol>
+<p>Following the depth-first Method Resolution Order, the lookup would be in the order :</p>
+<p><em><strong>Class D -&gt; Class B -&gt; Class C</strong></em></p>
+<p>Let's check another example, which can be a bit more complex.</p>
+<p><em><strong>Example 2:</strong></em></p>
+<p>[code language="python"] class A(object): def my_func(self): print("Doing this in A")</p>
+<p>class B(A): pass</p>
+<p>class C(A): def my_func(self): print("doing this in C")</p>
+<p>class D(B, C): pass</p>
+<p>my_instance = D() my_instance.my_func() [/code]</p>
+<h3><strong>Structure:</strong></h3>
+<ol>
+<li>Four classes, class <code>A</code>, <code>B</code>, <code>C</code>, and <code>D</code></li>
+<li>Class <code>D</code> inherits from both <code>B</code> and <code>C</code></li>
+<li>Class <code>B</code> inherits from class <code>A</code>.</li>
+<li>Class <code>C</code> inherits from class <code>A</code>.</li>
+<li>Class <code>A</code> inherits from the default base class <code>object</code>.</li>
+</ol>
+<p><strong>This sort of inheritance is called the <code>Diamond Inheritance</code> or the <code>Deadly Diamond of death</code> and looks like the following:</strong></p>
+<p><img alt="220px-Diamond_inheritance.svg" src="images/220px-diamond_inheritance-svg.png"></p>
+<p><em>Image courtsey : <a href="https://en.wikipedia.org/wiki/Multiple_inheritance">Wikipedia</a></em></p>
+<h3><strong>How does the code work?</strong></h3>
+<p>Following the depth-first Method Resolution Order, the lookup would be in the order :</p>
+<p><em><strong>Class D -&gt; Class B -&gt; Class A -&gt; Class C -&gt; Class A</strong></em></p>
+<p>In order to avoid ambiguity while doing a lookup for a method where multiple classes are inherited and involved, the MRO lookup has changed slightly from Python 2.3 onwards.</p>
+<p>It still goes for the depth-first order, but if the occurrence of a class happens multiple times in the MRO path, it removes the initial occurrence and keeps the latter.</p>
+<p>Hence, the look up order in <em><strong>Example 2</strong></em> becomes:</p>
+<p><em><strong>Class D -&gt; Class B -&gt; Class C -&gt; Class A.</strong></em></p>
+<p><strong>NOTE: Python provides a method for a class to lookup the Method Resolution Order. Let's recheck Example 2 using that.</strong></p>
+<p>[code language="python"] class A(object): def my_func(self): print("Calling this from A")</p>
+<p>class B(A): pass</p>
+<p>class C(A): def my_func(self): print("\nCalling this from C")</p>
+<p>class D(B, C): pass</p>
+<p>my_instance = D() my_instance.my_func()</p>
+<p>print("\nPrint the Method Resolution Order") print(D.mro()) print(D.__bases__) [/code] This should print:</p>
+<p>[code language="python"] # python /tmp/Example-2.py</p>
+<p>Calling this from C</p>
+<p>Print the Method Resolution Order class '__main__.D', class '__main__.B', class '__main__.C', class '__main__.A', type 'object'</p>
+<p>(, ) [/code]</p>
+<h3>Takeaway:</h3>
+<ol>
+<li>Python follows a depth-first order for resolving methods and attributes.</li>
+<li>In case of multiple inheritances where the methods happen to occur more than once, python omits the first occurrence of a class in the Method Resolution Order.</li>
+<li>The <code>&lt;class&gt;.mro()</code>methods helps to understand the Medthod Resolution Order.</li>
+<li>The `__bases__` and `__base__` magic methods help to understand the Base/Parent classes of a Sub/Child class.</li>
+</ol>
+<h3>References:</h3>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Multiple_inheritance">https://en.wikipedia.org/wiki/Multiple_inheritance</a></li>
+</ol>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

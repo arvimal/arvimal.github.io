@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "Compacting a Ceph monitor store"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/compacting-a-ceph-monitor-store.html" rel="bookmark"
+         title="Permalink to "Compacting a Ceph monitor store"">"Compacting a Ceph monitor store"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2015-07-09T00:00:00+02:00">
+      July 09, 2015
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"ceph"
+tags:</li>
+<li>"ceph"</li>
+<li>"leveldb"</li>
+<li>"monitors"</li>
+</ul>
+<hr>
+<p>The Ceph monitor store growing to a big size is a common occurrence in a busy Ceph cluster.</p>
+<p>If a '<em><strong>ceph -s</strong></em>' takes considerable time to return information, one of the possibility is the monitor database being large.</p>
+<p>Other reasons included network lags between the client and the monitor, the monitor not responding properly due to the system load, firewall settings on the client or monitor etc..</p>
+<p>The best way to deal with a large monitor database is to compact the monitor store. The monitor store is a <a href="http://leveldb.org/">leveldb</a> store which stores key/value pairs.</p>
+<p>There are two ways to compact a levelDB store, either on the fly or at the monitor process startup.</p>
+<p>To compact the store dynamically, use :</p>
+<blockquote>
+<p># ceph tell mon.[ID] compact</p>
+</blockquote>
+<p>To compact the levelDB store every time the monitor process starts, add the following in /etc/ceph/ceph.conf under the [mon] section:</p>
+<blockquote>
+<p>mon compact on start = true</p>
+</blockquote>
+<p>The second option would compact the levelDB store each and every time the monitor process starts.</p>
+<p>The monitor database is stored at <em>/var/lib/ceph/mon/<hostname>/store.db/</em> as files with the extension '<strong>.sst</strong>', which is the synonym for '<strong>Sorted String Table</strong>'</p>
+<p>To read more on levelDB, please refer:</p>
+<p><a href="https://en.wikipedia.org/wiki/LevelDB">https://en.wikipedia.org/wiki/LevelDB</a></p>
+<p><a href="http://leveldb.googlecode.com/svn/trunk/doc/impl.html">http://leveldb.googlecode.com/svn/trunk/doc/impl.html</a></p>
+<p><a href="http://google-opensource.blogspot.in/2011/07/leveldb-fast-persistent-key-value-store.html">http://google-opensource.blogspot.in/2011/07/leveldb-fast-persistent-key-value-store.html</a></p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

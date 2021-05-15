@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "Creating a SWAP space in Linux"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/creating-a-swap-space-in-linux.html" rel="bookmark"
+         title="Permalink to "Creating a SWAP space in Linux"">"Creating a SWAP space in Linux"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2008-02-15T00:00:00+01:00">
+      February 15, 2008
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"techno"
+tags:</li>
+<li>"swap-space"</li>
+</ul>
+<hr>
+<p><strong>Adding Swap Space:</strong></p>
+<p>Sometimes it is necessary to add more swap space after installation. For example, you may upgrade the amount of RAM in your system from 64 MB to 128 MB, but there is only 128 MB of swap space. It might be advantageous to increase the amount of swap space to 256 MB if you perform memory-intense operations or run applications that require a large amount of memory.</p>
+<p>You have two options: add a swap partition or add a swap file. It is recommended that you add a swap partition, but sometimes that is not easy if you do not have any free space available.</p>
+<p>To add a swap partition (assuming /dev/hdb2 is the swap partition you want to add):</p>
+<p>1)  The hard drive can not be in use (partitions can not be mounted, and swap space can not be enabled). The easiest way to achieve this it to boot your system in rescue mode. Refer to Chapter 8 for instructions on booting into rescue mode. When prompted to mount the filesystem, select Skip. Alternately, if the drive does not contain any partitions in use, you can unmount them and turn off all the swap space on the hard drive with the swapoff command.</p>
+<p>2)  Create the swap partition using parted or fdisk. Using parted is easier than fdisk; thus, only parted will be explained. To create a swap partition with 'parted:'. At a shell prompt as root, type the command parted /dev/hdb, where /dev/hdb is the device name for the hard drive with free space. At the (parted) prompt, type print to view the existing partitions and the amount of free space. The start and end values are in megabytes. Determine how much free space is on the hard drive and how much you want to allocate for a new swap partition. At the (parted) prompt, type mkpartfs part-type linux-swap start end, where part-type is one of primary, extended, or logical, start is the starting point of the partition, and end is the end point of the partition.</p>
+<blockquote>
+<p>Warning     Warning _________________________</p>
+<p>Changes take place immediately; be careful when you type.</p>
+<p>Exit parted by typing quit.</p>
+</blockquote>
+<p>3) Now that you have the swap partition, use the command mkswap to setup the swap partition. At a shell prompt as root, type the following:</p>
+<blockquote>
+<p># mkswap /dev/hdb2</p>
+</blockquote>
+<p>4) To enable the swap partition immediately, type the following command:</p>
+<blockquote>
+<p># swapon /dev/hdb2</p>
+</blockquote>
+<p>5) To enable it at boot time, edit /etc/fstab to include:</p>
+<blockquote>
+<p>/dev/hdb2               swap                    swap    defaults        0 0</p>
+</blockquote>
+<p>The next time the system boots, it will enable the new swap partition.</p>
+<p>6) After adding the new swap partition and enabling it, make sure it is enabled by viewing the output of the command cat /proc/swaps or free.</p>
+<p>To add a swap file: -------------------------- 1.  Determine the size of the new swap file and multiple by 1024 to determine the block size. For example, the block size of a 64 MB swap file is 65536.</p>
+<p>2.  At a shell prompt as root, type the following command with count being equal to the desired block size:</p>
+<blockquote>
+<p># dd if=/dev/zero of=/swapfile bs=1024 count=65536</p>
+</blockquote>
+<p>3. Setup the swap file with the command:</p>
+<blockquote>
+<p># mkswap /swapfile</p>
+</blockquote>
+<p>4. To enable the swap file immediately but not automatically at boot time:</p>
+<blockquote>
+<p># swapon /swapfile</p>
+</blockquote>
+<p>5. To enable it at boot time, edit /etc/fstab to include:</p>
+<blockquote>
+<p>/swapfile               swap                    swap    defaults        0 0</p>
+</blockquote>
+<p>The next time the system boots, it will enable the new swap file.</p>
+<p>6. After adding the new swap file and enabling it, make sure it is enabled by viewing the output of the command cat /proc/swaps or free.</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

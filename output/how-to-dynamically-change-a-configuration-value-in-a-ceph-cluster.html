@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "How to dynamically change a configuration value in a Ceph cluster?"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/how-to-dynamically-change-a-configuration-value-in-a-ceph-cluster.html" rel="bookmark"
+         title="Permalink to "How to dynamically change a configuration value in a Ceph cluster?"">"How to dynamically change a configuration value in a Ceph cluster?"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2015-05-27T00:00:00+02:00">
+      May 27, 2015
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"ceph"
+tags:</li>
+<li>"ceph"</li>
+<li>"ceph-tell"</li>
+</ul>
+<hr>
+<p>It is possible to change a particular configuration setting in a Ceph cluster dynamically, and I think it is a very neat and useful feature.</p>
+<p>Imagine the case where you want to change the replica count of a particular PG from 3 to 4. How would you change this without restarting the Ceph cluster itself? That is where the 'ceph tell' command comes in.</p>
+<p>As we saw in the <a href="https://arvimal.wordpress.com/2015/05/27/how-can-we-get-a-list-of-all-the-configurations-from-a-ceph-cluster-node/">previous post</a>, you can get the list of configuration settings using the administrator socket, from either a monitor or an OSD node.</p>
+<p>To change a configuration use:</p>
+<p>[sourcecode language="bash" gutter="false"]</p>
+<p># ceph tell mon.* injectargs '--{tunable value_to_be_set}'</p>
+<p>[/sourcecode]</p>
+<p>For example, to change the timeout value after which an OSD is out and down, can be changed with:</p>
+<p>[sourcecode language="bash" gutter="false"]</p>
+<p># ceph tell mon.* injectargs '--mon_osd_report_timeout 400'</p>
+<p>[/sourcecode]</p>
+<p>By default, it is 300 seconds, ie.. 5 minute</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

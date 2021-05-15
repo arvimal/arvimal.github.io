@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "How to get a Ceph MON/OSD map at a specific epoch?"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/how-to-get-a-ceph-monosd-map-at-a-specific-epoch.html" rel="bookmark"
+         title="Permalink to "How to get a Ceph MON/OSD map at a specific epoch?"">"How to get a Ceph MON/OSD map at a specific epoch?"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2016-05-08T00:00:00+02:00">
+      May 08, 2016
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <h2>- "ceph"</h2>
+<p>To get a MON map or an OSD map of a specific epoch, use:</p>
+<blockquote>
+<p># ceph osd getmap <epoch-value> # ceph mon getmap <epoch-value></p>
+</blockquote>
+<p>The map can be forwarded to a file as following:</p>
+<blockquote>
+<p># ceph osd getmap <epoch-value> -o /tmp/ceph_osd_getmap.bin</p>
+</blockquote>
+<p>This would be in a binary format, and hence will need to be dumped to a human-readable form.</p>
+<blockquote>
+<p># osdmaptool --print /tmp/ceph-osd-getmap.bin</p>
+</blockquote>
+<p>This will print the current OSD map, similar to the output of 'ceph osd dump'.</p>
+<p>Where this command shines is when you can fetch maps from previous epochs, and pull information on specific placement groups in those epochs.</p>
+<p>For example, I've had all the OSDs on one of my node down some time back (in a previous epoch). The ability to query a previous epoch gives the administrator the power to understand how exactly the cluster was at a specific time period.</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

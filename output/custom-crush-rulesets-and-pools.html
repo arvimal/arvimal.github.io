@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "Custom CRUSH rulesets and pools"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/custom-crush-rulesets-and-pools.html" rel="bookmark"
+         title="Permalink to "Custom CRUSH rulesets and pools"">"Custom CRUSH rulesets and pools"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2015-09-23T00:00:00+02:00">
+      September 23, 2015
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <h2>- "ceph"</h2>
+<p>Ceph supports custom rulesets via <a href="http://ceph.com/papers/weil-crush-sc06.pdf">CRUSH</a>, which can be used to sort hardware based on various features such as speed and other factors, set custom weights, and do a lot of other useful things.</p>
+<p>Pools, or the buckets were the data is written to, can be created on the custom rulesets, hence positioning the pools on specific hardware as per the administrator's need.</p>
+<p>A large Ceph cluster may have lots of pools and rulesets specific for multiple use-cases. There may be times when we'd like to understand the pool to ruleset mapping.</p>
+<p>The default CRUSH ruleset is named ‘replicated_ruleset’. The available CRUSH rulesets can be listed with:</p>
+<blockquote>
+<p><strong>$ ceph osd crush rule ls</strong></p>
+</blockquote>
+<p>On a fresh cluster, or one without any custom rulesets, you’d find the following being printed to stdout.</p>
+<blockquote>
+<p><strong># ceph osd crush rule ls</strong> [ "replicated_ruleset" ]</p>
+</blockquote>
+<p>I’ve got a couple more on my cluster, and this is how it looks:</p>
+<blockquote>
+<p><strong># ceph osd crush rule ls</strong> [ "replicated_ruleset", "replicated_ssd", "erasure-code"]</p>
+</blockquote>
+<p>Since this article looks into the mapping of pools to CRUSH rulesets, it’d be good to add in how to list the pools, as a refresher.</p>
+<blockquote>
+<p><strong># ceph osd lspools</strong></p>
+</blockquote>
+<p>On my Ceph cluster, it turned out to be:</p>
+<blockquote>
+<p><strong># ceph osd lspools</strong> 0 data,1 metadata,2 rbd,21 .rgw,22 .rgw.root,23 .rgw.control,24 .rgw.gc,25 .users.uid,26 .users,27 .users.swift,28 test_pool,</p>
+</blockquote>
+<p>Since you have the pool name you’re interested in, let’s see how to map it to the ruleset. The command syntax is:</p>
+<blockquote>
+<p><strong># ceph osd pool get <pool\_name> crush_ruleset</strong></p>
+</blockquote>
+<p>I was interested to understand the ruleset on which the pool ‘test_pool’ was created. The command to list this was:</p>
+<blockquote>
+<p><strong># ceph osd pool get test_pool crush_ruleset</strong> crush_ruleset: 1</p>
+</blockquote>
+<p>Please note that the rulesets are numbered from ‘0’, and hence ‘1’ would map to the CRUSH ruleset ‘replicated_ssd’.</p>
+<p>We'll try to understand how a custom ruleset is created, in another article.</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

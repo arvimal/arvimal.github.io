@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "How to change the filling ratio for a Ceph OSD?"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/how-to-change-the-filling-ratio-for-a-ceph-osd.html" rel="bookmark"
+         title="Permalink to "How to change the filling ratio for a Ceph OSD?"">"How to change the filling ratio for a Ceph OSD?"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2015-05-07T00:00:00+02:00">
+      May 07, 2015
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"ceph"
+tags:</li>
+<li>"ceph"</li>
+<li>"fill-ratio"</li>
+<li>"osd"</li>
+</ul>
+<hr>
+<p>There could be many scenarios where you'd need to change the percentage of space usage on a Ceph OSD. One such use case would be when your OSD space is about to hit the hard limit, and is constantly sending you warnings.</p>
+<p>For some reason or other, you may need to extend the threshold limit for some time. In such a case, you don't need to change/add the configuration in ceph.conf and push it across. Rather you can do it while the cluster is online, via command mode.</p>
+<p>The 'ceph tell' is a very useful command in the sense the administrator don't need to stop/start the OSDs, MONs etc.. after a configuration change. In our case, we are looking to set the 'mon_osd_full_ratio' to 98%. We can do it by using:</p>
+<p>[sourcecode language="bash" gutter="false"]</p>
+<p># ceph tell mon.* injectargs "--mon_osd_full_ratio .98"</p>
+<p>[/sourcecode]</p>
+<p>In an earlier post (<a href="https://goo.gl/xjXOoI">https://goo.gl/xjXOoI</a>) we had seen how to get all the configurable options from a monitor. If I understand correct, almost all the configuration values can be changed online by injecting the values using 'ceph tell'.</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

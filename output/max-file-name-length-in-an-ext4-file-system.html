@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>arvimal.github.io - "Max file-name length in an EXT4 file system."</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://arvimal.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Full Atom Feed" />
+        <link href="https://arvimal.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="arvimal.github.io Categories Atom Feed" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://arvimal.github.io/">arvimal.github.io</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/archives.html">Archives</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            <li class="active"><a href="https://arvimal.github.io/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://arvimal.github.io/max-file-name-length-in-an-ext4-file-system.html" rel="bookmark"
+         title="Permalink to "Max file-name length in an EXT4 file system."">"Max file-name length in an EXT4 file system."</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2016-07-21T00:00:00+02:00">
+      July 21, 2016
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://arvimal.github.io/author/vimal-ar.html">Vimal A.R</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://arvimal.github.io/category/misc.html">misc</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <ul>
+<li>"techno"
+tags:</li>
+<li>"dentry"</li>
+<li>"directory-entry-structure"</li>
+<li>"ext4"</li>
+<li>"ext4_dir_entry"</li>
+<li>"ext4_dir_entry_2"</li>
+<li>"file-systems"</li>
+<li>"filesystem"</li>
+<li>"name_len"</li>
+</ul>
+<hr>
+<p><em><strong>A</strong></em> recent discussion at work brought up the question "What can be the length of a file name in EXT4". Or in other words, what would be the maximum character length of the name for a file in EXT4?</p>
+<p><a href="https://en.wikipedia.org/wiki/Comparison_of_file_systems">Wikipedia</a> states that it's <em><strong>255 Bytes</strong></em>, but how does that come to be? Is it 255 Bytes or 255 characters?</p>
+<p>In the kernel source for the 2.6 kernel series (the question was for a RHEL6/EXT4 combination), in  <a href="https://access.redhat.com/labs/psb/versions/kernel-2.6.32-573.el6/fs/ext4/ext4.h">fs/ext4/ext4.h</a>, we'd be able to see the following:</p>
+<p>[code language="c"]</p>
+<h1>define EXT4_NAME_LEN 255</h1>
+<p>struct ext4_dir_entry { __le32 inode; /* Inode number */ __le16 rec_len; /* Directory entry length */ __le16 name_len; /* Name length */ char name[EXT4_NAME_LEN]; /* File name */ };</p>
+<p>/* * The new version of the directory entry. Since EXT4 structures are * stored in intel byte order, and the name_len field could never be * bigger than 255 chars, it's safe to reclaim the extra byte for the * file_type field. */</p>
+<p>struct ext4_dir_entry_2 { __le32 inode; /* Inode number */ __le16 rec_len; /* Directory entry length */ __u8 name_len; /* Name length */ __u8 file_type; char name[EXT4_NAME_LEN]; /* File name */ }; [/code] This shows that there are two versions of the directory entry structure, ie.. <code>ext4_dir_entry</code> and <code>ext4_dir_entry_2</code></p>
+<p>A directory entry structure carries the file/folder name and the corresponding inode number under every directory.</p>
+<p>Both structs use an element named <code>name_len</code> to denote the length of the file/folder name.</p>
+<p>If the EXT filesystem feature <code>filetype</code> is <strong>not</strong> set, the directory entry structure falls to the first method <code>ext4_dir_entry</code>, else it's the second, ie.. <code>ext4_dir_entry_2</code>.</p>
+<p>By default, the file system feature <code>filetype</code> is set, hence the directory entry structure is <code>ext4_dir_entry_2</code> . As seen above, in this case, the <code>name_len</code> field is set to 8 bits.</p>
+<p><code>__u8</code> represents an unsigned 8-bit integer in C, and can store values from 0 to 255.</p>
+<p>ie.. <em><strong>2^8 = 255 (0 t0 255 == 256)</strong></em></p>
+<p><code>ext4_dir_entry</code> has a <code>name_len</code> of <code>__le16</code>, but it seems that the file-name length can only go to a max of 256.</p>
+<h3>Observations:</h3>
+<ol>
+<li>The maximum name length is 255 characters on Linux machines.</li>
+<li>The actual name length of a file/folder is stored in <code>name_len</code> in each directory entry, under its parent folder. So if the file name length is 5 characters, 5 would be the value set for <code>name_len</code> for that particular file. ie.. the actual length.</li>
+<li>A character will consume a byte of storage, so the number of characters in a file name will map to the respective number bytes. If so, a file with a <code>name_len</code> of 5 will be using 5 bytes of memory to store the name.</li>
+</ol>
+<p>Hence, <code>name_len</code> denotes the <strong>number</strong> of characters that a file can have. Since U8 is 8-bits, <code>name_len</code> can store a file name with upto 255 chars.</p>
+<p>Now the actual memory being consumed for storing these characters <strong>is not</strong> denoted by <code>name_len</code>. Since the size of a character translates to a byte, the maximum size wrt memory that a file name can have is 255 Bytes.</p>
+<h3>NOTE:</h3>
+<p>The initial dir entry structure <code>ext4_dir_entry</code> had <code>__le16</code> for <code>name_len</code>, it was later re-sized to <code>__u8</code> in <code>ext4_dir_entry_2</code> , by culling 8 bits from the existing 16 bits of <code>name_len</code>.</p>
+<p>The remaining free space culled from <code>name_len</code> was assigned to store the file type, in <code>ext4_dir_entry_2</code>. It was named <code>file_type</code> with size <code>__u8</code>.</p>
+<p><code>file_type</code> helps to identity the file types such as regular files, sockets, character devices, block devices etc..</p>
+<h3>References:</h3>
+<ol>
+<li><a href="https://access.redhat.com/labs/psb/versions/kernel-2.6.32-573.el6/fs/ext4/ext4.h">RHEL6 kernel-2.6.32-573.el6 EXT4 header file (ext4.h)</a></li>
+<li><a href="https://ext4.wiki.kernel.org/index.php/Ext4_Disk_Layout">EXT4 Wiki - Disk layout</a></li>
+<li><a href="http://unix.stackexchange.com/questions/32795/what-is-the-maximum-allowed-filename-and-folder-size-with-ecryptfs">http://unix.stackexchange.com/questions/32795/what-is-the-maximum-allowed-filename-and-folder-size-with-ecryptfs</a></li>
+</ol>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
