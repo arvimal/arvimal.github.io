@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Ceph Rados Block Device (RBD) and TRIM</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://arvimal.github.io/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://arvimal.github.io/">The Child is Father of the Man</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Oct 7, 2015
+     - 4 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/ceph/">ceph </a>
+    
+  </p>
+  <h1 class="entry-title">
+     Ceph Rados Block Device (RBD) and TRIM 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>I recently came across a scenario where the objects in a RADOS pool used for an RBD block device doesn’t get removed, even if the files created through the mount point were removed.</p>
+<p>I had an RBD image from an RHCS1.3 cluster mapped to a RHEL7.1 client machine, with an XFS filesystem created on it, and mounted locally. Created a 5GB file, and I could see the objects being created in the rbd pool in the ceph cluster.</p>
+<p>1.RBD block device information</p>
+<p>[code language=&ldquo;bash&rdquo;] # rbd info rbd_img rbd image &lsquo;rbd_img&rsquo;: size 10240 MB in 2560 objects order 22 (4096 kB objects) block_name_prefix: rb.0.1fcbe.2ae8944a format: 1 [/code]</p>
+<p>An XFS file system was created on this block device, and mounted at <strong>/test.</strong></p>
+<p>2.Write a file onto the RBD mapped mount point. Used ‘<strong>dd</strong>’ to write a 5GB file.</p>
+<p>[code language=&ldquo;bash&rdquo;] # dd if=/dev/zero of=/mnt/rbd_image.img bs=1G count=5 5+0 records in 5+0 records out 5368709120 bytes (5.4 GB) copied, 8.28731 s, 648 MB/s [/code]</p>
+<p>3.Check the objects in the backend RBD pool</p>
+<p>[code language=&ldquo;bash&rdquo;] # rados -p rbd ls | wc -l &lt; Total number of objects in the &lsquo;rbd&rsquo; pool&gt; [/code]</p>
+<p>4.Delete the file from the mount point.</p>
+<p>[code language=&ldquo;bash&rdquo;] # rm /test/rbd_image.img -f # ls /test/ &ndash;NO FILES LISTED&ndash; [/code]</p>
+<p>5.List the objects in the RBD pool</p>
+<p>[code language=&ldquo;bash&rdquo;] # rados -p rbd ls | wc -l &lt; Total number of objects in the &lsquo;rbd&rsquo; pool &gt; [/code]</p>
+<p>The number of objects doesn’t go down as we expect, after the file deletion. It remains the same, wrt to step 3.</p>
+<p>Why does this happen? This is due to the fact that traditional file systems do not delete the underlying data blocks even if the files are deleted.</p>
+<p>The process of writing a file onto a file system involves several steps like finding free blocks and allocating them for the new file, creating an entry in the directory entry structure of the parent folder, setting the name and inode number in the directory entry structure, setting pointers from the inode to the data blocks allocated for the file etc..</p>
+<p>When data is written to the file, the data blocks are used to store the data. Additional information such as the file size, access times etc.. are updated in the inode after the writes.</p>
+<p>Deleting a file involves removing the pointers from the inode to the corresponding data blocks, and also clearing the name&lt;-&gt;inode mapping from the directory entry structure of the parent folder. But, the underlying data blocks are not cleared off, since that is a high I/O intensive operation. So, the data remains on the disk, even if the file is not present. A new write will make the allocator take these blocks for the new data, since they are marked as not-in-use.</p>
+<p>This applies for the files created on an RBD device as well. The files created on top of the RBD-mapped mount point will ultimately be mapped to objects in the RADOS cluster. When the file is deleted from the mount point, since the entry is removed, it doesn’t show up in the mount point.</p>
+<p>But, since the file system doesn’t clear off the underlying block device, the objects remain in the <strong>RADOS</strong> pool. These would be normally over-written when a new file is created via the mount point.</p>
+<p>But this has a catch though. Since the pool contains the objects even if the files are deleted, it consumes space in the rados pool (even if they&rsquo;ll be overwritten). An administrator won&rsquo;t be able to get a clear understanding on the space usage, if the pool is used heavily, and multiple writes are coming in.</p>
+<p>In order to clear up the underlying blocks, or actually remove them, we can rely on the <strong>TRIM</strong> support most modern disks offer. Read more about <strong>TRIM</strong> at 
+<a href="https://en.wikipedia.org/wiki/Trim_%28computing%29" target="_blank" rel="noopener">Wikipedia</a>.</p>
+<p><strong>TRIM</strong> is a set of commands supported by HDD/SSDs which allow the operating systems to let the disk know about the locations which are not currently being used. Upon receiving a confirmation from the file system layer, the disk can go ahead and mark the blocks as not used.</p>
+<p>For the TRIM commands to work, the disks and the file system has to have the support. All the modern file systems have built-in support for <strong>TRIM</strong>. Mount the file system with the &lsquo;<strong>discard</strong>&rsquo; option, and you&rsquo;re good to go.</p>
+<p>[code language=&ldquo;bash&rdquo;] # mount -o discard /dev/rbd{X}{Y} /{mount-point} [/code]</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Oct 7, 2015</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="https://arvimal.github.io/tags/ceph">ceph</a>  <a class="category" href="https://arvimal.github.io/tags/discard">discard</a>  <a class="category" href="https://arvimal.github.io/tags/fstrim">fstrim</a>  <a class="category" href="https://arvimal.github.io/tags/objects">objects</a>  <a class="category" href="https://arvimal.github.io/tags/rados">rados</a>  <a class="category" href="https://arvimal.github.io/tags/rados-block-device">rados-block-device</a>  <a class="category" href="https://arvimal.github.io/tags/rbd">rbd</a>  <a class="category" href="https://arvimal.github.io/tags/trim">trim</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://arvimal.github.io/posts/2015/09/2015-09-23-how-to-find-the-crush-ruleset-on-which-a-pool-was-created/" title="Custom CRUSH rulesets and pools">Custom CRUSH rulesets and pools</a>
+    
+
+    
+      <a class="basic-alignment right" href="https://arvimal.github.io/posts/2015/10/2015-10-07-why-do-objects-get-marked-as-unfound-in-a-a-ceph-cluster/" title="Ceph and unfound objects">Ceph and unfound objects</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      
+      
+      
+      
+      
+         
+      
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021  - <a href="https://arvimal.github.io/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+

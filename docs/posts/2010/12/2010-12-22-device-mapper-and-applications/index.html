@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Device Mapper and applications</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://arvimal.github.io/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://arvimal.github.io/">The Child is Father of the Man</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Dec 22, 2010
+     - 2 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/techno/">techno </a>
+    
+  </p>
+  <h1 class="entry-title">
+     Device Mapper and applications 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p><strong>What is 
+<a href="http://en.wikipedia.org/wiki/Device_mapper" title="Device mapper" target="_blank" rel="noopener">device-mapper</a> ?</strong></p>
+<p><strong>D</strong>evice mapper is a modular driver for the 
+<a href="http://www.kernel.org/" title="Linux kernel" target="_blank" rel="noopener">linux kernel 2.6</a>. It can be said as a framework which helps to create or map logical sectors of a pseudo 
+<a href="http://en.wikipedia.org/wiki/Device_file" title="Device file" target="_blank" rel="noopener">block device</a> to an underlying physical block device. So what device-mapper do is keep a table of mappings which equate the logical block devices to the physical block devices.</p>
+<p>Applications such as LVM2, 
+<a href="http://evms.sourceforge.net/" title="Enterprise Volume Management System" target="_blank" rel="noopener">EVMS</a>, software raid aka dmraid, multipathing, block encryption mechanisms such as cryptsetup etc&hellip; use device-mapper to work. All these applications excluding EVMS use the libdevmapper library to communicate with device-mapper.</p>
+<p>The applications communicate with device-mapper&rsquo;s 
+<a href="http://en.wikipedia.org/wiki/Application_programming_interface" title="Application programming interface" target="_blank" rel="noopener">API</a> to create the mapping. Due to this feature, device-mapper does not need to know what 
+<a href="http://en.wikipedia.org/wiki/Logical_Volume_Manager_%28Linux%29" title="Logical Volume Manager (Linux)" target="_blank" rel="noopener">LVM</a> or dmraid is, how it works, what LVM metadata is, etc&hellip; It is upto the application to create the pseudo devices pointing to the physical volumes using one of device-mapper&rsquo;s targets and then update the mapper table.</p>
+<p><strong>The device-mapper mapping table :</strong></p>
+<p>The mapping table used by device-mapper doesn&rsquo;t take too much space and is a list created using a &lsquo;btree&rsquo;. A btree or a &lsquo;
+<a href="http://en.wikipedia.org/wiki/Binary_search_tree" title="Binary search tree" target="_blank" rel="noopener">Binary Search Tree</a>&rsquo; is a data-structure from which data can be added, removed or queried.</p>
+<p>In order to know more on what a btree is and the concept behind it, read :</p>
+<p>
+<a href="http://en.wikipedia.org/wiki/Binary_search_tree" title="Binary Search Tree" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Binary_search_tree</a></p>
+<p>
+<a href="http://en.wikipedia.org/wiki/B-tree" title="B-Tree" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/B-tree</a></p>
+<p><strong>Types of device-mapper targets :</strong></p>
+<p>Applications which use device-mapper actually use one or more of its target methods to achieve their purpose. Targets can be said as a method or type of mapping used by device-mapper. The general mapping targets are :</p>
+<p>a) Linear - Used by linear logical volumes, ie.. the default data layout method used by LVM2.</p>
+<p>b) Striped - Used by striped logical volumes as well as software 
+<a href="http://en.wikipedia.org/wiki/Standard_RAID_levels" title="Standard RAID levels" target="_blank" rel="noopener">RAID0</a>.</p>
+<p>c) Mirror - Used by software RAID1 and LVM mirroring.</p>
+<p>d) Crypt - Used by disk encryption utilties.</p>
+<p>e) Snapshot - Used to take online snapshots of block devices, an example is LVM snapshot.</p>
+<p>f) 
+<a href="http://en.wikipedia.org/wiki/Multipath_I/O" title="Multipath I/O" target="_blank" rel="noopener">Multipath</a> - Used by device-mapper-multipath.</p>
+<p>g) RAID45 - 
+<a href="http://en.wikipedia.org/wiki/RAID" title="RAID" target="_blank" rel="noopener">Software raid</a> using device-mapper, ie.. dmraid</p>
+<p>h) Error - Sectors of the pseudo device mapped with this target causes the I/O to fail.</p>
+<p>There are a few more mappings such as &lsquo;flaky&rsquo; which is not used much.</p>
+<p>I&rsquo;ll write on how device-mapper works in LVM, in the next post&hellip;</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Dec 22, 2010</time>
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://arvimal.github.io/posts/2009/11/2009-11-02-lvcreate-fails-with-the-error-aborting-failed-to-activate-new-lv-to-wipe-the-start-of-it-why/" title="lvcreate fails with the error &#34;Aborting. Failed to activate new LV to wipe the start of it.&#34;. Why ??">lvcreate fails with the error &#34;Aborting. Failed to activate new LV to wipe the start of it.&#34;. Why ??</a>
+    
+
+    
+      <a class="basic-alignment right" href="https://arvimal.github.io/posts/2010/12/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/" title="lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?">lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      
+      
+      
+      
+      
+         
+      
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021  - <a href="https://arvimal.github.io/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+

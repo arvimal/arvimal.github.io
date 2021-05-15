@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>List RBD images, snapshots, and clones in Ceph pools</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://arvimal.github.io/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://arvimal.github.io/">The Child is Father of the Man</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Oct 15, 2015
+     - 1 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/ceph/">ceph </a>
+    
+  </p>
+  <h1 class="entry-title">
+     List RBD images, snapshots, and clones in Ceph pools 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>This is a crude bash one-liner I did to get the details of all the RBD images, as well as the information on snapshots and clones created from them.</p>
+<p>[code language=&ldquo;bash&rdquo;] # for pool in `rados lspools`; do echo &ldquo;POOL :&rdquo; $pool; rbd ls -l $pool; echo &ldquo;&mdash;&ndash;&quot;; done [/code]</p>
+<p>This will print an output similar to the following:</p>
+<p>[code language=&ldquo;bash&rdquo;] POOL : rbd NAME                             SIZE        PARENT  FMT PROT LOCK test_img                        10240M                    1 test_img2                      1024M                      2 test_img2@snap2      1024M                      2                    yes &mdash;&ndash; POOL : .rgw.root &mdash;&ndash; POOL : .rgw.control &mdash;&ndash; POOL : .rgw &mdash;&ndash; POOL : .rgw.gc &mdash;&ndash; POOL : .users.uid &mdash;&ndash; POOL : .users &mdash;&ndash; POOL : .users.swift &mdash;&ndash; POOL : .users.email &mdash;&ndash; POOL : .rgw.buckets.index &mdash;&ndash; POOL : images NAME           SIZE      PARENT                               FMT PROT LOCK clone1           1024M  rbd/test_img2@snap2             2 &mdash;&ndash; [/code]</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Oct 15, 2015</time>
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://arvimal.github.io/posts/2015/10/2015-10-12-range-and-enumerate-2/" title="range() and enumerate()">range() and enumerate()</a>
+    
+
+    
+      <a class="basic-alignment right" href="https://arvimal.github.io/posts/2016/05/2016-05-08-how-to-get-a-ceph-monosd-map-at-a-specific-epoch/" title="How to get a Ceph MON/OSD map at a specific epoch?">How to get a Ceph MON/OSD map at a specific epoch?</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      
+      
+      
+      
+      
+         
+      
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021  - <a href="https://arvimal.github.io/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+

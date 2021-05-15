@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fuse on The Child is Father of the Man</title>
+    <link>https://arvimal.github.io/tags/fuse/</link>
+    <description>Recent content in fuse on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 14 Sep 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/fuse/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FS-Cache and FUSE</title>
+      <link>https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-fuse/</link>
+      <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-fuse/</guid>
+      <description>I would be working on enabling FS-Cache support in the FUSE kernel module, as part of my under graduate project.
+Niels De Vos, from Red Hat Engineering, would act as my mentor and guide throughout this project. He would also be presenting this idea in the &amp;lsquo;Linux Plumbers Conference&amp;rsquo; being held in Germany, October 2014.
+More details on the the talk can be seen at http://www.linuxplumbersconf.org/2014/ocw/sessions/2247
+This feature has got quite a few requests from the FOSS world, and I&amp;rsquo;m glad I could work on this.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Creating a SWAP space in Linux</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://arvimal.github.io/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://arvimal.github.io/">The Child is Father of the Man</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Feb 15, 2008
+     - 3 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/techno/">techno </a>
+    
+  </p>
+  <h1 class="entry-title">
+     Creating a SWAP space in Linux 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p><strong>Adding Swap Space:</strong></p>
+<p>Sometimes it is necessary to add more swap space after installation. For example, you may upgrade the amount of RAM in your system from 64 MB to 128 MB, but there is only 128 MB of swap space. It might be advantageous to increase the amount of swap space to 256 MB if you perform memory-intense operations or run applications that require a large amount of memory.</p>
+<p>You have two options: add a swap partition or add a swap file. It is recommended that you add a swap partition, but sometimes that is not easy if you do not have any free space available.</p>
+<p>To add a swap partition (assuming /dev/hdb2 is the swap partition you want to add):</p>
+<p>1)  The hard drive can not be in use (partitions can not be mounted, and swap space can not be enabled). The easiest way to achieve this it to boot your system in rescue mode. Refer to Chapter 8 for instructions on booting into rescue mode. When prompted to mount the filesystem, select Skip. Alternately, if the drive does not contain any partitions in use, you can unmount them and turn off all the swap space on the hard drive with the swapoff command.</p>
+<p>2)  Create the swap partition using parted or fdisk. Using parted is easier than fdisk; thus, only parted will be explained. To create a swap partition with &lsquo;parted:&rsquo;. At a shell prompt as root, type the command parted /dev/hdb, where /dev/hdb is the device name for the hard drive with free space. At the (parted) prompt, type print to view the existing partitions and the amount of free space. The start and end values are in megabytes. Determine how much free space is on the hard drive and how much you want to allocate for a new swap partition. At the (parted) prompt, type mkpartfs part-type linux-swap start end, where part-type is one of primary, extended, or logical, start is the starting point of the partition, and end is the end point of the partition.</p>
+<blockquote>
+<p>            Warning     Warning _________________________</p>
+<p>Changes take place immediately; be careful when you type.</p>
+<p>Exit parted by typing quit.</p>
+</blockquote>
+<ol start="3">
+<li>Now that you have the swap partition, use the command mkswap to setup the swap partition. At a shell prompt as root, type the following:</li>
+</ol>
+<blockquote>
+<p># mkswap /dev/hdb2</p>
+</blockquote>
+<ol start="4">
+<li>To enable the swap partition immediately, type the following command:</li>
+</ol>
+<blockquote>
+<p># swapon /dev/hdb2</p>
+</blockquote>
+<ol start="5">
+<li>To enable it at boot time, edit /etc/fstab to include:</li>
+</ol>
+<blockquote>
+<p>/dev/hdb2               swap                    swap    defaults        0 0</p>
+</blockquote>
+<p>The next time the system boots, it will enable the new swap partition.</p>
+<ol start="6">
+<li>After adding the new swap partition and enabling it, make sure it is enabled by viewing the output of the command cat /proc/swaps or free.</li>
+</ol>
+<p>To add a swap file: &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; 1.  Determine the size of the new swap file and multiple by 1024 to determine the block size. For example, the block size of a 64 MB swap file is 65536.</p>
+<p>2.  At a shell prompt as root, type the following command with count being equal to the desired block size:</p>
+<blockquote>
+<p># dd if=/dev/zero of=/swapfile bs=1024 count=65536</p>
+</blockquote>
+<p>3. Setup the swap file with the command:</p>
+<blockquote>
+<p># mkswap /swapfile</p>
+</blockquote>
+<p>4. To enable the swap file immediately but not automatically at boot time:</p>
+<blockquote>
+<p># swapon /swapfile</p>
+</blockquote>
+<p>5. To enable it at boot time, edit /etc/fstab to include:</p>
+<blockquote>
+<p>/swapfile               swap                    swap    defaults        0 0</p>
+</blockquote>
+<p>The next time the system boots, it will enable the new swap file.</p>
+<p>6. After adding the new swap file and enabling it, make sure it is enabled by viewing the output of the command cat /proc/swaps or free.</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Feb 15, 2008</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="https://arvimal.github.io/tags/swap-space">swap-space</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://arvimal.github.io/posts/2008/02/2008-02-15-file-counter/" title="Recursive file counter in bash">Recursive file counter in bash</a>
+    
+
+    
+      <a class="basic-alignment right" href="https://arvimal.github.io/posts/2008/02/2008-02-15-bootloader-checker/" title="Bootloader checker">Bootloader checker</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      
+      
+      
+      
+      
+         
+      
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021  - <a href="https://arvimal.github.io/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Compacting a Ceph monitor store</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://arvimal.github.io/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://arvimal.github.io/">The Child is Father of the Man</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jul 9, 2015
+     - 1 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/ceph/">ceph </a>
+    
+  </p>
+  <h1 class="entry-title">
+     Compacting a Ceph monitor store 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>The Ceph monitor store growing to a big size is a common occurrence in a busy Ceph cluster.</p>
+<p>If a &lsquo;<em><strong>ceph -s</strong></em>&rsquo; takes considerable time to return information, one of the possibility is the monitor database being large.</p>
+<p>Other reasons included network lags between the client and the monitor, the monitor not responding properly due to the system load, firewall settings on the client or monitor etc..</p>
+<p>The best way to deal with a large monitor database is to compact the monitor store. The monitor store is a 
+<a href="http://leveldb.org/" target="_blank" rel="noopener">leveldb</a> store which stores key/value pairs.</p>
+<p>There are two ways to compact a levelDB store, either on the fly or at the monitor process startup.</p>
+<p>To compact the store dynamically, use :</p>
+<blockquote>
+<p># ceph tell mon.[ID] compact</p>
+</blockquote>
+<p>To compact the levelDB store every time the monitor process starts, add the following in /etc/ceph/ceph.conf under the [mon] section:</p>
+<blockquote>
+<p>mon compact on start = true</p>
+</blockquote>
+<p>The second option would compact the levelDB store each and every time the monitor process starts.</p>
+<p>The monitor database is stored at <em>/var/lib/ceph/mon/<!-- raw HTML omitted -->/store.db/</em> as files with the extension &lsquo;<strong>.sst</strong>&rsquo;, which is the synonym for &lsquo;<strong>Sorted String Table</strong>&rsquo;</p>
+<p>To read more on levelDB, please refer:</p>
+<p>
+<a href="https://en.wikipedia.org/wiki/LevelDB" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/LevelDB</a></p>
+<p>
+<a href="http://leveldb.googlecode.com/svn/trunk/doc/impl.html" target="_blank" rel="noopener">http://leveldb.googlecode.com/svn/trunk/doc/impl.html</a></p>
+<p>
+<a href="http://google-opensource.blogspot.in/2011/07/leveldb-fast-persistent-key-value-store.html" target="_blank" rel="noopener">http://google-opensource.blogspot.in/2011/07/leveldb-fast-persistent-key-value-store.html</a></p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Jul 9, 2015</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="https://arvimal.github.io/tags/ceph">ceph</a>  <a class="category" href="https://arvimal.github.io/tags/leveldb">leveldb</a>  <a class="category" href="https://arvimal.github.io/tags/monitors">monitors</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://arvimal.github.io/posts/2015/07/2015-07-08-what-is-data-scrubbing/" title="What is data scrubbing?">What is data scrubbing?</a>
+    
+
+    
+      <a class="basic-alignment right" href="https://arvimal.github.io/posts/2015/07/2015-07-13-how-can-we-resetchange-the-calamari-interface-password/" title="Resetting Calamari password">Resetting Calamari password</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      
+      
+      
+      
+      
+         
+      
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021  - <a href="https://arvimal.github.io/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>boot-loader-checker on The Child is Father of the Man</title>
+    <link>https://arvimal.github.io/tags/boot-loader-checker/</link>
+    <description>Recent content in boot-loader-checker on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Feb 2008 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/boot-loader-checker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bootloader checker</title>
+      <link>https://arvimal.github.io/posts/2008/02/2008-02-15-bootloader-checker/</link>
+      <pubDate>Fri, 15 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/2008-02-15-bootloader-checker/</guid>
+      <description>A bash code snippet that helps to check if the installed bootloader is Grub or LILO.
+[code language=&amp;ldquo;bash&amp;rdquo;] #!/bin/bash
+A=`mount | awk &amp;lsquo;{print $1}&amp;rsquo; | grep -n /dev/ | grep &amp;ldquo;1:&amp;rdquo; | cut -f2 -d &amp;ldquo;:&amp;rdquo; | cut -c 1-8` B=`mount | awk &amp;lsquo;{print $1}&amp;rsquo; | grep -n /dev/ | grep &amp;ldquo;1:&amp;rdquo; | cut -f2 -d &amp;ldquo;:&amp;quot;`
+echo ; echo -e &amp;quot; / mounted on $B \n&amp;rdquo;; dd if=$A bs=512 count=1 2&amp;gt;&amp;amp;1 | grep GRUB &amp;gt; /dev/null; if [ $?</description>
+    </item>
+    
+  </channel>
+</rss>

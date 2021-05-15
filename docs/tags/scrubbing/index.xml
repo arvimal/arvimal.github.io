@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>scrubbing on The Child is Father of the Man</title>
+    <link>https://arvimal.github.io/tags/scrubbing/</link>
+    <description>Recent content in scrubbing on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Jul 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/scrubbing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What is data scrubbing?</title>
+      <link>https://arvimal.github.io/posts/2015/07/2015-07-08-what-is-data-scrubbing/</link>
+      <pubDate>Wed, 08 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/07/2015-07-08-what-is-data-scrubbing/</guid>
+      <description>Data Scrubbing is an error checking and correction method or routine check to ensure that the data on file systems are in pristine condition, and has no errors. Data integrity is of primary concern in today&amp;rsquo;s conditions, given the humongous amounts of data being read and written daily.
+A simple example for a scrubbing, is a file system check done on file systems with tools like &amp;lsquo;e2fsck&amp;rsquo; in EXT2/3/4, or &amp;lsquo;xfs_repair&amp;rsquo; in XFS.</description>
+    </item>
+    
+  </channel>
+</rss>

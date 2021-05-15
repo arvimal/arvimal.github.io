@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kernel on The Child is Father of the Man</title>
+    <link>https://arvimal.github.io/tags/kernel/</link>
+    <description>Recent content in kernel on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 27 Jul 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/kernel/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Writing a minimalistic kernel module in Linux - Part 1</title>
+      <link>https://arvimal.github.io/posts/2017/07/2017-07-27-writing-a-minimalistic-kernel-module-in-linux-part-1/</link>
+      <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/07/2017-07-27-writing-a-minimalistic-kernel-module-in-linux-part-1/</guid>
+      <description>Introduction _L_oadable Kernel Modules (LKM) are object code that can be loaded into memory, often used for supporting hardware or enable specific features. Kernel modules enable the core kernel to be minimal and have features to be loaded as required.
+A kernel module is a normal file usually suffixed with .ko denoting it&amp;rsquo;s a kernel object file. It contains compiled code from one or more source files, gets linked to the kernel when loaded, and runs in kernel space.</description>
+    </item>
+    
+  </channel>
+</rss>

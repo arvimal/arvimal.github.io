@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Calculate a PG id from the hex values in Ceph OSD debug logs</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://arvimal.github.io/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://arvimal.github.io/">The Child is Father of the Man</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Aug 30, 2015
+     - 3 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/ceph/">ceph </a><a class="label" href="https://arvimal.github.io/categories/programming/">programming </a><a class="label" href="https://arvimal.github.io/categories/python/">python </a>
+    
+  </p>
+  <h1 class="entry-title">
+     Calculate a PG id from the hex values in Ceph OSD debug logs 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>Recently, I had an incident where the OSDs were crashing at the time of startup. Obviously, the next step was to enable debug logs for the OSDs and understand where they were crashing.</p>
+<p>Enabled OSD debug logs dynamically by injecting it with:</p>
+<blockquote>
+<p># ceph tell osd.* injectargs &ndash;debug-osd 20 &ndash;debug-ms 1</p>
+</blockquote>
+<p><em>NOTE: This command can be run from the MON nodes.</em></p>
+<p>Once this was done, the OSDs were started manually (since it were crashing and not running) and watched out for the next crash. It crashed with the following logs :</p>
+<blockquote>
+<p>*read_log 107487'1 (0'0) modify f6b07b93/rbd_data.hash/head//12 by client.version date, time *osd/PGLog.cc: In function &lsquo;static bool PGLog::read_log(ObjectStore*, coll_t, hobject_t, const pg_info_t&amp;, std::mapeversion_t, hobject_t&amp;, PGLog::IndexedLog&amp;, pg_missing_t&amp;, std::ostringstream&amp;, std::setstd::basic_stringchar *)&rsquo; thread thread time date, time *osd/PGLog.cc: 809: FAILED assert(last_e.version.version e.version.version)ceph version version-details</p>
+<p>1: (PGLog::read_log(ObjectStore*, coll_t, hobject_t, pg_info_t const&amp;, std::mapeversion_t, hobject_t, std::lesseversion_t, std::allocatorstd::paireversion_t const,hobject_t , PGLog::IndexedLog&amp;, pg_missing_t&amp;, std::basic_ostringstreamchar, std::char_traitschar, std::allocatorchar, std::setstd::string, std::lessstd:string, std::allocatorstd::string *)+0x13ee) [0x6efcae] 2: (PG::read_state(ObjectStore*, ceph::buffer::list&amp;)+0x315) [0x7692f5] 3: (OSD::load_pgs()+0xfff) [0x639f8f] 4: (OSD::init()+0x7bd) [0x63c10d] 5: (main()+0x2613) [0x5ecd43] 6: (__libc_start_main()+0xf5) [0x7fdc338f9af5] 7: /usr/bin/ceph-osd() [0x5f0f69]</p>
+</blockquote>
+<p>The above is a log snippet at which the OSD process was crashing. The ceph-osd process was reading through the log areas of each PG in the OSD, and once it reached the problematic PG it crashed due to failing an assert condition.</p>
+<p>Checking the source at &lsquo;osd/PGLog.cc&rsquo;, we see that this error is logged from &lsquo;PGLog::read_log&rsquo;.</p>
+<blockquote>
+<p>void PGLog::read_log(ObjectStore *store, coll_t pg_coll, coll_t log_coll, ghobject_t log_oid, const pg_info_tinfo, mapeversion_t, hobject_tdivergent_priors, IndexedLoglog, pg_missing_tmissing, ostringstreamoss, setstring *log_keys_debug) { &hellip; if (!log.log.empty()) { pg_log_entry_t last_e(log.log.back()); assert(last_e.version.version e.version.version);    == The assert condition at which read_log is failing for a particular PG assert(last_e.version.epoch = e.version.epoch);</p>
+</blockquote>
+<p>In order to make the OSD start, we needed to move this PG to a different location using the &lsquo;ceph_objectstore_tool&rsquo; so that the ceph-osd can bypass the problematic PG. To understand the PG where it was crashing, we had to do some calculations based on the logs.</p>
+<p>The &lsquo;read_log&rsquo; line in the debug logs contain a hex value after the string &ldquo;modify&rdquo; and that is the hash of the PG number. The last number in that series is the pool id (12 in our case). The following python code will help to calculate the PG id based on the arguments passed to it.</p>
+<p>This program accepts three arguments, the first being the hex value we talked about, the second being the pg_num of the pool, and the third one being the pool id.</p>
+<p>[code language=&ldquo;python&rdquo;]</p>
+<p>#!/usr/bin/env python # Calculate the PG ID from the object hash # <a href="mailto:vimal@redhat.com">vimal@redhat.com</a> import sys</p>
+<p>def pg_id_calc(*args): if any([len(args) == 0, len(args) &gt; 3, len(args) &lt; 3]): help() else: hash_hex = args[0] pg_num = int(args[1]) pool_id = int(args[2]) hash_dec = int(hash_hex, 16) id_dec = hash_dec % pg_num id = hex(id_dec) pg_id = str(pool_id) + &ldquo;.&rdquo; + str(id)[2:] print(&quot;\nThe PG ID is %s\n&quot; % pg_id)</p>
+<p>def help(): print(&ldquo;Usage:&quot;) print(&ldquo;This script expects the hash (in Hex), pg_num of the pool, and the pool id as arguments, in order&rdquo;) print(&quot;\nExample:&quot;) print(&rdquo;./pg_id_calc.py 0x8e2fe5d7 2048 12&quot;) sys.exit()</p>
+<p>if __name__ == &lsquo;__main__': pg_id_calc(*sys.argv[1:])</p>
+<p>[/code]</p>
+<p>An example of the program in action:</p>
+<blockquote>
+<p># python pg_id_calc.py 0xf6b07b93 2048 12 The PG ID is 12.393</p>
+</blockquote>
+<p>Once we get the PG ID, we can proceed using &lsquo;ceph_objectstore_tool&rsquo; to move the PG to a different location altogether. More on how to use &lsquo;ceph_objectstore_tool&rsquo; in an upcoming journal.</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Aug 30, 2015</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="https://arvimal.github.io/tags/ceph">ceph</a>  <a class="category" href="https://arvimal.github.io/tags/pg">pg</a>  <a class="category" href="https://arvimal.github.io/tags/python">python</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://arvimal.github.io/posts/2015/08/2015-08-17-how-can-we-map-a-pg-to-a-pool/" title="Mapping Placement Groups and Pools">Mapping Placement Groups and Pools</a>
+    
+
+    
+      <a class="basic-alignment right" href="https://arvimal.github.io/posts/2015/09/2015-09-01-how-to-extract-view-change-and-inject-a-monitor-map-in-a-ceph-cluster/" title="Monitor maps, how to edit them?">Monitor maps, how to edit them?</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      
+      
+      
+      
+      
+         
+      
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021  - <a href="https://arvimal.github.io/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+

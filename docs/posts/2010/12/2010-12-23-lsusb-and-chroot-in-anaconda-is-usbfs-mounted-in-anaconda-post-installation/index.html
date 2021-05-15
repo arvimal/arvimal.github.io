@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://arvimal.github.io/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://arvimal.github.io/">The Child is Father of the Man</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Dec 23, 2010
+     - 5 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/techno/">techno </a>
+    
+  </p>
+  <h1 class="entry-title">
+     lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ? 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>**<em>T</em>**he binary &lsquo;/sbin/lsusb&rsquo; in a chroot-ed environment have problems running properly. I have not checked this in a manually created chroot environment or using tools like &lsquo;mock&rsquo;.</p>
+<p>The scenario is as following :</p>
+<p>We were trying to check the output of &lsquo;lsusb&rsquo; in the %post section of a kickstart installation. I had specified &lsquo;noreboot&rsquo; in the kickstart file so the machine will wait for the user to manually reboot the machine. This helps to check the logs and the situation of the machine just after the installation finishes.</p>
+<p>After the installation and prior to the reboot, i checked in the second available terminal (Alt + F2) created by anaconda and was astonished to see that the command &lsquo;lsusb&rsquo; does not give us the required output but an error that &lsquo;/usr/share/hwdata/usb.ids&rsquo; is not accessible or found.</p>
+<p>By default, i think only the &lsquo;installation&rsquo; ie.. the %post section starts in a &lsquo;chroot&rsquo; mode and the terminal available is not chroot-ed. So we will have to use &lsquo;/mnt/sysimage/sbin/lsusb&rsquo;. This didn&rsquo;t work as expected since the &lsquo;lsusb&rsquo; binary needs to check the file &lsquo;/usr/share/hwdata/usb.ids&rsquo; and won&rsquo;t be able to find it.</p>
+<p>So I did a chroot from the second terminal and did an /sbin/lsusb, since /sbin in not in the &lsquo;PATH&rsquo; by default. That too, didn&rsquo;t work out. But this time it didn&rsquo;t even complain anything. Just nothing at all, no output. Last time, at-least it complained it could not find something. So how do we go forward now ??? Here comes &lsquo;strace&rsquo; to the rescue !!!</p>
+<p>strace is of-course a really nice tool to know what system calls are made and lots of internal stuff a binary will do while being executed. But &lsquo;strace&rsquo; is not installed by default on a RHEL5 machine, which is the case here. As most of you would know, anaconda creates a virtual file system which consists of most of the folders found under a linux main /. The location where the OS is installed is mounted under /mnt/sysimage.</p>
+<p>Since we already have an ISO from where we have booted the machine from (DVD/CD), we are free to mount it on the filesystem, which is what we did. :</p>
+<p>[sourcecode language=&ldquo;bash&rdquo; gutter=&ldquo;false&rdquo;] # mkdir /mnt/source # mount -t iso9660 /dev/hdc /mnt/source # cd /mnt/source/Server/ [/sourcecode]</p>
+<p>In case you want to know how the DVD/CD drive is detected, all you need to do is execute &lsquo;dmesg&rsquo; in the available terminal. ie.. after pressing &lsquo;Alt + Ctrl + F2&rsquo;.</p>
+<p>So we went forward and mounted the DVD to /mnt/source and changed the directory to /mnt/source/Server where all the rpm packages reside. Installed the package &lsquo;strace&rsquo; using an &lsquo;rpm -ivh&rsquo;. Please note that we need to use &lsquo;&ndash;root /mnt/sysimage&rsquo; as an option since we are installing the package to our newly installed file system which is at /mnt/sysimage. If this is not used, the installer will try to install the package to the virtual environment created in the memory.</p>
+<p>[sourcecode language=&ldquo;bash&rdquo; gutter=&ldquo;false&rdquo;] # cd /mnt/source/Server # rpm -ivh strace-&lt;version&gt;.rpm &ndash;root /mnt/sysimage # cd # chroot /mnt/sysimage [/sourcecode]</p>
+<p>This will make /mnt/sysimage as the working root, ie.. where our installation was done. OK.. now for the &lsquo;strace&rsquo; stuff.</p>
+<p>[sourcecode language=&ldquo;bash&rdquo; gutter=&ldquo;false&rdquo;] # strace -fxvto strace.log -s 1024 /sbin/lsusb [/sourcecode]</p>
+<p>The strace output will be saved to &lsquo;strace.log&rsquo; which we can open up in a text editor of our choice. Opening it in &lsquo;vi&rsquo;, shows a lot of stuff such as the command run, the default language, location of libraries loaded, the environment variables etc.. In this case we would only need to be interested in the last parts, ie.. to know where the binary failed :</p>
+<p>[sourcecode language=&ldquo;text&rdquo; gutter=&ldquo;true&rdquo;] 15:16:17 open(&quot;/dev/bus/usb&quot;, O_RDONLY|O_NONBLOCK|O_DIRECTORY) = -1 ENOENT (No such file or directory) = 03067 15:16:17 open(&quot;/proc/bus/usb&quot;, O_RDONLY|O_NONBLOCK|O_DIRECTORY) = 33067 15:16:17 fstat(3, {st_dev=makedev(0, 3), st_ino=4026532146, st_mode=S_IFDIR|0555, st_nlink=2, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=0, st_atime=2009/09/25-15:16:17, st_mtime=2009/09/25-15:16:17, st_ctime=2009/09/25-15:16:17}) = 03067 15:16:17 fcntl(3, F_SETFD, FD_CLOEXEC) = 03067 15:16:17 getdents(3, {{d_ino=4026532146, d_off=1, d_reclen=24, d_name=&quot;.&quot;} {d_ino=4026531879, d_off=2, d_reclen=24, d_name=&quot;..&quot;}}, 4096) = 483067 15:16:17 getdents(3, {}, 4096) = 03067 15:16:17 close(3) = 03067 15:16:17 exit_group(1) = ? [/sourcecode]</p>
+<p>The above trace output shows how the &lsquo;lsusb&rsquo; binary proceeded at its last time and where it failed. We can see that it went to open &lsquo;/dev/bus/usb&rsquo;, only to find that the said location does not exist. We can understand that it is a directory from the call</p>
+<p>[sourcecode language=&ldquo;text&rdquo; gutter=&ldquo;false&rdquo;] open(&quot;/dev/bus/usb&quot;, O_RDONLY|O_NONBLOCK|O_DIRECTORY) [/sourcecode]</p>
+<p>Ok,, fine.. so what does it do next ?</p>
+<p>As the next step, it tries to open &lsquo;/proc/bus/usb&rsquo; and it is present, which we know since there are no &lsquo;No such file or directory&rsquo; errors. Going further, the binary goes on to do a &lsquo;stat&rsquo; on &lsquo;/proc/bus/usb&rsquo;. After doing an &lsquo;fstat&rsquo;, it goes to check the file descriptor using &lsquo;fcntl&rsquo; and further goes to list the directory contents using &lsquo;getdents&rsquo;.</p>
+<p>This is where we find the interesting output :</p>
+<p>[sourcecode language=&ldquo;text&rdquo; gutter=&ldquo;false&rdquo;] getdents(3, {{d_ino=4026532146, d_off=1, d_reclen=24, d_name=&quot;.&quot;} {d_ino=4026531879, d_off=2, d_reclen=24, d_name=&quot;..&quot;}}, 4096) = 48 [/sourcecode]</p>
+<p>As you can see in the above trace, it returns &lsquo;.&rsquo; and &lsquo;..&rsquo;, which means there are nothing in /proc/bus/usb. So what we do understand is &lsquo;lsusb&rsquo; refers /dev/bus/usb and /proc/bus/usb for its outputs.. If it was not able to find anything, strace would have given us an error which obviously would have made life much easier.</p>
+<p>And that&rsquo;s how &lsquo;/sbin/lsusb&rsquo; failed silently.. Isn&rsquo;t strace a nice tool ??</p>
+<p>Okay, those who want to know why is this so&hellip; &lsquo;lsusb&rsquo; needs either /mnt/sysimage/proc/bus/usb or /mnt/sysimage/dev/bus/usb display contents to work properly. Anaconda is not mounting /mnt/sysimage/proc/bus/usb with the &lsquo;usbfs&rsquo; file system in the limited installation environment and hence &lsquo;lsusb&rsquo; fails&hellip;</p>
+<p>And we have a fix for that which goes into yuminstall.py in the anaconda source :</p>
+<p>[sourcecode language=&ldquo;python&rdquo; gutter=&ldquo;false&rdquo;] try:     isys.mount(&quot;/proc/bus/usb&quot;, anaconda.rootPath + &ldquo;/proc/bus/usb&rdquo;, &ldquo;usbfs&rdquo;) except Exception, e:     log.error(&ldquo;error mounting usbfs: %s&rdquo; %(e,)) [/sourcecode]</p>
+<p>This piece of python code, tries mounting /proc/bus/usb on /mnt/sysimage/proc/bus/usb as &lsquo;usbfs. If its not possible, the code excepts an Exception error and reports &ldquo;error mounting &lsquo;usbfs&rsquo;.</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Dec 23, 2010</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="https://arvimal.github.io/tags/anaconda">anaconda</a>  <a class="category" href="https://arvimal.github.io/tags/installation">installation</a>  <a class="category" href="https://arvimal.github.io/tags/lsusb">lsusb</a>  <a class="category" href="https://arvimal.github.io/tags/rhel">rhel</a>  <a class="category" href="https://arvimal.github.io/tags/strace">strace</a>  <a class="category" href="https://arvimal.github.io/tags/usb">usb</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://arvimal.github.io/posts/2010/12/2010-12-22-device-mapper-and-applications/" title="Device Mapper and applications">Device Mapper and applications</a>
+    
+
+    
+      <a class="basic-alignment right" href="https://arvimal.github.io/posts/2014/08/2014-08-16-error-open-tmpdocker-import-repobinjson-no-such-file-or-directory/" title="&#34;Error: open /tmp/docker-import-123456789/repo/bin/json: no such file or directory&#34;">&#34;Error: open /tmp/docker-import-123456789/repo/bin/json: no such file or directory&#34;</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      
+      
+      
+      
+      
+         
+      
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021  - <a href="https://arvimal.github.io/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+

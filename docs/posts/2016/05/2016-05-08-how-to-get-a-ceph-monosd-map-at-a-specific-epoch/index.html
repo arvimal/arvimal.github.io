@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>How to get a Ceph MON/OSD map at a specific epoch?</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://arvimal.github.io/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://arvimal.github.io/">The Child is Father of the Man</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">May 8, 2016
+     - 1 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/ceph/">ceph </a>
+    
+  </p>
+  <h1 class="entry-title">
+     How to get a Ceph MON/OSD map at a specific epoch? 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>To get a MON map or an OSD map of a specific epoch, use:</p>
+<blockquote>
+<p># ceph osd getmap <!-- raw HTML omitted --> # ceph mon getmap <!-- raw HTML omitted --></p>
+</blockquote>
+<p>The map can be forwarded to a file as following:</p>
+<blockquote>
+<p># ceph osd getmap <!-- raw HTML omitted --> -o /tmp/ceph_osd_getmap.bin</p>
+</blockquote>
+<p>This would be in a binary format, and hence will need to be dumped to a human-readable form.</p>
+<blockquote>
+<p># osdmaptool &ndash;print /tmp/ceph-osd-getmap.bin</p>
+</blockquote>
+<p>This will print the current OSD map, similar to the output of &lsquo;ceph osd dump&rsquo;.</p>
+<p>Where this command shines is when you can fetch maps from previous epochs, and pull information on specific placement groups in those epochs.</p>
+<p>For example, I&rsquo;ve had all the OSDs on one of my node down some time back (in a previous epoch). The ability to query a previous epoch gives the administrator the power to understand how exactly the cluster was at a specific time period.</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>May 8, 2016</time>
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://arvimal.github.io/posts/2015/10/2015-10-15-list-all-ceph-pools-with-rbd-images-and-snapshots/" title="List RBD images, snapshots, and clones in Ceph pools">List RBD images, snapshots, and clones in Ceph pools</a>
+    
+
+    
+      <a class="basic-alignment right" href="https://arvimal.github.io/posts/2016/05/2016-05-08-data-structures-arrays/" title="Data Structures - Arrays">Data Structures - Arrays</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      
+      
+      
+      
+      
+         
+      
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021  - <a href="https://arvimal.github.io/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+

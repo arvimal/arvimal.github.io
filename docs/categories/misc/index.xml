@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>misc on The Child is Father of the Man</title>
+    <link>https://arvimal.github.io/categories/misc/</link>
+    <description>Recent content in misc on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 09 May 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/categories/misc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Revamping the blog</title>
+      <link>https://arvimal.github.io/posts/2016/05/2016-05-09-revamping-the-blog/</link>
+      <pubDate>Mon, 09 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/2016-05-09-revamping-the-blog/</guid>
+      <description>I did a revamp of the whole blog two days back. Switching the theme from &amp;lsquo;Scrawl&amp;rsquo; to &amp;lsquo;Independent Publisher&amp;rsquo; was part of it. This theme is part of the hundreds of free themes in Wordpress, and looks both clean and impressive.
+&amp;lsquo;Independent Publisher&amp;rsquo; supports random header images from a list, at each page load. I&amp;rsquo;m using Unsplash for the images. These are free to use and distribute since its released under a Creative Commons Zero licence.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>callable on The Child is Father of the Man</title>
+    <link>https://arvimal.github.io/tags/callable/</link>
+    <description>Recent content in callable on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 09 Aug 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/callable/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Callables in Python</title>
+      <link>https://arvimal.github.io/posts/2017/08/2017-08-09-callables-in-python/</link>
+      <pubDate>Wed, 09 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/08/2017-08-09-callables-in-python/</guid>
+      <description>Introduction A callable is an object in Python that can be called / executed when called with parantheses ( ). Classes and functions are callable.
+Callables can be a class, a function, or an instance of a class. In simple terms, a class/function/instance/builtin is callable if it gets executed while being called with the parantheses ().
+Example 1: [code language=&amp;ldquo;bash&amp;rdquo;]
+In [1]: help() Welcome to Python 3.6&amp;rsquo;s help utility! &amp;ndash; content omitted &amp;ndash; &amp;mdash;&amp;mdash;&amp;ndash; In [2]: int() Out[2]: 0</description>
+    </item>
+    
+  </channel>
+</rss>
