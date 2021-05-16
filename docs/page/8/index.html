@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>The Child is Father of the Man</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://arvimal.github.io/favicon.png" rel="icon">
+
+  
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="The Child is Father of the Man" />
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="Author">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://arvimal.github.io/">The Child is Father of the Man</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+    
+        <a href="https://arvimal.github.io/index.xml" target="_blank" type="application/rss+xml" title="RSS" rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
+    
+  
+</ul>
+
+
+</nav>
+
+
+
+
+  
+
+<div id="main">
+  <div id="content">
+    <div class="blog-index">
+      
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">May 7, 2015
+     - 1 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/ceph/">ceph </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://arvimal.github.io/posts/2015/05/2015-05-07-how-to-change-the-filling-ratio-for-a-ceph-osd/">How to change the filling ratio for a Ceph OSD?</a>
+  </h1>
+</header>
+
+        
+          <p>There could be many scenarios where you&rsquo;d need to change the percentage of space usage on a Ceph OSD. One such use case would be when your OSD space is about to hit the hard limit, and is constantly sending you warnings.
+For some reason or other, you may need to extend the threshold limit for some time. In such a case, you don&rsquo;t need to change/add the configuration in ceph.</p>
+          
+            <footer>
+              <a href="https://arvimal.github.io/posts/2015/05/2015-05-07-how-to-change-the-filling-ratio-for-a-ceph-osd/" rel="full-article">Would you like to know more? →</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">May 7, 2015
+     - 4 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/ceph/">ceph </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://arvimal.github.io/posts/2015/05/2015-05-07-how-to-remove-a-host-from-a-ceph-cluster/">How to remove a host from a Ceph cluster?</a>
+  </h1>
+</header>
+
+        
+          <p>I&rsquo;m still studying Ceph, and recently faced a scenario in which one of my Ceph nodes went down due to hardware failure. Even though my data was safe due to the replication factor, I was not able to remove the node from the cluster.
+I could remove the OSDs on the node, but I didn&rsquo;t find a way to remove the node being listed in &lsquo;ceph osd tree&rsquo;. I ended up editing the CRUSH map by hand, to remove the host, and uploaded it back.</p>
+          
+            <footer>
+              <a href="https://arvimal.github.io/posts/2015/05/2015-05-07-how-to-remove-a-host-from-a-ceph-cluster/" rel="full-article">Would you like to know more? →</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">May 6, 2015
+     - 1 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/ceph/">ceph </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://arvimal.github.io/posts/2015/05/2015-05-06-how-to-list-all-the-configuration-settings-in-a-ceph-cluster-monitor/">How to list all the configuration settings in a Ceph cluster monitor?</a>
+  </h1>
+</header>
+
+        
+          <p>It can be really helpful to have a single command to list all the configuration settings in a monitor node, in a Ceph cluster.
+This is possible by interacting directly with the monitor&rsquo;s unix socket file. This can be found under /var/run/ceph/. By default, the admin socket for the monitor will be in the path /var/run/ceph/ceph-mon..asok.
+The default location can vary in case you have defined it to be a different one, at the time of the installation.</p>
+          
+            <footer>
+              <a href="https://arvimal.github.io/posts/2015/05/2015-05-06-how-to-list-all-the-configuration-settings-in-a-ceph-cluster-monitor/" rel="full-article">Would you like to know more? →</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Nov 12, 2014
+     - 3 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/techno/">techno </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://arvimal.github.io/posts/2014/11/2014-11-12-structure-of-the-cached-content-in-fscache/">FSCache and the on-disk structure of the cached data</a>
+  </h1>
+</header>
+
+        
+          <p>The &lsquo;cachefilesd&rsquo; kernel module will create two directories at the location specified in /etc/cachefilesd.conf. By default it&rsquo;s /var/cache/fscache/.
+ [root@montypython ~]# lsmod |grep -i cache cachefiles 40871 1 fscache 62354 3 nfs,cachefiles,nfsv4
+ Those are /var/cache/fscache/cache and /var/cache/fscache/graveyard.
+The cache structure is maintained inside &lsquo;/var/cache/fscache/cache/&rsquo;, while anything that is retired or culled is moved to &lsquo;graveyard&rsquo;. The &lsquo;cachefilesd&rsquo; daemon monitors &lsquo;graveyard&rsquo; using &lsquo;dnotify&rsquo; and will delete anything that is in there.</p>
+          
+            <footer>
+              <a href="https://arvimal.github.io/posts/2014/11/2014-11-12-structure-of-the-cached-content-in-fscache/" rel="full-article">Would you like to know more? →</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 14, 2014
+     - 2 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/techno/">techno </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-cachefs-what-are-the-differences/">FS-Cache and CacheFS, what are the differences?</a>
+  </h1>
+</header>
+
+        
+          <p>FS-Cache and CacheFS. Are there any differences between these two? Initially, I thought both were same. But no, it&rsquo;s not.
+CacheFS is the backend implementation which caches the data onto the disk and mainpulates it, while FS-Cache is an interface which talks to CacheFS.
+So why do we need two levels here?
+FS-Cache was introduced as an API or front-end for CacheFS, which can be used by any file system driver.</p>
+          
+            <footer>
+              <a href="https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-cachefs-what-are-the-differences/" rel="full-article">Would you like to know more? →</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 14, 2014
+     - 1 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/techno/">techno </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-fuse/">FS-Cache and FUSE</a>
+  </h1>
+</header>
+
+        
+          <p>I would be working on enabling FS-Cache support in the FUSE kernel module, as part of my under graduate project.
+Niels De Vos, from Red Hat Engineering, would act as my mentor and guide throughout this project. He would also be presenting this idea in the &lsquo;Linux Plumbers Conference&rsquo; being held in Germany, October 2014.
+More details on the the talk can be seen at http://www.linuxplumbersconf.org/2014/ocw/sessions/2247
+This feature has got quite a few requests from the FOSS world, and I&rsquo;m glad I could work on this.</p>
+          
+            <footer>
+              <a href="https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-fuse/" rel="full-article">Would you like to know more? →</a>
+            </footer>
+          
+        
+      </article>
+      
+      
+      
+
+
+
+
+
+
+<div class="pagination">
+
+    
+        
+        
+        
+        <a href="/" aria-label="First" class="label-pagination"><i class="fa fa-angle-double-left fa-lg"></i></a>
+    
+
+    
+    
+        <a href="/page/7/" aria-label="Previous" class="label-pagination"><i class="fa fa-angle-left fa-lg"></i></a>
+    
+
+    
+        <a href="/" class="label-pagination">1</a>
+    
+        <a href="/page/2/" class="label-pagination">2</a>
+    
+        <a href="/page/3/" class="label-pagination">3</a>
+    
+        <a href="/page/4/" class="label-pagination">4</a>
+    
+        <a href="/page/5/" class="label-pagination">5</a>
+    
+        <a href="/page/6/" class="label-pagination">6</a>
+    
+        <a href="/page/7/" class="label-pagination">7</a>
+    
+        <a href="/page/8/" class="label-pagination">8</a>
+    
+        <a href="/page/9/" class="label-pagination">9</a>
+    
+        <a href="/page/10/" class="label-pagination">10</a>
+    
+        <a href="/page/11/" class="label-pagination">11</a>
+    
+
+    
+    
+        <a href="/page/9/" aria-label="Next" class="label-pagination"><i class="fa fa-angle-right fa-lg"></i></a>
+    
+
+    
+    
+        <a href="/page/11/" aria-label="Last"><i class="fa fa-angle-double-right fa-lg"></i></a>
+    
+
+</div>
+
+  
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      
+      
+      
+      
+      
+         
+      
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+    
+  </div>
+</div>
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021 Author - <a href="https://arvimal.github.io/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+   
+
