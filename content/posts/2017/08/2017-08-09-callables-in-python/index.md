@@ -14,23 +14,38 @@ tags:
 
 A `callable` is an object in Python that can be called / executed when called with parantheses `( )`. Classes and functions are callable.
 
-Callables can be a class, a function, or an instance of a class. In simple terms, a class/function/instance/builtin is callable if it gets executed while being called with the parantheses `()`.
+Callables can be a class, a function, or an instance of a class. 
+
+In simple terms, a class/function/instance/builtin is callable if it gets executed when called with parantheses `()`.
 
 #### Example 1:
 
-\[code language="bash"\]
+```python3
+In [1]: help() 
+Welcome to Python 3.6's help utility! 
+-- content omitted -- -------- 
 
-In \[1\]: help() Welcome to Python 3.6's help utility! -- content omitted -- -------- In \[2\]: int() Out\[2\]: 0
+In [2]: int() 
+Out[2]: 0
 
-In \[3\]: callable(int) Out\[3\]: True
+In [3]: 
+callable(int) 
+Out [3]: True
 
-\-------- In \[4\]: callable(help) Out\[4\]: True
+In [4]: callable(help) 
+Out [4]: True
 
-\-------- In \[5\]: def hello(): ..: print("Howdy!!")
+In [5]: def hello():
+          print("Howdy!!")
 
-In \[6\]: hello() Howdy!!
+In [6]: hello() 
+Out [6]: Howdy!!
 
-In \[7\]: callable(hello) Out\[7\]: True \[/code\] In _**Example 1**_, we can see that the builtins like `help()`, a pre-defined type such as `int()`, and a custom function `hello()` are all callable. These can be executed while being called with parantheses.
+In [7]: callable(hello) 
+Out [7]: True 
+```
+
+In _**Example 1**_, we can see that builtins like `help()`, a pre-defined type such as `int()`, and a custom function `hello()` are all callable. These can be executed while being called with parantheses.
 
 ## The \_\_call\_\_() method
 
@@ -42,25 +57,34 @@ In short:
 
 All classes and functions are callable, as well as _instances of classes_ with the `__call__` magic method. An instance of a class/function is usually not callable (even though the class/function itself is), unless the class carries a `__call__` magic method.
 
-In other words, an instance is callable only if the class it is instantiated from contains the `__call__` magic method.
+ie. An instance is callable only if the class it is instantiated from contains the `__call__` magic method.
 
 - The inbuilt documentation on `callable` states:
 
-\[code language="text"\] In \[1\]: print(callable.\_\_doc\_\_) Return whether the object is callable (i.e., some kind of function).
+```python3
+In [1]: print(callable.__doc__) 
+Return whether the object is callable (i.e., some kind of function).
+```` 
 
 Note that classes are callable, as are instances of classes with a \_\_call\_\_() method. \[/code\]
 
 #### Example 2:
 
-\[code language="python"\]
+```python3
+In [5]: def hello():
+ ...:     print("Howdy!!")
 
-In \[5\]: def hello(): ...: print("Howdy!!")
+In [6]: hello() 
+Out [6]: Howdy!!
 
-In \[6\]: hello() Howdy!!
+In [7]: hello.__call__() 
+Out [7]: Howdy!!
 
-In \[7\]: hello.\_\_call\_\_() Howdy!!
+In [8]: callable(hello) 
+Out [8]: True 
+```
 
-In \[8\]: callable(hello) Out\[8\]: True \[/code\] _**Example 2**_ shows that a function when called with the parantheses (including any required arguments) is equivalent to calling the `__call__()` magic method. ie.. calling a function/class with parantheses translates to calling the `__call__()` magic method.
+ _**Example 2**_ shows that a function when called with the parantheses (including any required arguments) is equivalent to calling the `__call__()` magic method. ie.. calling a function/class with parantheses translates to calling the `__call__()` magic method.
 
 _**NOTE:**_ Read more on [Magic methods in Python](https://arvimal.blog/2016/06/02/magic-methods-in-python/)
 
