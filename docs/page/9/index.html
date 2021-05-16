@@ -104,6 +104,38 @@
         
 
 <header>
+  <p class="meta">Sep 14, 2014
+     - 1 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/techno/">techno </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-fuse/">FS-Cache and FUSE</a>
+  </h1>
+</header>
+
+        
+          <p>I would be working on enabling FS-Cache support in the FUSE kernel module, as part of my under graduate project.
+Niels De Vos, from Red Hat Engineering, would act as my mentor and guide throughout this project. He would also be presenting this idea in the &lsquo;Linux Plumbers Conference&rsquo; being held in Germany, October 2014.
+More details on the the talk can be seen at http://www.linuxplumbersconf.org/2014/ocw/sessions/2247
+This feature has got quite a few requests from the FOSS world, and I&rsquo;m glad I could work on this.</p>
+          
+            <footer>
+              <a href="https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-fuse/" rel="full-article">Would you like to know more? →</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
   <p class="meta">Aug 16, 2014
      - 2 minute read 
     
@@ -255,38 +287,6 @@ Excerpt from /etc/lvm/lvm.conf:
           
             <footer>
               <a href="https://arvimal.github.io/posts/2008/07/2008-07-18-how-to-map-pci-devices-in-linux/" rel="full-article">Would you like to know more? →</a>
-            </footer>
-          
-        
-      </article>
-      
-      <article>
-        
-        
-
-<header>
-  <p class="meta">Feb 15, 2008
-     - 1 minute read 
-    
-
-    
-    
-      - <a class="label" href="https://arvimal.github.io/categories/programming/">programming </a>
-    
-  </p>
-  <h1 class="entry-title">
-    <a href="https://arvimal.github.io/posts/2008/02/2008-02-15-bootloader-checker/">Bootloader checker</a>
-  </h1>
-</header>
-
-        
-          <p>A bash code snippet that helps to check if the installed bootloader is Grub or LILO.
-[code language=&ldquo;bash&rdquo;] #!/bin/bash
-A=`mount | awk &lsquo;{print $1}&rsquo; | grep -n /dev/ | grep &ldquo;1:&rdquo; | cut -f2 -d &ldquo;:&rdquo; | cut -c 1-8` B=`mount | awk &lsquo;{print $1}&rsquo; | grep -n /dev/ | grep &ldquo;1:&rdquo; | cut -f2 -d &ldquo;:&quot;`
-echo ; echo -e &quot; / mounted on $B \n&rdquo;; dd if=$A bs=512 count=1 2&gt;&amp;1 | grep GRUB &gt; /dev/null; if [ $?</p>
-          
-            <footer>
-              <a href="https://arvimal.github.io/posts/2008/02/2008-02-15-bootloader-checker/" rel="full-article">Would you like to know more? →</a>
             </footer>
           
         

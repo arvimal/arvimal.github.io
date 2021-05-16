@@ -104,6 +104,36 @@
         
 
 <header>
+  <p class="meta">Jul 13, 2015
+     - 1 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/ceph/">ceph </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://arvimal.github.io/posts/2015/07/2015-07-13-how-can-we-resetchange-the-calamari-interface-password/">Resetting Calamari password</a>
+  </h1>
+</header>
+
+        
+          <p>&lsquo;Calamari&rsquo; is the monitoring interface for a Ceph cluster.
+The Calamari interface password can be reset/changed using the &lsquo;calamari-ctl&rsquo; command.
+ # calamari-ctl change_password &ndash;password {password} {user-name}
+ calamari-ctl can also be used to add a user, as well as disable, enable, and rename the user account. A &lsquo;&ndash;help&rsquo; should print out all the available ones.
+ # calamari-ctl &ndash;help
+ </p>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
   <p class="meta">Jul 9, 2015
      - 1 minute read 
     
@@ -250,36 +280,6 @@ As we saw in the previous post, you can get the list of configuration settings u
           
             <footer>
               <a href="https://arvimal.github.io/posts/2015/05/2015-05-27-how-to-change-a-configuration-value-in-a-ceph-cluster-dynamically/" rel="full-article">Would you like to know more? →</a>
-            </footer>
-          
-        
-      </article>
-      
-      <article>
-        
-        
-
-<header>
-  <p class="meta">May 27, 2015
-     - 3 minute read 
-    
-
-    
-    
-      - <a class="label" href="https://arvimal.github.io/categories/ceph/">ceph </a>
-    
-  </p>
-  <h1 class="entry-title">
-    <a href="https://arvimal.github.io/posts/2015/05/2015-05-27-how-can-we-get-a-list-of-all-the-configurations-from-a-ceph-cluster-node/">How to fetch the entire list of tunables along with the values for a Ceph cluster node?</a>
-  </h1>
-</header>
-
-        
-          <p>In many cases we would like to get the active configurations from a Ceph node, either a monitor or an OSD node. A neat feature, I must say, is to probe the administrative socket file to get a listing of all the active configurations, be it on the OSD node or the monitor node.
-This comes handy when we have changed a setting and wants to confirm if it had indeed changed or not.</p>
-          
-            <footer>
-              <a href="https://arvimal.github.io/posts/2015/05/2015-05-27-how-can-we-get-a-list-of-all-the-configurations-from-a-ceph-cluster-node/" rel="full-article">Would you like to know more? →</a>
             </footer>
           
         
