@@ -23,6 +23,9 @@ rss = true
 # Website's default description
 description = ""
 
+# Google Analytics
+googleAnalytics = "G-026GDYSCSW"
+
 [markup]
   [markup.tableOfContents]
     endLevel = 8

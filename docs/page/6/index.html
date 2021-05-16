@@ -104,6 +104,67 @@
         
 
 <header>
+  <p class="meta">Oct 7, 2015
+     - 4 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/ceph/">ceph </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://arvimal.github.io/posts/2015/10/2015-10-07-objects-remain-in-a-ceph-pool-used-for-rbd-even-if-the-files-are-deleted-from-the-mount-point/">Ceph Rados Block Device (RBD) and TRIM</a>
+  </h1>
+</header>
+
+        
+          <p>I recently came across a scenario where the objects in a RADOS pool used for an RBD block device doesn’t get removed, even if the files created through the mount point were removed.
+I had an RBD image from an RHCS1.3 cluster mapped to a RHEL7.1 client machine, with an XFS filesystem created on it, and mounted locally. Created a 5GB file, and I could see the objects being created in the rbd pool in the ceph cluster.</p>
+          
+            <footer>
+              <a href="https://arvimal.github.io/posts/2015/10/2015-10-07-objects-remain-in-a-ceph-pool-used-for-rbd-even-if-the-files-are-deleted-from-the-mount-point/" rel="full-article">Would you like to know more? →</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 23, 2015
+     - 2 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/ceph/">ceph </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://arvimal.github.io/posts/2015/09/2015-09-23-how-to-find-the-crush-ruleset-on-which-a-pool-was-created/">Custom CRUSH rulesets and pools</a>
+  </h1>
+</header>
+
+        
+          <p>Ceph supports custom rulesets via CRUSH, which can be used to sort hardware based on various features such as speed and other factors, set custom weights, and do a lot of other useful things.
+Pools, or the buckets were the data is written to, can be created on the custom rulesets, hence positioning the pools on specific hardware as per the administrator&rsquo;s need.
+A large Ceph cluster may have lots of pools and rulesets specific for multiple use-cases.</p>
+          
+            <footer>
+              <a href="https://arvimal.github.io/posts/2015/09/2015-09-23-how-to-find-the-crush-ruleset-on-which-a-pool-was-created/" rel="full-article">Would you like to know more? →</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
   <p class="meta">Sep 18, 2015
      - 2 minute read 
     
@@ -223,69 +284,6 @@ A direct method is to dump information on the PGs via :
             <footer>
               <a href="https://arvimal.github.io/posts/2015/08/2015-08-17-how-can-we-map-a-pg-to-a-pool/" rel="full-article">Would you like to know more? →</a>
             </footer>
-          
-        
-      </article>
-      
-      <article>
-        
-        
-
-<header>
-  <p class="meta">Aug 5, 2015
-     - 2 minute read 
-    
-
-    
-  </p>
-  <h1 class="entry-title">
-    <a href="https://arvimal.github.io/posts/2015/08/2015-08-05-how-to-check-the-journal-disk-for-any-particular-osd/">How to identify the journal disk for a Ceph OSD?</a>
-  </h1>
-</header>
-
-        
-          <p>In many cases, one would like to understand the journal disk a particular OSD is using. There are two methods to understand this:
-a) This is the most direct method, and should give you details on the OSD disks and the corresponding journal disks.
-[sourcecode language=&ldquo;bash&rdquo; gutter=&ldquo;false&rdquo;]
-# ceph-disk list
-[/sourcecode]
-This should output something like:
-[sourcecode language=&ldquo;bash&rdquo; gutter=&ldquo;false&rdquo;]
-# ceph-disk list /dev/sda : /dev/sda1 other, xfs, mounted on /boot /dev/sda2 other, LVM2_member /dev/sr0 other, unknown /dev/vda : /dev/vda1 ceph data, active, cluster ceph, osd.</p>
-          
-            <footer>
-              <a href="https://arvimal.github.io/posts/2015/08/2015-08-05-how-to-check-the-journal-disk-for-any-particular-osd/" rel="full-article">Would you like to know more? →</a>
-            </footer>
-          
-        
-      </article>
-      
-      <article>
-        
-        
-
-<header>
-  <p class="meta">Jul 13, 2015
-     - 1 minute read 
-    
-
-    
-    
-      - <a class="label" href="https://arvimal.github.io/categories/ceph/">ceph </a>
-    
-  </p>
-  <h1 class="entry-title">
-    <a href="https://arvimal.github.io/posts/2015/07/2015-07-13-how-can-we-resetchange-the-calamari-interface-password/">Resetting Calamari password</a>
-  </h1>
-</header>
-
-        
-          <p>&lsquo;Calamari&rsquo; is the monitoring interface for a Ceph cluster.
-The Calamari interface password can be reset/changed using the &lsquo;calamari-ctl&rsquo; command.
- # calamari-ctl change_password &ndash;password {password} {user-name}
- calamari-ctl can also be used to add a user, as well as disable, enable, and rename the user account. A &lsquo;&ndash;help&rsquo; should print out all the available ones.
- # calamari-ctl &ndash;help
- </p>
           
         
       </article>
@@ -412,6 +410,13 @@ The Calamari interface password can be reset/changed using the &lsquo;calamari-c
     
     
 
+    
+      <script>
+        var _gaq=[['_setAccount','G-026GDYSCSW'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
     
   </body>
 </html>
