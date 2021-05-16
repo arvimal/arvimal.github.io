@@ -3,3 +3,32 @@ languageCode = "en-us"
 title = "The Child is Father of the Man"
 theme = "Hugo-Octopress"
 publishDir = "docs"
+
+# Number of blog posts in each pagination page
+paginate = 6
+
+
+[params]
+# If false, all contents of posts will appear on the front page and in pagination
+truncate = true
+# Author's name (appears in meta tags and under posts)
+author = "Author"
+# Text of the "Continue Reading" label. Supports markdown and inline HTML.
+# For example, &rarr; == right arrow.
+continueReadingText = "Would you like to know more? &rarr;"
+
+# Switch to true to enable RSS icon link
+rss = true
+
+# Website's default description
+description = ""
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 8
+    startLevel = 1
+  [markup.highlight]
+    style = "solarized-dark"
+
+github = "https://github.com/arvimal/"
+linkedin = "https://www.linkedin.com/in/arvimal/"
