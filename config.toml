@@ -1,7 +1,8 @@
 baseURL = "https://arvimal.github.io"
 languageCode = "en-us"
 title = "The Child is Father of the Man"
-theme = "Hugo-Octopress"
+#theme = "Hugo-Octopress"
+theme = "LoveIt"
 publishDir = "docs"
 
 # Number of blog posts in each pagination page
@@ -9,14 +10,16 @@ paginate = 6
 
 
 [params]
+  # LoveIt theme version
+  version = "0.2.X"
 # If false, all contents of posts will appear on the front page and in pagination
 truncate = true
 # Author's name (appears in meta tags and under posts)
-author = "Author"
+author = "Vimal A R"
 # Text of the "Continue Reading" label. Supports markdown and inline HTML.
 # For example, &rarr; == right arrow.
-continueReadingText = "Would you like to know more? &rarr;"
-
+continueReadingText = "Read further &rarr;"
+summaryLength=0
 # Switch to true to enable RSS icon link
 rss = true
 
@@ -31,7 +34,7 @@ googleAnalytics = "G-026GDYSCSW"
     endLevel = 8
     startLevel = 1
   [markup.highlight]
-    style = "solarized-dark"
+    style = "manni"
 
 github = "https://github.com/arvimal/"
 linkedin = "https://www.linkedin.com/in/arvimal/"
