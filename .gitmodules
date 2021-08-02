@@ -7,6 +7,3 @@
 [submodule "themes/researcher"]
 	path = themes/researcher
 	url = https://github.com/ojroques/hugo-researcher.git
-[submodule "themes/Hugo-Octopress"]
-	path = themes/Hugo-Octopress
-	url = https://github.com/parsiya/Hugo-Octopress
