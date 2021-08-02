@@ -1,44 +1,176 @@
-baseURL = "https://arvimal.github.io"
+
+baseurl = "https://arvimal.github.io"
+disablePathToLower = false
 languageCode = "en-us"
 title = "The Child is Father of the Man"
 theme = "Hugo-Octopress"
-publishDir = "docs"
+
+# Disqus shortcode
+# Disable comments for any individual post by adding "comments: false" in its frontmatter
+# Note it's not under [params] anymore
+# disqusShortname = "Your disqus shortname"
 
 # Number of blog posts in each pagination page
 paginate = 6
 
-
-[params]
-# If false, all contents of posts will appear on the front page and in pagination
-truncate = true
-# Author's name (appears in meta tags and under posts)
-author = "Vimal A R"
-# Text of the "Continue Reading" label. Supports markdown and inline HTML.
-# For example, &rarr; == right arrow.
-continueReadingText = "Read further &rarr;"
-summaryLength=0
-# Switch to true to enable RSS icon link
-rss = true
-
-# Website's default description
-description = ""
-
-# Google Analytics
-googleAnalytics = "G-026GDYSCSW"
+[permalinks]
+post = "/blog/:year-:month-:day-:title/" # change the post URL to look like the old ones
 
 [markup]
+  # Default is startLevel 2 and endLevel 3, we want to render every heading
   [markup.tableOfContents]
     endLevel = 8
     startLevel = 1
+  # set the Chroma highlighting options
+  # https://gohugo.io/getting-started/configuration-markup/#highlight
   [markup.highlight]
-    style = "manni"
+    style = "solarized-dark"
+  # if you want to keep using Blackfriday
+  # defaultMarkdownHandler = "blackfriday"
+  #   [markup.blackFriday]
+  #     hrefTargetBlank = true # open links in a new tab
+
+[params]
+
+  # --- Start sidebar options ---
+  # Number of last posts that will be displayed in the sidebar - set to 0 or remove to hide this section
+  sidebarRecentLimit = 5
+
+  # Sidebar header - passed to markdownify so you can write markdown here
+  sidebarHeader = "Who am I?!"
+  
+  # Sidebar text also supports markdown
+  # New lines can be added with two spaces at the end of line. New paragraphs can be added with two an empty line.
+  # when adding two new lines, remember to remove the indentation otherwise the new line will be treated as a codeblock
+  sidebarText = """
+  I am a Systems Engineer, working in the Netherlands.
+
+  Here, I aim to document my interests and notes on the technologies I learn during my work and free time.  
+  
+  This usually includes programming, cloud technologies, filesystems, linux etc..
+    """
+  
+  # Sidebar menu - if true will add a sidebar menu between sidebar text and recent posts
+  sidebarMenuEnabled = true
+  sidebarMenuHeader = "Favourite blogs"
+
+  # sidebar links
+  github = "https://github.com/arvimal"
+  linkedin = "https://www.linkedin.com/in/arvimal/"
+
+
+  # --- End sidebar options ---
+
+  # If set to true, navigation menu links will open in a new window with the exception of links to root ("/")
+  # If this item does not exist or set to false, then navigation menu links will open in the same window
+  navigationNewWindow = true
+
+  # If false, all of blog post will appear on front page (and in pagination)
+  truncate = true
+
+  # Compact blog posts
+  compactIndex = true
+
+  # Author's name (appears in meta tags and under posts)
+  author = "Vimal A R"
+
+  # This text appears in the site header under website title
+  subtitle = "Technical notes and blah.."
+
+  # Search engine URL
+  searchEngineURL = "https://www.google.com/search"
+
+  # Text of the "Continue Reading" label. Supports markdown and inline HTML.
+  # For example, &rarr; == right arrow.
+  continueReadingText = "Would you like to know more? &rarr;"
+
+  # Google analytics code - remove if you do not have/want Google Analytics - needs JavaScript
+  # googleAnalytics = "UA-XXXXX-X"
+
+  # Optional piwik tracking
+  # [params.analytics.piwik]
+  #  URL = "https://stats.example.com"
+  #  ID = "42"
+
+  # Switch to true to enable RSS icon link
+  rss = true
+
+  # Set to true to use a text label for RSS instead of an icon
+  # This is overwritten by the "rss" setting
+  textrss = false
+
+  # Website's default description
+  description = ""
+
+  # Populate this with your own search keywords - these will appear in the meta tags
+  # defaultKeywords = ["keyword1" , "keyword2" , "keyword3" , "keyword4"]
+
+  # CSS override files
+  # Paths should be relative to the `static` directory
+  # customCSS = ["css/custom.css","css/custom2.css"]
+
+  # 404.html header and text - both support markdown
+  notFoundHeader = "There's nothing here"
+
+  notFoundText = """Please either go back or use the navigation/sidebar menus.
+  """
+
+  # Set to true to hide ReadingTime on posts
+  disableReadingTime = false
+
+  # Set to true to disable downloading of remote Google fonts
+  disableGoogleFonts = false
+
+  # Remove or Set to false to use local fonts
+  # remoteFonts = false
+  
+  # Remove or set to false to use FontAwesome CDN, otherwise the theme uses ForkAwesome local fonts.
+  # fontAwesome = false
+
+  # Generate taxonomy pages
+  generateTaxonomyList = true
+
+  # This is not needed unless alphabetical sort is needed
+  # sortTaxonomyAlphabetical = true
+
+  # Twitter card config
+  # Enable with this.
+  # twitterCardEnabled = true
+  # Don't include the @.
+  # twitterCardSite = 
+  # twitterCardDomain = "parsiya.net"
+  # Don't include the @.
+  # twitterCardAuthor = "CryptoGangsta"
+
+  # Set to true to enable compact index. Set to false or remove to go back to classic view.
+  # compactIndex = true
+
+  # Set mainSections.
+  # mainSections = ["post", "blog"]
+
+# Menu
+# If navigationNewWindow (under [params]) is set to true then all links except root ("/") will open in a new window
+# If it does not exist or is set to false then links will open in the same window
 [[menu.main]]
-    name = "Home" #Name in the navigation bar
-    weight = 10 #The larger the weight, the more on the right this item will be
-    url = "/" #URL address
-[[menu.main]]
-    name = "Posts"
-    weight = 20
-    url = "/posts/"
-github = "https://github.com/arvimal/"
-linkedin = "https://www.linkedin.com/in/arvimal/"
+  Name = "Home Page"
+  URL = "/"
+  weight = -5
+
+
+# Sidebar menus
+# Enable with "sidebarMenuEnabled = true" under [params]
+# Header text is "sidebarMenuHeader" under [params]
+[[menu.sidebar]]
+  Name = "Talk Python to Me"
+  URL = "https://talkpython.fm/"
+  weight = 0
+
+[[menu.sidebar]]
+  Name = "SRE Weekly"
+  URL = "http://sreweekly.com/feed/"
+  weight = 1
+
+[[menu.sidebar]]
+  Name = "Julia Evans"
+  URL = "https://jvns.ca/atom.xml"
+  weight = 2
