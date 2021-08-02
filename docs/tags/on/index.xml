@@ -1,23 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>on on The Child is Father of the Man</title>
-    <link>https://arvimal.github.io/tags/on/</link>
-    <description>Recent content in on on The Child is Father of the Man</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 08 May 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/on/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Code complexity - The Big O notation [O(n)]</title>
-      <link>https://arvimal.github.io/posts/2016/05/2016-05-08-big-o-notation-on/</link>
-      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://arvimal.github.io/posts/2016/05/2016-05-08-big-o-notation-on/</guid>
-      <description>Efficiency or Complexity is how well you&amp;rsquo;re using your resources to get your code run.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>on - Tag - The Child is Father of the Man</title>
+        <link>https://arvimal.github.io/tags/on/</link>
+        <description>on - Tag - The Child is Father of the Man</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 08 May 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/on/" rel="self" type="application/rss+xml" /><item>
+    <title>Code complexity - The Big O notation [O(n)]</title>
+    <link>https://arvimal.github.io/posts/2016/05/2016-05-08-big-o-notation-on/</link>
+    <pubDate>Sun, 08 May 2016 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://arvimal.github.io/posts/2016/05/2016-05-08-big-o-notation-on/</guid>
+    <description><![CDATA[Efficiency or Complexity is how well you&rsquo;re using your resources to get your code run.
 Efficiency can be calculated on the basis of how much time your code takes to run/execute.
 Understanding the efficiency of your code can help to reduce the complexity, thus improving the runtime efficiency further. Getting the same job done in less time and less system resources is always good.
-Once you find the efficiency of your program, you can start to find ways for:</description>
-    </item>
-    
-  </channel>
+Once you find the efficiency of your program, you can start to find ways for:]]></description>
+</item></channel>
 </rss>

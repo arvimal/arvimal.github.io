@@ -1,124 +1,116 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Writing a minimalistic kernel module in Linux - Part 1 - The Child is Father of the Man</title><meta name="Description" content=""><meta property="og:title" content="Writing a minimalistic kernel module in Linux - Part 1" />
+<meta property="og:description" content="Introduction _L_oadable Kernel Modules (LKM) are object code that can be loaded into memory, often used for supporting hardware or enable specific features. Kernel modules enable the core kernel to be minimal and have features to be loaded as required.
+A kernel module is a normal file usually suffixed with .ko denoting it&rsquo;s a kernel object file. It contains compiled code from one or more source files, gets linked to the kernel when loaded, and runs in kernel space." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://arvimal.github.io/posts/2017/07/2017-07-27-writing-a-minimalistic-kernel-module-in-linux-part-1/" />
+<meta property="article:published_time" content="2017-07-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-07-27T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Writing a minimalistic kernel module in Linux - Part 1"/>
+<meta name="twitter:description" content="Introduction _L_oadable Kernel Modules (LKM) are object code that can be loaded into memory, often used for supporting hardware or enable specific features. Kernel modules enable the core kernel to be minimal and have features to be loaded as required.
+A kernel module is a normal file usually suffixed with .ko denoting it&rsquo;s a kernel object file. It contains compiled code from one or more source files, gets linked to the kernel when loaded, and runs in kernel space."/>
+<meta name="application-name" content="The Child is Father of the Man">
+<meta name="apple-mobile-web-app-title" content="The Child is Father of the Man"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://arvimal.github.io/posts/2017/07/2017-07-27-writing-a-minimalistic-kernel-module-in-linux-part-1/" /><link rel="prev" href="https://arvimal.github.io/posts/2017/06/2017-06-27-recursion-algorithm-study/" /><link rel="next" href="https://arvimal.github.io/posts/2017/08/2017-08-09-callables-in-python/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Writing a minimalistic kernel module in Linux - Part 1",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/arvimal.github.io\/posts\/2017\/07\/2017-07-27-writing-a-minimalistic-kernel-module-in-linux-part-1\/"
+        },"genre": "posts","keywords": "kernel, module","wordcount":  2109 ,
+        "url": "https:\/\/arvimal.github.io\/posts\/2017\/07\/2017-07-27-writing-a-minimalistic-kernel-module-in-linux-part-1\/","datePublished": "2017-07-27T00:00:00+00:00","dateModified": "2017-07-27T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "Author"},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
-  
-  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
-
-  
-    
-    
-      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
-    
-  
-
-  
-  <title>Writing a minimalistic kernel module in Linux - Part 1</title>
-
-  
-  
-  <link rel="stylesheet" href="/css/hugo-octopress.css">
-
-  
-  
-
-  
-    <link rel="stylesheet" href="/css/fork-awesome.min.css">
-  
-
-  
-  <link href="https://arvimal.github.io/favicon.png" rel="icon">
-
-  
-  
-
-  <meta name="description" content="" />
-  <meta name="keywords" content="">
-  <meta name="author" content="Author">
-
-  
-  <meta name="generator" content="Hugo 0.80.0" />
-
-  
-  
-
-  
-  
-
-  
-  
-
-
-
-</head>
-<body>
-
-
-<header role="banner">
-<hgroup>
-  
-  <h1><a href="https://arvimal.github.io/">The Child is Father of the Man</a></h1>
-    <h2></h2>
-</hgroup></header>
-
-
-<nav role="navigation">
-<fieldset class="mobile-nav">
-  
-  <select onchange="location = this.value;">
-    <option value="">Navigate…</option>
-      
-  </select>
-</fieldset>
-
-
-<ul class="main-navigation">
-  
-  
-</ul>
-
-<ul class="subscription">
-  
-    
-        <a href="https://arvimal.github.io/index.xml" target="_blank" type="application/rss+xml" title="RSS" rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
-    
-  
-</ul>
-
-
-</nav>
-
-
-<div id="main">
-  <div id="content">
-    <div>
-      <article class="hentry" role="article">
-
-        
-        
-
-<header>
-  <p class="meta">Jul 27, 2017
-     - 10 minute read 
-    
-
-    
-    
-      - <a class="label" href="https://arvimal.github.io/categories/linux/">linux </a><a class="label" href="https://arvimal.github.io/categories/programming/">programming </a>
-    
-  </p>
-  <h1 class="entry-title">
-     Writing a minimalistic kernel module in Linux - Part 1 
-  </h1>
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="The Child is Father of the Man">The Child is Father of the Man</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="The Child is Father of the Man">The Child is Father of the Man</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
 </header>
-
-
-        <div class="entry-content">
-          
-          
-          
-          <h2 id="introduction">Introduction</h2>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Writing a minimalistic kernel module in Linux - Part 1</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Author</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a>&nbsp;<a href="/categories/programming/"><i class="far fa-folder fa-fw"></i>programming</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2017-07-27">2017-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2109 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;10 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#structure">Structure</a></li>
+        <li><a href="#depmod-and-related-commands">depmod, and related commands</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#modulessymbols">modules.symbols</a></li>
+                <li><a href="#modulesdep">modules.dep</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#creating-a-dummy-module">Creating a dummy module</a></li>
+        <li><a href="#writing-a-simple-module">Writing a simple module</a></li>
+        <li><a href="#writing-a-makefile">Writing a Makefile</a></li>
+        <li><a href="#compiling-the-module-with-make">Compiling the module with `make`</a></li>
+        <li><a href="#loadingunloading-the-module">Loading/Unloading the module</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="introduction">Introduction</h2>
 <p>_<strong>L</strong>_oadable Kernel Modules (LKM) are object code that can be loaded into memory, often used for supporting hardware or enable specific features. Kernel modules enable the core kernel to be minimal and have features to be loaded as required.</p>
 <p>A kernel module is a normal file usually suffixed with <code>.ko</code> denoting it&rsquo;s a kernel object file. It contains compiled code from one or more source files, gets linked to the kernel when loaded, and runs in kernel space. It can dynamically adds functionality to a running kernel, without requiring a reboot.</p>
 <p>Linux kernel modules are written in C (not sure if anything else like C++ is possible), and is compiled for a specific kernel version. This is the ideal practice since kernel data structures may change across versions, and using a module compiled for a specific version may break for another.</p>
@@ -213,114 +205,45 @@
 <p>Loading and unloading the module should print the messages passed via <code>printk</code> in <code>dmesg</code>.</p>
 <p>[code language=&ldquo;bash&rdquo;] [root@centos7 test]# insmod ./test.ko [root@centos7 test]# lsmod | grep test test 12498 0 [root@centos7 test]# rmmod test [/code]</p>
 <p>Checking <code>dmesg</code> shows the informational messages in the module code:</p>
-<p>[code language=&ldquo;bash&rdquo;] [root@centos7 test]# dmesg | tail [35889.187282] test: loading out-of-tree module taints kernel. [35889.187288] test: module license &lsquo;unspecified&rsquo; taints kernel. [35889.187290] Disabling lock debugging due to kernel taint [35889.187338] test: module verification failed: signature and/or required key missing - tainting kernel [35889.187548] Loading the test module! [35899.216954] Unloading the test module! [/code] Note the messages about the module <code>test</code> tainting the kernel. Read more on how a module can taint the kernel, at 
-<a href="https://www.kernel.org/doc/html/latest/admin-guide/tainted-kernels.html" target="_blank" rel="noopener">https://www.kernel.org/doc/html/latest/admin-guide/tainted-kernels.html.</a></p>
+<p>[code language=&ldquo;bash&rdquo;] [root@centos7 test]# dmesg | tail [35889.187282] test: loading out-of-tree module taints kernel. [35889.187288] test: module license &lsquo;unspecified&rsquo; taints kernel. [35889.187290] Disabling lock debugging due to kernel taint [35889.187338] test: module verification failed: signature and/or required key missing - tainting kernel [35889.187548] Loading the test module! [35899.216954] Unloading the test module! [/code] Note the messages about the module <code>test</code> tainting the kernel. Read more on how a module can taint the kernel, at <a href="https://www.kernel.org/doc/html/latest/admin-guide/tainted-kernels.html" target="_blank" rel="noopener noreffer">https://www.kernel.org/doc/html/latest/admin-guide/tainted-kernels.html.</a></p>
 <p>More on customizing the Makefile in another post.</p>
-
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2017-07-27</span>
+            </div>
+            <div class="post-info-license"></div>
         </div>
-        
-
-<footer>
-  <p class="meta">
-    <span class="byline author vcard">Posted by <span class="fn">Author</span></span>
-    
-    <time>Jul 27, 2017</time>
-    
-      <span class="categories">
-        Tags:
-        
-          <a class="category" href="https://arvimal.github.io/tags/kernel">kernel</a>  <a class="category" href="https://arvimal.github.io/tags/module">module</a>  
-    
-    </span>
-  </p>
-
-  
-
-  <p class="meta">
-    
-        <a class="basic-alignment left" href="https://arvimal.github.io/posts/2017/06/2017-06-27-recursion-algorithm-study/" title="Recursion - Algorithm Study">Recursion - Algorithm Study</a>
-    
-
-    
-      <a class="basic-alignment right" href="https://arvimal.github.io/posts/2017/08/2017-08-09-callables-in-python/" title="Callables in Python">Callables in Python</a>
-    
-  </p>
-  
-</footer>
-
-      </article>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
     </div>
-    
 
-<aside class="sidebar thirds">
-  <section class="first odd">
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kernel/">kernel</a>,&nbsp;<a href="/tags/module/">module</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
 
-    
-
-    <p>
-      
-    </p>
-  </section>
-
-
-
-  
-  <ul class="sidebar-nav">
-    <li class="sidebar-nav-item">
-      
-      
-      
-      
-      
-         
-      
-      
-      
-      
-      
-      
-      
-
-    
-    
-    </li>
-  </ul>
-
-  
-
-  
-
-  
-  
-  
-</aside>
-
-  </div>
+    <div class="post-nav"><a href="/posts/2017/06/2017-06-27-recursion-algorithm-study/" class="prev" rel="prev" title="Recursion - Algorithm Study"><i class="fas fa-angle-left fa-fw"></i>Recursion - Algorithm Study</a>
+            <a href="/posts/2017/08/2017-08-09-callables-in-python/" class="next" rel="next" title="Callables in Python">Callables in Python<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
 
-    <footer role="contentinfo">
-      <p>Copyright &copy; 2021 Author - <a href="https://arvimal.github.io/license/">License</a> -
-        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
-      </p>
-    </footer>
-
-    
-    
-
-
-
-    
-    
-    
-
-    
-      <script>
-        var _gaq=[['_setAccount','G-026GDYSCSW'],['_trackPageview']];
-        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-        s.parentNode.insertBefore(g,s)}(document,'script'));
-      </script>
-    
-  </body>
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
-

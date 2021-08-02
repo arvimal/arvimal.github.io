@@ -1,22 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>rgw-index on The Child is Father of the Man</title>
-    <link>https://arvimal.github.io/tags/rgw-index/</link>
-    <description>Recent content in rgw-index on The Child is Father of the Man</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 30 Jun 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/rgw-index/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Sharding the Ceph RADOS Gateway bucket index</title>
-      <link>https://arvimal.github.io/posts/2016/06/2016-06-30-sharding-the-ceph-rados-gateway-bucket-index/</link>
-      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://arvimal.github.io/posts/2016/06/2016-06-30-sharding-the-ceph-rados-gateway-bucket-index/</guid>
-      <description>_S_harding is the process of breaking down data onto multiple locations so as to increase parallelism, as well as distribute load. This is a common feature used in databases. Read more on this at Wikipedia.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>rgw-index - Tag - The Child is Father of the Man</title>
+        <link>https://arvimal.github.io/tags/rgw-index/</link>
+        <description>rgw-index - Tag - The Child is Father of the Man</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 30 Jun 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/rgw-index/" rel="self" type="application/rss+xml" /><item>
+    <title>Sharding the Ceph RADOS Gateway bucket index</title>
+    <link>https://arvimal.github.io/posts/2016/06/2016-06-30-sharding-the-ceph-rados-gateway-bucket-index/</link>
+    <pubDate>Thu, 30 Jun 2016 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://arvimal.github.io/posts/2016/06/2016-06-30-sharding-the-ceph-rados-gateway-bucket-index/</guid>
+    <description><![CDATA[_S_harding is the process of breaking down data onto multiple locations so as to increase parallelism, as well as distribute load. This is a common feature used in databases. Read more on this at Wikipedia.
 The concept of sharding is used in Ceph, for splitting the bucket index in a RADOS Gateway.
-RGW or RADOS Gateway keeps an index for all the objects in its buckets for faster and easier lookup.</description>
-    </item>
-    
-  </channel>
+RGW or RADOS Gateway keeps an index for all the objects in its buckets for faster and easier lookup.]]></description>
+</item></channel>
 </rss>

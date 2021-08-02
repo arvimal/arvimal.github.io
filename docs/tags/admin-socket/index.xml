@@ -1,21 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>admin-socket on The Child is Father of the Man</title>
-    <link>https://arvimal.github.io/tags/admin-socket/</link>
-    <description>Recent content in admin-socket on The Child is Father of the Man</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 27 May 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/admin-socket/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to fetch the entire list of tunables along with the values for a Ceph cluster node?</title>
-      <link>https://arvimal.github.io/posts/2015/05/2015-05-27-how-can-we-get-a-list-of-all-the-configurations-from-a-ceph-cluster-node/</link>
-      <pubDate>Wed, 27 May 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://arvimal.github.io/posts/2015/05/2015-05-27-how-can-we-get-a-list-of-all-the-configurations-from-a-ceph-cluster-node/</guid>
-      <description>In many cases we would like to get the active configurations from a Ceph node, either a monitor or an OSD node. A neat feature, I must say, is to probe the administrative socket file to get a listing of all the active configurations, be it on the OSD node or the monitor node.
-This comes handy when we have changed a setting and wants to confirm if it had indeed changed or not.</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>admin-socket - Tag - The Child is Father of the Man</title>
+        <link>https://arvimal.github.io/tags/admin-socket/</link>
+        <description>admin-socket - Tag - The Child is Father of the Man</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 27 May 2015 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/admin-socket/" rel="self" type="application/rss+xml" /><item>
+    <title>How to fetch the entire list of tunables along with the values for a Ceph cluster node?</title>
+    <link>https://arvimal.github.io/posts/2015/05/2015-05-27-how-can-we-get-a-list-of-all-the-configurations-from-a-ceph-cluster-node/</link>
+    <pubDate>Wed, 27 May 2015 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://arvimal.github.io/posts/2015/05/2015-05-27-how-can-we-get-a-list-of-all-the-configurations-from-a-ceph-cluster-node/</guid>
+    <description><![CDATA[In many cases we would like to get the active configurations from a Ceph node, either a monitor or an OSD node. A neat feature, I must say, is to probe the administrative socket file to get a listing of all the active configurations, be it on the OSD node or the monitor node.
+This comes handy when we have changed a setting and wants to confirm if it had indeed changed or not.]]></description>
+</item></channel>
 </rss>

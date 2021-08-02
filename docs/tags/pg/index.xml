@@ -1,24 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>pg on The Child is Father of the Man</title>
-    <link>https://arvimal.github.io/tags/pg/</link>
-    <description>Recent content in pg on The Child is Father of the Man</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 30 Aug 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/pg/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Calculate a PG id from the hex values in Ceph OSD debug logs</title>
-      <link>https://arvimal.github.io/posts/2015/08/2015-08-30-calculate-a-pg-id-from-the-ceph-osd-debug-logs/</link>
-      <pubDate>Sun, 30 Aug 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://arvimal.github.io/posts/2015/08/2015-08-30-calculate-a-pg-id-from-the-ceph-osd-debug-logs/</guid>
-      <description>Recently, I had an incident where the OSDs were crashing at the time of startup. Obviously, the next step was to enable debug logs for the OSDs and understand where they were crashing.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>pg - Tag - The Child is Father of the Man</title>
+        <link>https://arvimal.github.io/tags/pg/</link>
+        <description>pg - Tag - The Child is Father of the Man</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 30 Aug 2015 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/pg/" rel="self" type="application/rss+xml" /><item>
+    <title>Calculate a PG id from the hex values in Ceph OSD debug logs</title>
+    <link>https://arvimal.github.io/posts/2015/08/2015-08-30-calculate-a-pg-id-from-the-ceph-osd-debug-logs/</link>
+    <pubDate>Sun, 30 Aug 2015 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://arvimal.github.io/posts/2015/08/2015-08-30-calculate-a-pg-id-from-the-ceph-osd-debug-logs/</guid>
+    <description><![CDATA[Recently, I had an incident where the OSDs were crashing at the time of startup. Obviously, the next step was to enable debug logs for the OSDs and understand where they were crashing.
 Enabled OSD debug logs dynamically by injecting it with:
- # ceph tell osd.* injectargs &amp;ndash;debug-osd 20 &amp;ndash;debug-ms 1
+ # ceph tell osd.* injectargs &ndash;debug-osd 20 &ndash;debug-ms 1
  NOTE: This command can be run from the MON nodes.
-Once this was done, the OSDs were started manually (since it were crashing and not running) and watched out for the next crash.</description>
-    </item>
-    
-  </channel>
+Once this was done, the OSDs were started manually (since it were crashing and not running) and watched out for the next crash.]]></description>
+</item></channel>
 </rss>

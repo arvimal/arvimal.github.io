@@ -1,139 +1,105 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>techno on The Child is Father of the Man</title>
-    <link>https://arvimal.github.io/categories/techno/</link>
-    <description>Recent content in techno on The Child is Father of the Man</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 21 Jul 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/categories/techno/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Max file-name length in an EXT4 file system.</title>
-      <link>https://arvimal.github.io/posts/2016/07/2016-07-21-max-file-name-length-in-an-ext4-file-system/</link>
-      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://arvimal.github.io/posts/2016/07/2016-07-21-max-file-name-length-in-an-ext4-file-system/</guid>
-      <description>A recent discussion at work brought up the question &amp;ldquo;What can be the length of a file name in EXT4&amp;rdquo;. Or in other words, what would be the maximum character length of the name for a file in EXT4?
- Wikipedia states that it&amp;rsquo;s 255 Bytes, but how does that come to be? Is it 255 Bytes or 255 characters?
-In the kernel source for the 2.6 kernel series (the question was for a RHEL6/EXT4 combination), in fs/ext4/ext4.</description>
-    </item>
-    
-    <item>
-      <title>FSCache and the on-disk structure of the cached data</title>
-      <link>https://arvimal.github.io/posts/2014/11/2014-11-12-structure-of-the-cached-content-in-fscache/</link>
-      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://arvimal.github.io/posts/2014/11/2014-11-12-structure-of-the-cached-content-in-fscache/</guid>
-      <description>The &amp;lsquo;cachefilesd&amp;rsquo; kernel module will create two directories at the location specified in /etc/cachefilesd.conf. By default it&amp;rsquo;s /var/cache/fscache/.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>techno - Category - The Child is Father of the Man</title>
+        <link>https://arvimal.github.io/categories/techno/</link>
+        <description>techno - Category - The Child is Father of the Man</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 21 Jul 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/categories/techno/" rel="self" type="application/rss+xml" /><item>
+    <title>Max file-name length in an EXT4 file system.</title>
+    <link>https://arvimal.github.io/posts/2016/07/2016-07-21-max-file-name-length-in-an-ext4-file-system/</link>
+    <pubDate>Thu, 21 Jul 2016 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://arvimal.github.io/posts/2016/07/2016-07-21-max-file-name-length-in-an-ext4-file-system/</guid>
+    <description><![CDATA[A recent discussion at work brought up the question &ldquo;What can be the length of a file name in EXT4&rdquo;. Or in other words, what would be the maximum character length of the name for a file in EXT4?
+Wikipedia states that it&rsquo;s 255 Bytes, but how does that come to be? Is it 255 Bytes or 255 characters?
+In the kernel source for the 2.6 kernel series (the question was for a RHEL6/EXT4 combination), in fs/ext4/ext4.]]></description>
+</item><item>
+    <title>FSCache and the on-disk structure of the cached data</title>
+    <link>https://arvimal.github.io/posts/2014/11/2014-11-12-structure-of-the-cached-content-in-fscache/</link>
+    <pubDate>Wed, 12 Nov 2014 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://arvimal.github.io/posts/2014/11/2014-11-12-structure-of-the-cached-content-in-fscache/</guid>
+    <description><![CDATA[The &lsquo;cachefilesd&rsquo; kernel module will create two directories at the location specified in /etc/cachefilesd.conf. By default it&rsquo;s /var/cache/fscache/.
  [root@montypython ~]# lsmod |grep -i cache cachefiles 40871 1 fscache 62354 3 nfs,cachefiles,nfsv4
  Those are /var/cache/fscache/cache and /var/cache/fscache/graveyard.
-The cache structure is maintained inside &amp;lsquo;/var/cache/fscache/cache/&amp;rsquo;, while anything that is retired or culled is moved to &amp;lsquo;graveyard&amp;rsquo;. The &amp;lsquo;cachefilesd&amp;rsquo; daemon monitors &amp;lsquo;graveyard&amp;rsquo; using &amp;lsquo;dnotify&amp;rsquo; and will delete anything that is in there.</description>
-    </item>
-    
-    <item>
-      <title>FS-Cache and CacheFS, what are the differences?</title>
-      <link>https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-cachefs-what-are-the-differences/</link>
-      <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-cachefs-what-are-the-differences/</guid>
-      <description>FS-Cache and CacheFS. Are there any differences between these two? Initially, I thought both were same. But no, it&amp;rsquo;s not.
+The cache structure is maintained inside &lsquo;/var/cache/fscache/cache/&rsquo;, while anything that is retired or culled is moved to &lsquo;graveyard&rsquo;. The &lsquo;cachefilesd&rsquo; daemon monitors &lsquo;graveyard&rsquo; using &lsquo;dnotify&rsquo; and will delete anything that is in there.]]></description>
+</item><item>
+    <title>FS-Cache and CacheFS, what are the differences?</title>
+    <link>https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-cachefs-what-are-the-differences/</link>
+    <pubDate>Sun, 14 Sep 2014 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-cachefs-what-are-the-differences/</guid>
+    <description><![CDATA[FS-Cache and CacheFS. Are there any differences between these two? Initially, I thought both were same. But no, it&rsquo;s not.
 CacheFS is the backend implementation which caches the data onto the disk and mainpulates it, while FS-Cache is an interface which talks to CacheFS.
 So why do we need two levels here?
-FS-Cache was introduced as an API or front-end for CacheFS, which can be used by any file system driver.</description>
-    </item>
-    
-    <item>
-      <title>FS-Cache and FUSE</title>
-      <link>https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-fuse/</link>
-      <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-fuse/</guid>
-      <description>I would be working on enabling FS-Cache support in the FUSE kernel module, as part of my under graduate project.
-Niels De Vos, from Red Hat Engineering, would act as my mentor and guide throughout this project. He would also be presenting this idea in the &amp;lsquo;Linux Plumbers Conference&amp;rsquo; being held in Germany, October 2014.
+FS-Cache was introduced as an API or front-end for CacheFS, which can be used by any file system driver.]]></description>
+</item><item>
+    <title>FS-Cache and FUSE</title>
+    <link>https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-fuse/</link>
+    <pubDate>Sun, 14 Sep 2014 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-fuse/</guid>
+    <description><![CDATA[I would be working on enabling FS-Cache support in the FUSE kernel module, as part of my under graduate project.
+Niels De Vos, from Red Hat Engineering, would act as my mentor and guide throughout this project. He would also be presenting this idea in the &lsquo;Linux Plumbers Conference&rsquo; being held in Germany, October 2014.
 More details on the the talk can be seen at http://www.linuxplumbersconf.org/2014/ocw/sessions/2247
-This feature has got quite a few requests from the FOSS world, and I&amp;rsquo;m glad I could work on this.</description>
-    </item>
-    
-    <item>
-      <title>&#34;Error: open /tmp/docker-import-123456789/repo/bin/json: no such file or directory&#34;</title>
-      <link>https://arvimal.github.io/posts/2014/08/2014-08-16-error-open-tmpdocker-import-repobinjson-no-such-file-or-directory/</link>
-      <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://arvimal.github.io/posts/2014/08/2014-08-16-error-open-tmpdocker-import-repobinjson-no-such-file-or-directory/</guid>
-      <description>I&amp;rsquo;ve been trying to create a minimal docker image for RHEL versions, for one of my projects. The following were the steps I followed:
-a) Installed a RHEL6.5 server with &amp;lsquo;Minimal Installation&amp;rsquo;.
+This feature has got quite a few requests from the FOSS world, and I&rsquo;m glad I could work on this.]]></description>
+</item><item>
+    <title>&#34;Error: open /tmp/docker-import-123456789/repo/bin/json: no such file or directory&#34;</title>
+    <link>https://arvimal.github.io/posts/2014/08/2014-08-16-error-open-tmpdocker-import-repobinjson-no-such-file-or-directory/</link>
+    <pubDate>Sat, 16 Aug 2014 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://arvimal.github.io/posts/2014/08/2014-08-16-error-open-tmpdocker-import-repobinjson-no-such-file-or-directory/</guid>
+    <description><![CDATA[I&rsquo;ve been trying to create a minimal docker image for RHEL versions, for one of my projects. The following were the steps I followed:
+a) Installed a RHEL6.5 server with &lsquo;Minimal Installation&rsquo;.
 b) Registered it to the local satellite.
 c) Created a tar-ball of the filesystem with the command below:
-[sourcecode language=&amp;ldquo;bash&amp;rdquo; gutter=&amp;ldquo;false&amp;rdquo;]
-# tar &amp;ndash;numeric-owner &amp;ndash;exclude=/proc &amp;ndash;exclude=/sys &amp;ndash;exclude=/mnt &amp;ndash;exclude=/var/cache
---exclude=/usr/share/doc &amp;ndash;exclude=/tmp &amp;ndash;exclude=/var/log -zcvf /mnt/rhel6.5-base.tar.gz /
+[sourcecode language=&ldquo;bash&rdquo; gutter=&ldquo;false&rdquo;]
+# tar &ndash;numeric-owner &ndash;exclude=/proc &ndash;exclude=/sys &ndash;exclude=/mnt &ndash;exclude=/var/cache
+--exclude=/usr/share/doc &ndash;exclude=/tmp &ndash;exclude=/var/log -zcvf /mnt/rhel6.5-base.tar.gz /
 [/sourcecode]
-d) Load the tar.</description>
-    </item>
-    
-    <item>
-      <title>lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?</title>
-      <link>https://arvimal.github.io/posts/2010/12/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/</link>
-      <pubDate>Thu, 23 Dec 2010 00:00:00 +0000</pubDate>
-      
-      <guid>https://arvimal.github.io/posts/2010/12/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/</guid>
-      <description>**T**he binary &amp;lsquo;/sbin/lsusb&amp;rsquo; in a chroot-ed environment have problems running properly. I have not checked this in a manually created chroot environment or using tools like &amp;lsquo;mock&amp;rsquo;.
+d) Load the tar.]]></description>
+</item><item>
+    <title>lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?</title>
+    <link>https://arvimal.github.io/posts/2010/12/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/</link>
+    <pubDate>Thu, 23 Dec 2010 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://arvimal.github.io/posts/2010/12/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/</guid>
+    <description><![CDATA[**T**he binary &lsquo;/sbin/lsusb&rsquo; in a chroot-ed environment have problems running properly. I have not checked this in a manually created chroot environment or using tools like &lsquo;mock&rsquo;.
 The scenario is as following :
-We were trying to check the output of &amp;lsquo;lsusb&amp;rsquo; in the %post section of a kickstart installation. I had specified &amp;lsquo;noreboot&amp;rsquo; in the kickstart file so the machine will wait for the user to manually reboot the machine.</description>
-    </item>
-    
-    <item>
-      <title>Device Mapper and applications</title>
-      <link>https://arvimal.github.io/posts/2010/12/2010-12-22-device-mapper-and-applications/</link>
-      <pubDate>Wed, 22 Dec 2010 00:00:00 +0000</pubDate>
-      
-      <guid>https://arvimal.github.io/posts/2010/12/2010-12-22-device-mapper-and-applications/</guid>
-      <description>What is device-mapper ?
+We were trying to check the output of &lsquo;lsusb&rsquo; in the %post section of a kickstart installation. I had specified &lsquo;noreboot&rsquo; in the kickstart file so the machine will wait for the user to manually reboot the machine.]]></description>
+</item><item>
+    <title>Device Mapper and applications</title>
+    <link>https://arvimal.github.io/posts/2010/12/2010-12-22-device-mapper-and-applications/</link>
+    <pubDate>Wed, 22 Dec 2010 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://arvimal.github.io/posts/2010/12/2010-12-22-device-mapper-and-applications/</guid>
+    <description><![CDATA[What is device-mapper ?
 Device mapper is a modular driver for the linux kernel 2.6. It can be said as a framework which helps to create or map logical sectors of a pseudo block device to an underlying physical block device. So what device-mapper do is keep a table of mappings which equate the logical block devices to the physical block devices.
-Applications such as LVM2, EVMS, software raid aka dmraid, multipathing, block encryption mechanisms such as cryptsetup etc&amp;hellip; use device-mapper to work.</description>
-    </item>
-    
-    <item>
-      <title>lvcreate fails with the error &#34;Aborting. Failed to activate new LV to wipe the start of it.&#34;. Why ??</title>
-      <link>https://arvimal.github.io/posts/2009/11/2009-11-02-lvcreate-fails-with-the-error-aborting-failed-to-activate-new-lv-to-wipe-the-start-of-it-why/</link>
-      <pubDate>Mon, 02 Nov 2009 00:00:00 +0000</pubDate>
-      
-      <guid>https://arvimal.github.io/posts/2009/11/2009-11-02-lvcreate-fails-with-the-error-aborting-failed-to-activate-new-lv-to-wipe-the-start-of-it-why/</guid>
-      <description>In case anyone out there gets an error message like &amp;ldquo;Aborting. Failed to activate new LV to wipe the start of it.&amp;rdquo; while doing an &amp;lsquo;lvcreate&amp;rsquo;, check (/etc/lvm/lvm.conf) once more.
-Most probably, a &amp;lsquo;volume_list&amp;rsquo; would have been defined in there, which in turns want you to specify the &amp;lsquo;volume_list&amp;rsquo; tag specified along with the lvcreate command.
+Applications such as LVM2, EVMS, software raid aka dmraid, multipathing, block encryption mechanisms such as cryptsetup etc&hellip; use device-mapper to work.]]></description>
+</item><item>
+    <title>lvcreate fails with the error &#34;Aborting. Failed to activate new LV to wipe the start of it.&#34;. Why ??</title>
+    <link>https://arvimal.github.io/posts/2009/11/2009-11-02-lvcreate-fails-with-the-error-aborting-failed-to-activate-new-lv-to-wipe-the-start-of-it-why/</link>
+    <pubDate>Mon, 02 Nov 2009 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://arvimal.github.io/posts/2009/11/2009-11-02-lvcreate-fails-with-the-error-aborting-failed-to-activate-new-lv-to-wipe-the-start-of-it-why/</guid>
+    <description><![CDATA[In case anyone out there gets an error message like &ldquo;Aborting. Failed to activate new LV to wipe the start of it.&rdquo; while doing an &lsquo;lvcreate&rsquo;, check (/etc/lvm/lvm.conf) once more.
+Most probably, a &lsquo;volume_list&rsquo; would have been defined in there, which in turns want you to specify the &lsquo;volume_list&rsquo; tag specified along with the lvcreate command.
 Excerpt from /etc/lvm/lvm.conf:
- # If volume_list is defined, each LV is only activated if there is a # match against the list.</description>
-    </item>
-    
-    <item>
-      <title>How to map PCI devices in Linux ?</title>
-      <link>https://arvimal.github.io/posts/2008/07/2008-07-18-how-to-map-pci-devices-in-linux/</link>
-      <pubDate>Fri, 18 Jul 2008 00:00:00 +0000</pubDate>
-      
-      <guid>https://arvimal.github.io/posts/2008/07/2008-07-18-how-to-map-pci-devices-in-linux/</guid>
-      <description>From the output of the command &amp;lsquo;lspci -n&amp;rsquo; (The number after the colon, here &amp;lsquo;1679&amp;rsquo; from the below snip)
-0a:04.0 0200: 14e4:1679 (rev a3) Subsystem: 103c:703c Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- Status: Cap+ 66MHz+ UDF- FastB2B+ ParErr- DEVSEL=medium Latency: 64 (16000ns min), Cache Line Size: 64 bytes Interrupt: pin A routed to IRQ 138 Region 0: Memory at fdef0000 (64-bit, non-prefetchable) [size=64K] Region 2: Memory at fdee0000 (64-bit, non-prefetchable) [size=64K]</description>
-    </item>
-    
-    <item>
-      <title>Creating a SWAP space in Linux</title>
-      <link>https://arvimal.github.io/posts/2008/02/2008-02-15-creating-a-swap-space-in-linux/</link>
-      <pubDate>Fri, 15 Feb 2008 00:00:00 +0000</pubDate>
-      
-      <guid>https://arvimal.github.io/posts/2008/02/2008-02-15-creating-a-swap-space-in-linux/</guid>
-      <description>Adding Swap Space:
-Sometimes it is necessary to add more swap space after installation. For example, you may upgrade the amount of RAM in your system from 64 MB to 128 MB, but there is only 128 MB of swap space. It might be advantageous to increase the amount of swap space to 256 MB if you perform memory-intense operations or run applications that require a large amount of memory.</description>
-    </item>
-    
-    <item>
-      <title>Zombie processes</title>
-      <link>https://arvimal.github.io/posts/2008/01/2008-01-01-zombie-processes/</link>
-      <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
-      
-      <guid>https://arvimal.github.io/posts/2008/01/2008-01-01-zombie-processes/</guid>
-      <description>Why can&amp;rsquo;t I kill a process with the signal 9?
-A process can be sleeping in kernel code. Usually that&amp;rsquo;s because of faulty hardware or a badly written driver- or maybe a little of both. A device that isn&amp;rsquo;t set to the interrupt the driver thinks it is can cause this, for example- the driver is waiting for something its never going to get. The process doesn&amp;rsquo;t ignore your signal- it just never gets it.</description>
-    </item>
-    
-  </channel>
+ # If volume_list is defined, each LV is only activated if there is a # match against the list.]]></description>
+</item><item>
+    <title>How to map PCI devices in Linux ?</title>
+    <link>https://arvimal.github.io/posts/2008/07/2008-07-18-how-to-map-pci-devices-in-linux/</link>
+    <pubDate>Fri, 18 Jul 2008 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://arvimal.github.io/posts/2008/07/2008-07-18-how-to-map-pci-devices-in-linux/</guid>
+    <description><![CDATA[From the output of the command &lsquo;lspci -n&rsquo; (The number after the colon, here &lsquo;1679&rsquo; from the below snip)
+0a:04.0 0200: 14e4:1679 (rev a3) Subsystem: 103c:703c Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- Status: Cap+ 66MHz+ UDF- FastB2B+ ParErr- DEVSEL=medium Latency: 64 (16000ns min), Cache Line Size: 64 bytes Interrupt: pin A routed to IRQ 138 Region 0: Memory at fdef0000 (64-bit, non-prefetchable) [size=64K] Region 2: Memory at fdee0000 (64-bit, non-prefetchable) [size=64K]]]></description>
+</item><item>
+    <title>Creating a SWAP space in Linux</title>
+    <link>https://arvimal.github.io/posts/2008/02/2008-02-15-creating-a-swap-space-in-linux/</link>
+    <pubDate>Fri, 15 Feb 2008 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://arvimal.github.io/posts/2008/02/2008-02-15-creating-a-swap-space-in-linux/</guid>
+    <description><![CDATA[Adding Swap Space:
+Sometimes it is necessary to add more swap space after installation. For example, you may upgrade the amount of RAM in your system from 64 MB to 128 MB, but there is only 128 MB of swap space. It might be advantageous to increase the amount of swap space to 256 MB if you perform memory-intense operations or run applications that require a large amount of memory.]]></description>
+</item></channel>
 </rss>

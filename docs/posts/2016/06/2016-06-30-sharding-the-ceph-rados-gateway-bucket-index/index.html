@@ -1,125 +1,107 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Sharding the Ceph RADOS Gateway bucket index - The Child is Father of the Man</title><meta name="Description" content=""><meta property="og:title" content="Sharding the Ceph RADOS Gateway bucket index" />
+<meta property="og:description" content="_S_harding is the process of breaking down data onto multiple locations so as to increase parallelism, as well as distribute load. This is a common feature used in databases. Read more on this at Wikipedia.
+The concept of sharding is used in Ceph, for splitting the bucket index in a RADOS Gateway.
+RGW or RADOS Gateway keeps an index for all the objects in its buckets for faster and easier lookup." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://arvimal.github.io/posts/2016/06/2016-06-30-sharding-the-ceph-rados-gateway-bucket-index/" />
+<meta property="article:published_time" content="2016-06-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-06-30T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Sharding the Ceph RADOS Gateway bucket index"/>
+<meta name="twitter:description" content="_S_harding is the process of breaking down data onto multiple locations so as to increase parallelism, as well as distribute load. This is a common feature used in databases. Read more on this at Wikipedia.
+The concept of sharding is used in Ceph, for splitting the bucket index in a RADOS Gateway.
+RGW or RADOS Gateway keeps an index for all the objects in its buckets for faster and easier lookup."/>
+<meta name="application-name" content="The Child is Father of the Man">
+<meta name="apple-mobile-web-app-title" content="The Child is Father of the Man"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://arvimal.github.io/posts/2016/06/2016-06-30-sharding-the-ceph-rados-gateway-bucket-index/" /><link rel="prev" href="https://arvimal.github.io/posts/2016/06/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/" /><link rel="next" href="https://arvimal.github.io/posts/2016/06/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Sharding the Ceph RADOS Gateway bucket index",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/arvimal.github.io\/posts\/2016\/06\/2016-06-30-sharding-the-ceph-rados-gateway-bucket-index\/"
+        },"genre": "posts","keywords": "ceph, rados, rados-gateway, rgw, rgw-index, sharding","wordcount":  707 ,
+        "url": "https:\/\/arvimal.github.io\/posts\/2016\/06\/2016-06-30-sharding-the-ceph-rados-gateway-bucket-index\/","datePublished": "2016-06-30T00:00:00+00:00","dateModified": "2016-06-30T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "Author"},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
-  
-  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
-
-  
-    
-    
-      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
-    
-  
-
-  
-  <title>Sharding the Ceph RADOS Gateway bucket index</title>
-
-  
-  
-  <link rel="stylesheet" href="/css/hugo-octopress.css">
-
-  
-  
-
-  
-    <link rel="stylesheet" href="/css/fork-awesome.min.css">
-  
-
-  
-  <link href="https://arvimal.github.io/favicon.png" rel="icon">
-
-  
-  
-
-  <meta name="description" content="" />
-  <meta name="keywords" content="">
-  <meta name="author" content="Author">
-
-  
-  <meta name="generator" content="Hugo 0.80.0" />
-
-  
-  
-
-  
-  
-
-  
-  
-
-
-
-</head>
-<body>
-
-
-<header role="banner">
-<hgroup>
-  
-  <h1><a href="https://arvimal.github.io/">The Child is Father of the Man</a></h1>
-    <h2></h2>
-</hgroup></header>
-
-
-<nav role="navigation">
-<fieldset class="mobile-nav">
-  
-  <select onchange="location = this.value;">
-    <option value="">Navigate…</option>
-      
-  </select>
-</fieldset>
-
-
-<ul class="main-navigation">
-  
-  
-</ul>
-
-<ul class="subscription">
-  
-    
-        <a href="https://arvimal.github.io/index.xml" target="_blank" type="application/rss+xml" title="RSS" rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
-    
-  
-</ul>
-
-
-</nav>
-
-
-<div id="main">
-  <div id="content">
-    <div>
-      <article class="hentry" role="article">
-
-        
-        
-
-<header>
-  <p class="meta">Jun 30, 2016
-     - 4 minute read 
-    
-
-    
-    
-      - <a class="label" href="https://arvimal.github.io/categories/ceph/">ceph </a>
-    
-  </p>
-  <h1 class="entry-title">
-     Sharding the Ceph RADOS Gateway bucket index 
-  </h1>
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="The Child is Father of the Man">The Child is Father of the Man</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="The Child is Father of the Man">The Child is Father of the Man</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
 </header>
-
-
-        <div class="entry-content">
-          
-          
-          
-          <p>_<strong>S</strong>_harding is the process of breaking down data onto multiple locations so as to increase parallelism, as well as distribute load. This is a common feature used in databases. Read more on this at 
-<a href="https://en.wikipedia.org/wiki/Shard_%28database_architecture%29" target="_blank" rel="noopener">Wikipedia</a>.</p>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Sharding the Ceph RADOS Gateway bucket index</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Author</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ceph/"><i class="far fa-folder fa-fw"></i>ceph</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2016-06-30">2016-06-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;707 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#how-to-check-if-sharding-is-set">How to check if Sharding is set?</a></li>
+            <li><a href="#how-to-configure-sharding">How to configure Sharding?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>_<strong>S</strong>_harding is the process of breaking down data onto multiple locations so as to increase parallelism, as well as distribute load. This is a common feature used in databases. Read more on this at <a href="https://en.wikipedia.org/wiki/Shard_%28database_architecture%29" target="_blank" rel="noopener noreffer">Wikipedia</a>.</p>
 <p>The concept of sharding is used in Ceph, for splitting the bucket index in a RADOS Gateway.</p>
 <p>RGW or RADOS Gateway keeps an index for all the objects in its buckets for faster and easier lookup. For each RGW bucket created in a pool, the corresponding index is created in the <code>XX.index</code> pool.</p>
 <p>For example, for each of the buckets created in <code>.rgw</code> pool, the bucket index is created in <code>.rgw.buckets.index</code> pool. For each bucket, the index is stored in a single RADOS object.</p>
@@ -154,116 +136,46 @@
 <p>[/code] Edit the file /tmp/region.txt, change the value for `bucket_index_max_shards` to the needed shard value (we&rsquo;re setting it to 8 in this example), and inject it back to the region.</p>
 <p>[code language=&ldquo;bash&rdquo;] # radosgw-admin region set &lt; /tmp/region.txt { &ldquo;name&rdquo;: &ldquo;default&rdquo;, &ldquo;api_name&rdquo;: &ldquo;&rdquo;, &ldquo;is_master&rdquo;: &ldquo;true&rdquo;, &ldquo;endpoints&rdquo;: [], &ldquo;hostnames&rdquo;: [], &ldquo;master_zone&rdquo;: &ldquo;&rdquo;, &ldquo;zones&rdquo;: [ { &ldquo;name&rdquo;: &ldquo;default&rdquo;, &ldquo;endpoints&rdquo;: [], &ldquo;log_meta&rdquo;: &ldquo;false&rdquo;, &ldquo;log_data&rdquo;: &ldquo;false&rdquo;, &ldquo;bucket_index_max_shards&rdquo;: 8 } ], &ldquo;placement_targets&rdquo;: [ { &ldquo;name&rdquo;: &ldquo;default-placement&rdquo;, &ldquo;tags&rdquo;: [] } ], &ldquo;default_placement&rdquo;: &ldquo;default-placement&rdquo; } [/code] Reference:</p>
 <ol>
-<li>
-<a href="https://access.redhat.com/documentation/en/red-hat-ceph-storage/version-1.3/red-hat-ceph-storage-13-ceph-object-gateway-for-rhel-x86-64/#configure-bucket-sharding" target="_blank" rel="noopener">Red Hat Ceph Storage 1.3 Rados Gateway documentation</a></li>
-<li>
-<a href="https://en.wikipedia.org/wiki/Shard_%28database_architecture%29" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Shard_(database_architecture)</a></li>
+<li><a href="https://access.redhat.com/documentation/en/red-hat-ceph-storage/version-1.3/red-hat-ceph-storage-13-ceph-object-gateway-for-rhel-x86-64/#configure-bucket-sharding" target="_blank" rel="noopener noreffer">Red Hat Ceph Storage 1.3 Rados Gateway documentation</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Shard_%28database_architecture%29" target="_blank" rel="noopener noreffer">https://en.wikipedia.org/wiki/Shard_(database_architecture)</a></li>
 </ol>
-
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2016-06-30</span>
+            </div>
+            <div class="post-info-license"></div>
         </div>
-        
-
-<footer>
-  <p class="meta">
-    <span class="byline author vcard">Posted by <span class="fn">Author</span></span>
-    
-    <time>Jun 30, 2016</time>
-    
-      <span class="categories">
-        Tags:
-        
-          <a class="category" href="https://arvimal.github.io/tags/ceph">ceph</a>  <a class="category" href="https://arvimal.github.io/tags/rados">rados</a>  <a class="category" href="https://arvimal.github.io/tags/rados-gateway">rados-gateway</a>  <a class="category" href="https://arvimal.github.io/tags/rgw">rgw</a>  <a class="category" href="https://arvimal.github.io/tags/rgw-index">rgw-index</a>  <a class="category" href="https://arvimal.github.io/tags/sharding">sharding</a>  
-    
-    </span>
-  </p>
-
-  
-
-  <p class="meta">
-    
-        <a class="basic-alignment left" href="https://arvimal.github.io/posts/2016/06/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/" title="Inheritance and Method overloading - Object Oriented Programming">Inheritance and Method overloading - Object Oriented Programming</a>
-    
-
-    
-      <a class="basic-alignment right" href="https://arvimal.github.io/posts/2016/06/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/" title="`uninit_bg` and lazy block group allocation in EXT3/4">`uninit_bg` and lazy block group allocation in EXT3/4</a>
-    
-  </p>
-  
-</footer>
-
-      </article>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
     </div>
-    
 
-<aside class="sidebar thirds">
-  <section class="first odd">
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/ceph/">ceph</a>,&nbsp;<a href="/tags/rados/">rados</a>,&nbsp;<a href="/tags/rados-gateway/">rados-gateway</a>,&nbsp;<a href="/tags/rgw/">rgw</a>,&nbsp;<a href="/tags/rgw-index/">rgw-index</a>,&nbsp;<a href="/tags/sharding/">sharding</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
 
-    
-
-    <p>
-      
-    </p>
-  </section>
-
-
-
-  
-  <ul class="sidebar-nav">
-    <li class="sidebar-nav-item">
-      
-      
-      
-      
-      
-         
-      
-      
-      
-      
-      
-      
-      
-
-    
-    
-    </li>
-  </ul>
-
-  
-
-  
-
-  
-  
-  
-</aside>
-
-  </div>
+    <div class="post-nav"><a href="/posts/2016/06/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/" class="prev" rel="prev" title="Inheritance and Method overloading - Object Oriented Programming"><i class="fas fa-angle-left fa-fw"></i>Inheritance and Method overloading - Object Oriented Programming</a>
+            <a href="/posts/2016/06/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/" class="next" rel="next" title="`uninit_bg` and lazy block group allocation in EXT3/4">`uninit_bg` and lazy block group allocation in EXT3/4<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
 
-    <footer role="contentinfo">
-      <p>Copyright &copy; 2021 Author - <a href="https://arvimal.github.io/license/">License</a> -
-        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
-      </p>
-    </footer>
-
-    
-    
-
-
-
-    
-    
-    
-
-    
-      <script>
-        var _gaq=[['_setAccount','G-026GDYSCSW'],['_trackPageview']];
-        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-        s.parentNode.insertBefore(g,s)}(document,'script'));
-      </script>
-    
-  </body>
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
-

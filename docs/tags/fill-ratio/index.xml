@@ -1,21 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>fill-ratio on The Child is Father of the Man</title>
-    <link>https://arvimal.github.io/tags/fill-ratio/</link>
-    <description>Recent content in fill-ratio on The Child is Father of the Man</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 07 May 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/fill-ratio/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to change the filling ratio for a Ceph OSD?</title>
-      <link>https://arvimal.github.io/posts/2015/05/2015-05-07-how-to-change-the-filling-ratio-for-a-ceph-osd/</link>
-      <pubDate>Thu, 07 May 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://arvimal.github.io/posts/2015/05/2015-05-07-how-to-change-the-filling-ratio-for-a-ceph-osd/</guid>
-      <description>There could be many scenarios where you&amp;rsquo;d need to change the percentage of space usage on a Ceph OSD. One such use case would be when your OSD space is about to hit the hard limit, and is constantly sending you warnings.
-For some reason or other, you may need to extend the threshold limit for some time. In such a case, you don&amp;rsquo;t need to change/add the configuration in ceph.</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>fill-ratio - Tag - The Child is Father of the Man</title>
+        <link>https://arvimal.github.io/tags/fill-ratio/</link>
+        <description>fill-ratio - Tag - The Child is Father of the Man</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 07 May 2015 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/fill-ratio/" rel="self" type="application/rss+xml" /><item>
+    <title>How to change the filling ratio for a Ceph OSD?</title>
+    <link>https://arvimal.github.io/posts/2015/05/2015-05-07-how-to-change-the-filling-ratio-for-a-ceph-osd/</link>
+    <pubDate>Thu, 07 May 2015 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://arvimal.github.io/posts/2015/05/2015-05-07-how-to-change-the-filling-ratio-for-a-ceph-osd/</guid>
+    <description><![CDATA[There could be many scenarios where you&rsquo;d need to change the percentage of space usage on a Ceph OSD. One such use case would be when your OSD space is about to hit the hard limit, and is constantly sending you warnings.
+For some reason or other, you may need to extend the threshold limit for some time. In such a case, you don&rsquo;t need to change/add the configuration in ceph.]]></description>
+</item></channel>
 </rss>
