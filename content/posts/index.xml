@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on The Child is Father of the Man</title>
+    <link>https://arvimal.github.io/posts/</link>
+    <description>Recent content in Posts on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 16 May 2021 18:49:58 +0200</lastBuildDate><atom:link href="https://arvimal.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Moving to Hugo</title>
+      <link>https://arvimal.github.io/posts/2021/05/moving_to_hugo/</link>
+      <pubDate>Sun, 16 May 2021 18:49:58 +0200</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2021/05/moving_to_hugo/</guid>
+      <description>Hugo and WordPress I&amp;rsquo;ve always wanted to move my blog away from WordPress to a static blog generator on Github.
+After a few half-hearted attempts over the past years, I&amp;rsquo;ve made it finally.
+Of course, the plus points are several. Fast, Markdown, Free, Nice themes :)
+But the motivators were entirely different this time. My domain and WordPress subscription was expiring soon, and I had not written as much as I liked in the past few years.</description>
+    </item>
+    
+    <item>
+      <title>Callables in Python</title>
+      <link>https://arvimal.github.io/posts/2017/08/2017-08-09-callables-in-python/</link>
+      <pubDate>Wed, 09 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/08/2017-08-09-callables-in-python/</guid>
+      <description>Introduction A callable is an object in Python that can be called / executed when called with parantheses ( ). Classes and functions are callable.
+Callables can be a class, a function, or an instance of a class. In simple terms, a class/function/instance/builtin is callable if it gets executed when called with parantheses ().
+Example 1: In [1]: help() Welcome to Python 3.6&amp;#39;s help utility!  -- content omitted -- -------- In [2]: int() Out[2]: 0 In [3]: callable(int) Out [3]: True In [4]: callable(help) Out [4]: True In [5]: def hello(): print(&amp;#34;Howdy!</description>
+    </item>
+    
+    <item>
+      <title>Writing a minimalistic kernel module in Linux - Part 1</title>
+      <link>https://arvimal.github.io/posts/2017/07/2017-07-27-writing-a-minimalistic-kernel-module-in-linux-part-1/</link>
+      <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/07/2017-07-27-writing-a-minimalistic-kernel-module-in-linux-part-1/</guid>
+      <description>Introduction _L_oadable Kernel Modules (LKM) are object code that can be loaded into memory, often used for supporting hardware or enable specific features. Kernel modules enable the core kernel to be minimal and have features to be loaded as required.
+A kernel module is a normal file usually suffixed with .ko denoting it&amp;rsquo;s a kernel object file. It contains compiled code from one or more source files, gets linked to the kernel when loaded, and runs in kernel space.</description>
+    </item>
+    
+    <item>
+      <title>Recursion - Algorithm Study</title>
+      <link>https://arvimal.github.io/posts/2017/06/2017-06-27-recursion-algorithm-study/</link>
+      <pubDate>Tue, 27 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/06/2017-06-27-recursion-algorithm-study/</guid>
+      <description>_R_ecursion is a technique by which a function calls itself until a condition is met.
+Introduction Loops or repetitive execution based on certain conditions are inevitable in programs. Usual loops include if, while and for loops. Recursion is an entirely different way to deal with such situations, and in many cases, easier.
+Recursion is a when a function calls itself in each iteration till a condition is met. Ideally, the data set in each iteration gets smaller until it reach the required condition, after which the recursive function exists.</description>
+    </item>
+    
+    <item>
+      <title>Selection Sort - Algorithm Study</title>
+      <link>https://arvimal.github.io/posts/2017/02/2017-02-11-selection-sort-algorithm-study/</link>
+      <pubDate>Sat, 11 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/02/2017-02-11-selection-sort-algorithm-study/</guid>
+      <description>_S_election Sort is a sorting algorithm used to sort a data set either in incremental or decremental order.
+It goes through the entire elements one by one and hence it&amp;rsquo;s not a very efficient algorithm to work on large data sets.
+How does Selection sort work? Selection sort starts with an unsorted data set. With each iteration, it builds up a sub dataset with the sorted data.
+By the end of the sorting process, the sub dataset contains the entire elements in a sorted order.</description>
+    </item>
+    
+    <item>
+      <title>Binary Search - Algorithm Study</title>
+      <link>https://arvimal.github.io/posts/2017/01/2017-01-16-binary-search-algorithm-study/</link>
+      <pubDate>Mon, 16 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/01/2017-01-16-binary-search-algorithm-study/</guid>
+      <description>Introduction **B**inary Search is a search method used to find an object in a data set. This is much faster compared to the Linear Search algorithm we saw in a previous post.
+This algorithm works on the Divide and Conquer principle. Binary Search gets its speed by essentially dividing the list/array in half in each iteration, thus reducing the dataset size for the next iteration.
+Imagine searching for an element in a rather large dataset.</description>
+    </item>
+    
+    <item>
+      <title>Linear Search - Algorithm Study</title>
+      <link>https://arvimal.github.io/posts/2017/01/2017-01-15-linear-search-algorithm-study/</link>
+      <pubDate>Sun, 15 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/01/2017-01-15-linear-search-algorithm-study/</guid>
+      <description>Introduction _L_inear Search is an way to search a data set for an element of interest. It is one of the many search algorithms available and is also the most direct and simple of the lot.
+Linear search looks for the element of interest in a dataset starting from the first element and moves on to the consecutive elements till it finds the one we&amp;rsquo;re interested in. Due to this behaviour, it&amp;rsquo;s not the fastest search algorithm around.</description>
+    </item>
+    
+    <item>
+      <title>Accessor and Mutator methods - Python</title>
+      <link>https://arvimal.github.io/posts/2016/12/2016-12-18-accessor-and-mutator-methods-python/</link>
+      <pubDate>Sun, 18 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/12/2016-12-18-accessor-and-mutator-methods-python/</guid>
+      <description>A method defined within a class can either be an Accessor or a Mutator method.
+An Accessor method returns the information about the object, but do not change the state or the object.
+A Mutator method, also called an Update method, can change the state of the object.
+Consider the following example:
+[code language=&amp;ldquo;python&amp;rdquo;] In [10]: a = [1,2,3,4,5]
+In [11]: a.count(1) Out[11]: 1
+In [12]: a.index(2) Out[12]: 1
+In [13]: a Out[13]: [1, 2, 3, 4, 5]</description>
+    </item>
+    
+    <item>
+      <title>Python, Objects, and some more..</title>
+      <link>https://arvimal.github.io/posts/2016/10/2016-10-20-python-objects-and-some-more/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/10/2016-10-20-python-objects-and-some-more/</guid>
+      <description>_E_verything in Python is an object, what does that mean? This post tries to discuss some very basic concepts.
+What does the following assignment do?
+[code language=&amp;ldquo;python&amp;rdquo;]
+a = 1 [/code] Of course, anyone dabbled in code knows this. The statement above creates a container `a` and stores the value `1` in it.
+But it seem that&amp;rsquo;s not exactly what&amp;rsquo;s happening, at least from Python&amp;rsquo;s view-point.
+When a = 1 is entered or executed by the python interpreter, the following happens in the backend, seemingly unknown to the user.</description>
+    </item>
+    
+    <item>
+      <title>Max file-name length in an EXT4 file system.</title>
+      <link>https://arvimal.github.io/posts/2016/07/2016-07-21-max-file-name-length-in-an-ext4-file-system/</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/07/2016-07-21-max-file-name-length-in-an-ext4-file-system/</guid>
+      <description>A recent discussion at work brought up the question &amp;ldquo;What can be the length of a file name in EXT4&amp;rdquo;. Or in other words, what would be the maximum character length of the name for a file in EXT4?
+ Wikipedia states that it&amp;rsquo;s 255 Bytes, but how does that come to be? Is it 255 Bytes or 255 characters?
+In the kernel source for the 2.6 kernel series (the question was for a RHEL6/EXT4 combination), in fs/ext4/ext4.</description>
+    </item>
+    
+    <item>
+      <title>Inheritance and super() - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/07/2016-07-01-inheritance-and-super-object-oriented-programming/</link>
+      <pubDate>Fri, 01 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/07/2016-07-01-inheritance-and-super-object-oriented-programming/</guid>
+      <description>_s_uper() is a feature through which inherited methods can be accessed, which has been overridden in a class. It can also help with the MRO lookup order in case of multiple inheritance. This may not be obvious first, but a few examples should help to drive the point home.
+Inheritance and method overloading was discussed in a previous post, where we saw how inherited methods can be overloaded or enhanced in the child classes.</description>
+    </item>
+    
+    <item>
+      <title>`uninit_bg` and lazy block group allocation in EXT3/4</title>
+      <link>https://arvimal.github.io/posts/2016/06/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/</guid>
+      <description>_E_xt3 and Ext4 recently have been the most commonly used file system on Linux machines.
+ What does uninit_bg actually do?
+Read https://ext4.wiki.kernel.org/index.php/Ext4_Disk_Layout
+section `Meta Block Groups and Lazy Block Group Initialization`.
+https://ext4.wiki.kernel.org/index.php/Frequently_Asked_Questions
+https://www.thomas-krenn.com/en/wiki/Ext4_Filesystem
+https://access.redhat.com/labs/psb/versions/kernel-3.10.0-327.18.2.el7/Documentation/filesystems/ext4.txt
+https://access.redhat.com/labs/psb/versions/kernel-3.10.0-327.18.2.el7/fs/ext4/ext4.h</description>
+    </item>
+    
+    <item>
+      <title>Sharding the Ceph RADOS Gateway bucket index</title>
+      <link>https://arvimal.github.io/posts/2016/06/2016-06-30-sharding-the-ceph-rados-gateway-bucket-index/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/2016-06-30-sharding-the-ceph-rados-gateway-bucket-index/</guid>
+      <description>_S_harding is the process of breaking down data onto multiple locations so as to increase parallelism, as well as distribute load. This is a common feature used in databases. Read more on this at Wikipedia.
+The concept of sharding is used in Ceph, for splitting the bucket index in a RADOS Gateway.
+RGW or RADOS Gateway keeps an index for all the objects in its buckets for faster and easier lookup.</description>
+    </item>
+    
+    <item>
+      <title>Inheritance and Method overloading - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/06/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/</guid>
+      <description>_I_nheritance is a usual theme in Object Oriented Programming. Because of Inheritance, the functions/methods defined in parent classes can be called in Child classes which enables code reuse, and several other features. In this article, we try to understand some of those features that come up with Inheritance.
+We&amp;rsquo;ve discussed Abstract Methods in an earlier post, which is a feature part of Inheritance, and can be applied on child classes that inherits from a Parent class.</description>
+    </item>
+    
+    <item>
+      <title>Abstract Base Classes/Methods - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</link>
+      <pubDate>Tue, 14 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</guid>
+      <description>_A_bstract classes, in short, are classes that are supposed to be inherited or subclassed, rather than instantiated.
+Through Abstract Classes, we can enforce a blueprint on the subclasses that inherit the Abstract Class. This means that Abstract classes can be used to define a set of methods that must be implemented by it subclasses.
+Abstract classes are used when working on large projects where classes have to be inherited, and need to strictly follow certain blueprints.</description>
+    </item>
+    
+    <item>
+      <title>`self` in Python - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/06/2016-06-12-self-in-python/</link>
+      <pubDate>Sun, 12 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/2016-06-12-self-in-python/</guid>
+      <description>_T_his article was long overdue and should have been published before many of the articles in this blog. Better late than never.
+self in Python is usually used in an Object Oriented nomenclature, to denote the instance/object created from a Class.
+In short, self is the instance itself.
+Let&amp;rsquo;s check the following example:
+[code language=&amp;ldquo;python&amp;rdquo;] class MyClass(object): def __init__(self, name): self.name = name print(&amp;ldquo;Initiating the instance!&amp;quot;)
+def hello(self): print(self.name)
+myclass = MyClass(&amp;ldquo;Dan Inosanto&amp;rdquo;)</description>
+    </item>
+    
+    <item>
+      <title>Instance, Class, and Static methods - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/06/2016-06-12-instance-class-static-methods-object-oriented-programming/</link>
+      <pubDate>Sun, 12 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/2016-06-12-instance-class-static-methods-object-oriented-programming/</guid>
+      <description>_F_unctions defined under a class are also called methods. Most of the methods are accessed through an instance of the class.
+There are three types of methods:
+ Instance methods Static methods Class methods  Both Static methods and Class methods can be called using the @staticmethod and @classmethod syntactic sugar respectively.
+Instance methods _I_nstance methods are also called Bound methods since the instance is bound to the class via self.</description>
+    </item>
+    
+    <item>
+      <title>Magic methods and Syntactic sugar in Python</title>
+      <link>https://arvimal.github.io/posts/2016/06/2016-06-02-magic-methods-in-python/</link>
+      <pubDate>Thu, 02 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/2016-06-02-magic-methods-in-python/</guid>
+      <description>Magic methods _M_agic methods are special methods which can be defined (or already designed and available) to act on objects.
+Magic methods start and end with underscores &amp;quot;__&amp;quot;, and are not implicitly called by the user even though they can be. Most magic methods are used as syntactic sugar by binding it to more clear/easy_to_understand keywords.
+Python is mostly objects and method calls done on objects. Many available functions in Python are actually tied to magic methods_**.</description>
+    </item>
+    
+    <item>
+      <title>Decorators - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/05/2016-05-30-decorators-object-oriented-programming/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/2016-05-30-decorators-object-oriented-programming/</guid>
+      <description>_D_ecorators are wrapper functions (or classes) that wrap and modify another function (or class), and change it&amp;rsquo;s behavior as required. Decorators help to modify your code without actually modifying the working function/class itself.
+There are several inbuilt Decorators in Python, such as @classmethod and @staticmethod. Examples on these are due for another post.
+Decorators are called to act upon a function or class, by mentioning the Decorator name just above the function/class.</description>
+    </item>
+    
+    <item>
+      <title>Method Resolution Order - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/05/2016-05-30-method-resolution-order-object-oriented-programming/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/2016-05-30-method-resolution-order-object-oriented-programming/</guid>
+      <description>_M_ethod Resolution Order or &amp;lsquo;MRO&amp;rsquo; in short, denotes the way a programming language resolves a method or attribute. This post looks into how Method Resolution Order works, using Python.
+Python supports classes inheriting from other classes. The class being inherited is called the Parent/Super class, while the class that inherits is called the Child/Sub class.
+While inheriting from another class, the interpreter needs a way to resolve the methods that are being called via an instance.</description>
+    </item>
+    
+    <item>
+      <title>Ceph OSD heartbeats</title>
+      <link>https://arvimal.github.io/posts/2016/05/2016-05-09-ceph-osd-heartbeats/</link>
+      <pubDate>Mon, 09 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/2016-05-09-ceph-osd-heartbeats/</guid>
+      <description>Ceph OSD daemons need to ensure that the neighbouring OSDs are functioning properly so that the cluster remains in a healthy state.
+For this, each Ceph OSD process (ceph-osd) sends a heartbeat signal to the neighbouring OSDs. By default, the heartbeat signal is sent every 6 seconds [1], which is configurable of course.
+If the heartbeat check from one OSD doesn&amp;rsquo;t hear from the other within the set value for `osd_heartbeat_grace` [2], which is set to 20 seconds by default, the OSD that sends the heartbeat check reports the other OSD (the one that didn&amp;rsquo;t respond within 20 seconds) as down, to the MONs.</description>
+    </item>
+    
+    <item>
+      <title>Revamping the blog</title>
+      <link>https://arvimal.github.io/posts/2016/05/2016-05-09-revamping-the-blog/</link>
+      <pubDate>Mon, 09 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/2016-05-09-revamping-the-blog/</guid>
+      <description>I did a revamp of the whole blog two days back. Switching the theme from &amp;lsquo;Scrawl&amp;rsquo; to &amp;lsquo;Independent Publisher&amp;rsquo; was part of it. This theme is part of the hundreds of free themes in Wordpress, and looks both clean and impressive.
+&amp;lsquo;Independent Publisher&amp;rsquo; supports random header images from a list, at each page load. I&amp;rsquo;m using Unsplash for the images. These are free to use and distribute since its released under a Creative Commons Zero licence.</description>
+    </item>
+    
+    <item>
+      <title>`ceph-check` - A Ceph installation checker</title>
+      <link>https://arvimal.github.io/posts/2016/05/2016-05-08-ceph-check-a-ceph-installation-checker/</link>
+      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/2016-05-08-ceph-check-a-ceph-installation-checker/</guid>
+      <description>Many a user wants to know if a Ceph cluster installation has been done to a specific suggested guideline.
+Technologies like RAID is better avoided in Ceph due to an additional layer, which Ceph already takes care of.
+I&amp;rsquo;ve started writing a tool which can be run from the Admin node, and it aims to check various such points.
+The code can be seen at https://github.com/arvimal/ceph_check
+The work is slow, really slow, due to my daily work, procrastination, and what not, even though I intend to finish this fast.</description>
+    </item>
+    
+    <item>
+      <title>Code complexity - The Big O notation [O(n)]</title>
+      <link>https://arvimal.github.io/posts/2016/05/2016-05-08-big-o-notation-on/</link>
+      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/2016-05-08-big-o-notation-on/</guid>
+      <description>Efficiency or Complexity is how well you&amp;rsquo;re using your resources to get your code run.
+Efficiency can be calculated on the basis of how much time your code takes to run/execute.
+Understanding the efficiency of your code can help to reduce the complexity, thus improving the runtime efficiency further. Getting the same job done in less time and less system resources is always good.
+Once you find the efficiency of your program, you can start to find ways for:</description>
+    </item>
+    
+    <item>
+      <title>Data Structures - Arrays</title>
+      <link>https://arvimal.github.io/posts/2016/05/2016-05-08-data-structures-arrays/</link>
+      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/2016-05-08-data-structures-arrays/</guid>
+      <description>Arrays are a commonly used data structure, and is one of the first a DS student looks into.
+It is created as a collection of memory addresses which are contiguous in memory. These memory locations store data of a specific type depending on the array&amp;rsquo;s type.
+Advantages:
+ Arrays are easier to create since the size and type is mentioned at the creation time. Arrays have constant access/lookup time since the lookup is done by accessing the memory location as an offset from the base/first element.</description>
+    </item>
+    
+    <item>
+      <title>How to get a Ceph MON/OSD map at a specific epoch?</title>
+      <link>https://arvimal.github.io/posts/2016/05/2016-05-08-how-to-get-a-ceph-monosd-map-at-a-specific-epoch/</link>
+      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/2016-05-08-how-to-get-a-ceph-monosd-map-at-a-specific-epoch/</guid>
+      <description>To get a MON map or an OSD map of a specific epoch, use:
+ # ceph osd getmap # ceph mon getmap  The map can be forwarded to a file as following:
+ # ceph osd getmap -o /tmp/ceph_osd_getmap.bin
+ This would be in a binary format, and hence will need to be dumped to a human-readable form.
+ # osdmaptool &amp;ndash;print /tmp/ceph-osd-getmap.bin
+ This will print the current OSD map, similar to the output of &amp;lsquo;ceph osd dump&amp;rsquo;.</description>
+    </item>
+    
+    <item>
+      <title>List RBD images, snapshots, and clones in Ceph pools</title>
+      <link>https://arvimal.github.io/posts/2015/10/2015-10-15-list-all-ceph-pools-with-rbd-images-and-snapshots/</link>
+      <pubDate>Thu, 15 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/10/2015-10-15-list-all-ceph-pools-with-rbd-images-and-snapshots/</guid>
+      <description>This is a crude bash one-liner I did to get the details of all the RBD images, as well as the information on snapshots and clones created from them.
+[code language=&amp;ldquo;bash&amp;rdquo;] # for pool in `rados lspools`; do echo &amp;ldquo;POOL :&amp;rdquo; $pool; rbd ls -l $pool; echo &amp;ldquo;&amp;mdash;&amp;ndash;&amp;quot;; done [/code]
+This will print an output similar to the following:
+[code language=&amp;ldquo;bash&amp;rdquo;] POOL : rbd NAME SIZE PARENT FMT PROT LOCK test_img 10240M 1 test_img2 1024M 2 test_img2@snap2 1024M 2 yes &amp;mdash;&amp;ndash; POOL : .</description>
+    </item>
+    
+    <item>
+      <title>range() and enumerate()</title>
+      <link>https://arvimal.github.io/posts/2015/10/2015-10-12-range-and-enumerate-2/</link>
+      <pubDate>Mon, 12 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/10/2015-10-12-range-and-enumerate-2/</guid>
+      <description>The usual way to iterate over a range of numbers or a list in python, is to use range().
+Example 0:
+[code language=&amp;ldquo;python&amp;rdquo;] colors = [&amp;ldquo;yellow&amp;rdquo;, &amp;ldquo;red&amp;rdquo;, &amp;ldquo;blue&amp;rdquo;, &amp;ldquo;white&amp;rdquo;, &amp;ldquo;black&amp;rdquo;]
+for i in range(len(colors)): print(i, colors[i]) [/code]
+This should output:
+[code language=&amp;ldquo;bash&amp;rdquo;] (0, &amp;lsquo;yellow&amp;rsquo;) (1, &amp;lsquo;red&amp;rsquo;) (2, &amp;lsquo;blue&amp;rsquo;) (3, &amp;lsquo;white&amp;rsquo;) (4, &amp;lsquo;black&amp;rsquo;) [/code]
+print(), by default, returns a tuple. If we want to print it in a more presentable way, we’ll need to find the indice at which each value is, and print that as well.</description>
+    </item>
+    
+    <item>
+      <title>Ceph and unfound objects</title>
+      <link>https://arvimal.github.io/posts/2015/10/2015-10-07-why-do-objects-get-marked-as-unfound-in-a-a-ceph-cluster/</link>
+      <pubDate>Wed, 07 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/10/2015-10-07-why-do-objects-get-marked-as-unfound-in-a-a-ceph-cluster/</guid>
+      <description>In certain cases, a Ceph cluster may move away from an HEALTHY state due to “unfound” objects.
+A “ceph -s” should show if you have any unfound objects. So, what are unfound objects? How does an object become “unfound”? This article tries to explain why/how “unfound” objects come into existence.
+Let’s look into the life cycle of a write to a pool.
+ The client contacts a Ceph monitor and fetches the CRUSH map, which includes:  MON map OSD map PG map CRUSH map MDS map    Once the client has the maps, the Ceph client-side algorithm breaks the data being written into objects (the object size depends on the client side configuration).</description>
+    </item>
+    
+    <item>
+      <title>Ceph Rados Block Device (RBD) and TRIM</title>
+      <link>https://arvimal.github.io/posts/2015/10/2015-10-07-objects-remain-in-a-ceph-pool-used-for-rbd-even-if-the-files-are-deleted-from-the-mount-point/</link>
+      <pubDate>Wed, 07 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/10/2015-10-07-objects-remain-in-a-ceph-pool-used-for-rbd-even-if-the-files-are-deleted-from-the-mount-point/</guid>
+      <description>I recently came across a scenario where the objects in a RADOS pool used for an RBD block device doesn’t get removed, even if the files created through the mount point were removed.
+I had an RBD image from an RHCS1.3 cluster mapped to a RHEL7.1 client machine, with an XFS filesystem created on it, and mounted locally. Created a 5GB file, and I could see the objects being created in the rbd pool in the ceph cluster.</description>
+    </item>
+    
+    <item>
+      <title>Custom CRUSH rulesets and pools</title>
+      <link>https://arvimal.github.io/posts/2015/09/2015-09-23-how-to-find-the-crush-ruleset-on-which-a-pool-was-created/</link>
+      <pubDate>Wed, 23 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/09/2015-09-23-how-to-find-the-crush-ruleset-on-which-a-pool-was-created/</guid>
+      <description>Ceph supports custom rulesets via CRUSH, which can be used to sort hardware based on various features such as speed and other factors, set custom weights, and do a lot of other useful things.
+Pools, or the buckets were the data is written to, can be created on the custom rulesets, hence positioning the pools on specific hardware as per the administrator&amp;rsquo;s need.
+A large Ceph cluster may have lots of pools and rulesets specific for multiple use-cases.</description>
+    </item>
+    
+    <item>
+      <title>OSD information in a scriptable format</title>
+      <link>https://arvimal.github.io/posts/2015/09/2015-09-18-how-to-get-a-listing-of-the-osd-nodes-in-an-easily-scriptable-format/</link>
+      <pubDate>Fri, 18 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/09/2015-09-18-how-to-get-a-listing-of-the-osd-nodes-in-an-easily-scriptable-format/</guid>
+      <description>In case you are trying to get the OSD ID and the corresponding node IP address mappings in a script-able format, use the following command:
+ # ceph osd find  This will print the OSD number, the IP address, the host name, and the default root in the CRUSH map, as a python dictionary.
+ # ceph osd find 2 { &amp;ldquo;osd&amp;rdquo;: 2, &amp;ldquo;ip&amp;rdquo;: &amp;ldquo;192.168.122.112:6800\/5311&amp;rdquo;, &amp;ldquo;crush_location&amp;rdquo;: { &amp;ldquo;host&amp;rdquo;: &amp;ldquo;node4&amp;rdquo;, &amp;ldquo;root&amp;rdquo;: &amp;ldquo;default&amp;rdquo;}}</description>
+    </item>
+    
+    <item>
+      <title>Monitor maps, how to edit them?</title>
+      <link>https://arvimal.github.io/posts/2015/09/2015-09-01-how-to-extract-view-change-and-inject-a-monitor-map-in-a-ceph-cluster/</link>
+      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/09/2015-09-01-how-to-extract-view-change-and-inject-a-monitor-map-in-a-ceph-cluster/</guid>
+      <description>The MON map is used by the monitors in a Ceph cluster, where they keep track of various attributes relevant to the working of the cluster.
+Similar to the CRUSH map, a monitor map can be pulled out of the cluster, inspected, changed, and injected back to the monitors, manually. A frequent use-case is when the IP address of a monitor changes and the monitors cannot agree on a quorum.</description>
+    </item>
+    
+    <item>
+      <title>Calculate a PG id from the hex values in Ceph OSD debug logs</title>
+      <link>https://arvimal.github.io/posts/2015/08/2015-08-30-calculate-a-pg-id-from-the-ceph-osd-debug-logs/</link>
+      <pubDate>Sun, 30 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/08/2015-08-30-calculate-a-pg-id-from-the-ceph-osd-debug-logs/</guid>
+      <description>Recently, I had an incident where the OSDs were crashing at the time of startup. Obviously, the next step was to enable debug logs for the OSDs and understand where they were crashing.
+Enabled OSD debug logs dynamically by injecting it with:
+ # ceph tell osd.* injectargs &amp;ndash;debug-osd 20 &amp;ndash;debug-ms 1
+ NOTE: This command can be run from the MON nodes.
+Once this was done, the OSDs were started manually (since it were crashing and not running) and watched out for the next crash.</description>
+    </item>
+    
+    <item>
+      <title>Mapping Placement Groups and Pools</title>
+      <link>https://arvimal.github.io/posts/2015/08/2015-08-17-how-can-we-map-a-pg-to-a-pool/</link>
+      <pubDate>Mon, 17 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/08/2015-08-17-how-can-we-map-a-pg-to-a-pool/</guid>
+      <description>Understanding the mapping of Pools and Placement Groups can be very useful while troubleshooting Ceph problems.
+A direct method is to dump information on the PGs via :
+ # ceph pg dump
+ This command should output something like the following:
+ pg_stat objects mip degr unf bytes log disklog state 5.7a 0 0 0 0 0 0 0 active+clean
+ The output will have more information, and I&amp;rsquo;ve omitted it for the sake of explanation.</description>
+    </item>
+    
+    <item>
+      <title>How to identify the journal disk for a Ceph OSD?</title>
+      <link>https://arvimal.github.io/posts/2015/08/2015-08-05-how-to-check-the-journal-disk-for-any-particular-osd/</link>
+      <pubDate>Wed, 05 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/08/2015-08-05-how-to-check-the-journal-disk-for-any-particular-osd/</guid>
+      <description>In many cases, one would like to understand the journal disk a particular OSD is using. There are two methods to understand this:
+a) This is the most direct method, and should give you details on the OSD disks and the corresponding journal disks.
+[sourcecode language=&amp;ldquo;bash&amp;rdquo; gutter=&amp;ldquo;false&amp;rdquo;]
+# ceph-disk list
+[/sourcecode]
+This should output something like:
+[sourcecode language=&amp;ldquo;bash&amp;rdquo; gutter=&amp;ldquo;false&amp;rdquo;]
+# ceph-disk list /dev/sda : /dev/sda1 other, xfs, mounted on /boot /dev/sda2 other, LVM2_member /dev/sr0 other, unknown /dev/vda : /dev/vda1 ceph data, active, cluster ceph, osd.</description>
+    </item>
+    
+    <item>
+      <title>Resetting Calamari password</title>
+      <link>https://arvimal.github.io/posts/2015/07/2015-07-13-how-can-we-resetchange-the-calamari-interface-password/</link>
+      <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/07/2015-07-13-how-can-we-resetchange-the-calamari-interface-password/</guid>
+      <description>&amp;lsquo;Calamari&amp;rsquo; is the monitoring interface for a Ceph cluster.
+The Calamari interface password can be reset/changed using the &amp;lsquo;calamari-ctl&amp;rsquo; command.
+ # calamari-ctl change_password &amp;ndash;password {password} {user-name}
+ calamari-ctl can also be used to add a user, as well as disable, enable, and rename the user account. A &amp;lsquo;&amp;ndash;help&amp;rsquo; should print out all the available ones.
+ # calamari-ctl &amp;ndash;help
+ </description>
+    </item>
+    
+    <item>
+      <title>Compacting a Ceph monitor store</title>
+      <link>https://arvimal.github.io/posts/2015/07/2015-07-09-how-to-compact-a-ceph-monitor-store/</link>
+      <pubDate>Thu, 09 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/07/2015-07-09-how-to-compact-a-ceph-monitor-store/</guid>
+      <description>The Ceph monitor store growing to a big size is a common occurrence in a busy Ceph cluster.
+If a &amp;lsquo;ceph -s&amp;rsquo; takes considerable time to return information, one of the possibility is the monitor database being large.
+Other reasons included network lags between the client and the monitor, the monitor not responding properly due to the system load, firewall settings on the client or monitor etc..
+The best way to deal with a large monitor database is to compact the monitor store.</description>
+    </item>
+    
+    <item>
+      <title>What is data scrubbing?</title>
+      <link>https://arvimal.github.io/posts/2015/07/2015-07-08-what-is-data-scrubbing/</link>
+      <pubDate>Wed, 08 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/07/2015-07-08-what-is-data-scrubbing/</guid>
+      <description>Data Scrubbing is an error checking and correction method or routine check to ensure that the data on file systems are in pristine condition, and has no errors. Data integrity is of primary concern in today&amp;rsquo;s conditions, given the humongous amounts of data being read and written daily.
+A simple example for a scrubbing, is a file system check done on file systems with tools like &amp;lsquo;e2fsck&amp;rsquo; in EXT2/3/4, or &amp;lsquo;xfs_repair&amp;rsquo; in XFS.</description>
+    </item>
+    
+    <item>
+      <title>Another method to dynamically change a Ceph configuration</title>
+      <link>https://arvimal.github.io/posts/2015/06/2015-06-03-another-method-to-dynamically-change-a-ceph-configuration/</link>
+      <pubDate>Wed, 03 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/06/2015-06-03-another-method-to-dynamically-change-a-ceph-configuration/</guid>
+      <description>In a previous post, we saw how to dynamically change a tunable on a running Ceph cluster dynamically. Unfortunately, such a change is not permanent, and will revert back to the previous setting once ceph is restarted.
+Rather than using the command &amp;lsquo;ceph tell&amp;rsquo;, I recently came upon another way to change configuration values.
+We&amp;rsquo;ll try changing the tunable &amp;lsquo;mon_osd_full_ratio&amp;rsquo; once again.
+1. Get the current setting
+ # ceph daemon osd.</description>
+    </item>
+    
+    <item>
+      <title>&#39;noout&#39; flag in Ceph</title>
+      <link>https://arvimal.github.io/posts/2015/05/2015-05-27-what-does-the-noout-status-on-the-osds-actually-do/</link>
+      <pubDate>Wed, 27 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/05/2015-05-27-what-does-the-noout-status-on-the-osds-actually-do/</guid>
+      <description>You may have seen the &amp;lsquo;noout&amp;rsquo; flag set in the output of &amp;lsquo;ceph -s&amp;rsquo;. What does this actually mean?
+This is a global flag for the cluster, which means that if an OSD is out, the said OSD is not marked out of the cluster and data balancing shouldn&amp;rsquo;t start to maintain the replica count. By default, the monitors mark the OSDs out of the acting set if it is not reachable for 300 seconds, ie.</description>
+    </item>
+    
+    <item>
+      <title>How to dynamically change a configuration value in a Ceph cluster?</title>
+      <link>https://arvimal.github.io/posts/2015/05/2015-05-27-how-to-change-a-configuration-value-in-a-ceph-cluster-dynamically/</link>
+      <pubDate>Wed, 27 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/05/2015-05-27-how-to-change-a-configuration-value-in-a-ceph-cluster-dynamically/</guid>
+      <description>It is possible to change a particular configuration setting in a Ceph cluster dynamically, and I think it is a very neat and useful feature.
+Imagine the case where you want to change the replica count of a particular PG from 3 to 4. How would you change this without restarting the Ceph cluster itself? That is where the &amp;lsquo;ceph tell&amp;rsquo; command comes in.
+As we saw in the previous post, you can get the list of configuration settings using the administrator socket, from either a monitor or an OSD node.</description>
+    </item>
+    
+    <item>
+      <title>How to fetch the entire list of tunables along with the values for a Ceph cluster node?</title>
+      <link>https://arvimal.github.io/posts/2015/05/2015-05-27-how-can-we-get-a-list-of-all-the-configurations-from-a-ceph-cluster-node/</link>
+      <pubDate>Wed, 27 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/05/2015-05-27-how-can-we-get-a-list-of-all-the-configurations-from-a-ceph-cluster-node/</guid>
+      <description>In many cases we would like to get the active configurations from a Ceph node, either a monitor or an OSD node. A neat feature, I must say, is to probe the administrative socket file to get a listing of all the active configurations, be it on the OSD node or the monitor node.
+This comes handy when we have changed a setting and wants to confirm if it had indeed changed or not.</description>
+    </item>
+    
+    <item>
+      <title>How to change the filling ratio for a Ceph OSD?</title>
+      <link>https://arvimal.github.io/posts/2015/05/2015-05-07-how-to-change-the-filling-ratio-for-a-ceph-osd/</link>
+      <pubDate>Thu, 07 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/05/2015-05-07-how-to-change-the-filling-ratio-for-a-ceph-osd/</guid>
+      <description>There could be many scenarios where you&amp;rsquo;d need to change the percentage of space usage on a Ceph OSD. One such use case would be when your OSD space is about to hit the hard limit, and is constantly sending you warnings.
+For some reason or other, you may need to extend the threshold limit for some time. In such a case, you don&amp;rsquo;t need to change/add the configuration in ceph.</description>
+    </item>
+    
+    <item>
+      <title>How to remove a host from a Ceph cluster?</title>
+      <link>https://arvimal.github.io/posts/2015/05/2015-05-07-how-to-remove-a-host-from-a-ceph-cluster/</link>
+      <pubDate>Thu, 07 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/05/2015-05-07-how-to-remove-a-host-from-a-ceph-cluster/</guid>
+      <description>I&amp;rsquo;m still studying Ceph, and recently faced a scenario in which one of my Ceph nodes went down due to hardware failure. Even though my data was safe due to the replication factor, I was not able to remove the node from the cluster.
+I could remove the OSDs on the node, but I didn&amp;rsquo;t find a way to remove the node being listed in &amp;lsquo;ceph osd tree&amp;rsquo;. I ended up editing the CRUSH map by hand, to remove the host, and uploaded it back.</description>
+    </item>
+    
+    <item>
+      <title>How to list all the configuration settings in a Ceph cluster monitor?</title>
+      <link>https://arvimal.github.io/posts/2015/05/2015-05-06-how-to-list-all-the-configuration-settings-in-a-ceph-cluster-monitor/</link>
+      <pubDate>Wed, 06 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/05/2015-05-06-how-to-list-all-the-configuration-settings-in-a-ceph-cluster-monitor/</guid>
+      <description>It can be really helpful to have a single command to list all the configuration settings in a monitor node, in a Ceph cluster.
+This is possible by interacting directly with the monitor&amp;rsquo;s unix socket file. This can be found under /var/run/ceph/. By default, the admin socket for the monitor will be in the path /var/run/ceph/ceph-mon..asok.
+The default location can vary in case you have defined it to be a different one, at the time of the installation.</description>
+    </item>
+    
+    <item>
+      <title>FSCache and the on-disk structure of the cached data</title>
+      <link>https://arvimal.github.io/posts/2014/11/2014-11-12-structure-of-the-cached-content-in-fscache/</link>
+      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2014/11/2014-11-12-structure-of-the-cached-content-in-fscache/</guid>
+      <description>The &amp;lsquo;cachefilesd&amp;rsquo; kernel module will create two directories at the location specified in /etc/cachefilesd.conf. By default it&amp;rsquo;s /var/cache/fscache/.
+ [root@montypython ~]# lsmod |grep -i cache cachefiles 40871 1 fscache 62354 3 nfs,cachefiles,nfsv4
+ Those are /var/cache/fscache/cache and /var/cache/fscache/graveyard.
+The cache structure is maintained inside &amp;lsquo;/var/cache/fscache/cache/&amp;rsquo;, while anything that is retired or culled is moved to &amp;lsquo;graveyard&amp;rsquo;. The &amp;lsquo;cachefilesd&amp;rsquo; daemon monitors &amp;lsquo;graveyard&amp;rsquo; using &amp;lsquo;dnotify&amp;rsquo; and will delete anything that is in there.</description>
+    </item>
+    
+    <item>
+      <title>FS-Cache and CacheFS, what are the differences?</title>
+      <link>https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-cachefs-what-are-the-differences/</link>
+      <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-cachefs-what-are-the-differences/</guid>
+      <description>FS-Cache and CacheFS. Are there any differences between these two? Initially, I thought both were same. But no, it&amp;rsquo;s not.
+CacheFS is the backend implementation which caches the data onto the disk and mainpulates it, while FS-Cache is an interface which talks to CacheFS.
+So why do we need two levels here?
+FS-Cache was introduced as an API or front-end for CacheFS, which can be used by any file system driver.</description>
+    </item>
+    
+    <item>
+      <title>FS-Cache and FUSE</title>
+      <link>https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-fuse/</link>
+      <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2014/09/2014-09-14-fs-cache-and-fuse/</guid>
+      <description>I would be working on enabling FS-Cache support in the FUSE kernel module, as part of my under graduate project.
+Niels De Vos, from Red Hat Engineering, would act as my mentor and guide throughout this project. He would also be presenting this idea in the &amp;lsquo;Linux Plumbers Conference&amp;rsquo; being held in Germany, October 2014.
+More details on the the talk can be seen at http://www.linuxplumbersconf.org/2014/ocw/sessions/2247
+This feature has got quite a few requests from the FOSS world, and I&amp;rsquo;m glad I could work on this.</description>
+    </item>
+    
+    <item>
+      <title>&#34;Error: open /tmp/docker-import-123456789/repo/bin/json: no such file or directory&#34;</title>
+      <link>https://arvimal.github.io/posts/2014/08/2014-08-16-error-open-tmpdocker-import-repobinjson-no-such-file-or-directory/</link>
+      <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2014/08/2014-08-16-error-open-tmpdocker-import-repobinjson-no-such-file-or-directory/</guid>
+      <description>I&amp;rsquo;ve been trying to create a minimal docker image for RHEL versions, for one of my projects. The following were the steps I followed:
+a) Installed a RHEL6.5 server with &amp;lsquo;Minimal Installation&amp;rsquo;.
+b) Registered it to the local satellite.
+c) Created a tar-ball of the filesystem with the command below:
+[sourcecode language=&amp;ldquo;bash&amp;rdquo; gutter=&amp;ldquo;false&amp;rdquo;]
+# tar &amp;ndash;numeric-owner &amp;ndash;exclude=/proc &amp;ndash;exclude=/sys &amp;ndash;exclude=/mnt &amp;ndash;exclude=/var/cache
+--exclude=/usr/share/doc &amp;ndash;exclude=/tmp &amp;ndash;exclude=/var/log -zcvf /mnt/rhel6.5-base.tar.gz /
+[/sourcecode]
+d) Load the tar.</description>
+    </item>
+    
+    <item>
+      <title>lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?</title>
+      <link>https://arvimal.github.io/posts/2010/12/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/</link>
+      <pubDate>Thu, 23 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2010/12/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/</guid>
+      <description>**T**he binary &amp;lsquo;/sbin/lsusb&amp;rsquo; in a chroot-ed environment have problems running properly. I have not checked this in a manually created chroot environment or using tools like &amp;lsquo;mock&amp;rsquo;.
+The scenario is as following :
+We were trying to check the output of &amp;lsquo;lsusb&amp;rsquo; in the %post section of a kickstart installation. I had specified &amp;lsquo;noreboot&amp;rsquo; in the kickstart file so the machine will wait for the user to manually reboot the machine.</description>
+    </item>
+    
+    <item>
+      <title>Device Mapper and applications</title>
+      <link>https://arvimal.github.io/posts/2010/12/2010-12-22-device-mapper-and-applications/</link>
+      <pubDate>Wed, 22 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2010/12/2010-12-22-device-mapper-and-applications/</guid>
+      <description>What is device-mapper ?
+Device mapper is a modular driver for the linux kernel 2.6. It can be said as a framework which helps to create or map logical sectors of a pseudo block device to an underlying physical block device. So what device-mapper do is keep a table of mappings which equate the logical block devices to the physical block devices.
+Applications such as LVM2, EVMS, software raid aka dmraid, multipathing, block encryption mechanisms such as cryptsetup etc&amp;hellip; use device-mapper to work.</description>
+    </item>
+    
+    <item>
+      <title>lvcreate fails with the error &#34;Aborting. Failed to activate new LV to wipe the start of it.&#34;. Why ??</title>
+      <link>https://arvimal.github.io/posts/2009/11/2009-11-02-lvcreate-fails-with-the-error-aborting-failed-to-activate-new-lv-to-wipe-the-start-of-it-why/</link>
+      <pubDate>Mon, 02 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2009/11/2009-11-02-lvcreate-fails-with-the-error-aborting-failed-to-activate-new-lv-to-wipe-the-start-of-it-why/</guid>
+      <description>In case anyone out there gets an error message like &amp;ldquo;Aborting. Failed to activate new LV to wipe the start of it.&amp;rdquo; while doing an &amp;lsquo;lvcreate&amp;rsquo;, check (/etc/lvm/lvm.conf) once more.
+Most probably, a &amp;lsquo;volume_list&amp;rsquo; would have been defined in there, which in turns want you to specify the &amp;lsquo;volume_list&amp;rsquo; tag specified along with the lvcreate command.
+Excerpt from /etc/lvm/lvm.conf:
+ # If volume_list is defined, each LV is only activated if there is a # match against the list.</description>
+    </item>
+    
+    <item>
+      <title>How to map PCI devices in Linux ?</title>
+      <link>https://arvimal.github.io/posts/2008/07/2008-07-18-how-to-map-pci-devices-in-linux/</link>
+      <pubDate>Fri, 18 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/07/2008-07-18-how-to-map-pci-devices-in-linux/</guid>
+      <description>From the output of the command &amp;lsquo;lspci -n&amp;rsquo; (The number after the colon, here &amp;lsquo;1679&amp;rsquo; from the below snip)
+0a:04.0 0200: 14e4:1679 (rev a3) Subsystem: 103c:703c Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- Status: Cap+ 66MHz+ UDF- FastB2B+ ParErr- DEVSEL=medium Latency: 64 (16000ns min), Cache Line Size: 64 bytes Interrupt: pin A routed to IRQ 138 Region 0: Memory at fdef0000 (64-bit, non-prefetchable) [size=64K] Region 2: Memory at fdee0000 (64-bit, non-prefetchable) [size=64K]</description>
+    </item>
+    
+    <item>
+      <title>Bootloader checker</title>
+      <link>https://arvimal.github.io/posts/2008/02/2008-02-15-bootloader-checker/</link>
+      <pubDate>Fri, 15 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/2008-02-15-bootloader-checker/</guid>
+      <description>A bash code snippet that helps to check if the installed bootloader is Grub or LILO.
+[code language=&amp;ldquo;bash&amp;rdquo;] #!/bin/bash
+A=`mount | awk &amp;lsquo;{print $1}&amp;rsquo; | grep -n /dev/ | grep &amp;ldquo;1:&amp;rdquo; | cut -f2 -d &amp;ldquo;:&amp;rdquo; | cut -c 1-8` B=`mount | awk &amp;lsquo;{print $1}&amp;rsquo; | grep -n /dev/ | grep &amp;ldquo;1:&amp;rdquo; | cut -f2 -d &amp;ldquo;:&amp;quot;`
+echo ; echo -e &amp;quot; / mounted on $B \n&amp;rdquo;; dd if=$A bs=512 count=1 2&amp;gt;&amp;amp;1 | grep GRUB &amp;gt; /dev/null; if [ $?</description>
+    </item>
+    
+    <item>
+      <title>Creating a SWAP space in Linux</title>
+      <link>https://arvimal.github.io/posts/2008/02/2008-02-15-creating-a-swap-space-in-linux/</link>
+      <pubDate>Fri, 15 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/2008-02-15-creating-a-swap-space-in-linux/</guid>
+      <description>Adding Swap Space:
+Sometimes it is necessary to add more swap space after installation. For example, you may upgrade the amount of RAM in your system from 64 MB to 128 MB, but there is only 128 MB of swap space. It might be advantageous to increase the amount of swap space to 256 MB if you perform memory-intense operations or run applications that require a large amount of memory.</description>
+    </item>
+    
+    <item>
+      <title>Recursive file counter in bash</title>
+      <link>https://arvimal.github.io/posts/2008/02/2008-02-15-file-counter/</link>
+      <pubDate>Fri, 15 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/2008-02-15-file-counter/</guid>
+      <description>Most of the scripts presented in this journal have been created while learning bash and having nothing much to do&amp;hellip;
+I think its usual to get crazy ideas and work trying to implement them, especially while learning any type of coding. This &amp;lsquo;File Counter&amp;rsquo; script came as such a crazy idea. It was working at the time of its creation, but have not checked it recently.. should work..
+This script counts the entire number of files irrespective the folders under the main directory you specify for this script to work on.</description>
+    </item>
+    
+    <item>
+      <title>CHKROOTKIT install script (with functions)</title>
+      <link>https://arvimal.github.io/posts/2008/02/2008-02-14-chkrootkit-install-script-with-functions/</link>
+      <pubDate>Thu, 14 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/2008-02-14-chkrootkit-install-script-with-functions/</guid>
+      <description>This is an extension or a rebuild of the previous chkrootkit install script, just used functions so its somewhat simplified&amp;hellip;. ( Or is it ..? :) )
+[code language=&amp;ldquo;bash&amp;rdquo;]
+#!/bin/bash
+DOWNLOAD_LOCATION=&#39;/root/Downloads&#39; CHKROOTKIT_WGET=&amp;lsquo;ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit.tar.gz&#39; RESULT_FILE=&#39;/root/Server-Test.txt&amp;rsquo;
+clear;echo chkrootkit-install () {
+while true; do echo -e &amp;ldquo;@@@@@@@@@@@@@@@@@@ CHK-ROOTKIT INSTALL/CHECK SCRIPT @@@@@@@@@@@@@@@@@@@@\n&amp;rdquo; echo -e &amp;ldquo;Do you want to download and compile CHK-ROOTKIT [yes/no] ? : \c&amp;rdquo; | tee -a $RESULT_FILE; read answer; echo $answer &amp;raquo; $RESULT_FILE;</description>
+    </item>
+    
+    <item>
+      <title>DNS Zone file sanity check</title>
+      <link>https://arvimal.github.io/posts/2008/02/2008-02-14-dns-zone-file-sanity-check/</link>
+      <pubDate>Thu, 14 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/2008-02-14-dns-zone-file-sanity-check/</guid>
+      <description>This bash script does a sanity check for the DNS domains defined inside /var/named.
+[code language=&amp;ldquo;bash&amp;rdquo;] #!/bin/bash A=`ls -l /var/named/*.db | awk &amp;lsquo;{print $9}&amp;rsquo; | cut -f4 -d &amp;ldquo;/&amp;rdquo; | sed &amp;rsquo;s/.db$//&#39;` #domain names
+for i in $A; do named-checkzone $i /var/named/$i.db;done [/code]</description>
+    </item>
+    
+    <item>
+      <title>Nagios Installation Script</title>
+      <link>https://arvimal.github.io/posts/2008/02/2008-02-14-nagios-installation-script/</link>
+      <pubDate>Thu, 14 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/2008-02-14-nagios-installation-script/</guid>
+      <description>This is a bash script which automates the installation of Nagios. There are more things to do such as setup of service monitoring, but that&amp;rsquo;s for another time.
+[code language=&amp;ldquo;bash&amp;rdquo;] #!/bin/bash DOWNLOAD_LOCATION=&#39;/root/Downloads/&#39; NAGIOS_URL=&amp;lsquo;http://jaist.dl.sourceforge.net/sourceforge/nagios/nagios-2.9.tar.gz&#39; APACHE_CONF=&#39;/etc/httpd/conf/httpd.conf&amp;rsquo; NAGIOS_PLUGIN=&amp;lsquo;http://nchc.dl.sourceforge.net/sourceforge/nagiosplug/nagios-plugins-1.4.8.tar.gz&#39; NAGIOSHOME=&#39;/usr/local/nagios&amp;rsquo; DATE=`date +%d-%b-%Y` FILE=&#39;/root/Nagios.txt&#39;
+################################# # [1] Installing nagios # ################################# nagios_download () { clear
+if [ `id -u` -ne 0 ]; then echo -e &amp;ldquo;You are executing the script as $USER\n&amp;rdquo; echo -e &amp;ldquo;You must be root to execute this script.</description>
+    </item>
+    
+    <item>
+      <title>A random number generator in Bash</title>
+      <link>https://arvimal.github.io/posts/2008/02/2008-02-13-bash-script-for-generating-a-random-number/</link>
+      <pubDate>Wed, 13 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/2008-02-13-bash-script-for-generating-a-random-number/</guid>
+      <description>The bash environment variable &amp;lsquo;RANDOM&amp;rsquo; is a pseudo-random number generator built in bash, and it can generate random numbers in the range of 0 - 32767.
+Using the command `echo $RANDOM`, we can generate a random number. Building a random number generator which emits a sequence of random numbers is pretty easy.
+[code language=&amp;ldquo;bash&amp;rdquo;] #!/bin/bash for i in `seq 1 10`: do echo $RANDOM; sleep 1s; done [/code]
+The &amp;lsquo;seq&amp;rsquo; or the &amp;lsquo;sequential&amp;rsquo; can be used to generate a sequence of numbers.</description>
+    </item>
+    
+    <item>
+      <title>Password Encryptor in C</title>
+      <link>https://arvimal.github.io/posts/2008/02/2008-02-13-password-encryptor-in-c/</link>
+      <pubDate>Wed, 13 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/2008-02-13-password-encryptor-in-c/</guid>
+      <description>Some time back, I had to implement a password encryption section in one of my bash programs. It seemed easy to use a C snippet rather than doing it in bash. This was something I got after searching a while.
+[code language=&amp;ldquo;C&amp;rdquo;]
+#include stdlib.h #include unistd.h #include stdio.h #include crack.h #define DICTIONARY /usr/lib/cracklib_dict
+int main(int argc, char *argv[]) {
+char *password; char *problem;
+int status = 0; printf(\nEnter an empty password or Ctrl-D to quit.</description>
+    </item>
+    
+    <item>
+      <title>Zombie processes</title>
+      <link>https://arvimal.github.io/posts/2008/01/2008-01-01-zombie-processes/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/01/2008-01-01-zombie-processes/</guid>
+      <description>Why can&amp;rsquo;t I kill a process with the signal 9?
+A process can be sleeping in kernel code. Usually that&amp;rsquo;s because of faulty hardware or a badly written driver- or maybe a little of both. A device that isn&amp;rsquo;t set to the interrupt the driver thinks it is can cause this, for example- the driver is waiting for something its never going to get. The process doesn&amp;rsquo;t ignore your signal- it just never gets it.</description>
+    </item>
+    
+  </channel>
+</rss>

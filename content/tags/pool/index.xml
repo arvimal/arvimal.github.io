@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pool on The Child is Father of the Man</title>
+    <link>https://arvimal.github.io/tags/pool/</link>
+    <description>Recent content in pool on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 17 Aug 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/pool/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mapping Placement Groups and Pools</title>
+      <link>https://arvimal.github.io/posts/2015/08/2015-08-17-how-can-we-map-a-pg-to-a-pool/</link>
+      <pubDate>Mon, 17 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/08/2015-08-17-how-can-we-map-a-pg-to-a-pool/</guid>
+      <description>Understanding the mapping of Pools and Placement Groups can be very useful while troubleshooting Ceph problems.
+A direct method is to dump information on the PGs via :
+ # ceph pg dump
+ This command should output something like the following:
+ pg_stat objects mip degr unf bytes log disklog state 5.7a 0 0 0 0 0 0 0 active+clean
+ The output will have more information, and I&amp;rsquo;ve omitted it for the sake of explanation.</description>
+    </item>
+    
+  </channel>
+</rss>

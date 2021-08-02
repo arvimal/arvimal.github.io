@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Inheritance and super() - Object Oriented Programming</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://arvimal.github.io/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="Vimal A R">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://arvimal.github.io/">The Child is Father of the Man</a></h1>
+    <h2>Technical notes and blah..</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="https://arvimal.github.io/">» Home Page</option>
+      
+        <option value="https://arvimal.github.io/about/">» About</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="https://arvimal.github.io/" title="Home Page">Home Page</a></li>
+    
+  
+    
+      <li><a href="https://arvimal.github.io/about/" title="About"  target="_blank"  rel="noopener noreferrer">About</a></li>
+    
+  
+</ul>
+
+<ul class="subscription">
+  
+    
+        <a href="https://arvimal.github.io/index.xml" target="_blank" type="application/rss+xml" title="RSS" rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
+    
+  
+</ul>
+
+
+  <form action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
+    <fieldset role="search">
+      <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      <input type="hidden" name="q" value="site:https://arvimal.github.io/" />
+    </fieldset>
+  </form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jul 1, 2016
+     - 5 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/programming/">programming </a><a class="label" href="https://arvimal.github.io/categories/python/">python </a>
+    
+  </p>
+  <h1 class="entry-title">
+     Inheritance and super() - Object Oriented Programming 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>_<strong>s</strong>_uper() is a feature through which inherited methods can be accessed, which has been overridden in a class. It can also help with the MRO lookup order in case of multiple inheritance. This may not be obvious first, but a few examples should help to drive the point home.</p>
+<p>Inheritance and method overloading was discussed in a previous 
+<a href="https://arvimal.wordpress.com/2016/06/29/inheritance-and-method-overloading-object-oriented-programming/" target="_blank" rel="noopener">post</a>, where we saw how inherited methods can be overloaded or enhanced in the child classes.</p>
+<p>In many scenarios, it&rsquo;s needed to overload an inherited method, but also call the actual method defined in the Parent class.</p>
+<p>Let&rsquo;s start off with a simple example based on Inheritance, and build from there.</p>
+<p><em><strong>Example 0:</strong></em></p>
+<p>[code language=&ldquo;python&rdquo;] class MyClass(object):</p>
+<p>def func(self): print(&ldquo;I&rsquo;m being called from the Parent class!&quot;)</p>
+<p>class ChildClass(MyClass): pass</p>
+<p>my_instance_1 = ChildClass() my_instance_1.func() [/code] This outputs:</p>
+<p>[code language=&ldquo;python&rdquo;] In [18]: %run /tmp/super-1.py I&rsquo;m being called from the Parent class [/code] In <em><strong>Example 0</strong></em>, we have two classes, <code>MyClass</code> and <code>ChildClass</code>. The latter inherits from the former, and the parent class <code>MyClass</code> has a method named <code>func</code> defined.</p>
+<p>Since <code>ChildClass</code> inherits from <code>MyClass</code>, the child class has access to the methods defined in the parent class. An instance is created <code>my_instance_2</code>, for <code>ChildClass.</code></p>
+<p>Calling <code>my_instance_1.func()</code> will print the statement from the Parent class, due to the inheritance.</p>
+<p>Building up on the first example:</p>
+<p><em><strong>Example 1:</strong></em></p>
+<p>[code language=&ldquo;python&rdquo;] class MyClass(object):</p>
+<p>def func(self): print(&ldquo;I&rsquo;m being called from the Parent class&rdquo;)</p>
+<p>class ChildClass(MyClass):</p>
+<p>def func(self): print(&ldquo;I&rsquo;m being called from the Child class&rdquo;)</p>
+<p>my_instance_1 = MyClass() my_instance_2 = ChildClass()</p>
+<p>my_instance_1.func() my_instance_2.func() [/code] This outputs:</p>
+<p>[code language=&ldquo;python&rdquo;] In [19]: %run /tmp/super-1.py I&rsquo;m being called from the Parent class I&rsquo;m being called from the Child class [/code] This example has a slight difference, both the child class as well as the parent class have the same method defined, ie.. <code>func</code>. In this scenario, the parent class' method is overridden by the child class method.</p>
+<p>ie.. if we call the <code>func()</code> method from the instance of <code>ChildClass</code>, it need not go a fetch the method from its Parent class, since it&rsquo;s already defined locally.</p>
+<p><strong>NOTE: This is due to the Method Resolution Order, discussed in an earlier 
+<a href="https://arvimal.wordpress.com/2016/05/30/method-resolution-order-object-oriented-programming/" target="_blank" rel="noopener">post</a>.</strong></p>
+<p>But what if there is a scenario that warranties the need for specifically calling methods defined in the Parent class, from the instance of a child class?</p>
+<p>ie.. How to call the methods defined in the Parent class, through the instance of the Child class, even if the Parent class method is overloaded in the Child class?</p>
+<p>In such a case, the inbuilt function <code>super()</code> can be used. Let&rsquo;s add to the previous example.</p>
+<p><em><strong>Example 2:</strong></em></p>
+<p>[code language=&ldquo;python&rdquo;] class MyClass(object):</p>
+<p>def func(self): print(&ldquo;I&rsquo;m being called from the Parent class&rdquo;)</p>
+<p>class ChildClass(MyClass):</p>
+<p>def func(self): print(&ldquo;I&rsquo;m actually being called from the Child class&rdquo;) print(&ldquo;But&hellip;&quot;) # Calling the `func()` method from the Parent class. super(ChildClass, self).func()</p>
+<p>my_instance_2 = ChildClass() my_instance_2.func() [/code] This outputs:</p>
+<p>[code language=&ldquo;python&rdquo;] In [21]: %run /tmp/super-1.py I&rsquo;m actually being called from the Child class But&hellip; I&rsquo;m being called from the Parent class [/code]</p>
+<h3 id="how-is-the-code-structured">How is the code structured?</h3>
+<ol>
+<li>We have two classes <code>MyClass</code> and <code>ChildClass</code>.</li>
+<li>The latter is inheriting from the former.</li>
+<li>Both classes have a method named <code>func</code></li>
+<li>The child class <code>ChildClass</code> is instantiated as <code>my_instance_2</code></li>
+<li>The <code>func</code> method is called from the instance.</li>
+</ol>
+<h3 id="how-does-the-code-work">How does the code work?</h3>
+<ol>
+<li>When the <code>func</code> method is called, the interpreter searches it using the Method Resolution Order, and find the method defined in the class <code>ChildClass</code>.</li>
+<li>Since it finds the method in the child class, it executes it, and prints the string &ldquo;I&rsquo;m actually being called from the Child class&rdquo;, as well &ldquo;But&hellip;&rdquo;</li>
+<li>The next statement is <code>super</code> which calls the method <code>func</code> defined in the parent class of <code>ChildClass</code></li>
+<li>Since the control is now passed onto the <code>func</code> method in the Parent class via <code>super</code>, the corresponding <code>print()</code> statement is printed to stdout.</li>
+</ol>
+<p>Example 2 can also be re-written as :</p>
+<p>[code language=&ldquo;python&rdquo;] class MyClass(object):</p>
+<p>def func(self): print(&ldquo;I&rsquo;m being called from the Parent class&rdquo;)</p>
+<p>class ChildClass(MyClass):</p>
+<p>def func(self): print(&ldquo;I&rsquo;m actually being called from the Child class&rdquo;) print(&ldquo;But&hellip;&quot;) # Calling the `func()` method from the Parent class. # super(ChildClass, self).func() MyClass.func(self) # Call the method directly via Parent class</p>
+<p>my_instance_2 = ChildClass() my_instance_2.func() [/code]</p>
+<p> </p>
+<p><em><strong>NOTE:</strong></em> <em>The example above uses the Parent class directly to access it&rsquo;s method. Even though it works, it is not the best way to do it since the code is tied to the Parent class name. If the Parent class name changes, the child/sub class code has to be changed as well.</em></p>
+<p>Let&rsquo;s see another example for  <code>super()</code> . This is from our previous article on 
+<a href="https://arvimal.wordpress.com/2016/06/29/inheritance-and-method-overloading-object-oriented-programming/" target="_blank" rel="noopener">Inheritance and method overloading</a>.</p>
+<p><em><strong>Example 3:</strong></em></p>
+<p>[code language=&ldquo;python&rdquo;] import abc</p>
+<p>class MyClass(object):</p>
+<p>__metaclass__ = abc.ABCMeta</p>
+<p>def my_set_val(self, value): self.value = value</p>
+<p>def my_get_val(self): return self.value</p>
+<p>@abc.abstractmethod def print_doc(self): return</p>
+<p>class MyChildClass(MyClass):</p>
+<p>def my_set_val(self, value): if not isinstance(value, int): value = 0 super(MyChildClass, self).my_set_val(self)</p>
+<p>def print_doc(self): print(&ldquo;Documentation for MyChild Class&rdquo;)</p>
+<p>my_instance = MyChildClass() my_instance.my_set_val(100) print(my_instance.my_get_val()) print(my_instance.print_doc()) [/code] The code is already discussed 
+<a href="https://arvimal.wordpress.com/2016/06/29/inheritance-and-method-overloading-object-oriented-programming/" target="_blank" rel="noopener">here</a>. The <code>my_set_val</code> method is defined in both the child class as well as the parent class.</p>
+<p>We overload the <code>my_set_val</code> method defined in the parent class, in the child class. But after enhancing/overloading it, we call the <code>my_set_val</code> method specifically from the Parent class using <code>super()</code> and thus enhance it.</p>
+<h3 id="takeaway">Takeaway:</h3>
+<ol>
+<li>super() helps to specifically call the Parent class method which has been overridden in the child class, from the child class.</li>
+<li>The super() in-built function can be used to call/refer the Parent class without explicitly naming them. This helps in situations where the Parent class name may change. Hence, super() helps in avoiding strong ties with class names and increases maintainability.</li>
+<li>super() helps the most when there are multiple inheritance happening, and the MRO ends up being complex. In case you need to call a method from a specific parent class, use super().</li>
+<li>There are multiple ways to call a method from a Parent class.
+<ol>
+<li><!-- raw HTML omitted -->.<!-- raw HTML omitted --></li>
+<li>super(<!-- raw HTML omitted -->, self).<!-- raw HTML omitted --></li>
+<li>super().<!-- raw HTML omitted --></li>
+</ol>
+</li>
+</ol>
+<h3 id="references">References:</h3>
+<ol>
+<li><a href="https://docs.python.org/2/library/functions.html#super">https://docs.python.org/2/library/functions.html#super</a></li>
+<li><a href="https://rhettinger.wordpress.com/2011/05/26/super-considered-super/">https://rhettinger.wordpress.com/2011/05/26/super-considered-super/</a></li>
+<li><a href="https://stackoverflow.com/questions/222877/how-to-use-super-in-python">https://stackoverflow.com/questions/222877/how-to-use-super-in-python</a></li>
+</ol>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn">Vimal A R</span></span>
+    
+    <time>Jul 1, 2016</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="https://arvimal.github.io/tags/inheritance">inheritance</a>  <a class="category" href="https://arvimal.github.io/tags/object-oriented-programming">object-oriented-programming</a>  <a class="category" href="https://arvimal.github.io/tags/python">python</a>  <a class="category" href="https://arvimal.github.io/tags/super">super</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://arvimal.github.io/posts/2016/06/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/" title="`uninit_bg` and lazy block group allocation in EXT3/4">`uninit_bg` and lazy block group allocation in EXT3/4</a>
+    
+
+    
+      <a class="basic-alignment right" href="https://arvimal.github.io/posts/2016/07/2016-07-21-max-file-name-length-in-an-ext4-file-system/" title="Max file-name length in an EXT4 file system.">Max file-name length in an EXT4 file system.</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>Who am I?!</h1>
+    
+
+    <p>
+      
+        <p>I am a Systems Engineer, working in the Netherlands.</p>
+<p>Here, I aim to document my interests and notes on the technologies I learn during my work and free time.</p>
+<p>This usually includes programming, cloud technologies, filesystems, linux etc..</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/arvimal" title="https://github.com/arvimal"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      
+      
+         
+      
+      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arvimal/" title="https://www.linkedin.com/in/arvimal/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+          <h1>Favourite blogs</h1>
+        
+        
+          <li>
+            <a href="http://sreweekly.com/feed/" title="SRE Weekly" >SRE Weekly</a>
+          </li>
+        
+          <li>
+            <a href="https://jvns.ca/atom.xml" title="Julia Evans" >Julia Evans</a>
+          </li>
+        
+          <li>
+            <a href="https://talkpython.fm/" title="Talk Python to Me" >Talk Python to Me</a>
+          </li>
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021 Vimal A R - <a href="https://arvimal.github.io/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+

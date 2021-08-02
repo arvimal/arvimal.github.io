@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>range() and enumerate()</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://arvimal.github.io/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="Vimal A R">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://arvimal.github.io/">The Child is Father of the Man</a></h1>
+    <h2>Technical notes and blah..</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="https://arvimal.github.io/">» Home Page</option>
+      
+        <option value="https://arvimal.github.io/about/">» About</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="https://arvimal.github.io/" title="Home Page">Home Page</a></li>
+    
+  
+    
+      <li><a href="https://arvimal.github.io/about/" title="About"  target="_blank"  rel="noopener noreferrer">About</a></li>
+    
+  
+</ul>
+
+<ul class="subscription">
+  
+    
+        <a href="https://arvimal.github.io/index.xml" target="_blank" type="application/rss+xml" title="RSS" rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
+    
+  
+</ul>
+
+
+  <form action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
+    <fieldset role="search">
+      <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      <input type="hidden" name="q" value="site:https://arvimal.github.io/" />
+    </fieldset>
+  </form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Oct 12, 2015
+     - 2 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/programming/">programming </a><a class="label" href="https://arvimal.github.io/categories/python/">python </a>
+    
+  </p>
+  <h1 class="entry-title">
+     range() and enumerate() 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>The usual way to iterate over a range of numbers or a list in python, is to use <strong>range().</strong></p>
+<p><em><strong>Example 0:</strong></em></p>
+<p>[code language=&ldquo;python&rdquo;] colors = [&ldquo;yellow&rdquo;, &ldquo;red&rdquo;, &ldquo;blue&rdquo;, &ldquo;white&rdquo;, &ldquo;black&rdquo;]</p>
+<p>for i in range(len(colors)): print(i, colors[i]) [/code]</p>
+<p>This should output:</p>
+<p>[code language=&ldquo;bash&rdquo;] (0, &lsquo;yellow&rsquo;) (1, &lsquo;red&rsquo;) (2, &lsquo;blue&rsquo;) (3, &lsquo;white&rsquo;) (4, &lsquo;black&rsquo;) [/code]</p>
+<p><strong>print()</strong>, by default, returns a tuple. If we want to print it in a more presentable way, we’ll need to find the indice at which each value is, and print that as well. Re-write the code a bit, to achieve the desired output:</p>
+<p>[code language=&ldquo;python&rdquo;] colors = [&ldquo;yellow&rdquo;, &ldquo;red&rdquo;, &ldquo;blue&rdquo;, &ldquo;white&rdquo;, &ldquo;black&rdquo;]</p>
+<p>for i in range(len(colors)): color = colors[i] print(&quot;%d: %s&quot; % (i, color)) [/code]</p>
+<p>This should print:</p>
+<p>[code language=&ldquo;bash&rdquo;] 0: yellow 1: red 2: blue 3: white 4: black [/code]</p>
+<p>We can see that the above output starts with ‘0’ since python starts counting from ‘0’. To change that to ‘1’, we’ll need to tweak the <strong>print()</strong> statement.</p>
+<p>[code language=&ldquo;python&rdquo;] colors = [&ldquo;yellow&rdquo;, &ldquo;red&rdquo;, &ldquo;blue&rdquo;, &ldquo;white&rdquo;, &ldquo;black&rdquo;]</p>
+<p>for i in range(len(colors)): color = colors[i] print(&quot;%d: %s&quot; % (i + 1, color)) [/code]</p>
+<p>This should print:</p>
+<p>[code language=&ldquo;bash&rdquo;] 1: yellow 2: red 3: blue 4: white 5: black [/code]</p>
+<p>Even though the above code snippet isn’t that complex, a much better way exists to do this. This is where the builtin function <strong>enumerate()</strong> comes in.</p>
+<p><strong>enumerate()</strong> returns a tuple when passed an object which supports iteration, for example, a list. It also supports a second argument named &lsquo;<strong>start</strong>&rsquo; which default to 0, and can be changed depending on where to start the order. We’ll check what &lsquo;<strong>start</strong>&rsquo; is towards the end of this article.</p>
+<p>[code language=&ldquo;python&rdquo;] colors = [&ldquo;yellow&rdquo;, &ldquo;red&rdquo;, &ldquo;blue&rdquo;, &ldquo;white&rdquo;, &ldquo;black&rdquo;] print(list(enumerate(colors))) [/code]</p>
+<p>This returns a list of a tuples.</p>
+<p>[code language=&ldquo;bash&rdquo;] [(0, &lsquo;yellow&rsquo;), (1, &lsquo;red&rsquo;), (2, &lsquo;blue&rsquo;), (3, &lsquo;white&rsquo;), (4, &lsquo;black&rsquo;)] [/code]</p>
+<p>To get to what we desire, modify it as:</p>
+<p>[code language=&ldquo;python&rdquo;] for i, color in enumerate(colors): print('%d: %s' % (i, color)) [/code]</p>
+<p>This outputs:</p>
+<p>[code language=&ldquo;bash&rdquo;] 0: yellow 1: red 2: blue 3: white 4: black [/code]</p>
+<p>Remember that we talked about that <strong>enumerate()</strong> takes a second value named &lsquo;<strong>start</strong>&rsquo; which defaults to ‘0’? Let’s check how that’ll help here.</p>
+<p>The above output starts with ‘<strong>0</strong>’. &lsquo;<strong>start&rsquo;</strong> can help to change that.</p>
+<p>[code language=&ldquo;python&rdquo;] for i, color in enumerate(colors, start=1): print('%d: %s' % (i, color)) [/code]</p>
+<p>This should change the output as:</p>
+<p>[code language=&ldquo;bash&rdquo;] 1: yellow 2: red 3: blue 4: white 5: black [/code]</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn">Vimal A R</span></span>
+    
+    <time>Oct 12, 2015</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="https://arvimal.github.io/tags/enumerate">enumerate</a>  <a class="category" href="https://arvimal.github.io/tags/programming">programming</a>  <a class="category" href="https://arvimal.github.io/tags/python">python</a>  <a class="category" href="https://arvimal.github.io/tags/range">range</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://arvimal.github.io/posts/2015/10/2015-10-07-why-do-objects-get-marked-as-unfound-in-a-a-ceph-cluster/" title="Ceph and unfound objects">Ceph and unfound objects</a>
+    
+
+    
+      <a class="basic-alignment right" href="https://arvimal.github.io/posts/2015/10/2015-10-15-list-all-ceph-pools-with-rbd-images-and-snapshots/" title="List RBD images, snapshots, and clones in Ceph pools">List RBD images, snapshots, and clones in Ceph pools</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>Who am I?!</h1>
+    
+
+    <p>
+      
+        <p>I am a Systems Engineer, working in the Netherlands.</p>
+<p>Here, I aim to document my interests and notes on the technologies I learn during my work and free time.</p>
+<p>This usually includes programming, cloud technologies, filesystems, linux etc..</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/arvimal" title="https://github.com/arvimal"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      
+      
+         
+      
+      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arvimal/" title="https://www.linkedin.com/in/arvimal/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+          <h1>Favourite blogs</h1>
+        
+        
+          <li>
+            <a href="http://sreweekly.com/feed/" title="SRE Weekly" >SRE Weekly</a>
+          </li>
+        
+          <li>
+            <a href="https://jvns.ca/atom.xml" title="Julia Evans" >Julia Evans</a>
+          </li>
+        
+          <li>
+            <a href="https://talkpython.fm/" title="Talk Python to Me" >Talk Python to Me</a>
+          </li>
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021 Vimal A R - <a href="https://arvimal.github.io/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+

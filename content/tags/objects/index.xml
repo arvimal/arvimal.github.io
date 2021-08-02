@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>objects on The Child is Father of the Man</title>
+    <link>https://arvimal.github.io/tags/objects/</link>
+    <description>Recent content in objects on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 20 Oct 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/objects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python, Objects, and some more..</title>
+      <link>https://arvimal.github.io/posts/2016/10/2016-10-20-python-objects-and-some-more/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/10/2016-10-20-python-objects-and-some-more/</guid>
+      <description>_E_verything in Python is an object, what does that mean? This post tries to discuss some very basic concepts.
+What does the following assignment do?
+[code language=&amp;ldquo;python&amp;rdquo;]
+a = 1 [/code] Of course, anyone dabbled in code knows this. The statement above creates a container `a` and stores the value `1` in it.
+But it seem that&amp;rsquo;s not exactly what&amp;rsquo;s happening, at least from Python&amp;rsquo;s view-point.
+When a = 1 is entered or executed by the python interpreter, the following happens in the backend, seemingly unknown to the user.</description>
+    </item>
+    
+    <item>
+      <title>Ceph Rados Block Device (RBD) and TRIM</title>
+      <link>https://arvimal.github.io/posts/2015/10/2015-10-07-objects-remain-in-a-ceph-pool-used-for-rbd-even-if-the-files-are-deleted-from-the-mount-point/</link>
+      <pubDate>Wed, 07 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/10/2015-10-07-objects-remain-in-a-ceph-pool-used-for-rbd-even-if-the-files-are-deleted-from-the-mount-point/</guid>
+      <description>I recently came across a scenario where the objects in a RADOS pool used for an RBD block device doesn’t get removed, even if the files created through the mount point were removed.
+I had an RBD image from an RHCS1.3 cluster mapped to a RHEL7.1 client machine, with an XFS filesystem created on it, and mounted locally. Created a 5GB file, and I could see the objects being created in the rbd pool in the ceph cluster.</description>
+    </item>
+    
+  </channel>
+</rss>

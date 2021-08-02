@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>monmaptool on The Child is Father of the Man</title>
+    <link>https://arvimal.github.io/tags/monmaptool/</link>
+    <description>Recent content in monmaptool on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 01 Sep 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/monmaptool/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Monitor maps, how to edit them?</title>
+      <link>https://arvimal.github.io/posts/2015/09/2015-09-01-how-to-extract-view-change-and-inject-a-monitor-map-in-a-ceph-cluster/</link>
+      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/09/2015-09-01-how-to-extract-view-change-and-inject-a-monitor-map-in-a-ceph-cluster/</guid>
+      <description>The MON map is used by the monitors in a Ceph cluster, where they keep track of various attributes relevant to the working of the cluster.
+Similar to the CRUSH map, a monitor map can be pulled out of the cluster, inspected, changed, and injected back to the monitors, manually. A frequent use-case is when the IP address of a monitor changes and the monitors cannot agree on a quorum.</description>
+    </item>
+    
+  </channel>
+</rss>

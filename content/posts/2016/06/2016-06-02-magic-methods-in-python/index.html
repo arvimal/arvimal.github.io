@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Magic methods and Syntactic sugar in Python</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://arvimal.github.io/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="Vimal A R">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://arvimal.github.io/">The Child is Father of the Man</a></h1>
+    <h2>Technical notes and blah..</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="https://arvimal.github.io/">» Home Page</option>
+      
+        <option value="https://arvimal.github.io/about/">» About</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="https://arvimal.github.io/" title="Home Page">Home Page</a></li>
+    
+  
+    
+      <li><a href="https://arvimal.github.io/about/" title="About"  target="_blank"  rel="noopener noreferrer">About</a></li>
+    
+  
+</ul>
+
+<ul class="subscription">
+  
+    
+        <a href="https://arvimal.github.io/index.xml" target="_blank" type="application/rss+xml" title="RSS" rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
+    
+  
+</ul>
+
+
+  <form action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
+    <fieldset role="search">
+      <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      <input type="hidden" name="q" value="site:https://arvimal.github.io/" />
+    </fieldset>
+  </form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jun 2, 2016
+     - 4 minute read 
+    
+
+    
+    
+      - <a class="label" href="https://arvimal.github.io/categories/programming/">programming </a><a class="label" href="https://arvimal.github.io/categories/python/">python </a>
+    
+  </p>
+  <h1 class="entry-title">
+     Magic methods and Syntactic sugar in Python 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <h3 id="magic-methods">Magic methods</h3>
+<p>_<strong>M</strong>_agic methods are special methods which can be defined (or already designed and available) to act on objects.</p>
+<p>Magic methods start and end with underscores <code>&quot;__&quot;</code>, and are not implicitly called by the user even though they can be. Most magic methods are used as syntactic sugar by binding it to more clear/easy_to_understand keywords.</p>
+<p>Python is mostly objects and method calls done on objects. Many available functions in Python are actually tied to magic methods_**.**_ Let&rsquo;s checkout a few examples.</p>
+<p><em><strong>Example 0:</strong></em></p>
+<p>[code language=&ldquo;python&rdquo;] In [1]: my_var = &ldquo;Hello!&rdquo;</p>
+<p>In [2]: print(my_var) Hello!</p>
+<p>In [3]: my_var.__repr__() Out[3]: &ldquo;&lsquo;Hello!'&rdquo; [/code] As we can see, the <code>__repr__()</code> magic method can be called to print the object, ie.. it is bound to the <code>print()</code> keyword.</p>
+<p>This is true for many other builtin keywords/operators as well.</p>
+<p><em><strong>Example 1:</strong></em></p>
+<p>[code language=&ldquo;python&rdquo;] In [22]: my_var = &ldquo;Hello, &quot; In [23]: my_var1 = &ldquo;How are you?&rdquo;</p>
+<p>In [24]: my_var + my_var1 Out[24]: &lsquo;Hello, How are you?&rsquo;</p>
+<p>In [25]: my_var.__add__(my_var1) Out[25]: &lsquo;Hello, How are you?&rsquo; [/code] Here, Python interprets the <code>+</code> sign as a mapping to the magic method <code>__add__()</code>, and calls it on the L-value (Left hand object value) <code>my_var</code>, with the R-value (Right hand object value) as the argument.</p>
+<p>When a builtin function is called on an object, in many cases it is mapped to the magic method.</p>
+<p><em><strong>Example 2:</strong></em></p>
+<p>[code language=&ldquo;python&rdquo;] In [69]: my_list_1 = [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &rsquo;d&rsquo;]</p>
+<p>In [70]: &lsquo;a&rsquo; in my_list_1 Out[70]: True</p>
+<p>In [71]: my_list_1.__contains__(&ldquo;a&rdquo;) Out[71]: True [/code]</p>
+<p>The <code>in</code> builtin is mapped to the <code>__contains__()</code>method.</p>
+<p>The methods available for an object should mostly be dependent on the type of the object.</p>
+<p><em><strong>Example 3:</strong></em></p>
+<p>[code language=&ldquo;python&rdquo; wraplines=&ldquo;true&rdquo;] In [59]: my_num = 1</p>
+<p>In [60]: type(my_num) Out[60]: int</p>
+<p>In [61]: my_num.__doc__ Out[61]: Out[61]: &ldquo;int(x=0) -&gt; int or long\nint(x, base=10) -&gt; int or long\n\nConvert a number or string to an integer, or return 0 if no arguments\nare given. &hellip;.&raquo;&gt;</p>
+<p>In [62]: help(my_num) class int(object) | int(x=0) -&gt; int or long | int(x, base=10) -&gt; int or long | | Convert a number or string to an integer, or return 0 if no arguments | are given. If x is floating point, the conversion truncates towards zero. | If x is outside the integer range, the function returns a long instead.</p>
+<p>[/code]</p>
+<p>From the tests above, we can understand that the <code>help()</code> function is actually mapped to the <code>object.__doc__</code> magic method. It&rsquo;s the same doc string that __doc__ and help() uses.</p>
+<p><strong><em>NOTE: Due to the syntax conversion (<code>+</code> to <code>__add__(),and other conversions</code>), operators like <code>+</code> , <code>in</code>, etc.. are also called Syntactic sugar.</em></strong></p>
+<h3 id="what-is-syntactic-sugar">What is Syntactic sugar?</h3>
+<p>_<strong>A</strong>_ccording to 
+<a href="https://en.wikipedia.org/wiki/Syntactic_sugar" target="_blank" rel="noopener">Wikipedia</a>, Syntact sugar is:</p>
+<blockquote>
+<p>In 
+<a href="https://en.wikipedia.org/wiki/Computer_science" title="Computer science" target="_blank" rel="noopener">computer science</a>, <strong>syntactic sugar</strong> is 
+<a href="https://en.wikipedia.org/wiki/Syntax_%28programming_languages%29" title="Syntax (programming languages)" target="_blank" rel="noopener">syntax</a> within a 
+<a href="https://en.wikipedia.org/wiki/Programming_language" title="Programming language" target="_blank" rel="noopener">programming language</a> that is designed to make things easier to read or to express. It makes the language &ldquo;sweeter&rdquo; for human use: things can be expressed more clearly, more concisely, or in an alternative style that some may prefer.</p>
+</blockquote>
+<p>Hence, <em><strong>magic methods</strong></em> can be said to be <em><strong>Syntactic sugar.</strong></em> But it&rsquo;s not just magic methods that are mapped to syntactic sugar methods, but higher order features such as 
+<a href="https://arvimal.wordpress.com/2016/05/30/decorators-object-oriented-programming/" target="_blank" rel="noopener">Decorators</a> are as well.</p>
+<p><em><strong>Example 4:</strong></em></p>
+<p>[code language=&ldquo;python&rdquo;] def my_decorator(my_function): def inner_decorator(): print(&ldquo;This happened before!&quot;) my_function() print(&ldquo;This happens after &ldquo;) print(&ldquo;This happened at the end!&quot;) return inner_decorator</p>
+<p>def my_decorated(): print(&ldquo;This happened!&quot;)</p>
+<p>var = my_decorator(my_decorated)</p>
+<p>if __name__ == &lsquo;__main__': var() [/code] The example above borrows from one of the examples in the post on 
+<a href="https://arvimal.wordpress.com/2016/05/30/decorators-object-oriented-programming/" target="_blank" rel="noopener">Decorators</a>.</p>
+<p>Here, <code>my_decorator()</code> is a decorator and is used to decorate <code>my_decorated()</code>. But rather than calling the decorator function <code>my_decorator()</code> with the argument <code>my_decorated()</code>, the above code can be syntactically sugar-coated as below:</p>
+<p>[code language=&ldquo;python&rdquo;] def my_decorator(my_function): def inner_decorator(): print(&ldquo;This happened before!&quot;) my_function() print(&ldquo;This happens after &ldquo;) print(&ldquo;This happened at the end!&quot;) return inner_decorator</p>
+<p>@my_decorator def my_decorated(): print(&ldquo;This happened!&quot;)</p>
+<p>if __name__ == &lsquo;__main__': my_decorated() [/code] Observing both code snippets, the decorator is syntactically sugar coated and called as:</p>
+<p><strong>@my_decorator</strong></p>
+<p>instead of instantiating the decorator with the function to be decorated as an argument, ie..</p>
+<p><strong>var = my_decorator(my_decorated)</strong></p>
+<h3 id="a-few-syntax-resolution-methods">A few syntax resolution methods:</h3>
+<ol>
+<li>&lsquo;name&rsquo; in my_list       -&gt;      my_list.__contains__(&lsquo;name&rsquo;)</li>
+<li>len(my_list)                  -&gt;      my_list.__len__()</li>
+<li>print(my_list)              -&gt;      my_list.__repr__()</li>
+<li>my_list == &ldquo;value&rdquo;     -&gt;      my_list.__eq__(&ldquo;value&rdquo;)</li>
+<li>my_list[5]                      -&gt;      my_list.__getitem__(5)</li>
+<li>my_list[5:10]                 -&gt;     my_list.__getslice__(5, 10)</li>
+</ol>
+<p><strong>NOTE: This article is written from the notes created while learning magic methods. The following articles (along with several others) were referred as part of the process.</strong></p>
+<ol>
+<li><strong>
+<a href="http://www.rafekettler.com/magicmethods.pdf" target="_blank" rel="noopener">A Guide to Python&rsquo;s Magic Methods</a>, by Rafe Kettler</strong></li>
+<li><strong>
+<a href="https://docs.python.org/3/reference/datamodel.html#special-method-names" target="_blank" rel="noopener">Special method names</a>, The Official Python 3 documentation</strong></li>
+</ol>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn">Vimal A R</span></span>
+    
+    <time>Jun 2, 2016</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="https://arvimal.github.io/tags/programming">programming</a>  <a class="category" href="https://arvimal.github.io/tags/python">python</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://arvimal.github.io/posts/2016/05/2016-05-30-decorators-object-oriented-programming/" title="Decorators - Object Oriented Programming">Decorators - Object Oriented Programming</a>
+    
+
+    
+      <a class="basic-alignment right" href="https://arvimal.github.io/posts/2016/06/2016-06-12-instance-class-static-methods-object-oriented-programming/" title="Instance, Class, and Static methods - Object Oriented Programming">Instance, Class, and Static methods - Object Oriented Programming</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>Who am I?!</h1>
+    
+
+    <p>
+      
+        <p>I am a Systems Engineer, working in the Netherlands.</p>
+<p>Here, I aim to document my interests and notes on the technologies I learn during my work and free time.</p>
+<p>This usually includes programming, cloud technologies, filesystems, linux etc..</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/arvimal" title="https://github.com/arvimal"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      
+      
+         
+      
+      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arvimal/" title="https://www.linkedin.com/in/arvimal/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+          <h1>Favourite blogs</h1>
+        
+        
+          <li>
+            <a href="http://sreweekly.com/feed/" title="SRE Weekly" >SRE Weekly</a>
+          </li>
+        
+          <li>
+            <a href="https://jvns.ca/atom.xml" title="Julia Evans" >Julia Evans</a>
+          </li>
+        
+          <li>
+            <a href="https://talkpython.fm/" title="Talk Python to Me" >Talk Python to Me</a>
+          </li>
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021 Vimal A R - <a href="https://arvimal.github.io/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+

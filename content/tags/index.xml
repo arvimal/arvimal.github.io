@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on The Child is Father of the Man</title>
+    <link>https://arvimal.github.io/tags/</link>
+    <description>Recent content in Tags on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 09 Aug 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>callable</title>
+      <link>https://arvimal.github.io/tags/callable/</link>
+      <pubDate>Wed, 09 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/callable/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://arvimal.github.io/tags/python/</link>
+      <pubDate>Wed, 09 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python-objects</title>
+      <link>https://arvimal.github.io/tags/python-objects/</link>
+      <pubDate>Wed, 09 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/python-objects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kernel</title>
+      <link>https://arvimal.github.io/tags/kernel/</link>
+      <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/kernel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>module</title>
+      <link>https://arvimal.github.io/tags/module/</link>
+      <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/module/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>algorithms</title>
+      <link>https://arvimal.github.io/tags/algorithms/</link>
+      <pubDate>Tue, 27 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/algorithms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programming</title>
+      <link>https://arvimal.github.io/tags/programming/</link>
+      <pubDate>Tue, 27 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>recursion</title>
+      <link>https://arvimal.github.io/tags/recursion/</link>
+      <pubDate>Tue, 27 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/recursion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>object-oriented-programming</title>
+      <link>https://arvimal.github.io/tags/object-oriented-programming/</link>
+      <pubDate>Sun, 18 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/object-oriented-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>namespace</title>
+      <link>https://arvimal.github.io/tags/namespace/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/namespace/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>objects</title>
+      <link>https://arvimal.github.io/tags/objects/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/objects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python-namespace</title>
+      <link>https://arvimal.github.io/tags/python-namespace/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/python-namespace/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dentry</title>
+      <link>https://arvimal.github.io/tags/dentry/</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/dentry/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>directory-entry-structure</title>
+      <link>https://arvimal.github.io/tags/directory-entry-structure/</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/directory-entry-structure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ext4</title>
+      <link>https://arvimal.github.io/tags/ext4/</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/ext4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ext4_dir_entry</title>
+      <link>https://arvimal.github.io/tags/ext4_dir_entry/</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/ext4_dir_entry/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ext4_dir_entry_2</title>
+      <link>https://arvimal.github.io/tags/ext4_dir_entry_2/</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/ext4_dir_entry_2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>file-systems</title>
+      <link>https://arvimal.github.io/tags/file-systems/</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/file-systems/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>filesystem</title>
+      <link>https://arvimal.github.io/tags/filesystem/</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/filesystem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>name_len</title>
+      <link>https://arvimal.github.io/tags/name_len/</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/name_len/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>inheritance</title>
+      <link>https://arvimal.github.io/tags/inheritance/</link>
+      <pubDate>Fri, 01 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/inheritance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>super</title>
+      <link>https://arvimal.github.io/tags/super/</link>
+      <pubDate>Fri, 01 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/super/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ceph</title>
+      <link>https://arvimal.github.io/tags/ceph/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/ceph/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ext3</title>
+      <link>https://arvimal.github.io/tags/ext3/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/ext3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lazy-block-group-allocation</title>
+      <link>https://arvimal.github.io/tags/lazy-block-group-allocation/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/lazy-block-group-allocation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rados</title>
+      <link>https://arvimal.github.io/tags/rados/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/rados/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rados-gateway</title>
+      <link>https://arvimal.github.io/tags/rados-gateway/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/rados-gateway/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rgw</title>
+      <link>https://arvimal.github.io/tags/rgw/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/rgw/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rgw-index</title>
+      <link>https://arvimal.github.io/tags/rgw-index/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/rgw-index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sharding</title>
+      <link>https://arvimal.github.io/tags/sharding/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/sharding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>uninit_bg</title>
+      <link>https://arvimal.github.io/tags/uninit_bg/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/uninit_bg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>abstract-methods</title>
+      <link>https://arvimal.github.io/tags/abstract-methods/</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/abstract-methods/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>abstractmethod</title>
+      <link>https://arvimal.github.io/tags/abstractmethod/</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/abstractmethod/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>builtins</title>
+      <link>https://arvimal.github.io/tags/builtins/</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/builtins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>method-overloading</title>
+      <link>https://arvimal.github.io/tags/method-overloading/</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/method-overloading/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>abstract-base-class</title>
+      <link>https://arvimal.github.io/tags/abstract-base-class/</link>
+      <pubDate>Tue, 14 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/abstract-base-class/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>__base__</title>
+      <link>https://arvimal.github.io/tags/__base__/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/__base__/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>__bases__</title>
+      <link>https://arvimal.github.io/tags/__bases__/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/__bases__/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>classmethod</title>
+      <link>https://arvimal.github.io/tags/classmethod/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/classmethod/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>decorators</title>
+      <link>https://arvimal.github.io/tags/decorators/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/decorators/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>method-resolution-order</title>
+      <link>https://arvimal.github.io/tags/method-resolution-order/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/method-resolution-order/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mro</title>
+      <link>https://arvimal.github.io/tags/mro/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/mro/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>staticmethod</title>
+      <link>https://arvimal.github.io/tags/staticmethod/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/staticmethod/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>monitors</title>
+      <link>https://arvimal.github.io/tags/monitors/</link>
+      <pubDate>Mon, 09 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/monitors/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>big-o-notation</title>
+      <link>https://arvimal.github.io/tags/big-o-notation/</link>
+      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/big-o-notation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>code-complexity</title>
+      <link>https://arvimal.github.io/tags/code-complexity/</link>
+      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/code-complexity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>data-structures</title>
+      <link>https://arvimal.github.io/tags/data-structures/</link>
+      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/data-structures/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>on</title>
+      <link>https://arvimal.github.io/tags/on/</link>
+      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/on/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>enumerate</title>
+      <link>https://arvimal.github.io/tags/enumerate/</link>
+      <pubDate>Mon, 12 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/enumerate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>range</title>
+      <link>https://arvimal.github.io/tags/range/</link>
+      <pubDate>Mon, 12 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/range/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>discard</title>
+      <link>https://arvimal.github.io/tags/discard/</link>
+      <pubDate>Wed, 07 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/discard/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fstrim</title>
+      <link>https://arvimal.github.io/tags/fstrim/</link>
+      <pubDate>Wed, 07 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/fstrim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rados-block-device</title>
+      <link>https://arvimal.github.io/tags/rados-block-device/</link>
+      <pubDate>Wed, 07 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/rados-block-device/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rbd</title>
+      <link>https://arvimal.github.io/tags/rbd/</link>
+      <pubDate>Wed, 07 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/rbd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>trim</title>
+      <link>https://arvimal.github.io/tags/trim/</link>
+      <pubDate>Wed, 07 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/trim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>osd</title>
+      <link>https://arvimal.github.io/tags/osd/</link>
+      <pubDate>Fri, 18 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/osd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>monmaptool</title>
+      <link>https://arvimal.github.io/tags/monmaptool/</link>
+      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/monmaptool/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pg</title>
+      <link>https://arvimal.github.io/tags/pg/</link>
+      <pubDate>Sun, 30 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/pg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>placement-groups</title>
+      <link>https://arvimal.github.io/tags/placement-groups/</link>
+      <pubDate>Mon, 17 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/placement-groups/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pool</title>
+      <link>https://arvimal.github.io/tags/pool/</link>
+      <pubDate>Mon, 17 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/pool/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>calamari</title>
+      <link>https://arvimal.github.io/tags/calamari/</link>
+      <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/calamari/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>leveldb</title>
+      <link>https://arvimal.github.io/tags/leveldb/</link>
+      <pubDate>Thu, 09 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/leveldb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>scrubbing</title>
+      <link>https://arvimal.github.io/tags/scrubbing/</link>
+      <pubDate>Wed, 08 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/scrubbing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>admin-socket</title>
+      <link>https://arvimal.github.io/tags/admin-socket/</link>
+      <pubDate>Wed, 27 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/admin-socket/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ceph-tell</title>
+      <link>https://arvimal.github.io/tags/ceph-tell/</link>
+      <pubDate>Wed, 27 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/ceph-tell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>config-show</title>
+      <link>https://arvimal.github.io/tags/config-show/</link>
+      <pubDate>Wed, 27 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/config-show/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>noout</title>
+      <link>https://arvimal.github.io/tags/noout/</link>
+      <pubDate>Wed, 27 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/noout/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>crush</title>
+      <link>https://arvimal.github.io/tags/crush/</link>
+      <pubDate>Thu, 07 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/crush/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>crush-map</title>
+      <link>https://arvimal.github.io/tags/crush-map/</link>
+      <pubDate>Thu, 07 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/crush-map/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fill-ratio</title>
+      <link>https://arvimal.github.io/tags/fill-ratio/</link>
+      <pubDate>Thu, 07 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/fill-ratio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>admin_socket</title>
+      <link>https://arvimal.github.io/tags/admin_socket/</link>
+      <pubDate>Wed, 06 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/admin_socket/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ceph-admin-socket</title>
+      <link>https://arvimal.github.io/tags/ceph-admin-socket/</link>
+      <pubDate>Wed, 06 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/ceph-admin-socket/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ceph-conf</title>
+      <link>https://arvimal.github.io/tags/ceph-conf/</link>
+      <pubDate>Wed, 06 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/ceph-conf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mons</title>
+      <link>https://arvimal.github.io/tags/mons/</link>
+      <pubDate>Wed, 06 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/mons/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cachefilesd</title>
+      <link>https://arvimal.github.io/tags/cachefilesd/</link>
+      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/cachefilesd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cachefs</title>
+      <link>https://arvimal.github.io/tags/cachefs/</link>
+      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/cachefs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fscache</title>
+      <link>https://arvimal.github.io/tags/fscache/</link>
+      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/fscache/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fs-cache</title>
+      <link>https://arvimal.github.io/tags/fs-cache/</link>
+      <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/fs-cache/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fuse</title>
+      <link>https://arvimal.github.io/tags/fuse/</link>
+      <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/fuse/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>anaconda</title>
+      <link>https://arvimal.github.io/tags/anaconda/</link>
+      <pubDate>Thu, 23 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/anaconda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>installation</title>
+      <link>https://arvimal.github.io/tags/installation/</link>
+      <pubDate>Thu, 23 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/installation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lsusb</title>
+      <link>https://arvimal.github.io/tags/lsusb/</link>
+      <pubDate>Thu, 23 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/lsusb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rhel</title>
+      <link>https://arvimal.github.io/tags/rhel/</link>
+      <pubDate>Thu, 23 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/rhel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>strace</title>
+      <link>https://arvimal.github.io/tags/strace/</link>
+      <pubDate>Thu, 23 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/strace/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>usb</title>
+      <link>https://arvimal.github.io/tags/usb/</link>
+      <pubDate>Thu, 23 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/usb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>boot-loader-checker</title>
+      <link>https://arvimal.github.io/tags/boot-loader-checker/</link>
+      <pubDate>Fri, 15 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/boot-loader-checker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>file-counter</title>
+      <link>https://arvimal.github.io/tags/file-counter/</link>
+      <pubDate>Fri, 15 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/file-counter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>grub</title>
+      <link>https://arvimal.github.io/tags/grub/</link>
+      <pubDate>Fri, 15 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/grub/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lilo</title>
+      <link>https://arvimal.github.io/tags/lilo/</link>
+      <pubDate>Fri, 15 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/lilo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>swap-space</title>
+      <link>https://arvimal.github.io/tags/swap-space/</link>
+      <pubDate>Fri, 15 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/swap-space/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>functions</title>
+      <link>https://arvimal.github.io/tags/functions/</link>
+      <pubDate>Thu, 14 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/functions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nagios-installation</title>
+      <link>https://arvimal.github.io/tags/nagios-installation/</link>
+      <pubDate>Thu, 14 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/nagios-installation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bash</title>
+      <link>https://arvimal.github.io/tags/bash/</link>
+      <pubDate>Wed, 13 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>password-encrypt</title>
+      <link>https://arvimal.github.io/tags/password-encrypt/</link>
+      <pubDate>Wed, 13 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/password-encrypt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>random-number-generator</title>
+      <link>https://arvimal.github.io/tags/random-number-generator/</link>
+      <pubDate>Wed, 13 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/random-number-generator/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>runaway-process</title>
+      <link>https://arvimal.github.io/tags/runaway-process/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/runaway-process/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zombie</title>
+      <link>https://arvimal.github.io/tags/zombie/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/tags/zombie/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

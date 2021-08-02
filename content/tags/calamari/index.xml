@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>calamari on The Child is Father of the Man</title>
+    <link>https://arvimal.github.io/tags/calamari/</link>
+    <description>Recent content in calamari on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Jul 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/calamari/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Resetting Calamari password</title>
+      <link>https://arvimal.github.io/posts/2015/07/2015-07-13-how-can-we-resetchange-the-calamari-interface-password/</link>
+      <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/07/2015-07-13-how-can-we-resetchange-the-calamari-interface-password/</guid>
+      <description>&amp;lsquo;Calamari&amp;rsquo; is the monitoring interface for a Ceph cluster.
+The Calamari interface password can be reset/changed using the &amp;lsquo;calamari-ctl&amp;rsquo; command.
+ # calamari-ctl change_password &amp;ndash;password {password} {user-name}
+ calamari-ctl can also be used to add a user, as well as disable, enable, and rename the user account. A &amp;lsquo;&amp;ndash;help&amp;rsquo; should print out all the available ones.
+ # calamari-ctl &amp;ndash;help
+ </description>
+    </item>
+    
+  </channel>
+</rss>
