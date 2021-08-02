@@ -1,9 +1,3 @@
-[submodule "themes/Flex"]
-	path = themes/Flex
-	url = https://github.com/alexandrevicenzi/Flex
-[submodule "pelican-themes"]
-	path = pelican-themes
-	url = https://github.com/getpelican/pelican-themes
-[submodule "themes/researcher"]
-	path = themes/researcher
-	url = https://github.com/ojroques/hugo-researcher.git
+[submodule "themes/Hugo-Octopress"]
+	path = themes/Hugo-Octopress
+	url = https://github.com/parsiya/hugo-octopress/
