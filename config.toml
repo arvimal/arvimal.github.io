@@ -10,8 +10,8 @@ paginate = 6
 
 
 [params]
-  # LoveIt theme version
-  version = "0.2.X"
+# LoveIt theme version
+version = "0.2.X"
 # If false, all contents of posts will appear on the front page and in pagination
 truncate = true
 # Author's name (appears in meta tags and under posts)
