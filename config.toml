@@ -4,6 +4,7 @@ disablePathToLower = false
 languageCode = "en-us"
 title = "The Child is Father of the Man"
 theme = "Hugo-Octopress"
+publishDir = "content"
 
 # Disqus shortcode
 # Disable comments for any individual post by adding "comments: false" in its frontmatter
