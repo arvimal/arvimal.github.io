@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>object-oriented-programming on The Child is Father of the Man</title>
-    <link>https://arvimal.github.io/tags/object-oriented-programming/</link>
+    <link>/tags/object-oriented-programming/</link>
     <description>Recent content in object-oriented-programming on The Child is Father of the Man</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/object-oriented-programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="/tags/object-oriented-programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Accessor and Mutator methods - Python</title>
-      <link>https://arvimal.github.io/posts/2016/12/2016-12-18-accessor-and-mutator-methods-python/</link>
+      <link>/posts/2016/12/2016-12-18-accessor-and-mutator-methods-python/</link>
       <pubDate>Sun, 18 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/12/2016-12-18-accessor-and-mutator-methods-python/</guid>
+      <guid>/posts/2016/12/2016-12-18-accessor-and-mutator-methods-python/</guid>
       <description>A method defined within a class can either be an Accessor or a Mutator method.
 An Accessor method returns the information about the object, but do not change the state or the object.
 A Mutator method, also called an Update method, can change the state of the object.
@@ -25,20 +25,20 @@ In [13]: a Out[13]: [1, 2, 3, 4, 5]</description>
     
     <item>
       <title>Inheritance and super() - Object Oriented Programming</title>
-      <link>https://arvimal.github.io/posts/2016/07/2016-07-01-inheritance-and-super-object-oriented-programming/</link>
+      <link>/posts/2016/07/2016-07-01-inheritance-and-super-object-oriented-programming/</link>
       <pubDate>Fri, 01 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/07/2016-07-01-inheritance-and-super-object-oriented-programming/</guid>
+      <guid>/posts/2016/07/2016-07-01-inheritance-and-super-object-oriented-programming/</guid>
       <description>_s_uper() is a feature through which inherited methods can be accessed, which has been overridden in a class. It can also help with the MRO lookup order in case of multiple inheritance. This may not be obvious first, but a few examples should help to drive the point home.
 Inheritance and method overloading was discussed in a previous post, where we saw how inherited methods can be overloaded or enhanced in the child classes.</description>
     </item>
     
     <item>
       <title>Abstract Base Classes/Methods - Object Oriented Programming</title>
-      <link>https://arvimal.github.io/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</link>
+      <link>/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</link>
       <pubDate>Tue, 14 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</guid>
+      <guid>/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</guid>
       <description>_A_bstract classes, in short, are classes that are supposed to be inherited or subclassed, rather than instantiated.
 Through Abstract Classes, we can enforce a blueprint on the subclasses that inherit the Abstract Class. This means that Abstract classes can be used to define a set of methods that must be implemented by it subclasses.
 Abstract classes are used when working on large projects where classes have to be inherited, and need to strictly follow certain blueprints.</description>
@@ -46,10 +46,10 @@ Abstract classes are used when working on large projects where classes have to b
     
     <item>
       <title>Decorators - Object Oriented Programming</title>
-      <link>https://arvimal.github.io/posts/2016/05/2016-05-30-decorators-object-oriented-programming/</link>
+      <link>/posts/2016/05/2016-05-30-decorators-object-oriented-programming/</link>
       <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/05/2016-05-30-decorators-object-oriented-programming/</guid>
+      <guid>/posts/2016/05/2016-05-30-decorators-object-oriented-programming/</guid>
       <description>_D_ecorators are wrapper functions (or classes) that wrap and modify another function (or class), and change it&amp;rsquo;s behavior as required. Decorators help to modify your code without actually modifying the working function/class itself.
 There are several inbuilt Decorators in Python, such as @classmethod and @staticmethod. Examples on these are due for another post.
 Decorators are called to act upon a function or class, by mentioning the Decorator name just above the function/class.</description>

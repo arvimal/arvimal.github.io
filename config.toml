@@ -1,5 +1,6 @@
 
-baseurl = "https://arvimal.github.io"
+baseurl = "/"
+#baseurl = "https://arvimal.github.io"
 disablePathToLower = false
 languageCode = "en-us"
 title = "The Child is Father of the Man"

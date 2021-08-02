@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>__base__ on The Child is Father of the Man</title>
-    <link>https://arvimal.github.io/tags/__base__/</link>
+    <link>/tags/__base__/</link>
     <description>Recent content in __base__ on The Child is Father of the Man</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 May 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/__base__/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 May 2016 00:00:00 +0000</lastBuildDate><atom:link href="/tags/__base__/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Method Resolution Order - Object Oriented Programming</title>
-      <link>https://arvimal.github.io/posts/2016/05/2016-05-30-method-resolution-order-object-oriented-programming/</link>
+      <link>/posts/2016/05/2016-05-30-method-resolution-order-object-oriented-programming/</link>
       <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/05/2016-05-30-method-resolution-order-object-oriented-programming/</guid>
+      <guid>/posts/2016/05/2016-05-30-method-resolution-order-object-oriented-programming/</guid>
       <description>_M_ethod Resolution Order or &amp;lsquo;MRO&amp;rsquo; in short, denotes the way a programming language resolves a method or attribute. This post looks into how Method Resolution Order works, using Python.
 Python supports classes inheriting from other classes. The class being inherited is called the Parent/Super class, while the class that inherits is called the Child/Sub class.
 While inheriting from another class, the interpreter needs a way to resolve the methods that are being called via an instance.</description>

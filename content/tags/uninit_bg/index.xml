@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>uninit_bg on The Child is Father of the Man</title>
-    <link>https://arvimal.github.io/tags/uninit_bg/</link>
+    <link>/tags/uninit_bg/</link>
     <description>Recent content in uninit_bg on The Child is Father of the Man</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Jun 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/uninit_bg/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Jun 2016 00:00:00 +0000</lastBuildDate><atom:link href="/tags/uninit_bg/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>`uninit_bg` and lazy block group allocation in EXT3/4</title>
-      <link>https://arvimal.github.io/posts/2016/06/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/</link>
+      <link>/posts/2016/06/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/</link>
       <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/06/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/</guid>
+      <guid>/posts/2016/06/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/</guid>
       <description>_E_xt3 and Ext4 recently have been the most commonly used file system on Linux machines.
  What does uninit_bg actually do?
 Read https://ext4.wiki.kernel.org/index.php/Ext4_Disk_Layout

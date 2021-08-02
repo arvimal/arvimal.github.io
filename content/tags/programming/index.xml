@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>programming on The Child is Father of the Man</title>
-    <link>https://arvimal.github.io/tags/programming/</link>
+    <link>/tags/programming/</link>
     <description>Recent content in programming on The Child is Father of the Man</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Jun 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Jun 2017 00:00:00 +0000</lastBuildDate><atom:link href="/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Recursion - Algorithm Study</title>
-      <link>https://arvimal.github.io/posts/2017/06/2017-06-27-recursion-algorithm-study/</link>
+      <link>/posts/2017/06/2017-06-27-recursion-algorithm-study/</link>
       <pubDate>Tue, 27 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2017/06/2017-06-27-recursion-algorithm-study/</guid>
+      <guid>/posts/2017/06/2017-06-27-recursion-algorithm-study/</guid>
       <description>_R_ecursion is a technique by which a function calls itself until a condition is met.
 Introduction Loops or repetitive execution based on certain conditions are inevitable in programs. Usual loops include if, while and for loops. Recursion is an entirely different way to deal with such situations, and in many cases, easier.
 Recursion is a when a function calls itself in each iteration till a condition is met. Ideally, the data set in each iteration gets smaller until it reach the required condition, after which the recursive function exists.</description>
@@ -20,10 +20,10 @@ Recursion is a when a function calls itself in each iteration till a conditi
     
     <item>
       <title>Python, Objects, and some more..</title>
-      <link>https://arvimal.github.io/posts/2016/10/2016-10-20-python-objects-and-some-more/</link>
+      <link>/posts/2016/10/2016-10-20-python-objects-and-some-more/</link>
       <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/10/2016-10-20-python-objects-and-some-more/</guid>
+      <guid>/posts/2016/10/2016-10-20-python-objects-and-some-more/</guid>
       <description>_E_verything in Python is an object, what does that mean? This post tries to discuss some very basic concepts.
 What does the following assignment do?
 [code language=&amp;ldquo;python&amp;rdquo;]
@@ -34,10 +34,10 @@ When a = 1 is entered or executed by the python interpreter, the following happe
     
     <item>
       <title>Abstract Base Classes/Methods - Object Oriented Programming</title>
-      <link>https://arvimal.github.io/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</link>
+      <link>/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</link>
       <pubDate>Tue, 14 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</guid>
+      <guid>/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</guid>
       <description>_A_bstract classes, in short, are classes that are supposed to be inherited or subclassed, rather than instantiated.
 Through Abstract Classes, we can enforce a blueprint on the subclasses that inherit the Abstract Class. This means that Abstract classes can be used to define a set of methods that must be implemented by it subclasses.
 Abstract classes are used when working on large projects where classes have to be inherited, and need to strictly follow certain blueprints.</description>
@@ -45,10 +45,10 @@ Abstract classes are used when working on large projects where classes have to b
     
     <item>
       <title>Magic methods and Syntactic sugar in Python</title>
-      <link>https://arvimal.github.io/posts/2016/06/2016-06-02-magic-methods-in-python/</link>
+      <link>/posts/2016/06/2016-06-02-magic-methods-in-python/</link>
       <pubDate>Thu, 02 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/06/2016-06-02-magic-methods-in-python/</guid>
+      <guid>/posts/2016/06/2016-06-02-magic-methods-in-python/</guid>
       <description>Magic methods _M_agic methods are special methods which can be defined (or already designed and available) to act on objects.
 Magic methods start and end with underscores &amp;quot;__&amp;quot;, and are not implicitly called by the user even though they can be. Most magic methods are used as syntactic sugar by binding it to more clear/easy_to_understand keywords.
 Python is mostly objects and method calls done on objects. Many available functions in Python are actually tied to magic methods_**.</description>
@@ -56,10 +56,10 @@ Python is mostly objects and method calls done on objects. Many available functi
     
     <item>
       <title>Decorators - Object Oriented Programming</title>
-      <link>https://arvimal.github.io/posts/2016/05/2016-05-30-decorators-object-oriented-programming/</link>
+      <link>/posts/2016/05/2016-05-30-decorators-object-oriented-programming/</link>
       <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/05/2016-05-30-decorators-object-oriented-programming/</guid>
+      <guid>/posts/2016/05/2016-05-30-decorators-object-oriented-programming/</guid>
       <description>_D_ecorators are wrapper functions (or classes) that wrap and modify another function (or class), and change it&amp;rsquo;s behavior as required. Decorators help to modify your code without actually modifying the working function/class itself.
 There are several inbuilt Decorators in Python, such as @classmethod and @staticmethod. Examples on these are due for another post.
 Decorators are called to act upon a function or class, by mentioning the Decorator name just above the function/class.</description>
@@ -67,10 +67,10 @@ Decorators are called to act upon a function or class, by mentioning the Decorat
     
     <item>
       <title>range() and enumerate()</title>
-      <link>https://arvimal.github.io/posts/2015/10/2015-10-12-range-and-enumerate-2/</link>
+      <link>/posts/2015/10/2015-10-12-range-and-enumerate-2/</link>
       <pubDate>Mon, 12 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2015/10/2015-10-12-range-and-enumerate-2/</guid>
+      <guid>/posts/2015/10/2015-10-12-range-and-enumerate-2/</guid>
       <description>The usual way to iterate over a range of numbers or a list in python, is to use range().
 Example 0:
 [code language=&amp;ldquo;python&amp;rdquo;] colors = [&amp;ldquo;yellow&amp;rdquo;, &amp;ldquo;red&amp;rdquo;, &amp;ldquo;blue&amp;rdquo;, &amp;ldquo;white&amp;rdquo;, &amp;ldquo;black&amp;rdquo;]

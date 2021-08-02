@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>python on The Child is Father of the Man</title>
-    <link>https://arvimal.github.io/categories/python/</link>
+    <link>/categories/python/</link>
     <description>Recent content in python on The Child is Father of the Man</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Aug 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Aug 2017 00:00:00 +0000</lastBuildDate><atom:link href="/categories/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Callables in Python</title>
-      <link>https://arvimal.github.io/posts/2017/08/2017-08-09-callables-in-python/</link>
+      <link>/posts/2017/08/2017-08-09-callables-in-python/</link>
       <pubDate>Wed, 09 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2017/08/2017-08-09-callables-in-python/</guid>
+      <guid>/posts/2017/08/2017-08-09-callables-in-python/</guid>
       <description>Introduction A callable is an object in Python that can be called / executed when called with parantheses ( ). Classes and functions are callable.
 Callables can be a class, a function, or an instance of a class. In simple terms, a class/function/instance/builtin is callable if it gets executed when called with parantheses ().
 Example 1: In [1]: help() Welcome to Python 3.6&amp;#39;s help utility!  -- content omitted -- -------- In [2]: int() Out[2]: 0 In [3]: callable(int) Out [3]: True In [4]: callable(help) Out [4]: True In [5]: def hello(): print(&amp;#34;Howdy!</description>
@@ -20,10 +20,10 @@ Example 1: In [1]: help() Welcome to Python 3.6&amp;#39;s help utility!  -- cont
     
     <item>
       <title>Recursion - Algorithm Study</title>
-      <link>https://arvimal.github.io/posts/2017/06/2017-06-27-recursion-algorithm-study/</link>
+      <link>/posts/2017/06/2017-06-27-recursion-algorithm-study/</link>
       <pubDate>Tue, 27 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2017/06/2017-06-27-recursion-algorithm-study/</guid>
+      <guid>/posts/2017/06/2017-06-27-recursion-algorithm-study/</guid>
       <description>_R_ecursion is a technique by which a function calls itself until a condition is met.
 Introduction Loops or repetitive execution based on certain conditions are inevitable in programs. Usual loops include if, while and for loops. Recursion is an entirely different way to deal with such situations, and in many cases, easier.
 Recursion is a when a function calls itself in each iteration till a condition is met. Ideally, the data set in each iteration gets smaller until it reach the required condition, after which the recursive function exists.</description>
@@ -31,10 +31,10 @@ Recursion is a when a function calls itself in each iteration till a conditi
     
     <item>
       <title>Selection Sort - Algorithm Study</title>
-      <link>https://arvimal.github.io/posts/2017/02/2017-02-11-selection-sort-algorithm-study/</link>
+      <link>/posts/2017/02/2017-02-11-selection-sort-algorithm-study/</link>
       <pubDate>Sat, 11 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2017/02/2017-02-11-selection-sort-algorithm-study/</guid>
+      <guid>/posts/2017/02/2017-02-11-selection-sort-algorithm-study/</guid>
       <description>_S_election Sort is a sorting algorithm used to sort a data set either in incremental or decremental order.
 It goes through the entire elements one by one and hence it&amp;rsquo;s not a very efficient algorithm to work on large data sets.
 How does Selection sort work? Selection sort starts with an unsorted data set. With each iteration, it builds up a sub dataset with the sorted data.
@@ -43,10 +43,10 @@ By the end of the sorting process, the sub dataset contains the entire elements 
     
     <item>
       <title>Binary Search - Algorithm Study</title>
-      <link>https://arvimal.github.io/posts/2017/01/2017-01-16-binary-search-algorithm-study/</link>
+      <link>/posts/2017/01/2017-01-16-binary-search-algorithm-study/</link>
       <pubDate>Mon, 16 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2017/01/2017-01-16-binary-search-algorithm-study/</guid>
+      <guid>/posts/2017/01/2017-01-16-binary-search-algorithm-study/</guid>
       <description>Introduction **B**inary Search is a search method used to find an object in a data set. This is much faster compared to the Linear Search algorithm we saw in a previous post.
 This algorithm works on the Divide and Conquer principle. Binary Search gets its speed by essentially dividing the list/array in half in each iteration, thus reducing the dataset size for the next iteration.
 Imagine searching for an element in a rather large dataset.</description>
@@ -54,20 +54,20 @@ Imagine searching for an element in a rather large dataset.</description>
     
     <item>
       <title>Linear Search - Algorithm Study</title>
-      <link>https://arvimal.github.io/posts/2017/01/2017-01-15-linear-search-algorithm-study/</link>
+      <link>/posts/2017/01/2017-01-15-linear-search-algorithm-study/</link>
       <pubDate>Sun, 15 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2017/01/2017-01-15-linear-search-algorithm-study/</guid>
+      <guid>/posts/2017/01/2017-01-15-linear-search-algorithm-study/</guid>
       <description>Introduction _L_inear Search is an way to search a data set for an element of interest. It is one of the many search algorithms available and is also the most direct and simple of the lot.
 Linear search looks for the element of interest in a dataset starting from the first element and moves on to the consecutive elements till it finds the one we&amp;rsquo;re interested in. Due to this behaviour, it&amp;rsquo;s not the fastest search algorithm around.</description>
     </item>
     
     <item>
       <title>Accessor and Mutator methods - Python</title>
-      <link>https://arvimal.github.io/posts/2016/12/2016-12-18-accessor-and-mutator-methods-python/</link>
+      <link>/posts/2016/12/2016-12-18-accessor-and-mutator-methods-python/</link>
       <pubDate>Sun, 18 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/12/2016-12-18-accessor-and-mutator-methods-python/</guid>
+      <guid>/posts/2016/12/2016-12-18-accessor-and-mutator-methods-python/</guid>
       <description>A method defined within a class can either be an Accessor or a Mutator method.
 An Accessor method returns the information about the object, but do not change the state or the object.
 A Mutator method, also called an Update method, can change the state of the object.
@@ -80,10 +80,10 @@ In [13]: a Out[13]: [1, 2, 3, 4, 5]</description>
     
     <item>
       <title>Python, Objects, and some more..</title>
-      <link>https://arvimal.github.io/posts/2016/10/2016-10-20-python-objects-and-some-more/</link>
+      <link>/posts/2016/10/2016-10-20-python-objects-and-some-more/</link>
       <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/10/2016-10-20-python-objects-and-some-more/</guid>
+      <guid>/posts/2016/10/2016-10-20-python-objects-and-some-more/</guid>
       <description>_E_verything in Python is an object, what does that mean? This post tries to discuss some very basic concepts.
 What does the following assignment do?
 [code language=&amp;ldquo;python&amp;rdquo;]
@@ -94,30 +94,30 @@ When a = 1 is entered or executed by the python interpreter, the following happe
     
     <item>
       <title>Inheritance and super() - Object Oriented Programming</title>
-      <link>https://arvimal.github.io/posts/2016/07/2016-07-01-inheritance-and-super-object-oriented-programming/</link>
+      <link>/posts/2016/07/2016-07-01-inheritance-and-super-object-oriented-programming/</link>
       <pubDate>Fri, 01 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/07/2016-07-01-inheritance-and-super-object-oriented-programming/</guid>
+      <guid>/posts/2016/07/2016-07-01-inheritance-and-super-object-oriented-programming/</guid>
       <description>_s_uper() is a feature through which inherited methods can be accessed, which has been overridden in a class. It can also help with the MRO lookup order in case of multiple inheritance. This may not be obvious first, but a few examples should help to drive the point home.
 Inheritance and method overloading was discussed in a previous post, where we saw how inherited methods can be overloaded or enhanced in the child classes.</description>
     </item>
     
     <item>
       <title>Inheritance and Method overloading - Object Oriented Programming</title>
-      <link>https://arvimal.github.io/posts/2016/06/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/</link>
+      <link>/posts/2016/06/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/</link>
       <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/06/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/</guid>
+      <guid>/posts/2016/06/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/</guid>
       <description>_I_nheritance is a usual theme in Object Oriented Programming. Because of Inheritance, the functions/methods defined in parent classes can be called in Child classes which enables code reuse, and several other features. In this article, we try to understand some of those features that come up with Inheritance.
 We&amp;rsquo;ve discussed Abstract Methods in an earlier post, which is a feature part of Inheritance, and can be applied on child classes that inherits from a Parent class.</description>
     </item>
     
     <item>
       <title>Abstract Base Classes/Methods - Object Oriented Programming</title>
-      <link>https://arvimal.github.io/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</link>
+      <link>/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</link>
       <pubDate>Tue, 14 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</guid>
+      <guid>/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</guid>
       <description>_A_bstract classes, in short, are classes that are supposed to be inherited or subclassed, rather than instantiated.
 Through Abstract Classes, we can enforce a blueprint on the subclasses that inherit the Abstract Class. This means that Abstract classes can be used to define a set of methods that must be implemented by it subclasses.
 Abstract classes are used when working on large projects where classes have to be inherited, and need to strictly follow certain blueprints.</description>
@@ -125,10 +125,10 @@ Abstract classes are used when working on large projects where classes have to b
     
     <item>
       <title>`self` in Python - Object Oriented Programming</title>
-      <link>https://arvimal.github.io/posts/2016/06/2016-06-12-self-in-python/</link>
+      <link>/posts/2016/06/2016-06-12-self-in-python/</link>
       <pubDate>Sun, 12 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/06/2016-06-12-self-in-python/</guid>
+      <guid>/posts/2016/06/2016-06-12-self-in-python/</guid>
       <description>_T_his article was long overdue and should have been published before many of the articles in this blog. Better late than never.
 self in Python is usually used in an Object Oriented nomenclature, to denote the instance/object created from a Class.
 In short, self is the instance itself.
@@ -140,10 +140,10 @@ myclass = MyClass(&amp;ldquo;Dan Inosanto&amp;rdquo;)</description>
     
     <item>
       <title>Instance, Class, and Static methods - Object Oriented Programming</title>
-      <link>https://arvimal.github.io/posts/2016/06/2016-06-12-instance-class-static-methods-object-oriented-programming/</link>
+      <link>/posts/2016/06/2016-06-12-instance-class-static-methods-object-oriented-programming/</link>
       <pubDate>Sun, 12 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/06/2016-06-12-instance-class-static-methods-object-oriented-programming/</guid>
+      <guid>/posts/2016/06/2016-06-12-instance-class-static-methods-object-oriented-programming/</guid>
       <description>_F_unctions defined under a class are also called methods. Most of the methods are accessed through an instance of the class.
 There are three types of methods:
  Instance methods Static methods Class methods  Both Static methods and Class methods can be called using the @staticmethod and @classmethod syntactic sugar respectively.
@@ -152,10 +152,10 @@ Instance methods _I_nstance methods are also called Bound methods since the inst
     
     <item>
       <title>Magic methods and Syntactic sugar in Python</title>
-      <link>https://arvimal.github.io/posts/2016/06/2016-06-02-magic-methods-in-python/</link>
+      <link>/posts/2016/06/2016-06-02-magic-methods-in-python/</link>
       <pubDate>Thu, 02 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/06/2016-06-02-magic-methods-in-python/</guid>
+      <guid>/posts/2016/06/2016-06-02-magic-methods-in-python/</guid>
       <description>Magic methods _M_agic methods are special methods which can be defined (or already designed and available) to act on objects.
 Magic methods start and end with underscores &amp;quot;__&amp;quot;, and are not implicitly called by the user even though they can be. Most magic methods are used as syntactic sugar by binding it to more clear/easy_to_understand keywords.
 Python is mostly objects and method calls done on objects. Many available functions in Python are actually tied to magic methods_**.</description>
@@ -163,10 +163,10 @@ Python is mostly objects and method calls done on objects. Many available functi
     
     <item>
       <title>Decorators - Object Oriented Programming</title>
-      <link>https://arvimal.github.io/posts/2016/05/2016-05-30-decorators-object-oriented-programming/</link>
+      <link>/posts/2016/05/2016-05-30-decorators-object-oriented-programming/</link>
       <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/05/2016-05-30-decorators-object-oriented-programming/</guid>
+      <guid>/posts/2016/05/2016-05-30-decorators-object-oriented-programming/</guid>
       <description>_D_ecorators are wrapper functions (or classes) that wrap and modify another function (or class), and change it&amp;rsquo;s behavior as required. Decorators help to modify your code without actually modifying the working function/class itself.
 There are several inbuilt Decorators in Python, such as @classmethod and @staticmethod. Examples on these are due for another post.
 Decorators are called to act upon a function or class, by mentioning the Decorator name just above the function/class.</description>
@@ -174,10 +174,10 @@ Decorators are called to act upon a function or class, by mentioning the Decorat
     
     <item>
       <title>Method Resolution Order - Object Oriented Programming</title>
-      <link>https://arvimal.github.io/posts/2016/05/2016-05-30-method-resolution-order-object-oriented-programming/</link>
+      <link>/posts/2016/05/2016-05-30-method-resolution-order-object-oriented-programming/</link>
       <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/05/2016-05-30-method-resolution-order-object-oriented-programming/</guid>
+      <guid>/posts/2016/05/2016-05-30-method-resolution-order-object-oriented-programming/</guid>
       <description>_M_ethod Resolution Order or &amp;lsquo;MRO&amp;rsquo; in short, denotes the way a programming language resolves a method or attribute. This post looks into how Method Resolution Order works, using Python.
 Python supports classes inheriting from other classes. The class being inherited is called the Parent/Super class, while the class that inherits is called the Child/Sub class.
 While inheriting from another class, the interpreter needs a way to resolve the methods that are being called via an instance.</description>
@@ -185,10 +185,10 @@ While inheriting from another class, the interpreter needs a way to resolve the 
     
     <item>
       <title>`ceph-check` - A Ceph installation checker</title>
-      <link>https://arvimal.github.io/posts/2016/05/2016-05-08-ceph-check-a-ceph-installation-checker/</link>
+      <link>/posts/2016/05/2016-05-08-ceph-check-a-ceph-installation-checker/</link>
       <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2016/05/2016-05-08-ceph-check-a-ceph-installation-checker/</guid>
+      <guid>/posts/2016/05/2016-05-08-ceph-check-a-ceph-installation-checker/</guid>
       <description>Many a user wants to know if a Ceph cluster installation has been done to a specific suggested guideline.
 Technologies like RAID is better avoided in Ceph due to an additional layer, which Ceph already takes care of.
 I&amp;rsquo;ve started writing a tool which can be run from the Admin node, and it aims to check various such points.
@@ -198,10 +198,10 @@ The work is slow, really slow, due to my daily work, procrastination, and what n
     
     <item>
       <title>range() and enumerate()</title>
-      <link>https://arvimal.github.io/posts/2015/10/2015-10-12-range-and-enumerate-2/</link>
+      <link>/posts/2015/10/2015-10-12-range-and-enumerate-2/</link>
       <pubDate>Mon, 12 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2015/10/2015-10-12-range-and-enumerate-2/</guid>
+      <guid>/posts/2015/10/2015-10-12-range-and-enumerate-2/</guid>
       <description>The usual way to iterate over a range of numbers or a list in python, is to use range().
 Example 0:
 [code language=&amp;ldquo;python&amp;rdquo;] colors = [&amp;ldquo;yellow&amp;rdquo;, &amp;ldquo;red&amp;rdquo;, &amp;ldquo;blue&amp;rdquo;, &amp;ldquo;white&amp;rdquo;, &amp;ldquo;black&amp;rdquo;]
@@ -213,10 +213,10 @@ print(), by default, returns a tuple. If we want to print it in a more presentab
     
     <item>
       <title>Calculate a PG id from the hex values in Ceph OSD debug logs</title>
-      <link>https://arvimal.github.io/posts/2015/08/2015-08-30-calculate-a-pg-id-from-the-ceph-osd-debug-logs/</link>
+      <link>/posts/2015/08/2015-08-30-calculate-a-pg-id-from-the-ceph-osd-debug-logs/</link>
       <pubDate>Sun, 30 Aug 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2015/08/2015-08-30-calculate-a-pg-id-from-the-ceph-osd-debug-logs/</guid>
+      <guid>/posts/2015/08/2015-08-30-calculate-a-pg-id-from-the-ceph-osd-debug-logs/</guid>
       <description>Recently, I had an incident where the OSDs were crashing at the time of startup. Obviously, the next step was to enable debug logs for the OSDs and understand where they were crashing.
 Enabled OSD debug logs dynamically by injecting it with:
  # ceph tell osd.* injectargs &amp;ndash;debug-osd 20 &amp;ndash;debug-ms 1

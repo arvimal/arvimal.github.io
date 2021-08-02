@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>lilo on The Child is Father of the Man</title>
-    <link>https://arvimal.github.io/tags/lilo/</link>
+    <link>/tags/lilo/</link>
     <description>Recent content in lilo on The Child is Father of the Man</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Feb 2008 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/lilo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 15 Feb 2008 00:00:00 +0000</lastBuildDate><atom:link href="/tags/lilo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bootloader checker</title>
-      <link>https://arvimal.github.io/posts/2008/02/2008-02-15-bootloader-checker/</link>
+      <link>/posts/2008/02/2008-02-15-bootloader-checker/</link>
       <pubDate>Fri, 15 Feb 2008 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/posts/2008/02/2008-02-15-bootloader-checker/</guid>
+      <guid>/posts/2008/02/2008-02-15-bootloader-checker/</guid>
       <description>A bash code snippet that helps to check if the installed bootloader is Grub or LILO.
 [code language=&amp;ldquo;bash&amp;rdquo;] #!/bin/bash
 A=`mount | awk &amp;lsquo;{print $1}&amp;rsquo; | grep -n /dev/ | grep &amp;ldquo;1:&amp;rdquo; | cut -f2 -d &amp;ldquo;:&amp;rdquo; | cut -c 1-8` B=`mount | awk &amp;lsquo;{print $1}&amp;rsquo; | grep -n /dev/ | grep &amp;ldquo;1:&amp;rdquo; | cut -f2 -d &amp;ldquo;:&amp;quot;`

@@ -2,71 +2,71 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on The Child is Father of the Man</title>
-    <link>https://arvimal.github.io/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on The Child is Father of the Man</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Aug 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Aug 2017 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>programming</title>
-      <link>https://arvimal.github.io/categories/programming/</link>
+      <link>/categories/programming/</link>
       <pubDate>Wed, 09 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/categories/programming/</guid>
+      <guid>/categories/programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>python</title>
-      <link>https://arvimal.github.io/categories/python/</link>
+      <link>/categories/python/</link>
       <pubDate>Wed, 09 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/categories/python/</guid>
+      <guid>/categories/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>https://arvimal.github.io/categories/linux/</link>
+      <link>/categories/linux/</link>
       <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/categories/linux/</guid>
+      <guid>/categories/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>data-structures-and-algorithms</title>
-      <link>https://arvimal.github.io/categories/data-structures-and-algorithms/</link>
+      <link>/categories/data-structures-and-algorithms/</link>
       <pubDate>Tue, 27 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/categories/data-structures-and-algorithms/</guid>
+      <guid>/categories/data-structures-and-algorithms/</guid>
       <description></description>
     </item>
     
     <item>
       <title>techno</title>
-      <link>https://arvimal.github.io/categories/techno/</link>
+      <link>/categories/techno/</link>
       <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/categories/techno/</guid>
+      <guid>/categories/techno/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ceph</title>
-      <link>https://arvimal.github.io/categories/ceph/</link>
+      <link>/categories/ceph/</link>
       <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/categories/ceph/</guid>
+      <guid>/categories/ceph/</guid>
       <description></description>
     </item>
     
     <item>
       <title>misc</title>
-      <link>https://arvimal.github.io/categories/misc/</link>
+      <link>/categories/misc/</link>
       <pubDate>Mon, 09 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://arvimal.github.io/categories/misc/</guid>
+      <guid>/categories/misc/</guid>
       <description></description>
     </item>
     
