@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>recursion on The Child is Father of the Man</title>
+    <link>/tags/recursion/</link>
+    <description>Recent content in recursion on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Jun 2017 00:00:00 +0000</lastBuildDate><atom:link href="/tags/recursion/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Recursion - Algorithm Study</title>
+      <link>/posts/2017/06/2017-06-27-recursion-algorithm-study/</link>
+      <pubDate>Tue, 27 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2017/06/2017-06-27-recursion-algorithm-study/</guid>
+      <description>_R_ecursion is a technique by which a function calls itself until a condition is met.
+Introduction Loops or repetitive execution based on certain conditions are inevitable in programs. Usual loops include if, while and for loops. Recursion is an entirely different way to deal with such situations, and in many cases, easier.
+Recursion is a when a function calls itself in each iteration till a condition is met. Ideally, the data set in each iteration gets smaller until it reach the required condition, after which the recursive function exists.</description>
+    </item>
+    
+  </channel>
+</rss>

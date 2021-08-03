@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>algorithms on The Child is Father of the Man</title>
+    <link>/tags/algorithms/</link>
+    <description>Recent content in algorithms on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Jun 2017 00:00:00 +0000</lastBuildDate><atom:link href="/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Recursion - Algorithm Study</title>
+      <link>/posts/2017/06/2017-06-27-recursion-algorithm-study/</link>
+      <pubDate>Tue, 27 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2017/06/2017-06-27-recursion-algorithm-study/</guid>
+      <description>_R_ecursion is a technique by which a function calls itself until a condition is met.
+Introduction Loops or repetitive execution based on certain conditions are inevitable in programs. Usual loops include if, while and for loops. Recursion is an entirely different way to deal with such situations, and in many cases, easier.
+Recursion is a when a function calls itself in each iteration till a condition is met. Ideally, the data set in each iteration gets smaller until it reach the required condition, after which the recursive function exists.</description>
+    </item>
+    
+    <item>
+      <title>Selection Sort - Algorithm Study</title>
+      <link>/posts/2017/02/2017-02-11-selection-sort-algorithm-study/</link>
+      <pubDate>Sat, 11 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2017/02/2017-02-11-selection-sort-algorithm-study/</guid>
+      <description>_S_election Sort is a sorting algorithm used to sort a data set either in incremental or decremental order.
+It goes through the entire elements one by one and hence it&amp;rsquo;s not a very efficient algorithm to work on large data sets.
+How does Selection sort work? Selection sort starts with an unsorted data set. With each iteration, it builds up a sub dataset with the sorted data.
+By the end of the sorting process, the sub dataset contains the entire elements in a sorted order.</description>
+    </item>
+    
+    <item>
+      <title>Code complexity - The Big O notation [O(n)]</title>
+      <link>/posts/2016/05/2016-05-08-big-o-notation-on/</link>
+      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2016/05/2016-05-08-big-o-notation-on/</guid>
+      <description>Efficiency or Complexity is how well you&amp;rsquo;re using your resources to get your code run.
+Efficiency can be calculated on the basis of how much time your code takes to run/execute.
+Understanding the efficiency of your code can help to reduce the complexity, thus improving the runtime efficiency further. Getting the same job done in less time and less system resources is always good.
+Once you find the efficiency of your program, you can start to find ways for:</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Binary Search - Algorithm Study</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="Vimal A R">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="/">The Child is Father of the Man</a></h1>
+    <h2>Technical notes and blah..</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="/">» Home Page</option>
+      
+        <option value="/about/">» About</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="/" title="Home Page">Home Page</a></li>
+    
+  
+    
+      <li><a href="/about/" title="About"  target="_blank"  rel="noopener noreferrer">About</a></li>
+    
+  
+</ul>
+
+<ul class="subscription">
+  
+    
+        <a href="/index.xml" target="_blank" type="application/rss+xml" title="RSS" rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
+    
+  
+</ul>
+
+
+  <form action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
+    <fieldset role="search">
+      <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      <input type="hidden" name="q" value="site:/" />
+    </fieldset>
+  </form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jan 16, 2017
+     - 6 minute read 
+    
+
+    
+    
+      - <a class="label" href="/categories/data-structures-and-algorithms/">data-structures-and-algorithms </a><a class="label" href="/categories/programming/">programming </a><a class="label" href="/categories/python/">python </a>
+    
+  </p>
+  <h1 class="entry-title">
+     Binary Search - Algorithm Study 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <h2 id="introduction">Introduction</h2>
+<p>**<em>B</em>**inary Search is a search method used to find an object in a data set. This is much faster compared to the Linear Search algorithm we saw in a 
+<a href="https://arvimal.wordpress.com/2017/01/15/linear-search-algorithm-study/" target="_blank" rel="noopener">previous post</a>.</p>
+<p>This algorithm works on the <code>Divide and Conquer</code> principle. Binary Search gets its speed by essentially dividing the list/array in half in each iteration, thus reducing the dataset size for the next iteration.</p>
+<p>Imagine searching for an element in a rather large dataset. Searching for an element one by one using <code>Linear Search</code> would take <code>n</code> iterations. In a worst case scenario, if the element being searched is not present in the dataset or is at the end of the dataset, the time taken to find the object/element would be proportional to the size of the dataset.</p>
+<p>The element of interest is returned if it is present in the dataset, else a NULL/None value is.</p>
+<h4 id="note">Note:</h4>
+<ul>
+<li>Binary search will only work effectively on a <em><strong>Sorted</strong></em> collection.</li>
+<li>The code implementation will need minor changes depending on how the dataset is sorted, ie.. either in an increasing order or in a decreasing order.</li>
+</ul>
+<h2 id="performance">Performance</h2>
+<h3 id="1-worst-case-performance-logn">1. Worst-case performance: log(n)</h3>
+<p>As discussed in the post on, <code>Linear Search</code> a worst-case analysis is done with the upper bound of the running time of the algorithm. ie.. the case when the maximum number of operations are needed/executed to find/search the element of interest in the dataset.</p>
+<p>Of course, the worst-case scenario for any search algorithms is when the element of interest is not present in the dataset. The maximum number of searches has to be done in such a case, and it still ends up with no fruitful result. A similar but less worse case is when the element is found in the final (or somewhere near the last) iteration.</p>
+<p>Due to the divide-and-conquer method, the maximum number of iterations needed for a dataset of <code>n</code> elements is, <code>log(n)</code> where the log base is <code>2.</code></p>
+<p>Hence, for a data set of 10240 elements, Binary Search takes a maximum of <code>13</code> iterations.</p>
+<p>[code language=&ldquo;python&rdquo;] In [1]: import math</p>
+<p>In [2]: math.log(10240, 2) Out[2]: 13.321928094887364 [/code] For a data set of 50,000 elements, Binary Search takes <code>16</code> iterations in the worst case scenario while a Linear Search may take 50,000 iterations in a similar case.</p>
+<p>[code language=&ldquo;python&rdquo;] In [1]: import math</p>
+<p>In [2]: math.log(50000, 2) Out[2]: 15.609640474436812 [/code] ie.. the Worst case for Binary search takes <code>log(n)</code> iterations to find the element.</p>
+<h3 id="2-best-case-performance-o1">2. Best-case performance: O(1)</h3>
+<p>The best case scenario is when the element of interest is found in the first iteration itself. Hence the best-case would be where the search finishes in one iteration.</p>
+<p>ie.. The best-case scenario would be <code>O(1)</code>.</p>
+<h2 id="how-does-binary-search-work"><strong>How does Binary Search work?</strong></h2>
+<p>Imagine a sorted dataset of <code>100</code> numbers and we&rsquo;re searching for  <code>98</code> is in the list. A simple search would start from index <code>0</code> , moves to the element at index <code>1</code>, progresses element by element until the one in interest is found. Since we&rsquo;re searching for <code>98</code>, it&rsquo;ll take <code>n</code> iterations depending on the number of elements between the first element in the dataset and <code>98</code>.</p>
+<p>Binary Search uses the following method, provided the dataset is sorted.</p>
+<ol>
+<li>Find the length of the data set.</li>
+<li>Find the lowest (index <code>0</code>), highest (index <code>n</code>), and the middle index of the dataset.</li>
+<li>Find the subsequent elements residing in the first, last, and middle index.</li>
+<li>Check if the element of interest is the middle element.</li>
+<li>If not, check if the element-of-interest is higher or lower than the middle element.</li>
+<li>If it is higher, assuming the dataset is sorted in an increasing order, move the lower index to one <strong>above</strong> the middle index.</li>
+<li>if it is lower, move the highest index to one <strong>below</strong> the middle index.</li>
+<li>Check if the element of interest is the middle element in the new/shorter dataset.</li>
+<li>Continue till the element of interest is found.</li>
+</ol>
+<p>[caption id=&ldquo;attachment_2310&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;1280&rdquo;]<img src="images/binary_search_depiction-svg.png" alt="binary_search_depiction-svg"> Binary Search - Source: Wikipedia[/caption]</p>
+<p>The figure above shows how Binary Search works on a dataset of 16 elements, to find the element <code>7</code>.</p>
+<ul>
+<li>Index <code>0</code> , Index <code>16</code>, and the middle index are noted.</li>
+<li>Subsequent values/elements at these indices are found out as well.</li>
+<li>Check if the element of interest <code>7</code> is equal to, lower, or higher than the middle element <code>14</code> at index <code>8</code>.</li>
+<li>Since it&rsquo;s lower and the dataset is sorted in an increasing order, the search moves to the left of the middle index, ie.. from index <code>0</code> to index <code>7</code>.</li>
+<li>-&mdash;</li>
+<li>The lower index is now <code>0</code>, the higher index is now <code>7</code>, and the middle index is now <code>3</code>, the element in the middle index is <code>6</code>.</li>
+<li>Check if the element of interest <code>7</code> is lower or higher than the middle element <code>6</code> at index <code>3</code>.</li>
+<li>Since it&rsquo;s higher and the dataset is sorted in an increasing order, the search moves to the right of the middle index, ie.. from index <code>4</code> to index 7.</li>
+<li>-&mdash;</li>
+<li>So on and so forth.. till we arrive at the element of interest, ie.. <code>7</code>.</li>
+</ul>
+<p>As noted earlier, the data set is divided into half in each iteration. A numeric representation on how Binary search progress can be seen as:</p>
+<p><em>100 elements -&gt; 50 elements -&gt; 25 elements -&gt; 12 elements -&gt; 6 elements - 3 elements -&gt; 1 element</em></p>
+<h2 id="code">Code</h2>
+<h3 id="example-1--data-set-sorted-in-increasing-order">Example 1 : (Data set sorted in Increasing order)</h3>
+<p>[code language=&ldquo;python&rdquo;] def binary_search(my_list, item): low_position = 0 high_position = len(my_list) - 1</p>
+<p>while low_position = high_position: mid_position = (low_position + high_position) // 2 mid_element = my_list[mid_position]</p>
+<p>if mid_element == item: print(&quot;\nYour search item {0} is at index {1}&quot;.format( item, mid_position)) return mid_element</p>
+<p>elif mid_element &lt;= item: high_position = mid_position - 1</p>
+<p>else: low_position = mid_position + 1 return None</p>
+<p>if __name__ == &ldquo;__main__&quot;: my_list = [1, 2, 3, 4, 5, 6] binary_search(my_list, 3) [/code]</p>
+<h3 id="example-2--same-as-above-with-statementson-how-the-search-progresses">Example 2 : (Same as above, with statements on how the search progresses)</h3>
+<p>[code language=&ldquo;python&rdquo;] def binary_search(my_list, item):</p>
+<p># Find and set the low and high positions of the data set # Note that these are not the values, but just positions. low_position = 0 high_position = len(my_list) - 1</p>
+<p># Calculate the Complexity import math complexity = math.ceil(math.log(len(my_list), 2))</p>
+<p># Print some info on the dataset print(&quot;\nDataset size : {0} elements&rdquo;.format(len(my_list))) print(&ldquo;Element of interest : {0}&quot;.format(item)) print(&ldquo;Maximum number of iterations to find {0} : {1}\n&rdquo;.format( item, complexity))</p>
+<p>while low_position &lt;= high_position:</p>
+<p># Find the middle position from the low and high positions mid_position = (low_position + high_position) // 2</p>
+<p># Find the element residing in the middle position of the data set. mid_element = my_list[mid_position]</p>
+<p>print(&ldquo;Element at min index : {0}&quot;.format(my_list[low_position])) print(&ldquo;Element at max index : {1}&quot;.format(high_position, my_list[high_position])) print(&ldquo;Element at mid index {0} : {1}&quot;.format(mid_position, mid_element))</p>
+<p>if mid_element == item: print(&quot;\nYour search item {0} is at index {1}&quot;.format( item, mid_position)) return mid_element</p>
+<p>elif mid_element &gt; item: high_position = mid_position - 1 print(&quot;{0} in the left subset, omitting the right subset\n&rdquo;.format(item))</p>
+<p>else: low_position = mid_position + 1 print(&quot;{0} in the right subset, omitting the left subset\n&rdquo;.format(item))</p>
+<p>print(&ldquo;Element of interest not in dataset\n&rdquo;) return None</p>
+<p>if __name__ == &ldquo;__main__&quot;: my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] binary_search(my_list, 13) [/code]</p>
+<h3 id="observations">Observations:</h3>
+<ol>
+<li>Binary Search needs a Sorted dataset to work, either increasing or decreasing.</li>
+<li>It finds the element of interest in logarithmic time, hence is also known as, <code>Logarithmic Search</code>.</li>
+<li>Binary Search searches through a dataset of <code>n</code> elements in <code>log(n)</code> iterations, in the worst case scenario.</li>
+</ol>
+<h3 id="note-1">NOTE:</h3>
+<p>All the examples used in this blog are available at  
+<a href="https://github.com/arvimal/DataStructures-and-Algorithms-in-Python" target="_blank" rel="noopener">https://github.com/arvimal/DataStructures-and-Algorithms-in-Python</a>, with more detailed notes.</p>
+<h3 id="references">References:</h3>
+<ol>
+<li>
+<a href="https://en.wikipedia.org/wiki/Binary_search_algorithm" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Binary_search_algorithm</a></li>
+<li>
+<a href="http://quiz.geeksforgeeks.org/binary-search/" target="_blank" rel="noopener">http://quiz.geeksforgeeks.org/binary-search/</a></li>
+<li>
+<a href="https://www.hackerearth.com/practice/algorithms/searching/binary-search/tutorial/" target="_blank" rel="noopener">https://www.hackerearth.com/practice/algorithms/searching/binary-search/tutorial/</a></li>
+<li>
+<a href="http://research.cs.queensu.ca/home/cisc121/2006s/webnotes/search.html" target="_blank" rel="noopener">http://research.cs.queensu.ca/home/cisc121/2006s/webnotes/search.html</a></li>
+</ol>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn">Vimal A R</span></span>
+    
+    <time>Jan 16, 2017</time>
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="/posts/2017/01/2017-01-15-linear-search-algorithm-study/" title="Linear Search - Algorithm Study">Linear Search - Algorithm Study</a>
+    
+
+    
+      <a class="basic-alignment right" href="/posts/2017/02/2017-02-11-selection-sort-algorithm-study/" title="Selection Sort - Algorithm Study">Selection Sort - Algorithm Study</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>Who am I?!</h1>
+    
+
+    <p>
+      
+        <p>I am a Systems Engineer, working in the Netherlands.</p>
+<p>Here, I aim to document my interests and notes on the technologies I learn during my work and free time.</p>
+<p>This usually includes programming, cloud technologies, filesystems, linux etc..</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/arvimal" title="https://github.com/arvimal"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      
+      
+         
+      
+      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arvimal/" title="https://www.linkedin.com/in/arvimal/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+          <h1>Favourite blogs</h1>
+        
+        
+          <li>
+            <a href="http://sreweekly.com/feed/" title="SRE Weekly" >SRE Weekly</a>
+          </li>
+        
+          <li>
+            <a href="https://jvns.ca/atom.xml" title="Julia Evans" >Julia Evans</a>
+          </li>
+        
+          <li>
+            <a href="https://talkpython.fm/" title="Talk Python to Me" >Talk Python to Me</a>
+          </li>
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021 Vimal A R - <a href="/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+

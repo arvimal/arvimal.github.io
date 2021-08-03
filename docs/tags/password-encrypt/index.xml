@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>password-encrypt on The Child is Father of the Man</title>
+    <link>/tags/password-encrypt/</link>
+    <description>Recent content in password-encrypt on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 13 Feb 2008 00:00:00 +0000</lastBuildDate><atom:link href="/tags/password-encrypt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Password Encryptor in C</title>
+      <link>/posts/2008/02/2008-02-13-password-encryptor-in-c/</link>
+      <pubDate>Wed, 13 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2008/02/2008-02-13-password-encryptor-in-c/</guid>
+      <description>Some time back, I had to implement a password encryption section in one of my bash programs. It seemed easy to use a C snippet rather than doing it in bash. This was something I got after searching a while.
+[code language=&amp;ldquo;C&amp;rdquo;]
+#include stdlib.h #include unistd.h #include stdio.h #include crack.h #define DICTIONARY /usr/lib/cracklib_dict
+int main(int argc, char *argv[]) {
+char *password; char *problem;
+int status = 0; printf(\nEnter an empty password or Ctrl-D to quit.</description>
+    </item>
+    
+  </channel>
+</rss>

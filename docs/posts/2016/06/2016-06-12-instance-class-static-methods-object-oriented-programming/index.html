@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Instance, Class, and Static methods - Object Oriented Programming</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="Vimal A R">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="/">The Child is Father of the Man</a></h1>
+    <h2>Technical notes and blah..</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="/">» Home Page</option>
+      
+        <option value="/about/">» About</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="/" title="Home Page">Home Page</a></li>
+    
+  
+    
+      <li><a href="/about/" title="About"  target="_blank"  rel="noopener noreferrer">About</a></li>
+    
+  
+</ul>
+
+<ul class="subscription">
+  
+    
+        <a href="/index.xml" target="_blank" type="application/rss+xml" title="RSS" rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
+    
+  
+</ul>
+
+
+  <form action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
+    <fieldset role="search">
+      <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      <input type="hidden" name="q" value="site:/" />
+    </fieldset>
+  </form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jun 12, 2016
+     - 5 minute read 
+    
+
+    
+    
+      - <a class="label" href="/categories/programming/">programming </a><a class="label" href="/categories/python/">python </a>
+    
+  </p>
+  <h1 class="entry-title">
+     Instance, Class, and Static methods - Object Oriented Programming 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>_<strong>F</strong>_unctions defined under a class are also called <code>methods</code>. Most of the methods are accessed through an instance of the class.</p>
+<p>There are three types of methods:</p>
+<ol>
+<li>Instance methods</li>
+<li>Static methods</li>
+<li>Class methods</li>
+</ol>
+<p>Both Static methods and Class methods can be called using the <code>@staticmethod</code> and <code>@classmethod</code> syntactic sugar respectively.</p>
+<h3 id="instance-methods">Instance methods</h3>
+<p>_<strong>I</strong>_nstance methods are also called <strong><em>Bound methods</em></strong> since the instance is bound to the class via <code>self</code>. Read a simple explanation on <code>self</code> 
+<a href="https://arvimal.wordpress.com/2016/06/12/self-in-python/" target="_blank" rel="noopener">here</a>.</p>
+<p>Almost all methods are Instance methods since they are accessed through instances.</p>
+<p>For example:</p>
+<p>[code language=&ldquo;python&rdquo;] class MyClass(object):</p>
+<p>def set_val(self, val): self.value = val</p>
+<p>def get_val(self): print(self.value) return self.value</p>
+<p>a = MyClass() b = MyClass()</p>
+<p>a.set_val(10) b.set_val(100)</p>
+<p>a.get_val() b.get_val() [/code] The above code snippet shows manipulating the two methods  <code>set_val()</code> and <code>get_val()</code> . These are done through the instances <code>a</code> and <code>b</code>. Hence these methods are called <strong>Instance methods</strong>.</p>
+<p><strong>NOTE: Instance methods have <code>self</code> as their first argument. <code>self</code> is the instance itself.</strong></p>
+<p>All methods defined under a class are usually called via the instance instantiated from the class. But there are methods which can work without instantiating an instance.</p>
+<p>Class methods and Static methods don&rsquo;t require an instance, and hence don&rsquo;t need <code>self</code> as their first argument.</p>
+<h3 id="static-methods">Static methods</h3>
+<p>Static methods are functions/methods which doesn&rsquo;t need a binding to a class or an instance.</p>
+<ol>
+<li>Static methods, as well as Class methods, don&rsquo;t require an instance to be called.</li>
+<li>Static methods doesn&rsquo;t need  <code>self</code> or <code>cls</code> as the first argument since it&rsquo;s not bound to an instance or class.</li>
+<li>Static methods are normal functions, but within a class.</li>
+<li>Static methods are defined with the keyword <code>@staticmethod</code> above the function/method.</li>
+<li>Static methods are usually used to work on Class Attributes.</li>
+</ol>
+<p>============================= <strong>A note on class attributes</strong></p>
+<p>Attributes set explicitly under a class (not under a function) are called Class Attributes.</p>
+<p>For example:</p>
+<p>[code language=&ldquo;python&rdquo;] class MyClass(object): value = 10</p>
+<p>def my_func(self): pass [/code] In the code snippet above, <code>value = 10</code> is an attribute defined under the class <code>MyClass()</code> and not under any functions/methods. Hence, it&rsquo;s called a Class attribute. =============================</p>
+<p>Let&rsquo;s check out an example on static methods and class attributes:</p>
+<p>[code language=&ldquo;python&rdquo;] class MyClass(object): # A class attribute count = 0</p>
+<p>def __init__(self, name): print(&ldquo;An instance is created!&quot;) self.name = name MyClass.count += 1</p>
+<p># Our class method @staticmethod def status(): print(&ldquo;The total number of instances are &ldquo;, MyClass.count)</p>
+<p>print(MyClass.count)</p>
+<p>my_func_1 = MyClass(&ldquo;MyClass 1&rdquo;) my_func_2 = MyClass(&ldquo;MyClass 2&rdquo;) my_func_3 = MyClass(&ldquo;MyClass 3&rdquo;)</p>
+<p>MyClass.status() print(MyClass.count) [/code] This prints the following:</p>
+<p>[code language=&ldquo;bash&rdquo;] # python statismethod.py</p>
+<p>0 An instance is created! An instance is created! An instance is created!</p>
+<p>The total number of instances are 3 3 [/code]</p>
+<p><strong>How does the code work?</strong></p>
+<ol>
+<li>The example above has a class  <code>MyClass()</code> with a class attribute <code>count = 0</code>.</li>
+<li>An __init__ magic method accepts a <code>name</code> variable.</li>
+<li>The __init__ method also increments the count in the <code>count</code> counter at each instantiation.</li>
+<li>We define a staticmethod <code>status()</code> which just prints the number of the instances being created. The work done in this method is not necessarily associated with the class or any functions, hence its defined as a staticmethod.</li>
+<li>We print the initial value of the counter <code>count</code> via the class, as <code>MyClass.count</code>. This will print <code>0</code>since the counter is called before any instances are created.</li>
+<li>We create three instances from the class  <code>MyClass</code></li>
+<li>We can check the number of instances created through the <code>status()</code> method and the <code>count</code> counter.</li>
+</ol>
+<p>Another example:</p>
+<p>[code language=&ldquo;python&rdquo;] class Car(object):</p>
+<p>def sound(): print(&ldquo;vroom!&quot;) [/code]</p>
+<p>The code above shows a method which is common to all the Car instances, and is not limited to a specific instance of Car. Hence, this can be called as a staticmethod since it&rsquo;s not necessarily bound to a Class or Instance to be called.</p>
+<p>[code language=&ldquo;python&rdquo;] class Car(object):</p>
+<p>@staticmethod def sound(): print(&ldquo;vroom!&quot;) [/code]</p>
+<h3 id="class-methods">Class methods</h3>
+<p>We can define functions/methods specific to classes. These are called Class methods.</p>
+<p>The speciality of a class methods is that an instance is not required to access a class method. It can be called directly via the Class name.</p>
+<p>Class methods are used when it&rsquo;s not necessary to instantiate a class to access a method.</p>
+<p><strong>NOTE: A method can be set as a Class method using the decorator @classmethod.</strong></p>
+<p>Example:</p>
+<p>[code language=&ldquo;python&rdquo;] class MyClass(object): value = 10</p>
+<p>@classmethod def my_func(cls): print(&ldquo;Hello&rdquo;) [/code]</p>
+<p><strong>NOTE: Class methods have <code>cls</code> as their first argument, instead of <code>self</code>.</strong></p>
+<p>Example:</p>
+<p>[code language=&ldquo;python&rdquo;] class MyClass(object): count = 0</p>
+<p>def __init__(self, val): self.val = val MyClass.count += 1</p>
+<p>def set_val(self, newval): self.val = newval</p>
+<p>def get_val(self): return self.val</p>
+<p>@classmethod def get_count(cls): return cls.count</p>
+<p>object_1 = MyClass(10) print(&quot;\nValue of object : %s&rdquo; % object_1.get_val()) print(MyClass.get_count())</p>
+<p>object_2 = MyClass(20) print(&quot;\nValue of object : %s&rdquo; % object_2.get_val()) print(MyClass.get_count())</p>
+<p>object_3 = MyClass(40) print(&quot;\nValue of object : %s&rdquo; % object_3.get_val()) print(MyClass.get_count()) [/code] Here, we use a <code>get_count()</code> function to get the number of times the counter was incremented. The counter is incremented each time an instance is created.</p>
+<p>Since the counter is not really tied with the instance but only counts the number of instance, we set it as a classmethod, and calls it each time using <code>MyClass.get_count()</code>when an instance is created. The output looks as following:</p>
+<p>[code language=&ldquo;bash&rdquo;] # python classmethod.py</p>
+<p>Value of object : 10 1</p>
+<p>Value of object : 20 2</p>
+<p>Value of object : 40 3 [/code]</p>
+<p> </p>
+<p><em><strong>Courtsey</strong></em>: This was written as part of studying class and static methods. Several articles/videos have helped including but not limited to the following:</p>
+<ol>
+<li>
+<a href="https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/" target="_blank" rel="noopener">https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/</a></li>
+<li>
+<a href="http://shop.oreilly.com/product/0636920040057.do" target="_blank" rel="noopener">Python beyond the basics - Object Oriented Programming</a> - O&rsquo;Reilly Learning Paths</li>
+</ol>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn">Vimal A R</span></span>
+    
+    <time>Jun 12, 2016</time>
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="/posts/2016/06/2016-06-02-magic-methods-in-python/" title="Magic methods and Syntactic sugar in Python">Magic methods and Syntactic sugar in Python</a>
+    
+
+    
+      <a class="basic-alignment right" href="/posts/2016/06/2016-06-12-self-in-python/" title="`self` in Python - Object Oriented Programming">`self` in Python - Object Oriented Programming</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>Who am I?!</h1>
+    
+
+    <p>
+      
+        <p>I am a Systems Engineer, working in the Netherlands.</p>
+<p>Here, I aim to document my interests and notes on the technologies I learn during my work and free time.</p>
+<p>This usually includes programming, cloud technologies, filesystems, linux etc..</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/arvimal" title="https://github.com/arvimal"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      
+      
+         
+      
+      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arvimal/" title="https://www.linkedin.com/in/arvimal/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+          <h1>Favourite blogs</h1>
+        
+        
+          <li>
+            <a href="http://sreweekly.com/feed/" title="SRE Weekly" >SRE Weekly</a>
+          </li>
+        
+          <li>
+            <a href="https://jvns.ca/atom.xml" title="Julia Evans" >Julia Evans</a>
+          </li>
+        
+          <li>
+            <a href="https://talkpython.fm/" title="Talk Python to Me" >Talk Python to Me</a>
+          </li>
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021 Vimal A R - <a href="/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+

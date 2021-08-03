@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ceph-admin-socket on The Child is Father of the Man</title>
+    <link>/tags/ceph-admin-socket/</link>
+    <description>Recent content in ceph-admin-socket on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 06 May 2015 00:00:00 +0000</lastBuildDate><atom:link href="/tags/ceph-admin-socket/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to list all the configuration settings in a Ceph cluster monitor?</title>
+      <link>/posts/2015/05/2015-05-06-how-to-list-all-the-configuration-settings-in-a-ceph-cluster-monitor/</link>
+      <pubDate>Wed, 06 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/05/2015-05-06-how-to-list-all-the-configuration-settings-in-a-ceph-cluster-monitor/</guid>
+      <description>It can be really helpful to have a single command to list all the configuration settings in a monitor node, in a Ceph cluster.
+This is possible by interacting directly with the monitor&amp;rsquo;s unix socket file. This can be found under /var/run/ceph/. By default, the admin socket for the monitor will be in the path /var/run/ceph/ceph-mon..asok.
+The default location can vary in case you have defined it to be a different one, at the time of the installation.</description>
+    </item>
+    
+  </channel>
+</rss>

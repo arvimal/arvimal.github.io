@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ceph on The Child is Father of the Man</title>
+    <link>/categories/ceph/</link>
+    <description>Recent content in ceph on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 30 Jun 2016 00:00:00 +0000</lastBuildDate><atom:link href="/categories/ceph/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sharding the Ceph RADOS Gateway bucket index</title>
+      <link>/posts/2016/06/2016-06-30-sharding-the-ceph-rados-gateway-bucket-index/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2016/06/2016-06-30-sharding-the-ceph-rados-gateway-bucket-index/</guid>
+      <description>_S_harding is the process of breaking down data onto multiple locations so as to increase parallelism, as well as distribute load. This is a common feature used in databases. Read more on this at Wikipedia.
+The concept of sharding is used in Ceph, for splitting the bucket index in a RADOS Gateway.
+RGW or RADOS Gateway keeps an index for all the objects in its buckets for faster and easier lookup.</description>
+    </item>
+    
+    <item>
+      <title>Ceph OSD heartbeats</title>
+      <link>/posts/2016/05/2016-05-09-ceph-osd-heartbeats/</link>
+      <pubDate>Mon, 09 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2016/05/2016-05-09-ceph-osd-heartbeats/</guid>
+      <description>Ceph OSD daemons need to ensure that the neighbouring OSDs are functioning properly so that the cluster remains in a healthy state.
+For this, each Ceph OSD process (ceph-osd) sends a heartbeat signal to the neighbouring OSDs. By default, the heartbeat signal is sent every 6 seconds [1], which is configurable of course.
+If the heartbeat check from one OSD doesn&amp;rsquo;t hear from the other within the set value for `osd_heartbeat_grace` [2], which is set to 20 seconds by default, the OSD that sends the heartbeat check reports the other OSD (the one that didn&amp;rsquo;t respond within 20 seconds) as down, to the MONs.</description>
+    </item>
+    
+    <item>
+      <title>`ceph-check` - A Ceph installation checker</title>
+      <link>/posts/2016/05/2016-05-08-ceph-check-a-ceph-installation-checker/</link>
+      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2016/05/2016-05-08-ceph-check-a-ceph-installation-checker/</guid>
+      <description>Many a user wants to know if a Ceph cluster installation has been done to a specific suggested guideline.
+Technologies like RAID is better avoided in Ceph due to an additional layer, which Ceph already takes care of.
+I&amp;rsquo;ve started writing a tool which can be run from the Admin node, and it aims to check various such points.
+The code can be seen at https://github.com/arvimal/ceph_check
+The work is slow, really slow, due to my daily work, procrastination, and what not, even though I intend to finish this fast.</description>
+    </item>
+    
+    <item>
+      <title>How to get a Ceph MON/OSD map at a specific epoch?</title>
+      <link>/posts/2016/05/2016-05-08-how-to-get-a-ceph-monosd-map-at-a-specific-epoch/</link>
+      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2016/05/2016-05-08-how-to-get-a-ceph-monosd-map-at-a-specific-epoch/</guid>
+      <description>To get a MON map or an OSD map of a specific epoch, use:
+ # ceph osd getmap # ceph mon getmap  The map can be forwarded to a file as following:
+ # ceph osd getmap -o /tmp/ceph_osd_getmap.bin
+ This would be in a binary format, and hence will need to be dumped to a human-readable form.
+ # osdmaptool &amp;ndash;print /tmp/ceph-osd-getmap.bin
+ This will print the current OSD map, similar to the output of &amp;lsquo;ceph osd dump&amp;rsquo;.</description>
+    </item>
+    
+    <item>
+      <title>List RBD images, snapshots, and clones in Ceph pools</title>
+      <link>/posts/2015/10/2015-10-15-list-all-ceph-pools-with-rbd-images-and-snapshots/</link>
+      <pubDate>Thu, 15 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/10/2015-10-15-list-all-ceph-pools-with-rbd-images-and-snapshots/</guid>
+      <description>This is a crude bash one-liner I did to get the details of all the RBD images, as well as the information on snapshots and clones created from them.
+[code language=&amp;ldquo;bash&amp;rdquo;] # for pool in `rados lspools`; do echo &amp;ldquo;POOL :&amp;rdquo; $pool; rbd ls -l $pool; echo &amp;ldquo;&amp;mdash;&amp;ndash;&amp;quot;; done [/code]
+This will print an output similar to the following:
+[code language=&amp;ldquo;bash&amp;rdquo;] POOL : rbd NAME SIZE PARENT FMT PROT LOCK test_img 10240M 1 test_img2 1024M 2 test_img2@snap2 1024M 2 yes &amp;mdash;&amp;ndash; POOL : .</description>
+    </item>
+    
+    <item>
+      <title>Ceph and unfound objects</title>
+      <link>/posts/2015/10/2015-10-07-why-do-objects-get-marked-as-unfound-in-a-a-ceph-cluster/</link>
+      <pubDate>Wed, 07 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/10/2015-10-07-why-do-objects-get-marked-as-unfound-in-a-a-ceph-cluster/</guid>
+      <description>In certain cases, a Ceph cluster may move away from an HEALTHY state due to “unfound” objects.
+A “ceph -s” should show if you have any unfound objects. So, what are unfound objects? How does an object become “unfound”? This article tries to explain why/how “unfound” objects come into existence.
+Let’s look into the life cycle of a write to a pool.
+ The client contacts a Ceph monitor and fetches the CRUSH map, which includes:  MON map OSD map PG map CRUSH map MDS map    Once the client has the maps, the Ceph client-side algorithm breaks the data being written into objects (the object size depends on the client side configuration).</description>
+    </item>
+    
+    <item>
+      <title>Ceph Rados Block Device (RBD) and TRIM</title>
+      <link>/posts/2015/10/2015-10-07-objects-remain-in-a-ceph-pool-used-for-rbd-even-if-the-files-are-deleted-from-the-mount-point/</link>
+      <pubDate>Wed, 07 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/10/2015-10-07-objects-remain-in-a-ceph-pool-used-for-rbd-even-if-the-files-are-deleted-from-the-mount-point/</guid>
+      <description>I recently came across a scenario where the objects in a RADOS pool used for an RBD block device doesn’t get removed, even if the files created through the mount point were removed.
+I had an RBD image from an RHCS1.3 cluster mapped to a RHEL7.1 client machine, with an XFS filesystem created on it, and mounted locally. Created a 5GB file, and I could see the objects being created in the rbd pool in the ceph cluster.</description>
+    </item>
+    
+    <item>
+      <title>Custom CRUSH rulesets and pools</title>
+      <link>/posts/2015/09/2015-09-23-how-to-find-the-crush-ruleset-on-which-a-pool-was-created/</link>
+      <pubDate>Wed, 23 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/09/2015-09-23-how-to-find-the-crush-ruleset-on-which-a-pool-was-created/</guid>
+      <description>Ceph supports custom rulesets via CRUSH, which can be used to sort hardware based on various features such as speed and other factors, set custom weights, and do a lot of other useful things.
+Pools, or the buckets were the data is written to, can be created on the custom rulesets, hence positioning the pools on specific hardware as per the administrator&amp;rsquo;s need.
+A large Ceph cluster may have lots of pools and rulesets specific for multiple use-cases.</description>
+    </item>
+    
+    <item>
+      <title>OSD information in a scriptable format</title>
+      <link>/posts/2015/09/2015-09-18-how-to-get-a-listing-of-the-osd-nodes-in-an-easily-scriptable-format/</link>
+      <pubDate>Fri, 18 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/09/2015-09-18-how-to-get-a-listing-of-the-osd-nodes-in-an-easily-scriptable-format/</guid>
+      <description>In case you are trying to get the OSD ID and the corresponding node IP address mappings in a script-able format, use the following command:
+ # ceph osd find  This will print the OSD number, the IP address, the host name, and the default root in the CRUSH map, as a python dictionary.
+ # ceph osd find 2 { &amp;ldquo;osd&amp;rdquo;: 2, &amp;ldquo;ip&amp;rdquo;: &amp;ldquo;192.168.122.112:6800\/5311&amp;rdquo;, &amp;ldquo;crush_location&amp;rdquo;: { &amp;ldquo;host&amp;rdquo;: &amp;ldquo;node4&amp;rdquo;, &amp;ldquo;root&amp;rdquo;: &amp;ldquo;default&amp;rdquo;}}</description>
+    </item>
+    
+    <item>
+      <title>Monitor maps, how to edit them?</title>
+      <link>/posts/2015/09/2015-09-01-how-to-extract-view-change-and-inject-a-monitor-map-in-a-ceph-cluster/</link>
+      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/09/2015-09-01-how-to-extract-view-change-and-inject-a-monitor-map-in-a-ceph-cluster/</guid>
+      <description>The MON map is used by the monitors in a Ceph cluster, where they keep track of various attributes relevant to the working of the cluster.
+Similar to the CRUSH map, a monitor map can be pulled out of the cluster, inspected, changed, and injected back to the monitors, manually. A frequent use-case is when the IP address of a monitor changes and the monitors cannot agree on a quorum.</description>
+    </item>
+    
+    <item>
+      <title>Calculate a PG id from the hex values in Ceph OSD debug logs</title>
+      <link>/posts/2015/08/2015-08-30-calculate-a-pg-id-from-the-ceph-osd-debug-logs/</link>
+      <pubDate>Sun, 30 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/08/2015-08-30-calculate-a-pg-id-from-the-ceph-osd-debug-logs/</guid>
+      <description>Recently, I had an incident where the OSDs were crashing at the time of startup. Obviously, the next step was to enable debug logs for the OSDs and understand where they were crashing.
+Enabled OSD debug logs dynamically by injecting it with:
+ # ceph tell osd.* injectargs &amp;ndash;debug-osd 20 &amp;ndash;debug-ms 1
+ NOTE: This command can be run from the MON nodes.
+Once this was done, the OSDs were started manually (since it were crashing and not running) and watched out for the next crash.</description>
+    </item>
+    
+    <item>
+      <title>Mapping Placement Groups and Pools</title>
+      <link>/posts/2015/08/2015-08-17-how-can-we-map-a-pg-to-a-pool/</link>
+      <pubDate>Mon, 17 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/08/2015-08-17-how-can-we-map-a-pg-to-a-pool/</guid>
+      <description>Understanding the mapping of Pools and Placement Groups can be very useful while troubleshooting Ceph problems.
+A direct method is to dump information on the PGs via :
+ # ceph pg dump
+ This command should output something like the following:
+ pg_stat objects mip degr unf bytes log disklog state 5.7a 0 0 0 0 0 0 0 active+clean
+ The output will have more information, and I&amp;rsquo;ve omitted it for the sake of explanation.</description>
+    </item>
+    
+    <item>
+      <title>Resetting Calamari password</title>
+      <link>/posts/2015/07/2015-07-13-how-can-we-resetchange-the-calamari-interface-password/</link>
+      <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/07/2015-07-13-how-can-we-resetchange-the-calamari-interface-password/</guid>
+      <description>&amp;lsquo;Calamari&amp;rsquo; is the monitoring interface for a Ceph cluster.
+The Calamari interface password can be reset/changed using the &amp;lsquo;calamari-ctl&amp;rsquo; command.
+ # calamari-ctl change_password &amp;ndash;password {password} {user-name}
+ calamari-ctl can also be used to add a user, as well as disable, enable, and rename the user account. A &amp;lsquo;&amp;ndash;help&amp;rsquo; should print out all the available ones.
+ # calamari-ctl &amp;ndash;help
+ </description>
+    </item>
+    
+    <item>
+      <title>Compacting a Ceph monitor store</title>
+      <link>/posts/2015/07/2015-07-09-how-to-compact-a-ceph-monitor-store/</link>
+      <pubDate>Thu, 09 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/07/2015-07-09-how-to-compact-a-ceph-monitor-store/</guid>
+      <description>The Ceph monitor store growing to a big size is a common occurrence in a busy Ceph cluster.
+If a &amp;lsquo;ceph -s&amp;rsquo; takes considerable time to return information, one of the possibility is the monitor database being large.
+Other reasons included network lags between the client and the monitor, the monitor not responding properly due to the system load, firewall settings on the client or monitor etc..
+The best way to deal with a large monitor database is to compact the monitor store.</description>
+    </item>
+    
+    <item>
+      <title>What is data scrubbing?</title>
+      <link>/posts/2015/07/2015-07-08-what-is-data-scrubbing/</link>
+      <pubDate>Wed, 08 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/07/2015-07-08-what-is-data-scrubbing/</guid>
+      <description>Data Scrubbing is an error checking and correction method or routine check to ensure that the data on file systems are in pristine condition, and has no errors. Data integrity is of primary concern in today&amp;rsquo;s conditions, given the humongous amounts of data being read and written daily.
+A simple example for a scrubbing, is a file system check done on file systems with tools like &amp;lsquo;e2fsck&amp;rsquo; in EXT2/3/4, or &amp;lsquo;xfs_repair&amp;rsquo; in XFS.</description>
+    </item>
+    
+    <item>
+      <title>Another method to dynamically change a Ceph configuration</title>
+      <link>/posts/2015/06/2015-06-03-another-method-to-dynamically-change-a-ceph-configuration/</link>
+      <pubDate>Wed, 03 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/06/2015-06-03-another-method-to-dynamically-change-a-ceph-configuration/</guid>
+      <description>In a previous post, we saw how to dynamically change a tunable on a running Ceph cluster dynamically. Unfortunately, such a change is not permanent, and will revert back to the previous setting once ceph is restarted.
+Rather than using the command &amp;lsquo;ceph tell&amp;rsquo;, I recently came upon another way to change configuration values.
+We&amp;rsquo;ll try changing the tunable &amp;lsquo;mon_osd_full_ratio&amp;rsquo; once again.
+1. Get the current setting
+ # ceph daemon osd.</description>
+    </item>
+    
+    <item>
+      <title>&#39;noout&#39; flag in Ceph</title>
+      <link>/posts/2015/05/2015-05-27-what-does-the-noout-status-on-the-osds-actually-do/</link>
+      <pubDate>Wed, 27 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/05/2015-05-27-what-does-the-noout-status-on-the-osds-actually-do/</guid>
+      <description>You may have seen the &amp;lsquo;noout&amp;rsquo; flag set in the output of &amp;lsquo;ceph -s&amp;rsquo;. What does this actually mean?
+This is a global flag for the cluster, which means that if an OSD is out, the said OSD is not marked out of the cluster and data balancing shouldn&amp;rsquo;t start to maintain the replica count. By default, the monitors mark the OSDs out of the acting set if it is not reachable for 300 seconds, ie.</description>
+    </item>
+    
+    <item>
+      <title>How to dynamically change a configuration value in a Ceph cluster?</title>
+      <link>/posts/2015/05/2015-05-27-how-to-change-a-configuration-value-in-a-ceph-cluster-dynamically/</link>
+      <pubDate>Wed, 27 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/05/2015-05-27-how-to-change-a-configuration-value-in-a-ceph-cluster-dynamically/</guid>
+      <description>It is possible to change a particular configuration setting in a Ceph cluster dynamically, and I think it is a very neat and useful feature.
+Imagine the case where you want to change the replica count of a particular PG from 3 to 4. How would you change this without restarting the Ceph cluster itself? That is where the &amp;lsquo;ceph tell&amp;rsquo; command comes in.
+As we saw in the previous post, you can get the list of configuration settings using the administrator socket, from either a monitor or an OSD node.</description>
+    </item>
+    
+    <item>
+      <title>How to fetch the entire list of tunables along with the values for a Ceph cluster node?</title>
+      <link>/posts/2015/05/2015-05-27-how-can-we-get-a-list-of-all-the-configurations-from-a-ceph-cluster-node/</link>
+      <pubDate>Wed, 27 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/05/2015-05-27-how-can-we-get-a-list-of-all-the-configurations-from-a-ceph-cluster-node/</guid>
+      <description>In many cases we would like to get the active configurations from a Ceph node, either a monitor or an OSD node. A neat feature, I must say, is to probe the administrative socket file to get a listing of all the active configurations, be it on the OSD node or the monitor node.
+This comes handy when we have changed a setting and wants to confirm if it had indeed changed or not.</description>
+    </item>
+    
+    <item>
+      <title>How to change the filling ratio for a Ceph OSD?</title>
+      <link>/posts/2015/05/2015-05-07-how-to-change-the-filling-ratio-for-a-ceph-osd/</link>
+      <pubDate>Thu, 07 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/05/2015-05-07-how-to-change-the-filling-ratio-for-a-ceph-osd/</guid>
+      <description>There could be many scenarios where you&amp;rsquo;d need to change the percentage of space usage on a Ceph OSD. One such use case would be when your OSD space is about to hit the hard limit, and is constantly sending you warnings.
+For some reason or other, you may need to extend the threshold limit for some time. In such a case, you don&amp;rsquo;t need to change/add the configuration in ceph.</description>
+    </item>
+    
+    <item>
+      <title>How to remove a host from a Ceph cluster?</title>
+      <link>/posts/2015/05/2015-05-07-how-to-remove-a-host-from-a-ceph-cluster/</link>
+      <pubDate>Thu, 07 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/05/2015-05-07-how-to-remove-a-host-from-a-ceph-cluster/</guid>
+      <description>I&amp;rsquo;m still studying Ceph, and recently faced a scenario in which one of my Ceph nodes went down due to hardware failure. Even though my data was safe due to the replication factor, I was not able to remove the node from the cluster.
+I could remove the OSDs on the node, but I didn&amp;rsquo;t find a way to remove the node being listed in &amp;lsquo;ceph osd tree&amp;rsquo;. I ended up editing the CRUSH map by hand, to remove the host, and uploaded it back.</description>
+    </item>
+    
+    <item>
+      <title>How to list all the configuration settings in a Ceph cluster monitor?</title>
+      <link>/posts/2015/05/2015-05-06-how-to-list-all-the-configuration-settings-in-a-ceph-cluster-monitor/</link>
+      <pubDate>Wed, 06 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2015/05/2015-05-06-how-to-list-all-the-configuration-settings-in-a-ceph-cluster-monitor/</guid>
+      <description>It can be really helpful to have a single command to list all the configuration settings in a monitor node, in a Ceph cluster.
+This is possible by interacting directly with the monitor&amp;rsquo;s unix socket file. This can be found under /var/run/ceph/. By default, the admin socket for the monitor will be in the path /var/run/ceph/ceph-mon..asok.
+The default location can vary in case you have defined it to be a different one, at the time of the installation.</description>
+    </item>
+    
+  </channel>
+</rss>
