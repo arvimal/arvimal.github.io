@@ -156,8 +156,17 @@ post = "/blog/:year-:month-:day-:title/" # change the post URL to look like the 
 [[menu.main]]
   Name = "Home Page"
   URL = "/"
-  weight = -5
+  weight = -15
 
+[[menu.main]]
+  Name = "About me"
+  URL = "/about"
+  weight = -10
+
+[[menu.main]]
+  Name = "Resume"
+  URL = "/resume"
+  weight = -5
 
 # Sidebar menus
 # Enable with "sidebarMenuEnabled = true" under [params]

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Decorators - Object Oriented Programming</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="Vimal A R">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="/">The Child is Father of the Man</a></h1>
+    <h2>Technical notes and blah..</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="/">» Home Page</option>
+      
+        <option value="/about/">» About</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="/" title="Home Page">Home Page</a></li>
+    
+  
+    
+      <li><a href="/about/" title="About"  target="_blank"  rel="noopener noreferrer">About</a></li>
+    
+  
+</ul>
+
+<ul class="subscription">
+  
+    
+        <a href="/index.xml" target="_blank" type="application/rss+xml" title="RSS" rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
+    
+  
+</ul>
+
+
+  <form action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
+    <fieldset role="search">
+      <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      <input type="hidden" name="q" value="site:/" />
+    </fieldset>
+  </form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">May 30, 2016
+     - 4 minute read 
+    
+
+    
+    
+      - <a class="label" href="/categories/programming/">programming </a><a class="label" href="/categories/python/">python </a>
+    
+  </p>
+  <h1 class="entry-title">
+     Decorators - Object Oriented Programming 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>_<strong>D</strong>_ecorators are wrapper functions (or classes) that wrap and modify another function (or class), and change it&rsquo;s behavior as required. Decorators help to modify your code without actually modifying the working function/class itself.</p>
+<p>There are several inbuilt Decorators in Python, such as <code>@classmethod</code> and <code>@staticmethod</code>. Examples on these are due for another post.</p>
+<p>Decorators are called to act upon a function or class, by mentioning the Decorator name just above the function/class.</p>
+<p>Decorators are written such as it returns a function, rather than output something.</p>
+<p><em><strong>Example 0:</strong></em></p>
+<p>[code language=&lsquo;python&rsquo;] @my_decorator def my_func(): print(&ldquo;Hello&rdquo;)</p>
+<p>my_func() [/code]</p>
+<p>In the above code snippet, when <code>my_func()</code> is called, the python interpreter calls the decorator function <code>my_decorator</code>, executes it, and then passes the result to <code>my_func()</code>.</p>
+<p>The example above doesn&rsquo;t do anything worth, but the following example should help to get a better idea.</p>
+<p><strong>NOTE:</strong> The examples below are taken from the excellent talks done by Jillian Munson (in PyGotham 2014) and Mike Burns for 
+<a href="https://www.youtube.com/channel/UCUR1pFG_3XoZn3JNKjulqZg" target="_blank" rel="noopener">ThoughtBot</a>. The URLs are at 
+<a href="https://www.youtube.com/watch?v=yW0cK3IxlHc" target="_blank" rel="noopener">[1]</a> and 
+<a href="https://www.youtube.com/watch?v=Slf1b3yUocc" target="_blank" rel="noopener">[2]</a>. All credit goes to them.</p>
+<p><em><strong>Example 1:</strong></em></p>
+<p>[code language=&ldquo;python&rdquo;] def my_decorator(my_function): def inner_decorator(): print(&ldquo;This happened before!&quot;) my_function() print(&ldquo;This happens after &ldquo;) print(&ldquo;This happened at the end!&quot;) return inner_decorator</p>
+<p>@my_decorator def my_decorated(): print(&ldquo;This happened!&quot;)</p>
+<p>if __name__ == &lsquo;__main__': my_decorated() [/code]</p>
+<h3 id="components"><strong>Components:</strong></h3>
+<ol>
+<li>A function named <code>my_decorated()</code>.</li>
+<li>A decorator function named <code>my_decorator()</code>.</li>
+<li>The decorator function <code>my_decorator()</code> has a function within itself named <code>inner_decorator()</code>.</li>
+<li>The decorator function <code>my_decorator()</code>, returns the inner function <code>inner_decorator()</code>.
+<ol>
+<li>Every function should return a value, if not it defaults to <strong><code>None</code>.</strong></li>
+<li><code>my_decorator()</code> decorator should return the <code>inner_decorator()</code> inner function, else the decorator cannot be used with the <code>my_decorated()</code> function.</li>
+<li>To understand this, test with &lsquo;return None&rsquo; for the decorator function <code>my_decorator()</code>.</li>
+</ol>
+</li>
+<li>The inner function <code>inner_decorator()</code> is the one that actually decorates (modifies) the function <code>my_decorated()</code>.</li>
+<li>The decorator function is called on the function <code>my_decorated()</code> using the format <code>@my_decorator</code>.</li>
+<li>The decorator function takes an argument, which can be named whatever the developer decides. When the decorator function is executed, the argument is replaced with the function name on which the decorator is executed. In our case, it would be <code>my_decorated()</code></li>
+</ol>
+<h3 id="how-does-the-code-work"><strong>How does the code work?</strong></h3>
+<ol>
+<li>The function <code>my_decorated()</code> is called.</li>
+<li>The interpreter sees that the decorator <code>@my_decorator</code> is called wrt this function.</li>
+<li>The interpreter searches for a function named <code>my_decorator()</code>and executes it.</li>
+<li>Since the decorator function returns the inner function <code>inner_decorator()</code>, the python interpreter executes the inner function.</li>
+<li>It goes through each steps, reaches <code>my_function()</code> , and gets it executed.</li>
+<li>Once that function is executed, it goes back and continues with the execution of the decorator <code>my_decorator()</code>.</li>
+</ol>
+<h3 id="output"><strong>Output:</strong></h3>
+<p>[code language=&ldquo;bash&rdquo;] # python decorators-1.py This happened before! # Called from the decorator This happened! # Called from the function This happens after # Called from the decorator This happened at the end! # Called from the decorator [/code]</p>
+<p> </p>
+<p><em><strong>Example 2:</strong></em></p>
+<p>[code language=&ldquo;python&rdquo;] def double(my_func): def inner_func(a, b): return 2 * my_func(a, b) return inner_func</p>
+<p>@double def adder(a, b): return a + b</p>
+<p>@double def subtractor(a, b): return a - b</p>
+<p>print(adder(10, 20)) print(subtractor(6, 1)) [/code]</p>
+<h3 id="components-1"><strong>Components:</strong></h3>
+<ol>
+<li>Two functions named <code>adder()</code> and <code>subtractor()</code>.</li>
+<li>A decorator function named <code>double()</code>.</li>
+<li>The decorator has an inner function named <code>inner_func()</code> which does the actual intended work.</li>
+<li>The decorator returns the value of the inner function <code>inner_func()</code></li>
+<li>Both the <code>adder()</code> and <code>subtractor()</code>functions are decorated with the decorator <code>double()</code></li>
+</ol>
+<h3 id="how-does-the-code-work-1"><strong>How does the code work?</strong></h3>
+<ol>
+<li>We call the <code>adder()</code> and <code>subtractor()</code> functions with a print(), since the said functions don&rsquo;t print by default (due to the <code>return</code> statement).</li>
+<li>The python interpreter sees the decorator <code>@double</code> and calls it.</li>
+<li>Since the decorator returns the inner function <code>inner_func()</code>, the interpreter executes it.</li>
+<li>The decorator takes an argument <code>my_func</code>, which is always the function on which the decorator is applied, ie.. in our case <code>my_case == adder()</code>and <code>my_case == subtractor()</code>.</li>
+<li>The inner function within the decorator takes arguments, which are the arguments passed to the functions that are being decorated. ie.. Any arguments passed to <code>adder()</code> and <code>subtractor()</code>are passed to <code>inner_func()</code>.</li>
+<li>The statement <code>return 2 * my_func(a, b)</code> returns the value of :
+<ol>
+<li>2 x <code>adder(10, 20)</code></li>
+<li>2 x <code>subtractor(6, 1)</code></li>
+</ol>
+</li>
+</ol>
+<h3 id="output-1"><strong>Output:</strong></h3>
+<p>[code language=&ldquo;bash&rdquo;] # python decorators-2.py 60 10 [/code]</p>
+<p>Inbuilt decorators such as @staticmethod and @classmethod will be discussed in an upcoming post.</p>
+<p><strong>NOTE: To see how decorators are syntactically sugar coated, read 
+<a href="https://arvimal.wordpress.com/2016/06/02/magic-methods-in-python/" target="_blank" rel="noopener">Magic methods and Syntactic sugar in Python</a></strong></p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn">Vimal A R</span></span>
+    
+    <time>May 30, 2016</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="/tags/classmethod">classmethod</a>  <a class="category" href="/tags/decorators">decorators</a>  <a class="category" href="/tags/object-oriented-programming">object-oriented-programming</a>  <a class="category" href="/tags/programming">programming</a>  <a class="category" href="/tags/python">python</a>  <a class="category" href="/tags/staticmethod">staticmethod</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="/posts/2016/05/2016-05-30-method-resolution-order-object-oriented-programming/" title="Method Resolution Order - Object Oriented Programming">Method Resolution Order - Object Oriented Programming</a>
+    
+
+    
+      <a class="basic-alignment right" href="/posts/2016/06/2016-06-02-magic-methods-in-python/" title="Magic methods and Syntactic sugar in Python">Magic methods and Syntactic sugar in Python</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>Who am I?!</h1>
+    
+
+    <p>
+      
+        <p>I am a Systems Engineer, working in the Netherlands.</p>
+<p>Here, I aim to document my interests and notes on the technologies I learn during my work and free time.</p>
+<p>This usually includes programming, cloud technologies, filesystems, linux etc..</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/arvimal" title="https://github.com/arvimal"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      
+      
+         
+      
+      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arvimal/" title="https://www.linkedin.com/in/arvimal/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+          <h1>Favourite blogs</h1>
+        
+        
+          <li>
+            <a href="http://sreweekly.com/feed/" title="SRE Weekly" >SRE Weekly</a>
+          </li>
+        
+          <li>
+            <a href="https://jvns.ca/atom.xml" title="Julia Evans" >Julia Evans</a>
+          </li>
+        
+          <li>
+            <a href="https://talkpython.fm/" title="Talk Python to Me" >Talk Python to Me</a>
+          </li>
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021 Vimal A R - <a href="/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+

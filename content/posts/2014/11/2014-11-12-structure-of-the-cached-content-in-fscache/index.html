@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>FSCache and the on-disk structure of the cached data</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="Vimal A R">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="/">The Child is Father of the Man</a></h1>
+    <h2>Technical notes and blah..</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="/">» Home Page</option>
+      
+        <option value="/about/">» About</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="/" title="Home Page">Home Page</a></li>
+    
+  
+    
+      <li><a href="/about/" title="About"  target="_blank"  rel="noopener noreferrer">About</a></li>
+    
+  
+</ul>
+
+<ul class="subscription">
+  
+    
+        <a href="/index.xml" target="_blank" type="application/rss+xml" title="RSS" rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
+    
+  
+</ul>
+
+
+  <form action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
+    <fieldset role="search">
+      <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      <input type="hidden" name="q" value="site:/" />
+    </fieldset>
+  </form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Nov 12, 2014
+     - 3 minute read 
+    
+
+    
+    
+      - <a class="label" href="/categories/techno/">techno </a>
+    
+  </p>
+  <h1 class="entry-title">
+     FSCache and the on-disk structure of the cached data 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>The &lsquo;cachefilesd&rsquo; kernel module will create two directories at the location specified in /etc/cachefilesd.conf. By default it&rsquo;s /var/cache/fscache/.</p>
+<blockquote>
+<p><strong>[root@montypython ~]# lsmod |grep -i cache</strong> cachefiles             40871  1 fscache                62354  3 nfs,cachefiles,nfsv4</p>
+</blockquote>
+<p>Those are <em>/var/cache/fscache/cache</em> and <em>/var/cache/fscache/graveyard</em>.</p>
+<p>The cache structure is maintained inside &lsquo;/var/cache/fscache/cache/&rsquo;, while anything that is retired or culled is moved to &lsquo;graveyard&rsquo;. The &lsquo;cachefilesd&rsquo; daemon monitors &lsquo;graveyard&rsquo; using &lsquo;dnotify&rsquo; and will delete anything that is in there.</p>
+<p>We&rsquo;ll try an example. Consider an NFS share mounted with fscache support. The share contains the following files, with some random text.</p>
+<blockquote>
+<p><strong># ls /vol1</strong> files1.txt  files2.txt  files3.txt  files4.txt</p>
+</blockquote>
+<p>a) Configure &lsquo;cachefiles&rsquo; by editing &lsquo;/etc/cachefilesd.conf&rsquo;, and start the &lsquo;cachefilesd&rsquo; daemon.</p>
+<blockquote>
+<p><strong># systemctl start cachefilesd</strong></p>
+</blockquote>
+<p>b) Mount the NFS share on the client with the &lsquo;fsc&rsquo; mount option, to enable &lsquo;fscache&rsquo; support.</p>
+<blockquote>
+<p><strong># sudo mount localhost:/vol1 /vol1-backup/ -o fsc</strong></p>
+</blockquote>
+<p>d) Access the data from the mount point, and fscache will create the backed caching index at the location specified in <em>/etc/cachefilesd.conf</em>. By default, its <em>/var/cache/fscache/</em></p>
+<p>e) Once the files are accessed on the client side, fscache builds an index as following:</p>
+<p>NOTE: The index structure is <strong>dependent</strong> on the netfs (NFS in our case). The netfs driver can structure the cache index as it seems fit.</p>
+<p>Explanation of the caching structure:</p>
+<blockquote>
+<p># tree /var/cache/fscache/ /var/cache/fscache/cache/ └── @4a └── I03nfs ├── @22 │   └── Jo00000008400000000000000000000000400 │      └── @59 │           └── J110000000000000000w080000000000000000000000 │               ├── @53 │               │   └── EE0g00sgwB-90600000000ww000000000000000 │               ├── @5e │               │   └── EE0g00sgwB-90600000000ww000000000000000 │               ├── @61 │               │   └── EE0g00sgwB-90600000000ww000000000000000 │               ├── @62 │               │   └── EE0g00sgwB-90600000000ww000000000000000 │               ├── @70 │               │   └── EE0g00sgwB-90600000000ww000000000000000 │               ├── @7c │               │   └── EE0g00sgwB-90600000000ww000000000000000 │               └── @e8 │                   └── EE0g00sgwB-90600000000ww0000000000000000 └── @42 └── Jc000000000000EggDj00 └── @0a</p>
+</blockquote>
+<p>a) The &lsquo;<strong>cache</strong>&rsquo; directory under <em>/var/cache/fscache/</em> is a special index and can be seen as the root of the entire cache index structure.</p>
+<p>b) Data objects (actual cached files) are represented as files if they have no children, or folders if they have. If represented as a directory, data objects will have a file inside named &lsquo;data&rsquo; which holds the data.</p>
+<p>c) The &lsquo;<strong>cachefiles</strong>&rsquo; kernel module represents :</p>
+<p>i)   &lsquo;<strong>index</strong>&rsquo; objects as &lsquo;<strong>directories</strong>&rsquo;, starting with either &lsquo;<strong>I</strong>&rsquo; or &lsquo;<strong>J</strong>&rsquo;.</p>
+<p>ii)  Data objects are represented with filenames, beginning with &lsquo;<strong>D</strong>&rsquo; or &lsquo;<strong>E</strong>&rsquo;.</p>
+<p>iii) Special objects are similar to data objects, and start with &lsquo;<strong>S</strong>&rsquo; or &lsquo;<strong>T</strong>&rsquo;.</p>
+<p>In general, any object would be represented as a folder, if that object has children.</p>
+<p>g) In the directory hierarchy, immediately between the parent object and its child object, are directories named with *<strong>hash values</strong>* of the immediate child object keys, starting with an &lsquo;<strong>@</strong>&rsquo;.</p>
+<p>The child objects are placed inside this directory.These child objects would be folders, if it has child objects, or files if its the cached data itself. This can go on till the end of the path and reaches the file where the cached data is.</p>
+<p>Representation of the object indexes (For NFS, in this case)</p>
+<blockquote>
+<p>INDEX     INDEX      INDEX                             DATA FILES ========= ========== ================================= ================ cache/@4a/I03nfs/@30/Ji000000000000000&ndash;fHg8hi8400 cache/@4a/I03nfs/@30/Ji000000000000000&ndash;fHg8hi8400/@75/Es0g000w&hellip;DB1ry cache/@4a/I03nfs/@30/Ji000000000000000&ndash;fHg8hi8400/@75/Es0g000w&hellip;N22ry cache/@4a/I03nfs/@30/Ji000000000000000&ndash;fHg8hi8400/@75/Es0g000w&hellip;FP1ry</p>
+</blockquote>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn">Vimal A R</span></span>
+    
+    <time>Nov 12, 2014</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="/tags/cachefilesd">cachefilesd</a>  <a class="category" href="/tags/cachefs">cachefs</a>  <a class="category" href="/tags/fscache">fscache</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="/posts/2014/09/2014-09-14-fs-cache-and-cachefs-what-are-the-differences/" title="FS-Cache and CacheFS, what are the differences?">FS-Cache and CacheFS, what are the differences?</a>
+    
+
+    
+      <a class="basic-alignment right" href="/posts/2015/05/2015-05-06-how-to-list-all-the-configuration-settings-in-a-ceph-cluster-monitor/" title="How to list all the configuration settings in a Ceph cluster monitor?">How to list all the configuration settings in a Ceph cluster monitor?</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>Who am I?!</h1>
+    
+
+    <p>
+      
+        <p>I am a Systems Engineer, working in the Netherlands.</p>
+<p>Here, I aim to document my interests and notes on the technologies I learn during my work and free time.</p>
+<p>This usually includes programming, cloud technologies, filesystems, linux etc..</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/arvimal" title="https://github.com/arvimal"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      
+      
+         
+      
+      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arvimal/" title="https://www.linkedin.com/in/arvimal/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+          <h1>Favourite blogs</h1>
+        
+        
+          <li>
+            <a href="http://sreweekly.com/feed/" title="SRE Weekly" >SRE Weekly</a>
+          </li>
+        
+          <li>
+            <a href="https://jvns.ca/atom.xml" title="Julia Evans" >Julia Evans</a>
+          </li>
+        
+          <li>
+            <a href="https://talkpython.fm/" title="Talk Python to Me" >Talk Python to Me</a>
+          </li>
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021 Vimal A R - <a href="/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+
