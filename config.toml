@@ -5,7 +5,7 @@ disablePathToLower = false
 languageCode = "en-us"
 title = "The Child is Father of the Man"
 theme = "Hugo-Octopress"
-publishDir = "docs"
+publishDir = "content"
 
 # Disqus shortcode
 # Disable comments for any individual post by adding "comments: false" in its frontmatter
@@ -77,7 +77,7 @@ post = "/blog/:year-:month-:day-:title/" # change the post URL to look like the 
   author = "Vimal A R"
 
   # This text appears in the site header under website title
-  subtitle = "Technical notes and blah.."
+  subtitle = "Technical notes... almost"
 
   # Search engine URL
   searchEngineURL = "https://www.google.com/search"
