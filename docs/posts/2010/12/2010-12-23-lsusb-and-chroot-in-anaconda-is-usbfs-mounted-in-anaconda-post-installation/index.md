@@ -28,10 +28,10 @@ strace is of-course a really nice tool to know what system calls are made and lo
 
 Since we already have an ISO from where we have booted the machine from (DVD/CD), we are free to mount it on the filesystem, which is what we did. :
 
-```bash
-# mkdir /mnt/source 
-# mount -t iso9660 /dev/hdc /mnt/source 
-# cd /mnt/source/Server/ 
+```
+  # mkdir /mnt/source 
+  # mount -t iso9660 /dev/hdc /mnt/source 
+  # cd /mnt/source/Server/ 
 ```
 
 In case you want to know how the DVD/CD drive is detected, all you need to do is execute 'dmesg' in the available terminal. ie.. after pressing 'Alt + Ctrl + F2'.
