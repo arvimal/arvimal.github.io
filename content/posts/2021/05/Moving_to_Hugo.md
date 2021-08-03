@@ -4,8 +4,6 @@ date: 2021-05-16T18:49:58+02:00
 draft: false
 ---
 
-# Hugo and WordPress
-
 I've always wanted to move my blog away from WordPress to a static blog generator on Github.
 
 After a few half-hearted attempts over the past years, I've made it finally. 

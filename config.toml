@@ -68,7 +68,7 @@ post = "/blog/:year-:month-:day-:title/" # change the post URL to look like the 
   navigationNewWindow = true
 
   # If false, all of blog post will appear on front page (and in pagination)
-  truncate = true
+  # truncate = true
 
   # Compact blog posts
   compactIndex = true
@@ -88,7 +88,7 @@ post = "/blog/:year-:month-:day-:title/" # change the post URL to look like the 
 
   # Google analytics code - remove if you do not have/want Google Analytics - needs JavaScript
   # googleAnalytics = "UA-XXXXX-X"
-
+  googleAnalytics = "G-0PHPMMRT8D"
   # Optional piwik tracking
   # [params.analytics.piwik]
   #  URL = "https://stats.example.com"
@@ -127,7 +127,7 @@ post = "/blog/:year-:month-:day-:title/" # change the post URL to look like the 
   # remoteFonts = false
   
   # Remove or set to false to use FontAwesome CDN, otherwise the theme uses ForkAwesome local fonts.
-  # fontAwesome = false
+  fontAwesome = false
 
   # Generate taxonomy pages
   generateTaxonomyList = true
