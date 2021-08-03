@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nagios-installation on The Child is Father of the Man</title>
+    <link>/tags/nagios-installation/</link>
+    <description>Recent content in nagios-installation on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Feb 2008 00:00:00 +0000</lastBuildDate><atom:link href="/tags/nagios-installation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nagios Installation Script</title>
+      <link>/posts/2008/02/2008-02-14-nagios-installation-script/</link>
+      <pubDate>Thu, 14 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2008/02/2008-02-14-nagios-installation-script/</guid>
+      <description>This is a bash script which automates the installation of Nagios. There are more things to do such as setup of service monitoring, but that&amp;rsquo;s for another time.
+[code language=&amp;ldquo;bash&amp;rdquo;] #!/bin/bash DOWNLOAD_LOCATION=&#39;/root/Downloads/&#39; NAGIOS_URL=&amp;lsquo;http://jaist.dl.sourceforge.net/sourceforge/nagios/nagios-2.9.tar.gz&#39; APACHE_CONF=&#39;/etc/httpd/conf/httpd.conf&amp;rsquo; NAGIOS_PLUGIN=&amp;lsquo;http://nchc.dl.sourceforge.net/sourceforge/nagiosplug/nagios-plugins-1.4.8.tar.gz&#39; NAGIOSHOME=&#39;/usr/local/nagios&amp;rsquo; DATE=`date +%d-%b-%Y` FILE=&#39;/root/Nagios.txt&#39;
+################################# # [1] Installing nagios # ################################# nagios_download () { clear
+if [ `id -u` -ne 0 ]; then echo -e &amp;ldquo;You are executing the script as $USER\n&amp;rdquo; echo -e &amp;ldquo;You must be root to execute this script.</description>
+    </item>
+    
+  </channel>
+</rss>

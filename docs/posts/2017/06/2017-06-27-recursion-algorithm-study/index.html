@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Recursion - Algorithm Study</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="Vimal A R">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="/">The Child is Father of the Man</a></h1>
+    <h2>Technical notes and blah..</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="/">» Home Page</option>
+      
+        <option value="/about/">» About</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="/" title="Home Page">Home Page</a></li>
+    
+  
+    
+      <li><a href="/about/" title="About"  target="_blank"  rel="noopener noreferrer">About</a></li>
+    
+  
+</ul>
+
+<ul class="subscription">
+  
+    
+        <a href="/index.xml" target="_blank" type="application/rss+xml" title="RSS" rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
+    
+  
+</ul>
+
+
+  <form action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
+    <fieldset role="search">
+      <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      <input type="hidden" name="q" value="site:/" />
+    </fieldset>
+  </form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jun 27, 2017
+     - 5 minute read 
+    
+
+    
+    
+      - <a class="label" href="/categories/data-structures-and-algorithms/">data-structures-and-algorithms </a><a class="label" href="/categories/programming/">programming </a><a class="label" href="/categories/python/">python </a>
+    
+  </p>
+  <h1 class="entry-title">
+     Recursion - Algorithm Study 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>_<strong>R</strong>_ecursion is a technique by which a function calls itself until a condition is met.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Loops or repetitive execution based on certain conditions are inevitable in programs. Usual loops include <code>if</code>, <code>while</code> and <code>for</code> loops. <code>Recursion</code> is an entirely different way to deal with such situations, and in many cases, easier.</p>
+<p><code>Recursion</code> is a when a function calls itself in each iteration till a condition is met. Ideally, the data set in each iteration gets smaller until it reach the required condition, after which the recursive function exists.</p>
+<p>A typical example of recursion is a <code>factorial</code> function.</p>
+<h2 id="how-does-recursion-work">How does Recursion work?</h2>
+<p>A <code>recursive</code> function ideally contains a <code>Base</code> case and a <code>Recursive</code> case.</p>
+<p>A <code>Recursive</code> case is when the function calls itself, until the <code>Base</code> case is met. Each level of iteration in the <code>Recursive</code> case moves the control to the next level.</p>
+<p>Once a specific level finishes execution, the control is passed back to the previous level of execution. A <code>Recursive</code> function can go several layers deep until the <code>Base</code> condition is met. In short, a <code>Recursive</code> case is a loop in which the function calls itself.</p>
+<p>The <code>Base</code> case is required so that the function doesn&rsquo;t continue running in the <code>Recursive</code> loop forever. Once the <code>Base</code> case is met, the control moves out of the <code>Recursive</code> case, executes the conditions in the <code>Base</code> case (if any), and exits.</p>
+<p>As mentioned in the <code>Introduction</code>, a factorial function can be seen as an example of recursion.</p>
+<h3 id="note">NOTE:</h3>
+<p>The <code>Base</code> case for a factorial function is when <code>n == 1</code></p>
+<p>Consider <code>n!</code>:</p>
+<p><code>n!</code> can be written as:</p>
+<p><strong>n x (n - 1) x (n - 2) x (n - 3) x &hellip;. x 1</strong></p>
+<p><code>n!</code> can also be represented as:</p>
+<p>[code language=&ldquo;bash&rdquo;] n! = n * (n - 1)! &mdash;&gt; [Step 1] (n - 1)! = (n - 1) * (n - 2)! &mdash;&gt; [Step 2] (n - 2)! = (n - 2) * (n - 3)! &mdash;&gt; [Step 3] . .. &hellip; (n - (n - 1)) = 1 &mdash;&gt; [Base case] [/code]</p>
+<p>Each level/step is a product of a value and all the levels below it. Hence, <code>Step 1</code> will end up moving to <code>Step 2</code> to get the factorial of elements below it, then to <code>Step 3</code> and so on.</p>
+<p>ie.. the control of execution move as:</p>
+<p><strong>[Step 1] -&gt; [Step 2] -&gt; [Step 3] -&gt; &hellip;.. [Step n]</strong></p>
+<p>In a much easier-to-grasp example, a <code>5!</code> would be:</p>
+<p>[code language=&ldquo;bash&rdquo;] 5! = 5 * 4! &mdash;&gt; [Step 1] 4! = 4 * 3! &mdash;&gt; [Step 2] 3! = 3 * 2! &mdash;&gt; [Step 3] 2! = 2 * 1! &mdash;&gt; [Step 4] 1! = 1 &mdash;&gt; [Step 5] / [Base case] [/code]</p>
+<p>The order of execution will be :</p>
+<p><strong>[Step 1] -&gt; [Step 2] -&gt; [Step 3] -&gt; [Step 4] -&gt; [Step 5]</strong></p>
+<p>As we know, in <code>Recursion</code>, each layer pause itself and pass the control to the next level. Once it reach the end or the <code>Base</code> case, it returns the result back to the previous level one by one until it reaches where it started off.</p>
+<p>In this example, once the control of execution reaches <code>Step 5 / Base case</code> ,  the control is returned back to its previous level <code>Step 4</code> . This level returns the result back to <code>Step 3</code> which completes its execution and returns to <code>Step 2</code> , so on and so forth until it reach  <code>Step 1</code> .</p>
+<p>The return control flow would be as:</p>
+<p><strong>[Base case / Step 5] -&gt; [Step 4] -&gt; [Step 3] -&gt; [Step 2] -&gt; [Step 1] -&gt; Result.</strong></p>
+<p>This can be summed up using an awesome pictorial representation, from the book <code>Grokking Algorithms</code> by Adit. Please check out the <code>References</code> section for the link for more information about this awesome book.</p>
+<p><img src="images/factorial_recursion.png" alt="factorial_recursion"></p>
+<p><em>Figure 1: Recursion, Recursive case and Base case (Copyright Manning Publications, drawn by adit.io)</em></p>
+<h2 id="code"> Code</h2>
+<h3 id="example-1">Example 1:</h3>
+<ul>
+<li>A <code>factorial</code> function in a <code>while</code> loop</li>
+</ul>
+<p>[code language=&ldquo;python&rdquo;] def fact(n): factorial = 1 while n &gt; 1: factorial = factorial * n n = n - 1 return factorial</p>
+<p>print(&ldquo;Factorial of {0} is {1}&quot;.format(10, fact(10))) print(&ldquo;Factorial of {0} is {1}&quot;.format(20, fact(20))) [/code]</p>
+<ul>
+<li>The same function above, in a <code>recursive</code> loop</li>
+</ul>
+<p>[code language=&ldquo;python&rdquo;] def factorial(n): if n == 0: return 1 else: return n * factorial(n - 1)</p>
+<p>print(&ldquo;Factorial of {0} is {1}&quot;.format(10, factorial(10))) print(&ldquo;Factorial of {0} is {1}&quot;.format(20, factorial(20))) [/code]</p>
+<h3 id="example-2">Example 2:</h3>
+<ul>
+<li>A function to sum numbers in a normal <code>for</code> loop.</li>
+</ul>
+<p>[code language=&ldquo;python&rdquo;] def my_sum(my_list): num = 0 for i in my_list: num += i return num</p>
+<p>print(my_sum([10, 23, 14, 12, 11, 94, 20])) [/code]</p>
+<ul>
+<li>The same function to add numbers, in a <code>recursive</code> loop</li>
+</ul>
+<p>[code language=&ldquo;python&rdquo;] def my_sum(my_list): if my_list == []: return 0 else: return my_list[0] + my_sum(my_list[1:])</p>
+<p>print(my_sum([10, 23, 14, 12, 11, 94, 20])) [/code]</p>
+<h2 id="code-explanation">Code explanation</h2>
+<p>Both <code>Example 1</code> and <code>Example 2</code> are represented as an iterative function as well as a recursive function.</p>
+<p>The iterative function calls the <code>next()</code> function on the iterator <code>sum.__iter__()</code> magic method iterate over the entire data set. The recursive function calls itself to reach a base case and return the result.</p>
+<h2 id="observations">Observations:</h2>
+<p>While a recursive function does not necessarily give you an edge on performance, it is much easier to understand and the code is cleaner.</p>
+<p>Recursion has a disadvantage though, for large data sets. Each loop is put on a call stack until it reaches a <code>Base</code> case. Once the <code>Base</code> case is met, the call stack is rewound back to reach where it started, executing each of the previous levels on the way. The examples above showed a <code>sum</code> function and a <code>factorial</code> function. In large data sets, this can lead to a large call stack which in turns take a lot of memory.</p>
+<h2 id="references">References:</h2>
+<ol>
+<li>
+<a href="http://www.amazon.in/Grokking-Algorithms-illustrated-programmers-curious/dp/1617292230/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1486811444&amp;sr=1-1&amp;keywords=grokking&#43;algorithms" target="_blank" rel="noopener">Grokking Algorithms</a></li>
+<li>
+<a href="https://www.amazon.com/Structures-Algorithms-Python-Michael-Goodrich/dp/812656217X/ref=sr_1_1?ie=UTF8&amp;qid=1487126103&amp;sr=8-1&amp;keywords=data&#43;structures&#43;and&#43;algorithms&#43;in&#43;python" target="_blank" rel="noopener">Data Structures and Algorithms in Python</a></li>
+</ol>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn">Vimal A R</span></span>
+    
+    <time>Jun 27, 2017</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="/tags/algorithms">algorithms</a>  <a class="category" href="/tags/programming">programming</a>  <a class="category" href="/tags/python">python</a>  <a class="category" href="/tags/recursion">recursion</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="/posts/2017/02/2017-02-11-selection-sort-algorithm-study/" title="Selection Sort - Algorithm Study">Selection Sort - Algorithm Study</a>
+    
+
+    
+      <a class="basic-alignment right" href="/posts/2017/07/2017-07-27-writing-a-minimalistic-kernel-module-in-linux-part-1/" title="Writing a minimalistic kernel module in Linux - Part 1">Writing a minimalistic kernel module in Linux - Part 1</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>Who am I?!</h1>
+    
+
+    <p>
+      
+        <p>I am a Systems Engineer, working in the Netherlands.</p>
+<p>Here, I aim to document my interests and notes on the technologies I learn during my work and free time.</p>
+<p>This usually includes programming, cloud technologies, filesystems, linux etc..</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/arvimal" title="https://github.com/arvimal"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      
+      
+         
+      
+      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arvimal/" title="https://www.linkedin.com/in/arvimal/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+          <h1>Favourite blogs</h1>
+        
+        
+          <li>
+            <a href="http://sreweekly.com/feed/" title="SRE Weekly" >SRE Weekly</a>
+          </li>
+        
+          <li>
+            <a href="https://jvns.ca/atom.xml" title="Julia Evans" >Julia Evans</a>
+          </li>
+        
+          <li>
+            <a href="https://talkpython.fm/" title="Talk Python to Me" >Talk Python to Me</a>
+          </li>
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021 Vimal A R - <a href="/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+

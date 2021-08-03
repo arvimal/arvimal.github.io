@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>swap-space on The Child is Father of the Man</title>
+    <link>/tags/swap-space/</link>
+    <description>Recent content in swap-space on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Feb 2008 00:00:00 +0000</lastBuildDate><atom:link href="/tags/swap-space/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creating a SWAP space in Linux</title>
+      <link>/posts/2008/02/2008-02-15-creating-a-swap-space-in-linux/</link>
+      <pubDate>Fri, 15 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2008/02/2008-02-15-creating-a-swap-space-in-linux/</guid>
+      <description>Adding Swap Space:
+Sometimes it is necessary to add more swap space after installation. For example, you may upgrade the amount of RAM in your system from 64 MB to 128 MB, but there is only 128 MB of swap space. It might be advantageous to increase the amount of swap space to 256 MB if you perform memory-intense operations or run applications that require a large amount of memory.</description>
+    </item>
+    
+  </channel>
+</rss>

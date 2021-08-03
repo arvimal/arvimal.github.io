@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>How to fetch the entire list of tunables along with the values for a Ceph cluster node?</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="Vimal A R">
+
+  
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="/">The Child is Father of the Man</a></h1>
+    <h2>Technical notes and blah..</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="/">» Home Page</option>
+      
+        <option value="/about/">» About</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="/" title="Home Page">Home Page</a></li>
+    
+  
+    
+      <li><a href="/about/" title="About"  target="_blank"  rel="noopener noreferrer">About</a></li>
+    
+  
+</ul>
+
+<ul class="subscription">
+  
+    
+        <a href="/index.xml" target="_blank" type="application/rss+xml" title="RSS" rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
+    
+  
+</ul>
+
+
+  <form action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
+    <fieldset role="search">
+      <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      <input type="hidden" name="q" value="site:/" />
+    </fieldset>
+  </form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">May 27, 2015
+     - 3 minute read 
+    
+
+    
+    
+      - <a class="label" href="/categories/ceph/">ceph </a>
+    
+  </p>
+  <h1 class="entry-title">
+     How to fetch the entire list of tunables along with the values for a Ceph cluster node? 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>In many cases we would like to get the active configurations from a Ceph node, either a monitor or an OSD node. A neat feature, I must say, is to probe the administrative socket file to get a listing of all the active configurations, be it on the OSD node or the monitor node.</p>
+<p>This comes handy when we have changed a setting and wants to confirm if it had indeed changed or not.</p>
+<p>The admin socket file exists for both the monitors and the OSD nodes. The monitor node will have a single admin socket file, while the OSD nodes will have an admin socket for each of the OSDs present on the node.</p>
+<ul>
+<li>Listing of the admin socket on a monitor node</li>
+</ul>
+<p>[sourcecode language=&ldquo;bash&rdquo; gutter=&ldquo;false&rdquo;] # ls /var/run/ceph/ -l total 4 srwxr-xr-x. 1 root root 0 May 13 05:13 ceph-mon.hp-m300-2.asok -rw-r&ndash;r&ndash;. 1 root root 7 May 13 05:13 mon.hp-m300-2.pid [/sourcecode]</p>
+<ul>
+<li>Listing of the admin sockets on an OSD node</li>
+</ul>
+<p>[sourcecode language=&ldquo;bash&rdquo; gutter=&ldquo;false&rdquo;] # ls -l /var/run/ceph/ total 20 srwxr-xr-x. 1 root root 0 May  8 02:42 ceph-osd.0.asok srwxr-xr-x. 1 root root 0 May 26 11:18 ceph-osd.2.asok srwxr-xr-x. 1 root root 0 May 26 11:18 ceph-osd.3.asok srwxr-xr-x. 1 root root 0 May  8 02:42 ceph-osd.4.asok srwxr-xr-x. 1 root root 0 May 26 11:18 ceph-osd.5.asok -rw-r&ndash;r&ndash;. 1 root root 8 May  8 02:42 osd.0.pid -rw-r&ndash;r&ndash;. 1 root root 8 May 26 11:18 osd.2.pid -rw-r&ndash;r&ndash;. 1 root root 8 May 26 11:18 osd.3.pid -rw-r&ndash;r&ndash;. 1 root root 8 May  8 02:42 osd.4.pid -rw-r&ndash;r&ndash;. 1 root root 8 May 26 11:18 osd.5.pid [/sourcecode]</p>
+<p>For example, consider that we have changed the &lsquo;mon_osd_full_ratio&rsquo; value, and need to confirm that the cluster has picked up the change.</p>
+<p>We can get a listing of the active configured settings and grep out the setting we are interested in.</p>
+<p>[sourcecode language=&ldquo;bash&rdquo; gutter=&ldquo;false&rdquo;]</p>
+<p># ceph daemon /var/run/ceph/ceph-mon.*.asok config show</p>
+<p>[/sourcecode]</p>
+<p>The above command prints out a listing of all the active configurations and their current values. We can easily grep out &lsquo;mon_osd_full_ratio&rsquo; from this list.</p>
+<p>[sourcecode language=&ldquo;bash&rdquo; gutter=&ldquo;false&rdquo;]</p>
+<p># ceph daemon /var/run/ceph/ceph-mon.*.asok config show | grep mon_osd_full_ratio</p>
+<p>[/sourcecode]</p>
+<p>On my test cluster, this printed out &lsquo;0.75&rsquo; which is the default setting. The cluster should print out &lsquo;near full&rsquo; warnings once any OSD has reached 75% of its size.</p>
+<p>This can be checked by probing the OSD admin socket as well.</p>
+<p>NOTE: In case you are probing a particular OSD, please make sure to use the OSD admin socket on the node in which the OSD is. In order to locate the OSD and the node it is on, use :</p>
+<p>[sourcecode language=&ldquo;bash&rdquo; gutter=&ldquo;false&rdquo;]</p>
+<p># ceph osd tree</p>
+<p>[/sourcecode]</p>
+<p>Example: We try probing the OSD admin socket on its node, for &lsquo;mon_osd_full_ratio&rsquo; as we did on the monitor. It should return the same value.</p>
+<p>[sourcecode language=&ldquo;bash&rdquo; gutter=&ldquo;false&rdquo;]</p>
+<p># ceph daemon /var/run/ceph/ceph-osd.5.asok config show | grep mon_osd_full_ratio</p>
+<p>[/sourcecode]</p>
+<p>NOTE: Another command exists which should print the same configuration settings, but only for OSDs.</p>
+<p>[sourcecode language=&ldquo;bash&rdquo; gutter=&ldquo;false&rdquo;]</p>
+<p># ceph daemon osd.5 config show</p>
+<p>[/sourcecode]</p>
+<p>A drawback worth mentioning, this should be executed on the node on which the OSD is present. To find that the OSD to node mapping, use &lsquo;ceph osd tree&rsquo;.</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn">Vimal A R</span></span>
+    
+    <time>May 27, 2015</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="/tags/admin-socket">admin-socket</a>  <a class="category" href="/tags/ceph">ceph</a>  <a class="category" href="/tags/config-show">config-show</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="/posts/2015/05/2015-05-07-how-to-change-the-filling-ratio-for-a-ceph-osd/" title="How to change the filling ratio for a Ceph OSD?">How to change the filling ratio for a Ceph OSD?</a>
+    
+
+    
+      <a class="basic-alignment right" href="/posts/2015/05/2015-05-27-how-to-change-a-configuration-value-in-a-ceph-cluster-dynamically/" title="How to dynamically change a configuration value in a Ceph cluster?">How to dynamically change a configuration value in a Ceph cluster?</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>Who am I?!</h1>
+    
+
+    <p>
+      
+        <p>I am a Systems Engineer, working in the Netherlands.</p>
+<p>Here, I aim to document my interests and notes on the technologies I learn during my work and free time.</p>
+<p>This usually includes programming, cloud technologies, filesystems, linux etc..</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/arvimal" title="https://github.com/arvimal"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      
+      
+         
+      
+      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arvimal/" title="https://www.linkedin.com/in/arvimal/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+          <h1>Favourite blogs</h1>
+        
+        
+          <li>
+            <a href="http://sreweekly.com/feed/" title="SRE Weekly" >SRE Weekly</a>
+          </li>
+        
+          <li>
+            <a href="https://jvns.ca/atom.xml" title="Julia Evans" >Julia Evans</a>
+          </li>
+        
+          <li>
+            <a href="https://talkpython.fm/" title="Talk Python to Me" >Talk Python to Me</a>
+          </li>
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2021 Vimal A R - <a href="/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  </body>
+</html>
+

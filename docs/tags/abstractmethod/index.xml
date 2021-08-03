@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>abstractmethod on The Child is Father of the Man</title>
+    <link>/tags/abstractmethod/</link>
+    <description>Recent content in abstractmethod on The Child is Father of the Man</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 29 Jun 2016 00:00:00 +0000</lastBuildDate><atom:link href="/tags/abstractmethod/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Inheritance and Method overloading - Object Oriented Programming</title>
+      <link>/posts/2016/06/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2016/06/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/</guid>
+      <description>_I_nheritance is a usual theme in Object Oriented Programming. Because of Inheritance, the functions/methods defined in parent classes can be called in Child classes which enables code reuse, and several other features. In this article, we try to understand some of those features that come up with Inheritance.
+We&amp;rsquo;ve discussed Abstract Methods in an earlier post, which is a feature part of Inheritance, and can be applied on child classes that inherits from a Parent class.</description>
+    </item>
+    
+    <item>
+      <title>Abstract Base Classes/Methods - Object Oriented Programming</title>
+      <link>/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</link>
+      <pubDate>Tue, 14 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</guid>
+      <description>_A_bstract classes, in short, are classes that are supposed to be inherited or subclassed, rather than instantiated.
+Through Abstract Classes, we can enforce a blueprint on the subclasses that inherit the Abstract Class. This means that Abstract classes can be used to define a set of methods that must be implemented by it subclasses.
+Abstract classes are used when working on large projects where classes have to be inherited, and need to strictly follow certain blueprints.</description>
+    </item>
+    
+  </channel>
+</rss>
