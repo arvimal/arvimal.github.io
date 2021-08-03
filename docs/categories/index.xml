@@ -2,73 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on The Child is Father of the Man</title>
-    <link>/categories/</link>
+    <link>https://arvimal.github.io/categories/</link>
     <description>Recent content in Categories on The Child is Father of the Man</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 09 Aug 2017 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>programming</title>
-      <link>/categories/programming/</link>
-      <pubDate>Wed, 09 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>/categories/python/</link>
-      <pubDate>Wed, 09 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>/categories/linux/</link>
-      <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>data-structures-and-algorithms</title>
-      <link>/categories/data-structures-and-algorithms/</link>
-      <pubDate>Tue, 27 Jun 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/data-structures-and-algorithms/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>techno</title>
-      <link>/categories/techno/</link>
-      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/techno/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ceph</title>
-      <link>/categories/ceph/</link>
-      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/ceph/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>misc</title>
-      <link>/categories/misc/</link>
-      <pubDate>Mon, 09 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/misc/</guid>
-      <description></description>
-    </item>
-    
+    <language>en-us</language><atom:link href="https://arvimal.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
