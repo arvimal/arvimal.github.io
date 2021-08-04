@@ -4,7 +4,7 @@ baseurl = "/"
 disablePathToLower = false
 languageCode = "en-us"
 title = "The Child is Father of the Man"
-theme = "Hugo-Octopress"
+theme = "mainroad"
 publishDir = "docs"
 
 # Disqus shortcode

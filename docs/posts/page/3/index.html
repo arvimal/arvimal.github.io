@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Posts - The Child is Father of the Man</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="The Child is Father of the Man">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="The Child is Father of the Man" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">The Child is Father of the Man</div>
+					<div class="logo__tagline">Technical notes... almost</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Home Page</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about">
+				
+				<span class="menu__text">About me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/resume">
+				
+				<span class="menu__text">Resume</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">Posts</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2016/06/2016-06-30-sharding-the-ceph-rados-gateway-bucket-index/" rel="bookmark">
+			Sharding the Ceph RADOS Gateway bucket index
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		_S_harding is the process of breaking down data onto multiple locations so as to increase parallelism, as well as distribute load. This is a common feature used in databases. Read more on this at Wikipedia.
+The concept of sharding is used in Ceph, for splitting the bucket index in a RADOS Gateway.
+RGW or RADOS Gateway keeps an index for all the objects in its buckets for faster and easier lookup.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2016/06/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/" rel="bookmark">
+			Inheritance and Method overloading - Object Oriented Programming
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		_I_nheritance is a usual theme in Object Oriented Programming. Because of Inheritance, the functions/methods defined in parent classes can be called in Child classes which enables code reuse, and several other features. In this article, we try to understand some of those features that come up with Inheritance.
+We&rsquo;ve discussed Abstract Methods in an earlier post, which is a feature part of Inheritance, and can be applied on child classes that inherits from a Parent class.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2016/06/2016-06-14-abstract-base-classesmethods-object-oriented-programming/" rel="bookmark">
+			Abstract Base Classes/Methods - Object Oriented Programming
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		_A_bstract classes, in short, are classes that are supposed to be inherited or subclassed, rather than instantiated.
+Through Abstract Classes, we can enforce a blueprint on the subclasses that inherit the Abstract Class. This means that Abstract classes can be used to define a set of methods that must be implemented by it subclasses.
+Abstract classes are used when working on large projects where classes have to be inherited, and need to strictly follow certain blueprints.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2016/06/2016-06-12-self-in-python/" rel="bookmark">
+			`self` in Python - Object Oriented Programming
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		_T_his article was long overdue and should have been published before many of the articles in this blog. Better late than never.
+self in Python is usually used in an Object Oriented nomenclature, to denote the instance/object created from a Class.
+In short, self is the instance itself.
+Let&rsquo;s check the following example:
+[code language=&ldquo;python&rdquo;] class MyClass(object): def __init__(self, name): self.name = name print(&ldquo;Initiating the instance!&quot;)
+def hello(self): print(self.name)
+myclass = MyClass(&ldquo;Dan Inosanto&rdquo;)
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2016/06/2016-06-12-instance-class-static-methods-object-oriented-programming/" rel="bookmark">
+			Instance, Class, and Static methods - Object Oriented Programming
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		_F_unctions defined under a class are also called methods. Most of the methods are accessed through an instance of the class.
+There are three types of methods:
+ Instance methods Static methods Class methods  Both Static methods and Class methods can be called using the @staticmethod and @classmethod syntactic sugar respectively.
+Instance methods _I_nstance methods are also called Bound methods since the instance is bound to the class via self.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2016/06/2016-06-02-magic-methods-in-python/" rel="bookmark">
+			Magic methods and Syntactic sugar in Python
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Magic methods _M_agic methods are special methods which can be defined (or already designed and available) to act on objects.
+Magic methods start and end with underscores &quot;__&quot;, and are not implicitly called by the user even though they can be. Most magic methods are used as syntactic sugar by binding it to more clear/easy_to_understand keywords.
+Python is mostly objects and method calls done on objects. Many available functions in Python are actually tied to magic methods_**.
+	</div>
+</article>
+</main>
+
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="/posts/page/2/">«</a>
+	<span class="pagination__item pagination__item--current">3/11</span>
+	<a class="pagination__item pagination__item--next btn" href="/posts/page/4/">»</a>
+</div>
+
+			</div>
+			
+
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 The Child is Father of the Man.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

@@ -1,150 +1,78 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<html class="no-js" lang="en">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Sharding the Ceph RADOS Gateway bucket index - The Child is Father of the Man</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 
-  
-  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+	<link rel="stylesheet" href="/css/style.css">
+	
 
-  
-    
-    
-      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
-    
-  
-
-  
-  <title>Sharding the Ceph RADOS Gateway bucket index</title>
-
-  
-  
-  <link rel="stylesheet" href="/css/hugo-octopress.css">
-
-  
-  
-
-  
-    <link rel="stylesheet" href="/css/fork-awesome.min.css">
-  
-
-  
-  <link href="/favicon.png" rel="icon">
-
-  
-  
-
-  <meta name="description" content="" />
-  <meta name="keywords" content="">
-  <meta name="author" content="Vimal A R">
-
-  
-  <meta name="generator" content="Hugo 0.80.0" />
-
-  
-  
-
-  
-  
-
-  
-  
-
-
-
+	<link rel="shortcut icon" href="/favicon.ico">
+		
 </head>
-<body>
-
-
-<header role="banner">
-<hgroup>
-  
-  <h1><a href="/">The Child is Father of the Man</a></h1>
-    <h2>Technical notes... almost</h2>
-</hgroup></header>
-
-
-<nav role="navigation">
-<fieldset class="mobile-nav">
-  
-  <select onchange="location = this.value;">
-    <option value="">Navigate…</option>
-      
-        <option value="/">» Home Page</option>
-      
-        <option value="/about">» About me</option>
-      
-        <option value="/resume">» Resume</option>
-      
-  </select>
-</fieldset>
-
-
-<ul class="main-navigation">
-  
-  
-    
-      <li><a href="/" title="Home Page">Home Page</a></li>
-    
-  
-    
-      <li><a href="/about" title="About me"  target="_blank"  rel="noopener noreferrer">About me</a></li>
-    
-  
-    
-      <li><a href="/resume" title="Resume"  target="_blank"  rel="noopener noreferrer">Resume</a></li>
-    
-  
-</ul>
-
-<ul class="subscription">
-  
-    
-        <a href="/index.xml" target="_blank" type="application/rss+xml" title="RSS" rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
-    
-  
-</ul>
-
-
-  <form action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
-    <fieldset role="search">
-      <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-      <input type="hidden" name="q" value="site:/" />
-    </fieldset>
-  </form>
-
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="The Child is Father of the Man" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">The Child is Father of the Man</div>
+					<div class="logo__tagline">Technical notes... almost</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Home Page</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about">
+				
+				<span class="menu__text">About me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/resume">
+				
+				<span class="menu__text">Resume</span>
+				
+			</a>
+		</li>
+	</ul>
 </nav>
 
-
-<div id="main">
-  <div id="content">
-    <div>
-      <article class="hentry" role="article">
-
-        
-        
-
-<header>
-  <p class="meta">Jun 30, 2016
-     - 4 minute read 
-    
-
-    
-    
-      - <a class="label" href="/categories/ceph/">ceph </a>
-    
-  </p>
-  <h1 class="entry-title">
-     Sharding the Ceph RADOS Gateway bucket index 
-  </h1>
+	</div>
 </header>
-
-
-        <div class="entry-content">
-          
-          
-          
-          <p>_<strong>S</strong>_harding is the process of breaking down data onto multiple locations so as to increase parallelism, as well as distribute load. This is a common feature used in databases. Read more on this at 
-<a href="https://en.wikipedia.org/wiki/Shard_%28database_architecture%29" target="_blank" rel="noopener">Wikipedia</a>.</p>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Sharding the Ceph RADOS Gateway bucket index</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>_<strong>S</strong>_harding is the process of breaking down data onto multiple locations so as to increase parallelism, as well as distribute load. This is a common feature used in databases. Read more on this at <a href="https://en.wikipedia.org/wiki/Shard_(database_architecture)">Wikipedia</a>.</p>
 <p>The concept of sharding is used in Ceph, for splitting the bucket index in a RADOS Gateway.</p>
 <p>RGW or RADOS Gateway keeps an index for all the objects in its buckets for faster and easier lookup. For each RGW bucket created in a pool, the corresponding index is created in the <code>XX.index</code> pool.</p>
 <p>For example, for each of the buckets created in <code>.rgw</code> pool, the bucket index is created in <code>.rgw.buckets.index</code> pool. For each bucket, the index is stored in a single RADOS object.</p>
@@ -179,154 +107,56 @@
 <p>[/code] Edit the file /tmp/region.txt, change the value for `bucket_index_max_shards` to the needed shard value (we&rsquo;re setting it to 8 in this example), and inject it back to the region.</p>
 <p>[code language=&ldquo;bash&rdquo;] # radosgw-admin region set &lt; /tmp/region.txt { &ldquo;name&rdquo;: &ldquo;default&rdquo;, &ldquo;api_name&rdquo;: &ldquo;&rdquo;, &ldquo;is_master&rdquo;: &ldquo;true&rdquo;, &ldquo;endpoints&rdquo;: [], &ldquo;hostnames&rdquo;: [], &ldquo;master_zone&rdquo;: &ldquo;&rdquo;, &ldquo;zones&rdquo;: [ { &ldquo;name&rdquo;: &ldquo;default&rdquo;, &ldquo;endpoints&rdquo;: [], &ldquo;log_meta&rdquo;: &ldquo;false&rdquo;, &ldquo;log_data&rdquo;: &ldquo;false&rdquo;, &ldquo;bucket_index_max_shards&rdquo;: 8 } ], &ldquo;placement_targets&rdquo;: [ { &ldquo;name&rdquo;: &ldquo;default-placement&rdquo;, &ldquo;tags&rdquo;: [] } ], &ldquo;default_placement&rdquo;: &ldquo;default-placement&rdquo; } [/code] Reference:</p>
 <ol>
-<li>
-<a href="https://access.redhat.com/documentation/en/red-hat-ceph-storage/version-1.3/red-hat-ceph-storage-13-ceph-object-gateway-for-rhel-x86-64/#configure-bucket-sharding" target="_blank" rel="noopener">Red Hat Ceph Storage 1.3 Rados Gateway documentation</a></li>
-<li>
-<a href="https://en.wikipedia.org/wiki/Shard_%28database_architecture%29" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Shard_(database_architecture)</a></li>
+<li><a href="https://access.redhat.com/documentation/en/red-hat-ceph-storage/version-1.3/red-hat-ceph-storage-13-ceph-object-gateway-for-rhel-x86-64/#configure-bucket-sharding">Red Hat Ceph Storage 1.3 Rados Gateway documentation</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Shard_(database_architecture)">https://en.wikipedia.org/wiki/Shard_(database_architecture)</a></li>
 </ol>
 
-        </div>
-        
-
-<footer>
-  <p class="meta">
-    <span class="byline author vcard">Posted by <span class="fn">Vimal A R</span></span>
-    
-    <time>Jun 30, 2016</time>
-    
-      <span class="categories">
-        Tags:
-        
-          <a class="category" href="/tags/ceph">ceph</a>  <a class="category" href="/tags/rados">rados</a>  <a class="category" href="/tags/rados-gateway">rados-gateway</a>  <a class="category" href="/tags/rgw">rgw</a>  <a class="category" href="/tags/rgw-index">rgw-index</a>  <a class="category" href="/tags/sharding">sharding</a>  
-    
-    </span>
-  </p>
-
-  
-
-  <p class="meta">
-    
-        <a class="basic-alignment left" href="/posts/2016/06/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/" title="Inheritance and Method overloading - Object Oriented Programming">Inheritance and Method overloading - Object Oriented Programming</a>
-    
-
-    
-      <a class="basic-alignment right" href="/posts/2016/06/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/" title="`uninit_bg` and lazy block group allocation in EXT3/4">`uninit_bg` and lazy block group allocation in EXT3/4</a>
-    
-  </p>
-  
-</footer>
-
-      </article>
-    </div>
-    
-
-<aside class="sidebar thirds">
-  <section class="first odd">
-
-    
-      <h1>Who am I?!</h1>
-    
-
-    <p>
-      
-        <p>I am a Systems Engineer, working in the Netherlands.</p>
-<p>Here, I aim to document my interests and notes on the technologies I learn during my work and free time.</p>
-<p>This usually includes programming, cloud technologies, filesystems, linux etc..</p>
-
-      
-    </p>
-  </section>
-
-
-
-  
-  <ul class="sidebar-nav">
-    <li class="sidebar-nav-item">
-      <a target="_blank" rel="noopener noreferrer" href="https://github.com/arvimal" title="https://github.com/arvimal"><i class="fa fa-github fa-3x"></i></a>
-      
-      
-      
-      
-         
-      
-      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arvimal/" title="https://www.linkedin.com/in/arvimal/"><i class="fa fa-linkedin fa-3x"></i></a>
-      
-      
-      
-      
-      
-
-    
-    
-    </li>
-  </ul>
-
-  
-
-  
-    
-      <section class="odd">
-        
-          <h1>Favourite blogs</h1>
-        
-        
-          <li>
-            <a href="http://sreweekly.com/feed/" title="SRE Weekly" >SRE Weekly</a>
-          </li>
-        
-          <li>
-            <a href="https://jvns.ca/atom.xml" title="Julia Evans" >Julia Evans</a>
-          </li>
-        
-          <li>
-            <a href="https://talkpython.fm/" title="Talk Python to Me" >Talk Python to Me</a>
-          </li>
-        
-      </section>
-    
-  
-
-  
-  
-  
-    
-      <section class="even">
-        <h1>Recent Posts</h1>
-        <ul id="recent_posts">
-          
-          
-        </ul>
-      </section>
-    
-  
-</aside>
-
-  </div>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/ceph/" rel="tag">ceph</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/rados/" rel="tag">rados</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/rados-gateway/" rel="tag">rados-gateway</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/rgw/" rel="tag">rgw</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/rgw-index/" rel="tag">rgw-index</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/sharding/" rel="tag">sharding</a>
+		</li>
+	</ul>
 </div>
-
-    <footer role="contentinfo">
-      <p>Copyright &copy; 2021 Vimal A R - <a href="/license/">License</a> -
-        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
-      </p>
-    </footer>
-
-    
-    
+		</footer>
+	</article>
+</main>
 
 
 
-    
-    
-    
 
-    
-      <script>
-        var _gaq=[['_setAccount','G-0PHPMMRT8D'],['_trackPageview']];
-        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-        s.parentNode.insertBefore(g,s)}(document,'script'));
-      </script>
-    
-  </body>
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 The Child is Father of the Man.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
 </html>
-

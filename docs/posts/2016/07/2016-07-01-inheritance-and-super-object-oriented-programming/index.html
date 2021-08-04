@@ -1,151 +1,79 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<html class="no-js" lang="en">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Inheritance and super() - Object Oriented Programming - The Child is Father of the Man</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 
-  
-  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+	<link rel="stylesheet" href="/css/style.css">
+	
 
-  
-    
-    
-      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
-    
-  
-
-  
-  <title>Inheritance and super() - Object Oriented Programming</title>
-
-  
-  
-  <link rel="stylesheet" href="/css/hugo-octopress.css">
-
-  
-  
-
-  
-    <link rel="stylesheet" href="/css/fork-awesome.min.css">
-  
-
-  
-  <link href="/favicon.png" rel="icon">
-
-  
-  
-
-  <meta name="description" content="" />
-  <meta name="keywords" content="">
-  <meta name="author" content="Vimal A R">
-
-  
-  <meta name="generator" content="Hugo 0.80.0" />
-
-  
-  
-
-  
-  
-
-  
-  
-
-
-
+	<link rel="shortcut icon" href="/favicon.ico">
+		
 </head>
-<body>
-
-
-<header role="banner">
-<hgroup>
-  
-  <h1><a href="/">The Child is Father of the Man</a></h1>
-    <h2>Technical notes... almost</h2>
-</hgroup></header>
-
-
-<nav role="navigation">
-<fieldset class="mobile-nav">
-  
-  <select onchange="location = this.value;">
-    <option value="">Navigate…</option>
-      
-        <option value="/">» Home Page</option>
-      
-        <option value="/about">» About me</option>
-      
-        <option value="/resume">» Resume</option>
-      
-  </select>
-</fieldset>
-
-
-<ul class="main-navigation">
-  
-  
-    
-      <li><a href="/" title="Home Page">Home Page</a></li>
-    
-  
-    
-      <li><a href="/about" title="About me"  target="_blank"  rel="noopener noreferrer">About me</a></li>
-    
-  
-    
-      <li><a href="/resume" title="Resume"  target="_blank"  rel="noopener noreferrer">Resume</a></li>
-    
-  
-</ul>
-
-<ul class="subscription">
-  
-    
-        <a href="/index.xml" target="_blank" type="application/rss+xml" title="RSS" rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
-    
-  
-</ul>
-
-
-  <form action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
-    <fieldset role="search">
-      <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-      <input type="hidden" name="q" value="site:/" />
-    </fieldset>
-  </form>
-
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="The Child is Father of the Man" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">The Child is Father of the Man</div>
+					<div class="logo__tagline">Technical notes... almost</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Home Page</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about">
+				
+				<span class="menu__text">About me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/resume">
+				
+				<span class="menu__text">Resume</span>
+				
+			</a>
+		</li>
+	</ul>
 </nav>
 
-
-<div id="main">
-  <div id="content">
-    <div>
-      <article class="hentry" role="article">
-
-        
-        
-
-<header>
-  <p class="meta">Jul 1, 2016
-     - 5 minute read 
-    
-
-    
-    
-      - <a class="label" href="/categories/programming/">programming </a><a class="label" href="/categories/python/">python </a>
-    
-  </p>
-  <h1 class="entry-title">
-     Inheritance and super() - Object Oriented Programming 
-  </h1>
+	</div>
 </header>
-
-
-        <div class="entry-content">
-          
-          
-          
-          <p>_<strong>s</strong>_uper() is a feature through which inherited methods can be accessed, which has been overridden in a class. It can also help with the MRO lookup order in case of multiple inheritance. This may not be obvious first, but a few examples should help to drive the point home.</p>
-<p>Inheritance and method overloading was discussed in a previous 
-<a href="https://arvimal.wordpress.com/2016/06/29/inheritance-and-method-overloading-object-oriented-programming/" target="_blank" rel="noopener">post</a>, where we saw how inherited methods can be overloaded or enhanced in the child classes.</p>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Inheritance and super() - Object Oriented Programming</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>_<strong>s</strong>_uper() is a feature through which inherited methods can be accessed, which has been overridden in a class. It can also help with the MRO lookup order in case of multiple inheritance. This may not be obvious first, but a few examples should help to drive the point home.</p>
+<p>Inheritance and method overloading was discussed in a previous <a href="https://arvimal.wordpress.com/2016/06/29/inheritance-and-method-overloading-object-oriented-programming/">post</a>, where we saw how inherited methods can be overloaded or enhanced in the child classes.</p>
 <p>In many scenarios, it&rsquo;s needed to overload an inherited method, but also call the actual method defined in the Parent class.</p>
 <p>Let&rsquo;s start off with a simple example based on Inheritance, and build from there.</p>
 <p><em><strong>Example 0:</strong></em></p>
@@ -166,8 +94,7 @@
 <p>my_instance_1.func() my_instance_2.func() [/code] This outputs:</p>
 <p>[code language=&ldquo;python&rdquo;] In [19]: %run /tmp/super-1.py I&rsquo;m being called from the Parent class I&rsquo;m being called from the Child class [/code] This example has a slight difference, both the child class as well as the parent class have the same method defined, ie.. <code>func</code>. In this scenario, the parent class' method is overridden by the child class method.</p>
 <p>ie.. if we call the <code>func()</code> method from the instance of <code>ChildClass</code>, it need not go a fetch the method from its Parent class, since it&rsquo;s already defined locally.</p>
-<p><strong>NOTE: This is due to the Method Resolution Order, discussed in an earlier 
-<a href="https://arvimal.wordpress.com/2016/05/30/method-resolution-order-object-oriented-programming/" target="_blank" rel="noopener">post</a>.</strong></p>
+<p><strong>NOTE: This is due to the Method Resolution Order, discussed in an earlier <a href="https://arvimal.wordpress.com/2016/05/30/method-resolution-order-object-oriented-programming/">post</a>.</strong></p>
 <p>But what if there is a scenario that warranties the need for specifically calling methods defined in the Parent class, from the instance of a child class?</p>
 <p>ie.. How to call the methods defined in the Parent class, through the instance of the Child class, even if the Parent class method is overloaded in the Child class?</p>
 <p>In such a case, the inbuilt function <code>super()</code> can be used. Let&rsquo;s add to the previous example.</p>
@@ -201,8 +128,7 @@
 <p>my_instance_2 = ChildClass() my_instance_2.func() [/code]</p>
 <p> </p>
 <p><em><strong>NOTE:</strong></em> <em>The example above uses the Parent class directly to access it&rsquo;s method. Even though it works, it is not the best way to do it since the code is tied to the Parent class name. If the Parent class name changes, the child/sub class code has to be changed as well.</em></p>
-<p>Let&rsquo;s see another example for  <code>super()</code> . This is from our previous article on 
-<a href="https://arvimal.wordpress.com/2016/06/29/inheritance-and-method-overloading-object-oriented-programming/" target="_blank" rel="noopener">Inheritance and method overloading</a>.</p>
+<p>Let&rsquo;s see another example for  <code>super()</code> . This is from our previous article on <a href="https://arvimal.wordpress.com/2016/06/29/inheritance-and-method-overloading-object-oriented-programming/">Inheritance and method overloading</a>.</p>
 <p><em><strong>Example 3:</strong></em></p>
 <p>[code language=&ldquo;python&rdquo;] import abc</p>
 <p>class MyClass(object):</p>
@@ -213,8 +139,7 @@
 <p>class MyChildClass(MyClass):</p>
 <p>def my_set_val(self, value): if not isinstance(value, int): value = 0 super(MyChildClass, self).my_set_val(self)</p>
 <p>def print_doc(self): print(&ldquo;Documentation for MyChild Class&rdquo;)</p>
-<p>my_instance = MyChildClass() my_instance.my_set_val(100) print(my_instance.my_get_val()) print(my_instance.print_doc()) [/code] The code is already discussed 
-<a href="https://arvimal.wordpress.com/2016/06/29/inheritance-and-method-overloading-object-oriented-programming/" target="_blank" rel="noopener">here</a>. The <code>my_set_val</code> method is defined in both the child class as well as the parent class.</p>
+<p>my_instance = MyChildClass() my_instance.my_set_val(100) print(my_instance.my_get_val()) print(my_instance.print_doc()) [/code] The code is already discussed <a href="https://arvimal.wordpress.com/2016/06/29/inheritance-and-method-overloading-object-oriented-programming/">here</a>. The <code>my_set_val</code> method is defined in both the child class as well as the parent class.</p>
 <p>We overload the <code>my_set_val</code> method defined in the parent class, in the child class. But after enhancing/overloading it, we call the <code>my_set_val</code> method specifically from the Parent class using <code>super()</code> and thus enhance it.</p>
 <h3 id="takeaway">Takeaway:</h3>
 <ol>
@@ -236,148 +161,46 @@
 <li><a href="https://stackoverflow.com/questions/222877/how-to-use-super-in-python">https://stackoverflow.com/questions/222877/how-to-use-super-in-python</a></li>
 </ol>
 
-        </div>
-        
-
-<footer>
-  <p class="meta">
-    <span class="byline author vcard">Posted by <span class="fn">Vimal A R</span></span>
-    
-    <time>Jul 1, 2016</time>
-    
-      <span class="categories">
-        Tags:
-        
-          <a class="category" href="/tags/inheritance">inheritance</a>  <a class="category" href="/tags/object-oriented-programming">object-oriented-programming</a>  <a class="category" href="/tags/python">python</a>  <a class="category" href="/tags/super">super</a>  
-    
-    </span>
-  </p>
-
-  
-
-  <p class="meta">
-    
-        <a class="basic-alignment left" href="/posts/2016/06/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/" title="`uninit_bg` and lazy block group allocation in EXT3/4">`uninit_bg` and lazy block group allocation in EXT3/4</a>
-    
-
-    
-      <a class="basic-alignment right" href="/posts/2016/07/2016-07-21-max-file-name-length-in-an-ext4-file-system/" title="Max file-name length in an EXT4 file system.">Max file-name length in an EXT4 file system.</a>
-    
-  </p>
-  
-</footer>
-
-      </article>
-    </div>
-    
-
-<aside class="sidebar thirds">
-  <section class="first odd">
-
-    
-      <h1>Who am I?!</h1>
-    
-
-    <p>
-      
-        <p>I am a Systems Engineer, working in the Netherlands.</p>
-<p>Here, I aim to document my interests and notes on the technologies I learn during my work and free time.</p>
-<p>This usually includes programming, cloud technologies, filesystems, linux etc..</p>
-
-      
-    </p>
-  </section>
-
-
-
-  
-  <ul class="sidebar-nav">
-    <li class="sidebar-nav-item">
-      <a target="_blank" rel="noopener noreferrer" href="https://github.com/arvimal" title="https://github.com/arvimal"><i class="fa fa-github fa-3x"></i></a>
-      
-      
-      
-      
-         
-      
-      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arvimal/" title="https://www.linkedin.com/in/arvimal/"><i class="fa fa-linkedin fa-3x"></i></a>
-      
-      
-      
-      
-      
-
-    
-    
-    </li>
-  </ul>
-
-  
-
-  
-    
-      <section class="odd">
-        
-          <h1>Favourite blogs</h1>
-        
-        
-          <li>
-            <a href="http://sreweekly.com/feed/" title="SRE Weekly" >SRE Weekly</a>
-          </li>
-        
-          <li>
-            <a href="https://jvns.ca/atom.xml" title="Julia Evans" >Julia Evans</a>
-          </li>
-        
-          <li>
-            <a href="https://talkpython.fm/" title="Talk Python to Me" >Talk Python to Me</a>
-          </li>
-        
-      </section>
-    
-  
-
-  
-  
-  
-    
-      <section class="even">
-        <h1>Recent Posts</h1>
-        <ul id="recent_posts">
-          
-          
-        </ul>
-      </section>
-    
-  
-</aside>
-
-  </div>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/inheritance/" rel="tag">inheritance</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/object-oriented-programming/" rel="tag">object-oriented-programming</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/python/" rel="tag">python</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/super/" rel="tag">super</a>
+		</li>
+	</ul>
 </div>
-
-    <footer role="contentinfo">
-      <p>Copyright &copy; 2021 Vimal A R - <a href="/license/">License</a> -
-        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
-      </p>
-    </footer>
-
-    
-    
+		</footer>
+	</article>
+</main>
 
 
 
-    
-    
-    
 
-    
-      <script>
-        var _gaq=[['_setAccount','G-0PHPMMRT8D'],['_trackPageview']];
-        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-        s.parentNode.insertBefore(g,s)}(document,'script'));
-      </script>
-    
-  </body>
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 The Child is Father of the Man.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
 </html>
-

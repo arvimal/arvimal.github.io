@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>programming - The Child is Father of the Man</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="alternate" type="application/rss+xml" href="/categories/programming/index.xml" title="The Child is Father of the Man">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="The Child is Father of the Man" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">The Child is Father of the Man</div>
+					<div class="logo__tagline">Technical notes... almost</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Home Page</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about">
+				
+				<span class="menu__text">About me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/resume">
+				
+				<span class="menu__text">Resume</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">programming</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2008/02/2008-02-14-dns-zone-file-sanity-check/" rel="bookmark">
+			DNS Zone file sanity check
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		This bash script does a sanity check for the DNS domains defined inside /var/named.
+[code language=&ldquo;bash&rdquo;] #!/bin/bash A=`ls -l /var/named/*.db | awk &lsquo;{print $9}&rsquo; | cut -f4 -d &ldquo;/&rdquo; | sed &rsquo;s/.db$//'` #domain names
+for i in $A; do named-checkzone $i /var/named/$i.db;done [/code]
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2008/02/2008-02-14-nagios-installation-script/" rel="bookmark">
+			Nagios Installation Script
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		This is a bash script which automates the installation of Nagios. There are more things to do such as setup of service monitoring, but that&rsquo;s for another time.
+[code language=&ldquo;bash&rdquo;] #!/bin/bash DOWNLOAD_LOCATION='/root/Downloads/' NAGIOS_URL=&lsquo;http://jaist.dl.sourceforge.net/sourceforge/nagios/nagios-2.9.tar.gz' APACHE_CONF='/etc/httpd/conf/httpd.conf&rsquo; NAGIOS_PLUGIN=&lsquo;http://nchc.dl.sourceforge.net/sourceforge/nagiosplug/nagios-plugins-1.4.8.tar.gz' NAGIOSHOME='/usr/local/nagios&rsquo; DATE=`date +%d-%b-%Y` FILE='/root/Nagios.txt'
+################################# # [1] Installing nagios # ################################# nagios_download () { clear
+if [ `id -u` -ne 0 ]; then echo -e &ldquo;You are executing the script as $USER\n&rdquo; echo -e &ldquo;You must be root to execute this script.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2008/02/2008-02-13-bash-script-for-generating-a-random-number/" rel="bookmark">
+			A random number generator in Bash
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		The bash environment variable &lsquo;RANDOM&rsquo; is a pseudo-random number generator built in bash, and it can generate random numbers in the range of 0 - 32767.
+Using the command `echo $RANDOM`, we can generate a random number. Building a random number generator which emits a sequence of random numbers is pretty easy.
+[code language=&ldquo;bash&rdquo;] #!/bin/bash for i in `seq 1 10`: do echo $RANDOM; sleep 1s; done [/code]
+The &lsquo;seq&rsquo; or the &lsquo;sequential&rsquo; can be used to generate a sequence of numbers.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2008/02/2008-02-13-password-encryptor-in-c/" rel="bookmark">
+			Password Encryptor in C
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Some time back, I had to implement a password encryption section in one of my bash programs. It seemed easy to use a C snippet rather than doing it in bash. This was something I got after searching a while.
+[code language=&ldquo;C&rdquo;]
+#include stdlib.h #include unistd.h #include stdio.h #include crack.h #define DICTIONARY /usr/lib/cracklib_dict
+int main(int argc, char *argv[]) {
+char *password; char *problem;
+int status = 0; printf(\nEnter an empty password or Ctrl-D to quit.
+	</div>
+</article>
+</main>
+
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="/categories/programming/page/4/">«</a>
+	<span class="pagination__item pagination__item--current">5/5</span>
+</div>
+
+			</div>
+			
+
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 The Child is Father of the Man.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

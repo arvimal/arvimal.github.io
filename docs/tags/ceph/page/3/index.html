@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ceph - The Child is Father of the Man</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="alternate" type="application/rss+xml" href="/tags/ceph/index.xml" title="The Child is Father of the Man">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="The Child is Father of the Man" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">The Child is Father of the Man</div>
+					<div class="logo__tagline">Technical notes... almost</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Home Page</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about">
+				
+				<span class="menu__text">About me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/resume">
+				
+				<span class="menu__text">Resume</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">ceph</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2015/05/2015-05-27-how-to-change-a-configuration-value-in-a-ceph-cluster-dynamically/" rel="bookmark">
+			How to dynamically change a configuration value in a Ceph cluster?
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		It is possible to change a particular configuration setting in a Ceph cluster dynamically, and I think it is a very neat and useful feature.
+Imagine the case where you want to change the replica count of a particular PG from 3 to 4. How would you change this without restarting the Ceph cluster itself? That is where the &lsquo;ceph tell&rsquo; command comes in.
+As we saw in the previous post, you can get the list of configuration settings using the administrator socket, from either a monitor or an OSD node.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2015/05/2015-05-27-how-can-we-get-a-list-of-all-the-configurations-from-a-ceph-cluster-node/" rel="bookmark">
+			How to fetch the entire list of tunables along with the values for a Ceph cluster node?
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		In many cases we would like to get the active configurations from a Ceph node, either a monitor or an OSD node. A neat feature, I must say, is to probe the administrative socket file to get a listing of all the active configurations, be it on the OSD node or the monitor node.
+This comes handy when we have changed a setting and wants to confirm if it had indeed changed or not.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2015/05/2015-05-07-how-to-change-the-filling-ratio-for-a-ceph-osd/" rel="bookmark">
+			How to change the filling ratio for a Ceph OSD?
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		There could be many scenarios where you&rsquo;d need to change the percentage of space usage on a Ceph OSD. One such use case would be when your OSD space is about to hit the hard limit, and is constantly sending you warnings.
+For some reason or other, you may need to extend the threshold limit for some time. In such a case, you don&rsquo;t need to change/add the configuration in ceph.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2015/05/2015-05-07-how-to-remove-a-host-from-a-ceph-cluster/" rel="bookmark">
+			How to remove a host from a Ceph cluster?
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		I&rsquo;m still studying Ceph, and recently faced a scenario in which one of my Ceph nodes went down due to hardware failure. Even though my data was safe due to the replication factor, I was not able to remove the node from the cluster.
+I could remove the OSDs on the node, but I didn&rsquo;t find a way to remove the node being listed in &lsquo;ceph osd tree&rsquo;. I ended up editing the CRUSH map by hand, to remove the host, and uploaded it back.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2015/05/2015-05-06-how-to-list-all-the-configuration-settings-in-a-ceph-cluster-monitor/" rel="bookmark">
+			How to list all the configuration settings in a Ceph cluster monitor?
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		It can be really helpful to have a single command to list all the configuration settings in a monitor node, in a Ceph cluster.
+This is possible by interacting directly with the monitor&rsquo;s unix socket file. This can be found under /var/run/ceph/. By default, the admin socket for the monitor will be in the path /var/run/ceph/ceph-mon..asok.
+The default location can vary in case you have defined it to be a different one, at the time of the installation.
+	</div>
+</article>
+</main>
+
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="/tags/ceph/page/2/">«</a>
+	<span class="pagination__item pagination__item--current">3/3</span>
+</div>
+
+			</div>
+			
+
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 The Child is Father of the Man.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

@@ -1,290 +1,102 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<html class="no-js" lang="en">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>List RBD images, snapshots, and clones in Ceph pools - The Child is Father of the Man</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 
-  
-  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+	<link rel="stylesheet" href="/css/style.css">
+	
 
-  
-    
-    
-      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
-    
-  
-
-  
-  <title>List RBD images, snapshots, and clones in Ceph pools</title>
-
-  
-  
-  <link rel="stylesheet" href="/css/hugo-octopress.css">
-
-  
-  
-
-  
-    <link rel="stylesheet" href="/css/fork-awesome.min.css">
-  
-
-  
-  <link href="/favicon.png" rel="icon">
-
-  
-  
-
-  <meta name="description" content="" />
-  <meta name="keywords" content="">
-  <meta name="author" content="Vimal A R">
-
-  
-  <meta name="generator" content="Hugo 0.80.0" />
-
-  
-  
-
-  
-  
-
-  
-  
-
-
-
+	<link rel="shortcut icon" href="/favicon.ico">
+		
 </head>
-<body>
-
-
-<header role="banner">
-<hgroup>
-  
-  <h1><a href="/">The Child is Father of the Man</a></h1>
-    <h2>Technical notes... almost</h2>
-</hgroup></header>
-
-
-<nav role="navigation">
-<fieldset class="mobile-nav">
-  
-  <select onchange="location = this.value;">
-    <option value="">Navigate…</option>
-      
-        <option value="/">» Home Page</option>
-      
-        <option value="/about">» About me</option>
-      
-        <option value="/resume">» Resume</option>
-      
-  </select>
-</fieldset>
-
-
-<ul class="main-navigation">
-  
-  
-    
-      <li><a href="/" title="Home Page">Home Page</a></li>
-    
-  
-    
-      <li><a href="/about" title="About me"  target="_blank"  rel="noopener noreferrer">About me</a></li>
-    
-  
-    
-      <li><a href="/resume" title="Resume"  target="_blank"  rel="noopener noreferrer">Resume</a></li>
-    
-  
-</ul>
-
-<ul class="subscription">
-  
-    
-        <a href="/index.xml" target="_blank" type="application/rss+xml" title="RSS" rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
-    
-  
-</ul>
-
-
-  <form action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
-    <fieldset role="search">
-      <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-      <input type="hidden" name="q" value="site:/" />
-    </fieldset>
-  </form>
-
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="The Child is Father of the Man" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">The Child is Father of the Man</div>
+					<div class="logo__tagline">Technical notes... almost</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Home Page</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about">
+				
+				<span class="menu__text">About me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/resume">
+				
+				<span class="menu__text">Resume</span>
+				
+			</a>
+		</li>
+	</ul>
 </nav>
 
-
-<div id="main">
-  <div id="content">
-    <div>
-      <article class="hentry" role="article">
-
-        
-        
-
-<header>
-  <p class="meta">Oct 15, 2015
-     - 1 minute read 
-    
-
-    
-    
-      - <a class="label" href="/categories/ceph/">ceph </a>
-    
-  </p>
-  <h1 class="entry-title">
-     List RBD images, snapshots, and clones in Ceph pools 
-  </h1>
+	</div>
 </header>
-
-
-        <div class="entry-content">
-          
-          
-          
-          <p>This is a crude bash one-liner I did to get the details of all the RBD images, as well as the information on snapshots and clones created from them.</p>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">List RBD images, snapshots, and clones in Ceph pools</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>This is a crude bash one-liner I did to get the details of all the RBD images, as well as the information on snapshots and clones created from them.</p>
 <p>[code language=&ldquo;bash&rdquo;] # for pool in `rados lspools`; do echo &ldquo;POOL :&rdquo; $pool; rbd ls -l $pool; echo &ldquo;&mdash;&ndash;&quot;; done [/code]</p>
 <p>This will print an output similar to the following:</p>
 <p>[code language=&ldquo;bash&rdquo;] POOL : rbd NAME                             SIZE        PARENT  FMT PROT LOCK test_img                        10240M                    1 test_img2                      1024M                      2 test_img2@snap2      1024M                      2                    yes &mdash;&ndash; POOL : .rgw.root &mdash;&ndash; POOL : .rgw.control &mdash;&ndash; POOL : .rgw &mdash;&ndash; POOL : .rgw.gc &mdash;&ndash; POOL : .users.uid &mdash;&ndash; POOL : .users &mdash;&ndash; POOL : .users.swift &mdash;&ndash; POOL : .users.email &mdash;&ndash; POOL : .rgw.buckets.index &mdash;&ndash; POOL : images NAME           SIZE      PARENT                               FMT PROT LOCK clone1           1024M  rbd/test_img2@snap2             2 &mdash;&ndash; [/code]</p>
 
-        </div>
-        
+		</div>
+	</article>
+</main>
 
-<footer>
-  <p class="meta">
-    <span class="byline author vcard">Posted by <span class="fn">Vimal A R</span></span>
-    
-    <time>Oct 15, 2015</time>
-    
-    </span>
-  </p>
 
-  
 
-  <p class="meta">
-    
-        <a class="basic-alignment left" href="/posts/2015/10/2015-10-12-range-and-enumerate-2/" title="range() and enumerate()">range() and enumerate()</a>
-    
 
-    
-      <a class="basic-alignment right" href="/posts/2016/05/2016-05-08-how-to-get-a-ceph-monosd-map-at-a-specific-epoch/" title="How to get a Ceph MON/OSD map at a specific epoch?">How to get a Ceph MON/OSD map at a specific epoch?</a>
-    
-  </p>
-  
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 The Child is Father of the Man.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
 </footer>
-
-      </article>
-    </div>
-    
-
-<aside class="sidebar thirds">
-  <section class="first odd">
-
-    
-      <h1>Who am I?!</h1>
-    
-
-    <p>
-      
-        <p>I am a Systems Engineer, working in the Netherlands.</p>
-<p>Here, I aim to document my interests and notes on the technologies I learn during my work and free time.</p>
-<p>This usually includes programming, cloud technologies, filesystems, linux etc..</p>
-
-      
-    </p>
-  </section>
-
-
-
-  
-  <ul class="sidebar-nav">
-    <li class="sidebar-nav-item">
-      <a target="_blank" rel="noopener noreferrer" href="https://github.com/arvimal" title="https://github.com/arvimal"><i class="fa fa-github fa-3x"></i></a>
-      
-      
-      
-      
-         
-      
-      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arvimal/" title="https://www.linkedin.com/in/arvimal/"><i class="fa fa-linkedin fa-3x"></i></a>
-      
-      
-      
-      
-      
-
-    
-    
-    </li>
-  </ul>
-
-  
-
-  
-    
-      <section class="odd">
-        
-          <h1>Favourite blogs</h1>
-        
-        
-          <li>
-            <a href="http://sreweekly.com/feed/" title="SRE Weekly" >SRE Weekly</a>
-          </li>
-        
-          <li>
-            <a href="https://jvns.ca/atom.xml" title="Julia Evans" >Julia Evans</a>
-          </li>
-        
-          <li>
-            <a href="https://talkpython.fm/" title="Talk Python to Me" >Talk Python to Me</a>
-          </li>
-        
-      </section>
-    
-  
-
-  
-  
-  
-    
-      <section class="even">
-        <h1>Recent Posts</h1>
-        <ul id="recent_posts">
-          
-          
-        </ul>
-      </section>
-    
-  
-</aside>
-
-  </div>
-</div>
-
-    <footer role="contentinfo">
-      <p>Copyright &copy; 2021 Vimal A R - <a href="/license/">License</a> -
-        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
-      </p>
-    </footer>
-
-    
-    
-
-
-
-    
-    
-    
-
-    
-      <script>
-        var _gaq=[['_setAccount','G-0PHPMMRT8D'],['_trackPageview']];
-        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-        s.parentNode.insertBefore(g,s)}(document,'script'));
-      </script>
-    
-  </body>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
 </html>
-

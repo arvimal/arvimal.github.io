@@ -1,149 +1,78 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<html class="no-js" lang="en">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Writing a minimalistic kernel module in Linux - Part 1 - The Child is Father of the Man</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 
-  
-  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+	<link rel="stylesheet" href="/css/style.css">
+	
 
-  
-    
-    
-      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
-    
-  
-
-  
-  <title>Writing a minimalistic kernel module in Linux - Part 1</title>
-
-  
-  
-  <link rel="stylesheet" href="/css/hugo-octopress.css">
-
-  
-  
-
-  
-    <link rel="stylesheet" href="/css/fork-awesome.min.css">
-  
-
-  
-  <link href="/favicon.png" rel="icon">
-
-  
-  
-
-  <meta name="description" content="" />
-  <meta name="keywords" content="">
-  <meta name="author" content="Vimal A R">
-
-  
-  <meta name="generator" content="Hugo 0.80.0" />
-
-  
-  
-
-  
-  
-
-  
-  
-
-
-
+	<link rel="shortcut icon" href="/favicon.ico">
+		
 </head>
-<body>
-
-
-<header role="banner">
-<hgroup>
-  
-  <h1><a href="/">The Child is Father of the Man</a></h1>
-    <h2>Technical notes... almost</h2>
-</hgroup></header>
-
-
-<nav role="navigation">
-<fieldset class="mobile-nav">
-  
-  <select onchange="location = this.value;">
-    <option value="">Navigate…</option>
-      
-        <option value="/">» Home Page</option>
-      
-        <option value="/about">» About me</option>
-      
-        <option value="/resume">» Resume</option>
-      
-  </select>
-</fieldset>
-
-
-<ul class="main-navigation">
-  
-  
-    
-      <li><a href="/" title="Home Page">Home Page</a></li>
-    
-  
-    
-      <li><a href="/about" title="About me"  target="_blank"  rel="noopener noreferrer">About me</a></li>
-    
-  
-    
-      <li><a href="/resume" title="Resume"  target="_blank"  rel="noopener noreferrer">Resume</a></li>
-    
-  
-</ul>
-
-<ul class="subscription">
-  
-    
-        <a href="/index.xml" target="_blank" type="application/rss+xml" title="RSS" rel="noopener noreferrer"><i class="fa fa-rss-square fa-lg"></i></a>
-    
-  
-</ul>
-
-
-  <form action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
-    <fieldset role="search">
-      <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-      <input type="hidden" name="q" value="site:/" />
-    </fieldset>
-  </form>
-
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="The Child is Father of the Man" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">The Child is Father of the Man</div>
+					<div class="logo__tagline">Technical notes... almost</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Home Page</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about">
+				
+				<span class="menu__text">About me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/resume">
+				
+				<span class="menu__text">Resume</span>
+				
+			</a>
+		</li>
+	</ul>
 </nav>
 
-
-<div id="main">
-  <div id="content">
-    <div>
-      <article class="hentry" role="article">
-
-        
-        
-
-<header>
-  <p class="meta">Jul 27, 2017
-     - 10 minute read 
-    
-
-    
-    
-      - <a class="label" href="/categories/linux/">linux </a><a class="label" href="/categories/programming/">programming </a>
-    
-  </p>
-  <h1 class="entry-title">
-     Writing a minimalistic kernel module in Linux - Part 1 
-  </h1>
+	</div>
 </header>
-
-
-        <div class="entry-content">
-          
-          
-          
-          <h2 id="introduction">Introduction</h2>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Writing a minimalistic kernel module in Linux - Part 1</h1>
+			
+		</header><div class="content post__content clearfix">
+			<h2 id="introduction">Introduction</h2>
 <p>_<strong>L</strong>_oadable Kernel Modules (LKM) are object code that can be loaded into memory, often used for supporting hardware or enable specific features. Kernel modules enable the core kernel to be minimal and have features to be loaded as required.</p>
 <p>A kernel module is a normal file usually suffixed with <code>.ko</code> denoting it&rsquo;s a kernel object file. It contains compiled code from one or more source files, gets linked to the kernel when loaded, and runs in kernel space. It can dynamically adds functionality to a running kernel, without requiring a reboot.</p>
 <p>Linux kernel modules are written in C (not sure if anything else like C++ is possible), and is compiled for a specific kernel version. This is the ideal practice since kernel data structures may change across versions, and using a module compiled for a specific version may break for another.</p>
@@ -238,152 +167,43 @@
 <p>Loading and unloading the module should print the messages passed via <code>printk</code> in <code>dmesg</code>.</p>
 <p>[code language=&ldquo;bash&rdquo;] [root@centos7 test]# insmod ./test.ko [root@centos7 test]# lsmod | grep test test 12498 0 [root@centos7 test]# rmmod test [/code]</p>
 <p>Checking <code>dmesg</code> shows the informational messages in the module code:</p>
-<p>[code language=&ldquo;bash&rdquo;] [root@centos7 test]# dmesg | tail [35889.187282] test: loading out-of-tree module taints kernel. [35889.187288] test: module license &lsquo;unspecified&rsquo; taints kernel. [35889.187290] Disabling lock debugging due to kernel taint [35889.187338] test: module verification failed: signature and/or required key missing - tainting kernel [35889.187548] Loading the test module! [35899.216954] Unloading the test module! [/code] Note the messages about the module <code>test</code> tainting the kernel. Read more on how a module can taint the kernel, at 
-<a href="https://www.kernel.org/doc/html/latest/admin-guide/tainted-kernels.html" target="_blank" rel="noopener">https://www.kernel.org/doc/html/latest/admin-guide/tainted-kernels.html.</a></p>
+<p>[code language=&ldquo;bash&rdquo;] [root@centos7 test]# dmesg | tail [35889.187282] test: loading out-of-tree module taints kernel. [35889.187288] test: module license &lsquo;unspecified&rsquo; taints kernel. [35889.187290] Disabling lock debugging due to kernel taint [35889.187338] test: module verification failed: signature and/or required key missing - tainting kernel [35889.187548] Loading the test module! [35899.216954] Unloading the test module! [/code] Note the messages about the module <code>test</code> tainting the kernel. Read more on how a module can taint the kernel, at <a href="https://www.kernel.org/doc/html/latest/admin-guide/tainted-kernels.html">https://www.kernel.org/doc/html/latest/admin-guide/tainted-kernels.html.</a></p>
 <p>More on customizing the Makefile in another post.</p>
 
-        </div>
-        
-
-<footer>
-  <p class="meta">
-    <span class="byline author vcard">Posted by <span class="fn">Vimal A R</span></span>
-    
-    <time>Jul 27, 2017</time>
-    
-      <span class="categories">
-        Tags:
-        
-          <a class="category" href="/tags/kernel">kernel</a>  <a class="category" href="/tags/module">module</a>  
-    
-    </span>
-  </p>
-
-  
-
-  <p class="meta">
-    
-        <a class="basic-alignment left" href="/posts/2017/06/2017-06-27-recursion-algorithm-study/" title="Recursion - Algorithm Study">Recursion - Algorithm Study</a>
-    
-
-    
-      <a class="basic-alignment right" href="/posts/2017/08/2017-08-09-callables-in-python/" title="Callables in Python">Callables in Python</a>
-    
-  </p>
-  
-</footer>
-
-      </article>
-    </div>
-    
-
-<aside class="sidebar thirds">
-  <section class="first odd">
-
-    
-      <h1>Who am I?!</h1>
-    
-
-    <p>
-      
-        <p>I am a Systems Engineer, working in the Netherlands.</p>
-<p>Here, I aim to document my interests and notes on the technologies I learn during my work and free time.</p>
-<p>This usually includes programming, cloud technologies, filesystems, linux etc..</p>
-
-      
-    </p>
-  </section>
-
-
-
-  
-  <ul class="sidebar-nav">
-    <li class="sidebar-nav-item">
-      <a target="_blank" rel="noopener noreferrer" href="https://github.com/arvimal" title="https://github.com/arvimal"><i class="fa fa-github fa-3x"></i></a>
-      
-      
-      
-      
-         
-      
-      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arvimal/" title="https://www.linkedin.com/in/arvimal/"><i class="fa fa-linkedin fa-3x"></i></a>
-      
-      
-      
-      
-      
-
-    
-    
-    </li>
-  </ul>
-
-  
-
-  
-    
-      <section class="odd">
-        
-          <h1>Favourite blogs</h1>
-        
-        
-          <li>
-            <a href="http://sreweekly.com/feed/" title="SRE Weekly" >SRE Weekly</a>
-          </li>
-        
-          <li>
-            <a href="https://jvns.ca/atom.xml" title="Julia Evans" >Julia Evans</a>
-          </li>
-        
-          <li>
-            <a href="https://talkpython.fm/" title="Talk Python to Me" >Talk Python to Me</a>
-          </li>
-        
-      </section>
-    
-  
-
-  
-  
-  
-    
-      <section class="even">
-        <h1>Recent Posts</h1>
-        <ul id="recent_posts">
-          
-          
-        </ul>
-      </section>
-    
-  
-</aside>
-
-  </div>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/kernel/" rel="tag">kernel</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/module/" rel="tag">module</a>
+		</li>
+	</ul>
 </div>
-
-    <footer role="contentinfo">
-      <p>Copyright &copy; 2021 Vimal A R - <a href="/license/">License</a> -
-        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
-      </p>
-    </footer>
-
-    
-    
+		</footer>
+	</article>
+</main>
 
 
 
-    
-    
-    
 
-    
-      <script>
-        var _gaq=[['_setAccount','G-0PHPMMRT8D'],['_trackPageview']];
-        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-        s.parentNode.insertBefore(g,s)}(document,'script'));
-      </script>
-    
-  </body>
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 The Child is Father of the Man.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
 </html>
-

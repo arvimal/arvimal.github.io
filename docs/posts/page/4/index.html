@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Posts - The Child is Father of the Man</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="The Child is Father of the Man">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="The Child is Father of the Man" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">The Child is Father of the Man</div>
+					<div class="logo__tagline">Technical notes... almost</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Home Page</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about">
+				
+				<span class="menu__text">About me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/resume">
+				
+				<span class="menu__text">Resume</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">Posts</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2016/05/2016-05-30-decorators-object-oriented-programming/" rel="bookmark">
+			Decorators - Object Oriented Programming
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		_D_ecorators are wrapper functions (or classes) that wrap and modify another function (or class), and change it&rsquo;s behavior as required. Decorators help to modify your code without actually modifying the working function/class itself.
+There are several inbuilt Decorators in Python, such as @classmethod and @staticmethod. Examples on these are due for another post.
+Decorators are called to act upon a function or class, by mentioning the Decorator name just above the function/class.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2016/05/2016-05-30-method-resolution-order-object-oriented-programming/" rel="bookmark">
+			Method Resolution Order - Object Oriented Programming
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		_M_ethod Resolution Order or &lsquo;MRO&rsquo; in short, denotes the way a programming language resolves a method or attribute. This post looks into how Method Resolution Order works, using Python.
+Python supports classes inheriting from other classes. The class being inherited is called the Parent/Super class, while the class that inherits is called the Child/Sub class.
+While inheriting from another class, the interpreter needs a way to resolve the methods that are being called via an instance.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2016/05/2016-05-09-ceph-osd-heartbeats/" rel="bookmark">
+			Ceph OSD heartbeats
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Ceph OSD daemons need to ensure that the neighbouring OSDs are functioning properly so that the cluster remains in a healthy state.
+For this, each Ceph OSD process (ceph-osd) sends a heartbeat signal to the neighbouring OSDs. By default, the heartbeat signal is sent every 6 seconds [1], which is configurable of course.
+If the heartbeat check from one OSD doesn&rsquo;t hear from the other within the set value for `osd_heartbeat_grace` [2], which is set to 20 seconds by default, the OSD that sends the heartbeat check reports the other OSD (the one that didn&rsquo;t respond within 20 seconds) as down, to the MONs.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2016/05/2016-05-09-revamping-the-blog/" rel="bookmark">
+			Revamping the blog
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		I did a revamp of the whole blog two days back. Switching the theme from &lsquo;Scrawl&rsquo; to &lsquo;Independent Publisher&rsquo; was part of it. This theme is part of the hundreds of free themes in Wordpress, and looks both clean and impressive.
+&lsquo;Independent Publisher&rsquo; supports random header images from a list, at each page load. I&rsquo;m using Unsplash for the images. These are free to use and distribute since its released under a Creative Commons Zero licence.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2016/05/2016-05-08-ceph-check-a-ceph-installation-checker/" rel="bookmark">
+			`ceph-check` - A Ceph installation checker
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Many a user wants to know if a Ceph cluster installation has been done to a specific suggested guideline.
+Technologies like RAID is better avoided in Ceph due to an additional layer, which Ceph already takes care of.
+I&rsquo;ve started writing a tool which can be run from the Admin node, and it aims to check various such points.
+The code can be seen at https://github.com/arvimal/ceph_check
+The work is slow, really slow, due to my daily work, procrastination, and what not, even though I intend to finish this fast.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/2016/05/2016-05-08-big-o-notation-on/" rel="bookmark">
+			Code complexity - The Big O notation [O(n)]
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Efficiency or Complexity is how well you&rsquo;re using your resources to get your code run.
+Efficiency can be calculated on the basis of how much time your code takes to run/execute.
+Understanding the efficiency of your code can help to reduce the complexity, thus improving the runtime efficiency further. Getting the same job done in less time and less system resources is always good.
+Once you find the efficiency of your program, you can start to find ways for:
+	</div>
+</article>
+</main>
+
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="/posts/page/3/">«</a>
+	<span class="pagination__item pagination__item--current">4/11</span>
+	<a class="pagination__item pagination__item--next btn" href="/posts/page/5/">»</a>
+</div>
+
+			</div>
+			
+
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 The Child is Father of the Man.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

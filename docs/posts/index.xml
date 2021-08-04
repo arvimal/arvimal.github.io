@@ -121,7 +121,7 @@ When a = 1 is entered or executed by the python interpreter, the following happe
       
       <guid>/posts/2016/07/2016-07-21-max-file-name-length-in-an-ext4-file-system/</guid>
       <description>A recent discussion at work brought up the question &amp;ldquo;What can be the length of a file name in EXT4&amp;rdquo;. Or in other words, what would be the maximum character length of the name for a file in EXT4?
- Wikipedia states that it&amp;rsquo;s 255 Bytes, but how does that come to be? Is it 255 Bytes or 255 characters?
+Wikipedia states that it&amp;rsquo;s 255 Bytes, but how does that come to be? Is it 255 Bytes or 255 characters?
 In the kernel source for the 2.6 kernel series (the question was for a RHEL6/EXT4 combination), in fs/ext4/ext4.</description>
     </item>
     
