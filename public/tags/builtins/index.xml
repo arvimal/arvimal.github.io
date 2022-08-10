@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>builtins - Tag - The Child is Father of the Man</title>
+        <link>https://arvimal.github.io/tags/builtins/</link>
+        <description>builtins - Tag - The Child is Father of the Man</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>arvimal81@gmail.com (Vimal A.R)</managingEditor>
+            <webMaster>arvimal81@gmail.com (Vimal A.R)</webMaster><lastBuildDate>Wed, 29 Jun 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/builtins/" rel="self" type="application/rss+xml" /><item>
+    <title>Inheritance and Method overloading - Object Oriented Programming</title>
+    <link>https://arvimal.github.io/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/</link>
+    <pubDate>Wed, 29 Jun 2016 00:00:00 &#43;0000</pubDate>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/</guid>
+    <description><![CDATA[_I_nheritance is a usual theme in Object Oriented Programming. Because of Inheritance, the functions/methods defined in parent classes can be called in Child classes which enables code reuse, and several other features. In this article, we try to understand some of those features that come up with Inheritance.
+We&rsquo;ve discussed Abstract Methods in an earlier post, which is a feature part of Inheritance, and can be applied on child classes that inherits from a Parent class.]]></description>
+</item>
+</channel>
+</rss>

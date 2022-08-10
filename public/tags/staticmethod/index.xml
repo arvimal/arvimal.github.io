@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>staticmethod - Tag - The Child is Father of the Man</title>
+        <link>https://arvimal.github.io/tags/staticmethod/</link>
+        <description>staticmethod - Tag - The Child is Father of the Man</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>arvimal81@gmail.com (Vimal A.R)</managingEditor>
+            <webMaster>arvimal81@gmail.com (Vimal A.R)</webMaster><lastBuildDate>Mon, 30 May 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/staticmethod/" rel="self" type="application/rss+xml" /><item>
+    <title>Decorators - Object Oriented Programming</title>
+    <link>https://arvimal.github.io/decorators-object-oriented-programming/</link>
+    <pubDate>Mon, 30 May 2016 00:00:00 &#43;0000</pubDate>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/decorators-object-oriented-programming/</guid>
+    <description><![CDATA[_D_ecorators are wrapper functions (or classes) that wrap and modify another function (or class), and change it&rsquo;s behavior as required. Decorators help to modify your code without actually modifying the working function/class itself.
+There are several inbuilt Decorators in Python, such as @classmethod and @staticmethod. Examples on these are due for another post.
+Decorators are called to act upon a function or class, by mentioning the Decorator name just above the function/class.]]></description>
+</item>
+</channel>
+</rss>

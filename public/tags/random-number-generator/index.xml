@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>random-number-generator - Tag - The Child is Father of the Man</title>
+        <link>https://arvimal.github.io/tags/random-number-generator/</link>
+        <description>random-number-generator - Tag - The Child is Father of the Man</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>arvimal81@gmail.com (Vimal A.R)</managingEditor>
+            <webMaster>arvimal81@gmail.com (Vimal A.R)</webMaster><lastBuildDate>Wed, 13 Feb 2008 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/random-number-generator/" rel="self" type="application/rss+xml" /><item>
+    <title>A random number generator in Bash</title>
+    <link>https://arvimal.github.io/bash-script-for-generating-random-number/</link>
+    <pubDate>Wed, 13 Feb 2008 00:00:00 &#43;0000</pubDate>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/bash-script-for-generating-random-number/</guid>
+    <description><![CDATA[The bash environment variable &lsquo;RANDOM&rsquo; is a pseudo-random number generator built in bash, and it can generate random numbers in the range of 0 - 32767.
+Using the command `echo $RANDOM`, we can generate a random number. Building a random number generator which emits a sequence of random numbers is pretty easy.
+[code language=&ldquo;bash&rdquo;] #!/bin/bash for i in `seq 1 10`: do echo $RANDOM; sleep 1s; done [/code]
+The &lsquo;seq&rsquo; or the &lsquo;sequential&rsquo; can be used to generate a sequence of numbers.]]></description>
+</item>
+</channel>
+</rss>
