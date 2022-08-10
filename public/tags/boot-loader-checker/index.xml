@@ -1,14 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>boot-loader-checker - Tag - My New Hugo Site</title>
-        <link>http://example.org/tags/boot-loader-checker/</link>
-        <description>boot-loader-checker - Tag - My New Hugo Site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 15 Feb 2008 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/boot-loader-checker/" rel="self" type="application/rss+xml" /><item>
+        <title>boot-loader-checker - Tag - The Child is Father of the Man</title>
+        <link>https://arvimal.github.io/tags/boot-loader-checker/</link>
+        <description>boot-loader-checker - Tag - The Child is Father of the Man</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>arvimal81@gmail.com (Vimal A.R)</managingEditor>
+            <webMaster>arvimal81@gmail.com (Vimal A.R)</webMaster><lastBuildDate>Fri, 15 Feb 2008 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/boot-loader-checker/" rel="self" type="application/rss+xml" /><item>
     <title>Bootloader checker</title>
-    <link>http://example.org/2008-02-15-bootloader-checker/</link>
+    <link>https://arvimal.github.io/2008-02-15-bootloader-checker/</link>
     <pubDate>Fri, 15 Feb 2008 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://example.org/2008-02-15-bootloader-checker/</guid>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/2008-02-15-bootloader-checker/</guid>
     <description><![CDATA[A bash code snippet that helps to check if the installed bootloader is Grub or LILO.
 [code language=&ldquo;bash&rdquo;] #!/bin/bash
 A=`mount | awk &lsquo;{print $1}&rsquo; | grep -n /dev/ | grep &ldquo;1:&rdquo; | cut -f2 -d &ldquo;:&rdquo; | cut -c 1-8` B=`mount | awk &lsquo;{print $1}&rsquo; | grep -n /dev/ | grep &ldquo;1:&rdquo; | cut -f2 -d &ldquo;:&rdquo;`

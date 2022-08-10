@@ -1,16 +1,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>My New Hugo Site</title>
-        <link>http://example.org/</link>
+        <title>The Child is Father of the Man</title>
+        <link>https://arvimal.github.io/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 16 May 2021 18:49:58 &#43;0200</lastBuildDate>
-            <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>arvimal81@gmail.com (Vimal A.R)</managingEditor>
+            <webMaster>arvimal81@gmail.com (Vimal A.R)</webMaster><lastBuildDate>Sun, 16 May 2021 18:49:58 &#43;0200</lastBuildDate>
+            <atom:link href="https://arvimal.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>Moving to Hugo</title>
-    <link>http://example.org/moving_to_hugo/</link>
+    <link>https://arvimal.github.io/moving_to_hugo/</link>
     <pubDate>Sun, 16 May 2021 18:49:58 &#43;0200</pubDate>
-    <author>xxxx</author>
-    <guid>http://example.org/moving_to_hugo/</guid>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/moving_to_hugo/</guid>
     <description><![CDATA[I&rsquo;ve always wanted to move my blog away from WordPress to a static blog generator on Github.
 After a few half-hearted attempts over the past years, I&rsquo;ve made it finally.
 Of course, the plus points are several. Fast, Markdown, Free, Nice themes :)
@@ -18,39 +19,39 @@ But the motivators were entirely different this time. My domain and WordPress su
 </item>
 <item>
     <title>Callables in Python</title>
-    <link>http://example.org/2017-08-09-callables-in-python/</link>
+    <link>https://arvimal.github.io/2017-08-09-callables-in-python/</link>
     <pubDate>Wed, 09 Aug 2017 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://example.org/2017-08-09-callables-in-python/</guid>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/2017-08-09-callables-in-python/</guid>
     <description><![CDATA[Introduction A callable is an object in Python that can be called / executed when called with parantheses ( ). Classes and functions are callable.
 Callables can be a class, a function, or an instance of a class. In simple terms, a class/function/instance/builtin is callable if it gets executed when called with parantheses ().
 Example 1: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 In [1]: help() Welcome to Python 3.]]></description>
 </item>
 <item>
     <title>Writing a minimalistic kernel module in Linux - Part 1</title>
-    <link>http://example.org/2017-07-27-writing-a-minimalistic-kernel-module-in-linux-part-1/</link>
+    <link>https://arvimal.github.io/2017-07-27-writing-a-minimalistic-kernel-module-in-linux-part-1/</link>
     <pubDate>Thu, 27 Jul 2017 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://example.org/2017-07-27-writing-a-minimalistic-kernel-module-in-linux-part-1/</guid>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/2017-07-27-writing-a-minimalistic-kernel-module-in-linux-part-1/</guid>
     <description><![CDATA[Introduction _L_oadable Kernel Modules (LKM) are object code that can be loaded into memory, often used for supporting hardware or enable specific features. Kernel modules enable the core kernel to be minimal and have features to be loaded as required.
 A kernel module is a normal file usually suffixed with .ko denoting it&rsquo;s a kernel object file. It contains compiled code from one or more source files, gets linked to the kernel when loaded, and runs in kernel space.]]></description>
 </item>
 <item>
     <title>Recursion - Algorithm Study</title>
-    <link>http://example.org/2017-06-27-recursion-algorithm-study/</link>
+    <link>https://arvimal.github.io/2017-06-27-recursion-algorithm-study/</link>
     <pubDate>Tue, 27 Jun 2017 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://example.org/2017-06-27-recursion-algorithm-study/</guid>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/2017-06-27-recursion-algorithm-study/</guid>
     <description><![CDATA[_R_ecursion is a technique by which a function calls itself until a condition is met.
 Introduction Loops or repetitive execution based on certain conditions are inevitable in programs. Usual loops include if, while and for loops. Recursion is an entirely different way to deal with such situations, and in many cases, easier.
 Recursion is a when a function calls itself in each iteration till a condition is met. Ideally, the data set in each iteration gets smaller until it reach the required condition, after which the recursive function exists.]]></description>
 </item>
 <item>
     <title>Selection Sort - Algorithm Study</title>
-    <link>http://example.org/2017-02-11-selection-sort-algorithm-study/</link>
+    <link>https://arvimal.github.io/2017-02-11-selection-sort-algorithm-study/</link>
     <pubDate>Sat, 11 Feb 2017 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://example.org/2017-02-11-selection-sort-algorithm-study/</guid>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/2017-02-11-selection-sort-algorithm-study/</guid>
     <description><![CDATA[Selection Sort is a sorting algorithm used to sort a data set either in incremental or decremental order.
 It goes through the entire elements one by one and hence it&rsquo;s not a very efficient algorithm to work on large data sets.
 1. How does Selection sort work? Selection sort starts with an unsorted data set. With each iteration, it builds up a sub dataset with the sorted data.
@@ -58,29 +59,29 @@ By the end of the sorting process, the sub dataset contains the entire elements 
 </item>
 <item>
     <title>Binary Search - Algorithm Study</title>
-    <link>http://example.org/2017-01-16-binary-search-algorithm-study/</link>
+    <link>https://arvimal.github.io/2017-01-16-binary-search-algorithm-study/</link>
     <pubDate>Mon, 16 Jan 2017 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://example.org/2017-01-16-binary-search-algorithm-study/</guid>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/2017-01-16-binary-search-algorithm-study/</guid>
     <description><![CDATA[Introduction **B**inary Search is a search method used to find an object in a data set. This is much faster compared to the Linear Search algorithm we saw in a previous post.
 This algorithm works on the Divide and Conquer principle. Binary Search gets its speed by essentially dividing the list/array in half in each iteration, thus reducing the dataset size for the next iteration.
 Imagine searching for an element in a rather large dataset.]]></description>
 </item>
 <item>
     <title>Linear Search - Algorithm Study</title>
-    <link>http://example.org/2017-01-15-linear-search-algorithm-study/</link>
+    <link>https://arvimal.github.io/2017-01-15-linear-search-algorithm-study/</link>
     <pubDate>Sun, 15 Jan 2017 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://example.org/2017-01-15-linear-search-algorithm-study/</guid>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/2017-01-15-linear-search-algorithm-study/</guid>
     <description><![CDATA[autoauto- [Introduction](#introduction)auto- [Performance](#performance)auto - [1\. Worst-case performance: O(n)](#1\-worst-case-performance-on)auto - [2\. Best-case performance: O(1)](#2\-best-case-performance-o1)auto - [3\. Average performance: O(n/2)](#3\-average-performance-on2)auto - [Observations:](#observations)auto- [How does Linear Search work?](#how-does-linear-search-work)auto- [Code](#code)auto - [Reference:](#reference)autoauto Introduction _L_inear Search is an way to search a data set for an element of interest. It is one of the many search algorithms available and is also the most direct and simple of the lot.
 Linear search looks for the element of interest in a dataset starting from the first element and moves on to the consecutive elements till it finds the one we&rsquo;re interested in.]]></description>
 </item>
 <item>
     <title>Accessor and Mutator methods - Python</title>
-    <link>http://example.org/2016-12-18-accessor-and-mutator-methods-python/</link>
+    <link>https://arvimal.github.io/2016-12-18-accessor-and-mutator-methods-python/</link>
     <pubDate>Sun, 18 Dec 2016 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://example.org/2016-12-18-accessor-and-mutator-methods-python/</guid>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/2016-12-18-accessor-and-mutator-methods-python/</guid>
     <description><![CDATA[A method defined within a class can either be an Accessor or a Mutator method.
 An Accessor method returns the information about the object, but do not change the state or the object.
 A Mutator method, also called an Update method, can change the state of the object.
@@ -92,10 +93,10 @@ In [13]: a Out[13]: [1, 2, 3, 4, 5]]]></description>
 </item>
 <item>
     <title>Python, Objects, and some more..</title>
-    <link>http://example.org/2016-10-20-python-objects-and-some-more/</link>
+    <link>https://arvimal.github.io/2016-10-20-python-objects-and-some-more/</link>
     <pubDate>Thu, 20 Oct 2016 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://example.org/2016-10-20-python-objects-and-some-more/</guid>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/2016-10-20-python-objects-and-some-more/</guid>
     <description><![CDATA[_E_verything in Python is an object, what does that mean? This post tries to discuss some very basic concepts.
 What does the following assignment do?
 [code language=&ldquo;python&rdquo;]
@@ -105,10 +106,10 @@ When a = 1 is entered or executed by the python interpreter, the following happe
 </item>
 <item>
     <title>Max file-name length in an EXT4 file system.</title>
-    <link>http://example.org/2016-07-21-max-file-name-length-in-an-ext4-file-system/</link>
+    <link>https://arvimal.github.io/2016-07-21-max-file-name-length-in-an-ext4-file-system/</link>
     <pubDate>Thu, 21 Jul 2016 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://example.org/2016-07-21-max-file-name-length-in-an-ext4-file-system/</guid>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/2016-07-21-max-file-name-length-in-an-ext4-file-system/</guid>
     <description><![CDATA[A recent discussion at work brought up the question &ldquo;What can be the length of a file name in EXT4&rdquo;. Or in other words, what would be the maximum character length of the name for a file in EXT4?
 Wikipedia states that it&rsquo;s 255 Bytes, but how does that come to be? Is it 255 Bytes or 255 characters?
 In the kernel source for the 2.6 kernel series (the question was for a RHEL6/EXT4 combination), in fs/ext4/ext4.]]></description>

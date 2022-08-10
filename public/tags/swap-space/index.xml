@@ -1,14 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>swap-space - Tag - My New Hugo Site</title>
-        <link>http://example.org/tags/swap-space/</link>
-        <description>swap-space - Tag - My New Hugo Site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 15 Feb 2008 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/swap-space/" rel="self" type="application/rss+xml" /><item>
+        <title>swap-space - Tag - The Child is Father of the Man</title>
+        <link>https://arvimal.github.io/tags/swap-space/</link>
+        <description>swap-space - Tag - The Child is Father of the Man</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>arvimal81@gmail.com (Vimal A.R)</managingEditor>
+            <webMaster>arvimal81@gmail.com (Vimal A.R)</webMaster><lastBuildDate>Fri, 15 Feb 2008 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/swap-space/" rel="self" type="application/rss+xml" /><item>
     <title>Creating a SWAP space in Linux</title>
-    <link>http://example.org/2008-02-15-creating-a-swap-space-in-linux/</link>
+    <link>https://arvimal.github.io/2008-02-15-creating-a-swap-space-in-linux/</link>
     <pubDate>Fri, 15 Feb 2008 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://example.org/2008-02-15-creating-a-swap-space-in-linux/</guid>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/2008-02-15-creating-a-swap-space-in-linux/</guid>
     <description><![CDATA[Adding Swap Space:
 Sometimes it is necessary to add more swap space after installation. For example, you may upgrade the amount of RAM in your system from 64 MB to 128 MB, but there is only 128 MB of swap space. It might be advantageous to increase the amount of swap space to 256 MB if you perform memory-intense operations or run applications that require a large amount of memory.]]></description>
 </item>

@@ -1,14 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>calamari - Tag - My New Hugo Site</title>
-        <link>http://example.org/tags/calamari/</link>
-        <description>calamari - Tag - My New Hugo Site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 13 Jul 2015 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/calamari/" rel="self" type="application/rss+xml" /><item>
+        <title>calamari - Tag - The Child is Father of the Man</title>
+        <link>https://arvimal.github.io/tags/calamari/</link>
+        <description>calamari - Tag - The Child is Father of the Man</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>arvimal81@gmail.com (Vimal A.R)</managingEditor>
+            <webMaster>arvimal81@gmail.com (Vimal A.R)</webMaster><lastBuildDate>Mon, 13 Jul 2015 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/calamari/" rel="self" type="application/rss+xml" /><item>
     <title>Resetting Calamari password</title>
-    <link>http://example.org/2015-07-13-how-can-we-resetchange-the-calamari-interface-password/</link>
+    <link>https://arvimal.github.io/2015-07-13-how-can-we-resetchange-the-calamari-interface-password/</link>
     <pubDate>Mon, 13 Jul 2015 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://example.org/2015-07-13-how-can-we-resetchange-the-calamari-interface-password/</guid>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/2015-07-13-how-can-we-resetchange-the-calamari-interface-password/</guid>
     <description><![CDATA[&lsquo;Calamari&rsquo; is the monitoring interface for a Ceph cluster.
 The Calamari interface password can be reset/changed using the &lsquo;calamari-ctl&rsquo; command.
 # calamari-ctl change_password &ndash;password {password} {user-name}

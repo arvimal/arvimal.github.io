@@ -1,14 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>__bases__ - Tag - My New Hugo Site</title>
-        <link>http://example.org/tags/__bases__/</link>
-        <description>__bases__ - Tag - My New Hugo Site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 30 May 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/__bases__/" rel="self" type="application/rss+xml" /><item>
+        <title>__bases__ - Tag - The Child is Father of the Man</title>
+        <link>https://arvimal.github.io/tags/__bases__/</link>
+        <description>__bases__ - Tag - The Child is Father of the Man</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>arvimal81@gmail.com (Vimal A.R)</managingEditor>
+            <webMaster>arvimal81@gmail.com (Vimal A.R)</webMaster><lastBuildDate>Mon, 30 May 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/__bases__/" rel="self" type="application/rss+xml" /><item>
     <title>Method Resolution Order - Object Oriented Programming</title>
-    <link>http://example.org/2016-05-30-method-resolution-order-object-oriented-programming/</link>
+    <link>https://arvimal.github.io/2016-05-30-method-resolution-order-object-oriented-programming/</link>
     <pubDate>Mon, 30 May 2016 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://example.org/2016-05-30-method-resolution-order-object-oriented-programming/</guid>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/2016-05-30-method-resolution-order-object-oriented-programming/</guid>
     <description><![CDATA[_M_ethod Resolution Order or &lsquo;MRO&rsquo; in short, denotes the way a programming language resolves a method or attribute. This post looks into how Method Resolution Order works, using Python.
 Python supports classes inheriting from other classes. The class being inherited is called the Parent/Super class, while the class that inherits is called the Child/Sub class.
 While inheriting from another class, the interpreter needs a way to resolve the methods that are being called via an instance.]]></description>

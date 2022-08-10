@@ -1,14 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>functions - Tag - My New Hugo Site</title>
-        <link>http://example.org/tags/functions/</link>
-        <description>functions - Tag - My New Hugo Site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 14 Feb 2008 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/functions/" rel="self" type="application/rss+xml" /><item>
+        <title>functions - Tag - The Child is Father of the Man</title>
+        <link>https://arvimal.github.io/tags/functions/</link>
+        <description>functions - Tag - The Child is Father of the Man</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>arvimal81@gmail.com (Vimal A.R)</managingEditor>
+            <webMaster>arvimal81@gmail.com (Vimal A.R)</webMaster><lastBuildDate>Thu, 14 Feb 2008 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/functions/" rel="self" type="application/rss+xml" /><item>
     <title>CHKROOTKIT install script (with functions)</title>
-    <link>http://example.org/2008-02-14-chkrootkit-install-script-with-functions/</link>
+    <link>https://arvimal.github.io/2008-02-14-chkrootkit-install-script-with-functions/</link>
     <pubDate>Thu, 14 Feb 2008 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://example.org/2008-02-14-chkrootkit-install-script-with-functions/</guid>
+    <author>Vimal A.R</author>
+    <guid>https://arvimal.github.io/2008-02-14-chkrootkit-install-script-with-functions/</guid>
     <description><![CDATA[This is an extension or a rebuild of the previous chkrootkit install script, just used functions so its somewhat simplified&hellip;. ( Or is it ..? :) )
 [code language=&ldquo;bash&rdquo;]
 #!/bin/bash

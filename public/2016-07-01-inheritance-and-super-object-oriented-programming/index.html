@@ -4,16 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Inheritance and super() - Object Oriented Programming - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Inheritance and super() - Object Oriented Programming" />
+        <title>Inheritance and super() - Object Oriented Programming - The Child is Father of the Man</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Inheritance and super() - Object Oriented Programming" />
 <meta property="og:description" content="_s_uper() is a feature through which inherited methods can be accessed, which has been overridden in a class. It can also help with the MRO lookup order in case of multiple inheritance. This may not be obvious first, but a few examples should help to drive the point home.
 Inheritance and method overloading was discussed in a previous post, where we saw how inherited methods can be overloaded or enhanced in the child classes." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://example.org/2016-07-01-inheritance-and-super-object-oriented-programming/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://arvimal.github.io/2016-07-01-inheritance-and-super-object-oriented-programming/" /><meta property="og:image" content="https://arvimal.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2016-07-01T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-08-03T20:52:51+02:00" /><meta property="og:site_name" content="My cool site" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://example.org/logo.png"/>
+<meta name="twitter:image" content="https://arvimal.github.io/logo.png"/>
 
 <meta name="twitter:title" content="Inheritance and super() - Object Oriented Programming"/>
 <meta name="twitter:description" content="_s_uper() is a feature through which inherited methods can be accessed, which has been overridden in a class. It can also help with the MRO lookup order in case of multiple inheritance. This may not be obvious first, but a few examples should help to drive the point home.
@@ -21,7 +21,7 @@ Inheritance and method overloading was discussed in a previous post, where we 
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/2016-07-01-inheritance-and-super-object-oriented-programming/" /><link rel="prev" href="http://example.org/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/" /><link rel="next" href="http://example.org/2016-07-21-max-file-name-length-in-an-ext4-file-system/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://arvimal.github.io/2016-07-01-inheritance-and-super-object-oriented-programming/" /><link rel="prev" href="https://arvimal.github.io/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/" /><link rel="next" href="https://arvimal.github.io/2016-07-21-max-file-name-length-in-an-ext4-file-system/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -31,13 +31,13 @@ Inheritance and method overloading was discussed in a previous post, where we 
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/example.org\/2016-07-01-inheritance-and-super-object-oriented-programming\/"
+            "@id": "https:\/\/arvimal.github.io\/2016-07-01-inheritance-and-super-object-oriented-programming\/"
         },"genre": "posts","keywords": "inheritance, object-oriented-programming, python, super","wordcount":  992 ,
-        "url": "http:\/\/example.org\/2016-07-01-inheritance-and-super-object-oriented-programming\/","datePublished": "2016-07-01T00:00:00+00:00","dateModified": "2021-08-03T20:52:51+02:00","publisher": {
+        "url": "https:\/\/arvimal.github.io\/2016-07-01-inheritance-and-super-object-oriented-programming\/","datePublished": "2016-07-01T00:00:00+00:00","dateModified": "2021-08-03T20:52:51+02:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
-                "name": "xxxx"
+                "name": "Vimal A.R"
             },"description": ""
     }
     </script></head>
@@ -46,7 +46,7 @@ Inheritance and method overloading was discussed in a previous post, where we 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="My New Hugo Site"></a>
+            <a href="/" title="The Child is Father of the Man"></a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
@@ -69,7 +69,7 @@ Inheritance and method overloading was discussed in a previous post, where we 
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="My New Hugo Site"></a>
+                <a href="/" title="The Child is Father of the Man"></a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -105,7 +105,7 @@ Inheritance and method overloading was discussed in a previous post, where we 
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Inheritance and super() - Object Oriented Programming</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>xxxx</a></span>&nbsp;<span class="post-category">included in <a href="/categories/programming/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>programming</a>&nbsp;<a href="/categories/python/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>python</a></span></div>
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/arvimal" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Vimal A.R</a></span>&nbsp;<span class="post-category">included in <a href="/categories/programming/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>programming</a>&nbsp;<a href="/categories/python/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>python</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2016-07-01">2016-07-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;992 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
@@ -224,7 +224,7 @@ Inheritance and method overloading was discussed in a previous post, where we 
                             <a class="link-to-markdown" href="/2016-07-01-inheritance-and-super-object-oriented-programming/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/2016-07-01-inheritance-and-super-object-oriented-programming/" data-title="Inheritance and super() - Object Oriented Programming" data-via="xxxx" data-hashtags="inheritance,object-oriented-programming,python,super"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/2016-07-01-inheritance-and-super-object-oriented-programming/" data-hashtag="inheritance"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/2016-07-01-inheritance-and-super-object-oriented-programming/" data-title="Inheritance and super() - Object Oriented Programming"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/2016-07-01-inheritance-and-super-object-oriented-programming/" data-title="Inheritance and super() - Object Oriented Programming"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/2016-07-01-inheritance-and-super-object-oriented-programming/" data-title="Inheritance and super() - Object Oriented Programming"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://arvimal.github.io/2016-07-01-inheritance-and-super-object-oriented-programming/" data-title="Inheritance and super() - Object Oriented Programming" data-via="xxxx" data-hashtags="inheritance,object-oriented-programming,python,super"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://arvimal.github.io/2016-07-01-inheritance-and-super-object-oriented-programming/" data-hashtag="inheritance"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://arvimal.github.io/2016-07-01-inheritance-and-super-object-oriented-programming/" data-title="Inheritance and super() - Object Oriented Programming"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://arvimal.github.io/2016-07-01-inheritance-and-super-object-oriented-programming/" data-title="Inheritance and super() - Object Oriented Programming"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://arvimal.github.io/2016-07-01-inheritance-and-super-object-oriented-programming/" data-title="Inheritance and super() - Object Oriented Programming"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -242,7 +242,7 @@ Inheritance and method overloading was discussed in a previous post, where we 
 </article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/arvimal" target="_blank">Vimal A.R</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 
