@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>discard - Tag - My New Hugo Site</title>
+        <link>http://example.org/tags/discard/</link>
+        <description>discard - Tag - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 07 Oct 2015 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/discard/" rel="self" type="application/rss+xml" /><item>
+    <title>Ceph Rados Block Device (RBD) and TRIM</title>
+    <link>http://example.org/2015-10-07-objects-remain-in-a-ceph-pool-used-for-rbd-even-if-the-files-are-deleted-from-the-mount-point/</link>
+    <pubDate>Wed, 07 Oct 2015 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://example.org/2015-10-07-objects-remain-in-a-ceph-pool-used-for-rbd-even-if-the-files-are-deleted-from-the-mount-point/</guid>
+    <description><![CDATA[I recently came across a scenario where the objects in a RADOS pool used for an RBD block device doesn’t get removed, even if the files created through the mount point were removed.
+I had an RBD image from an RHCS1.3 cluster mapped to a RHEL7.1 client machine, with an XFS filesystem created on it, and mounted locally. Created a 5GB file, and I could see the objects being created in the rbd pool in the ceph cluster.]]></description>
+</item>
+</channel>
+</rss>

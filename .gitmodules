@@ -1,6 +1,3 @@
-[submodule "themes/Hugo-Octopress"]
-	path = themes/Hugo-Octopress
-	url = https://github.com/parsiya/hugo-octopress/
-[submodule "themes/book"]
-	path = themes/book
-	url = https://github.com/alex-shpak/hugo-book
+[submodule "themes/LoveIt"]
+	path = themes/LoveIt
+	url = https://github.com/dillonzq/LoveIt

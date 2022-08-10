@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>crush-map - Tag - My New Hugo Site</title>
+        <link>http://example.org/tags/crush-map/</link>
+        <description>crush-map - Tag - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 07 May 2015 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/crush-map/" rel="self" type="application/rss+xml" /><item>
+    <title>How to remove a host from a Ceph cluster?</title>
+    <link>http://example.org/2015-05-07-how-to-remove-a-host-from-a-ceph-cluster/</link>
+    <pubDate>Thu, 07 May 2015 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://example.org/2015-05-07-how-to-remove-a-host-from-a-ceph-cluster/</guid>
+    <description><![CDATA[I&rsquo;m still studying Ceph, and recently faced a scenario in which one of my Ceph nodes went down due to hardware failure. Even though my data was safe due to the replication factor, I was not able to remove the node from the cluster.
+I could remove the OSDs on the node, but I didn&rsquo;t find a way to remove the node being listed in &lsquo;ceph osd tree&rsquo;. I ended up editing the CRUSH map by hand, to remove the host, and uploaded it back.]]></description>
+</item>
+</channel>
+</rss>

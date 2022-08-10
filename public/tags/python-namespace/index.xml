@@ -1,0 +1,20 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>python-namespace - Tag - My New Hugo Site</title>
+        <link>http://example.org/tags/python-namespace/</link>
+        <description>python-namespace - Tag - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 20 Oct 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/python-namespace/" rel="self" type="application/rss+xml" /><item>
+    <title>Python, Objects, and some more..</title>
+    <link>http://example.org/2016-10-20-python-objects-and-some-more/</link>
+    <pubDate>Thu, 20 Oct 2016 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://example.org/2016-10-20-python-objects-and-some-more/</guid>
+    <description><![CDATA[_E_verything in Python is an object, what does that mean? This post tries to discuss some very basic concepts.
+What does the following assignment do?
+[code language=&ldquo;python&rdquo;]
+a = 1 [/code] Of course, anyone dabbled in code knows this. The statement above creates a container `a` and stores the value `1` in it.
+But it seem that&rsquo;s not exactly what&rsquo;s happening, at least from Python&rsquo;s view-point.
+When a = 1 is entered or executed by the python interpreter, the following happens in the backend, seemingly unknown to the user.]]></description>
+</item>
+</channel>
+</rss>

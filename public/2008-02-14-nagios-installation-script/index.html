@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Nagios Installation Script - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Nagios Installation Script" />
+<meta property="og:description" content="This is a bash script which automates the installation of Nagios. There are more things to do such as setup of service monitoring, but that&rsquo;s for another time.
+[code language=&ldquo;bash&rdquo;] #!/bin/bash DOWNLOAD_LOCATION=&rsquo;/root/Downloads/&rsquo; NAGIOS_URL=&lsquo;http://jaist.dl.sourceforge.net/sourceforge/nagios/nagios-2.9.tar.gz&#39; APACHE_CONF=&rsquo;/etc/httpd/conf/httpd.conf&rsquo; NAGIOS_PLUGIN=&lsquo;http://nchc.dl.sourceforge.net/sourceforge/nagiosplug/nagios-plugins-1.4.8.tar.gz&#39; NAGIOSHOME=&rsquo;/usr/local/nagios&rsquo; DATE=`date &#43;%d-%b-%Y` FILE=&rsquo;/root/Nagios.txt&rsquo;
+################################# # [1] Installing nagios # ################################# nagios_download () { clear
+if [ `id -u` -ne 0 ]; then echo -e &ldquo;You are executing the script as $USER\n&rdquo; echo -e &ldquo;You must be root to execute this script." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/2008-02-14-nagios-installation-script/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2008-02-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-03T20:52:51+02:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Nagios Installation Script"/>
+<meta name="twitter:description" content="This is a bash script which automates the installation of Nagios. There are more things to do such as setup of service monitoring, but that&rsquo;s for another time.
+[code language=&ldquo;bash&rdquo;] #!/bin/bash DOWNLOAD_LOCATION=&rsquo;/root/Downloads/&rsquo; NAGIOS_URL=&lsquo;http://jaist.dl.sourceforge.net/sourceforge/nagios/nagios-2.9.tar.gz&#39; APACHE_CONF=&rsquo;/etc/httpd/conf/httpd.conf&rsquo; NAGIOS_PLUGIN=&lsquo;http://nchc.dl.sourceforge.net/sourceforge/nagiosplug/nagios-plugins-1.4.8.tar.gz&#39; NAGIOSHOME=&rsquo;/usr/local/nagios&rsquo; DATE=`date &#43;%d-%b-%Y` FILE=&rsquo;/root/Nagios.txt&rsquo;
+################################# # [1] Installing nagios # ################################# nagios_download () { clear
+if [ `id -u` -ne 0 ]; then echo -e &ldquo;You are executing the script as $USER\n&rdquo; echo -e &ldquo;You must be root to execute this script."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/2008-02-14-nagios-installation-script/" /><link rel="prev" href="http://example.org/2008-02-13-bash-script-for-generating-a-random-number/" /><link rel="next" href="http://example.org/2008-02-14-dns-zone-file-sanity-check/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Nagios Installation Script",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/2008-02-14-nagios-installation-script\/"
+        },"genre": "posts","keywords": "nagios-installation","wordcount":  1104 ,
+        "url": "http:\/\/example.org\/2008-02-14-nagios-installation-script\/","datePublished": "2008-02-14T00:00:00+00:00","dateModified": "2021-08-03T20:52:51+02:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site"></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site"></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Nagios Installation Script</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>xxxx</a></span>&nbsp;<span class="post-category">included in <a href="/categories/programming/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>programming</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2008-02-14">2008-02-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1104 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>This is a bash script which automates the installation of Nagios. There are more things to do such as setup of service monitoring, but that&rsquo;s for another time.</p>
+<p>[code language=&ldquo;bash&rdquo;] #!/bin/bash DOWNLOAD_LOCATION=&rsquo;/root/Downloads/&rsquo; NAGIOS_URL=&lsquo;<a href="http://jaist.dl.sourceforge.net/sourceforge/nagios/nagios-2.9.tar.gz%27" target="_blank" rel="noopener noreffer ">http://jaist.dl.sourceforge.net/sourceforge/nagios/nagios-2.9.tar.gz'</a> APACHE_CONF=&rsquo;/etc/httpd/conf/httpd.conf&rsquo; NAGIOS_PLUGIN=&lsquo;<a href="http://nchc.dl.sourceforge.net/sourceforge/nagiosplug/nagios-plugins-1.4.8.tar.gz%27" target="_blank" rel="noopener noreffer ">http://nchc.dl.sourceforge.net/sourceforge/nagiosplug/nagios-plugins-1.4.8.tar.gz'</a> NAGIOSHOME=&rsquo;/usr/local/nagios&rsquo; DATE=`date +%d-%b-%Y` FILE=&rsquo;/root/Nagios.txt&rsquo;</p>
+<p>################################# # [1]   Installing nagios       # ################################# nagios_download () { clear</p>
+<p>if [ `id -u` -ne 0 ]; then echo -e &ldquo;You are executing the script as $USER\n&rdquo; echo -e &ldquo;You must be root to execute this script..\n&rdquo;; echo -e &ldquo;Sorry&hellip;Exiting..\n&rdquo;;exit 111; else if [ ! -e /root/Nagios.txt ]; then touch /root/Nagios.txt; else mv /root/Nagios.txt /root/Nagios-$DATE.txt; touch /root/Nagios.txt; fi</p>
+<p>echo -e &quot;            [@@@@@@@@@@@@@@@@@@@@@@@@@ NAGIOS INSTALL SCRIPT @@@@@@@@@@@@@@@@@@@@@@@@@]\n&quot;;sleep 1s echo -e &quot;                                           &hellip;Welcome&hellip;\n&quot;|tee -a $FILE;sleep 1s echo &ldquo;[Starting the Nagios Installation Process :-]&quot;|tee -a $FILE; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&quot;|tee -a $FILE;echo;sleep 1s fi</p>
+<p>if [ ! -e $DOWNLOAD_LOCATION ]; then echo &ldquo;$DOWNLOAD_LOCATION does not exist, creating&hellip;&hellip;.&quot;|tee -a $FILE;sleep 1s mkdir -pv $DOWNLOAD_LOCATION;echo fi</p>
+<p>echo &ldquo;[Downloading the nagios tar-ball to $DOWNLOAD_LOCATION :-]&quot;|tee -a $FILE; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;&quot;|tee -a $FILE;echo;sleep 1s</p>
+<p>cd $DOWNLOAD_LOCATION &amp;&amp; wget &ndash;progress=dot $NAGIOS_URL;echo echo -e &ldquo;Extracting the archive&hellip;.\n&rdquo;|tee -a $FILE;sleep 1s cd $DOWNLOAD_LOCATION &amp;&amp; tar -zxf nagios*gz &amp;&amp; mv nagios*gz Nagios-$DATE.tar.gz;echo }</p>
+<p>nagios_usercheck () { echo &ldquo;[Checking the existence of user/group &rsquo;nagios&rsquo; :-]&quot;|tee -a $FILE; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;&quot;|tee -a $FILE;</p>
+<p>grep -q nagios /etc/group &gt; /dev/null if [ $? = 0 ];then echo &ldquo;Group &rsquo;nagios&rsquo; exist&rdquo;|tee -a $FILE; else echo &ldquo;Adding group &rsquo;nagios&rsquo;&quot;|tee -a $FILE; /usr/sbin/groupadd nagios fi</p>
+<p>grep -q nagios /etc/passwd &gt; /dev/null if [ $? = 0 ];then echo &ldquo;User &rsquo;nagios&rsquo; exists&rdquo;|tee -a $FILE; else echo &ldquo;Adding user &rsquo;nagios&rsquo;&quot;|tee -a $FILE; /usr/sbin/useradd -d $NAGIOSHOME -g nagios -s /bin/false -m nagios fi;echo</p>
+<p>echo &ldquo;[Checking the existence of user/group &rsquo;nagcmd&rsquo; :-]&quot;|tee -a $FILE; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;&quot;|tee -a $FILE;</p>
+<p>grep -q nagcmd /etc/group; if [ $? = 0 ];then echo &ldquo;Group &rsquo;nagcmd&rsquo; exists&rdquo;|tee -a $FILE; else echo &ldquo;Adding group &rsquo;nagcmd&rsquo;&quot;|tee -a $FILE; /usr/sbin/groupadd nagcmd; fi</p>
+<p>grep -q nagcmd /etc/passwd; if [ $? = 0 ];then echo &ldquo;User &rsquo;nagcmd&rsquo; exists&rdquo;|tee -a $FILE; else echo &ldquo;Adding user &rsquo;nagcmd&rsquo;&quot;|tee -a $FILE; /usr/sbin/useradd -g nagcmd -s /bin/false -m nagcmd; fi; echo }</p>
+<p>nagios_previouscheck () { echo &ldquo;[Checking for previous installations :-]&quot;|tee -a $FILE echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&quot;|tee -a $FILE;sleep 1s</p>
+<p>if [ -d /usr/local/nagios ]; then echo &ldquo;Installation directory &lsquo;/usr/local/nagios/&rsquo; already exist.&quot;|tee -a $FILE echo &ldquo;Moving &lsquo;/usr/local/nagios/&rsquo; to &lsquo;/usr/local/Nagios-$DATE.back&rsquo;&quot;|tee -a $FILE mv -v /usr/local/nagios /usr/local/Nagios-$DATE.back;echo echo &ldquo;Creating the Installation Directory for Nagios [/usr/local/nagios/]&quot;|tee -a $FILE mkdir -pv /usr/local/nagios;echo else echo &ldquo;Nagios installation not found at the default location of $NAGIOSHOME&rdquo;; echo &ldquo;Creating the Installation Directory for Nagios [/usr/local/nagios/]&quot;|tee -a $FILE mkdir -pv /usr/local/nagios;echo fi }</p>
+<p>nagios_ownership () { echo &ldquo;[Setting appropriate ownership on the installation directory]&quot;|tee -a $FILE echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&rdquo; chown -v nagios.nagios /usr/local/nagios;echo;sleep 1s</p>
+<p>echo &ldquo;[Checking the Web-Server user/group :-]&quot;|tee -a $FILE echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&quot;|tee -a $FILE;sleep 1s</p>
+<p>echo &ldquo;Web-Server User  : `grep &ldquo;^User&rdquo; $APACHE_CONF|head -n1|awk &lsquo;{print $2}&rsquo;`&quot;|tee -a $FILE echo &ldquo;Web-Server Group : `grep &ldquo;^Group&rdquo; $APACHE_CONF|head -n1|awk &lsquo;{print $2}&rsquo;`&quot;|tee -a $FILE;echo;sleep 1s</p>
+<p>echo &ldquo;[Adding the Web-Server/Nagios user to the &rsquo;nagcmd&rsquo; group]&quot;|tee -a $FILE; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&rdquo; /usr/sbin/usermod -G nagcmd `grep &ldquo;^User&rdquo; $APACHE_CONF|head -n1|awk &lsquo;{print $2}&rsquo;` &amp;&amp; \ echo &ldquo;Added the user `grep &ldquo;^User&rdquo; $APACHE_CONF|head -n1|awk &lsquo;{print $2}&rsquo;` to the &rsquo;nagcmd&rsquo; group.&quot;|tee -a $FILE sleep 1s /usr/sbin/usermod -G nagcmd nagios &amp;&amp; echo -e &ldquo;Added the user &rsquo;nagios&rsquo; to the &rsquo;nagcmd&rsquo; group.\n&rdquo;|tee -a $FILE;sleep 1s echo }</p>
+<p>nagios_configure () { echo &ldquo;[Starting the Nagios &lsquo;configure&rsquo; script :-]&quot;|tee -a $FILE; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&quot;|tee -a $FILE;sleep 4s</p>
+<p>cd $DOWNLOAD_LOCATION/nagios* &amp;&amp; ./configure &ndash;with-command-group=nagcmd &amp;&amp; make all &amp;&amp; make install &amp;&amp; make install-config &amp;&amp; make install-init &amp;&amp; make install-commandmode echo }</p>
+<p>################################# # [2] Installing Nagios Plugins # #################################</p>
+<p>nagios_plugins () { sleep 4s echo -e &quot;           [@@@@@@@@@@@@@@@@@@@@@@@@@ NAGIOS PLUGIN SETUP @@@@@@@@@@@@@@@@@@@@@@@@@]\n&rdquo;|tee -a $FILE;sleep 2s</p>
+<p>echo &ldquo;[Downloading the &rsquo;nagios-plugins&rsquo; tarball :-]&quot;|tee -a $FILE; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&quot;;sleep 3s cd $DOWNLOAD_LOCATION &amp;&amp; wget &ndash;progress=dot $NAGIOS_PLUGIN;echo echo &ldquo;[Extracting the plugins archive :-]&quot;|tee -a $FILE; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;&quot;;sleep 1s cd $DOWNLOAD_LOCATION &amp;&amp; tar -zxf nagios-plugins*gz &amp;&amp; mv nagios-plugins*gz Nagios-plugins-$DATE.tar.gz;echo echo &ldquo;[Configuring and compiling nagios-plugins :-]&quot;|tee -a $FILE; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&quot;|tee -a $FILE;sleep 1s cd $DOWNLOAD_LOCATION &amp;&amp; cd nagios-plugins* &amp;&amp; ./configure &amp;&amp; make &amp;&amp; make install &amp;&amp; echo &amp;&amp; echo -e &ldquo;[Nagios Plugin Setup Finished.]\n&rdquo; } echo;echo;sleep 3s</p>
+<p>################################# # [3]  Configuring Nagios       # ################################# nagios_conf_files () { echo &ldquo;[Creating the minimal configuration files :-]&rdquo;; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&quot;;sleep 2s cp -apv $NAGIOSHOME/etc/nagios.cfg-sample $NAGIOSHOME/etc/nagios.cfg cp -apv $NAGIOSHOME/etc/commands.cfg-sample $NAGIOSHOME/etc/commands.cfg cp -apv $NAGIOSHOME/etc/resource.cfg-sample $NAGIOSHOME/etc/resource.cfg cp -apv $NAGIOSHOME/etc/localhost.cfg-sample $NAGIOSHOME/etc/localhost.cfg cp -apv $NAGIOSHOME/etc/cgi.cfg-sample $NAGIOSHOME/etc/cgi.cfg;echo</p>
+<p>echo &ldquo;[Setting administrative rights for &rsquo;nagiosadmin&rsquo;]&rdquo; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&quot;;sleep 2s;echo echo &quot;&rdquo; &raquo; $NAGIOSHOME/etc/cgi.cfg echo -e &ldquo;#Setting administrative rights for &rsquo;nagiosadmin&rsquo;\n&rdquo; &raquo; $NAGIOSHOME/etc/cgi.cfg</p>
+<p>echo &ldquo;authorized_for_system_information=nagiosadmin authorized_for_configuration_information=nagiosadmin authorized_for_system_commands=nagiosadmin authorized_for_all_services=nagiosadmin authorized_for_all_hosts=nagiosadmin authorized_for_all_service_commands=nagiosadmin authorized_for_all_host_commands=nagiosadmin&rdquo; &raquo; $NAGIOSHOME/etc/cgi.cfg</p>
+<p>echo &ldquo;[Creating additional configuration files :-]&rdquo;; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;&quot;;sleep 2s touch $NAGIOSHOME/etc/hosts.cfg; if [ $? -eq 0 ];then echo &ldquo;Created $NAGIOSHOME/etc/hosts.cfg&rdquo;;else echo &ldquo;Failed creating $NAGIOSHOME/etc/hosts.cfg&rdquo;;fi touch $NAGIOSHOME/etc/hostgroups.cfg; if [ $? -eq 0 ];then echo &ldquo;Created $NAGIOSHOME/etc/hostgroups.cfg&rdquo;;else echo &ldquo;Failed creating $NAGIOSHOME/etc/hostgroups.cfg&rdquo;;fi touch $NAGIOSHOME/etc/contacts.cfg; if [ $? -eq 0 ];then echo &ldquo;Created $NAGIOSHOME/etc/contacts.cfg&rdquo;;else echo &ldquo;Failed creating $NAGIOSHOME/etc/contacts.cfg&rdquo;;fi touch $NAGIOSHOME/etc/contactgroups.cfg; if [ $? -eq 0 ];then echo &ldquo;Created $NAGIOSHOME/etc/contactgroups.cfg&rdquo;;else echo &ldquo;Failed creating $NAGIOSHOME/etc/contactgroups.cfg&rdquo;;fi touch $NAGIOSHOME/etc/services.cfg; if [ $? -eq 0 ];then echo &ldquo;Created $NAGIOSHOME/etc/services.cfg&rdquo;;else echo &ldquo;Failed creating $NAGIOSHOME/etc/services.cfg&rdquo;;fi touch $NAGIOSHOME/etc/timeperiods.cfg; if [ $? -eq 0 ];then echo &ldquo;Created $NAGIOSHOME/etc/timeperiods.cfg&rdquo;;else echo &ldquo;Failed creating $NAGIOSHOME/etc/timeperiods.cfg&rdquo;;fi; echo</p>
+<p>echo &ldquo;[Changing the ownership of newly created files :-]&rdquo;; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;&quot;;sleep 2s chown -Rv nagios.nagios $NAGIOSHOME/etc/* echo</p>
+<p>echo &quot;&rdquo; &raquo; $NAGIOSHOME/etc/nagios.cfg echo &ldquo;[Setting config: file paths in $NAGIOSHOME/etc/nagios.cfg :-]&rdquo;; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&quot;;echo;sleep 2s echo -e &ldquo;#Setting configuration file paths.\n&rdquo; &raquo; $NAGIOSHOME/etc/nagios.cfg echo &ldquo;cfg_file=/usr/local/nagios/etc/hosts.cfg cfg_file=/usr/local/nagios/etc/hostgroups.cfg cfg_file=/usr/local/nagios/etc/services.cfg cfg_file=/usr/local/nagios/etc/contacts.cfg cfg_file=/usr/local/nagios/etc/contactgroups.cfg cfg_file=/usr/local/nagios/etc/timeperiods.cfg&rdquo; &raquo; $NAGIOSHOME/etc/nagios.cfg</p>
+<p>echo echo &ldquo;[Running the Nagios Syntax Check :-]&rdquo;; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&quot;;sleep 1s $NAGIOSHOME/bin/nagios -v $NAGIOSHOME/etc/nagios.cfg;echo }</p>
+<p>################################# # [4]   Setting Up Apache       # #################################</p>
+<p>nagios_apache () { echo &ldquo;[Setting up Apache Web-Interface :-]&rdquo; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&rdquo;</p>
+<p>grep -q &ldquo;### Nagios Script Alias ###&rdquo; $APACHE_CONF;</p>
+<p>if [ $? -eq 0 ];then echo -e &ldquo;ScriptAlias for nagios already exists in $APACHE_CONF\n&rdquo; /etc/init.d/httpd restart &gt; /dev/null else</p>
+<p>echo &quot;&rdquo; &raquo; $APACHE_CONF echo -e &ldquo;### Nagios Script Alias ###\n&rdquo; &raquo; $APACHE_CONF;</p>
+<p>echo -e &ldquo;ScriptAlias /nagios/cgi-bin /usr/local/nagios/sbin \n</p>
+<p>Options ExecCGI AllowOverride None Order allow,deny Allow from all AuthName \&ldquo;Nagios Access\&rdquo; AuthType Basic AuthUserFile /usr/local/nagios/etc/htpasswd.users Require valid-user    \n&rdquo; &raquo; $APACHE_CONF</p>
+<p>echo -e &ldquo;Alias /nagios /usr/local/nagios/share  \n</p>
+<p>Options None AllowOverride None Order allow,deny Allow from all AuthName \&ldquo;Nagios Access\&rdquo; AuthType Basic AuthUserFile /usr/local/nagios/etc/htpasswd.users Require valid-user    \n&rdquo; &raquo; $APACHE_CONF</p>
+<p>echo &ldquo;Added the needed Alias configurations in $APACHE_CONF&rdquo;</p>
+<p>echo -e &ldquo;Restarting the Web-Server&hellip;please wait..\n&rdquo; /etc/init.d/httpd restart; fi }</p>
+<p>nagios_htpasswd () { echo &ldquo;[Creating the login credentials for the nagios URL :-]&rdquo; echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&rdquo;; echo &ldquo;Username    : nagiosadmin&rdquo; htpasswd -c $NAGIOSHOME/etc/htpasswd.users nagiosadmin;echo echo -e &ldquo;Login to the Nagios Interface is now restricted to user &rsquo;nagiosadmin&rsquo;.\n&rdquo; }</p>
+<p>nagios_download &amp;&amp; nagios_usercheck &amp;&amp; nagios_previouscheck &amp;&amp; nagios_ownership &amp;&amp; nagios_configure &amp;&amp; nagios_plugins &amp;&amp; nagios_conf_files &amp;&amp; nagios_apache &amp;&amp; nagios_htpasswd [/code]</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-08-03</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2008-02-14-nagios-installation-script/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/2008-02-14-nagios-installation-script/" data-title="Nagios Installation Script" data-via="xxxx" data-hashtags="nagios-installation"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/2008-02-14-nagios-installation-script/" data-hashtag="nagios-installation"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/2008-02-14-nagios-installation-script/" data-title="Nagios Installation Script"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/2008-02-14-nagios-installation-script/" data-title="Nagios Installation Script"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/2008-02-14-nagios-installation-script/" data-title="Nagios Installation Script"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/nagios-installation/">nagios-installation</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2008-02-13-bash-script-for-generating-a-random-number/" class="prev" rel="prev" title="A random number generator in Bash"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>A random number generator in Bash</a>
+            <a href="/2008-02-14-dns-zone-file-sanity-check/" class="next" rel="next" title="DNS Zone file sanity check">DNS Zone file sanity check<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

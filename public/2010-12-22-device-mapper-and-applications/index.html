@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Device Mapper and applications - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Device Mapper and applications" />
+<meta property="og:description" content="What is device-mapper ?
+Device mapper is a modular driver for the linux kernel 2.6. It can be said as a framework which helps to create or map logical sectors of a pseudo block device to an underlying physical block device. So what device-mapper do is keep a table of mappings which equate the logical block devices to the physical block devices.
+Applications such as LVM2, EVMS, software raid aka dmraid, multipathing, block encryption mechanisms such as cryptsetup etc&hellip; use device-mapper to work." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/2010-12-22-device-mapper-and-applications/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2010-12-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-03T20:52:51+02:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Device Mapper and applications"/>
+<meta name="twitter:description" content="What is device-mapper ?
+Device mapper is a modular driver for the linux kernel 2.6. It can be said as a framework which helps to create or map logical sectors of a pseudo block device to an underlying physical block device. So what device-mapper do is keep a table of mappings which equate the logical block devices to the physical block devices.
+Applications such as LVM2, EVMS, software raid aka dmraid, multipathing, block encryption mechanisms such as cryptsetup etc&hellip; use device-mapper to work."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/2010-12-22-device-mapper-and-applications/" /><link rel="prev" href="http://example.org/2009-11-02-lvcreate-fails-with-the-error-aborting-failed-to-activate-new-lv-to-wipe-the-start-of-it-why/" /><link rel="next" href="http://example.org/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Device Mapper and applications",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/2010-12-22-device-mapper-and-applications\/"
+        },"genre": "posts","wordcount":  381 ,
+        "url": "http:\/\/example.org\/2010-12-22-device-mapper-and-applications\/","datePublished": "2010-12-22T00:00:00+00:00","dateModified": "2021-08-03T20:52:51+02:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site"></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site"></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Device Mapper and applications</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>xxxx</a></span>&nbsp;<span class="post-category">included in <a href="/categories/techno/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>techno</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2010-12-22">2010-12-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;381 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p><strong>What is <a href="http://en.wikipedia.org/wiki/Device_mapper" title="Device mapper" target="_blank" rel="noopener noreffer ">device-mapper</a> ?</strong></p>
+<p><strong>D</strong>evice mapper is a modular driver for the <a href="http://www.kernel.org/" title="Linux kernel" target="_blank" rel="noopener noreffer ">linux kernel 2.6</a>. It can be said as a framework which helps to create or map logical sectors of a pseudo <a href="http://en.wikipedia.org/wiki/Device_file" title="Device file" target="_blank" rel="noopener noreffer ">block device</a> to an underlying physical block device. So what device-mapper do is keep a table of mappings which equate the logical block devices to the physical block devices.</p>
+<p>Applications such as LVM2, <a href="http://evms.sourceforge.net/" title="Enterprise Volume Management System" target="_blank" rel="noopener noreffer ">EVMS</a>, software raid aka dmraid, multipathing, block encryption mechanisms such as cryptsetup etc&hellip; use device-mapper to work. All these applications excluding EVMS use the libdevmapper library to communicate with device-mapper.</p>
+<p>The applications communicate with device-mapper&rsquo;s <a href="http://en.wikipedia.org/wiki/Application_programming_interface" title="Application programming interface" target="_blank" rel="noopener noreffer ">API</a> to create the mapping. Due to this feature, device-mapper does not need to know what <a href="http://en.wikipedia.org/wiki/Logical_Volume_Manager_%28Linux%29" title="Logical Volume Manager (Linux)" target="_blank" rel="noopener noreffer ">LVM</a> or dmraid is, how it works, what LVM metadata is, etc&hellip; It is upto the application to create the pseudo devices pointing to the physical volumes using one of device-mapper&rsquo;s targets and then update the mapper table.</p>
+<p><strong>The device-mapper mapping table :</strong></p>
+<p>The mapping table used by device-mapper doesn&rsquo;t take too much space and is a list created using a &lsquo;btree&rsquo;. A btree or a &lsquo;<a href="http://en.wikipedia.org/wiki/Binary_search_tree" title="Binary search tree" target="_blank" rel="noopener noreffer ">Binary Search Tree</a>&rsquo; is a data-structure from which data can be added, removed or queried.</p>
+<p>In order to know more on what a btree is and the concept behind it, read :</p>
+<p><a href="http://en.wikipedia.org/wiki/Binary_search_tree" title="Binary Search Tree" target="_blank" rel="noopener noreffer ">http://en.wikipedia.org/wiki/Binary_search_tree</a></p>
+<p><a href="http://en.wikipedia.org/wiki/B-tree" title="B-Tree" target="_blank" rel="noopener noreffer ">http://en.wikipedia.org/wiki/B-tree</a></p>
+<p><strong>Types of device-mapper targets :</strong></p>
+<p>Applications which use device-mapper actually use one or more of its target methods to achieve their purpose. Targets can be said as a method or type of mapping used by device-mapper. The general mapping targets are :</p>
+<p>a) Linear - Used by linear logical volumes, ie.. the default data layout method used by LVM2.</p>
+<p>b) Striped - Used by striped logical volumes as well as software <a href="http://en.wikipedia.org/wiki/Standard_RAID_levels" title="Standard RAID levels" target="_blank" rel="noopener noreffer ">RAID0</a>.</p>
+<p>c) Mirror - Used by software RAID1 and LVM mirroring.</p>
+<p>d) Crypt - Used by disk encryption utilties.</p>
+<p>e) Snapshot - Used to take online snapshots of block devices, an example is LVM snapshot.</p>
+<p>f) <a href="http://en.wikipedia.org/wiki/Multipath_I/O" title="Multipath I/O" target="_blank" rel="noopener noreffer ">Multipath</a> - Used by device-mapper-multipath.</p>
+<p>g) RAID45 - <a href="http://en.wikipedia.org/wiki/RAID" title="RAID" target="_blank" rel="noopener noreffer ">Software raid</a> using device-mapper, ie.. dmraid</p>
+<p>h) Error - Sectors of the pseudo device mapped with this target causes the I/O to fail.</p>
+<p>There are a few more mappings such as &lsquo;flaky&rsquo; which is not used much.</p>
+<p>I&rsquo;ll write on how device-mapper works in LVM, in the next post&hellip;</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-08-03</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2010-12-22-device-mapper-and-applications/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/2010-12-22-device-mapper-and-applications/" data-title="Device Mapper and applications" data-via="xxxx"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/2010-12-22-device-mapper-and-applications/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/2010-12-22-device-mapper-and-applications/" data-title="Device Mapper and applications"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/2010-12-22-device-mapper-and-applications/" data-title="Device Mapper and applications"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/2010-12-22-device-mapper-and-applications/" data-title="Device Mapper and applications"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2009-11-02-lvcreate-fails-with-the-error-aborting-failed-to-activate-new-lv-to-wipe-the-start-of-it-why/" class="prev" rel="prev" title="lvcreate fails with the error &#34;Aborting. Failed to activate new LV to wipe the start of it.&#34;. Why ??"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>lvcreate fails with the error "Aborting. Failed to activate new LV to wipe the start of it.". Why ??</a>
+            <a href="/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/" class="next" rel="next" title="lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?">lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

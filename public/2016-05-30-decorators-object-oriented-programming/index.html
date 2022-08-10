@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Decorators - Object Oriented Programming - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Decorators - Object Oriented Programming" />
+<meta property="og:description" content="_D_ecorators are wrapper functions (or classes) that wrap and modify another function (or class), and change it&rsquo;s behavior as required. Decorators help to modify your code without actually modifying the working function/class itself.
+There are several inbuilt Decorators in Python, such as @classmethod and @staticmethod. Examples on these are due for another post.
+Decorators are called to act upon a function or class, by mentioning the Decorator name just above the function/class." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/2016-05-30-decorators-object-oriented-programming/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-05-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-03T20:52:51+02:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Decorators - Object Oriented Programming"/>
+<meta name="twitter:description" content="_D_ecorators are wrapper functions (or classes) that wrap and modify another function (or class), and change it&rsquo;s behavior as required. Decorators help to modify your code without actually modifying the working function/class itself.
+There are several inbuilt Decorators in Python, such as @classmethod and @staticmethod. Examples on these are due for another post.
+Decorators are called to act upon a function or class, by mentioning the Decorator name just above the function/class."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/2016-05-30-decorators-object-oriented-programming/" /><link rel="prev" href="http://example.org/2016-05-30-method-resolution-order-object-oriented-programming/" /><link rel="next" href="http://example.org/2016-06-02-magic-methods-in-python/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Decorators - Object Oriented Programming",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/2016-05-30-decorators-object-oriented-programming\/"
+        },"genre": "posts","keywords": "classmethod, decorators, object-oriented-programming, programming, python, staticmethod","wordcount":  716 ,
+        "url": "http:\/\/example.org\/2016-05-30-decorators-object-oriented-programming\/","datePublished": "2016-05-30T00:00:00+00:00","dateModified": "2021-08-03T20:52:51+02:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site"></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site"></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Decorators - Object Oriented Programming</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>xxxx</a></span>&nbsp;<span class="post-category">included in <a href="/categories/programming/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>programming</a>&nbsp;<a href="/categories/python/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>python</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2016-05-30">2016-05-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;716 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#components"><strong>Components:</strong></a></li>
+        <li><a href="#how-does-the-code-work"><strong>How does the code work?</strong></a></li>
+        <li><a href="#output"><strong>Output:</strong></a></li>
+        <li><a href="#components-1"><strong>Components:</strong></a></li>
+        <li><a href="#how-does-the-code-work-1"><strong>How does the code work?</strong></a></li>
+        <li><a href="#output-1"><strong>Output:</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>_<strong>D</strong>_ecorators are wrapper functions (or classes) that wrap and modify another function (or class), and change it&rsquo;s behavior as required. Decorators help to modify your code without actually modifying the working function/class itself.</p>
+<p>There are several inbuilt Decorators in Python, such as <code>@classmethod</code> and <code>@staticmethod</code>. Examples on these are due for another post.</p>
+<p>Decorators are called to act upon a function or class, by mentioning the Decorator name just above the function/class.</p>
+<p>Decorators are written such as it returns a function, rather than output something.</p>
+<p><em><strong>Example 0:</strong></em></p>
+<p>[code language=&lsquo;python&rsquo;] @my_decorator def my_func(): print(&ldquo;Hello&rdquo;)</p>
+<p>my_func() [/code]</p>
+<p>In the above code snippet, when <code>my_func()</code> is called, the python interpreter calls the decorator function <code>my_decorator</code>, executes it, and then passes the result to <code>my_func()</code>.</p>
+<p>The example above doesn&rsquo;t do anything worth, but the following example should help to get a better idea.</p>
+<p><strong>NOTE:</strong> The examples below are taken from the excellent talks done by Jillian Munson (in PyGotham 2014) and Mike Burns for <a href="https://www.youtube.com/channel/UCUR1pFG_3XoZn3JNKjulqZg" target="_blank" rel="noopener noreffer ">ThoughtBot</a>. The URLs are at <a href="https://www.youtube.com/watch?v=yW0cK3IxlHc" target="_blank" rel="noopener noreffer ">[1]</a> and <a href="https://www.youtube.com/watch?v=Slf1b3yUocc" target="_blank" rel="noopener noreffer ">[2]</a>. All credit goes to them.</p>
+<p><em><strong>Example 1:</strong></em></p>
+<p>[code language=&ldquo;python&rdquo;] def my_decorator(my_function): def inner_decorator(): print(&ldquo;This happened before!&rdquo;) my_function() print(&ldquo;This happens after &ldquo;) print(&ldquo;This happened at the end!&rdquo;) return inner_decorator</p>
+<p>@my_decorator def my_decorated(): print(&ldquo;This happened!&rdquo;)</p>
+<p>if __name__ == &lsquo;__main__&rsquo;: my_decorated() [/code]</p>
+<h3 id="components"><strong>Components:</strong></h3>
+<ol>
+<li>A function named <code>my_decorated()</code>.</li>
+<li>A decorator function named <code>my_decorator()</code>.</li>
+<li>The decorator function <code>my_decorator()</code> has a function within itself named <code>inner_decorator()</code>.</li>
+<li>The decorator function <code>my_decorator()</code>, returns the inner function <code>inner_decorator()</code>.
+<ol>
+<li>Every function should return a value, if not it defaults to <strong><code>None</code>.</strong></li>
+<li><code>my_decorator()</code> decorator should return the <code>inner_decorator()</code> inner function, else the decorator cannot be used with the <code>my_decorated()</code> function.</li>
+<li>To understand this, test with &lsquo;return None&rsquo; for the decorator function <code>my_decorator()</code>.</li>
+</ol>
+</li>
+<li>The inner function <code>inner_decorator()</code> is the one that actually decorates (modifies) the function <code>my_decorated()</code>.</li>
+<li>The decorator function is called on the function <code>my_decorated()</code> using the format <code>@my_decorator</code>.</li>
+<li>The decorator function takes an argument, which can be named whatever the developer decides. When the decorator function is executed, the argument is replaced with the function name on which the decorator is executed. In our case, it would be <code>my_decorated()</code></li>
+</ol>
+<h3 id="how-does-the-code-work"><strong>How does the code work?</strong></h3>
+<ol>
+<li>The function <code>my_decorated()</code> is called.</li>
+<li>The interpreter sees that the decorator <code>@my_decorator</code> is called wrt this function.</li>
+<li>The interpreter searches for a function named <code>my_decorator()</code>and executes it.</li>
+<li>Since the decorator function returns the inner function <code>inner_decorator()</code>, the python interpreter executes the inner function.</li>
+<li>It goes through each steps, reaches <code>my_function()</code> , and gets it executed.</li>
+<li>Once that function is executed, it goes back and continues with the execution of the decorator <code>my_decorator()</code>.</li>
+</ol>
+<h3 id="output"><strong>Output:</strong></h3>
+<p>[code language=&ldquo;bash&rdquo;] # python decorators-1.py This happened before! # Called from the decorator This happened! # Called from the function This happens after # Called from the decorator This happened at the end! # Called from the decorator [/code]</p>
+<p> </p>
+<p><em><strong>Example 2:</strong></em></p>
+<p>[code language=&ldquo;python&rdquo;] def double(my_func): def inner_func(a, b): return 2 * my_func(a, b) return inner_func</p>
+<p>@double def adder(a, b): return a + b</p>
+<p>@double def subtractor(a, b): return a - b</p>
+<p>print(adder(10, 20)) print(subtractor(6, 1)) [/code]</p>
+<h3 id="components-1"><strong>Components:</strong></h3>
+<ol>
+<li>Two functions named <code>adder()</code> and <code>subtractor()</code>.</li>
+<li>A decorator function named <code>double()</code>.</li>
+<li>The decorator has an inner function named <code>inner_func()</code> which does the actual intended work.</li>
+<li>The decorator returns the value of the inner function <code>inner_func()</code></li>
+<li>Both the <code>adder()</code> and <code>subtractor()</code>functions are decorated with the decorator <code>double()</code></li>
+</ol>
+<h3 id="how-does-the-code-work-1"><strong>How does the code work?</strong></h3>
+<ol>
+<li>We call the <code>adder()</code> and <code>subtractor()</code> functions with a print(), since the said functions don&rsquo;t print by default (due to the <code>return</code> statement).</li>
+<li>The python interpreter sees the decorator <code>@double</code> and calls it.</li>
+<li>Since the decorator returns the inner function <code>inner_func()</code>, the interpreter executes it.</li>
+<li>The decorator takes an argument <code>my_func</code>, which is always the function on which the decorator is applied, ie.. in our case <code>my_case == adder()</code>and <code>my_case == subtractor()</code>.</li>
+<li>The inner function within the decorator takes arguments, which are the arguments passed to the functions that are being decorated. ie.. Any arguments passed to <code>adder()</code> and <code>subtractor()</code>are passed to <code>inner_func()</code>.</li>
+<li>The statement <code>return 2 * my_func(a, b)</code> returns the value of :
+<ol>
+<li>2 x <code>adder(10, 20)</code></li>
+<li>2 x <code>subtractor(6, 1)</code></li>
+</ol>
+</li>
+</ol>
+<h3 id="output-1"><strong>Output:</strong></h3>
+<p>[code language=&ldquo;bash&rdquo;] # python decorators-2.py 60 10 [/code]</p>
+<p>Inbuilt decorators such as @staticmethod and @classmethod will be discussed in an upcoming post.</p>
+<p><strong>NOTE: To see how decorators are syntactically sugar coated, read <a href="https://arvimal.wordpress.com/2016/06/02/magic-methods-in-python/" target="_blank" rel="noopener noreffer ">Magic methods and Syntactic sugar in Python</a></strong></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-08-03</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2016-05-30-decorators-object-oriented-programming/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/2016-05-30-decorators-object-oriented-programming/" data-title="Decorators - Object Oriented Programming" data-via="xxxx" data-hashtags="classmethod,decorators,object-oriented-programming,programming,python,staticmethod"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/2016-05-30-decorators-object-oriented-programming/" data-hashtag="classmethod"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/2016-05-30-decorators-object-oriented-programming/" data-title="Decorators - Object Oriented Programming"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/2016-05-30-decorators-object-oriented-programming/" data-title="Decorators - Object Oriented Programming"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/2016-05-30-decorators-object-oriented-programming/" data-title="Decorators - Object Oriented Programming"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/classmethod/">classmethod</a>,&nbsp;<a href="/tags/decorators/">decorators</a>,&nbsp;<a href="/tags/object-oriented-programming/">object-oriented-programming</a>,&nbsp;<a href="/tags/programming/">programming</a>,&nbsp;<a href="/tags/python/">python</a>,&nbsp;<a href="/tags/staticmethod/">staticmethod</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2016-05-30-method-resolution-order-object-oriented-programming/" class="prev" rel="prev" title="Method Resolution Order - Object Oriented Programming"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Method Resolution Order - Object Oriented Programming</a>
+            <a href="/2016-06-02-magic-methods-in-python/" class="next" rel="next" title="Magic methods and Syntactic sugar in Python">Magic methods and Syntactic sugar in Python<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

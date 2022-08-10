@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>fill-ratio - Tag - My New Hugo Site</title>
+        <link>http://example.org/tags/fill-ratio/</link>
+        <description>fill-ratio - Tag - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 07 May 2015 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/fill-ratio/" rel="self" type="application/rss+xml" /><item>
+    <title>How to change the filling ratio for a Ceph OSD?</title>
+    <link>http://example.org/2015-05-07-how-to-change-the-filling-ratio-for-a-ceph-osd/</link>
+    <pubDate>Thu, 07 May 2015 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://example.org/2015-05-07-how-to-change-the-filling-ratio-for-a-ceph-osd/</guid>
+    <description><![CDATA[There could be many scenarios where you&rsquo;d need to change the percentage of space usage on a Ceph OSD. One such use case would be when your OSD space is about to hit the hard limit, and is constantly sending you warnings.
+For some reason or other, you may need to extend the threshold limit for some time. In such a case, you don&rsquo;t need to change/add the configuration in ceph.]]></description>
+</item>
+</channel>
+</rss>

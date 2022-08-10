@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>misc - Category - My New Hugo Site</title>
+        <link>http://example.org/categories/misc/</link>
+        <description>misc - Category - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 09 May 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/categories/misc/" rel="self" type="application/rss+xml" /><item>
+    <title>Revamping the blog</title>
+    <link>http://example.org/2016-05-09-revamping-the-blog/</link>
+    <pubDate>Mon, 09 May 2016 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://example.org/2016-05-09-revamping-the-blog/</guid>
+    <description><![CDATA[I did a revamp of the whole blog two days back. Switching the theme from &lsquo;Scrawl&rsquo; to &lsquo;Independent Publisher&rsquo; was part of it. This theme is part of the hundreds of free themes in Wordpress, and looks both clean and impressive.
+&lsquo;Independent Publisher&rsquo; supports random header images from a list, at each page load. I&rsquo;m using Unsplash for the images. These are free to use and distribute since its released under a Creative Commons Zero licence.]]></description>
+</item>
+</channel>
+</rss>

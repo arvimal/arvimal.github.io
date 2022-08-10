@@ -1,0 +1,39 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>algorithms - Tag - My New Hugo Site</title>
+        <link>http://example.org/tags/algorithms/</link>
+        <description>algorithms - Tag - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 27 Jun 2017 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/algorithms/" rel="self" type="application/rss+xml" /><item>
+    <title>Recursion - Algorithm Study</title>
+    <link>http://example.org/2017-06-27-recursion-algorithm-study/</link>
+    <pubDate>Tue, 27 Jun 2017 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://example.org/2017-06-27-recursion-algorithm-study/</guid>
+    <description><![CDATA[_R_ecursion is a technique by which a function calls itself until a condition is met.
+Introduction Loops or repetitive execution based on certain conditions are inevitable in programs. Usual loops include if, while and for loops. Recursion is an entirely different way to deal with such situations, and in many cases, easier.
+Recursion is a when a function calls itself in each iteration till a condition is met. Ideally, the data set in each iteration gets smaller until it reach the required condition, after which the recursive function exists.]]></description>
+</item>
+<item>
+    <title>Selection Sort - Algorithm Study</title>
+    <link>http://example.org/2017-02-11-selection-sort-algorithm-study/</link>
+    <pubDate>Sat, 11 Feb 2017 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://example.org/2017-02-11-selection-sort-algorithm-study/</guid>
+    <description><![CDATA[Selection Sort is a sorting algorithm used to sort a data set either in incremental or decremental order.
+It goes through the entire elements one by one and hence it&rsquo;s not a very efficient algorithm to work on large data sets.
+1. How does Selection sort work? Selection sort starts with an unsorted data set. With each iteration, it builds up a sub dataset with the sorted data.
+By the end of the sorting process, the sub dataset contains the entire elements in a sorted order.]]></description>
+</item>
+<item>
+    <title>Code complexity - The Big O notation [O(n)]</title>
+    <link>http://example.org/2016-05-08-big-o-notation-on/</link>
+    <pubDate>Sun, 08 May 2016 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://example.org/2016-05-08-big-o-notation-on/</guid>
+    <description><![CDATA[Efficiency or Complexity is how well you&rsquo;re using your resources to get your code run.
+Efficiency can be calculated on the basis of how much time your code takes to run/execute.
+Understanding the efficiency of your code can help to reduce the complexity, thus improving the runtime efficiency further. Getting the same job done in less time and less system resources is always good.
+Once you find the efficiency of your program, you can start to find ways for:]]></description>
+</item>
+</channel>
+</rss>

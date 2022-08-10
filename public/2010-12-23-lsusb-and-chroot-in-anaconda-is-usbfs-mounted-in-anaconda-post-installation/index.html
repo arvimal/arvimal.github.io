@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ? - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?" />
+<meta property="og:description" content="**T**he binary &lsquo;/sbin/lsusb&rsquo; in a chroot-ed environment have problems running properly. I have not checked this in a manually created chroot environment or using tools like &lsquo;mock&rsquo;.
+The scenario is as following :
+We were trying to check the output of &rsquo;lsusb&rsquo; in the %post section of a kickstart installation. I had specified &rsquo;noreboot&rsquo; in the kickstart file so the machine will wait for the user to manually reboot the machine." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2010-12-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-03T20:52:51+02:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?"/>
+<meta name="twitter:description" content="**T**he binary &lsquo;/sbin/lsusb&rsquo; in a chroot-ed environment have problems running properly. I have not checked this in a manually created chroot environment or using tools like &lsquo;mock&rsquo;.
+The scenario is as following :
+We were trying to check the output of &rsquo;lsusb&rsquo; in the %post section of a kickstart installation. I had specified &rsquo;noreboot&rsquo; in the kickstart file so the machine will wait for the user to manually reboot the machine."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/" /><link rel="prev" href="http://example.org/2010-12-22-device-mapper-and-applications/" /><link rel="next" href="http://example.org/2014-08-16-error-open-tmpdocker-import-repobinjson-no-such-file-or-directory/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation\/"
+        },"genre": "posts","keywords": "anaconda, installation, lsusb, rhel, strace, usb","wordcount":  987 ,
+        "url": "http:\/\/example.org\/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation\/","datePublished": "2010-12-23T00:00:00+00:00","dateModified": "2021-08-03T20:52:51+02:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site"></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site"></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>xxxx</a></span>&nbsp;<span class="post-category">included in <a href="/categories/techno/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>techno</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2010-12-23">2010-12-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;987 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>**<em>T</em>**he binary &lsquo;/sbin/lsusb&rsquo; in a chroot-ed environment have problems running properly. I have not checked this in a manually created chroot environment or using tools like &lsquo;mock&rsquo;.</p>
+<p>The scenario is as following :</p>
+<p>We were trying to check the output of &rsquo;lsusb&rsquo; in the %post section of a kickstart installation. I had specified &rsquo;noreboot&rsquo; in the kickstart file so the machine will wait for the user to manually reboot the machine. This helps to check the logs and the situation of the machine just after the installation finishes.</p>
+<p>After the installation and prior to the reboot, i checked in the second available terminal (Alt + F2) created by anaconda and was astonished to see that the command &rsquo;lsusb&rsquo; does not give us the required output but an error that &lsquo;/usr/share/hwdata/usb.ids&rsquo; is not accessible or found.</p>
+<p>By default, i think only the &lsquo;installation&rsquo; ie.. the %post section starts in a &lsquo;chroot&rsquo; mode and the terminal available is not chroot-ed. So we will have to use &lsquo;/mnt/sysimage/sbin/lsusb&rsquo;. This didn&rsquo;t work as expected since the &rsquo;lsusb&rsquo; binary needs to check the file &lsquo;/usr/share/hwdata/usb.ids&rsquo; and won&rsquo;t be able to find it.</p>
+<p>So I did a chroot from the second terminal and did an /sbin/lsusb, since /sbin in not in the &lsquo;PATH&rsquo; by default. That too, didn&rsquo;t work out. But this time it didn&rsquo;t even complain anything. Just nothing at all, no output. Last time, at-least it complained it could not find something. So how do we go forward now ??? Here comes &lsquo;strace&rsquo; to the rescue !!!</p>
+<p>strace is of-course a really nice tool to know what system calls are made and lots of internal stuff a binary will do while being executed. But &lsquo;strace&rsquo; is not installed by default on a RHEL5 machine, which is the case here. As most of you would know, anaconda creates a virtual file system which consists of most of the folders found under a linux main /. The location where the OS is installed is mounted under /mnt/sysimage.</p>
+<p>Since we already have an ISO from where we have booted the machine from (DVD/CD), we are free to mount it on the filesystem, which is what we did. :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  # mkdir /mnt/source 
+</span></span><span class="line"><span class="cl">  # mount -t iso9660 /dev/hdc /mnt/source 
+</span></span><span class="line"><span class="cl">  # cd /mnt/source/Server/ 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In case you want to know how the DVD/CD drive is detected, all you need to do is execute &lsquo;dmesg&rsquo; in the available terminal. ie.. after pressing &lsquo;Alt + Ctrl + F2&rsquo;.</p>
+<p>So we went forward and mounted the DVD to /mnt/source and changed the directory to /mnt/source/Server where all the rpm packages reside. Installed the package &lsquo;strace&rsquo; using an &lsquo;rpm -ivh&rsquo;. Please note that we need to use &lsquo;&ndash;root /mnt/sysimage&rsquo; as an option since we are installing the package to our newly installed file system which is at /mnt/sysimage. If this is not used, the installer will try to install the package to the virtual environment created in the memory.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># cd /mnt/source/Server 
+</span></span><span class="line"><span class="cl"># rpm -ivh strace -fxvttT rpm --root /mnt/sysimage 
+</span></span><span class="line"><span class="cl"># cd 
+</span></span><span class="line"><span class="cl"># chroot /mnt/sysimage
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This will make /mnt/sysimage as the working root, ie.. where our installation was done. OK.. now for the &lsquo;strace&rsquo; stuff.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># strace -fxvto strace.log -s 1024 /sbin/lsusb
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The strace output will be saved to &lsquo;strace.log&rsquo; which we can open up in a text editor of our choice. Opening it in &lsquo;vi&rsquo;, shows a lot of stuff such as the command run, the default language, location of libraries loaded, the environment variables etc.. In this case we would only need to be interested in the last parts, ie.. to know where the binary failed :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">15:16:17 open(&#34;/dev/bus/usb&#34;, O\_RDONLY|O\_NONBLOCK|O\_DIRECTORY) = -1 ENOENT (No such file or directory) = 03067 
+</span></span><span class="line"><span class="cl">15:16:17 open(&#34;/proc/bus/usb&#34;, O\_RDONLY|O\_NONBLOCK|O\_DIRECTORY) = 33067 
+</span></span><span class="line"><span class="cl">15:16:17 fstat(3, {st\_dev=makedev(0, 3), st\_ino=4026532146, st\_mode=S\_IFDIR|0555, st\_nlink=2, st\_uid=0, st\_gid=0, st\_blksize=4096, st\_blocks=0, st\_size=0, st\_atime=2009/09/25-15:16:17, st\_mtime=2009/09/25-15:16:17, st\_ctime=2009/09/25-15:16:17}) = 03067 15:16:17 fcntl(3, F\_SETFD, FD\_CLOEXEC) = 03067 15:16:17 getdents(3, {{d\_ino=4026532146, d\_off=1, d\_reclen=24, d\_name=&#34;.&#34;} {d\_ino=4026531879, d\_off=2, d\_reclen=24, d\_name=&#34;..&#34;}}, 4096) = 483067 
+</span></span><span class="line"><span class="cl">15:16:17 getdents(3, {}, 4096) = 03067 15:16:17 close(3) = 03067 15:16:17 exit\_group(1) = ? 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The above trace output shows how the &rsquo;lsusb&rsquo; binary proceeded at its last time and where it failed. We can see that it went to open &lsquo;/dev/bus/usb&rsquo;, only to find that the said location does not exist. We can understand that it is a directory from the call</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">open(&#34;/dev/bus/usb&#34;, O\_RDONLY|O\_NONBLOCK|O\_DIRECTORY)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Ok,, fine.. so what does it do next ?</p>
+<p>As the next step, it tries to open &lsquo;/proc/bus/usb&rsquo; and it is present, which we know since there are no &lsquo;No such file or directory&rsquo; errors. Going further, the binary goes on to do a &lsquo;stat&rsquo; on &lsquo;/proc/bus/usb&rsquo;. After doing an &lsquo;fstat&rsquo;, it goes to check the file descriptor using &lsquo;fcntl&rsquo; and further goes to list the directory contents using &lsquo;getdents&rsquo;.</p>
+<p>This is where we find the interesting output :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">getdents(3, {{d\_ino=4026532146, d\_off=1, d\_reclen=24, d\_name=&#34;.&#34;} {d\_ino=4026531879, d\_off=2, d\_reclen=24, d\_name=&#34;..&#34;}}, 4096) = 48
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>As you can see in the above trace, it returns &lsquo;.&rsquo; and &lsquo;..&rsquo;, which means there are nothing in /proc/bus/usb. So what we do understand is &rsquo;lsusb&rsquo; refers /dev/bus/usb and /proc/bus/usb for its outputs.. If it was not able to find anything, strace would have given us an error which obviously would have made life much easier.</p>
+<p>And that&rsquo;s how &lsquo;/sbin/lsusb&rsquo; failed silently.. Isn&rsquo;t strace a nice tool ??</p>
+<p>Okay, those who want to know why is this so&hellip; &rsquo;lsusb&rsquo; needs either /mnt/sysimage/proc/bus/usb or /mnt/sysimage/dev/bus/usb display contents to work properly. Anaconda is not mounting /mnt/sysimage/proc/bus/usb with the &lsquo;usbfs&rsquo; file system in the limited installation environment and hence &rsquo;lsusb&rsquo; fails&hellip;</p>
+<p>And we have a fix for that which goes into yuminstall.py in the anaconda source :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">try:
+</span></span><span class="line"><span class="cl">    isys.mount(&#34;/proc/bus/usb&#34;, anaconda.rootPath + &#34;/proc/bus/usb&#34;, &#34;usbfs&#34;) 
+</span></span><span class="line"><span class="cl">except Exception, e:     
+</span></span><span class="line"><span class="cl">    log.error(&#34;error mounting usbfs: %s&#34; %(e,))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This piece of python code, tries mounting /proc/bus/usb on /mnt/sysimage/proc/bus/usb as &lsquo;usbfs. If its not possible, the code excepts an Exception error and reports &ldquo;error mounting &lsquo;usbfs&rsquo;.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-08-03</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/" data-title="lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?" data-via="xxxx" data-hashtags="anaconda,installation,lsusb,rhel,strace,usb"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/" data-hashtag="anaconda"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/" data-title="lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/" data-title="lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/2010-12-23-lsusb-and-chroot-in-anaconda-is-usbfs-mounted-in-anaconda-post-installation/" data-title="lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/anaconda/">anaconda</a>,&nbsp;<a href="/tags/installation/">installation</a>,&nbsp;<a href="/tags/lsusb/">lsusb</a>,&nbsp;<a href="/tags/rhel/">rhel</a>,&nbsp;<a href="/tags/strace/">strace</a>,&nbsp;<a href="/tags/usb/">usb</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2010-12-22-device-mapper-and-applications/" class="prev" rel="prev" title="Device Mapper and applications"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Device Mapper and applications</a>
+            <a href="/2014-08-16-error-open-tmpdocker-import-repobinjson-no-such-file-or-directory/" class="next" rel="next" title="&#34;Error: open /tmp/docker-import-123456789/repo/bin/json: no such file or directory&#34;">"Error: open /tmp/docker-import-123456789/repo/bin/json: no such file or directory"<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

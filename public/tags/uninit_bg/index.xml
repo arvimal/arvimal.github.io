@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>uninit_bg - Tag - My New Hugo Site</title>
+        <link>http://example.org/tags/uninit_bg/</link>
+        <description>uninit_bg - Tag - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 30 Jun 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/uninit_bg/" rel="self" type="application/rss+xml" /><item>
+    <title>`uninit_bg` and lazy block group allocation in EXT3/4</title>
+    <link>http://example.org/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/</link>
+    <pubDate>Thu, 30 Jun 2016 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://example.org/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/</guid>
+    <description><![CDATA[_E_xt3 and Ext4 recently have been the most commonly used file system on Linux machines.
+What does uninit_bg actually do?
+Read https://ext4.wiki.kernel.org/index.php/Ext4_Disk_Layout
+section `Meta Block Groups and Lazy Block Group Initialization`.
+https://ext4.wiki.kernel.org/index.php/Frequently_Asked_Questions
+https://www.thomas-krenn.com/en/wiki/Ext4_Filesystem
+https://access.redhat.com/labs/psb/versions/kernel-3.10.0-327.18.2.el7/Documentation/filesystems/ext4.txt
+https://access.redhat.com/labs/psb/versions/kernel-3.10.0-327.18.2.el7/fs/ext4/ext4.h]]></description>
+</item>
+</channel>
+</rss>
