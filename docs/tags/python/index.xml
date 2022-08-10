@@ -86,7 +86,7 @@ Abstract classes are used when working on large projects where classes have to b
       <guid>/posts/2016/06/2016-06-02-magic-methods-in-python/</guid>
       <description>Magic methods _M_agic methods are special methods which can be defined (or already designed and available) to act on objects.
 Magic methods start and end with underscores &amp;quot;__&amp;quot;, and are not implicitly called by the user even though they can be. Most magic methods are used as syntactic sugar by binding it to more clear/easy_to_understand keywords.
-Python is mostly objects and method calls done on objects. Many available functions in Python are actually tied to magic methods_**.</description>
+Python is mostly objects and method calls done on objects. Many available functions in Python are actually tied to magic methods_.</description>
     </item>
     
     <item>
