@@ -1,10 +1,10 @@
-baseURL = "http://example.org/"
+baseURL = "https://arvimal.github.io/"
 
 # Change the default theme to be use when building the site with Hugo
 theme = "LoveIt"
 
 # website title
-title = "My New Hugo Site"
+title = "The Child is Father of the Man"
 
 # language code ["en", "zh-CN", "fr", "pl", ...]
 languageCode = "en"
@@ -32,9 +32,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
 # Author config
 [author]
-  name = "xxxx"
-  email = ""
-  link = ""
+  name = "Vimal A.R"
+  email = "arvimal81@gmail.com"
+  link = "https://github.com/arvimal"
 
 # Menu config
 [menu]
