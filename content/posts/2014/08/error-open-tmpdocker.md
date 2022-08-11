@@ -4,7 +4,7 @@ date: 2014-08-16
 categories:
   - "techno"
 ---
-
+<!--more-->
 I've been trying to create a minimal docker image for RHEL versions, for one of my projects. The following were the steps I followed:
 
 a) Installed a RHEL6.5 server with 'Minimal Installation'.

@@ -10,18 +10,15 @@
     <pubDate>Mon, 09 May 2016 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/ceph-osd-heartbeats/</guid>
-    <description><![CDATA[Ceph OSD daemons need to ensure that the neighbouring OSDs are functioning properly so that the cluster remains in a healthy state.
-For this, each Ceph OSD process (ceph-osd) sends a heartbeat signal to the neighbouring OSDs. By default, the heartbeat signal is sent every 6 seconds [1], which is configurable of course.
-If the heartbeat check from one OSD doesn&rsquo;t hear from the other within the set value for `osd_heartbeat_grace` [2], which is set to 20 seconds by default, the OSD that sends the heartbeat check reports the other OSD (the one that didn&rsquo;t respond within 20 seconds) as down, to the MONs.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Monitor maps, how to edit them?</title>
-    <link>https://arvimal.github.io/2015-09-01-how-to-extract-view-change-and-inject-a-monitor-map-in-a-ceph-cluster/</link>
+    <link>https://arvimal.github.io/view-change-inject-monitor-map/</link>
     <pubDate>Tue, 01 Sep 2015 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
-    <guid>https://arvimal.github.io/2015-09-01-how-to-extract-view-change-and-inject-a-monitor-map-in-a-ceph-cluster/</guid>
-    <description><![CDATA[The MON map is used by the monitors in a Ceph cluster, where they keep track of various attributes relevant to the working of the cluster.
-Similar to the CRUSH map, a monitor map can be pulled out of the cluster, inspected, changed, and injected back to the monitors, manually. A frequent use-case is when the IP address of a monitor changes and the monitors cannot agree on a quorum.]]></description>
+    <guid>https://arvimal.github.io/view-change-inject-monitor-map/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Compacting a Ceph monitor store</title>
@@ -29,10 +26,7 @@ Similar to the CRUSH map, a monitor map can be pulled out of the cluster, inspe
     <pubDate>Thu, 09 Jul 2015 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/compact-a-ceph-monitor-data-store/</guid>
-    <description><![CDATA[The Ceph monitor store growing to a big size is a common occurrence in a busy Ceph cluster.
-If a &lsquo;ceph -s&rsquo; takes considerable time to return information, one of the possibility is the monitor database being large.
-Other reasons included network lags between the client and the monitor, the monitor not responding properly due to the system load, firewall settings on the client or monitor etc..
-The best way to deal with a large monitor database is to compact the monitor store.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 <item>
     <title>How to list all the configuration settings in a Ceph cluster monitor?</title>
@@ -40,9 +34,7 @@ The best way to deal with a large monitor database is to compact the monitor sto
     <pubDate>Wed, 06 May 2015 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/list-ceph-cluster-configurations/</guid>
-    <description><![CDATA[It can be really helpful to have a single command to list all the configuration settings in a monitor node, in a Ceph cluster.
-This is possible by interacting directly with the monitor&rsquo;s unix socket file. This can be found under /var/run/ceph/. By default, the admin socket for the monitor will be in the path /var/run/ceph/ceph-mon..asok.
-The default location can vary in case you have defined it to be a different one, at the time of the installation.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

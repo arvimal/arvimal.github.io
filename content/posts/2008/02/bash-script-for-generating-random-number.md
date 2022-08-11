@@ -7,7 +7,7 @@ tags:
   - "bash"
   - "random-number-generator"
 ---
-
+<!--more-->
 The bash environment variable 'RANDOM' is a pseudo-random number generator built in bash, and it can generate random numbers in the range of 0 - 32767.
 
 Using the command \`echo $RANDOM\`, we can generate a random number. Building a random number generator which emits a sequence of random numbers is pretty easy.

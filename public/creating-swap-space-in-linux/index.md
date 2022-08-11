@@ -1,6 +1,6 @@
 # Creating a SWAP space in Linux
 
-
+<!--more-->
 **Adding Swap Space:**
 
 Sometimes it is necessary to add more swap space after installation. For example, you may upgrade the amount of RAM in your system from 64 MB to 128 MB, but there is only 128 MB of swap space. It might be advantageous to increase the amount of swap space to 256 MB if you perform memory-intense operations or run applications that require a large amount of memory.

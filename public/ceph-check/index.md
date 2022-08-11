@@ -1,6 +1,6 @@
 # `ceph-check` - A Ceph installation checker
 
-
+<!--more-->
 Many a user wants to know if a Ceph cluster installation has been done to a specific suggested guideline.
 
 Technologies like RAID is better avoided in Ceph due to an additional layer, which Ceph already takes care of.

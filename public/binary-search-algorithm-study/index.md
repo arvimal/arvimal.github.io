@@ -1,6 +1,6 @@
 # Binary Search - Algorithm Study
 
-
+<!--more-->
 ## Introduction
 
 **_B_**inary Search is a search method used to find an object in a data set. This is much faster compared to the Linear Search algorithm we saw in a [previous post](https://arvimal.wordpress.com/2017/01/15/linear-search-algorithm-study/).

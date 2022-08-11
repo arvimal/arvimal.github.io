@@ -4,26 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Ceph OSD heartbeats - The Child is Father of the Man</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Ceph OSD heartbeats" />
-<meta property="og:description" content="Ceph OSD daemons need to ensure that the neighbouring OSDs are functioning properly so that the cluster remains in a healthy state.
-For this, each Ceph OSD process (ceph-osd) sends a heartbeat signal to the neighbouring OSDs. By default, the heartbeat signal is sent every 6 seconds [1], which is configurable of course.
-If the heartbeat check from one OSD doesn&rsquo;t hear from the other within the set value for `osd_heartbeat_grace` [2], which is set to 20 seconds by default, the OSD that sends the heartbeat check reports the other OSD (the one that didn&rsquo;t respond within 20 seconds) as down, to the MONs." />
+        <title>Ceph OSD heartbeats - The Child is Father of the Man</title><meta name="Description" content="The Child is Father of the Man"><meta property="og:title" content="Ceph OSD heartbeats" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://arvimal.github.io/ceph-osd-heartbeats/" /><meta property="og:image" content="https://arvimal.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://arvimal.github.io/ceph-osd-heartbeats/" /><meta property="og:image" content="https://arvimal.github.io/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2016-05-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-08-10T23:14:32+02:00" /><meta property="og:site_name" content="My cool site" />
+<meta property="article:modified_time" content="2016-05-09T00:00:00+00:00" /><meta property="og:site_name" content="The Child is Father of the Man" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://arvimal.github.io/logo.png"/>
+<meta name="twitter:image" content="https://arvimal.github.io/avatar.jpg"/>
 
 <meta name="twitter:title" content="Ceph OSD heartbeats"/>
-<meta name="twitter:description" content="Ceph OSD daemons need to ensure that the neighbouring OSDs are functioning properly so that the cluster remains in a healthy state.
-For this, each Ceph OSD process (ceph-osd) sends a heartbeat signal to the neighbouring OSDs. By default, the heartbeat signal is sent every 6 seconds [1], which is configurable of course.
-If the heartbeat check from one OSD doesn&rsquo;t hear from the other within the set value for `osd_heartbeat_grace` [2], which is set to 20 seconds by default, the OSD that sends the heartbeat check reports the other OSD (the one that didn&rsquo;t respond within 20 seconds) as down, to the MONs."/>
+<meta name="twitter:description" content=""/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://arvimal.github.io/ceph-osd-heartbeats/" /><link rel="prev" href="https://arvimal.github.io/revamping-the-blog/" /><link rel="next" href="https://arvimal.github.io/mro-object-oriented-programming/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://arvimal.github.io/ceph-osd-heartbeats/" /><link rel="prev" href="https://arvimal.github.io/ceph-check/" /><link rel="next" href="https://arvimal.github.io/decorators-object-oriented-programming/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -35,7 +31,7 @@ If the heartbeat check from one OSD doesn&rsquo;t hear from the other within the
             "@type": "WebPage",
             "@id": "https:\/\/arvimal.github.io\/ceph-osd-heartbeats\/"
         },"genre": "posts","keywords": "ceph, monitors","wordcount":  268 ,
-        "url": "https:\/\/arvimal.github.io\/ceph-osd-heartbeats\/","datePublished": "2016-05-09T00:00:00+00:00","dateModified": "2022-08-10T23:14:32+02:00","publisher": {
+        "url": "https:\/\/arvimal.github.io\/ceph-osd-heartbeats\/","datePublished": "2016-05-09T00:00:00+00:00","dateModified": "2016-05-09T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -43,7 +39,7 @@ If the heartbeat check from one OSD doesn&rsquo;t hear from the other within the
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -105,10 +101,10 @@ If the heartbeat check from one OSD doesn&rsquo;t hear from the other within the
     </div><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Ceph OSD heartbeats</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/arvimal" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Vimal A.R</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ceph/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>ceph</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2016-05-09">2016-05-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;268 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="09-05-2016">09-05-2016</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;268 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -136,19 +132,18 @@ If the heartbeat check from one OSD doesn&rsquo;t hear from the other within the
 <p>From &lsquo;common/config_opts.h&rsquo;:</p>
 <p><strong>[1] OPTION(mon_osd_min_down_reporters, OPT_INT, 2) // number of OSDs from different subtrees who need to report a down OSD for it to count</strong></p>
 <p><strong>[2] OPTION(mon_osd_reporter_subtree_level , OPT_STR, &ldquo;host&rdquo;) // in which level of parent bucket the reporters are counted</strong></p>
-<p>Image Courtsey : <a href="https://access.redhat.com/documentation/en/red-hat-ceph-storage/version-1.3/red-hat-ceph-storage-13-ceph-configuration-guide/#osd-check-heartbeats" target="_blank" rel="noopener noreffer ">Red Hat Ceph Storage 1.3.2 Configuration guide</a></p>
-</div><div class="post-footer" id="post-footer">
+<p>Image Courtsey : <a href="https://access.redhat.com/documentation/en/red-hat-ceph-storage/version-1.3/red-hat-ceph-storage-13-ceph-configuration-guide/#osd-check-heartbeats" target="_blank" rel="noopener noreffer ">Red Hat Ceph Storage 1.3.2 Configuration guide</a></p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-08-10</span>
+                <span>Updated on 09-05-2016</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
                             <a class="link-to-markdown" href="/ceph-osd-heartbeats/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://arvimal.github.io/ceph-osd-heartbeats/" data-title="Ceph OSD heartbeats" data-via="xxxx" data-hashtags="ceph,monitors"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://arvimal.github.io/ceph-osd-heartbeats/" data-hashtag="ceph"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://arvimal.github.io/ceph-osd-heartbeats/" data-title="Ceph OSD heartbeats"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://arvimal.github.io/ceph-osd-heartbeats/" data-title="Ceph OSD heartbeats"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://arvimal.github.io/ceph-osd-heartbeats/" data-title="Ceph OSD heartbeats"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://arvimal.github.io/ceph-osd-heartbeats/" data-title="Ceph OSD heartbeats" data-hashtags="ceph,monitors"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://arvimal.github.io/ceph-osd-heartbeats/" data-hashtag="ceph"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://arvimal.github.io/ceph-osd-heartbeats/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://arvimal.github.io/ceph-osd-heartbeats/" data-title="Ceph OSD heartbeats"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://arvimal.github.io/ceph-osd-heartbeats/" data-title="Ceph OSD heartbeats"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://arvimal.github.io/ceph-osd-heartbeats/" data-title="Ceph OSD heartbeats"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -160,8 +155,8 @@ If the heartbeat check from one OSD doesn&rsquo;t hear from the other within the
         </section>
     </div>
 
-    <div class="post-nav"><a href="/revamping-the-blog/" class="prev" rel="prev" title="Revamping the blog"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Revamping the blog</a>
-            <a href="/mro-object-oriented-programming/" class="next" rel="next" title="Method Resolution Order - Object Oriented Programming">Method Resolution Order - Object Oriented Programming<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/ceph-check/" class="prev" rel="prev" title="`ceph-check` - A Ceph installation checker"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>`ceph-check` - A Ceph installation checker</a>
+            <a href="/decorators-object-oriented-programming/" class="next" rel="next" title="Decorators - Object Oriented Programming">Decorators - Object Oriented Programming<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

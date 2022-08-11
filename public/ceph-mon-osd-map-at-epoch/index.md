@@ -1,6 +1,6 @@
 # How to get a Ceph MON/OSD map at a specific epoch?
 
-
+<!--more-->
 To get a MON map or an OSD map of a specific epoch, use:
 
 > \# ceph osd getmap <epoch-value> # ceph mon getmap <epoch-value>

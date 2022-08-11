@@ -6,34 +6,27 @@
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>arvimal81@gmail.com (Vimal A.R)</managingEditor>
             <webMaster>arvimal81@gmail.com (Vimal A.R)</webMaster><lastBuildDate>Wed, 09 Aug 2017 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/categories/python/" rel="self" type="application/rss+xml" /><item>
     <title>Callables in Python</title>
-    <link>https://arvimal.github.io/2017-08-09-callables-in-python/</link>
+    <link>https://arvimal.github.io/callables-in-python/</link>
     <pubDate>Wed, 09 Aug 2017 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
-    <guid>https://arvimal.github.io/2017-08-09-callables-in-python/</guid>
-    <description><![CDATA[Introduction A callable is an object in Python that can be called / executed when called with parantheses ( ). Classes and functions are callable.
-Callables can be a class, a function, or an instance of a class. In simple terms, a class/function/instance/builtin is callable if it gets executed when called with parantheses ().
-Example 1: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 In [1]: help() Welcome to Python 3.]]></description>
+    <guid>https://arvimal.github.io/callables-in-python/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Recursion - Algorithm Study</title>
-    <link>https://arvimal.github.io/2017-06-27-recursion-algorithm-study/</link>
+    <link>https://arvimal.github.io/recursion-algorithm-study/</link>
     <pubDate>Tue, 27 Jun 2017 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
-    <guid>https://arvimal.github.io/2017-06-27-recursion-algorithm-study/</guid>
-    <description><![CDATA[_R_ecursion is a technique by which a function calls itself until a condition is met.
-Introduction Loops or repetitive execution based on certain conditions are inevitable in programs. Usual loops include if, while and for loops. Recursion is an entirely different way to deal with such situations, and in many cases, easier.
-Recursion is a when a function calls itself in each iteration till a condition is met. Ideally, the data set in each iteration gets smaller until it reach the required condition, after which the recursive function exists.]]></description>
+    <guid>https://arvimal.github.io/recursion-algorithm-study/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Selection Sort - Algorithm Study</title>
-    <link>https://arvimal.github.io/2017-02-11-selection-sort-algorithm-study/</link>
+    <link>https://arvimal.github.io/selection-sort-algorithm-study/</link>
     <pubDate>Sat, 11 Feb 2017 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
-    <guid>https://arvimal.github.io/2017-02-11-selection-sort-algorithm-study/</guid>
-    <description><![CDATA[Selection Sort is a sorting algorithm used to sort a data set either in incremental or decremental order.
-It goes through the entire elements one by one and hence it&rsquo;s not a very efficient algorithm to work on large data sets.
-1. How does Selection sort work? Selection sort starts with an unsorted data set. With each iteration, it builds up a sub dataset with the sorted data.
-By the end of the sorting process, the sub dataset contains the entire elements in a sorted order.]]></description>
+    <guid>https://arvimal.github.io/selection-sort-algorithm-study/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Binary Search - Algorithm Study</title>
@@ -41,9 +34,7 @@ By the end of the sorting process, the sub dataset contains the entire elements 
     <pubDate>Mon, 16 Jan 2017 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/binary-search-algorithm-study/</guid>
-    <description><![CDATA[Introduction **B**inary Search is a search method used to find an object in a data set. This is much faster compared to the Linear Search algorithm we saw in a previous post.
-This algorithm works on the Divide and Conquer principle. Binary Search gets its speed by essentially dividing the list/array in half in each iteration, thus reducing the dataset size for the next iteration.
-Imagine searching for an element in a rather large dataset.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Linear Search - Algorithm Study</title>
@@ -51,64 +42,47 @@ Imagine searching for an element in a rather large dataset.]]></description>
     <pubDate>Sun, 15 Jan 2017 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/linear-search-algorithm-study/</guid>
-    <description><![CDATA[autoauto- [Introduction](#introduction)auto- [Performance](#performance)auto - [1\. Worst-case performance: O(n)](#1\-worst-case-performance-on)auto - [2\. Best-case performance: O(1)](#2\-best-case-performance-o1)auto - [3\. Average performance: O(n/2)](#3\-average-performance-on2)auto - [Observations:](#observations)auto- [How does Linear Search work?](#how-does-linear-search-work)auto- [Code](#code)auto - [Reference:](#reference)autoauto Introduction _L_inear Search is an way to search a data set for an element of interest. It is one of the many search algorithms available and is also the most direct and simple of the lot.
-Linear search looks for the element of interest in a dataset starting from the first element and moves on to the consecutive elements till it finds the one we&rsquo;re interested in.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Accessor and Mutator methods - Python</title>
-    <link>https://arvimal.github.io/2016-12-18-accessor-and-mutator-methods-python/</link>
+    <link>https://arvimal.github.io/accessor-and-mutator-methods/</link>
     <pubDate>Sun, 18 Dec 2016 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
-    <guid>https://arvimal.github.io/2016-12-18-accessor-and-mutator-methods-python/</guid>
-    <description><![CDATA[A method defined within a class can either be an Accessor or a Mutator method.
-An Accessor method returns the information about the object, but do not change the state or the object.
-A Mutator method, also called an Update method, can change the state of the object.
-Consider the following example:
-[code language=&ldquo;python&rdquo;] In [10]: a = [1,2,3,4,5]
-In [11]: a.count(1) Out[11]: 1
-In [12]: a.index(2) Out[12]: 1
-In [13]: a Out[13]: [1, 2, 3, 4, 5]]]></description>
+    <guid>https://arvimal.github.io/accessor-and-mutator-methods/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Python, Objects, and some more..</title>
-    <link>https://arvimal.github.io/2016-10-20-python-objects-and-some-more/</link>
+    <link>https://arvimal.github.io/python-objects/</link>
     <pubDate>Thu, 20 Oct 2016 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
-    <guid>https://arvimal.github.io/2016-10-20-python-objects-and-some-more/</guid>
-    <description><![CDATA[_E_verything in Python is an object, what does that mean? This post tries to discuss some very basic concepts.
-What does the following assignment do?
-[code language=&ldquo;python&rdquo;]
-a = 1 [/code] Of course, anyone dabbled in code knows this. The statement above creates a container `a` and stores the value `1` in it.
-But it seem that&rsquo;s not exactly what&rsquo;s happening, at least from Python&rsquo;s view-point.
-When a = 1 is entered or executed by the python interpreter, the following happens in the backend, seemingly unknown to the user.]]></description>
+    <guid>https://arvimal.github.io/python-objects/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Inheritance and super() - Object Oriented Programming</title>
-    <link>https://arvimal.github.io/2016-07-01-inheritance-and-super-object-oriented-programming/</link>
+    <link>https://arvimal.github.io/inheritance-and-super-oop/</link>
     <pubDate>Fri, 01 Jul 2016 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
-    <guid>https://arvimal.github.io/2016-07-01-inheritance-and-super-object-oriented-programming/</guid>
-    <description><![CDATA[_s_uper() is a feature through which inherited methods can be accessed, which has been overridden in a class. It can also help with the MRO lookup order in case of multiple inheritance. This may not be obvious first, but a few examples should help to drive the point home.
-Inheritance and method overloading was discussed in a previous post, where we saw how inherited methods can be overloaded or enhanced in the child classes.]]></description>
+    <guid>https://arvimal.github.io/inheritance-and-super-oop/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Inheritance and Method overloading - Object Oriented Programming</title>
-    <link>https://arvimal.github.io/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/</link>
+    <link>https://arvimal.github.io/inheritance-and-method-overloading-oop/</link>
     <pubDate>Wed, 29 Jun 2016 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
-    <guid>https://arvimal.github.io/2016-06-29-inheritance-and-method-overloading-object-oriented-programming/</guid>
-    <description><![CDATA[_I_nheritance is a usual theme in Object Oriented Programming. Because of Inheritance, the functions/methods defined in parent classes can be called in Child classes which enables code reuse, and several other features. In this article, we try to understand some of those features that come up with Inheritance.
-We&rsquo;ve discussed Abstract Methods in an earlier post, which is a feature part of Inheritance, and can be applied on child classes that inherits from a Parent class.]]></description>
+    <guid>https://arvimal.github.io/inheritance-and-method-overloading-oop/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Abstract Base Classes/Methods - Object Oriented Programming</title>
-    <link>https://arvimal.github.io/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</link>
+    <link>https://arvimal.github.io/abc-oop-python/</link>
     <pubDate>Tue, 14 Jun 2016 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
-    <guid>https://arvimal.github.io/2016-06-14-abstract-base-classesmethods-object-oriented-programming/</guid>
-    <description><![CDATA[_A_bstract classes, in short, are classes that are supposed to be inherited or subclassed, rather than instantiated.
-Through Abstract Classes, we can enforce a blueprint on the subclasses that inherit the Abstract Class. This means that Abstract classes can be used to define a set of methods that must be implemented by it subclasses.
-Abstract classes are used when working on large projects where classes have to be inherited, and need to strictly follow certain blueprints.]]></description>
+    <guid>https://arvimal.github.io/abc-oop-python/</guid>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

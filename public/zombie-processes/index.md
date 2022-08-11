@@ -1,6 +1,6 @@
 # Zombie processes
 
-
+<!--more-->
 **Why can't I kill a process with the signal 9?**
 
 A process can be sleeping in kernel code. Usually that's because of faulty hardware or a badly written driver- or maybe a little of both. A device that isn't set to the interrupt the driver thinks it is can cause this, for example- the driver is waiting for something its never going to get. The process doesn't ignore your signal- it just never gets it.

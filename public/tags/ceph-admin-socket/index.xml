@@ -10,9 +10,7 @@
     <pubDate>Wed, 06 May 2015 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/list-ceph-cluster-configurations/</guid>
-    <description><![CDATA[It can be really helpful to have a single command to list all the configuration settings in a monitor node, in a Ceph cluster.
-This is possible by interacting directly with the monitor&rsquo;s unix socket file. This can be found under /var/run/ceph/. By default, the admin socket for the monitor will be in the path /var/run/ceph/ceph-mon..asok.
-The default location can vary in case you have defined it to be a different one, at the time of the installation.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

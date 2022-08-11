@@ -8,7 +8,7 @@ tags:
   - "placement-groups"
   - "pool"
 ---
-
+<!--more-->
 Understanding the mapping of Pools and Placement Groups can be very useful while troubleshooting Ceph problems.
 
 A direct method is to dump information on the PGs via :

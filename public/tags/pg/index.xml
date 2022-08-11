@@ -10,11 +10,7 @@
     <pubDate>Sun, 30 Aug 2015 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/calculate-pg-id-from-ceph-osd-debug-logs/</guid>
-    <description><![CDATA[Recently, I had an incident where the OSDs were crashing at the time of startup. Obviously, the next step was to enable debug logs for the OSDs and understand where they were crashing.
-Enabled OSD debug logs dynamically by injecting it with:
-# ceph tell osd.* injectargs &ndash;debug-osd 20 &ndash;debug-ms 1
-NOTE: This command can be run from the MON nodes.
-Once this was done, the OSDs were started manually (since it were crashing and not running) and watched out for the next crash.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

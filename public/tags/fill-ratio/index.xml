@@ -10,8 +10,7 @@
     <pubDate>Thu, 07 May 2015 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/how-to-change-ceph-osd-filling-ratio/</guid>
-    <description><![CDATA[There could be many scenarios where you&rsquo;d need to change the percentage of space usage on a Ceph OSD. One such use case would be when your OSD space is about to hit the hard limit, and is constantly sending you warnings.
-For some reason or other, you may need to extend the threshold limit for some time. In such a case, you don&rsquo;t need to change/add the configuration in ceph.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

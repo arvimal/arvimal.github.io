@@ -10,9 +10,7 @@
     <pubDate>Mon, 30 May 2016 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/decorators-object-oriented-programming/</guid>
-    <description><![CDATA[_D_ecorators are wrapper functions (or classes) that wrap and modify another function (or class), and change it&rsquo;s behavior as required. Decorators help to modify your code without actually modifying the working function/class itself.
-There are several inbuilt Decorators in Python, such as @classmethod and @staticmethod. Examples on these are due for another post.
-Decorators are called to act upon a function or class, by mentioning the Decorator name just above the function/class.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

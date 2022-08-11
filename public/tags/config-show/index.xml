@@ -10,8 +10,7 @@
     <pubDate>Wed, 27 May 2015 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/get-a-list-of-all-configurations-ceph-cluster/</guid>
-    <description><![CDATA[In many cases we would like to get the active configurations from a Ceph node, either a monitor or an OSD node. A neat feature, I must say, is to probe the administrative socket file to get a listing of all the active configurations, be it on the OSD node or the monitor node.
-This comes handy when we have changed a setting and wants to confirm if it had indeed changed or not.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

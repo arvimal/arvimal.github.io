@@ -8,7 +8,7 @@ tags:
   - "osd"
   - "scrubbing"
 ---
-
+<!--more-->
 Data Scrubbing is an error checking and correction method or routine check to ensure that the data on file systems are in pristine condition, and has no errors. Data integrity is of primary concern in today's conditions, given the humongous amounts of data being read and written daily.
 
 A simple example for a scrubbing, is a file system check done on file systems with tools like 'e2fsck' in EXT2/3/4, or 'xfs\_repair' in XFS. Ceph also includes a daily scrubbing as well as weekly scrubbing, which we will talk about in detail in another article.

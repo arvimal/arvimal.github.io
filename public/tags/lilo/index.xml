@@ -10,10 +10,7 @@
     <pubDate>Fri, 15 Feb 2008 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/bootloader-checker/</guid>
-    <description><![CDATA[A bash code snippet that helps to check if the installed bootloader is Grub or LILO.
-[code language=&ldquo;bash&rdquo;] #!/bin/bash
-A=`mount | awk &lsquo;{print $1}&rsquo; | grep -n /dev/ | grep &ldquo;1:&rdquo; | cut -f2 -d &ldquo;:&rdquo; | cut -c 1-8` B=`mount | awk &lsquo;{print $1}&rsquo; | grep -n /dev/ | grep &ldquo;1:&rdquo; | cut -f2 -d &ldquo;:&rdquo;`
-echo ; echo -e &quot; / mounted on $B \n&quot;; dd if=$A bs=512 count=1 2&gt;&amp;1 | grep GRUB &gt; /dev/null; if [ $?]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

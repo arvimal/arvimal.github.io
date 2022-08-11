@@ -10,8 +10,7 @@
     <pubDate>Wed, 27 May 2015 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/osds-noout-status/</guid>
-    <description><![CDATA[You may have seen the &lsquo;noout&rsquo; flag set in the output of &lsquo;ceph -s&rsquo;. What does this actually mean?
-This is a global flag for the cluster, which means that if an OSD is out, the said OSD is not marked out of the cluster and data balancing shouldn&rsquo;t start to maintain the replica count. By default, the monitors mark the OSDs out of the acting set if it is not reachable for 300 seconds, ie.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

@@ -1,6 +1,6 @@
 # Method Resolution Order - Object Oriented Programming
 
-
+<!--more-->
 _**M**_ethod Resolution Order or 'MRO' in short, denotes the way a programming language resolves a method or attribute. This post looks into how Method Resolution Order works, using Python.
 
 Python supports classes inheriting from other classes. The class being inherited is called the Parent/Super class, while the class that inherits is called the Child/Sub class.
@@ -58,7 +58,7 @@ If we were to call the method `my_func()` through the `my_instance()` instance
 
 ### **How does the code work?**
 
-This won't be as obvious as _**Example 0.**_ 
+This won't be as obvious as _**Example 0.**_
 
 1. The instance `my_instance()` is created from class `D`.
 2. Since class `D`inherits from both class `B` and `C`, the python interpreter searches for the method `my_func()` in both of these classes.
@@ -93,8 +93,6 @@ my\_instance = D() my\_instance.my\_func() \[/code\]
 5. Class `A` inherits from the default base class `object`.
 
 **This sort of inheritance is called the `Diamond Inheritance` or the `Deadly Diamond of death` and looks like the following:**
-
- 
 
 ![220px-Diamond_inheritance.svg](images/220px-diamond_inheritance-svg.png)
 
@@ -136,14 +134,14 @@ Print the Method Resolution Order class '\_\_main\_\_.D', class '\_\_main\_\_.B'
 
 (, ) \[/code\]
 
-### Takeaway:
+### Takeaway
 
 1. Python follows a depth-first order for resolving methods and attributes.
 2. In case of multiple inheritances where the methods happen to occur more than once, python omits the first occurrence of a class in the Method Resolution Order.
 3. The `<class>.mro()`methods helps to understand the Medthod Resolution Order.
 4. The \`\_\_bases\_\_\` and \`\_\_base\_\_\` magic methods help to understand the Base/Parent classes of a Sub/Child class.
 
-### References:
+### References
 
 1. [https://en.wikipedia.org/wiki/Multiple\_inheritance](https://en.wikipedia.org/wiki/Multiple_inheritance)
 

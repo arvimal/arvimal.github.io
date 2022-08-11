@@ -6,7 +6,7 @@ categories:
 tags:
   - "password-encrypt"
 ---
-
+<!--more-->
 Some time back, I had to implement a password encryption section in one of my bash programs. It seemed easy to use a C snippet rather than doing it in bash. This was something I got after searching a while.
 
 \[code language="C"\]

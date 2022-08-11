@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Max file-name length in an EXT4 file system. - The Child is Father of the Man</title><meta name="Description" content="The Child is Father of the Man"><meta property="og:title" content="Max file-name length in an EXT4 file system." />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://arvimal.github.io/max-file-name-in-ext4/" /><meta property="og:image" content="https://arvimal.github.io/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-07-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-07-21T00:00:00+00:00" /><meta property="og:site_name" content="The Child is Father of the Man" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://arvimal.github.io/avatar.jpg"/>
+
+<meta name="twitter:title" content="Max file-name length in an EXT4 file system."/>
+<meta name="twitter:description" content=""/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://arvimal.github.io/max-file-name-in-ext4/" /><link rel="prev" href="https://arvimal.github.io/inheritance-and-super-oop/" /><link rel="next" href="https://arvimal.github.io/python-objects/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Max file-name length in an EXT4 file system.",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/arvimal.github.io\/max-file-name-in-ext4\/"
+        },"genre": "posts","keywords": "dentry, directory-entry-structure, ext4, ext4_dir_entry, ext4_dir_entry_2, file-systems, filesystem, name_len","wordcount":  591 ,
+        "url": "https:\/\/arvimal.github.io\/max-file-name-in-ext4\/","datePublished": "2016-07-21T00:00:00+00:00","dateModified": "2016-07-21T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Vimal A.R"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="The Child is Father of the Man"></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="The Child is Father of the Man"></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Max file-name length in an EXT4 file system.</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/arvimal" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Vimal A.R</a></span>&nbsp;<span class="post-category">included in <a href="/categories/techno/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>techno</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="21-07-2016">21-07-2016</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;591 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#observations">Observations:</a></li>
+        <li><a href="#note">NOTE:</a></li>
+        <li><a href="#references">References:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><em><strong>A</strong></em> recent discussion at work brought up the question &ldquo;What can be the length of a file name in EXT4&rdquo;. Or in other words, what would be the maximum character length of the name for a file in EXT4?</p>
+<p><a href="https://en.wikipedia.org/wiki/Comparison_of_file_systems" target="_blank" rel="noopener noreffer ">Wikipedia</a> states that it&rsquo;s <em><strong>255 Bytes</strong></em>, but how does that come to be? Is it 255 Bytes or 255 characters?</p>
+<p>In the kernel source for the 2.6 kernel series (the question was for a RHEL6/EXT4 combination), in  <a href="https://access.redhat.com/labs/psb/versions/kernel-2.6.32-573.el6/fs/ext4/ext4.h" target="_blank" rel="noopener noreffer ">fs/ext4/ext4.h</a>, we&rsquo;d be able to see the following:</p>
+<p>[code language=&ldquo;c&rdquo;]</p>
+<p>#define EXT4_NAME_LEN 255</p>
+<p>struct ext4_dir_entry { __le32 inode; /* Inode number */ __le16 rec_len; /* Directory entry length */ __le16 name_len; /* Name length */ char name[EXT4_NAME_LEN]; /* File name */ };</p>
+<p>/* * The new version of the directory entry. Since EXT4 structures are * stored in intel byte order, and the name_len field could never be * bigger than 255 chars, it&rsquo;s safe to reclaim the extra byte for the * file_type field. */</p>
+<p>struct ext4_dir_entry_2 { __le32 inode; /* Inode number */ __le16 rec_len; /* Directory entry length */ __u8 name_len; /* Name length */ __u8 file_type; char name[EXT4_NAME_LEN]; /* File name */ }; [/code] This shows that there are two versions of the directory entry structure, ie.. <code>ext4_dir_entry</code> and <code>ext4_dir_entry_2</code></p>
+<p>A directory entry structure carries the file/folder name and the corresponding inode number under every directory.</p>
+<p>Both structs use an element named <code>name_len</code> to denote the length of the file/folder name.</p>
+<p>If the EXT filesystem feature <code>filetype</code> is <strong>not</strong> set, the directory entry structure falls to the first method <code>ext4_dir_entry</code>, else it&rsquo;s the second, ie.. <code>ext4_dir_entry_2</code>.</p>
+<p>By default, the file system feature <code>filetype</code> is set, hence the directory entry structure is <code>ext4_dir_entry_2</code> . As seen above, in this case, the <code>name_len</code> field is set to 8 bits.</p>
+<p><code>__u8</code> represents an unsigned 8-bit integer in C, and can store values from 0 to 255.</p>
+<p>ie.. <em><strong>2^8 = 255 (0 t0 255 == 256)</strong></em></p>
+<p><code>ext4_dir_entry</code> has a <code>name_len</code> of <code>__le16</code>, but it seems that the file-name length can only go to a max of 256.</p>
+<h3 id="observations">Observations:</h3>
+<ol>
+<li>The maximum name length is 255 characters on Linux machines.</li>
+<li>The actual name length of a file/folder is stored in <code>name_len</code> in each directory entry, under its parent folder. So if the file name length is 5 characters, 5 would be the value set for <code>name_len</code> for that particular file. ie.. the actual length.</li>
+<li>A character will consume a byte of storage, so the number of characters in a file name will map to the respective number bytes. If so, a file with a <code>name_len</code> of 5 will be using 5 bytes of memory to store the name.</li>
+</ol>
+<p>Hence, <code>name_len</code> denotes the <strong>number</strong> of characters that a file can have. Since U8 is 8-bits, <code>name_len</code> can store a file name with upto 255 chars.</p>
+<p>Now the actual memory being consumed for storing these characters <strong>is not</strong> denoted by <code>name_len</code>. Since the size of a character translates to a byte, the maximum size wrt memory that a file name can have is 255 Bytes.</p>
+<h3 id="note">NOTE:</h3>
+<p>The initial dir entry structure <code>ext4_dir_entry</code> had <code>__le16</code> for <code>name_len</code>, it was later re-sized to <code>__u8</code> in <code>ext4_dir_entry_2</code> , by culling 8 bits from the existing 16 bits of <code>name_len</code>.</p>
+<p>The remaining free space culled from <code>name_len</code> was assigned to store the file type, in <code>ext4_dir_entry_2</code>. It was named <code>file_type</code> with size <code>__u8</code>.</p>
+<p><code>file_type</code> helps to identity the file types such as regular files, sockets, character devices, block devices etc..</p>
+<h3 id="references">References:</h3>
+<ol>
+<li><a href="https://access.redhat.com/labs/psb/versions/kernel-2.6.32-573.el6/fs/ext4/ext4.h" target="_blank" rel="noopener noreffer ">RHEL6 kernel-2.6.32-573.el6 EXT4 header file (ext4.h)</a></li>
+<li><a href="https://ext4.wiki.kernel.org/index.php/Ext4_Disk_Layout" target="_blank" rel="noopener noreffer ">EXT4 Wiki - Disk layout</a></li>
+<li><a href="http://unix.stackexchange.com/questions/32795/what-is-the-maximum-allowed-filename-and-folder-size-with-ecryptfs" target="_blank" rel="noopener noreffer ">http://unix.stackexchange.com/questions/32795/what-is-the-maximum-allowed-filename-and-folder-size-with-ecryptfs</a></li>
+</ol></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 21-07-2016</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/max-file-name-in-ext4/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://arvimal.github.io/max-file-name-in-ext4/" data-title="Max file-name length in an EXT4 file system." data-hashtags="dentry,directory-entry-structure,ext4,ext4_dir_entry,ext4_dir_entry_2,file-systems,filesystem,name_len"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://arvimal.github.io/max-file-name-in-ext4/" data-hashtag="dentry"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://arvimal.github.io/max-file-name-in-ext4/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://arvimal.github.io/max-file-name-in-ext4/" data-title="Max file-name length in an EXT4 file system."><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://arvimal.github.io/max-file-name-in-ext4/" data-title="Max file-name length in an EXT4 file system."><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://arvimal.github.io/max-file-name-in-ext4/" data-title="Max file-name length in an EXT4 file system."><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/dentry/">dentry</a>,&nbsp;<a href="/tags/directory-entry-structure/">directory-entry-structure</a>,&nbsp;<a href="/tags/ext4/">ext4</a>,&nbsp;<a href="/tags/ext4_dir_entry/">ext4_dir_entry</a>,&nbsp;<a href="/tags/ext4_dir_entry_2/">ext4_dir_entry_2</a>,&nbsp;<a href="/tags/file-systems/">file-systems</a>,&nbsp;<a href="/tags/filesystem/">filesystem</a>,&nbsp;<a href="/tags/name_len/">name_len</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/inheritance-and-super-oop/" class="prev" rel="prev" title="Inheritance and super() - Object Oriented Programming"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Inheritance and super() - Object Oriented Programming</a>
+            <a href="/python-objects/" class="next" rel="next" title="Python, Objects, and some more..">Python, Objects, and some more..<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/arvimal" target="_blank">Vimal A.R</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

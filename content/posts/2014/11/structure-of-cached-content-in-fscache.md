@@ -8,7 +8,7 @@ tags:
   - "cachefs"
   - "fscache"
 ---
-
+<!--more-->
 The 'cachefilesd' kernel module will create two directories at the location specified in /etc/cachefilesd.conf. By default it's /var/cache/fscache/.
 
 > **\[root@montypython ~\]# lsmod |grep -i cache** cachefiles             40871  1 fscache                62354  3 nfs,cachefiles,nfsv4

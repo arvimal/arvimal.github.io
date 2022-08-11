@@ -10,8 +10,7 @@
     <pubDate>Tue, 01 Jan 2008 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/zombie-processes/</guid>
-    <description><![CDATA[Why can&rsquo;t I kill a process with the signal 9?
-A process can be sleeping in kernel code. Usually that&rsquo;s because of faulty hardware or a badly written driver- or maybe a little of both. A device that isn&rsquo;t set to the interrupt the driver thinks it is can cause this, for example- the driver is waiting for something its never going to get. The process doesn&rsquo;t ignore your signal- it just never gets it.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

@@ -1,6 +1,6 @@
 # Nagios Installation Script
 
-
+<!--more-->
 This is a bash script which automates the installation of Nagios. There are more things to do such as setup of service monitoring, but that's for another time.
 
 \[code language="bash"\] #!/bin/bash DOWNLOAD\_LOCATION='/root/Downloads/' NAGIOS\_URL='http://jaist.dl.sourceforge.net/sourceforge/nagios/nagios-2.9.tar.gz' APACHE\_CONF='/etc/httpd/conf/httpd.conf' NAGIOS\_PLUGIN='http://nchc.dl.sourceforge.net/sourceforge/nagiosplug/nagios-plugins-1.4.8.tar.gz' NAGIOSHOME='/usr/local/nagios' DATE=\`date +%d-%b-%Y\` FILE='/root/Nagios.txt'

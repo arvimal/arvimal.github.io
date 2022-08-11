@@ -10,12 +10,7 @@
     <pubDate>Wed, 13 Feb 2008 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/password-encryptor-in-c/</guid>
-    <description><![CDATA[Some time back, I had to implement a password encryption section in one of my bash programs. It seemed easy to use a C snippet rather than doing it in bash. This was something I got after searching a while.
-[code language=&ldquo;C&rdquo;]
-#include stdlib.h #include unistd.h #include stdio.h #include crack.h #define DICTIONARY /usr/lib/cracklib_dict
-int main(int argc, char *argv[]) {
-char *password; char *problem;
-int status = 0; printf(\nEnter an empty password or Ctrl-D to quit.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

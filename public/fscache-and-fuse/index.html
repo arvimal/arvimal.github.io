@@ -4,24 +4,18 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>FS-Cache and FUSE - The Child is Father of the Man</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="FS-Cache and FUSE" />
-<meta property="og:description" content="I would be working on enabling FS-Cache support in the FUSE kernel module, as part of my under graduate project.
-Niels De Vos, from Red Hat Engineering, would act as my mentor and guide throughout this project. He would also be presenting this idea in the &lsquo;Linux Plumbers Conference&rsquo; being held in Germany, October 2014.
-More details on the the talk can be seen at http://www.linuxplumbersconf.org/2014/ocw/sessions/2247
-This feature has got quite a few requests from the FOSS world, and I&rsquo;m glad I could work on this." />
+        <title>FS-Cache and FUSE - The Child is Father of the Man</title><meta name="Description" content="The Child is Father of the Man"><meta property="og:title" content="FS-Cache and FUSE" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://arvimal.github.io/fscache-and-fuse/" /><meta property="og:image" content="https://arvimal.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://arvimal.github.io/fscache-and-fuse/" /><meta property="og:image" content="https://arvimal.github.io/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2014-09-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-08-10T23:14:32+02:00" /><meta property="og:site_name" content="My cool site" />
+<meta property="article:modified_time" content="2022-08-10T23:14:32+02:00" /><meta property="og:site_name" content="The Child is Father of the Man" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://arvimal.github.io/logo.png"/>
+<meta name="twitter:image" content="https://arvimal.github.io/avatar.jpg"/>
 
 <meta name="twitter:title" content="FS-Cache and FUSE"/>
-<meta name="twitter:description" content="I would be working on enabling FS-Cache support in the FUSE kernel module, as part of my under graduate project.
-Niels De Vos, from Red Hat Engineering, would act as my mentor and guide throughout this project. He would also be presenting this idea in the &lsquo;Linux Plumbers Conference&rsquo; being held in Germany, October 2014.
-More details on the the talk can be seen at http://www.linuxplumbersconf.org/2014/ocw/sessions/2247
-This feature has got quite a few requests from the FOSS world, and I&rsquo;m glad I could work on this."/>
+<meta name="twitter:description" content=""/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -45,7 +39,7 @@ This feature has got quite a few requests from the FOSS world, and I&rsquo;m gla
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -107,10 +101,10 @@ This feature has got quite a few requests from the FOSS world, and I&rsquo;m gla
     </div><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">FS-Cache and FUSE</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/arvimal" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Vimal A.R</a></span>&nbsp;<span class="post-category">included in <a href="/categories/techno/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>techno</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2014-09-14">2014-09-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;142 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="14-09-2014">14-09-2014</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;142 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -122,19 +116,18 @@ This feature has got quite a few requests from the FOSS world, and I&rsquo;m gla
 <p>Niels De Vos, from Red Hat Engineering, would act as my mentor and guide throughout this project. He would also be presenting this idea in the &lsquo;Linux Plumbers Conference&rsquo; being held in Germany, October 2014.</p>
 <p>More details on the the talk can be seen at <a href="http://www.linuxplumbersconf.org/2014/ocw/sessions/2247" target="_blank" rel="noopener noreffer ">http://www.linuxplumbersconf.org/2014/ocw/sessions/2247</a></p>
 <p>This feature has got quite a few requests from the FOSS world, and I&rsquo;m glad I could work on this. For now, I&rsquo;m trying to get a hold on FS-Cache, how it works with other file systems, and trying to build FUSE with some customizations. Ultimately, it would be the FUSE module were the code additions would go, not FS-Cache.</p>
-<p>I&rsquo;ll try to keep this blog updated, so that I have a journal to refer later</p>
-</div><div class="post-footer" id="post-footer">
+<p>I&rsquo;ll try to keep this blog updated, so that I have a journal to refer later</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-08-10</span>
+                <span>Updated on 10-08-2022</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
                             <a class="link-to-markdown" href="/fscache-and-fuse/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://arvimal.github.io/fscache-and-fuse/" data-title="FS-Cache and FUSE" data-via="xxxx" data-hashtags="cachefilesd,fs-cache,fuse"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://arvimal.github.io/fscache-and-fuse/" data-hashtag="cachefilesd"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://arvimal.github.io/fscache-and-fuse/" data-title="FS-Cache and FUSE"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://arvimal.github.io/fscache-and-fuse/" data-title="FS-Cache and FUSE"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://arvimal.github.io/fscache-and-fuse/" data-title="FS-Cache and FUSE"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://arvimal.github.io/fscache-and-fuse/" data-title="FS-Cache and FUSE" data-hashtags="cachefilesd,fs-cache,fuse"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://arvimal.github.io/fscache-and-fuse/" data-hashtag="cachefilesd"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://arvimal.github.io/fscache-and-fuse/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://arvimal.github.io/fscache-and-fuse/" data-title="FS-Cache and FUSE"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://arvimal.github.io/fscache-and-fuse/" data-title="FS-Cache and FUSE"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://arvimal.github.io/fscache-and-fuse/" data-title="FS-Cache and FUSE"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>

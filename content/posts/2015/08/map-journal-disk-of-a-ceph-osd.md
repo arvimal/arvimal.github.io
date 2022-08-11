@@ -2,7 +2,7 @@
 title: "How to identify the journal disk for a Ceph OSD?"
 date: 2015-08-05
 ---
-
+<!--more-->
 In many cases, one would like to understand the journal disk a particular OSD is using. There are two methods to understand this:
 
 a) This is the most direct method, and should give you details on the OSD disks and the corresponding journal disks.

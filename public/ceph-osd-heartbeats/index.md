@@ -1,6 +1,6 @@
 # Ceph OSD heartbeats
 
-
+<!--more-->
 Ceph OSD daemons need to ensure that the neighbouring OSDs are functioning properly so that the cluster remains in a healthy state.
 
 For this, each Ceph OSD process (ceph-osd) sends a heartbeat signal to the neighbouring OSDs. By default, the heartbeat signal is sent every 6 seconds \[1\], which is configurable of course.

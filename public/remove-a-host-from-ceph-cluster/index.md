@@ -1,6 +1,6 @@
 # How to remove a host from a Ceph cluster?
 
-
+<!--more-->
 I'm still studying Ceph, and recently faced a scenario in which one of my Ceph nodes went down due to hardware failure. Even though my data was safe due to the replication factor, I was not able to remove the node from the cluster.
 
 I could remove the OSDs on the node, but I didn't find a way to remove the node being listed in 'ceph osd tree'. I ended up editing the CRUSH map by hand, to remove the host, and uploaded it back. This worked as expected. Following are the steps I did to achieve this.

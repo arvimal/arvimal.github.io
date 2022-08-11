@@ -10,9 +10,7 @@
     <pubDate>Thu, 23 Dec 2010 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/lsusb-and-chroot-in-anaconda/</guid>
-    <description><![CDATA[**T**he binary &lsquo;/sbin/lsusb&rsquo; in a chroot-ed environment have problems running properly. I have not checked this in a manually created chroot environment or using tools like &lsquo;mock&rsquo;.
-The scenario is as following :
-We were trying to check the output of &rsquo;lsusb&rsquo; in the %post section of a kickstart installation. I had specified &rsquo;noreboot&rsquo; in the kickstart file so the machine will wait for the user to manually reboot the machine.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

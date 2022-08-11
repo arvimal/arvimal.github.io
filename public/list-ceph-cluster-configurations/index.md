@@ -1,6 +1,6 @@
 # How to list all the configuration settings in a Ceph cluster monitor?
 
-
+<!--more-->
 It can be really helpful to have a single command to list all the configuration settings in a monitor node, in a Ceph cluster.
 
 This is possible by interacting directly with the monitor's unix socket file. This can be found under /var/run/ceph/. By default, the admin socket for the monitor will be in the path /var/run/ceph/ceph-mon.<hostname-s>.asok.

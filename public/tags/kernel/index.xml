@@ -6,12 +6,11 @@
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>arvimal81@gmail.com (Vimal A.R)</managingEditor>
             <webMaster>arvimal81@gmail.com (Vimal A.R)</webMaster><lastBuildDate>Thu, 27 Jul 2017 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/kernel/" rel="self" type="application/rss+xml" /><item>
     <title>Writing a minimalistic kernel module in Linux - Part 1</title>
-    <link>https://arvimal.github.io/2017-07-27-writing-a-minimalistic-kernel-module-in-linux-part-1/</link>
+    <link>https://arvimal.github.io/writing-a-minimalistic-kernel-module/</link>
     <pubDate>Thu, 27 Jul 2017 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
-    <guid>https://arvimal.github.io/2017-07-27-writing-a-minimalistic-kernel-module-in-linux-part-1/</guid>
-    <description><![CDATA[Introduction _L_oadable Kernel Modules (LKM) are object code that can be loaded into memory, often used for supporting hardware or enable specific features. Kernel modules enable the core kernel to be minimal and have features to be loaded as required.
-A kernel module is a normal file usually suffixed with .ko denoting it&rsquo;s a kernel object file. It contains compiled code from one or more source files, gets linked to the kernel when loaded, and runs in kernel space.]]></description>
+    <guid>https://arvimal.github.io/writing-a-minimalistic-kernel-module/</guid>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

@@ -6,13 +6,11 @@
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>arvimal81@gmail.com (Vimal A.R)</managingEditor>
             <webMaster>arvimal81@gmail.com (Vimal A.R)</webMaster><lastBuildDate>Thu, 21 Jul 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/filesystem/" rel="self" type="application/rss+xml" /><item>
     <title>Max file-name length in an EXT4 file system.</title>
-    <link>https://arvimal.github.io/2016-07-21-max-file-name-length-in-an-ext4-file-system/</link>
+    <link>https://arvimal.github.io/max-file-name-in-ext4/</link>
     <pubDate>Thu, 21 Jul 2016 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
-    <guid>https://arvimal.github.io/2016-07-21-max-file-name-length-in-an-ext4-file-system/</guid>
-    <description><![CDATA[A recent discussion at work brought up the question &ldquo;What can be the length of a file name in EXT4&rdquo;. Or in other words, what would be the maximum character length of the name for a file in EXT4?
-Wikipedia states that it&rsquo;s 255 Bytes, but how does that come to be? Is it 255 Bytes or 255 characters?
-In the kernel source for the 2.6 kernel series (the question was for a RHEL6/EXT4 combination), in fs/ext4/ext4.]]></description>
+    <guid>https://arvimal.github.io/max-file-name-in-ext4/</guid>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

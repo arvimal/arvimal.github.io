@@ -4,30 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Calculate a PG id from the hex values in Ceph OSD debug logs - The Child is Father of the Man</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Calculate a PG id from the hex values in Ceph OSD debug logs" />
-<meta property="og:description" content="Recently, I had an incident where the OSDs were crashing at the time of startup. Obviously, the next step was to enable debug logs for the OSDs and understand where they were crashing.
-Enabled OSD debug logs dynamically by injecting it with:
-# ceph tell osd.* injectargs &ndash;debug-osd 20 &ndash;debug-ms 1
-NOTE: This command can be run from the MON nodes.
-Once this was done, the OSDs were started manually (since it were crashing and not running) and watched out for the next crash." />
+        <title>Calculate a PG id from the hex values in Ceph OSD debug logs - The Child is Father of the Man</title><meta name="Description" content="The Child is Father of the Man"><meta property="og:title" content="Calculate a PG id from the hex values in Ceph OSD debug logs" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://arvimal.github.io/calculate-pg-id-from-ceph-osd-debug-logs/" /><meta property="og:image" content="https://arvimal.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://arvimal.github.io/calculate-pg-id-from-ceph-osd-debug-logs/" /><meta property="og:image" content="https://arvimal.github.io/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2015-08-30T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-08-10T23:14:32+02:00" /><meta property="og:site_name" content="My cool site" />
+<meta property="article:modified_time" content="2022-08-10T23:14:32+02:00" /><meta property="og:site_name" content="The Child is Father of the Man" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://arvimal.github.io/logo.png"/>
+<meta name="twitter:image" content="https://arvimal.github.io/avatar.jpg"/>
 
 <meta name="twitter:title" content="Calculate a PG id from the hex values in Ceph OSD debug logs"/>
-<meta name="twitter:description" content="Recently, I had an incident where the OSDs were crashing at the time of startup. Obviously, the next step was to enable debug logs for the OSDs and understand where they were crashing.
-Enabled OSD debug logs dynamically by injecting it with:
-# ceph tell osd.* injectargs &ndash;debug-osd 20 &ndash;debug-ms 1
-NOTE: This command can be run from the MON nodes.
-Once this was done, the OSDs were started manually (since it were crashing and not running) and watched out for the next crash."/>
+<meta name="twitter:description" content=""/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://arvimal.github.io/calculate-pg-id-from-ceph-osd-debug-logs/" /><link rel="prev" href="https://arvimal.github.io/map-pg-to-pool/" /><link rel="next" href="https://arvimal.github.io/2015-09-01-how-to-extract-view-change-and-inject-a-monitor-map-in-a-ceph-cluster/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://arvimal.github.io/calculate-pg-id-from-ceph-osd-debug-logs/" /><link rel="prev" href="https://arvimal.github.io/map-pg-to-pool/" /><link rel="next" href="https://arvimal.github.io/view-change-inject-monitor-map/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -47,7 +39,7 @@ Once this was done, the OSDs were started manually (since it were crashing and n
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -109,10 +101,10 @@ Once this was done, the OSDs were started manually (since it were crashing and n
     </div><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Calculate a PG id from the hex values in Ceph OSD debug logs</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/arvimal" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Vimal A.R</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ceph/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>ceph</a>&nbsp;<a href="/categories/programming/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>programming</a>&nbsp;<a href="/categories/python/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>python</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2015-08-30">2015-08-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;551 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="30-08-2015">30-08-2015</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;551 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -149,19 +141,18 @@ Once this was done, the OSDs were started manually (since it were crashing and n
 <blockquote>
 <p># python pg_id_calc.py 0xf6b07b93 2048 12 The PG ID is 12.393</p>
 </blockquote>
-<p>Once we get the PG ID, we can proceed using &lsquo;ceph_objectstore_tool&rsquo; to move the PG to a different location altogether. More on how to use &lsquo;ceph_objectstore_tool&rsquo; in an upcoming journal.</p>
-</div><div class="post-footer" id="post-footer">
+<p>Once we get the PG ID, we can proceed using &lsquo;ceph_objectstore_tool&rsquo; to move the PG to a different location altogether. More on how to use &lsquo;ceph_objectstore_tool&rsquo; in an upcoming journal.</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-08-10</span>
+                <span>Updated on 10-08-2022</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
                             <a class="link-to-markdown" href="/calculate-pg-id-from-ceph-osd-debug-logs/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://arvimal.github.io/calculate-pg-id-from-ceph-osd-debug-logs/" data-title="Calculate a PG id from the hex values in Ceph OSD debug logs" data-via="xxxx" data-hashtags="ceph,pg,python"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://arvimal.github.io/calculate-pg-id-from-ceph-osd-debug-logs/" data-hashtag="ceph"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://arvimal.github.io/calculate-pg-id-from-ceph-osd-debug-logs/" data-title="Calculate a PG id from the hex values in Ceph OSD debug logs"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://arvimal.github.io/calculate-pg-id-from-ceph-osd-debug-logs/" data-title="Calculate a PG id from the hex values in Ceph OSD debug logs"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://arvimal.github.io/calculate-pg-id-from-ceph-osd-debug-logs/" data-title="Calculate a PG id from the hex values in Ceph OSD debug logs"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://arvimal.github.io/calculate-pg-id-from-ceph-osd-debug-logs/" data-title="Calculate a PG id from the hex values in Ceph OSD debug logs" data-hashtags="ceph,pg,python"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://arvimal.github.io/calculate-pg-id-from-ceph-osd-debug-logs/" data-hashtag="ceph"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://arvimal.github.io/calculate-pg-id-from-ceph-osd-debug-logs/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://arvimal.github.io/calculate-pg-id-from-ceph-osd-debug-logs/" data-title="Calculate a PG id from the hex values in Ceph OSD debug logs"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://arvimal.github.io/calculate-pg-id-from-ceph-osd-debug-logs/" data-title="Calculate a PG id from the hex values in Ceph OSD debug logs"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://arvimal.github.io/calculate-pg-id-from-ceph-osd-debug-logs/" data-title="Calculate a PG id from the hex values in Ceph OSD debug logs"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -174,7 +165,7 @@ Once this was done, the OSDs were started manually (since it were crashing and n
     </div>
 
     <div class="post-nav"><a href="/map-pg-to-pool/" class="prev" rel="prev" title="Mapping Placement Groups and Pools"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Mapping Placement Groups and Pools</a>
-            <a href="/2015-09-01-how-to-extract-view-change-and-inject-a-monitor-map-in-a-ceph-cluster/" class="next" rel="next" title="Monitor maps, how to edit them?">Monitor maps, how to edit them?<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+            <a href="/view-change-inject-monitor-map/" class="next" rel="next" title="Monitor maps, how to edit them?">Monitor maps, how to edit them?<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

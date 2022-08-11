@@ -1,6 +1,6 @@
 # FS-Cache and CacheFS, what are the differences?
 
-
+<!--more-->
 FS-Cache and CacheFS. Are there any differences between these two? Initially, I thought both were same. But no, it's not.
 
 CacheFS is the backend implementation which caches the data onto the disk and mainpulates it, while FS-Cache is an interface which talks to CacheFS.

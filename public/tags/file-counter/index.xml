@@ -10,9 +10,7 @@
     <pubDate>Fri, 15 Feb 2008 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/file-counter/</guid>
-    <description><![CDATA[Most of the scripts presented in this journal have been created while learning bash and having nothing much to do&hellip;
-I think its usual to get crazy ideas and work trying to implement them, especially while learning any type of coding. This &lsquo;File Counter&rsquo; script came as such a crazy idea. It was working at the time of its creation, but have not checked it recently.. should work..
-This script counts the entire number of files irrespective the folders under the main directory you specify for this script to work on.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

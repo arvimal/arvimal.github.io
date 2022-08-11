@@ -6,18 +6,11 @@
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>arvimal81@gmail.com (Vimal A.R)</managingEditor>
             <webMaster>arvimal81@gmail.com (Vimal A.R)</webMaster><lastBuildDate>Thu, 30 Jun 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/uninit_bg/" rel="self" type="application/rss+xml" /><item>
     <title>`uninit_bg` and lazy block group allocation in EXT3/4</title>
-    <link>https://arvimal.github.io/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/</link>
+    <link>https://arvimal.github.io/uninit-bg-and-lazy-block-group-allocation/</link>
     <pubDate>Thu, 30 Jun 2016 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
-    <guid>https://arvimal.github.io/2016-06-30-uninit_bg-and-lazy-block-group-allocation-in-ext34/</guid>
-    <description><![CDATA[_E_xt3 and Ext4 recently have been the most commonly used file system on Linux machines.
-What does uninit_bg actually do?
-Read https://ext4.wiki.kernel.org/index.php/Ext4_Disk_Layout
-section `Meta Block Groups and Lazy Block Group Initialization`.
-https://ext4.wiki.kernel.org/index.php/Frequently_Asked_Questions
-https://www.thomas-krenn.com/en/wiki/Ext4_Filesystem
-https://access.redhat.com/labs/psb/versions/kernel-3.10.0-327.18.2.el7/Documentation/filesystems/ext4.txt
-https://access.redhat.com/labs/psb/versions/kernel-3.10.0-327.18.2.el7/fs/ext4/ext4.h]]></description>
+    <guid>https://arvimal.github.io/uninit-bg-and-lazy-block-group-allocation/</guid>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

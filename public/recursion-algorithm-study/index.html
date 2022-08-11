@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Recursion - Algorithm Study - The Child is Father of the Man</title><meta name="Description" content="The Child is Father of the Man"><meta property="og:title" content="Recursion - Algorithm Study" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://arvimal.github.io/recursion-algorithm-study/" /><meta property="og:image" content="https://arvimal.github.io/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-06-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-06-27T00:00:00+00:00" /><meta property="og:site_name" content="The Child is Father of the Man" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://arvimal.github.io/avatar.jpg"/>
+
+<meta name="twitter:title" content="Recursion - Algorithm Study"/>
+<meta name="twitter:description" content=""/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://arvimal.github.io/recursion-algorithm-study/" /><link rel="prev" href="https://arvimal.github.io/selection-sort-algorithm-study/" /><link rel="next" href="https://arvimal.github.io/writing-a-minimalistic-kernel-module/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Recursion - Algorithm Study",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/arvimal.github.io\/recursion-algorithm-study\/"
+        },"genre": "posts","keywords": "algorithms, programming, python, recursion","wordcount":  971 ,
+        "url": "https:\/\/arvimal.github.io\/recursion-algorithm-study\/","datePublished": "2017-06-27T00:00:00+00:00","dateModified": "2017-06-27T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Vimal A.R"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="The Child is Father of the Man"></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="The Child is Father of the Man"></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Recursion - Algorithm Study</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/arvimal" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Vimal A.R</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data-structures-and-algorithms/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>data-structures-and-algorithms</a>&nbsp;<a href="/categories/programming/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>programming</a>&nbsp;<a href="/categories/python/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>python</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="27-06-2017">27-06-2017</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;971 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#how-does-recursion-work">How does Recursion work?</a>
+      <ul>
+        <li><a href="#note">NOTE:</a></li>
+      </ul>
+    </li>
+    <li><a href="#code"> Code</a>
+      <ul>
+        <li><a href="#example-1">Example 1:</a></li>
+        <li><a href="#example-2">Example 2:</a></li>
+      </ul>
+    </li>
+    <li><a href="#code-explanation">Code explanation</a></li>
+    <li><a href="#observations">Observations:</a></li>
+    <li><a href="#references">References:</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>_<strong>R</strong>_ecursion is a technique by which a function calls itself until a condition is met.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Loops or repetitive execution based on certain conditions are inevitable in programs. Usual loops include <code>if</code>, <code>while</code> and <code>for</code> loops. <code>Recursion</code> is an entirely different way to deal with such situations, and in many cases, easier.</p>
+<p><code>Recursion</code> is a when a function calls itself in each iteration till a condition is met. Ideally, the data set in each iteration gets smaller until it reach the required condition, after which the recursive function exists.</p>
+<p>A typical example of recursion is a <code>factorial</code> function.</p>
+<h2 id="how-does-recursion-work">How does Recursion work?</h2>
+<p>A <code>recursive</code> function ideally contains a <code>Base</code> case and a <code>Recursive</code> case.</p>
+<p>A <code>Recursive</code> case is when the function calls itself, until the <code>Base</code> case is met. Each level of iteration in the <code>Recursive</code> case moves the control to the next level.</p>
+<p>Once a specific level finishes execution, the control is passed back to the previous level of execution. A <code>Recursive</code> function can go several layers deep until the <code>Base</code> condition is met. In short, a <code>Recursive</code> case is a loop in which the function calls itself.</p>
+<p>The <code>Base</code> case is required so that the function doesn&rsquo;t continue running in the <code>Recursive</code> loop forever. Once the <code>Base</code> case is met, the control moves out of the <code>Recursive</code> case, executes the conditions in the <code>Base</code> case (if any), and exits.</p>
+<p>As mentioned in the <code>Introduction</code>, a factorial function can be seen as an example of recursion.</p>
+<h3 id="note">NOTE:</h3>
+<p>The <code>Base</code> case for a factorial function is when <code>n == 1</code></p>
+<p>Consider <code>n!</code>:</p>
+<p><code>n!</code> can be written as:</p>
+<p><strong>n x (n - 1) x (n - 2) x (n - 3) x &hellip;. x 1</strong></p>
+<p><code>n!</code> can also be represented as:</p>
+<p>[code language=&ldquo;bash&rdquo;] n! = n * (n - 1)! &mdash;&gt; [Step 1] (n - 1)! = (n - 1) * (n - 2)! &mdash;&gt; [Step 2] (n - 2)! = (n - 2) * (n - 3)! &mdash;&gt; [Step 3] . .. &hellip; (n - (n - 1)) = 1 &mdash;&gt; [Base case] [/code]</p>
+<p>Each level/step is a product of a value and all the levels below it. Hence, <code>Step 1</code> will end up moving to <code>Step 2</code> to get the factorial of elements below it, then to <code>Step 3</code> and so on.</p>
+<p>ie.. the control of execution move as:</p>
+<p><strong>[Step 1] -&gt; [Step 2] -&gt; [Step 3] -&gt; &hellip;.. [Step n]</strong></p>
+<p>In a much easier-to-grasp example, a <code>5!</code> would be:</p>
+<p>[code language=&ldquo;bash&rdquo;] 5! = 5 * 4! &mdash;&gt; [Step 1] 4! = 4 * 3! &mdash;&gt; [Step 2] 3! = 3 * 2! &mdash;&gt; [Step 3] 2! = 2 * 1! &mdash;&gt; [Step 4] 1! = 1 &mdash;&gt; [Step 5] / [Base case] [/code]</p>
+<p>The order of execution will be :</p>
+<p><strong>[Step 1] -&gt; [Step 2] -&gt; [Step 3] -&gt; [Step 4] -&gt; [Step 5]</strong></p>
+<p>As we know, in <code>Recursion</code>, each layer pause itself and pass the control to the next level. Once it reach the end or the <code>Base</code> case, it returns the result back to the previous level one by one until it reaches where it started off.</p>
+<p>In this example, once the control of execution reaches <code>Step 5 / Base case</code> ,  the control is returned back to its previous level <code>Step 4</code> . This level returns the result back to <code>Step 3</code> which completes its execution and returns to <code>Step 2</code> , so on and so forth until it reach  <code>Step 1</code> .</p>
+<p>The return control flow would be as:</p>
+<p><strong>[Base case / Step 5] -&gt; [Step 4] -&gt; [Step 3] -&gt; [Step 2] -&gt; [Step 1] -&gt; Result.</strong></p>
+<p>This can be summed up using an awesome pictorial representation, from the book <code>Grokking Algorithms</code> by Adit. Please check out the <code>References</code> section for the link for more information about this awesome book.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="images/factorial_recursion.png"
+        data-srcset="images/factorial_recursion.png, images/factorial_recursion.png 1.5x, images/factorial_recursion.png 2x"
+        data-sizes="auto"
+        alt="images/factorial_recursion.png"
+        title="factorial_recursion" /></p>
+<p><em>Figure 1: Recursion, Recursive case and Base case (Copyright Manning Publications, drawn by adit.io)</em></p>
+<h2 id="code"> Code</h2>
+<h3 id="example-1">Example 1:</h3>
+<ul>
+<li>A <code>factorial</code> function in a <code>while</code> loop</li>
+</ul>
+<p>[code language=&ldquo;python&rdquo;] def fact(n): factorial = 1 while n &gt; 1: factorial = factorial * n n = n - 1 return factorial</p>
+<p>print(&ldquo;Factorial of {0} is {1}&quot;.format(10, fact(10))) print(&ldquo;Factorial of {0} is {1}&quot;.format(20, fact(20))) [/code]</p>
+<ul>
+<li>The same function above, in a <code>recursive</code> loop</li>
+</ul>
+<p>[code language=&ldquo;python&rdquo;] def factorial(n): if n == 0: return 1 else: return n * factorial(n - 1)</p>
+<p>print(&ldquo;Factorial of {0} is {1}&quot;.format(10, factorial(10))) print(&ldquo;Factorial of {0} is {1}&quot;.format(20, factorial(20))) [/code]</p>
+<h3 id="example-2">Example 2:</h3>
+<ul>
+<li>A function to sum numbers in a normal <code>for</code> loop.</li>
+</ul>
+<p>[code language=&ldquo;python&rdquo;] def my_sum(my_list): num = 0 for i in my_list: num += i return num</p>
+<p>print(my_sum([10, 23, 14, 12, 11, 94, 20])) [/code]</p>
+<ul>
+<li>The same function to add numbers, in a <code>recursive</code> loop</li>
+</ul>
+<p>[code language=&ldquo;python&rdquo;] def my_sum(my_list): if my_list == []: return 0 else: return my_list[0] + my_sum(my_list[1:])</p>
+<p>print(my_sum([10, 23, 14, 12, 11, 94, 20])) [/code]</p>
+<h2 id="code-explanation">Code explanation</h2>
+<p>Both <code>Example 1</code> and <code>Example 2</code> are represented as an iterative function as well as a recursive function.</p>
+<p>The iterative function calls the <code>next()</code> function on the iterator <code>sum.__iter__()</code> magic method iterate over the entire data set. The recursive function calls itself to reach a base case and return the result.</p>
+<h2 id="observations">Observations:</h2>
+<p>While a recursive function does not necessarily give you an edge on performance, it is much easier to understand and the code is cleaner.</p>
+<p>Recursion has a disadvantage though, for large data sets. Each loop is put on a call stack until it reaches a <code>Base</code> case. Once the <code>Base</code> case is met, the call stack is rewound back to reach where it started, executing each of the previous levels on the way. The examples above showed a <code>sum</code> function and a <code>factorial</code> function. In large data sets, this can lead to a large call stack which in turns take a lot of memory.</p>
+<h2 id="references">References:</h2>
+<ol>
+<li><a href="http://www.amazon.in/Grokking-Algorithms-illustrated-programmers-curious/dp/1617292230/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1486811444&amp;sr=1-1&amp;keywords=grokking&#43;algorithms" target="_blank" rel="noopener noreffer ">Grokking Algorithms</a></li>
+<li><a href="https://www.amazon.com/Structures-Algorithms-Python-Michael-Goodrich/dp/812656217X/ref=sr_1_1?ie=UTF8&amp;qid=1487126103&amp;sr=8-1&amp;keywords=data&#43;structures&#43;and&#43;algorithms&#43;in&#43;python" target="_blank" rel="noopener noreffer ">Data Structures and Algorithms in Python</a></li>
+</ol></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 27-06-2017</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/recursion-algorithm-study/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://arvimal.github.io/recursion-algorithm-study/" data-title="Recursion - Algorithm Study" data-hashtags="algorithms,programming,python,recursion"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://arvimal.github.io/recursion-algorithm-study/" data-hashtag="algorithms"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://arvimal.github.io/recursion-algorithm-study/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://arvimal.github.io/recursion-algorithm-study/" data-title="Recursion - Algorithm Study"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://arvimal.github.io/recursion-algorithm-study/" data-title="Recursion - Algorithm Study"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://arvimal.github.io/recursion-algorithm-study/" data-title="Recursion - Algorithm Study"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/algorithms/">algorithms</a>,&nbsp;<a href="/tags/programming/">programming</a>,&nbsp;<a href="/tags/python/">python</a>,&nbsp;<a href="/tags/recursion/">recursion</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/selection-sort-algorithm-study/" class="prev" rel="prev" title="Selection Sort - Algorithm Study"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Selection Sort - Algorithm Study</a>
+            <a href="/writing-a-minimalistic-kernel-module/" class="next" rel="next" title="Writing a minimalistic kernel module in Linux - Part 1">Writing a minimalistic kernel module in Linux - Part 1<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/arvimal" target="_blank">Vimal A.R</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

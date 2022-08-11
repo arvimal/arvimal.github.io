@@ -8,7 +8,7 @@ tags:
   - "fill-ratio"
   - "osd"
 ---
-
+<!--more-->
 There could be many scenarios where you'd need to change the percentage of space usage on a Ceph OSD. One such use case would be when your OSD space is about to hit the hard limit, and is constantly sending you warnings.
 
 For some reason or other, you may need to extend the threshold limit for some time. In such a case, you don't need to change/add the configuration in ceph.conf and push it across. Rather you can do it while the cluster is online, via command mode.

@@ -1,6 +1,6 @@
 # Resetting Calamari password
 
-
+<!--more-->
 '**Calamari**' is the monitoring interface for a Ceph cluster.
 
 The Calamari interface password can be reset/changed using the 'calamari-ctl' command.

@@ -6,7 +6,7 @@ categories:
 tags:
   - "ceph"
 ---
-
+<!--more-->
 In a previous post, we saw how to dynamically change a tunable on a running Ceph cluster dynamically. Unfortunately, such a change is not permanent, and will revert back to the previous setting once ceph is restarted.
 
 Rather than using the command '_**ceph tell**_', I recently came upon another way to change configuration values.

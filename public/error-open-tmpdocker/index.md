@@ -1,6 +1,6 @@
 # "Error: open /tmp/docker-import-123456789/repo/bin/json: no such file or directory"
 
-
+<!--more-->
 I've been trying to create a minimal docker image for RHEL versions, for one of my projects. The following were the steps I followed:
 
 a) Installed a RHEL6.5 server with 'Minimal Installation'.

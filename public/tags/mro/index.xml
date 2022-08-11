@@ -4,15 +4,13 @@
         <link>https://arvimal.github.io/tags/mro/</link>
         <description>mro - Tag - The Child is Father of the Man</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>arvimal81@gmail.com (Vimal A.R)</managingEditor>
-            <webMaster>arvimal81@gmail.com (Vimal A.R)</webMaster><lastBuildDate>Mon, 30 May 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/mro/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>arvimal81@gmail.com (Vimal A.R)</webMaster><atom:link href="https://arvimal.github.io/tags/mro/" rel="self" type="application/rss+xml" /><item>
     <title>Method Resolution Order - Object Oriented Programming</title>
     <link>https://arvimal.github.io/mro-object-oriented-programming/</link>
-    <pubDate>Mon, 30 May 2016 00:00:00 &#43;0000</pubDate>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/mro-object-oriented-programming/</guid>
-    <description><![CDATA[_M_ethod Resolution Order or &lsquo;MRO&rsquo; in short, denotes the way a programming language resolves a method or attribute. This post looks into how Method Resolution Order works, using Python.
-Python supports classes inheriting from other classes. The class being inherited is called the Parent/Super class, while the class that inherits is called the Child/Sub class.
-While inheriting from another class, the interpreter needs a way to resolve the methods that are being called via an instance.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

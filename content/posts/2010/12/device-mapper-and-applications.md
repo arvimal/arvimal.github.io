@@ -4,7 +4,7 @@ date: 2010-12-22
 categories:
   - "techno"
 ---
-
+<!--more-->
 **What is [device-mapper](http://en.wikipedia.org/wiki/Device_mapper "Device mapper") ?**
 
 **D**evice mapper is a modular driver for the [linux kernel 2.6](http://www.kernel.org/ "Linux kernel"). It can be said as a framework which helps to create or map logical sectors of a pseudo [block device](http://en.wikipedia.org/wiki/Device_file "Device file") to an underlying physical block device. So what device-mapper do is keep a table of mappings which equate the logical block devices to the physical block devices.

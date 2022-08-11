@@ -1,6 +1,6 @@
 # FS-Cache and FUSE
 
-
+<!--more-->
 I would be working on enabling FS-Cache support in the FUSE kernel module, as part of my under graduate project.
 
 Niels De Vos, from Red Hat Engineering, would act as my mentor and guide throughout this project. He would also be presenting this idea in the 'Linux Plumbers Conference' being held in Germany, October 2014.

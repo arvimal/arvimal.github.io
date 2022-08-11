@@ -1,6 +1,6 @@
 # Decorators - Object Oriented Programming
 
-
+<!--more-->
 _**D**_ecorators are wrapper functions (or classes) that wrap and modify another function (or class), and change it's behavior as required. Decorators help to modify your code without actually modifying the working function/class itself.
 
 There are several inbuilt Decorators in Python, such as `@classmethod` and `@staticmethod`. Examples on these are due for another post.

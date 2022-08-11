@@ -1,6 +1,6 @@
 # CHKROOTKIT install script (with functions)
 
-
+<!--more-->
 This is an extension or a rebuild of the previous chkrootkit install script, just used functions so its somewhat simplified.... ( Or is it ..? :) )
 
 \[code language="bash"\]

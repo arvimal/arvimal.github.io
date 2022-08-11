@@ -8,7 +8,7 @@ tags:
   - "ceph"
   - "config-show"
 ---
-
+<!--more-->
 In many cases we would like to get the active configurations from a Ceph node, either a monitor or an OSD node. A neat feature, I must say, is to probe the administrative socket file to get a listing of all the active configurations, be it on the OSD node or the monitor node.
 
 This comes handy when we have changed a setting and wants to confirm if it had indeed changed or not.

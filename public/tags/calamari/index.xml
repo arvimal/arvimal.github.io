@@ -10,11 +10,7 @@
     <pubDate>Mon, 13 Jul 2015 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/reset-calamari-interface-password/</guid>
-    <description><![CDATA[&lsquo;Calamari&rsquo; is the monitoring interface for a Ceph cluster.
-The Calamari interface password can be reset/changed using the &lsquo;calamari-ctl&rsquo; command.
-# calamari-ctl change_password &ndash;password {password} {user-name}
-calamari-ctl can also be used to add a user, as well as disable, enable, and rename the user account. A &lsquo;&ndash;help&rsquo; should print out all the available ones.
-# calamari-ctl &ndash;help]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

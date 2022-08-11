@@ -11,7 +11,7 @@ tags:
   - "strace"
   - "usb"
 ---
-
+<!--more-->
 **_T_**he binary '/sbin/lsusb' in a chroot-ed environment have problems running properly. I have not checked this in a manually created chroot environment or using tools like 'mock'.
 
 The scenario is as following :

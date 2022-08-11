@@ -8,7 +8,7 @@ tags:
   - "leveldb"
   - "monitors"
 ---
-
+<!--more-->
 The Ceph monitor store growing to a big size is a common occurrence in a busy Ceph cluster.
 
 If a '_**ceph -s**_' takes considerable time to return information, one of the possibility is the monitor database being large.

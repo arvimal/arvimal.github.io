@@ -1,6 +1,8 @@
 # Linear Search - Algorithm Study
 
+<!--more-->
 <!-- TOC -->autoauto- [Introduction](#introduction)auto- [Performance](#performance)auto    - [1\. Worst-case performance: O(n)](#1\-worst-case-performance-on)auto    - [2\. Best-case performance: O(1)](#2\-best-case-performance-o1)auto    - [3\. Average performance: O(n/2)](#3\-average-performance-on2)auto    - [Observations:](#observations)auto- [How does Linear Search work?](#how-does-linear-search-work)auto- [Code](#code)auto    - [Reference:](#reference)autoauto<!-- /TOC -->
+
 ## Introduction
 
 _**L**_inear Search is an way to search a data set for an element of interest. It is one of the many search algorithms available and is also the most direct and simple of the lot.

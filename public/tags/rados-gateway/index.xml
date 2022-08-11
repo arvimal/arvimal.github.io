@@ -6,13 +6,11 @@
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>arvimal81@gmail.com (Vimal A.R)</managingEditor>
             <webMaster>arvimal81@gmail.com (Vimal A.R)</webMaster><lastBuildDate>Thu, 30 Jun 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/rados-gateway/" rel="self" type="application/rss+xml" /><item>
     <title>Sharding the Ceph RADOS Gateway bucket index</title>
-    <link>https://arvimal.github.io/2016-06-30-sharding-the-ceph-rados-gateway-bucket-index/</link>
+    <link>https://arvimal.github.io/sharding-the-ceph-rgw-bucket-index/</link>
     <pubDate>Thu, 30 Jun 2016 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
-    <guid>https://arvimal.github.io/2016-06-30-sharding-the-ceph-rados-gateway-bucket-index/</guid>
-    <description><![CDATA[_S_harding is the process of breaking down data onto multiple locations so as to increase parallelism, as well as distribute load. This is a common feature used in databases. Read more on this at Wikipedia.
-The concept of sharding is used in Ceph, for splitting the bucket index in a RADOS Gateway.
-RGW or RADOS Gateway keeps an index for all the objects in its buckets for faster and easier lookup.]]></description>
+    <guid>https://arvimal.github.io/sharding-the-ceph-rgw-bucket-index/</guid>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

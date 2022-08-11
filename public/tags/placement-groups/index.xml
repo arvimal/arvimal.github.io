@@ -10,12 +10,7 @@
     <pubDate>Mon, 17 Aug 2015 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/map-pg-to-pool/</guid>
-    <description><![CDATA[Understanding the mapping of Pools and Placement Groups can be very useful while troubleshooting Ceph problems.
-A direct method is to dump information on the PGs via :
-# ceph pg dump
-This command should output something like the following:
-pg_stat objects mip degr unf bytes log disklog state 5.7a 0 0 0 0 0 0 0 active+clean
-The output will have more information, and I&rsquo;ve omitted it for the sake of explanation.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

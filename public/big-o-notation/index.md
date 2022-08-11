@@ -1,6 +1,6 @@
 # Code complexity - The Big O notation [O(n)]
 
-
+<!--more-->
 Efficiency or Complexity is how well you're using your resources to get your code run.
 
 Efficiency can be calculated on the basis of how much time your code takes to run/execute.

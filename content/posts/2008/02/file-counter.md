@@ -6,7 +6,7 @@ categories:
 tags:
   - "file-counter"
 ---
-
+<!--more-->
 Most of the scripts presented in this journal have been created while learning bash and having nothing much to do...
 
 I think its usual to get crazy ideas and work trying to implement them, especially while learning any type of coding.  This  'File Counter' script came as such a  crazy idea. It was working at the time of its creation, but have not checked it recently.. should work..

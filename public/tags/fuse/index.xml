@@ -10,10 +10,7 @@
     <pubDate>Sun, 14 Sep 2014 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/fscache-and-fuse/</guid>
-    <description><![CDATA[I would be working on enabling FS-Cache support in the FUSE kernel module, as part of my under graduate project.
-Niels De Vos, from Red Hat Engineering, would act as my mentor and guide throughout this project. He would also be presenting this idea in the &lsquo;Linux Plumbers Conference&rsquo; being held in Germany, October 2014.
-More details on the the talk can be seen at http://www.linuxplumbersconf.org/2014/ocw/sessions/2247
-This feature has got quite a few requests from the FOSS world, and I&rsquo;m glad I could work on this.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

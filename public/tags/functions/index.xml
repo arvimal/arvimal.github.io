@@ -10,12 +10,7 @@
     <pubDate>Thu, 14 Feb 2008 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/chkrootkit-installer-with-functions/</guid>
-    <description><![CDATA[This is an extension or a rebuild of the previous chkrootkit install script, just used functions so its somewhat simplified&hellip;. ( Or is it ..? :) )
-[code language=&ldquo;bash&rdquo;]
-#!/bin/bash
-DOWNLOAD_LOCATION=&rsquo;/root/Downloads&rsquo; CHKROOTKIT_WGET=&lsquo;ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit.tar.gz' RESULT_FILE=&rsquo;/root/Server-Test.txt&rsquo;
-clear;echo chkrootkit-install () {
-while true; do echo -e &ldquo;@@@@@@@@@@@@@@@@@@ CHK-ROOTKIT INSTALL/CHECK SCRIPT @@@@@@@@@@@@@@@@@@@@\n&rdquo; echo -e &ldquo;Do you want to download and compile CHK-ROOTKIT [yes/no] ? : \c&rdquo; | tee -a $RESULT_FILE; read answer; echo $answer &raquo; $RESULT_FILE;]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

@@ -1,6 +1,6 @@
 # How to dynamically change a configuration value in a Ceph cluster?
 
-
+<!--more-->
 It is possible to change a particular configuration setting in a Ceph cluster dynamically, and I think it is a very neat and useful feature.
 
 Imagine the case where you want to change the replica count of a particular PG from 3 to 4. How would you change this without restarting the Ceph cluster itself? That is where the 'ceph tell' command comes in.

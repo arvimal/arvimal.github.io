@@ -1,6 +1,6 @@
 # Data Structures - Arrays
 
-
+<!--more-->
 Arrays are a commonly used data structure, and is one of the first a DS student looks into.
 
 It is created as a collection of memory addresses which are contiguous in memory. These memory locations store data of a specific type depending on the array's type.

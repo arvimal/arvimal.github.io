@@ -8,7 +8,7 @@ tags:
   - "noout"
   - "osd"
 ---
-
+<!--more-->
 You may have seen the '**noout**' flag set in the output of '_**ceph -s**_'. What does this actually mean?
 
 This is a global flag for the cluster, which means that if an OSD is out, the said OSD is not marked out of the cluster and data balancing shouldn't start to maintain the replica count. By default, the monitors mark the OSDs out of the acting set if it is not reachable for 300 seconds, ie.. 5 minutes.

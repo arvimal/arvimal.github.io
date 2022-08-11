@@ -4,32 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>How to get a Ceph MON/OSD map at a specific epoch? - The Child is Father of the Man</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="How to get a Ceph MON/OSD map at a specific epoch?" />
-<meta property="og:description" content="To get a MON map or an OSD map of a specific epoch, use:
-# ceph osd getmap # ceph mon getmap The map can be forwarded to a file as following:
-# ceph osd getmap -o /tmp/ceph_osd_getmap.bin
-This would be in a binary format, and hence will need to be dumped to a human-readable form.
-# osdmaptool &ndash;print /tmp/ceph-osd-getmap.bin
-This will print the current OSD map, similar to the output of &lsquo;ceph osd dump&rsquo;." />
+        <title>How to get a Ceph MON/OSD map at a specific epoch? - The Child is Father of the Man</title><meta name="Description" content="The Child is Father of the Man"><meta property="og:title" content="How to get a Ceph MON/OSD map at a specific epoch?" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://arvimal.github.io/ceph-mon-osd-map-at-epoch/" /><meta property="og:image" content="https://arvimal.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://arvimal.github.io/ceph-mon-osd-map-at-epoch/" /><meta property="og:image" content="https://arvimal.github.io/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2016-05-08T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-08-10T23:14:32+02:00" /><meta property="og:site_name" content="My cool site" />
+<meta property="article:modified_time" content="2016-05-08T00:00:00+00:00" /><meta property="og:site_name" content="The Child is Father of the Man" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://arvimal.github.io/logo.png"/>
+<meta name="twitter:image" content="https://arvimal.github.io/avatar.jpg"/>
 
 <meta name="twitter:title" content="How to get a Ceph MON/OSD map at a specific epoch?"/>
-<meta name="twitter:description" content="To get a MON map or an OSD map of a specific epoch, use:
-# ceph osd getmap # ceph mon getmap The map can be forwarded to a file as following:
-# ceph osd getmap -o /tmp/ceph_osd_getmap.bin
-This would be in a binary format, and hence will need to be dumped to a human-readable form.
-# osdmaptool &ndash;print /tmp/ceph-osd-getmap.bin
-This will print the current OSD map, similar to the output of &lsquo;ceph osd dump&rsquo;."/>
+<meta name="twitter:description" content=""/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://arvimal.github.io/ceph-mon-osd-map-at-epoch/" /><link rel="prev" href="https://arvimal.github.io/2015-10-15-list-all-ceph-pools-with-rbd-images-and-snapshots/" /><link rel="next" href="https://arvimal.github.io/data-structures-arrays/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://arvimal.github.io/ceph-mon-osd-map-at-epoch/" /><link rel="prev" href="https://arvimal.github.io/list-ceph-pools-with-snapshots-and-rbd/" /><link rel="next" href="https://arvimal.github.io/data-structures-arrays/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -41,7 +31,7 @@ This will print the current OSD map, similar to the output of &lsquo;ceph osd du
             "@type": "WebPage",
             "@id": "https:\/\/arvimal.github.io\/ceph-mon-osd-map-at-epoch\/"
         },"genre": "posts","wordcount":  142 ,
-        "url": "https:\/\/arvimal.github.io\/ceph-mon-osd-map-at-epoch\/","datePublished": "2016-05-08T00:00:00+00:00","dateModified": "2022-08-10T23:14:32+02:00","publisher": {
+        "url": "https:\/\/arvimal.github.io\/ceph-mon-osd-map-at-epoch\/","datePublished": "2016-05-08T00:00:00+00:00","dateModified": "2016-05-08T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -49,7 +39,7 @@ This will print the current OSD map, similar to the output of &lsquo;ceph osd du
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -111,10 +101,10 @@ This will print the current OSD map, similar to the output of &lsquo;ceph osd du
     </div><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">How to get a Ceph MON/OSD map at a specific epoch?</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/arvimal" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Vimal A.R</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ceph/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>ceph</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2016-05-08">2016-05-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;142 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="08-05-2016">08-05-2016</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;142 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -136,19 +126,18 @@ This will print the current OSD map, similar to the output of &lsquo;ceph osd du
 </blockquote>
 <p>This will print the current OSD map, similar to the output of &lsquo;ceph osd dump&rsquo;.</p>
 <p>Where this command shines is when you can fetch maps from previous epochs, and pull information on specific placement groups in those epochs.</p>
-<p>For example, I&rsquo;ve had all the OSDs on one of my node down some time back (in a previous epoch). The ability to query a previous epoch gives the administrator the power to understand how exactly the cluster was at a specific time period.</p>
-</div><div class="post-footer" id="post-footer">
+<p>For example, I&rsquo;ve had all the OSDs on one of my node down some time back (in a previous epoch). The ability to query a previous epoch gives the administrator the power to understand how exactly the cluster was at a specific time period.</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-08-10</span>
+                <span>Updated on 08-05-2016</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
                             <a class="link-to-markdown" href="/ceph-mon-osd-map-at-epoch/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://arvimal.github.io/ceph-mon-osd-map-at-epoch/" data-title="How to get a Ceph MON/OSD map at a specific epoch?" data-via="xxxx"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://arvimal.github.io/ceph-mon-osd-map-at-epoch/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://arvimal.github.io/ceph-mon-osd-map-at-epoch/" data-title="How to get a Ceph MON/OSD map at a specific epoch?"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://arvimal.github.io/ceph-mon-osd-map-at-epoch/" data-title="How to get a Ceph MON/OSD map at a specific epoch?"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://arvimal.github.io/ceph-mon-osd-map-at-epoch/" data-title="How to get a Ceph MON/OSD map at a specific epoch?"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://arvimal.github.io/ceph-mon-osd-map-at-epoch/" data-title="How to get a Ceph MON/OSD map at a specific epoch?"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://arvimal.github.io/ceph-mon-osd-map-at-epoch/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://arvimal.github.io/ceph-mon-osd-map-at-epoch/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://arvimal.github.io/ceph-mon-osd-map-at-epoch/" data-title="How to get a Ceph MON/OSD map at a specific epoch?"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://arvimal.github.io/ceph-mon-osd-map-at-epoch/" data-title="How to get a Ceph MON/OSD map at a specific epoch?"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://arvimal.github.io/ceph-mon-osd-map-at-epoch/" data-title="How to get a Ceph MON/OSD map at a specific epoch?"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -160,7 +149,7 @@ This will print the current OSD map, similar to the output of &lsquo;ceph osd du
         </section>
     </div>
 
-    <div class="post-nav"><a href="/2015-10-15-list-all-ceph-pools-with-rbd-images-and-snapshots/" class="prev" rel="prev" title="List RBD images, snapshots, and clones in Ceph pools"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>List RBD images, snapshots, and clones in Ceph pools</a>
+    <div class="post-nav"><a href="/list-ceph-pools-with-snapshots-and-rbd/" class="prev" rel="prev" title="List RBD images, snapshots, and clones in Ceph pools"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>List RBD images, snapshots, and clones in Ceph pools</a>
             <a href="/data-structures-arrays/" class="next" rel="next" title="Data Structures - Arrays">Data Structures - Arrays<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>

@@ -8,7 +8,7 @@ tags:
   - "grub"
   - "lilo"
 ---
-
+<!--more-->
 A bash code snippet that helps to check if the installed bootloader is Grub or LILO.
 
 \[code language="bash"\] #!/bin/bash

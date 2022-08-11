@@ -10,10 +10,7 @@
     <pubDate>Thu, 14 Feb 2008 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/nagios-installer-script/</guid>
-    <description><![CDATA[This is a bash script which automates the installation of Nagios. There are more things to do such as setup of service monitoring, but that&rsquo;s for another time.
-[code language=&ldquo;bash&rdquo;] #!/bin/bash DOWNLOAD_LOCATION=&rsquo;/root/Downloads/&rsquo; NAGIOS_URL=&lsquo;http://jaist.dl.sourceforge.net/sourceforge/nagios/nagios-2.9.tar.gz' APACHE_CONF=&rsquo;/etc/httpd/conf/httpd.conf&rsquo; NAGIOS_PLUGIN=&lsquo;http://nchc.dl.sourceforge.net/sourceforge/nagiosplug/nagios-plugins-1.4.8.tar.gz' NAGIOSHOME=&rsquo;/usr/local/nagios&rsquo; DATE=`date +%d-%b-%Y` FILE=&rsquo;/root/Nagios.txt&rsquo;
-################################# # [1] Installing nagios # ################################# nagios_download () { clear
-if [ `id -u` -ne 0 ]; then echo -e &ldquo;You are executing the script as $USER\n&rdquo; echo -e &ldquo;You must be root to execute this script.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

@@ -10,10 +10,7 @@
     <pubDate>Thu, 09 Jul 2015 00:00:00 &#43;0000</pubDate>
     <author>Vimal A.R</author>
     <guid>https://arvimal.github.io/compact-a-ceph-monitor-data-store/</guid>
-    <description><![CDATA[The Ceph monitor store growing to a big size is a common occurrence in a busy Ceph cluster.
-If a &lsquo;ceph -s&rsquo; takes considerable time to return information, one of the possibility is the monitor database being large.
-Other reasons included network lags between the client and the monitor, the monitor not responding properly due to the system load, firewall settings on the client or monitor etc..
-The best way to deal with a large monitor database is to compact the monitor store.]]></description>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

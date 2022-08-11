@@ -1,6 +1,6 @@
 # lvcreate fails with the error "Aborting. Failed to activate new LV to wipe the start of it.". Why ??
 
-
+<!--more-->
 In case anyone out there gets an error message like "Aborting. Failed to activate new LV to wipe the start of it." while doing an 'lvcreate', check (/etc/lvm/lvm.conf) once more.
 
 Most probably, a 'volume\_list' would have been defined in there, which in turns want you to specify the 'volume\_list' tag specified along with the lvcreate command.

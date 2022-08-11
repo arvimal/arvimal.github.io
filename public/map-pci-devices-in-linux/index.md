@@ -1,6 +1,6 @@
 # How to map PCI devices in Linux ?
 
-
+<!--more-->
 From the output of the command 'lspci -n' (The number after the colon, here '1679' from the below snip)
 
 0a:04.0 0200: 14e4:1679 (rev a3) Subsystem: 103c:703c Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- Status: Cap+ 66MHz+ UDF- FastB2B+ ParErr- DEVSEL=medium Latency: 64 (16000ns min), Cache Line Size: 64 bytes Interrupt: pin A routed to IRQ 138 Region 0: Memory at fdef0000 (64-bit, non-prefetchable) \[size=64K\] Region 2: Memory at fdee0000 (64-bit, non-prefetchable) \[size=64K\]
