@@ -6,7 +6,7 @@ author: "Vimal A R"
 authorLink: ""
 description: ""
 license: ""
-images: ["images/Testing-LoveIt.jpg"]
+summary: "Hugo static webpages on GitHub, with LoveIt theme"
 
 tags: ["testing"]
 categories: ["personal"]
