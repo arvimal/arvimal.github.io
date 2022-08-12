@@ -2,23 +2,23 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://arvimal.github.io/categories/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://arvimal.github.io/categories/personal/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://arvimal.github.io/posts/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://arvimal.github.io/tags/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://arvimal.github.io/tags/testing/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://arvimal.github.io/testing-loveit/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://arvimal.github.io/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://arvimal.github.io/categories/</loc><lastmod>2022-08-12T12:22:07&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://arvimal.github.io/categories/personal/</loc><lastmod>2022-08-12T12:22:07&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://arvimal.github.io/posts/</loc><lastmod>2022-08-12T12:22:07&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://arvimal.github.io/tags/</loc><lastmod>2022-08-12T12:22:07&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://arvimal.github.io/tags/testing/</loc><lastmod>2022-08-12T12:22:07&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://arvimal.github.io/testing-loveit/</loc><lastmod>2022-08-12T12:22:07&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://arvimal.github.io/</loc><lastmod>2022-08-12T12:22:07&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://arvimal.github.io/tags/callable/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://arvimal.github.io/callables-in-python/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://arvimal.github.io/categories/programming/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://arvimal.github.io/categories/programming/</loc><lastmod>2022-08-12T12:22:07&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://arvimal.github.io/tags/python/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://arvimal.github.io/categories/python/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://arvimal.github.io/tags/python-objects/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://arvimal.github.io/tags/kernel/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://arvimal.github.io/categories/linux/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://arvimal.github.io/tags/module/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://arvimal.github.io/writing-a-minimalistic-kernel-module/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://arvimal.github.io/tags/kernel/</loc><lastmod>2022-08-12T12:22:07&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://arvimal.github.io/categories/linux/</loc><lastmod>2022-08-12T12:22:07&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://arvimal.github.io/tags/module/</loc><lastmod>2022-08-12T12:22:07&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://arvimal.github.io/writing-a-minimalistic-kernel-module/</loc><lastmod>2022-08-12T12:22:07&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://arvimal.github.io/tags/algorithms/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://arvimal.github.io/categories/data-structures-and-algorithms/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://arvimal.github.io/tags/programming/</loc><lastmod>2022-08-11T14:50:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
