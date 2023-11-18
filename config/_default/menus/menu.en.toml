@@ -3,24 +3,7 @@
   url = ""
   weight = -110
 
-[[main]]
-  name = "Archives"
-  url = "post/rich-content/"
-  weight = -109
-
 # Submenus are done this way: parent -> identifier
-[[main]]
-  name = "Links"
-  identifier = "Links"
-  weight = -108
-[[main]]
-  parent = "Links"
-  name = "LinkedIn"
-  url = "https://www.linkedin.com/"
-[[main]]
-  parent = "Links"
-  name = "Twitter"
-  url = "https://twitter.com/"
 
 [[main]]
   name = "About"
@@ -33,15 +16,11 @@
   name = "github"
   type = "social"
   weight = 1
-  url = "https://github.com/#"
-[[social]]
-  name = "twitter"
-  weight = 2
-  url = "https://twitter.com/#"
+  url = "https://github.com/arvimal"
 [[social]]
   name = "linkedin"
   weight = 3
-  url = "https://www.linkedin.com/in/#"
+  url = "https://www.linkedin.com/in/arvimal"
 [[social]]
   name = "rss"
   weight = 4
