@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>techno on Clarity</title>
+    <link>https://arvimal.github.io/categories/techno/</link>
+    <description>Recent content in techno on Clarity</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 21 Jul 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/categories/techno/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Max file-name length in an EXT4 file system.</title>
+      <link>https://arvimal.github.io/posts/2016/07/max-file-name-in-ext4/</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/07/max-file-name-in-ext4/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>FSCache and the on-disk structure of the cached data</title>
+      <link>https://arvimal.github.io/posts/2014/11/structure-of-cached-content-in-fscache/</link>
+      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2014/11/structure-of-cached-content-in-fscache/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>FS-Cache and CacheFS, what are the differences?</title>
+      <link>https://arvimal.github.io/posts/2014/09/fscache-and-cachefs-differences/</link>
+      <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2014/09/fscache-and-cachefs-differences/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>FS-Cache and FUSE</title>
+      <link>https://arvimal.github.io/posts/2014/09/fscache-and-fuse/</link>
+      <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2014/09/fscache-and-fuse/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>&#34;Error: open /tmp/docker-import-123456789/repo/bin/json: no such file or directory&#34;</title>
+      <link>https://arvimal.github.io/posts/2014/08/error-open-tmpdocker/</link>
+      <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2014/08/error-open-tmpdocker/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?</title>
+      <link>https://arvimal.github.io/posts/2010/12/lsusb-and-chroot-in-anaconda/</link>
+      <pubDate>Thu, 23 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2010/12/lsusb-and-chroot-in-anaconda/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Device Mapper and applications</title>
+      <link>https://arvimal.github.io/posts/2010/12/device-mapper-and-applications/</link>
+      <pubDate>Wed, 22 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2010/12/device-mapper-and-applications/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>lvcreate fails with the error &#34;Aborting. Failed to activate new LV to wipe the start of it.&#34;. Why ??</title>
+      <link>https://arvimal.github.io/posts/2009/11/lvcreate-fails-with-error/</link>
+      <pubDate>Mon, 02 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2009/11/lvcreate-fails-with-error/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>How to map PCI devices in Linux ?</title>
+      <link>https://arvimal.github.io/posts/2008/07/map-pci-devices-in-linux/</link>
+      <pubDate>Fri, 18 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/07/map-pci-devices-in-linux/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Creating a SWAP space in Linux</title>
+      <link>https://arvimal.github.io/posts/2008/02/creating-swap-space-in-linux/</link>
+      <pubDate>Fri, 15 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/creating-swap-space-in-linux/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Zombie processes</title>
+      <link>https://arvimal.github.io/posts/2008/01/zombie-processes/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/01/zombie-processes/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>decorators on Clarity</title>
+    <link>https://arvimal.github.io/tags/decorators/</link>
+    <description>Recent content in decorators on Clarity</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 30 May 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/decorators/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Decorators - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/05/decorators-object-oriented-programming/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/decorators-object-oriented-programming/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,897 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clarity</title>
+    <link>https://arvimal.github.io/</link>
+    <description>Recent content on Clarity</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 10 Aug 2022 19:13:41 +0200</lastBuildDate><atom:link href="https://arvimal.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Testing LoveIt</title>
+      <link>https://arvimal.github.io/posts/2022/08/testing-loveit/</link>
+      <pubDate>Wed, 10 Aug 2022 19:13:41 +0200</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2022/08/testing-loveit/</guid>
+      <description>
+        
+          
+            Hugo static webpages on GitHub, with LoveIt theme
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Callables in Python</title>
+      <link>https://arvimal.github.io/posts/2017/08/callables-in-python/</link>
+      <pubDate>Wed, 09 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/08/callables-in-python/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Writing a minimalistic kernel module in Linux - Part 1</title>
+      <link>https://arvimal.github.io/posts/2017/07/writing-a-minimalistic-kernel-module/</link>
+      <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/07/writing-a-minimalistic-kernel-module/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Recursion - Algorithm Study</title>
+      <link>https://arvimal.github.io/posts/2017/06/recursion-algorithm-study/</link>
+      <pubDate>Tue, 27 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/06/recursion-algorithm-study/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Selection Sort - Algorithm Study</title>
+      <link>https://arvimal.github.io/posts/2017/02/selection-sort-algorithm-study/</link>
+      <pubDate>Sat, 11 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/02/selection-sort-algorithm-study/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Binary Search - Algorithm Study</title>
+      <link>https://arvimal.github.io/posts/2017/01/binary-search-algorithm-study/</link>
+      <pubDate>Mon, 16 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/01/binary-search-algorithm-study/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Linear Search - Algorithm Study</title>
+      <link>https://arvimal.github.io/posts/2017/01/linear-search-algorithm-study/</link>
+      <pubDate>Sun, 15 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/01/linear-search-algorithm-study/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Accessor and Mutator methods - Python</title>
+      <link>https://arvimal.github.io/posts/2016/12/accessor-and-mutator-methods/</link>
+      <pubDate>Sun, 18 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/12/accessor-and-mutator-methods/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Python, Objects, and some more..</title>
+      <link>https://arvimal.github.io/posts/2016/10/python-objects/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/10/python-objects/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Max file-name length in an EXT4 file system.</title>
+      <link>https://arvimal.github.io/posts/2016/07/max-file-name-in-ext4/</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/07/max-file-name-in-ext4/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Inheritance and super() - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/07/inheritance-and-super-oop/</link>
+      <pubDate>Fri, 01 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/07/inheritance-and-super-oop/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>`uninit_bg` and lazy block group allocation in EXT3/4</title>
+      <link>https://arvimal.github.io/posts/2016/06/uninit-bg-and-lazy-block-group-allocation/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/uninit-bg-and-lazy-block-group-allocation/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Sharding the Ceph RADOS Gateway bucket index</title>
+      <link>https://arvimal.github.io/posts/2016/06/sharding-the-ceph-rgw-bucket-index/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/sharding-the-ceph-rgw-bucket-index/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Inheritance and Method overloading - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/06/inheritance-and-method-overloading-oop/</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/inheritance-and-method-overloading-oop/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Abstract Base Classes/Methods - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/06/abc-oop-python/</link>
+      <pubDate>Tue, 14 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/abc-oop-python/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>`self` in Python - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/06/self-in-python/</link>
+      <pubDate>Sun, 12 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/self-in-python/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Instance, Class, and Static methods - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/06/instance-class-static-method-oop/</link>
+      <pubDate>Sun, 12 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/instance-class-static-method-oop/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Magic methods and Syntactic sugar in Python</title>
+      <link>https://arvimal.github.io/posts/2016/06/magic-methods-in-python/</link>
+      <pubDate>Thu, 02 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/magic-methods-in-python/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Decorators - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/05/decorators-object-oriented-programming/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/decorators-object-oriented-programming/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Ceph OSD heartbeats</title>
+      <link>https://arvimal.github.io/posts/2016/05/ceph-osd-heartbeats/</link>
+      <pubDate>Mon, 09 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/ceph-osd-heartbeats/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>`ceph-check` - A Ceph installation checker</title>
+      <link>https://arvimal.github.io/posts/2016/05/ceph-check/</link>
+      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/ceph-check/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Code complexity - The Big O notation [O(n)]</title>
+      <link>https://arvimal.github.io/posts/2016/05/big-o-notation/</link>
+      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/big-o-notation/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Data Structures - Arrays</title>
+      <link>https://arvimal.github.io/posts/2016/05/data-structures-arrays/</link>
+      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/data-structures-arrays/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>How to get a Ceph MON/OSD map at a specific epoch?</title>
+      <link>https://arvimal.github.io/posts/2016/05/ceph-mon-osd-map-at-epoch/</link>
+      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/ceph-mon-osd-map-at-epoch/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>List RBD images, snapshots, and clones in Ceph pools</title>
+      <link>https://arvimal.github.io/posts/2015/10/list-ceph-pools-with-snapshots-and-rbd/</link>
+      <pubDate>Thu, 15 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/10/list-ceph-pools-with-snapshots-and-rbd/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>range() and enumerate()</title>
+      <link>https://arvimal.github.io/posts/2015/10/range-and-enumerate/</link>
+      <pubDate>Mon, 12 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/10/range-and-enumerate/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Ceph and unfound objects</title>
+      <link>https://arvimal.github.io/posts/2015/10/unfound-objects-in-ceph-cluster/</link>
+      <pubDate>Wed, 07 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/10/unfound-objects-in-ceph-cluster/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Ceph Rados Block Device (RBD) and TRIM</title>
+      <link>https://arvimal.github.io/posts/2015/10/rbd-object-remain-in-pool-after-deletion/</link>
+      <pubDate>Wed, 07 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/10/rbd-object-remain-in-pool-after-deletion/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Custom CRUSH rulesets and pools</title>
+      <link>https://arvimal.github.io/posts/2015/09/find-crush-ruleset-of-a-pool/</link>
+      <pubDate>Wed, 23 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/09/find-crush-ruleset-of-a-pool/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>OSD information in a scriptable format</title>
+      <link>https://arvimal.github.io/posts/2015/09/listing-osd-nodes-scriptable/</link>
+      <pubDate>Fri, 18 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/09/listing-osd-nodes-scriptable/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Monitor maps, how to edit them?</title>
+      <link>https://arvimal.github.io/posts/2015/09/view-change-inject-monitor-map/</link>
+      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/09/view-change-inject-monitor-map/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Calculate a PG id from the hex values in Ceph OSD debug logs</title>
+      <link>https://arvimal.github.io/posts/2015/08/calculate-pg-id-from-ceph-osd-debug-logs/</link>
+      <pubDate>Sun, 30 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/08/calculate-pg-id-from-ceph-osd-debug-logs/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Mapping Placement Groups and Pools</title>
+      <link>https://arvimal.github.io/posts/2015/08/map-pg-to-pool/</link>
+      <pubDate>Mon, 17 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/08/map-pg-to-pool/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>How to identify the journal disk for a Ceph OSD?</title>
+      <link>https://arvimal.github.io/posts/2015/08/map-journal-disk-of-a-ceph-osd/</link>
+      <pubDate>Wed, 05 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/08/map-journal-disk-of-a-ceph-osd/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Resetting Calamari password</title>
+      <link>https://arvimal.github.io/posts/2015/07/reset-calamari-interface-password/</link>
+      <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/07/reset-calamari-interface-password/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Compacting a Ceph monitor store</title>
+      <link>https://arvimal.github.io/posts/2015/07/compact-a-ceph-monitor-data-store/</link>
+      <pubDate>Thu, 09 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/07/compact-a-ceph-monitor-data-store/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>What is data scrubbing?</title>
+      <link>https://arvimal.github.io/posts/2015/07/what-is-data-scrubbing/</link>
+      <pubDate>Wed, 08 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/07/what-is-data-scrubbing/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Another method to dynamically change a Ceph configuration</title>
+      <link>https://arvimal.github.io/posts/2015/06/dynamically-change-ceph-configuration/</link>
+      <pubDate>Wed, 03 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/06/dynamically-change-ceph-configuration/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>&#39;noout&#39; flag in Ceph</title>
+      <link>https://arvimal.github.io/posts/2015/05/osds-noout-status/</link>
+      <pubDate>Wed, 27 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/05/osds-noout-status/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>How to dynamically change a configuration value in a Ceph cluster?</title>
+      <link>https://arvimal.github.io/posts/2015/05/change-ceph-configurations-dynamically/</link>
+      <pubDate>Wed, 27 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/05/change-ceph-configurations-dynamically/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>How to fetch the entire list of tunables along with the values for a Ceph cluster node?</title>
+      <link>https://arvimal.github.io/posts/2015/05/get-a-list-of-all-configurations-ceph-cluster/</link>
+      <pubDate>Wed, 27 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/05/get-a-list-of-all-configurations-ceph-cluster/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>How to change the filling ratio for a Ceph OSD?</title>
+      <link>https://arvimal.github.io/posts/2015/05/how-to-change-ceph-osd-filling-ratio/</link>
+      <pubDate>Thu, 07 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/05/how-to-change-ceph-osd-filling-ratio/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>How to remove a host from a Ceph cluster?</title>
+      <link>https://arvimal.github.io/posts/2015/05/remove-a-host-from-ceph-cluster/</link>
+      <pubDate>Thu, 07 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/05/remove-a-host-from-ceph-cluster/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>How to list all the configuration settings in a Ceph cluster monitor?</title>
+      <link>https://arvimal.github.io/posts/2015/05/list-ceph-cluster-configurations/</link>
+      <pubDate>Wed, 06 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/05/list-ceph-cluster-configurations/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>FSCache and the on-disk structure of the cached data</title>
+      <link>https://arvimal.github.io/posts/2014/11/structure-of-cached-content-in-fscache/</link>
+      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2014/11/structure-of-cached-content-in-fscache/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>FS-Cache and CacheFS, what are the differences?</title>
+      <link>https://arvimal.github.io/posts/2014/09/fscache-and-cachefs-differences/</link>
+      <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2014/09/fscache-and-cachefs-differences/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>FS-Cache and FUSE</title>
+      <link>https://arvimal.github.io/posts/2014/09/fscache-and-fuse/</link>
+      <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2014/09/fscache-and-fuse/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>&#34;Error: open /tmp/docker-import-123456789/repo/bin/json: no such file or directory&#34;</title>
+      <link>https://arvimal.github.io/posts/2014/08/error-open-tmpdocker/</link>
+      <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2014/08/error-open-tmpdocker/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?</title>
+      <link>https://arvimal.github.io/posts/2010/12/lsusb-and-chroot-in-anaconda/</link>
+      <pubDate>Thu, 23 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2010/12/lsusb-and-chroot-in-anaconda/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Device Mapper and applications</title>
+      <link>https://arvimal.github.io/posts/2010/12/device-mapper-and-applications/</link>
+      <pubDate>Wed, 22 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2010/12/device-mapper-and-applications/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>lvcreate fails with the error &#34;Aborting. Failed to activate new LV to wipe the start of it.&#34;. Why ??</title>
+      <link>https://arvimal.github.io/posts/2009/11/lvcreate-fails-with-error/</link>
+      <pubDate>Mon, 02 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2009/11/lvcreate-fails-with-error/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>How to map PCI devices in Linux ?</title>
+      <link>https://arvimal.github.io/posts/2008/07/map-pci-devices-in-linux/</link>
+      <pubDate>Fri, 18 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/07/map-pci-devices-in-linux/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Bootloader checker</title>
+      <link>https://arvimal.github.io/posts/2008/02/bootloader-checker/</link>
+      <pubDate>Fri, 15 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/bootloader-checker/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Creating a SWAP space in Linux</title>
+      <link>https://arvimal.github.io/posts/2008/02/creating-swap-space-in-linux/</link>
+      <pubDate>Fri, 15 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/creating-swap-space-in-linux/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Recursive file counter in bash</title>
+      <link>https://arvimal.github.io/posts/2008/02/file-counter/</link>
+      <pubDate>Fri, 15 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/file-counter/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>CHKROOTKIT install script (with functions)</title>
+      <link>https://arvimal.github.io/posts/2008/02/chkrootkit-installer-with-functions/</link>
+      <pubDate>Thu, 14 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/chkrootkit-installer-with-functions/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>DNS Zone file sanity check</title>
+      <link>https://arvimal.github.io/posts/2008/02/dns-zone-file-sanity-check/</link>
+      <pubDate>Thu, 14 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/dns-zone-file-sanity-check/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Nagios Installation Script</title>
+      <link>https://arvimal.github.io/posts/2008/02/nagios-installer-script/</link>
+      <pubDate>Thu, 14 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/nagios-installer-script/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>A random number generator in Bash</title>
+      <link>https://arvimal.github.io/posts/2008/02/bash-script-for-generating-random-number/</link>
+      <pubDate>Wed, 13 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/bash-script-for-generating-random-number/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Password Encryptor in C</title>
+      <link>https://arvimal.github.io/posts/2008/02/password-encryptor-in-c/</link>
+      <pubDate>Wed, 13 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/password-encryptor-in-c/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Zombie processes</title>
+      <link>https://arvimal.github.io/posts/2008/01/zombie-processes/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/01/zombie-processes/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://arvimal.github.io/posts/2022/12/writing-my-blog-article-in-obsidian/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2022/12/writing-my-blog-article-in-obsidian/</guid>
+      <description>
+        
+          
+            Obsidian 
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Method Resolution Order - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/05/mro-object-oriented-programming/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/mro-object-oriented-programming/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

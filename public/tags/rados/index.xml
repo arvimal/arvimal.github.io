@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rados on Clarity</title>
+    <link>https://arvimal.github.io/tags/rados/</link>
+    <description>Recent content in rados on Clarity</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 30 Jun 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/rados/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sharding the Ceph RADOS Gateway bucket index</title>
+      <link>https://arvimal.github.io/posts/2016/06/sharding-the-ceph-rgw-bucket-index/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/sharding-the-ceph-rgw-bucket-index/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Ceph Rados Block Device (RBD) and TRIM</title>
+      <link>https://arvimal.github.io/posts/2015/10/rbd-object-remain-in-pool-after-deletion/</link>
+      <pubDate>Wed, 07 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/10/rbd-object-remain-in-pool-after-deletion/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

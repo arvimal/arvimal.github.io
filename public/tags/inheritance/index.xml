@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>inheritance on Clarity</title>
+    <link>https://arvimal.github.io/tags/inheritance/</link>
+    <description>Recent content in inheritance on Clarity</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Jul 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/inheritance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Inheritance and super() - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/07/inheritance-and-super-oop/</link>
+      <pubDate>Fri, 01 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/07/inheritance-and-super-oop/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Inheritance and Method overloading - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/06/inheritance-and-method-overloading-oop/</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/inheritance-and-method-overloading-oop/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Method Resolution Order - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/05/mro-object-oriented-programming/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/mro-object-oriented-programming/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

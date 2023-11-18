@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fill-ratio on Clarity</title>
+    <link>https://arvimal.github.io/tags/fill-ratio/</link>
+    <description>Recent content in fill-ratio on Clarity</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 07 May 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/fill-ratio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to change the filling ratio for a Ceph OSD?</title>
+      <link>https://arvimal.github.io/posts/2015/05/how-to-change-ceph-osd-filling-ratio/</link>
+      <pubDate>Thu, 07 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/05/how-to-change-ceph-osd-filling-ratio/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

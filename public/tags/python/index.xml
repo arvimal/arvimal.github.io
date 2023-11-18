@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on Clarity</title>
+    <link>https://arvimal.github.io/tags/python/</link>
+    <description>Recent content in python on Clarity</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 09 Aug 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Callables in Python</title>
+      <link>https://arvimal.github.io/posts/2017/08/callables-in-python/</link>
+      <pubDate>Wed, 09 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/08/callables-in-python/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Recursion - Algorithm Study</title>
+      <link>https://arvimal.github.io/posts/2017/06/recursion-algorithm-study/</link>
+      <pubDate>Tue, 27 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/06/recursion-algorithm-study/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Selection Sort - Algorithm Study</title>
+      <link>https://arvimal.github.io/posts/2017/02/selection-sort-algorithm-study/</link>
+      <pubDate>Sat, 11 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2017/02/selection-sort-algorithm-study/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Accessor and Mutator methods - Python</title>
+      <link>https://arvimal.github.io/posts/2016/12/accessor-and-mutator-methods/</link>
+      <pubDate>Sun, 18 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/12/accessor-and-mutator-methods/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Inheritance and super() - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/07/inheritance-and-super-oop/</link>
+      <pubDate>Fri, 01 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/07/inheritance-and-super-oop/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Abstract Base Classes/Methods - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/06/abc-oop-python/</link>
+      <pubDate>Tue, 14 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/abc-oop-python/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Magic methods and Syntactic sugar in Python</title>
+      <link>https://arvimal.github.io/posts/2016/06/magic-methods-in-python/</link>
+      <pubDate>Thu, 02 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/magic-methods-in-python/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Decorators - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/05/decorators-object-oriented-programming/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/decorators-object-oriented-programming/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>range() and enumerate()</title>
+      <link>https://arvimal.github.io/posts/2015/10/range-and-enumerate/</link>
+      <pubDate>Mon, 12 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/10/range-and-enumerate/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Calculate a PG id from the hex values in Ceph OSD debug logs</title>
+      <link>https://arvimal.github.io/posts/2015/08/calculate-pg-id-from-ceph-osd-debug-logs/</link>
+      <pubDate>Sun, 30 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/08/calculate-pg-id-from-ceph-osd-debug-logs/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Method Resolution Order - Object Oriented Programming</title>
+      <link>https://arvimal.github.io/posts/2016/05/mro-object-oriented-programming/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/mro-object-oriented-programming/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

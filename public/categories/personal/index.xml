@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>personal on Clarity</title>
+    <link>https://arvimal.github.io/categories/personal/</link>
+    <description>Recent content in personal on Clarity</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 10 Aug 2022 19:13:41 +0200</lastBuildDate><atom:link href="https://arvimal.github.io/categories/personal/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Testing LoveIt</title>
+      <link>https://arvimal.github.io/posts/2022/08/testing-loveit/</link>
+      <pubDate>Wed, 10 Aug 2022 19:13:41 +0200</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2022/08/testing-loveit/</guid>
+      <description>
+        
+          
+            Hugo static webpages on GitHub, with LoveIt theme
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>monitors on Clarity</title>
+    <link>https://arvimal.github.io/tags/monitors/</link>
+    <description>Recent content in monitors on Clarity</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 09 May 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/monitors/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ceph OSD heartbeats</title>
+      <link>https://arvimal.github.io/posts/2016/05/ceph-osd-heartbeats/</link>
+      <pubDate>Mon, 09 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/05/ceph-osd-heartbeats/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Monitor maps, how to edit them?</title>
+      <link>https://arvimal.github.io/posts/2015/09/view-change-inject-monitor-map/</link>
+      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/09/view-change-inject-monitor-map/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Compacting a Ceph monitor store</title>
+      <link>https://arvimal.github.io/posts/2015/07/compact-a-ceph-monitor-data-store/</link>
+      <pubDate>Thu, 09 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/07/compact-a-ceph-monitor-data-store/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>How to list all the configuration settings in a Ceph cluster monitor?</title>
+      <link>https://arvimal.github.io/posts/2015/05/list-ceph-cluster-configurations/</link>
+      <pubDate>Wed, 06 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/05/list-ceph-cluster-configurations/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

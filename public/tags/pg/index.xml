@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pg on Clarity</title>
+    <link>https://arvimal.github.io/tags/pg/</link>
+    <description>Recent content in pg on Clarity</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 30 Aug 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/pg/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Calculate a PG id from the hex values in Ceph OSD debug logs</title>
+      <link>https://arvimal.github.io/posts/2015/08/calculate-pg-id-from-ceph-osd-debug-logs/</link>
+      <pubDate>Sun, 30 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/08/calculate-pg-id-from-ceph-osd-debug-logs/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
