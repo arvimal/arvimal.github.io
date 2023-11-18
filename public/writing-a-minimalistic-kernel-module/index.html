@@ -519,15 +519,15 @@ Once the module code and the Makefile are ready, the <code>make</code> command i
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">test_module</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">printk</span><span class="p">(</span><span class="s">&#34;Loading the test module!</span><span class="se">\\</span><span class="s">n&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printk</span><span class="p">(</span><span class="s">&#34;Loading the test module!</span><span class="se">\\</span><span class="s">n&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">unload_test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">printk</span><span class="p">(</span><span class="s">&#34;Unloading the test module!</span><span class="se">\\</span><span class="s">n&#34;</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">printk</span><span class="p">(</span><span class="s">&#34;Unloading the test module!</span><span class="se">\\</span><span class="s">n&#34;</span><span class="p">);</span> 
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">module_init</span><span class="p">(</span><span class="n">test_module</span><span class="p">)</span> 
-</span></span><span class="line"><span class="cl"><span class="n">module_exit</span><span class="p">(</span><span class="n">unload_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">module_init</span><span class="p">(</span><span class="n">test_module</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="nf">module_exit</span><span class="p">(</span><span class="n">unload_test</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>This has two functions, <code>test_module()</code> and <code>unload_test()</code> which simply prints a text banner upon loading and unloading respectively.</p>
@@ -677,8 +677,8 @@ We load our <code>unload_test()</code> function in <code>module_exit()</code>.<
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/arvimal" target="_blank">Vimal A.R</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/arvimal" target="_blank">Vimal A.R</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

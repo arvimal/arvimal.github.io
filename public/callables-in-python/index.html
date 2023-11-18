@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/arvimal.github.io\/callables-in-python\/"
-        },"genre": "posts","keywords": "callable, python, python-objects","wordcount":  708 ,
+        },"genre": "posts","keywords": "callable, python, python-objects","wordcount":  707 ,
         "url": "https:\/\/arvimal.github.io\/callables-in-python\/","datePublished": "2017-08-09T00:00:00+00:00","dateModified": "2022-08-11T14:50:59+02:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -104,7 +104,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Callables in Python</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/arvimal" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Vimal A.R</a></span>&nbsp;<span class="post-category">included in <a href="/categories/programming/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>programming</a>&nbsp;<a href="/categories/python/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>python</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="09-08-2017">09-08-2017</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;708 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="09-08-2017">09-08-2017</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;707 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -122,7 +122,7 @@
         </li>
       </ul>
     </li>
-    <li><a href="#the-__call__-method">The __call__() method</a>
+    <li><a href="#the-__call__-method">The <strong>call</strong>() method</a>
       <ul>
         <li>
           <ul>
@@ -193,7 +193,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>In <em><strong>Example 1</strong></em>, we can see that builtins like <code>help()</code>, a pre-defined type such as <code>int()</code>, and a custom function <code>hello()</code> are all callable. These can be executed while being called with parantheses.</p>
-<h2 id="the-__call__-method">The __call__() method</h2>
+<h2 id="the-__call__-method">The <strong>call</strong>() method</h2>
 <p>The <code>callable()</code> builtin helps to determine if an object is callable or not. Internally, it translates to the magic method <code>__call__()</code>.</p>
 <p>In short:</p>
 <p><code>my_object(*args)</code> translates to <code>my_object.__call__(*args)</code></p>
@@ -212,7 +212,7 @@
 </span></span><span class="line"><span class="cl"><span class="n">Return</span> <span class="n">whether</span> <span class="n">the</span> <span class="nb">object</span> <span class="ow">is</span> <span class="n">callable</span> <span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span><span class="p">,</span> <span class="n">some</span> <span class="n">kind</span> <span class="n">of</span> <span class="n">function</span><span class="p">)</span><span class="o">.</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Note that classes are callable, as are instances of classes with a __call__() method. [/code]</p>
+</div><p>Note that classes are callable, as are instances of classes with a <strong>call</strong>() method. [/code]</p>
 <h4 id="example-2">Example 2:</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -256,11 +256,11 @@
 <p><strong>NOTE</strong>: You can view the methods of the <code>int</code> class using <code>help(int)</code> or <code>dir(int)</code>.</p>
 <p><strong>Example 4: Another example with Classes</strong></p>
 <p>[code language=&ldquo;bash&rdquo;]</p>
-<p>In [52]: class tell: &hellip;: def __call__(self): &hellip;: pass</p>
+<p>In [52]: class tell: &hellip;: def <strong>call</strong>(self): &hellip;: pass</p>
 <p>In [53]: telling = tell()</p>
 <p>In [54]: callable(tell) Out[54]: True</p>
 <p>In [55]: callable(telling) Out[55]: True</p>
-<p>-&mdash;&mdash;-</p>
+<hr>
 <p>In [56]: class test: &hellip;: pass</p>
 <p>In [57]: testing = test()</p>
 <p>In [58]: callable(test) Out[58]: True</p>
@@ -272,9 +272,9 @@
 <p>In [3]: n() &mdash;&mdash;&mdash;&mdash;&mdash;&mdash; TypeError Traceback (most recent call last) in module() &mdash;-&gt; 1 n()</p>
 <p>TypeError: &rsquo;new&rsquo; object is not callable [/code]</p>
 <h4 id="example-6-callable-instance-of-the-same-class">Example 6: Callable instance of the same class</h4>
-<p>[code language=&ldquo;bash&rdquo;] In [4]: class new: &hellip;: def __call__(self): &hellip;: print(&ldquo;I&rsquo;m callable!&rdquo;)</p>
+<p>[code language=&ldquo;bash&rdquo;] In [4]: class new: &hellip;: def <strong>call</strong>(self): &hellip;: print(&ldquo;I&rsquo;m callable!&rdquo;)</p>
 <p>In [5]: n = new()</p>
-<p>In [6]: n Out[6]: __main__.new at 0x7f7a614b1f98</p>
+<p>In [6]: n Out[6]: <strong>main</strong>.new at 0x7f7a614b1f98</p>
 <p>In [7]: n() I&rsquo;m callable! [/code] <em><strong>Example 5</strong></em> and <em><strong>Example 6</strong></em> shows how a class is itself callable, but unless it carries a <code>__call__()</code> method, the instances spawned out of it are not so.</p>
 <p> </p>
 <h3 id="references">References:</h3>
@@ -310,8 +310,8 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/arvimal" target="_blank">Vimal A.R</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/arvimal" target="_blank">Vimal A.R</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

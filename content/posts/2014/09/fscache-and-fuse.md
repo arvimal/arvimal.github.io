@@ -17,4 +17,4 @@ More details on the the talk can be seen at [http://www.linuxplumbersconf.org/20
 
 This feature has got quite a few requests from the FOSS world, and I'm glad I could work on this. For now, I'm trying to get a hold on FS-Cache, how it works with other file systems, and trying to build FUSE with some customizations. Ultimately, it would be the FUSE module were the code additions would go, not FS-Cache.
 
-I'll try to keep this blog updated, so that I have a journal to refer later
+I'll try to keep this blog updated, so that I have a journal to refer later.

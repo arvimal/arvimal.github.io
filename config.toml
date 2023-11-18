@@ -1,7 +1,9 @@
 baseURL = "https://arvimal.github.io/"
 
 # Change the default theme to be use when building the site with Hugo
-theme = "LoveIt"
+# theme = "LoveIt"
+# theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
+theme = ["github.com/chipzoller/hugo-clarity"]
 
 # website title
 title = "The Child is Father of the Man"
@@ -528,5 +530,5 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   page = ["HTML", "MarkDown"]
   section = ["HTML", "RSS"]
   taxonomy = ["HTML", "RSS"]
-  taxonomyTerm = ["HTML"]
+  # taxonomyTerm = ["HTML"]
 
