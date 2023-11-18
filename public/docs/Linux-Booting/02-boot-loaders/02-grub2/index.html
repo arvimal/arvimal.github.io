@@ -1,0 +1,1546 @@
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  data-figures=""
+  
+    class="page"
+  
+  
+  >
+  <head>
+<title>Clarity</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+
+
+<meta property="og:locale" content="en" />
+
+<meta property="og:type" content="article">
+<meta name="description" content="Get started with GRUB2 https://www.certdepot.net/rhel7-get-started-grub2/
+Note: This is an RHCSA 7 exam objective.
+Presentation of GRUB2 GRUB2 is the new Linux …" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@janedoe">
+<meta name="twitter:title" content="" />
+<meta name="twitter:image" content="https://arvimal.github.io/images/thumbnail.png"/>
+<meta property="og:url" content="https://arvimal.github.io/docs/linux-booting/02-boot-loaders/02-grub2/" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="Get started with GRUB2 https://www.certdepot.net/rhel7-get-started-grub2/
+Note: This is an RHCSA 7 exam objective.
+Presentation of GRUB2 GRUB2 is the new Linux …" />
+<meta property="og:image" content="https://arvimal.github.io/images/thumbnail.png" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://arvimal.github.io/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://arvimal.github.io/icons/favicon-32x32.png">
+<link rel="manifest" href="https://arvimal.github.io/icons/site.webmanifest">
+
+<link rel="canonical" href="https://arvimal.github.io/docs/linux-booting/02-boot-loaders/02-grub2/">
+
+
+
+<link rel="preload" href="https://arvimal.github.io/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity = "sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" as="style" crossorigin="anonymous">
+
+
+
+<link rel="preload" href="https://arvimal.github.io/en/js/bundle.2eb8bded826af97bed60191cec7b2f311796d0f521dabf613dbbbc48360338b7cbd4c7c95b79bf83330c134478634baab31489a5f9cbd51539fc9c07e8065f2e.js" as="script" integrity=
+"sha512-Lri97YJq&#43;XvtYBkc7HsvMReW0PUh2r9hPbu8SDYDOLfL1MfJW3m/gzMME0R4Y0uqsxSJpfnL1RU5/JwH6AZfLg==" crossorigin="anonymous">
+
+
+<link rel="stylesheet" type="text/css" href="https://arvimal.github.io/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
+
+  </head>
+  <body
+    data-code="7"
+    data-lines="false"
+    id="documentTop"
+    data-lang="en"
+  >
+
+<header class="nav_header" >
+  <nav class="nav"><a href='https://arvimal.github.io/' class="nav_brand nav_item" title="Clarity">
+  <img src="https://arvimal.github.io/logos/logo.png" class="logo" alt="Clarity">
+  <div class="nav_close">
+    <div><svg class="icon">
+  <title>open-menu</title>
+  <use xlink:href="#open-menu"></use>
+</svg>
+<svg class="icon">
+  <title>closeme</title>
+  <use xlink:href="#closeme"></use>
+</svg>
+</div>
+  </div>
+</a>
+
+    <div class='nav_body nav_body_left'>
+      
+      
+      
+        
+
+  <div class="nav_parent">
+    <a href="https://arvimal.github.io/" class="nav_item" title="Home">Home </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://arvimal.github.io/about/" class="nav_item" title="About">About </a>
+  </div>
+      
+<div class='follow'>
+  <a href="https://github.com/arvimal">
+    <svg class="icon">
+  <title>github</title>
+  <use xlink:href="#github"></use>
+</svg>
+
+  </a>
+  <a href="https://www.linkedin.com/in/arvimal">
+    <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+  </a>
+    
+  <a href="https://arvimal.github.io/index.xml">
+    <svg class="icon">
+  <title>rss</title>
+  <use xlink:href="#rss"></use>
+</svg>
+
+  </a>
+<div class="color_mode">
+  <input type="checkbox" class="color_choice" id="mode">
+</div>
+
+</div>
+
+    </div>
+  </nav>
+</header>
+
+    <main>
+  
+<div class="grid-inverse wrap content">
+  <article class="post_content">
+    <h1 class="post_title"></h1>
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      Jan 1, 0001</span>
+    <span class="post_time"> · 31 min read</span><span>&nbsp;· <a href='https://arvimal.github.io/tags/grub/' title="grub" class="post_tag button button_translucent">grub
+        </a><a href='https://arvimal.github.io/tags/grub2/' title="grub2" class="post_tag button button_translucent">grub2
+        </a><a href='https://arvimal.github.io/tags/bootloader/' title="bootloader" class="post_tag button button_translucent">bootloader
+        </a><a href='https://arvimal.github.io/tags/mbr/' title="mbr" class="post_tag button button_translucent">mbr
+        </a><a href='https://arvimal.github.io/tags/guid/' title="guid" class="post_tag button button_translucent">guid
+        </a><a href='https://arvimal.github.io/tags/gpt/' title="gpt" class="post_tag button button_translucent">gpt
+        </a><a href='https://arvimal.github.io/tags/efi/' title="efi" class="post_tag button button_translucent">efi
+        </a><a href='https://arvimal.github.io/tags/bios/' title="bios" class="post_tag button button_translucent">bios
+        </a><a href='https://arvimal.github.io/tags/boot/' title="boot" class="post_tag button button_translucent">boot
+        </a><a href='https://arvimal.github.io/tags/grub2-mkconfig/' title="grub2-mkconfig" class="post_tag button button_translucent">grub2-mkconfig
+        </a>
+    </span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    Share on:
+    <a href="https://twitter.com/intent/tweet?text=&url=https%3a%2f%2farvimal.github.io%2fdocs%2flinux-booting%2f02-boot-loaders%2f02-grub2%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>twitter</title>
+  <use xlink:href="#twitter"></use>
+</svg>
+
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2farvimal.github.io%2fdocs%2flinux-booting%2f02-boot-loaders%2f02-grub2%2f&t=" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>facebook</title>
+  <use xlink:href="#facebook"></use>
+</svg>
+
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+    </a>
+    <a href="https://arvimal.github.io/docs/linux-booting/02-boot-loaders/02-grub2/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <title>copy</title>
+  <use xlink:href="#copy"></use>
+</svg>
+
+    </a>
+  </div>
+  </span>
+  </div>
+
+    <div class="post_body"><h1 id="get-started-with-grub2">Get started with GRUB2</h1>
+<p><a href="https://www.certdepot.net/rhel7-get-started-grub2/">https://www.certdepot.net/rhel7-get-started-grub2/</a></p>
+<p>Note: This is an <a href="https://www.certdepot.net/rhel7-rhcsa-exam-objectives/">RHCSA 7 exam objective</a>.</p>
+<h2 id="presentation-of-grub2">Presentation of GRUB2</h2>
+<p><strong>GRUB2</strong> is the new Linux bootloader. <strong>GRUB2</strong> stands for <strong>GR</strong>and <strong>U</strong>nified <strong>B</strong>ootloader version <strong>2</strong>.</p>
+<p>As <strong>GRUB</strong> was not maintained for some time and lacked some critical features like <strong>GPT</strong> management needed to handle disks bigger than 2.4TB, it was decided to start a new version from scratch with modularity in mind.</p>
+<p><strong>GRUB2</strong> provides the following new features:</p>
+<ul>
+<li>ability to boot on various file systems (xfs, ext4, ntfs, hfs+, raid, etc),</li>
+<li>gzip files decompression on the fly,</li>
+<li>management of all disk geometries,</li>
+<li>support for <strong>GPT</strong> (<strong>G</strong>UID <strong>P</strong>artition <strong>T</strong>ables) and <strong>MBR</strong> (<strong>M</strong>aster <strong>B</strong>oot <strong>R</strong>ecord),</li>
+<li>portability with different architectures (BIOS, EFI, Coreboot, etc),</li>
+<li>ability to load modules at execution time.</li>
+</ul>
+<h2 id="grub2-organization">GRUB2 Organization</h2>
+<p>The <strong>GRUB2</strong> configuration is spread over several files:</p>
+<ul>
+<li><strong>/boot/grub2/grub.cfg</strong>: this file contains the final <strong>GRUB2</strong> configuration (do not edit it directly!),</li>
+<li><strong>/etc/grub2.cfg</strong>: this is a symbolic link to the <strong>/boot/grub2/grub.cfg</strong> file,</li>
+<li><strong>/etc/default/grub</strong>: this file contains the list of the <strong>GRUB2</strong> variables (the values of the environment variables can be edited),</li>
+<li><strong>/etc/sysconfig/grub</strong>: this is a symbolic link to the <strong>/etc/default/grub</strong> file,</li>
+<li><strong>/etc/grub.d</strong>: this directory contains all the individual files internally used by <strong>GRUB2</strong>.</li>
+</ul>
+<p>This tutorial will only explore knowledge required for the <strong>RHCSA</strong> exam. Refer to the <strong>Additional Resources</strong> section for more details.</p>
+<h2 id="basic-management">Basic Management</h2>
+<p>To get the details about the current active kernel, type:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1"># grub2-editenv list</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nv">saved_entry</span><span class="o">=</span>CentOS Linux <span class="o">(</span>3.10.0-229.11.1.el7.x86_64<span class="o">)</span> <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>
+</span></span></code></pre></div><p>Note: This information is stored in the <strong>/boot/grub2/grubenv</strong> file.</p>
+<p>To get the list of the kernels displayed at boot time, type:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1"># grep ^menuentry /boot/grub2/grub.cfg</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">menuentry <span class="s1">&#39;CentOS Linux (3.10.0-229.20.1.el7.x86_64) 7 (Core)&#39;</span> ...
+</span></span><span class="line"><span class="ln">3</span><span class="cl">menuentry <span class="s1">&#39;CentOS Linux (3.10.0-229.14.1.el7.x86_64) 7 (Core)&#39;</span> ...
+</span></span><span class="line"><span class="ln">4</span><span class="cl">menuentry <span class="s1">&#39;CentOS Linux 7 (Core), with Linux 0-rescue-f19b719117b44bf3a3fb777bd4127&#39;</span> ...caf
+</span></span></code></pre></div><p>To permanently define the kernel to execute at boot time (here <strong>0</strong> for the first entry), type:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1"># grub2-set-default 0</span>
+</span></span></code></pre></div><p>To display the <strong>GRUB2</strong> variables, type:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1"># cat /etc/default/grub </span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nv">GRUB_TIMEOUT</span><span class="o">=</span><span class="m">5</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nv">GRUB_DISTRIBUTOR</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span>sed <span class="s1">&#39;s, release .*$,,g&#39;</span> /etc/system-release<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="nv">GRUB_DEFAULT</span><span class="o">=</span>saved
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="nv">GRUB_DISABLE_SUBMENU</span><span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="nv">GRUB_TERMINAL</span><span class="o">=</span><span class="s2">&#34;serial console&#34;</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="nv">GRUB_SERIAL_COMMAND</span><span class="o">=</span><span class="s2">&#34;serial --speed=115200&#34;</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="nv">GRUB_CMDLINE_LINUX</span><span class="o">=</span><span class="s2">&#34;rd.lvm.lv=rhel/swap crashkernel=auto rd.lvm.lv=rhel/root console=ttyS0,115200&#34;</span>
+</span></span><span class="line"><span class="ln">9</span><span class="cl"><span class="nv">GRUB_DISABLE_RECOVERY</span><span class="o">=</span><span class="s2">&#34;true&#34;</span>
+</span></span></code></pre></div><p>Where</p>
+<ul>
+<li><strong>GRUB_TIMEOUT</strong> defines the boot waiting delay (here <strong>5</strong> seconds),</li>
+<li><strong>GRUB_DISTRIBUTOR</strong> contains the distribution name (here <strong>CentOS Linux</strong>),</li>
+<li><strong>GRUB_DEFAULT</strong> specifies the default menu entry; it can be a number, an entry name or the string <strong>saved</strong> which means the entry saved during the last reboot or the execution of the <strong>grub2-set-default</strong> command,</li>
+<li><strong>GRUB_DISABLE_SUBMENU</strong> allows (<strong>false</strong>) or not (<strong>true</strong>) the display of a submenu (see below),</li>
+<li><strong>GRUB_TERMINAL</strong> defines the terminal input &amp; output device (here <strong>console</strong> and <strong>serial</strong>),</li>
+<li><strong>GRUB_SERIAL_COMMAND</strong> configures the serial port,</li>
+<li><strong>GRUB_CMDLINE_LINUX</strong> specifies the command-line arguments added to the menu entries for the Linux kernel,</li>
+<li><strong>GRUB_DISABLE_RECOVERY</strong> defines if all entries can be selected in recovery mode through a separate line (<strong>false</strong>) or only the default entry (<strong>true</strong>).</li>
+</ul>
+<p>If you want to change the content of any variables in the previous file, you will need to type:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1"># grub2-mkconfig -o /boot/grub2/grub.cfg</span>
+</span></span></code></pre></div><p>Note: This is the main command to memorize for the exam. You can also replace <strong>/boot/grub2/grub.cfg</strong> with <strong>/etc/grub2.cfg</strong></p>
+<p>To better understand some of the environment variables, here are the standard display with <strong>GRUB_DISABLE_RECOVERY</strong>=”true” and <strong>GRUB_DISABLE_SUBMENU</strong>=true:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">      CentOS Linux <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>, with Linux 3.10.0-229.20.1.el7.x86_64
+</span></span><span class="line"><span class="ln">2</span><span class="cl">      CentOS Linux <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>, with Linux 3.10.0-229.14.1.el7.x86_64
+</span></span><span class="line"><span class="ln">3</span><span class="cl">      CentOS Linux <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>, with Linux 0-rescue-f19b719117b44bf3a3fb777bd4127&gt;
+</span></span><span class="line"><span class="ln">4</span><span class="cl">
+</span></span><span class="line"><span class="ln">5</span><span class="cl">      Use the ^ and v keys to change the selection.                       
+</span></span><span class="line"><span class="ln">6</span><span class="cl">      Press <span class="s1">&#39;e&#39;</span> to edit the selected item, or <span class="s1">&#39;c&#39;</span> <span class="k">for</span> a <span class="nb">command</span> prompt.   
+</span></span></code></pre></div><p>If <strong>GRUB_DISABLE_RECOVERY</strong> is set to “false”, here is the new display:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">      CentOS Linux <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>, with Linux 3.10.0-229.20.1.el7.x86_64              
+</span></span><span class="line"><span class="ln">2</span><span class="cl">      CentOS Linux <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>, with Linux 3.10.0-229.20.1.el7.x86_64 <span class="o">(</span>recovery m&gt;
+</span></span><span class="line"><span class="ln">3</span><span class="cl">      CentOS Linux <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>, with Linux 3.10.0-229.14.1.el7.x86_64             
+</span></span><span class="line"><span class="ln">4</span><span class="cl">      CentOS Linux <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>, with Linux 3.10.0-229.14.1.el7.x86_64 <span class="o">(</span>recovery m&gt;
+</span></span><span class="line"><span class="ln">5</span><span class="cl">      CentOS Linux <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>, with Linux 0-rescue-f19b719117b44bf3a3fb777bd4127&gt;
+</span></span><span class="line"><span class="ln">6</span><span class="cl">      CentOS Linux <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>, with Linux 0-rescue-f19b719117b44bf3a3fb777bd4127&gt;
+</span></span><span class="line"><span class="ln">7</span><span class="cl">
+</span></span><span class="line"><span class="ln">8</span><span class="cl">      Use the ^ and v keys to change the selection.                       
+</span></span><span class="line"><span class="ln">9</span><span class="cl">      Press <span class="s1">&#39;e&#39;</span> to edit the selected item, or <span class="s1">&#39;c&#39;</span> <span class="k">for</span> a <span class="nb">command</span> prompt.   
+</span></span></code></pre></div><p>Each kernel line gets an associated line in recovery mode.</p>
+<p>If <strong>GRUB_DISABLE_RECOVERY</strong> is now set to “true” (like in the initial standard display) and <strong>GRUB_DISABLE_SUBMENU</strong> is set to false, here is the new display:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">      CentOS Linux <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>                                                     
+</span></span><span class="line"><span class="ln">2</span><span class="cl">      Advanced options <span class="k">for</span> CentOS Linux <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>                               
+</span></span><span class="line"><span class="ln">3</span><span class="cl">      Use the ^ and v keys to change the selection.                       
+</span></span><span class="line"><span class="ln">4</span><span class="cl">      Press <span class="s1">&#39;e&#39;</span> to edit the selected item, or <span class="s1">&#39;c&#39;</span> <span class="k">for</span> a <span class="nb">command</span> prompt.   
+</span></span></code></pre></div><p>If the first entry is selected (“CentOS Linux 7 (Core)”), the system boots. If the second option is chosen, the standard menu is shown with an additional line at the bottom to go back to the first menu with the Esc key:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">      CentOS Linux <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>, with Linux 3.10.0-229.20.1.el7.x86_64              
+</span></span><span class="line"><span class="ln">2</span><span class="cl">      CentOS Linux <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>, with Linux 3.10.0-229.14.1.el7.x86_64             
+</span></span><span class="line"><span class="ln">3</span><span class="cl">      CentOS Linux <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>, with Linux 0-rescue-f19b719117b44bf3a3fb777bd4127&gt;
+</span></span><span class="line"><span class="ln">4</span><span class="cl">
+</span></span><span class="line"><span class="ln">5</span><span class="cl">      Use the ^ and v keys to change the selection.                       
+</span></span><span class="line"><span class="ln">6</span><span class="cl">      Press <span class="s1">&#39;e&#39;</span> to edit the selected item, or <span class="s1">&#39;c&#39;</span> <span class="k">for</span> a <span class="nb">command</span> prompt.   
+</span></span><span class="line"><span class="ln">7</span><span class="cl">      Press Escape to <span class="k">return</span> to the previous menu.                        
+</span></span></code></pre></div><h2 id="additional-resources">Additional Resources</h2>
+<p>To better explore <strong>GRUB2</strong>, you can:</p>
+<ul>
+<li>read <a href="http://mathematicbren.blogspot.fr/2014/12/grub2-rundown.html">Brendan Swigart’s article</a>,</li>
+<li>loot at a <a href="https://wiki.centos.org/HowTos/Grub2">GRUB2 CentOS article</a>,</li>
+<li>explore the <a href="http://www.gnu.org/software/grub/manual/grub.html">GRUB2 configuration manual</a>,</li>
+<li>read a <strong>Tecmint</strong> article about <a href="http://www.tecmint.com/configure-and-troubleshoot-grub-boot-loader-linux/">configuring and troubleshooting GRUB2</a>,</li>
+<li>read a <strong>LinuxSecrets</strong> tutorial about <a href="https://www.linuxsecrets.com/blog/6managing-linux-systems/2017/01/21/2140-change-boot-order-in-grub2">changing boot order with GRUB2</a>,</li>
+<li>read this article describing the <a href="https://opensourceblogging.wordpress.com/2017/02/15/rhel-7-booting-process/">RHEL 7 booting process</a>.</li>
+</ul>
+<h1 id="customizing-the-grub-2-configuration-file">Customizing the GRUB 2 Configuration File</h1>
+<p><a href="https://docs.fedoraproject.org/en-US/Fedora/23/html/System_Administrators_Guide/sec-Customizing_the_GRUB_2_Configuration_File.html">https://docs.fedoraproject.org/en-US/Fedora/23/html/System_Administrators_Guide/sec-Customizing_the_GRUB_2_Configuration_File.html</a></p>
+<p>GRUB 2 scripts search the user's computer and build a boot menu based on what operating systems the scripts find. To reflect the latest system boot options, the boot menu is rebuilt automatically when the kernel is updated or a new kernel is added.</p>
+<p>However, users may want to build a menu containing specific entries or to have the entries in a specific order. GRUB 2 allows basic customization of the boot menu to give users control of what actually appears on the screen.</p>
+<p>GRUB 2 uses a series of scripts to build the menu; these are located in the <code>/etc/grub.d/</code> directory. The following files are included:</p>
+<ul>
+<li><code>01_users</code>, which is created only when a boot loader password is assigned in a <strong>kickstart</strong> file.</li>
+<li><code>10_linux</code>, which locates kernels in the default partition of Fedora.</li>
+<li><code>30_os-prober</code>, which builds entries for operating systems found on other partitions.</li>
+<li><code>40_custom</code>, a template, which can be used to create additional menu entries.</li>
+</ul>
+<p>Scripts from the <code>/etc/grub.d/</code> directory are read in alphabetical order and can be therefore renamed to change the boot order of specific menu entries.</p>
+<p>With the <code>GRUB_TIMEOUT</code> key set to <code>0</code> in the <code>/etc/default/grub</code> file, GRUB 2 does not display the list of bootable kernels when the system starts up. In order to display this list when booting, press and hold any alphanumeric key when the BIOS information is displayed; GRUB 2 will present you with the GRUB menu.</p>
+<p>By default, the key for the <code>GRUB_DEFAULT</code> directive in the <code>/etc/default/grub</code> file is the word <code>saved</code>. This instructs GRUB 2 to load the kernel specified by the <code>saved_entry</code> directive in the GRUB 2 environment file, located at <code>/boot/grub2/grubenv</code>. You can set another GRUB record to be the default, using the <code>grub2-set-default</code> command, which will update the GRUB 2 environment file.</p>
+<p>By default, the <code>saved_entry</code> value is set to the name of latest installed kernel of package type kernel. This is defined in <code>/etc/sysconfig/kernel</code> by the <code>UPDATEDEFAULT</code> and <code>DEFAULTKERNEL</code> directives. The file can be viewed by the <code>root</code> user as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">~</span><span class="p">]</span><span class="err">#</span> <span class="nx">cat</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">sysconfig</span><span class="o">/</span><span class="nx">kernel</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="err">#</span> <span class="nx">UPDATEDEFAULT</span> <span class="nx">specifies</span> <span class="k">if</span> <span class="nx">new</span><span class="o">-</span><span class="nx">kernel</span><span class="o">-</span><span class="nx">pkg</span> <span class="nx">should</span> <span class="nx">make</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="err">#</span> <span class="nx">new</span> <span class="nx">kernels</span> <span class="nx">the</span> <span class="k">default</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="nx">UPDATEDEFAULT</span><span class="p">=</span><span class="nx">yes</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="err">#</span> <span class="nx">DEFAULTKERNEL</span> <span class="nx">specifies</span> <span class="nx">the</span> <span class="k">default</span> <span class="nx">kernel</span> <span class="kn">package</span> <span class="kd">type</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="nx">DEFAULTKERNEL</span><span class="p">=</span><span class="nx">kernel</span><span class="o">-</span><span class="nx">core</span>
+</span></span></code></pre></div><p>The <code>DEFAULTKERNEL</code> directive specifies what package type will be used as the default. Installing a package of type kernel-debug will not change the default kernel while the <code>DEFAULTKERNEL</code> is set to package type kernel.</p>
+<p>GRUB 2 supports using a numeric value as the key for the <code>saved_entry</code> directive to change the default order in which the operating systems are loaded. To specify which operating system should be loaded first, pass its number to the <code>grub2-set-default</code> command. For example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">~]# grub2-set-default 2
+</span></span></code></pre></div><p>Note that the position of a menu entry in the list is denoted by a number starting with zero; therefore, in the example above, the third entry will be loaded. This value will be overwritten by the name of the next kernel to be installed.</p>
+<p>To force a system to always use a particular menu entry, use the menu entry name as the key to the <code>GRUB_DEFAULT</code> directive in the <code>/etc/default/grub</code> file. To list the available menu entries, run the following command as <code>root</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">~]# awk -F\&#39; &#39;$1==&#34;menuentry &#34; {print $2}&#39; /etc/grub2.cfg
+</span></span></code></pre></div><p>The file name <code>/etc/grub2.cfg</code> is a symlink to the <code>grub.cfg</code> file, whose location is architecture dependent. For reliability reasons, the symlink is not used in other examples in this chapter. It is better to use absolute paths when writing to a file, especially when repairing a system.</p>
+<p>Changes to <code>/etc/default/grub</code> require rebuilding the <code>grub.cfg</code> file as follows:</p>
+<h1 id="grub-2---fedora-project-wiki">GRUB 2 - Fedora Project Wiki</h1>
+<p><a href="https://fedoraproject.org/wiki/GRUB_2">https://fedoraproject.org/wiki/GRUB_2</a></p>
+<p>GRUB 2 is the latest version of GNU GRUB, the GRand Unified Bootloader. A bootloader is the first software program that runs when a computer starts. It is responsible for loading and transferring control to the operating system kernel, (Linux, in the case of Fedora). The kernel, in turn, initializes the rest of the operating system.</p>
+<p>GRUB 2 has replaced what was formerly known as GRUB (i.e. version 0.9x), which has, in turn, become GRUB Legacy.</p>
+<p>Starting with Fedora 16, GRUB 2 is the default bootloader on x86 BIOS systems. For upgrades of BIOS systems the default is also to install GRUB 2, but you can opt to skip bootloader configuration entirely.</p>
+<h2 id="updating-grub-2-configuration-on-bios-systems">Updating GRUB 2 configuration on BIOS systems</h2>
+<p>The grub2 packages contain commands for installing a bootloader and for creating a bootloader configuration file.</p>
+<p>grub2-install will install the bootloader - usually in the MBR, in free unpartioned space, and as files in /boot. The bootloader is installed with something like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">grub2-install /dev/sda
+</span></span></code></pre></div><p>grub2-mkconfig will create a new configuration based on the currently running system, what is found in /boot, what is set in /etc/default/grub, and the customizable scripts in /etc/grub.d/ . A new configuration file is created with:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">grub2-mkconfig -o /boot/grub2/grub.cfg
+</span></span></code></pre></div><p>The configuration format has evolved over time, and a new configuration file might be slightly incompatible with the old bootloader. It is therefore a good idea to first run grub2-install whenever you would need to run grub2-mkconfig.</p>
+<p>The Fedora installer, anaconda, will run these grub2 commands and there is usually no reason to run them manually.</p>
+<p>It is generally safe to directly edit /boot/grub2/grub.cfg in Fedora. Grubby in Fedora patches the configuration when a kernel update is performed and will try to not make any other changes than what is necessary. (Other distributions, in particular Debian and Debian-derived distributions provide a software patch that adds an <code>update-grub</code> command which is neither included nor needed in Fedora.) Manual changes might however be overwritten with grub2-mkconfig next time the system is upgraded with anaconda. Some customizations can be placed in /etc/grub.d/40_custom or /boot/grub2/custom.cfg and will survive running grub2-mkconfig.</p>
+<h2 id="updating-grub-2-configuration-on-uefi-systems">Updating GRUB 2 configuration on UEFI systems</h2>
+<p>To install or fix GRUB 2 on a UEFI system on Fedora 18 or newer, you need to do four things:</p>
+<p>UEFI firmware, in general, likes to boot from an EFI System Partition on a disk with a GPT label. In <code>gdisk</code>, it looks something like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Number  Start (sector)    End (sector)  Size       Code  Name
+</span></span><span class="line"><span class="ln">2</span><span class="cl">   1            2048          264191   128.0 MiB   EF00  EFI System
+</span></span></code></pre></div><p>That partition should be formatted as FAT. If in doubt, FAT32 is a good dialect of FAT to choose.</p>
+<p>Fedora expects this partition to be mounted at <code>/boot/efi</code>.</p>
+<h3 id="install-the-bootloader-files">Install the bootloader files</h3>
+<p>If you don't already have the relevant packages installed, do for Fedora 22 and later versions with <a href="https://fedoraproject.org/wiki/Dnf">DNF</a> or with YUM for older Fedora releases:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">dnf install grub2-efi shim
+</span></span><span class="line"><span class="ln">2</span><span class="cl">yum install grub2-efi shim
+</span></span></code></pre></div><p>If you do, then try:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">dnf reinstall grub2-efi shim
+</span></span><span class="line"><span class="ln">2</span><span class="cl">yum reinstall grub2-efi shim
+</span></span></code></pre></div><p>instead.</p>
+<p>Make sure that /boot/efi is mounted when you do this.</p>
+<p>This installs the signed shim and the GRUB 2 binary.</p>
+<h3 id="create-a-grub-2-configuration">Create a GRUB 2 configuration</h3>
+<p>Under EFI, GRUB 2 looks for its configuration in <code>/boot/efi/EFI/fedora/grub.cfg</code>. For newly installed kernels to work, <code>grubby</code> expects <code>/etc/grub2-efi.cfg</code> to be a symlink to the real grub.cfg (i.e. <code>/boot/efi/EFI/fedora/grub.cfg</code>).</p>
+<p>If you already have a grub 2 EFI config file, you should be okay. If not, grub2-mkconfig can help, but your mileage may vary.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+</span></span></code></pre></div><p><strong>grub2-install shouldn't be used on EFI systems. The grub2-efi package installs a prebaked grubx64.efi on the EFI System partition, which looks for grub.cfg on the ESP in /EFI/fedora/ whereas the grub2-install command creates a custom grubx64.efi, deletes the original installed one, and looks for grub.cfg in /boot/grub2/.</strong></p>
+<h3 id="create-a-boot-menu-entry">Create a boot menu entry</h3>
+<p>TL;DR: This should happen automatically. If it doesn't, read on.</p>
+<p>When you power on your system, your firmware will look for EFI variables that tell it how to boot. If you're already booted in EFI mode and EFI runtime services are working correctly, you can configure your boot menu with <code>efibootmgr</code>. If not, you'll have to bootstrap the process.</p>
+<p>Fortunately, <code>shim</code> can help you bootstrap. The EFI program <code>/boot/efi/EFI/BOOT/fallback.efi</code> will look for files called <code>BOOT.CSV</code> in your ESP and will add boot entries corresponding to them, <strong>if such entries do not already appear to exist</strong>. <code>shim</code> provides a <code>BOOT.CSV</code> file that will add an entry for <code>grub2-efi</code> for you. So just using the EFI Shell to invoke <code>fallback.efi</code> should do the trick. You can do this with commands like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">&gt; fs0:
+</span></span><span class="line"><span class="ln">2</span><span class="cl">&gt; cd EFI\BOOT
+</span></span><span class="line"><span class="ln">3</span><span class="cl">&gt; fallback.efi
+</span></span></code></pre></div><p>If you have no boot entries at all, then just booting off your disk in UEFI mode should automatically invoke <code>/boot/efi/EFI/BOOT/BOOTX64.EFI</code>, which will, in turn, invoke <code>fallback.efi</code>.</p>
+<p>If you already have incorrect boot entries, you'll either need to delete them or to modify <code>BOOT.CSV</code> to create new entries with different names.</p>
+<h2 id="adding-other-operating-systems-to-the-grub-2-menu">Adding Other operating systems to the GRUB 2 menu</h2>
+<p>grub2-mkconfig will add entries for other operating systems it can find. That will be done based on the output of the os-prober tool.</p>
+<p>That might however not work so well, especially not for booting other Linux operating systems, and especially not on UEFI systems. See <a href="http://www.gnu.org/software/grub/manual/grub.html#Multi_002dboot-manual-config">http://www.gnu.org/software/grub/manual/grub.html#Multi_002dboot-manual-config</a> .</p>
+<h2 id="setting-default-entry">Setting default entry</h2>
+<p><strong>Please look to (default) kernel sysconfig options.</strong>
+if file <code>/etc/sysconfig/kernel</code> have</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">UPDATEDEFAULT=yes
+</span></span></code></pre></div><p>in every kernel update the grub entry is update to last entry, if you don't want that please set:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">UPDATEDEFAULT=no
+</span></span></code></pre></div><p>(write &quot;no&quot; in lower case)</p>
+<p>Due to <code>grub2-mkconfig</code> (and os-prober) we cannot predict the order of the entries in <code>/boot/grub2/grub.cfg</code>, so we set the default by name/title instead.</p>
+<p>Open <code>/etc/default/grub</code> and ensure this line exists:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">GRUB_DEFAULT=saved
+</span></span></code></pre></div><p>and ensure this line not exists:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">GRUB_SAVEDEFAULT=true
+</span></span></code></pre></div><p>or ensure this line exists:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">GRUB_SAVEDEFAULT=false
+</span></span></code></pre></div><p>Apply the change to <code>grub.cfg</code> by running:</p>
+<p>Now list all possible menu entries</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">grep -P &#34;submenu|^menuentry&#34; /boot/grub2/grub.cfg | cut -d &#34;&#39;&#34; -f2
+</span></span></code></pre></div><p>Now set the desired default menu entry</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">grub2-set-default &#34;&lt;submenu title&gt;&lt;menu entry title&gt;&#34;
+</span></span></code></pre></div><p>Verify the default menu entry</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">grub2-editenv list
+</span></span></code></pre></div><p>If you understand the risks involved and still want to directly modify /boot/grub2/grub.cfg, here's how you can do it:</p>
+<p>Edit /boot/grub2/grub.cfg, and change the line</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">set default=&#34;0&#34; 
+</span></span></code></pre></div><p>to</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">set default=&#34;5&#34;
+</span></span></code></pre></div><h2 id="encountering-the-dreaded-grub-2-boot-prompt">Encountering the dreaded GRUB 2 boot prompt</h2>
+<p>If improperly configured, GRUB 2 may fail to load and subsequently drop to a boot prompt. To address this issue, proceed as follows:</p>
+<ol start="0">
+<li>Load the XFS and LVM modules</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">insmod xfs
+</span></span><span class="line"><span class="ln">2</span><span class="cl">insmod lvm
+</span></span></code></pre></div><ol>
+<li>List the drives which GRUB 2 sees:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">grub2&gt; ls
+</span></span></code></pre></div><ol start="2">
+<li>The output for a dos partition table /dev/sda with three partitons will look something like this:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">(hd0) (hd0,msdos3) (hd0,msdos2) (hd0,msdos1)
+</span></span></code></pre></div><ol start="3">
+<li>While the output for a gpt partition table /dev/sda with four partitions will look something like this:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">(hd0) (hd0,gpt4) (hd0,gpt3)  (hd0,gpt2) (hd0,gpt1)
+</span></span></code></pre></div><ol start="4">
+<li>With this information you can now probe each partition of the drive and locate your vmlinuz and initramfs files:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">ls (hd0,1)/ 
+</span></span></code></pre></div><p>Will list the files on /dev/sda1. If this partition contains /boot, the output will show the full name of vmlinuz and initramfs.</p>
+<ol start="5">
+<li>Armed with the location and full name of vmlinuz and initramfs you can now boot your system.</li>
+</ol>
+<p>5a. Declare your root partition:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">grub&gt; set root=(hd0,3)
+</span></span></code></pre></div><p>5b. Declare the kernel you wish to use:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">grub&gt; linux (hd0,1)/vmlinuz-3.0.0-1.fc16.i686 root=/dev/sda3 rhgb quiet selinux=0 
+</span></span><span class="line"><span class="ln">2</span><span class="cl"># NOTE : add other kernel args if you have need of them
+</span></span><span class="line"><span class="ln">3</span><span class="cl"># NOTE : change the numbers to match your system
+</span></span></code></pre></div><p>5c. Declare the initrd to use:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">  
+</span></span><span class="line"><span class="ln">2</span><span class="cl">grub&gt; initrd (hd0,1)/initramfs-3.0.0-1.fc16.i686.img
+</span></span><span class="line"><span class="ln">3</span><span class="cl"># NOTE : change the numbers to match your system
+</span></span></code></pre></div><p>5d. Instruct GRUB 2 to boot the chosen files:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">grub&gt; boot
+</span></span></code></pre></div><ol start="6">
+<li>
+<p>After boot, open a terminal.</p>
+</li>
+<li>
+<p>Issue the grub2-mkconfig command to re-create the grub.cfg file grub2 needed to boot your system:</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">grub2-mkconfig -o /boot/grub2/grub.cfg
+</span></span></code></pre></div><ol start="8">
+<li>Issue the grub2-install command to install grub2 to your hard drive and make use of your config:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">grub2-install --boot-directory=/boot /dev/sda
+</span></span><span class="line"><span class="ln">2</span><span class="cl"># Note: your drive may have another device name. Check for it with mount command output.
+</span></span></code></pre></div><h2 id="additional-scenario">Additional Scenario</h2>
+<p>It's also possible to boot into a configfile that's located on another partition. If the user is faced with such a scenario, as is often the case with multi-boot systems containing Ubuntu and Fedora, the following steps in the grub rescue shell might become useful to know:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">insmod part_msdos
+</span></span><span class="line"><span class="ln">2</span><span class="cl">insmod xfs
+</span></span><span class="line"><span class="ln">3</span><span class="cl">insmod lvm
+</span></span><span class="line"><span class="ln">4</span><span class="cl">set root=&#39;hd0,msdos1&#39;
+</span></span><span class="line"><span class="ln">5</span><span class="cl">configfile /grub2/grub.cfg
+</span></span></code></pre></div><p>Where, <strong>hd0,msdos1</strong> is the pertinent boot partition, which holds the grub.cfg file.</p>
+<h2 id="other-grub-2-issues">Other GRUB 2 issues</h2>
+<p><strong>Absent Floppy Disk</strong> : It has been reported by some users that GRUB 2 may fail to install on a partition's boot sector if the computer floppy controller is activated in BIOS without an actual floppy disk drive being present. A possible workaround is to run (post OS install) from rescue mode:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">grub2-install &lt;target device&gt; --no-floppy
+</span></span></code></pre></div><h2 id="setting-a-password-for-interactive-edit-mode">Setting a password for interactive edit mode</h2>
+<p>If you wish to password-protect GRUB2's interactive edit mode <strong>but</strong> you do not want to require users to enter a password to do a plain, simple, ordinary boot, create /etc/grub.d/01_users with the following lines:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">cat</span> <span class="o">&lt;&lt;</span> <span class="n">EOF</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">set</span> <span class="n">superusers</span><span class="o">=</span><span class="s2">&#34;root&#34;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="k">export</span> <span class="n">superusers</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="n">password</span> <span class="n">root</span> <span class="n">secret</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="n">EOF</span>
+</span></span></code></pre></div><p>To apply your changes run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">grub2-mkconfig -o /boot/grub2/grub.cfg
+</span></span></code></pre></div><p>You can encrypt the password by using pbkdf2. Use grub2-mkpasswd-pbkdf2 to encrypt the password, then replace the password line with:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">password_pbkdf2 root grub.pbkdf2.sha512.10000.1B4BD9B60DE889A4C50AA9458C4044CBE129C9607B6231783F7E4E7191D8254C0732F4255178E2677BBE27D03186E44815EEFBAD82737D81C87F5D24313DDDE7.E9AEB53A46A16F30735E2558100D8340049A719474AEEE7E3F44C9C5201E2CA82221DCF2A12C39112A701292BF4AA071EB13E5EC8C8C84CC4B1A83304EA10F74
+</span></span></code></pre></div><p>Starting from atleast Fedora 21, the <code>--md5pass</code> kickstart option must be set using output from grub2-mkpasswd-pbkdf2.</p>
+<h2 id="using-old-graphics-modes-in-bootloader">Using old graphics modes in bootloader</h2>
+<p>Terminal device is chosen with GRUB_TERMINAL; additional quote from <a href="http://www.gnu.org/software/grub/manual/grub.html#Simple-configuration">http://www.gnu.org/software/grub/manual/grub.html#Simple-configuration</a></p>
+<p><code>Valid terminal output names depend on the platform, but may include ‘console’ (PC BIOS and EFI consoles), ‘serial’ (serial terminal), ‘gfxterm’ (graphics-mode output), ‘ofconsole’ (Open Firmware console), or ‘vga_text’ (VGA text output, mainly useful with Coreboot).</code></p>
+<p><code>The default is to use the platform's native terminal output.</code></p>
+<p>The default in Fedora is gfxterm and to get the legacy graphics modes you need to set GRUB_TERMINAL to right variable from the description above in /etc/default/grub</p>
+<h2 id="enable-serial-console-in-grub">Enable Serial Console in Grub</h2>
+<p>To enable Serial console in grub add the following entry's to /etc/default/grub</p>
+<p>( Adjust baudrate/parity/bits/flow control to fit your environment and cables)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">GRUB_CMDLINE_LINUX=&#39;console=tty0 console=ttyS0,115200n8&#39;
+</span></span><span class="line"><span class="ln">2</span><span class="cl">GRUB_TERMINAL=serial
+</span></span><span class="line"><span class="ln">3</span><span class="cl">GRUB_SERIAL_COMMAND=&#34;serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1&#34;
+</span></span></code></pre></div><p>And re-generate grub</p>
+<p><code>grub2-mkconfig -o /boot/grub2/grub.cfg</code></p>
+<p><strong>NOTE:</strong> in UEFI boot environment, use <code>efi0</code> instead of <code>--unit=0</code>. If that doesn't work, check that your serial port is visible in your UEFI environment, e.g. by running <code>devtree</code> or <code>dh -p SerialIO</code> in EFI Shell. See <a href="https://lists.gnu.org/archive/html/help-grub/2017-01/msg00007.html">this discussion</a> for more information.</p>
+<p>Normally, <strong>GRUB2</strong> will be installed and set up by the installer, <strong>Anaconda</strong>, during the installation process. You will probably never have to deal with manual installation of <strong>GRUB2</strong>. However, in certain situations , you will want to install <strong>GRUB2</strong> manually, especially if you need to repair the existing <strong>GRUB2</strong> installation or you want to change its configuration.</p>
+<p>This procedure shows the steps to install <strong>GRUB2</strong> on a UEFI system on Fedora 18 or newer. The procedure consists of four parts.</p>
+<h3 id="creating-an-efi-system-partition">Creating an EFI System Partition</h3>
+<p>The UEFI firmware requires to boot from an <em>EFI System Partition</em> on a disk with a GPT label. To create such a partition:</p>
+<ol>
+<li>
+<p>List available block devices to find a place to create your ESP.</p>
+</li>
+<li>
+<p>Create at least a 128 MiB disk partition using a GPT label on the primary hard disk.</p>
+<p>For the sake of this procedure, we assume that the created partition is recognized as <code>/dev/sda1</code>.</p>
+</li>
+<li>
+<p>Format the partition with the <em>FAT32</em> file system.</p>
+</li>
+<li>
+<p>Create the <code>/boot/efi</code> directory as a mount point for the new partition.</p>
+</li>
+<li>
+<p>Mount the partition to the <code>/boot/efi</code> mount point.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl"># mount /dev/sda1 /boot/efi
+</span></span></code></pre></div></li>
+<li>
+<p>Proceed to the next part.</p>
+</li>
+</ol>
+<h3 id="install-the-bootloader-files-1">Install the bootloader files</h3>
+<p>In order to use <strong>GRUB2</strong> with on the UEFI systems, you need to install or re-install appropriate packages:</p>
+<ol>
+<li>
+<p>Re-install the necessary packages.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl"># dnf reinstall grub2-efi grub2-efi-modules shim
+</span></span></code></pre></div></li>
+<li>
+<p>If the above command ends with an error, install the packages.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl"># dnf install grub2-efi grub2-efi-modules shim
+</span></span></code></pre></div></li>
+</ol>
+<p>More information</p>
+<ul>
+<li>This installs the signed <strong>shim</strong> and the <strong>GRUB2</strong> binary.</li>
+</ul>
+<h3 id="create-a-grub2-configuration">Create a GRUB2 configuration</h3>
+<p>If you already have a working <strong>GRUB2</strong> EFI configuration file, you do not need to do anything else.</p>
+<p>Otherwise, create the configuration file using the <code>grub2-mkconfig</code> command.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl"># grub2-mkconfig -o /boot/grub2/grub.cfg
+</span></span></code></pre></div><p>More information</p>
+<ul>
+<li>
+<p>Under EFI, <strong>GRUB2</strong> looks for its configuration in <code>/boot/efi/EFI/fedora/grub.cfg</code>, however the postinstall script of <code>grub2-common</code> installs a small shim which chains to the standard configuration at <code>/boot/grub2/grub.cfg</code> which is generated above. To reset this shim to defaults, delete the existing <code>/boot/efi/EFI/fedora/grub.cfg</code> and then <code>dnf reinstall grub2-common</code>.</p>
+</li>
+<li>
+<p>For newly installed kernels to work, <code>grubby</code> expects <code>/etc/grub2-efi.cfg</code> to be a symlink to the real <code>grub.cfg</code> (for example <code>/boot/grub2/grub.cfg</code>).</p>
+</li>
+</ul>
+<h3 id="solving-problems-with-uefi-bootloader">Solving problems with UEFI bootloader</h3>
+<p>When you power on your system, your firmware will look for EFI variables that tell it how to boot. On running systems, which have booted into the EFI mode and their EFI runtime services are working correctly, you can configure your boot menu with <code>efibootmgr</code>.</p>
+<p>If not, <code>shim</code> can help you bootstrap. The EFI program <code>/boot/efi/EFI/BOOT/fallback.efi</code> will look for files called <code>BOOT.CSV</code> in your ESP and will add boot entries corresponding to them. The <code>shim</code> command provides its own <code>BOOT.CSV</code> file that will add an entry for <code>grub2-efi</code>.</p>
+<p>During the boot process, you can use the <strong>EFI Shell</strong> to invoke the <code>fallback.efi</code> profile to boot the system:</p>
+<ol>
+<li>
+<p>Enter the boot partition.</p>
+</li>
+<li>
+<p>Navigate into the <code>EFI\BOOT</code> directory.</p>
+</li>
+<li>
+<p>Invoke the <code>fallback.efi</code> profile.</p>
+</li>
+</ol>
+<p>More information</p>
+<ul>
+<li>
+<p>If you have no boot entries at all, then just booting off your disk in UEFI mode should automatically invoke <code>/boot/efi/EFI/BOOT/BOOTX64.EFI</code>, which will, in turn, invoke <code>fallback.efi</code>.</p>
+</li>
+<li>
+<p>If you already have incorrect boot entries, you’ll either need to delete them or to modify <code>BOOT.CSV</code> to create new entries with different names.</p>
+</li>
+</ul>
+<hr>
+<h1 id="the-grub2-rescue-shell">The Grub2 Rescue shell</h1>
+<p><a href="https://aty.sdsu.edu/bibliog/latex/debian/grub2rescue.html">https://aty.sdsu.edu/bibliog/latex/debian/grub2rescue.html</a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Nothing is more frustrating than making some small change to your system, and then discovering that it won't boot. This must have happened to me dozens of times over the years; and the problem is always something different and unexpected.</p>
+<p>The most frustrating experience you can have with GRUB is to be dropped into its “Rescue shell”. You might get a cryptic error message, followed by</p>
+<p>Entering rescue mode . . .</p>
+<p>grub rescue&gt;</p>
+<p>No help; no advice on how to proceed; and even the Grub2 Manual tells you nothing useful. Yuck.</p>
+<p>The rescue shell is an exceedingly minimal, Spartan environment. It offers only a tiny subset of the regular Grub shell's commands:</p>
+<p>set unset ls insmod</p>
+<p>These commands offer no options, and it is impossible even to learn which ones are available. Even common commands like cat and cd are not available. At first glance, it would seem impossible to do anything useful in this limited environment.</p>
+<p>And yet, it's actually possible to go through the booting process <strong>manually</strong> — provided that you know something about the booting process, and how Grub handles it. In fact, the operations that Grub executes automatically can be done by hand, just with the limited means provided by the rescue shell.</p>
+<h2 id="understanding-disaster">Understanding Disaster</h2>
+<p>Actually, the fact that you see the grub rescue&gt; prompt is good news in disguise. It means you haven't wiped out Grub's booting system. The hardware has gone through the POST process, and loaded the primary stage of the boot loader; but the information available to that stage (supposedly, the addresses of the disk blocks that hold the next stage) was wrong. Grub is alive, but it needs a little help.</p>
+<p>The common causes of this situation are things that changed the locations of the next pieces of Grub's boot-time subsystem. Maybe you re-formatted the filesystem that holds those files; maybe you updated a kernel, but didn't re-generate Grub's configuration files; maybe you ran update-grub with incorrect partition identifiers in the /etc/grub.d/40_custom shell script. The result was that Grub's early stages that depend on absolute block addresses couldn't find the following pieces. You can tell the part of Grub that's already working how to proceed.</p>
+<p>With luck, the error message that precedes the rescue prompt will tell you what Grub looked for but couldn't find. Write it down, and take appropriate action after you've re-booted your box.</p>
+<h3 id="diagnosing-disaster">Diagnosing disaster</h3>
+<p>The first thing to do is to find out what Grub knows already. At the</p>
+<p>grub rescue&gt;</p>
+<p>prompt, enter the command:</p>
+<p>set</p>
+<p>and Grub will tell you what little it knows. Again, take note of this information, as it will provide clues to what you need to do next — as well as clues to fixing the problem <strong>before</strong> the next reboot.</p>
+<p>The main Grub variables available at this point are usually the prefix and root parameters. What Grub calls prefix is the location (in Grub's peculiar notation) of the directory that holds Grub's pieces. In normal *IX terminology, this would usually be /boot/grub. But Grub doesn't have mounted filesystems yet; it only knows about disk partitions, which it calls things like (hd0,msdos1).</p>
+<p>So, if you have a separate boot partition, which is normally mounted on /boot, Grub will need to have prefix set to an address of the form (hd0,msdos1)/grub. On the other hand, if your /boot directory is in your root-filesystem's partition, Grub will need to have prefix=(hd0,msdos1)/boot/grub.</p>
+<p>Similarly, what Grub calls root is NOT the partition that contains the root <strong>filesystem</strong>, but the partition that contains the kernel and initial RAM filesystem (i.e., initramfs) files. That usually means that Grub thinks root=(hd0,msdos1).</p>
+<h2 id="fixing-the-problem">Fixing the problem</h2>
+<p>First of all, make sure Grub can see the partitions that contain these vital parts. Tell the rescue shell:</p>
+<p>ls</p>
+<p>and it will show you the partitions it knows about. This will be a list of things like</p>
+<p>(hd0,msdos1) (hd0,msdos2) . . .</p>
+<p>which mean /dev/sda1, /dev/sda2, and so on. Remember that Grub's name for the first disk is hd0; the second disk is hd1, etc. — but the partitions themselves are numbered normally, starting at 1 instead of zero.</p>
+<p>Don't be misled by a superficial resemblance between the rescue-shell ls command and the normal ls that you use at a bash prompt. The normal command has scads of options; the rescue-shell command is a stripped-down version with no options, and a different output format. Only the names are similar.</p>
+<p>If the rescue shell had a cat command, you could list the contents of /boot/grub/device.map to learn Grub's correspondence between disks and names; but it doesn't, so you can't. Keep a copy of the device.map file printed out beforehand, because the devices might not map out the way you expect. (For example, on my machine, Grub thinks sda is hd0, as you'd expect; but it also thinks sdb is hd2, and sdc is hd1, which is screwy.)</p>
+<p>Then, if Grub has the wrong values for either prefix or root, you can fix its error by telling the rescue shell something like</p>
+<p>set prefix=(hd0,msdos1)/boot/grub</p>
+<p>or whatever the correct value is in your box.</p>
+<p>Remember that you can verify that Grub has the correct values for these parameters with a simple</p>
+<p>set</p>
+<p>command. And you can double-check by telling the rescue shell to list the contents of those directories:</p>
+<p>ls $prefix/</p>
+<h2 id="proceed-to-boot-manually">Proceed to boot manually</h2>
+<p>Now you need to lead Grub through its normal booting sequence. The first step is to make sure it has its module available:</p>
+<p>insmod normal</p>
+<p>This module is the “guts” of Grub2: it contains the apparatus for reading configuration files, and displaying the usual Grub boot menu. The correct prefix and root parameter values are needed, if Grub is to find any modules.</p>
+<p>Once the module is inserted, you can execute it as a <strong>new</strong> rescue-shell command:</p>
+<p>normal</p>
+<p>Another vital module that must be loaded is the linux.mod file:</p>
+<p>insmod linux</p>
+<p>Now you can set up the linux kernel's command line:</p>
+<p>linux /boot/vmlinuz-3.16.0-4-686-pae root=/dev/sda2 ro</p>
+<p>or whatever is the correct name for your kernel. Note that the “root” in this line points (in normal terms) to your root filesystem's disk partition; it is <strong>different</strong> from Grub's root parameter! You can specify the root partition here in perfectly normal terms — either by specifying --fs-uuid and the UUID of the partition, or by using a filesystem label, as in root=LABEL=ROOT (if your root filesystem is named ROOT). If you need additional command-line parameters, like video=640x480, be sure to add them here as well.</p>
+<p>Similarly, you need to tell Grub where the initial RAMdisk filesystem is:</p>
+<p>initrd /boot/initrd.img-3.16.0-4-686-pae</p>
+<p>Make sure it matches the kernel version!</p>
+<p>Now, with both the kernel and the initrd modules installed, and their arguments supplied, Grub should be able to boot. Tell the rescue shell to do so:</p>
+<p>boot</p>
+<p>Once the linux and normal modules are inserted, most of Grub's apparatus will be working, and the larger set of normal GrubScript commands will be accessible. Or, if you get everything messed up and want to start over, the usual invocation will re-boot the system.</p>
+<h2 id="back-to-normal">Back to normal</h2>
+<p>When you are back up, be sure to fix the errors that caused the booting problem. If the configuration parameters are set in the file and any special scripts (like ), you should be able to get a correct just by executing (as <strong>root</strong>):</p>
+<p>update-grub</p>
+<p>and</p>
+<p>grub-install /dev/sda</p>
+<p>(or whatever disk is marked as the boot device in your BIOS).</p>
+<p>Sometimes, the error that brought up the rescue shell was</p>
+<p>error: no such device:</p>
+<p>followed by a UUID for some partition that has disappeared — usually, due to a re-made partition. In this case, you may need to invoke</p>
+<p>update-initramfs -u -v</p>
+<p>to get the correct partition named in the initrd.img file.</p>
+<p>Copyright © 2015, 2017 Andrew T. Young</p>
+<p>Back to the . . . <strong><a href="https://aty.sdsu.edu/bibliog/latex/latex_top.html">main LaTeX page</a></strong></p>
+<h1 id="grubefireinstall">GrubEFIReinstall</h1>
+<p><a href="https://wiki.debian.org/GrubEFIReinstall">https://wiki.debian.org/GrubEFIReinstall</a></p>
+<p>Starting with Windows 8 most Desktop PC have EFI as firmware instead of the legacy <a href="https://wiki.debian.org/BIOS">BIOS</a>. If your EFI based PC is not booting debian, here is an easy way to reinstall grub-efi, the bootloader used by debian on these PCs.</p>
+<p>To reinstall grub, you need either a live CD/USB to access your current system , or you can use the rEFInd boot manager on a live CD/USB to boot your current system.</p>
+<h2 id="using-the-refind-rescue-media">Using the rEFInd rescue media</h2>
+<p>At the author's web page <a href="http://www.rodsbooks.com/refind/getting.html">http://www.rodsbooks.com/refind/getting.html</a>, you will find updated direct links to all sorts of packaging. To boot from a rescue media, select either the CD iso or the image for USB stick, most firmware offers the choice nowadays. If choosing the latter make sure to follow the instructions in the readme. It is recommended to read the author's web pages to get a better understanding of what you are doing.</p>
+<h2 id="boot-your-computer-with-the-refind-media">Boot your computer with the Refind media</h2>
+<p>Refind will parse your hard drive for installed kernels, and provide you a graphic menu to boot them. Choose your Linux Kernel and boot it.</p>
+<h2 id="reinstalling-grub-efi-on-your-hard-drive">Reinstalling grub-efi on your hard drive</h2>
+<p>Check that the computer booted in computer in EFI mode:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[ -d /sys/firmware/efi ] &amp;&amp; echo &#34;EFI boot on HDD&#34; || echo &#34;Legacy boot on HDD&#34;
+</span></span><span class="line"><span class="ln">2</span><span class="cl">should return &#34;EFI boot on HDD&#34;.
+</span></span></code></pre></div><p>After starting a root shell ( if you boot from a live media, you should start a chroot shell instead, as explained in <a href="https://help.ubuntu.com/community/Grub2/Installing#via_ChRoot">https://help.ubuntu.com/community/Grub2/Installing#via_ChRoot</a> ) check that your EFI system partition (most probably /dev/sda1) is mounted on /boot/efi. If the /boot/efi directory does not exist, you will need to create it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">mount /dev/sda1 /boot/efi
+</span></span></code></pre></div><p>Reinstall the grub-efi package</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">apt-get install --reinstall grub-efi
+</span></span></code></pre></div><p>Put the debian bootloader in /boot/efi and create an appropriate entry in the computer NVRAM</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">grub-install /dev/sda
+</span></span></code></pre></div><p>Re create a grub config file based on your disk partitioning schema</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">update-grub
+</span></span></code></pre></div><p>You should check afterwards that:</p>
+<p>Check 1. the bootloader is existing in /boot/efi/EFI/debian/grubx64.efi</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">file /boot/efi/EFI/debian/grubx64.efi
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl">/boot/efi/EFI/debian/grubx64.efi: PE32+ executable (EFI application) x86-64 (stripped to external PDB), for MS Windows
+</span></span></code></pre></div><p>Check 2. the nvram entry was properly created.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">efibootmgr --verbose | grep debian
+</span></span></code></pre></div><p>You can now reboot, and Grub should greet you.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If after this steps you're not booting, the EFI of your PC might have some bugs.</p>
+<h3 id="problem1-weak-efi-implementation-only-recognizes-the-fallback-bootloader">Problem1: Weak EFI implementation only recognizes the fallback bootloader</h3>
+<p>The uefi firmware refuses to boot the debian/grubx64.efi bootloader, and so we have to hijack the uefi fallback boot loader. See <a href="http://mjg59.livejournal.com/138188.html">http://mjg59.livejournal.com/138188.html</a> for details.</p>
+<p>Using debian installer in rescue mode, /dev/sda1 being the FAT32 ESP partition, /dev/sda2 the root partition</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">mkdir /target
+</span></span><span class="line"><span class="ln">2</span><span class="cl">mount /dev/sda2 /target
+</span></span><span class="line"><span class="ln">3</span><span class="cl">mount /dev/sda1 /target/boot/efi
+</span></span><span class="line"><span class="ln">4</span><span class="cl">for i in /sys /proc /dev; do mount --bind $i /target$i; done
+</span></span><span class="line"><span class="ln">5</span><span class="cl">chroot /target
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">cd /boot/efi/EFI
+</span></span><span class="line"><span class="ln">2</span><span class="cl">mkdir boot
+</span></span><span class="line"><span class="ln">3</span><span class="cl">cp debian/grubx64.efi boot/bootx64.efi
+</span></span><span class="line"><span class="ln">4</span><span class="cl">exit
+</span></span><span class="line"><span class="ln">5</span><span class="cl">for i in /sys /proc /dev; do umount /target$i; done
+</span></span><span class="line"><span class="ln">6</span><span class="cl">umount /target/boot/efi
+</span></span><span class="line"><span class="ln">7</span><span class="cl">umount /target
+</span></span></code></pre></div><p>Once booted into your normal Debian, tell grub to ensure the fallback boot loader up to date. To do that, run the following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">echo &#34;grub-efi-amd64 grub2/force_efi_extra_removable boolean true&#34; | sudo debconf-set-selections
+</span></span></code></pre></div><p>Note: The above command will permanently hijack the fallback boot loader, which might be undesirable in dual-boot setups.</p>
+<h3 id="problem2-efi-boot-entries-disappear-after-reboot">Problem2: EFI boot entries disappear after reboot</h3>
+<p>The uefi firmware did not create a proper boot entry in NVRAM. This has been seen in a Lenovo Thinkcenter M92Z. The symptom for this will be a missing HD path after the debian entry in the efibootmgr --verbose output.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">BootCurrent: 0024
+</span></span><span class="line"><span class="ln">2</span><span class="cl">Timeout: 0 seconds
+</span></span><span class="line"><span class="ln">3</span><span class="cl">BootOrder: 0024,0022,0023,0016,0000,0001
+</span></span><span class="line"><span class="ln">4</span><span class="cl">Boot0000* debian        Vendor(99e275e7-75a0-4b37-a2e6-c5385e6c00cb,)
+</span></span><span class="line"><span class="ln">5</span><span class="cl">Boot0016* Generic Usb Device    Vendor(99e275e7-75a0-4b37-a2e6-c5385e6c00cb,)
+</span></span><span class="line"><span class="ln">6</span><span class="cl">Boot0022* UEFI: IPv4 Intel(R) 82579LM Gigabit Network Connection        ACPI(a0341d0,0)PCI(19,0)MAC(d43d7e6d8bfc,0)IPv4(0.0.0.0:0&lt;-&gt;0.0.0.0:0,0, 0AMBO
+</span></span><span class="line"><span class="ln">7</span><span class="cl">Boot0023* UEFI: IPv6 Intel(R) 82579LM Gigabit Network Connection        ACPI(a0341d0,0)PCI(19,0)MAC(d43d7e6d8bfc,0)030d3c000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000AMBO
+</span></span><span class="line"><span class="ln">8</span><span class="cl">Boot0024* UEFI: Generic Flash Disk 8.00 ACPI(a0341d0,0)PCI(1d,0)USB(1,0)USB(1,0)HD(1,800,2a5f,02f23208-1aa9-4b6c-b6e1-8155390eb9db)AMBO
+</span></span></code></pre></div><p>You can then try to install Refind as your bootloader in the hard drive, following the steps at this gist: <a href="https://gist.github.com/EmmanuelKasper/9590327">https://gist.github.com/EmmanuelKasper/9590327</a>.</p>
+<h1 id="how-to-update-grub2-using-grub2-editenv-and-grubby-in-rhel-8-linux">How to update GRUB2 using grub2-editenv and grubby in RHEL 8 Linux</h1>
+<p><a href="https://www.golinuxcloud.com/update-grub2-grubby-grub2-editenv-rhel-8/">https://www.golinuxcloud.com/update-grub2-grubby-grub2-editenv-rhel-8/</a></p>
+<h2 id="notes">Notes:</h2>
+<ul>
+<li>In rescue mode, in case chroot to the filesystem on-disk does not work, do the following manually:
+<ol>
+<li>Check the partitions and type (fdisk -l), and identify if LVM volumes exist.</li>
+<li>If LVM exists, activate them using <code>lvm vgscan</code> and <code>lvm vgchange -ay</code></li>
+<li>Mount /dev/&lt;VG_name&gt;/root onto a folder that will be used as a chroot folder later (mount /dev/&lt;VG_name&gt;/root /sysroot)</li>
+<li>Mount /dev/sda1 on /boot (Check if /dev/sda1 is the disk containing /boot)</li>
+<li>Mount other valid logical volumes (Check with lvm lvs) onto folders under /sysroot/
+<ol>
+<li>Eg.. /dev/rhel_vg/var/ on /sysroot/var</li>
+</ol>
+</li>
+<li>Bind mount /proc, /sys, /dev onto /sysroot
+<ol>
+<li>mount —bind /proc /sysroot/proc</li>
+<li>mount —bind /dev /sysroot/dev</li>
+<li>mount —bind /sys /sysroot/sys</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<p><strong>The boot loader Grand Unified Boot Loader (GRUB2) in RHEL 8 differs from the GRUB2 in RHEL 7.</strong> In this article I will share different commands to update GRUB2 and set kernel command line argument in RHEL 8 Linux.</p>
+<p>An update to Red Hat Enterprise Linux 8 Beta results in <code>/etc/default/grub</code> changes no longer being included when issuing <code>grub2-mkconfig -o /boot/grub2/grub.cfg</code>. It seems that at least some options set there are now silently ignored.</p>
+<p>In this article I will disable IPv6 using GRUB2 (<code>ipv6.disable</code>) on <a href="https://www.golinuxcloud.com/step-by-guide-install-rhel-8-beta-screenshots/">RHEL 8 Linux</a> to demonstrate the steps to update GRUB2 in RHEL 8 Linux host.</p>
+<h2 id="update-grub2-using-grub2-editenv">Update GRUB2 using grub2-editenv</h2>
+<p>The <code>grub2-editenv</code> utility is actually the recommended path to alter these variables. As a result, the following can be used. Appending an extra argument:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[root@rhel-8 ~]# grub2-editenv - list | grep kernelopts
+</span></span><span class="line"><span class="ln">2</span><span class="cl">kernelopts=root=/dev/mapper/rhel-root ro crashkernel=auto resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgb quiet
+</span></span></code></pre></div><p>Here copy paste the content from above command and append the additional kernel parameter you wish to add to the GRUB2.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[root@rhel-8 ~]# grub2-editenv - set &#34;kernelopts=root=/dev/mapper/rhel-root ro crashkernel=auto resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgb quiet ipv6.disable=1&#34;
+</span></span></code></pre></div><p>Alternatively you can also choose a shorter and less error prone approach as shown below</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[root@rhel-8 ~]# grub2-editenv - set &#34;$(grub2-editenv - list | grep kernelopts) ipv6.disable=1&#34;
+</span></span></code></pre></div><p>Here, <code>$(grub2-editenv - list | grep kernelopts)</code> will automatically select the existing <code>kernelopts</code> and will append the additional kernel command line argument.</p>
+<p>Verify the newly added output</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[root@rhel-8 ~]# grub2-editenv - list | grep kernelopts
+</span></span><span class="line"><span class="ln">2</span><span class="cl">kernelopts=root=/dev/mapper/rhel-root ro crashkernel=auto resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgb quiet ipv6.disable=1
+</span></span></code></pre></div><p>Next reboot the node and verify the configuration to make sure your changes are persistent</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[root@rhel-8 ~]# grub2-editenv - list | grep kernelopts
+</span></span><span class="line"><span class="ln">2</span><span class="cl">kernelopts=root=/dev/mapper/rhel-root ro crashkernel=auto resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgb quiet ipv6.disable=1
+</span></span></code></pre></div><p>As you can see our IPv6 is disabled in the GRUB2 command line.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[root@rhel-8 ~]# cat /proc/cmdline
+</span></span><span class="line"><span class="ln">2</span><span class="cl">BOOT_IMAGE=(hd0,msdos1)/vmlinuz-4.18.0-80.el8.x86_64 root=/dev/mapper/rhel-root ro crashkernel=auto resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgb quiet ipv6.disable=1
+</span></span></code></pre></div><p>Similarly to <strong>remove a parameter</strong> or argument from kernel command line in GRUB2, use the below syntax</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl"># grub2-editenv - set &#34;$(grub2-editenv - list | grep kernelopts | sed -e &#39;s///&#39;)&#34;
+</span></span></code></pre></div><p>Lastly reboot your system for the changes to take effect.</p>
+<h2 id="update-grub2-using-grub2-mkconfig">Update GRUB2 using grub2-mkconfig</h2>
+<p>The older method of achieving this behaviour is still possible, but the existing <code>kernelopts</code> value will need to be unset first:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[root@rhel-8 ~]# grep GRUB_CMDLINE_LINUX /etc/default/grub
+</span></span><span class="line"><span class="ln">2</span><span class="cl">GRUB_CMDLINE_LINUX=&#34;crashkernel=auto resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgb quiet&#34;
+</span></span></code></pre></div><p>Here I will update <code>ipv6.disable=1</code> in the GRUB2 configuration file <code>/etc/default/grub</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[root@rhel-8 ~]# grep GRUB_CMDLINE_LINUX /etc/default/grub
+</span></span><span class="line"><span class="ln">2</span><span class="cl">GRUB_CMDLINE_LINUX=&#34;crashkernel=auto resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgb quiet ipv6.disable=1&#34;
+</span></span></code></pre></div><p>But as you see the existing kernelopts reflects old GRUB2 entry, so if we reboot the node or rebuild our GRUB2 then the new changes will not reflect on the node.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[root@rhel-8 ~]# grub2-editenv - list | grep kernelopts
+</span></span><span class="line"><span class="ln">2</span><span class="cl">kernelopts=root=/dev/mapper/rhel-root ro crashkernel=auto resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgb quiet
+</span></span></code></pre></div><p>So we need to unset the kernelopts which is an additional step here:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[root@rhel-8 ~]# grub2-editenv - unset kernelopts
+</span></span></code></pre></div><p>next rebuild the grub configuration</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[root@rhel-8 ~]# grub2-mkconfig -o /boot/grub2/grub.cfg
+</span></span><span class="line"><span class="ln">2</span><span class="cl">Generating grub configuration file ...
+</span></span><span class="line"><span class="ln">3</span><span class="cl">done
+</span></span></code></pre></div><p>Next re-verify <code>kernelopts</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[root@rhel-8 ~]# grub2-editenv - list | grep kernelopts
+</span></span><span class="line"><span class="ln">2</span><span class="cl">kernelopts=root=/dev/mapper/rhel-root ro crashkernel=auto resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgb quiet ipv6.disable=1
+</span></span></code></pre></div><p>So our changes are visible as expected.</p>
+<h2 id="update-grub2-using-grubby">Update GRUB2 using grubby</h2>
+<p>grubby is a utility for manipulating bootloader-specific configuration files.</p>
+<p>You can use grubby also for changing the default boot entry, and for adding/removing arguments from a GRUB2 menu entry.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[root@rhel-8 ~]# grubby --info DEFAULT
+</span></span><span class="line"><span class="ln">2</span><span class="cl">index=0
+</span></span><span class="line"><span class="ln">3</span><span class="cl">kernel=&#34;/boot/vmlinuz-4.18.0-80.el8.x86_64&#34;
+</span></span><span class="line"><span class="ln">4</span><span class="cl">args=&#34;ro crashkernel=auto resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgb quiet $tuned_params&#34;
+</span></span><span class="line"><span class="ln">5</span><span class="cl">root=&#34;/dev/mapper/rhel-root&#34;
+</span></span><span class="line"><span class="ln">6</span><span class="cl">initrd=&#34;/boot/initramfs-4.18.0-80.el8.x86_64.img $tuned_initrd&#34;
+</span></span><span class="line"><span class="ln">7</span><span class="cl">title=&#34;Red Hat Enterprise Linux (4.18.0-80.el8.x86_64) 8.0 (Ootpa)&#34;
+</span></span><span class="line"><span class="ln">8</span><span class="cl">id=&#34;f653c3662e81432aa484cd1639a04047-4.18.0-80.el8.x86_64&#34;
+</span></span></code></pre></div><p>Add the argument you wish to append to the kernel command line menu</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[root@rhel-8 ~]# grubby --args ipv6.disable=1 --update-kernel DEFAULT
+</span></span></code></pre></div><p>Next verify the GRUB2 configuration</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[root@rhel-8 ~]# grubby --info DEFAULT
+</span></span><span class="line"><span class="ln">2</span><span class="cl">index=0
+</span></span><span class="line"><span class="ln">3</span><span class="cl">kernel=&#34;/boot/vmlinuz-4.18.0-80.el8.x86_64&#34;
+</span></span><span class="line"><span class="ln">4</span><span class="cl">args=&#34;ro crashkernel=auto resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgb quiet $tuned_params ipv6.disable=1&#34;
+</span></span><span class="line"><span class="ln">5</span><span class="cl">root=&#34;/dev/mapper/rhel-root&#34;
+</span></span><span class="line"><span class="ln">6</span><span class="cl">initrd=&#34;/boot/initramfs-4.18.0-80.el8.x86_64.img $tuned_initrd&#34;
+</span></span><span class="line"><span class="ln">7</span><span class="cl">title=&#34;Red Hat Enterprise Linux (4.18.0-80.el8.x86_64) 8.0 (Ootpa)&#34;
+</span></span><span class="line"><span class="ln">8</span><span class="cl">id=&#34;f653c3662e81432aa484cd1639a04047-4.18.0-80.el8.x86_64&#34;
+</span></span></code></pre></div><p>Next reboot the node to activate the changes</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[root@rhel-8 ~]# cat /proc/cmdline
+</span></span><span class="line"><span class="ln">2</span><span class="cl">BOOT_IMAGE=(hd0,msdos1)/vmlinuz-4.18.0-80.el8.x86_64 root=/dev/mapper/rhel-root ro crashkernel=auto resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgb quiet ipv6.disable=1
+</span></span></code></pre></div><p>Lastly I hope the steps from the article to <strong>set kernel command line argument, update GRUB2 using grub2-editenv, grub2-mkconfig and grubby in RHEL 8 Linux</strong> was helpful. So, let me know your suggestions and feedback using the comment section.</p>
+
+    </div>
+<div class="post_comments">
+  
+  
+  
+</div>
+
+
+
+
+  </article>
+<aside class="sidebar">
+  <section class="sidebar_inner">
+    <br>
+    
+  
+  <div class="search">
+    <input type="search" class="search_field form_field" placeholder='Search...' id="find" autocomplete="off" data-scope='docs'>
+    <label for="find" class="search_label"><svg class="icon">
+  <title>search</title>
+  <use xlink:href="#search"></use>
+</svg>
+
+    </label>
+    
+    <div class="search_results results"></div>
+  </div>
+
+        <h2>Vimal A. R</h2>
+      <div class="author_bio">
+        Technologist, perpetual student, teacher, continual incremental improvement.
+      </div>
+      <a href='https://arvimal.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+
+    
+    
+    <h2 class="mt-4">Recent Posts</h2>
+    <ul class="flex-column">
+      <li>
+        <a href="https://arvimal.github.io/posts/2022/08/testing-loveit/" class="nav-link" title="Testing LoveIt">Testing LoveIt</a>
+      </li>
+      <li>
+        <a href="https://arvimal.github.io/posts/2017/08/callables-in-python/" class="nav-link" title="Callables in Python">Callables in Python</a>
+      </li>
+      <li>
+        <a href="https://arvimal.github.io/posts/2017/07/writing-a-minimalistic-kernel-module/" class="nav-link" title="Writing a minimalistic kernel module in Linux - Part 1">Writing a minimalistic kernel module in Linux - Part 1</a>
+      </li>
+      <li>
+        <a href="https://arvimal.github.io/posts/2017/06/recursion-algorithm-study/" class="nav-link" title="Recursion - Algorithm Study">Recursion - Algorithm Study</a>
+      </li>
+      <li>
+        <a href="https://arvimal.github.io/posts/2017/02/selection-sort-algorithm-study/" class="nav-link" title="Selection Sort - Algorithm Study">Selection Sort - Algorithm Study</a>
+      </li>
+      <li>
+        <a href="https://arvimal.github.io/posts/2017/01/binary-search-algorithm-study/" class="nav-link" title="Binary Search - Algorithm Study">Binary Search - Algorithm Study</a>
+      </li>
+      <li>
+        <a href="https://arvimal.github.io/posts/2017/01/linear-search-algorithm-study/" class="nav-link" title="Linear Search - Algorithm Study">Linear Search - Algorithm Study</a>
+      </li>
+      <li>
+        <a href="https://arvimal.github.io/posts/2016/12/accessor-and-mutator-methods/" class="nav-link" title="Accessor and Mutator methods - Python">Accessor and Mutator methods - Python</a>
+      </li>
+    </ul>
+    <div>
+      <h2 class="mt-4 taxonomy" id="categories-section">Categories</h2>
+      <nav class="tags_nav">
+        <a href='https://arvimal.github.io/categories/programming/' class="post_tag button button_translucent" title="programming">
+          PROGRAMMING
+          <span class="button_tally">28</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/categories/ceph/' class="post_tag button button_translucent" title="ceph">
+          CEPH
+          <span class="button_tally">22</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/categories/python/' class="post_tag button button_translucent" title="python">
+          PYTHON
+          <span class="button_tally">18</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/categories/techno/' class="post_tag button button_translucent" title="techno">
+          TECHNO
+          <span class="button_tally">11</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/categories/data-structures-and-algorithms/' class="post_tag button button_translucent" title="data-structures-and-algorithms">
+          DATA-STRUCTURES-AND-ALGORITHMS
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/categories/linux/' class="post_tag button button_translucent" title="linux">
+          LINUX
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/categories/personal/' class="post_tag button button_translucent" title="personal">
+          PERSONAL
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+      </nav>
+    </div>
+    <div>
+      <h2 class="mt-4 taxonomy" id="tags-section">Tags</h2>
+      <nav class="tags_nav">
+        <a href='https://arvimal.github.io/tags/ceph/' class="post_tag button button_translucent" title="ceph">
+          CEPH
+          <span class="button_tally">17</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/python/' class="post_tag button button_translucent" title="python">
+          PYTHON
+          <span class="button_tally">11</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/programming/' class="post_tag button button_translucent" title="programming">
+          PROGRAMMING
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/osd/' class="post_tag button button_translucent" title="osd">
+          OSD
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/monitors/' class="post_tag button button_translucent" title="monitors">
+          MONITORS
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/object-oriented-programming/' class="post_tag button button_translucent" title="object-oriented-programming">
+          OBJECT-ORIENTED-PROGRAMMING
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/algorithms/' class="post_tag button button_translucent" title="algorithms">
+          ALGORITHMS
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/boot/' class="post_tag button button_translucent" title="boot">
+          BOOT
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/grub/' class="post_tag button button_translucent" title="grub">
+          GRUB
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/inheritance/' class="post_tag button button_translucent" title="inheritance">
+          INHERITANCE
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/abstract-methods/' class="post_tag button button_translucent" title="abstract-methods">
+          ABSTRACT-METHODS
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/abstractmethod/' class="post_tag button button_translucent" title="abstractmethod">
+          ABSTRACTMETHOD
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/cachefilesd/' class="post_tag button button_translucent" title="cachefilesd">
+          CACHEFILESD
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/cachefs/' class="post_tag button button_translucent" title="cachefs">
+          CACHEFS
+          <span class="button_tally">2</span>
+        </a>
+        
+        
+        <br>
+        <div class="post_tags_toggle button">All Tags</div>
+        <div class="post_tags">
+          <div class="tags_list">
+            
+            <a href='https://arvimal.github.io/tags/__base__/' class=" post_tag button button_translucent" data-position=1 title="__base__">__BASE__<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/__bases__/' class=" post_tag button button_translucent" data-position=1 title="__bases__">__BASES__<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/abstract-base-class/' class=" post_tag button button_translucent" data-position=1 title="abstract-base-class">ABSTRACT-BASE-CLASS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/abstract-methods/' class=" post_tag button button_translucent" data-position=2 title="abstract-methods">ABSTRACT-METHODS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/abstractmethod/' class=" post_tag button button_translucent" data-position=2 title="abstractmethod">ABSTRACTMETHOD<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/admin_socket/' class=" post_tag button button_translucent" data-position=1 title="admin_socket">ADMIN_SOCKET<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/admin-socket/' class=" post_tag button button_translucent" data-position=1 title="admin-socket">ADMIN-SOCKET<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/algorithms/' class=" post_tag button button_translucent" data-position=3 title="algorithms">ALGORITHMS<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/anaconda/' class=" post_tag button button_translucent" data-position=1 title="anaconda">ANACONDA<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/arvimal.github.io/' class=" post_tag button button_translucent" data-position=1 title="arvimal.github.io">ARVIMAL.GITHUB.IO<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/bash/' class=" post_tag button button_translucent" data-position=1 title="bash">BASH<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/big-o-notation/' class=" post_tag button button_translucent" data-position=1 title="big-o-notation">BIG-O-NOTATION<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/bios/' class=" post_tag button button_translucent" data-position=1 title="bios">BIOS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/blog/' class=" post_tag button button_translucent" data-position=1 title="blog">BLOG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/boot/' class=" post_tag button button_translucent" data-position=3 title="boot">BOOT<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/boot-loader-checker/' class=" post_tag button button_translucent" data-position=1 title="boot-loader-checker">BOOT-LOADER-CHECKER<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/bootloader/' class=" post_tag button button_translucent" data-position=1 title="bootloader">BOOTLOADER<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/builtins/' class=" post_tag button button_translucent" data-position=1 title="builtins">BUILTINS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/cachefilesd/' class=" post_tag button button_translucent" data-position=2 title="cachefilesd">CACHEFILESD<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/cachefs/' class=" post_tag button button_translucent" data-position=2 title="cachefs">CACHEFS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/calamari/' class=" post_tag button button_translucent" data-position=1 title="calamari">CALAMARI<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/callable/' class=" post_tag button button_translucent" data-position=1 title="callable">CALLABLE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/ceph/' class=" post_tag button button_translucent" data-position=17 title="ceph">CEPH<span class="button_tally">17</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/ceph-admin-socket/' class=" post_tag button button_translucent" data-position=1 title="ceph-admin-socket">CEPH-ADMIN-SOCKET<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/ceph-conf/' class=" post_tag button button_translucent" data-position=1 title="ceph-conf">CEPH-CONF<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/ceph-tell/' class=" post_tag button button_translucent" data-position=1 title="ceph-tell">CEPH-TELL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/classmethod/' class=" post_tag button button_translucent" data-position=1 title="classmethod">CLASSMETHOD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/code-complexity/' class=" post_tag button button_translucent" data-position=1 title="code-complexity">CODE-COMPLEXITY<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/config-show/' class=" post_tag button button_translucent" data-position=1 title="config-show">CONFIG-SHOW<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/crush/' class=" post_tag button button_translucent" data-position=1 title="crush">CRUSH<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/crush-map/' class=" post_tag button button_translucent" data-position=1 title="crush-map">CRUSH-MAP<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/data-structures/' class=" post_tag button button_translucent" data-position=1 title="data-structures">DATA-STRUCTURES<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/decorators/' class=" post_tag button button_translucent" data-position=1 title="decorators">DECORATORS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/dentry/' class=" post_tag button button_translucent" data-position=1 title="dentry">DENTRY<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/directory-entry-structure/' class=" post_tag button button_translucent" data-position=1 title="directory-entry-structure">DIRECTORY-ENTRY-STRUCTURE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/discard/' class=" post_tag button button_translucent" data-position=1 title="discard">DISCARD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/dracut/' class=" post_tag button button_translucent" data-position=1 title="dracut">DRACUT<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/efi/' class=" post_tag button button_translucent" data-position=2 title="efi">EFI<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/enumerate/' class=" post_tag button button_translucent" data-position=1 title="enumerate">ENUMERATE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/ext3/' class=" post_tag button button_translucent" data-position=1 title="ext3">EXT3<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/ext4/' class=" post_tag button button_translucent" data-position=2 title="ext4">EXT4<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/ext4_dir_entry/' class=" post_tag button button_translucent" data-position=1 title="ext4_dir_entry">EXT4_DIR_ENTRY<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/ext4_dir_entry_2/' class=" post_tag button button_translucent" data-position=1 title="ext4_dir_entry_2">EXT4_DIR_ENTRY_2<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/file-counter/' class=" post_tag button button_translucent" data-position=1 title="file-counter">FILE-COUNTER<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/file-systems/' class=" post_tag button button_translucent" data-position=2 title="file-systems">FILE-SYSTEMS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/filesystem/' class=" post_tag button button_translucent" data-position=1 title="filesystem">FILESYSTEM<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/fill-ratio/' class=" post_tag button button_translucent" data-position=1 title="fill-ratio">FILL-RATIO<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/fs-cache/' class=" post_tag button button_translucent" data-position=2 title="fs-cache">FS-CACHE<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/fscache/' class=" post_tag button button_translucent" data-position=1 title="fscache">FSCACHE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/fstrim/' class=" post_tag button button_translucent" data-position=1 title="fstrim">FSTRIM<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/functions/' class=" post_tag button button_translucent" data-position=1 title="functions">FUNCTIONS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/fuse/' class=" post_tag button button_translucent" data-position=1 title="fuse">FUSE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/gpt/' class=" post_tag button button_translucent" data-position=1 title="gpt">GPT<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/grub/' class=" post_tag button button_translucent" data-position=3 title="grub">GRUB<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/grub2/' class=" post_tag button button_translucent" data-position=2 title="grub2">GRUB2<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/grub2-mkconfig/' class=" post_tag button button_translucent" data-position=1 title="grub2-mkconfig">GRUB2-MKCONFIG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/grubx64/' class=" post_tag button button_translucent" data-position=1 title="grubx64">GRUBX64<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/guid/' class=" post_tag button button_translucent" data-position=1 title="guid">GUID<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/inheritance/' class=" post_tag button button_translucent" data-position=3 title="inheritance">INHERITANCE<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/initramfs/' class=" post_tag button button_translucent" data-position=1 title="initramfs">INITRAMFS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/initrd/' class=" post_tag button button_translucent" data-position=1 title="initrd">INITRD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/installation/' class=" post_tag button button_translucent" data-position=1 title="installation">INSTALLATION<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/kernel/' class=" post_tag button button_translucent" data-position=1 title="kernel">KERNEL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/lazy-block-group-allocation/' class=" post_tag button button_translucent" data-position=1 title="lazy-block-group-allocation">LAZY-BLOCK-GROUP-ALLOCATION<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/leveldb/' class=" post_tag button button_translucent" data-position=1 title="leveldb">LEVELDB<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/lilo/' class=" post_tag button button_translucent" data-position=1 title="lilo">LILO<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/linux/' class=" post_tag button button_translucent" data-position=1 title="linux">LINUX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/lsusb/' class=" post_tag button button_translucent" data-position=1 title="lsusb">LSUSB<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/mbr/' class=" post_tag button button_translucent" data-position=1 title="mbr">MBR<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/method-overloading/' class=" post_tag button button_translucent" data-position=1 title="method-overloading">METHOD-OVERLOADING<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/method-resolution-order/' class=" post_tag button button_translucent" data-position=1 title="method-resolution-order">METHOD-RESOLUTION-ORDER<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/mkinitrd/' class=" post_tag button button_translucent" data-position=1 title="mkinitrd">MKINITRD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/module/' class=" post_tag button button_translucent" data-position=1 title="module">MODULE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/monitors/' class=" post_tag button button_translucent" data-position=4 title="monitors">MONITORS<span class="button_tally">4</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/monmaptool/' class=" post_tag button button_translucent" data-position=1 title="monmaptool">MONMAPTOOL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/mons/' class=" post_tag button button_translucent" data-position=1 title="mons">MONS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/mro/' class=" post_tag button button_translucent" data-position=1 title="mro">MRO<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/nagios-installation/' class=" post_tag button button_translucent" data-position=1 title="nagios-installation">NAGIOS-INSTALLATION<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/name_len/' class=" post_tag button button_translucent" data-position=1 title="name_len">NAME_LEN<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/namespace/' class=" post_tag button button_translucent" data-position=1 title="namespace">NAMESPACE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/noout/' class=" post_tag button button_translucent" data-position=1 title="noout">NOOUT<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/object-oriented-programming/' class=" post_tag button button_translucent" data-position=4 title="object-oriented-programming">OBJECT-ORIENTED-PROGRAMMING<span class="button_tally">4</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/objects/' class=" post_tag button button_translucent" data-position=2 title="objects">OBJECTS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/on/' class=" post_tag button button_translucent" data-position=1 title="on">ON<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/osd/' class=" post_tag button button_translucent" data-position=5 title="osd">OSD<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/password-encrypt/' class=" post_tag button button_translucent" data-position=1 title="password-encrypt">PASSWORD-ENCRYPT<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/pg/' class=" post_tag button button_translucent" data-position=1 title="pg">PG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/placement-groups/' class=" post_tag button button_translucent" data-position=1 title="placement-groups">PLACEMENT-GROUPS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/pool/' class=" post_tag button button_translucent" data-position=1 title="pool">POOL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/programming/' class=" post_tag button button_translucent" data-position=6 title="programming">PROGRAMMING<span class="button_tally">6</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/python/' class=" post_tag button button_translucent" data-position=11 title="python">PYTHON<span class="button_tally">11</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/python-namespace/' class=" post_tag button button_translucent" data-position=1 title="python-namespace">PYTHON-NAMESPACE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/python-objects/' class=" post_tag button button_translucent" data-position=2 title="python-objects">PYTHON-OBJECTS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/rados/' class=" post_tag button button_translucent" data-position=2 title="rados">RADOS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/rados-block-device/' class=" post_tag button button_translucent" data-position=1 title="rados-block-device">RADOS-BLOCK-DEVICE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/rados-gateway/' class=" post_tag button button_translucent" data-position=1 title="rados-gateway">RADOS-GATEWAY<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/random-number-generator/' class=" post_tag button button_translucent" data-position=1 title="random-number-generator">RANDOM-NUMBER-GENERATOR<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/range/' class=" post_tag button button_translucent" data-position=1 title="range">RANGE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/rbd/' class=" post_tag button button_translucent" data-position=1 title="rbd">RBD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/recursion/' class=" post_tag button button_translucent" data-position=1 title="recursion">RECURSION<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/rgw/' class=" post_tag button button_translucent" data-position=1 title="rgw">RGW<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/rgw-index/' class=" post_tag button button_translucent" data-position=1 title="rgw-index">RGW-INDEX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/rhel/' class=" post_tag button button_translucent" data-position=2 title="rhel">RHEL<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/runaway-process/' class=" post_tag button button_translucent" data-position=1 title="runaway-process">RUNAWAY-PROCESS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/scrubbing/' class=" post_tag button button_translucent" data-position=1 title="scrubbing">SCRUBBING<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/sharding/' class=" post_tag button button_translucent" data-position=1 title="sharding">SHARDING<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/shim/' class=" post_tag button button_translucent" data-position=1 title="shim">SHIM<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/shimx64/' class=" post_tag button button_translucent" data-position=1 title="shimx64">SHIMX64<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/staticmethod/' class=" post_tag button button_translucent" data-position=1 title="staticmethod">STATICMETHOD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/strace/' class=" post_tag button button_translucent" data-position=1 title="strace">STRACE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/super/' class=" post_tag button button_translucent" data-position=1 title="super">SUPER<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/swap-space/' class=" post_tag button button_translucent" data-position=1 title="swap-space">SWAP-SPACE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/testing/' class=" post_tag button button_translucent" data-position=1 title="testing">TESTING<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/trim/' class=" post_tag button button_translucent" data-position=1 title="trim">TRIM<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/uninit_bg/' class=" post_tag button button_translucent" data-position=1 title="uninit_bg">UNINIT_BG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/usb/' class=" post_tag button button_translucent" data-position=1 title="usb">USB<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/zombie/' class=" post_tag button button_translucent" data-position=1 title="zombie">ZOMBIE<span class="button_tally">1</span>
+            </a>
+            
+            <div class="tags_sort"><span title="sort alphabetically">[A~Z]</span><span title="sort by count">[0~9]</span>
+            </div>
+            <span class="tags_hide"><svg class="icon">
+            <use xlink:href="#closeme"></use>
+          </svg></span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
+</aside>
+
+  
+</div>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.001 18.001" id="twitter">
+    <path d="M15.891 4.013c.808-.496 1.343-1.173 1.605-2.034a8.68 8.68 0 0 1-2.351.861c-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078a3.56 3.56 0 0 0-1.076 2.605c0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388a3.623 3.623 0 0 0 2.115 1.291c-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841a3.652 3.652 0 0 0 2.152.743C4.148 14.173 2.625 14.69.902 14.69c-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974a10.77 10.77 0 0 0 1.172-4.892v-.468a7.788 7.788 0 0 0 1.84-1.921 8.142 8.142 0 0 1-2.11.593z"
+      ></path>
+  </symbol>
+  <symbol aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="mail">
+    <path  d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="calendar">
+    <path d="M452 40h-24V0h-40v40H124V0H84v40H60C26.916 40 0 66.916 0 100v352c0 33.084 26.916 60 60 60h392c33.084 0 60-26.916 60-60V100c0-33.084-26.916-60-60-60zm20 412c0 11.028-8.972 20-20 20H60c-11.028 0-20-8.972-20-20V188h432v264zm0-304H40v-48c0-11.028 8.972-20 20-20h24v40h40V80h264v40h40V80h24c11.028 0 20 8.972 20 20v48z"></path>
+    <path d="M76 230h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 310h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 390h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80-80h40v40h-40z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="github">
+    <path d="M255.968 5.329C114.624 5.329 0 120.401 0 262.353c0 113.536 73.344 209.856 175.104 243.872 12.8 2.368 17.472-5.568 17.472-12.384 0-6.112-.224-22.272-.352-43.712-71.2 15.52-86.24-34.464-86.24-34.464-11.616-29.696-28.416-37.6-28.416-37.6-23.264-15.936 1.728-15.616 1.728-15.616 25.696 1.824 39.2 26.496 39.2 26.496 22.848 39.264 59.936 27.936 74.528 21.344 2.304-16.608 8.928-27.936 16.256-34.368-56.832-6.496-116.608-28.544-116.608-127.008 0-28.064 9.984-51.008 26.368-68.992-2.656-6.496-11.424-32.64 2.496-68 0 0 21.504-6.912 70.4 26.336 20.416-5.696 42.304-8.544 64.096-8.64 21.728.128 43.648 2.944 64.096 8.672 48.864-33.248 70.336-26.336 70.336-26.336 13.952 35.392 5.184 61.504 2.56 68 16.416 17.984 26.304 40.928 26.304 68.992 0 98.72-59.84 120.448-116.864 126.816 9.184 7.936 17.376 23.616 17.376 47.584 0 34.368-.32 62.08-.32 70.496 0 6.88 4.608 14.88 17.6 12.352C438.72 472.145 512 375.857 512 262.353 512 120.401 397.376 5.329 255.968 5.329z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" id="gitlab">
+    <path d="M12.3 74.7h54L43.3 3c-1-3.6-6.4-3.6-7.6 0L12.3 74.8z" />
+    <path d="M12.3 74.7L.5 111c-1 3.2 0 6.8 3 8.8l101.6 74-92.5-119z"/>
+    <path d="M105 193.7l-38.6-119h-54l92.7 119z"/>
+    <path d="M105 193.7l38.7-119H66.4l38.7 119z"/>
+    <path d="M105 193.7l38.7-119H198l-93 119z"/>
+    <path d="M198 74.7l11.6 36.2c1 3 0 6.6-3 8.6l-101.5 74 93-119z"/>
+    <path d="M198 74.7h-54.3L167 3c1.2-3.6 6.4-3.6 7.6 0L198 74.8z"/>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="rss">
+    <circle cx="3.429" cy="20.571" r="3.429"></circle>
+    <path d="M11.429 24h4.57C15.999 15.179 8.821 8.001 0 8v4.572c6.302.001 11.429 5.126 11.429 11.428z"></path>
+    <path d="M24 24C24 10.766 13.234 0 0 0v4.571c10.714 0 19.43 8.714 19.43 19.429z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="to-top">
+    <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
+    <path d="M504.971 239.029L448 182.059V84c0-46.317-37.682-84-84-84h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c19.851 0 36 16.149 36 36v108c0 6.365 2.529 12.47 7.029 16.971L454.059 256l-47.029 47.029A24.002 24.002 0 0 0 400 320v108c0 19.851-16.149 36-36 36h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c46.318 0 84-37.683 84-84v-98.059l56.971-56.971c9.372-9.372 9.372-24.568 0-33.941zM112 192V84c0-19.851 16.149-36 36-36h44c13.255 0 24-10.745 24-24S205.255 0 192 0h-44c-46.318 0-84 37.683-84 84v98.059l-56.971 56.97c-9.373 9.373-9.373 24.568 0 33.941L64 329.941V428c0 46.317 37.682 84 84 84h44c13.255 0 24-10.745 24-24s-10.745-24-24-24h-44c-19.851 0-36-16.149-36-36V320c0-6.365-2.529-12.47-7.029-16.971L57.941 256l47.029-47.029A24.002 24.002 0 0 0 112 192z"></path>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M23 2.75A2.75 2.75 0 0 0 20.25 0H8.75A2.75 2.75 0 0 0 6 2.75v13.5A2.75 2.75 0 0 0 8.75 19h11.5A2.75 2.75 0 0 0 23 16.25zM18.25 14.5h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5z"></path>
+    <path d="M8.75 20.5a4.255 4.255 0 0 1-4.25-4.25V2.75c0-.086.02-.166.025-.25H3.75A2.752 2.752 0 0 0 1 5.25v16A2.752 2.752 0 0 0 3.75 24h12a2.752 2.752 0 0 0 2.75-2.75v-.75z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" id="closeme">
+    <path d="M284.286 256.002L506.143 34.144c7.811-7.811 7.811-20.475 0-28.285-7.811-7.81-20.475-7.811-28.285 0L256 227.717 34.143 5.859c-7.811-7.811-20.475-7.811-28.285 0-7.81 7.811-7.811 20.475 0 28.285l221.857 221.857L5.858 477.859c-7.811 7.811-7.811 20.475 0 28.285a19.938 19.938 0 0 0 14.143 5.857 19.94 19.94 0 0 0 14.143-5.857L256 284.287l221.857 221.857c3.905 3.905 9.024 5.857 14.143 5.857s10.237-1.952 14.143-5.857c7.811-7.811 7.811-20.475 0-28.285L284.286 256.002z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="open-menu">
+    <path d="M492 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0-160H20C8.954 76 0 84.954 0 96s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0 320H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="instagram">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id=youtube>
+    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
+    <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="xing">
+    <path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71 55" id="discord">
+    <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" id="mastodon">
+    <path
+    fill="#ffffff"
+    d="m 15.054695,9.8859583 c -0.22611,1.1632697 -2.02517,2.4363497 -4.09138,2.6830797 -1.0774504,0.12856 -2.1382704,0.24673 -3.2694704,0.19484 -1.84996,-0.0848 -3.30971,-0.44157 -3.30971,-0.44157 0,0.1801 0.0111,0.35157 0.0333,0.51194 0.24051,1.82571 1.81034,1.93508 3.29737,1.98607 1.50088,0.0514 2.8373104,-0.37004 2.8373104,-0.37004 l 0.0617,1.35686 c 0,0 -1.0498104,0.56374 -2.9199404,0.66742 -1.03124,0.0567 -2.3117,-0.0259 -3.80308,-0.42069 -3.23454998,-0.85613 -3.79081998,-4.304 -3.87592998,-7.8024197 -0.026,-1.03871 -0.01,-2.01815 -0.01,-2.83732 0,-3.57732 2.34385998,-4.62587996 2.34385998,-4.62587996 1.18184,-0.54277 3.20976,-0.77101 5.318,-0.7882499985409 h 0.0518 C 9.8267646,0.01719834 11.856025,0.24547834 13.037775,0.78824834 c 0,0 2.34377,1.04855996 2.34377,4.62587996 0,0 0.0294,2.63937 -0.32687,4.47183"/>
+ <path
+    fill="#000000"
+    d="m 12.616925,5.6916583 v 4.3315297 h -1.71607 V 5.8189683 c 0,-0.88624 -0.37289,-1.33607 -1.1187604,-1.33607 -0.82467,0 -1.23799,0.53361 -1.23799,1.58875 v 2.30122 h -1.70594 v -2.30122 c 0,-1.05514 -0.4134,-1.58875 -1.23808,-1.58875 -0.74587,0 -1.11876,0.44983 -1.11876,1.33607 v 4.2042197 h -1.71607 V 5.6916583 c 0,-0.88527 0.22541,-1.58876 0.67817,-2.10922 0.46689,-0.52047 1.07833,-0.78727 1.83735,-0.78727 0.87816,0 1.54317,0.33752 1.98288,1.01267 l 0.42744,0.71655 0.42753,-0.71655 c 0.43961,-0.67515 1.10463,-1.01267 1.9828704,-1.01267 0.75893,0 1.37037,0.2668 1.83735,0.78727 0.45268,0.52046 0.67808,1.22395 0.67808,2.10922"/>
+  </symbol>
+</svg>
+
+<footer class="footer">
+  <div class="footer_inner wrap pale">
+    <img src='https://arvimal.github.io/icons/apple-touch-icon.png' class="icon icon_2 transparent" alt="Clarity">
+    <p>Copyright&nbsp;<span class="year"></span>&nbsp;CLARITY. All Rights Reserved</p><a class="to_top" href="#documentTop">
+  <svg class="icon">
+  <title>to-top</title>
+  <use xlink:href="#to-top"></use>
+</svg>
+
+</a>
+
+  </div>
+</footer>
+
+<script type="text/javascript" src="https://arvimal.github.io/en/js/bundle.2eb8bded826af97bed60191cec7b2f311796d0f521dabf613dbbbc48360338b7cbd4c7c95b79bf83330c134478634baab31489a5f9cbd51539fc9c07e8065f2e.js" integrity="sha512-Lri97YJq&#43;XvtYBkc7HsvMReW0PUh2r9hPbu8SDYDOLfL1MfJW3m/gzMME0R4Y0uqsxSJpfnL1RU5/JwH6AZfLg==" crossorigin="anonymous"></script>
+
+  <script src="https://arvimal.github.io/js/search.min.786102b9f5b14ee0b60197dc064e532809aec49bcc43fea72e5a513113f04b44a7241d6683d3993d5b7a48582f4986e0b9a28c72ebc48a2072c52aad8f40a2b3.js"></script>
+
+  </body>
+</html>

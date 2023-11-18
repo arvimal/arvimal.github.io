@@ -506,6 +506,66 @@
     <loc>https://arvimal.github.io/posts/2008/01/zombie-processes/</loc>
     <lastmod>2008-01-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/00-boot-process/00-boot-process/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/00-boot-process/00-linux-booting/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/00-boot-process/check-if-your-computer-uses-uefi-or-bios/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/00-boot-process/how-to-boot-into-single-user-mode-in-centos-8-rhel/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/00-boot-process/how-to-recover-or-rescue-corrupted-grub-boot-loade/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/00-boot-process/initramfs-dracut-and-the-dracut-emergency-shell-/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/00-boot-process/the-fundamentals-of-network-booting/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/00-boot-process/the-kernel-newbie-corner-initrd-and-initramfs/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/01-uefi-efi/linux-on-your-laptop-a-closer-look-at-efi-boot-options/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/01-uefi-efi/secure-boot-with-qemu-and-uefi/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/01-uefi-efi/the-refind-boot-manager-managing-secure-boot/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/01-uefi-efi/uefi-boot/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/02-boot-loaders/02-grub2/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/02-boot-loaders/boot-loader-specification/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/02-boot-loaders/centos-rhel-7-grub2-configuration-file/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/02-boot-loaders/centos-rhel7-how-to-reinstall-grub2-from-rescue-mode/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/02-boot-loaders/difference-between-grubx64-and-shimx64/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/02-boot-loaders/grub2-troubleshooting-community-help-wiki/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/02-boot-loaders/how-to-reset-a-root-password-on-fedora/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/02-boot-loaders/preliminary-work-getting-grub2-on-a-qemu-disk/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/02-boot-loaders/pxe-boot-what-is-pxe-how-does-it-work/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/02-boot-loaders/two-ways-to-boot-with-old-kernel-version-in-rhel-8-using-grubby/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/02-boot-loaders/two-ways-to-update-and-rebuild-initrd-image-in-centos-and-rhel8/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/04-troubleshooting/04-troubleshooting/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/04-troubleshooting/how-to-view-and-change-boot-sequence-in-linux-term/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/04-troubleshooting/recover-a-red-hat-8-or-centos-8-instance-thats-failing-due-to-grub2-bls-configuration-file-issues/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/04-troubleshooting/regenerate-a-new-initramfs-or-initrd-in-rhel-fedora-centos/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/04-troubleshooting/reset-lost-root-password/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/04-troubleshooting/tip-vm-wont-boot-troubleshoot-with-guestfish/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/linux-booting/readme/</loc>
+  </url><url>
     <loc>https://arvimal.github.io/posts/2022/12/writing-my-blog-article-in-obsidian/</loc>
   </url><url>
     <loc>https://arvimal.github.io/tags/__base__/</loc>
@@ -514,16 +574,52 @@
   </url><url>
     <loc>https://arvimal.github.io/tags/arvimal.github.io/</loc>
   </url><url>
+    <loc>https://arvimal.github.io/tags/bios/</loc>
+  </url><url>
     <loc>https://arvimal.github.io/tags/blog/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/boot/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/bootloader/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/docs/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/dracut/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/efi/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/gpt/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/grub2/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/grub2-mkconfig/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/grubx64/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/guid/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/initramfs/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/initrd/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/linux/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/mbr/</loc>
   </url><url>
     <loc>https://arvimal.github.io/posts/2016/05/mro-object-oriented-programming/</loc>
   </url><url>
     <loc>https://arvimal.github.io/tags/method-resolution-order/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/mkinitrd/</loc>
   </url><url>
     <loc>https://arvimal.github.io/tags/mro/</loc>
   </url><url>
     <loc>https://arvimal.github.io/search/</loc>
   </url><url>
     <loc>https://arvimal.github.io/series/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/shim/</loc>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/shimx64/</loc>
   </url>
 </urlset>

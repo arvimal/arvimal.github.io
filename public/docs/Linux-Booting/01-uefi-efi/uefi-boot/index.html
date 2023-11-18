@@ -1,0 +1,1163 @@
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  data-figures=""
+  
+    class="page"
+  
+  
+  >
+  <head>
+<title>Clarity</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+
+
+<meta property="og:locale" content="en" />
+
+<meta property="og:type" content="article">
+<meta name="description" content="You’ve probably read a lot of stuff on the internet about UEFI. Here is something important you should understand: 95% of it was probably garbage. If you think …" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@janedoe">
+<meta name="twitter:title" content="" />
+<meta name="twitter:image" content="https://arvimal.github.io/images/thumbnail.png"/>
+<meta property="og:url" content="https://arvimal.github.io/docs/linux-booting/01-uefi-efi/uefi-boot/" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="You’ve probably read a lot of stuff on the internet about UEFI. Here is something important you should understand: 95% of it was probably garbage. If you think …" />
+<meta property="og:image" content="https://arvimal.github.io/images/thumbnail.png" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://arvimal.github.io/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://arvimal.github.io/icons/favicon-32x32.png">
+<link rel="manifest" href="https://arvimal.github.io/icons/site.webmanifest">
+
+<link rel="canonical" href="https://arvimal.github.io/docs/linux-booting/01-uefi-efi/uefi-boot/">
+
+
+
+<link rel="preload" href="https://arvimal.github.io/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity = "sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" as="style" crossorigin="anonymous">
+
+
+
+<link rel="preload" href="https://arvimal.github.io/en/js/bundle.2eb8bded826af97bed60191cec7b2f311796d0f521dabf613dbbbc48360338b7cbd4c7c95b79bf83330c134478634baab31489a5f9cbd51539fc9c07e8065f2e.js" as="script" integrity=
+"sha512-Lri97YJq&#43;XvtYBkc7HsvMReW0PUh2r9hPbu8SDYDOLfL1MfJW3m/gzMME0R4Y0uqsxSJpfnL1RU5/JwH6AZfLg==" crossorigin="anonymous">
+
+
+<link rel="stylesheet" type="text/css" href="https://arvimal.github.io/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
+
+  </head>
+  <body
+    data-code="7"
+    data-lines="false"
+    id="documentTop"
+    data-lang="en"
+  >
+
+<header class="nav_header" >
+  <nav class="nav"><a href='https://arvimal.github.io/' class="nav_brand nav_item" title="Clarity">
+  <img src="https://arvimal.github.io/logos/logo.png" class="logo" alt="Clarity">
+  <div class="nav_close">
+    <div><svg class="icon">
+  <title>open-menu</title>
+  <use xlink:href="#open-menu"></use>
+</svg>
+<svg class="icon">
+  <title>closeme</title>
+  <use xlink:href="#closeme"></use>
+</svg>
+</div>
+  </div>
+</a>
+
+    <div class='nav_body nav_body_left'>
+      
+      
+      
+        
+
+  <div class="nav_parent">
+    <a href="https://arvimal.github.io/" class="nav_item" title="Home">Home </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://arvimal.github.io/about/" class="nav_item" title="About">About </a>
+  </div>
+      
+<div class='follow'>
+  <a href="https://github.com/arvimal">
+    <svg class="icon">
+  <title>github</title>
+  <use xlink:href="#github"></use>
+</svg>
+
+  </a>
+  <a href="https://www.linkedin.com/in/arvimal">
+    <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+  </a>
+    
+  <a href="https://arvimal.github.io/index.xml">
+    <svg class="icon">
+  <title>rss</title>
+  <use xlink:href="#rss"></use>
+</svg>
+
+  </a>
+<div class="color_mode">
+  <input type="checkbox" class="color_choice" id="mode">
+</div>
+
+</div>
+
+    </div>
+  </nav>
+</header>
+
+    <main>
+  
+<div class="grid-inverse wrap content">
+  <article class="post_content">
+    <h1 class="post_title"></h1>
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      Jan 1, 0001</span>
+    <span class="post_time"> · 50 min read</span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    Share on:
+    <a href="https://twitter.com/intent/tweet?text=&url=https%3a%2f%2farvimal.github.io%2fdocs%2flinux-booting%2f01-uefi-efi%2fuefi-boot%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>twitter</title>
+  <use xlink:href="#twitter"></use>
+</svg>
+
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2farvimal.github.io%2fdocs%2flinux-booting%2f01-uefi-efi%2fuefi-boot%2f&t=" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>facebook</title>
+  <use xlink:href="#facebook"></use>
+</svg>
+
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+    </a>
+    <a href="https://arvimal.github.io/docs/linux-booting/01-uefi-efi/uefi-boot/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <title>copy</title>
+  <use xlink:href="#copy"></use>
+</svg>
+
+    </a>
+  </div>
+  </span>
+  </div>
+
+    <div class="post_body"><p>You’ve probably read a lot of stuff on the internet about UEFI. Here is something important you should understand: 95% of it was probably garbage. If you think you know about UEFI, and you derived your knowledge anywhere other than the UEFI specifications, [[http://mjg59.dreamwidth.org/|mjg59′s blog]] or one of a few other vaguely reliable locations/people – [[http://www.rodsbooks.com/linux-uefi/|Rod Smith]], or [[http://blog.uncooperative.org/|Peter Jones]], or Chris Murphy, or the documentation of the relatively few OSes whose developers actually know what the hell they’re doing with UEFI – what you think you know is likely a toxic mix of misunderstandings, misconceptions, half-truths, propaganda and downright lies. So you should probably forget it all.</p>
+<p>Good, now we’ve got that out of the way. What I mostly want to talk about is bootloading, because that’s the bit of firmware that matters most to most people, and the bit news sites are always banging on about and wildly misunderstanding.</p>
+<p>===== Terminology =====</p>
+<p>First, let’s get some terminology out of the way. Both [[https://en.wikipedia.org/wiki/BIOS|BIOS]] and [[https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface|UEFI]] are types of [[http://en.wikipedia.org/wiki/Firmware|firmware]] for computers. BIOS-style firmware is (mostly) only ever found on [[https://en.wikipedia.org/wiki/IBM_PC_compatible|IBM PC compatible computers]]. UEFI is meant to be more generic, and can be found on systems which are not in the ‘IBM PC compatible’ class.</p>
+<p>You do not have a ‘UEFI BIOS’. No-one has a ‘UEFI BIOS’. Please don’t ever say ‘UEFI BIOS’. BIOS is not a generic term for all PC firmware, it is a particular type of PC firmware. Your computer has a firmware. If it’s an IBM PC compatible computer, it’s almost certainly either a BIOS or a UEFI firmware. If you’re running [[http://www.coreboot.org/|Coreboot]], congratulations, Mr./Ms. Exception. You may be proud of yourself.</p>
+<p>[[https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Secure_boot|Secure Boot]] is not the same thing as UEFI. Do not ever use those terms interchangeably. Secure Boot is a single effectively optional element of the UEFI specification, which was added in version 2.2 of the UEFI specification. We will talk about precisely what it is later, but for now, just remember it is not the same thing about UEFI. You need to understand what Secure Boot is, and what UEFI is, and which of the two you are actually talking about at any given time. We’ll talk about UEFI first, and then we’ll talk about Secure Boot as an ‘extension’ to UEFI, because that’s basically what it is.</p>
+<p>//Bonus Historical Note//: UEFI was not invented by, is not controlled by, and has never been controlled by Microsoft. Its predecessor and basis, EFI, was developed and published by Intel. UEFI is managed by the [[http://uefi.org/|UEFI Forum]]. Microsoft is a member of the UEFI forum. So is Red Hat, and so is Apple, and so is just about every major PC manufacturer, Intel (obviously), AMD, and a [[http://uefi.org/members|laundry list of other major and minor hardware, software and firmware companies and organizations]]. It is a broad consensus specification, with all the messiness that entails, some of which we’ll talk about specifically later. It is no one company’s Evil Vehicle Of Evilness.</p>
+<p>===== References =====</p>
+<p>If you really want to understand UEFI, it’s a really good idea to go and read the UEFI specification. You can do this. It’s very easy. You don’t have to pay anyone any money. I am not going to tell you that reading it will be the most fun you’ve ever had, because it won’t. But it won’t be a waste of your time. You can find it [[http://www.uefi.org/specs/download|right here on the official UEFI site]]. You have to check a couple of boxes, but you are not signing your soul away to Satan, or anything. It’s fine. As I write this, the current version of the spec is [[http://www.uefi.org/sites/default/files/resources/2_4_Errata_A.pdf|2.4 Errata A]], and that’s the version this post is written with regard to.</p>
+<p>There is no BIOS specification. BIOS is a //de facto// standard – it works the way it worked on actual IBM PCs, in the 1980s. That’s kind of one of the reasons UEFI exists.</p>
+<p>Now, to keep things simple, let’s consider two worlds. One is the world of IBM PC compatible computers – hereafter referred to just as PCs – before UEFI and GPT (we’ll come to GPT) existed. This is the world a lot of you are probably familiar with and may understand quite well. Let’s talk about how booting works on PCs with BIOS firmware.</p>
+<p>===== BIOS booting =====</p>
+<p>It works, in fact, in a very, very simple way. On your bog-standard old-skool BIOS PC, you have one or more disks which have an [[https://en.wikipedia.org/wiki/Master_boot_record|MBR]]. The MBR is another de facto standard; basically, the very start of the disk describes the partitions on the disk in a particular format, and contains a ‘boot loader’, a very small piece of code that a BIOS firmware knows how to execute, whose job it is to boot the operating system(s). (Modern bootloaders frequently are much bigger than can be contained in the MBR space and have to use a multi-stage design where the bit in the MBR just knows how to load the next stage from somewhere else, but that’s not important to us right now).</p>
+<p>All a BIOS firmware knows, in the context of booting the system, is what disks the system contains. You, the owner of this BIOS-based computer, can tell the BIOS firmware which disk you want it to boot the system from. The firmware has no knowledge of anything beyond that. It executes the bootloader it finds in the MBR of the specified disk, and that’s it. The firmware is no longer involved in booting.</p>
+<p>In the BIOS world, absolutely all forms of multi-booting are handled above the firmware layer. The firmware layer doesn’t really know what a bootloader is, or what an operating system is. Hell, it doesn’t know what a partition is. All it can do is run the boot loader from a disk’s MBR. You also cannot configure the boot process from outside of the firmware.</p>
+<p>===== UEFI booting: background =====</p>
+<p>OK, so we have our background, the BIOS world. Now let’s look at how booting works on a UEFI system. Even if you don’t grasp the details of this post, grasp this: //it is completely different//. Completely and utterly different from how BIOS booting works. You cannot apply any of your understanding of BIOS booting to native UEFI booting. You cannot make a little tweak to a system designed for the world of BIOS booting and apply it to //native// UEFI booting. You need to understand that it is a completely different world.</p>
+<p>Here’s another important thing to understand: many UEFI firmwares implement some kind of //BIOS compatibility mode//, sometimes referred to as a //CSM//. Many UEFI firmwares can boot a system just like a BIOS firmware would – they can look for an MBR on a disk, and execute the boot loader from that MBR, and leave everything subsequently up to that bootloader. People sometimes //incorrectly// refer to using this feature as ‘disabling UEFI’, which is //linguistically// nonsensical. You cannot ‘disable’ your system’s firmware. It’s just a stupid term. Don’t use it, but understand what people really mean when they say it. They are talking about using a UEFI firmware’s ability to boot the system ‘BIOS-style’ rather than native UEFI style.</p>
+<p>What I’m going to describe is //native// UEFI booting. If you have a UEFI-based system whose firmware has the BIOS compatibility feature, and you decide to use it, and you apply this decision consistently, then as far as booting is concerned, you can pretend your system is BIOS-based, and just do everything the way you did with BIOS-style booting. If you’re going to do this, though, just make sure you //do// apply it consistently. I really can’t recommend strongly enough that you do //not// attempt to mix UEFI-native and BIOS-compatible booting of permanently-installed operating systems on the same computer, and //especially// not on the same disk. It is a terrible terrible idea and will cause you heartache and pain. If you decide to do it, don’t come crying to me.</p>
+<p>For the sake of sanity, I am going to assume the use of disks with a [[https://en.wikipedia.org/wiki/GUID_Partition_Table|GPT]] partition table, and EFI FAT32 [[https://en.wikipedia.org/wiki/EFI_System_partition|EFI system partitions]]. Depending on how deep you’re going to dive into this stuff you //may// find out that it’s not strictly speaking the case that you can //always// assume you’ll be dealing with GPT disks and EFI FAT32 ESPs when dealing with UEFI native boot, but the UEFI specification is quite strongly tied to GPT disks and EFI FAT32 ESPs, and this is what you’ll be dealing with in 99% of cases. Unless you’re dealing with Macs, and quite frankly, //screw// Macs.</p>
+<p><strong>Edit note</strong>: the following sections (up to //Implications and Complications//) were heavily revised on 2014-01-26, a few hours after the initial version of this post went up, based on feedback from Peter Jones. Consider this to be v2.0 of the post. An earlier version was written in a somewhat less accurate and more confusing way.</p>
+<p>===== UEFI native booting: how it actually works – background =====</p>
+<p>OK, with that out of the way, let’s get to the meat. This is how native UEFI booting actually works. It’s probably helpful to go into this with a bit of high-level background.</p>
+<p>UEFI provides //much// more infrastructure at the firmware level for handling system boot. It’s nowhere near as simple as BIOS. Unlike BIOS, UEFI certainly does understand, to varying degrees, the concepts of ‘disk partitions’ and ‘bootloaders’ and ‘operating systems’.</p>
+<p>You can sort of look at the BIOS boot process, and look at the UEFI process, and see how the UEFI process extends various bits to address specific problems.</p>
+<p>The BIOS/MBR approach to finding the bootloader is pretty janky, when you think about it. It’s very ‘special sauce’: this particular tiny space at the front of the disk contains magic code that only really makes much sense to the system firmware and special utilities for writing it. There are several problems with this approach.</p>
+<ul>
+<li>It’s inconvenient to deal with – you need special utilities to write the MBR, and just about the only way to find out what’s in one is to dd the contents out and examine them.</li>
+<li>As noted above, the MBR itself is not big enough for many modern bootloaders. What they do is install a small part of themselves to the MBR proper, and the rest to the empty space on the disk between where the conventional MBR ends and the first partition begins. There’s a rather big problem with this (well, the whole design is a big problem, but never mind), which is that there’s no reliable convention for where the first partition should begin, so it’s difficult to be sure there’ll be enough space. One thing you usually can rely on is that there won’t be //enough// space for some bootloader configurations.</li>
+<li>The design doesn’t provide any standardized layer or mechanism for selecting boot targets other than disks…but people //want// to select boot targets other than disks. i.e. they want to have multiple bootable ‘things’ – usually operating systems – per disk. The only way to do this, in the BIOS/MBR world, is for the bootloaders to handle it; but there’s no widely accepted convention for the right way to do this. There are many many different approaches, none of which is particularly interoperable with any of the others, none of which is a widely accepted standard or convention, and it’s very difficult to write tooling at the OS / OS installation layer that handles multiboot cleanly. It’s just a very messy design.</li>
+<li>The design doesn’t provide a standard way of booting from anything //except// disks. We’re not going to really talk about that in this article, but just be aware it’s another advantage of UEFI booting: it provides a standard way for booting from, for instance, a remote server.</li>
+<li>There’s no mechanism for levels above the firmware to configure the firmware’s boot behaviour.</li>
+</ul>
+<p>So you can imagine the UEFI Elves sitting around and considering this problem, and coming up with a solution. Instead of the firmware only knowing about disks and one ‘magic’ location per disk where bootloader code might reside, UEFI has much more infrastructure at the firmware layer for handling boot loading. Let’s look at all the things it defines that are relevant here.</p>
+<p>===== EFI executables =====</p>
+<p>The UEFI spec defines an executable format and requires all UEFI firmwares be capable of executing code in this format. When you write a bootloader for native UEFI, you write in this format. This is pretty simple and straightforward, and doesn’t need any further explanation: it’s just a Good Thing that we now have a firmware specification which actually defines a common format for code the firmware can execute.</p>
+<p>===== The GPT (GUID partition table) format =====</p>
+<p>The [[https://en.wikipedia.org/wiki/GUID_Partition_Table|GUID Partition Table]] format is very much tied in with the UEFI specification, and again, this isn’t something particularly complex or in need of much explanation, it’s just a good bit of groundwork the spec provides. GPT is just a standard for doing partition tables – the information at the start of a disk that defines what partitions that disk contains. It’s a better standard for doing this than MBR/’MS-DOS’ partition tables were in many ways, and the UEFI spec requires that UEFI-compliant firmwares be capable of interpreting GPT (it also requires them to be capable of interpreting MBR, for backwards compatibility). All of this is useful groundwork: what’s going on here is the spec is establishing certain capabilities that everything above the firmware layer can rely on the firmware to have.</p>
+<p>===== EFI system partitions =====</p>
+<p>I actually really wrapped my head around the EFI system partition concept while revising this post, and it was a great ‘aha!’ moment. Really, the concept of ‘EFI system partitions’ is just an answer to the problem of the ‘special sauce’ MBR space. The concept of some undefined amount of empty space at the start of a disk being ‘where bootloader code lives’ is a pretty crappy design, as we saw above. EFI system partitions are just UEFI’s solution to that.[[https://www.happyassassin.net/2014/01/25/uefi-boot-how-does-that-actually-work-then/#fn:2|1]]</p>
+<p>The solution is this: we require the firmware layer to be capable of reading some specific types of filesystem. The UEFI spec requires that compliant firmwares be capable of reading the FAT12, FAT16 and FAT32 variants of the [[https://en.wikipedia.org/wiki/File_Allocation_Table|FAT]] format, in essence. In fact what it does is codify a particular interpretation of those formats as they existed at the point UEFI was accepted, and say that UEFI compliant firmwares must be capable of reading those formats. As the spec puts it:</p>
+<p>“The file system supported by the Extensible Firmware Interface is based on the FAT file system. EFI defines a specific version of FAT that is explicitly documented and testable. Conformance to the EFI specification and its associate reference documents is the only definition of FAT that needs to be implemented to support EFI. To differentiate the EFI file system from pure FAT, a new partition file system type has been defined.”</p>
+<p>An ‘EFI system partition’ is really just any partition formatted with one of the UEFI spec-defined variants of FAT and given a specific GPT partition type to help the firmware find it. And the purpose of this is just as described above: allow everyone to rely on the fact that the firmware layer will definitely be able to read data from a pretty ‘normal’ disk partition. Hopefully it’s clear why this is a better design: instead of having to write bootloader code to the ‘magic’ space at the start of an MBR disk, operating systems and so on can just create, format and mount partitions in a widely understood format and put bootloader code and anything else that they might want the firmware to read there.</p>
+<p>The whole ESP thing seemed a bit bizarre and confusing to me at first, so I hope this section explains why it’s actually a very sensible idea and a good design – the bizarre and confusing thing is really the BIOS/MBR design, where the only way for you to write something from the OS layer that you knew the firmware layer could consume was to write it into some (but you didn’t know how much) Magic Space at the start of a disk, a convention which isn’t actually codified anywhere. That really //isn’t// a very sensible or understandable design, if you step back and take a look at it.</p>
+<p>As we’ll note later, the UEFI spec tends to take a ‘you must at least do these things’ approach – it rarely prohibits firmwares from doing anything else. It’s not against the spec to write a firmware that can execute code in other formats, read other types of partition table, and read partitions formatted with filesystems other than the UEFI variants of FAT. But a UEFI compliant firmware must //at least// do all these things, so if you are writing an OS or something else that you want to run on //any// UEFI compliant firmware, this is why the EFI system partition concept is so important: it gives you (at least in theory) 100% confidence that you can put an EFI executable on a partition formatted with the UEFI FAT implementation and the correct GPT partition type, and the system firmware will be able to read it. This is the thing you can take to the bank, like ‘the firmware will be able to execute some bootloader code I put in the MBR space’ was in the BIOS world.</p>
+<p>So now we have three important bits of groundwork the UEFI spec provides: thanks to these requirements, any other layer can confidently rely on the fact that the firmware:</p>
+<ul>
+<li>Can read a partition table</li>
+<li>Can access files in some specific filesystems</li>
+<li>Can execute code in a particular format</li>
+</ul>
+<p>This is much more than you can rely on a BIOS firmware being capable of. However, in order to complete the vision of a firmware layer that can handle booting multiple targets – not just disks – we need one more bit of groundwork: there needs to be a mechanism by which the firmware //finds// the various possible boot targets, and a way to configure it.</p>
+<p>===== The UEFI boot manager =====</p>
+<p>The UEFI spec defines something called the //UEFI boot manager//. (Linux distributions contain a tool called ''efibootmgr'' which is used to manipulate the configuration of the UEFI boot manager). As a sample of what you can expect to find if you do read the UEFI spec, it defines the UEFI boot manager thusly:</p>
+<p>“The UEFI boot manager is a firmware policy engine that can be configured by modifying architecturally defined global NVRAM variables. The boot manager will attempt to load UEFI drivers and UEFI applications (including UEFI OS boot loaders) in an order defined by the global NVRAM variables.”</p>
+<p>Well, that’s that cleared up, let’s move on. {{./icon_wink.gif}}No, not really. Let’s translate that to Human. With only a reasonable degree of simplification, you can think of the UEFI boot manager as being a boot menu. With a BIOS firmware, your firmware level ‘boot menu’ is, necessarily, the disks connected to the system at boot time – no more, no less. This is not true with a UEFI firmware.</p>
+<p>The UEFI boot manager can be configured – simply put, you can add and remove entries from the ‘boot menu’. The firmware can also (it fact the spec requires it to, in various cases) effectively ‘generate’ entries in this boot menu, according to the disks attached to the system and possibly some firmware configuration settings. It can also be examined – you can look at what’s in it.</p>
+<p>One rather great thing UEFI provides is a mechanism for doing this //from other layers//: you can configure the system boot behaviour from a booted operating system. You can do all this by using the ''efibootmgr'' tool, once you have Linux booted via UEFI somehow. There are Windows tools for it too, but I’m not terribly familiar with them. Let’s have a look at some typical ''efibootmgr'' output, which I stole and slightly tweaked from the Fedora forums:</p>
+<p>'''
+[root@system directory]# efibootmgr -v
+BootCurrent: 0002
+Timeout: 3 seconds
+BootOrder: 0003,0002,0000,0004
+Boot0000* CD/DVD Drive  BIOS(3,0,00)
+Boot0001* Hard Drive    HD(2,0,00)
+Boot0002* Fedora        HD(1,800,61800,6d98f360-cb3e-4727-8fed-5ce0c040365d)File(\EFI\fedora\grubx64.efi)
+Boot0003* opensuse      HD(1,800,61800,6d98f360-cb3e-4727-8fed-5ce0c040365d)File(\EFI\opensuse\grubx64.efi)
+Boot0004* Hard Drive    BIOS(2,0,00)P0: ST1500DM003-9YN16G        .
+[root@system directory]#
+'''</p>
+<p>This is a nice clean example I stole and slightly tweaked from the Fedora forums. We can see a few things going on here.</p>
+<p>The first line tells you which of the ‘boot menu’ entries you are //currently// booted from. The second is pretty obvious (if the firmware presents a boot menu-like interface to the UEFI boot manager, that’s the timeout before it goes ahead and boots the default entry). The BootOrder is the order in which the entries in the list will be tried. The rest of the output shows the actual boot entries. We’ll describe what they actually do later.</p>
+<p>If you boot a UEFI firmware entirely normally, without doing any of the tweaks we’ll discuss later, what it ought to do is try to boot from each of the ‘entries’ in the ‘boot menu’, in the order listed in //BootOrder//. So on this system it would try to boot the entry called ‘opensuse’, then if that failed, the one called ‘Fedora’, then ‘CD/DVD Drive’, and then the second ‘Hard Drive’.</p>
+<p>===== UEFI native booting: how it actually works – boot manager entries =====</p>
+<p>What does these entries actually //mean//, though? There’s actually a //huge// range of possibilities that makes up rather a large part of the complexity of the UEFI spec all by itself. If you’re reading the spec, pour yourself an extremely large shot of gin and turn to the EFI_DEVICE_PATH_PROTOCOL section, but note that this is a generic protocol that’s used for other things than booting – it’s UEFI’s Official Way Of Identifying Devices For All Purposes, used for boot manager entries but also for all sorts of other purposes. Not every possible EFI device path makes sense as a UEFI boot manager entry, for obvious reasons (you’re probably not going to get too far trying to boot from your video adapter). But you can certainly have an entry that points to, say, a PXE server, not a disk partition. The spec has lots of bits defining valid non-disk boot targets that can be added to the UEFI boot manager configuration.</p>
+<p>For our purposes, though, lets just consider fairly normal disks connected to the system. In this case we can consider three types of entry you’re likely to come across.</p>
+<p>==== BIOS compatibility boot entries ====</p>
+<p>Boot0000 and Boot0004 in this example are actually BIOS compatibility mode entries, not UEFI native entries. They have not been added to the UEFI boot manager configuration by any external agency, but generated by the firmware itself – this is a common way for a UEFI firmware to implement BIOS compatibility booting, by generating UEFI boot manager entries that trigger a BIOS-compatible boot of a given device. How they //present this to the user// is a different question, as we’ll see later. Whether you see any of these entries or not will depend on your particular firmware, and its configuration. Each of these entries just gives a name – ‘CD/DVD Drive’, ‘Hard Drive’ – and says “if this entry is selected, boot this disk (where ‘this disk’ is ''3,0,00'' for Boot0000 and ''2,0,00'' for Boot0004) in BIOS compatibility mode”.</p>
+<p>==== ‘Fallback path’ UEFI native boot entries ====</p>
+<p>Boot0001 is an entry (fictional, and somewhat unlikely, but it’s for illustrative purposes) that tells the firmware to try and boot from a particular disk, and in UEFI mode not BIOS compatibility mode, but doesn’t tell it anything more. It doesn’t specify a particular boot target on the disk – it just says to boot the disk.</p>
+<p>The UEFI spec defines a sort of ‘fallback’ path for booting this kind of boot manager entry, which works in principle somewhat like BIOS drive booting: it looks in a standard location for some boot loader code. The details are different, though.</p>
+<p>What the firmware will actually do when trying to boot in this way is reasonably simple. The firmware will look through each EFI system partition on the disk in the order they exist on the disk. Within the ESP, it will look for a file with a specific name and location. On an x86-64 PC, it will look for the file ''\EFI\BOOT\BOOTx64.EFI''. What it actually looks for is ''\EFI\BOOT\BOOT{machine type short-name}.EFI'' – ‘x64′ is the “machine type short-name” for x86-64 PCs. The other possibilities are ''BOOTIA32.EFI'' (x86-32), ''BOOTIA64.EFI'' (Itanium), ''BOOTARM.EFI'' (AArch32 – that is, 32-bit ARM) and ''BOOTAA64.EFI'' (AArch64 – that is, 64-bit ARM). It will then execute the first qualifying file it finds (obviously, the file needs to be in the executable format defined in the UEFI specification).</p>
+<p>This mechanism is not designed for booting permanently-installed OSes. It’s more designed for booting hotpluggable, device-agnostic media, like live images and OS install media. And this is indeed what it’s usually used for. If you look at a UEFI-capable live or install medium for a Linux distribution or other OS, you’ll find it has a GPT partition table and contains a FAT-formatted partition at or near the start of the device, with the GPT partition type that identifies it as an EFI system partition. Within that partition there will be a \EFI\BOOT directory with at least one of the specially-named files above. When you boot a Fedora live or install medium in UEFI-native mode, this is the mechanism that is used. The BOOTx64.EFI (or whatever) file handles the rest of the boot process from there, booting the actual operating system contained on the medium.</p>
+<p>==== Full UEFI native boot entries ====</p>
+<p>Boot0002 and Boot0003 are ‘typical’ entries for operating systems permanently installed to permanent storage devices. These entries show us the full power of the UEFI boot mechanism, by not just saying “boot from this disk”, but “boot this specific bootloader in this specific location on this specific disk”, using all the ‘groundwork’ we talked about above.</p>
+<p>Boot0002 is a boot entry produced by a UEFI-native Fedora installation. Boot0003 is a boot entry produced by a UEFI-native OpenSUSE installation. As you may be able to tell, all they’re saying is “load this file from this partition”. The partition is the ''HD(1,800,61800,6d98f360-cb3e-4727-8fed-5ce0c040365d)'' bit: that’s referring to a specific partition (using the EFI_DEVICE_PATH_PROTOCOL, which I’m really not going to attempt to explain in any detail – you don’t necessarily need to know it, if you interact with the boot manager via the firmware interface and ''efibootmgr''). The file is the ''File(\EFI\opensuse\grubx64.efi)'' bit: that just means “load the file in this location on the partition we just described”. The partition in question will almost always be one that qualifies as an EFI system partition, because of the considerations above: that’s the type of partition we can trust the firmware to be able to access.</p>
+<p>This is the mechanism the UEFI spec provides for operating systems to make themselves available for booting: the operating system is intended to install a bootloader which loads the OS kernel and so on to an EFI system partition, and add an entry to the UEFI boot manager configuration with a name – obviously, this will usually be derived from the operating system’s name – and the location of the bootloader (in EFI executable format) that is intended for loading that operating system.</p>
+<p>Linux distributions use the ''efibootmgr'' tool to deal with the UEFI boot manager. What a Linux distribution actually does, so far as bootloading is concerned, when you do a UEFI native install is really pretty simple: it creates an EFI system partition if one does not already exist, installs an EFI boot loader with an appropriate configuration – often grub2-efi, but there are others – into a correct path in the EFI system partition, and calls ''efibootmgr'' to add an appropriately-named UEFI boot manager entry pointing to its boot loader. Most distros will use an existing EFI system partition if there is one, though it’s perfectly valid to create a new one and use that instead: as we’ve noted, UEFI is a permissive spec, and if you follow the design logically, there’s really no problem with having just as many EFI system partitions as you want.</p>
+<p>===== Configuring the boot process (the firmware UI) =====</p>
+<p>The above describes the basic mechanism the UEFI spec defines that manages the UEFI boot process. It’s important to realize that your firmware user interface may well not represent this mechanism very clearly. Unfortunately, the spec intentionally refrains from defining how the boot process should be represented to the user or how the user should be allowed to configure it, and what that means – since we’re dealing with [[https://www.happyassassin.net/2013/05/03/a-day-in-the-life-of-a-firmware-engineer/|firmware engineers]] – is that every firmware does it differently, and some do it insanely.</p>
+<p>//Many// firmwares do have fairly reasonable interfaces for boot configuration. A good firmware design will at least show you the boot order, with a reasonable representation of the entries on it, and let you add or remove entries, change the order, or override the order for a specific boot (by changing it just for that boot, or directly instructing the firmware to boot a particular menu entry, or even giving you the option to simply say “boot this disk”, either in BIOS compatibility mode or UEFI ‘fallback’ mode – my firmware does this). Such an interface will often show ‘full’ UEFI native boot entries (like the Fedora and openSUSE examples we saw earlier) only by their name; you have to examine the ''efibootmgr -v'' output to know precisely what these entries will actually try and //do// when invoked.</p>
+<p>Some firmwares try to abstract and simplify the configuration, and may do a good or a bad job of it. For instance, if you have an option to ‘enable or disable’ BIOS compatibility mode, what it’ll really likely //do// add is configure whether the firmware adds BIOS compatibility entries for attached drives to the UEFI boot manager configuration or not. If you have an option to ‘enable or disable’ UEFI native booting, what likely really happens when you ‘disable’ it is that the firmware changes the UEFI boot manager configuration to leave all UEFI-native entries out of the BootOrder.</p>
+<p>The key point to remember is that any configuration option inside your firmware interface which is to do with booting is really, behind the scenes, configuring the behaviour of the UEFI boot manager. If you understand all the stuff we’ve discussed above, you may well find it easier to figure out what’s //really// happening when you twiddle the knobs your firmware interface exposes.</p>
+<p>In the BIOS world, you’ll remember, you don’t always find that systems are configured to try and boot from removable drives – CD, USB – before booting from permanent drives. Some are, and some aren’t. Some will try CD before the hard disks, but not USB. People have got fairly used to having to check the BIOS configuration to ensure the boot order is ‘correct’ when trying to install a new operating system.</p>
+<p>This applies to the UEFI world too, but because of the added flexibility/complexity of the UEFI boot manager mechanism, it can look unfamiliar and scary.</p>
+<p>If you want to ensure that your system tries to boot from removable devices using the ‘fallback’ mechanism before it tries to boot ‘permanent’ boot entries – as you will want to do if you want to, say, install Fedora – you need this to be the default for your firmware, or you need to be able to tell the firmware this. Depending on your firmware’s interface, you may find there is a ‘menu entry’ for each attached removable device and you just have to adjust the boot order to put it at the top of the list, or you may find that there is the mechanism to directly request ‘UEFI fallback boot of this particular disk’, or you may find that the firmware tries to abstract the configuration somehow. We just don’t know, and that makes writing instructions for this quite hard. But now you broadly understand how things work behind the scenes, you may find it easier to understand your firmware user interface’s representation of that.</p>
+<p>===== Configuring the boot process (from an operating system) =====</p>
+<p>As we’ve noted above, unlike in the BIOS world, you can actually configure the UEFI boot process from the operating system level. If you have an insane firmware, you may //have// to do this in order to achieve what you want.</p>
+<p>You can use the ''efibootmgr'' tool mentioned earlier to add, delete and modify entries in the UEFI boot manager configuration, and actually do quite a lot of other stuff with it too. You can change the boot order. You can tell it to boot some particular entry in the list on the next boot, instead of using the //BootOrder// list (if you or some other tool has configured this to happen, your ''efibootmgr -v'' output will include a //BootNext// item stating which menu entry will be loaded on the next boot). There are tools for Windows that can do this stuff from Windows, too. So if you’re really struggling to manage to do whatever it is you want to do with UEFI boot configuration from your firmware interface, but you //can// boot a UEFI native operating system of some kind, you may want to consider doing your boot configuration from that operating system rather than from the firmware UI.</p>
+<p>So to recap:</p>
+<ul>
+<li>Your UEFI firmware contains something very like what you think of as a boot menu.</li>
+<li>You can query its configuration with ''efibootmgr -v'', from any UEFI-native boot of a Linux OS, and also //change// its configuration with ''efibootmgr'' (see the man page for details).</li>
+<li>This ‘boot menu’ can contain entries that say ‘boot this disk in BIOS compatibility mode’, ‘boot this disk in UEFI native mode via the fallback path’ (which will use the ‘look for BOOT(something).EFI’ method described above), or ‘boot the specific EFI format executable at this specific location (almost always on an EFI system partition)’.</li>
+<li>The nice, clean design that the UEFI spec is trying to imply is that all operating systems should install a bootloader of their own to an EFI system partition, add entries to this ‘boot menu’ that point to themselves, and butt out from trying to take control of booting anything else.</li>
+<li>Your firmware UI has free rein to represent this mechanism to you in whatever way it wants, and it may do this well, or it may do this poorly.</li>
+</ul>
+<p>===== Installing operating systems to UEFI-based computers =====</p>
+<p>Let’s have a quick look at some specific consequences of the above that relate to installing operating systems on UEFI computers.</p>
+<p>==== UEFI native and BIOS compatibility booting ====</p>
+<p>Here’s a very very simple one which people sometimes miss:</p>
+<ul>
+<li>If you boot the installation medium in ‘UEFI native’ mode, it will do a UEFI native install of the operating system: it will try to write an EFI-format bootloader to an EFI system partition, and attempt to add an entry to the UEFI boot manager ‘boot menu’ which loads that bootloader.</li>
+<li>If you boot the installation medium in ‘BIOS compatibility’ mode, it will do a BIOS compatible install of the operating system: it will try to write an MBR-type bootloader to the magic MBR space on a disk.</li>
+</ul>
+<p>This applies (with one minor caveat I’m going to paper over for now) to all OSes of which I’m aware. So you probably want to make sure you understand how, in your firmware, you can choose to boot a removable device in UEFI native mode and how you can choose to boot it in BIOS compatibility mode, and make sure you pick whichever one you actually want to use for your installation.</p>
+<p>You really cannot do a completely successful UEFI-native installation of an OS if you boot its installation medium in BIOS compatibility mode, because the installer will not be able to configure the UEFI boot manager (this is only possible when booted UEFI-native).</p>
+<p>It is theoretically possible for an OS installer to install the OS in the BIOS style – that is, write a bootloader to a disk’s MBR – after being booted in UEFI native mode, but most of them //won’t// do this, and that’s probably sensible.</p>
+<p>==== Finding out which mode you’re booted in ====</p>
+<p>It is possible that you might find yourself with your operating system installer booted, and not sure whether it’s actually booted in UEFI native mode or BIOS compatibility mode. Don’t panic! It’s pretty easy to find out which, in a few different ways. One of the easiest is just to try and talk to the UEFI boot manager. If what you have booted is a Linux installer or environment, and you can get to a shell (ctrl-alt-f2 in the Fedora installer, for instance), run ''efibootmgr -v''. If you’re booted in UEFI native mode, you’ll get your UEFI boot manager configuration, as shown above. If you’re booted in BIOS compatibility mode, you’ll get something like this:</p>
+<p>'''
+Fatal: Couldn't open either sysfs or procfs directories for accessing EFI variables.
+Try 'modprobe efivars' as root.
+'''</p>
+<p>If you’ve booted some other operating system, you can try running a utility native to that OS which tries to talk to the UEFI boot manager, and see if you get sensible output or a similar kind of error. Or you can examine the system logs and search for ‘efi’ and/or ‘uefi’, and you’ll probably find some kind of indication.</p>
+<p>==== Enabling UEFI native boot ====</p>
+<p>To be bootable in UEFI native mode, your OS installation medium must obviously actually comply with all this stuff we’ve just described: it’s got to have a GPT partition table, and an EFI system partition with a bootloader in the correct ‘fallback’ path – \EFI\BOOT\BOOTx64.EFI (or the other names for the other platforms). If you’re having trouble doing a UEFI native boot of your installation medium and can’t figure out why, check that this is actually the case. Notably, when using the ''livecd-iso-to-disk'' tool to write a Fedora image to a USB stick, you must pass the ''--efi'' parameter to configure the stick to be UEFI bootable.</p>
+<p>==== Forcing BIOS compatibility boot ====</p>
+<p>If your firmware seems to make it very difficult to boot from a removable medium in BIOS compatibility mode, but you really want to do that, there’s a handy trick you can use: just make the medium not UEFI native bootable at all. You can do this pretty easily by just wiping all the EFI system partitions. (Alternatively, if using ''livecd-iso-to-disk'' to create a USB stick from a Fedora image, you can just leave out the ''--efi'' parameter and it won’t be UEFI bootable). If at that point your firmware refuses to boot it in BIOS compatibility mode, commence swearing at your firmware vendor (if you didn’t already).</p>
+<p>==== Disk formats (MBR vs. GPT) ====</p>
+<p>Here’s another very important consideration:</p>
+<ul>
+<li>If you want to do a ‘BIOS compatibility’ type installation, you probably want to install to an MBR formatted disk.</li>
+<li>If you want to do a UEFI native installation, you probably want to install to a GPT formatted disk.</li>
+</ul>
+<p>Of course, to make life complicated, many firmwares //can// boot BIOS-style from a GPT formatted disk. UEFI firmwares are in fact technically //required// to be able to boot UEFI-style from an MBR formatted disk (though we are not particularly confident that they all really can). But you really should avoid this if at all possible. This consideration is quite important, as it’s one that trips up quite a few people. For instance, it’s a bad idea to boot an OS installer in UEFI native mode and then attempt to install to an MBR formatted disk without reformatting it. This is very likely to fail. Most modern OS installers will automatically reformat the disk in the correct format if you allow them to completely wipe it, but if you try and tell the installer ‘do a UEFI native installation to this MBR formatted disk and don’t reformat it because it has data on it that I care about’, it’s very likely to fail, even though this configuration is technically covered in the UEFI specification. Specifically, Windows and Fedora at least explicitly disallow this configuration.</p>
+<p>==== Checking the disk format ====</p>
+<p>You can use the ''parted'' utility to check the format of a given disk:</p>
+<p>'''
+[adamw@adam Downloads]$ sudo parted /dev/sda
+GNU Parted 3.1
+Using /dev/sda
+Welcome to GNU Parted! Type 'help' to view a list of commands.
+(parted) p                                                             <br>
+Model: ATA C300-CTFDDAC128M (scsi)
+Disk /dev/sda: 128GB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+Disk Flags:</p>
+<p>Number  Start   End    Size   Type     File system  Flags
+1      1049kB  525MB  524MB  primary  ext4         boot
+2      525MB   128GB  128GB  primary               lvm</p>
+<p>(parted)
+'''</p>
+<p>See that ''Partition table: msdos''? This is an MBR/MS-DOS formatted disk. If it was GPT-formatted, that would say ''gpt''. You can reformat the disk with the other type of partition table by doing ''mklabel gpt'' or ''mklabel msdos'' from within parted. <strong>This will destroy the contents of the disk.</strong></p>
+<p>With most OS installers, if you pick a disk configuration that blows away the entire contents of the target disk, the installer will automatically reformat it using the most appropriate configuration for the type of installation you’re doing, but if you want to use an existing disk without reformatting it, you’re going to have to check how it’s formatted and take this into account.</p>
+<p>==== Handling EFI system partition if doing manual partitioning ====</p>
+<p>I can only give authoritative advice for Fedora here, but the gist may be useful for other distros / OSes.</p>
+<p>If you allow Fedora to handle partitioning for you when doing a UEFI native installation – and you use a GPT-formatted disk, or allow it to reformat the disk (by deleting all existing partitions) – it will handle the EFI system partition stuff for you.</p>
+<p>If you use custom partitioning, though, it will expect you to provide an EFI system partition for the installer to use. If you don’t do this, the installer will complain (with a somewhat confusing error message) and refuse to let you start the installation.</p>
+<p>So if you’re doing a UEFI native install and using custom partitioning, you need to ensure that a partition of the ‘EFI system partition’ type is mounted at ''/boot/efi'' – this is where Fedora expects to find the EFI system partition it’s using. If there is an existing EFI system partition on the system, just set its mount point to ''/boot/efi''. If there is not an EFI system partition yet, create a partition, set its type to //EFI system partition//, make it at least 200MB big (500MB is good), and set its mount point to ''/boot/efi''.</p>
+<p>==== A specific example ====</p>
+<p>To boil down the above: if you bought a Windows 8 or later system, you //almost// certainly have a UEFI native install of Windows to a GPT-formatted disk. This means that if you want to install another OS alongside that Windows install, you almost certainly want to do a UEFI-native installation of your other OS. If you don’t like all this UEFI nonsense and want to go back to the good old world you’re familiar with, you will, I’m afraid, have to blow away the UEFI-native Windows installation, and it would be a good idea to reformat the disk to MBR.</p>
+<p>===== Implications and Complications =====</p>
+<p>So, that’s how UEFI booting works, at least a reasonable approximation. When I describe it like that, it almost all makes sense, right?</p>
+<p>However, all is not sweetness and light. There are problems. There always are.</p>
+<p>Attentive readers may have noticed that I’ve talked about the UEFI spec //providing// a mechanism. This is accurate, and important. As the UEFI spec is a ‘broad consensus’ sort of thing, one of its major shortcomings (looked at from a particular perspective) is that it’s nowhere near prescriptive enough.</p>
+<p>If you read the UEFI spec critically, its basic approach is to define a set of functions that UEFI compliant firmwares must support. What it doesn’t do a lot of at all is strictly requiring things to be done in any particular way, or not done in any particular way.</p>
+<p>So: the spec says that a system firmware must do all the stuff I’ve described above, in order to be considered a UEFI-compliant firmware. The spec, however, doesn’t talk about what operating systems ‘should’ or ‘must’ do at all, and it doesn’t say that firmwares must //not// support (or no-one may expect them to support, or whatever)…anything at all. If you’re making a UEFI firmware, in other words, you have to support GPT formatted disks, and FAT-formatted EFI system partitions, and you must read UEFI boot manager entries in the standard format, and you must do this and that and the other – but you can also do any //other// crap you like.</p>
+<p>It’s pretty easy to read certain implications from the spec – it carefully sets up this nice mechanism for handling OS (or other ‘bootable thing’) selection at the firmware level, for instance, with the clear implication “hey, it’d be great if all OSes were written to this mechanism”. But the UEFI spec doesn’t //require// that, and neither does any other widely-respected specification.</p>
+<p>So, what happens in the real world is that we wind up with really dumb crap. Apple, for instance, ships at least //some// Macs with their bootloaders in an HFS+ partition. The spec says a UEFI-compliant firmware must support UEFI FAT partitions with the specific GPT partition type that identifies them as an “EFI system partition”, but it doesn’t say the firmware can’t //also// recognize some other filesystem type and load a bootloader from that. (Whether you consider such a partition to be an “EFI system partition” or not is an interesting philosophical conundrum, but let’s skate right over that for now).</p>
+<p>The world would pretty clearly be a better place if everyone just damn well used the EFI system partition format the spec goes to such great pains to define, but Apple is Apple and we can’t have nice things, so Apple went right ahead and wrote firmwares that //also// can read and load code from HFS+ partitions, and now everyone else has to deal with that or tell Macs to go and get boned. Apple also goes quite a long way beyond the spec in its boot process design, and if you want your alternative OS to show up on its graphical boot menu with a nice icon and things, you have to do more than what the UEFI spec would suggest.</p>
+<p>There are various similar incredibly annoying corner cases we’ve come across, but let’s not go into them all right now. This post is long enough.</p>
+<p>Also, as we noted earlier, the spec makes no requirements as to how the mechanism should be represented to the user. So if a couple of software companies write OSes to behave ‘nicely’ according to the conventions the spec is clearly designed to back, and install EFI boot loaders and define EFI boot manager entries with nice clear names – like, oh say, “Fedora” and “Windows” – they are implicitly relying on the firmware to then give the user //some// kind of sane interface //somewhere// relatively discoverable that lets them choose to boot “Windows” or “Fedora”. The more firmwares don’t do a good job of this, the less willing OS engineers will be to rely on the ‘proper’ conventions, and the more likely they’ll be to start rebuilding ugly hacks above the firmware level.</p>
+<p>To be fair, we could do somewhat more at the OS level. We could present all those neat efibootmgr capabilities rather more obviously – we can use that ‘don’t respect BootOrder on the next boot, but instead boot //this//‘ capability, for instance, and have ‘Reboot to Windows’ as an option. It’d be kinda nice if someone looked at exposing all this functionality somewhere more obvious than efibootmgr. Windows 8 systems do use this, to some extent – you can reboot your system to the firmware UI from the Windows 8 settings menus, for instance. But still.</p>
+<p>All this is really incredibly frustrating, because UEFI is so //close// to making things really a lot better. The BIOS approach doesn’t provide any kind of convention or standard for multibooting at all – it //has// to be handled entirely above the firmware level. We (the industry) could have come up with some sort of convention for handling multiboot, but we never did, so it just became a multiple-decade epic fail, where each operating system came up with its own approach and lots of people wrote their own bootloaders which tried to subsume all the operating systems and all the operating systems and independent bootloaders merrily fought like cats in a sack. I mean, pre-UEFI multibooting is such a clusterf**k it’s not even worth going into, it’s broken sixteen ways from Sunday by definition.</p>
+<p>If UEFI – or a spec built on top of it – had just //mandated// that everybody follow the conventions UEFI carefully establishes, and //mandated// that firmwares provide a sensible user interface, the win would have been epic. But it doesn’t, so it’s entirely possible that in a UEFI world things will be //even worse than they were in the BIOS world//. If many more firmwares show up that don’t present a good UI for the UEFI boot manager mechanism, what could happen is that OS vendors give up on the UEFI boot manager mechanism (or decide to support it //and// alternatives, because choice!) and just reinvent the entire goddamn nightmare of BIOS multibooting //on top of UEFI// – and we’ll all have to deal with all of that, //plus// the added complication of the UEFI boot manager layer. You’ll have multiple bootloaders fighting to load multiple operating systems all on top of the whole UEFI boot manager mechanism which is just throwing a whole bunch of other variables into the equation.</p>
+<p>This is not a prospect filling the mind of anyone who’s had to think about it with joy.</p>
+<p>Still, it’s important to recognize that the sins of UEFI in this area are sins of omission – they are not sins of commission, and they’re not really the result of evil intent on anyone’s part. The entity you should really be angry with if you have an idiotic system firmware that doesn’t give you good access to the UEFI boot manager mechanism is not the UEFI forum, or Microsoft, and it //certainly// isn’t Fedora and even more //certainly// isn’t me ;). The entity you should be angry at is your system/motherboard manufacturer and the goddamn incompetents they hired to write the firmware, because the UEFI spec makes it really damn clear to anyone with two brain cells to rub together that it would be a very good idea to provide some kind of useful user interface to the UEFI boot manager, and any firmware which doesn’t do so is crap code by definition. Yes, the UEFI forum should’ve realized that firmware engineers couldn’t code their way out of a goddamned paper bag and just ordered them to do so, but still, it’s ultimately the firmware engineers who should be lined up against the nearest wall.</p>
+<p>Wait, we can simplify that. “Any firmware is crap code”. Usually pretty accurate.</p>
+<p>===== Secure Boot =====</p>
+<p>So now we come, finally, to Secure Boot.</p>
+<p>Secure Boot is not magic. It’s not complicated. OK, that’s a lie, it’s incredibly complicated, but the //theory// isn’t very complicated. And no, Secure Boot itself is not evil. I am entirely comfortable stating this as a fact, and you should be too, unless you think GPG is evil.</p>
+<p>Secure Boot is defined in chapter 28 of the UEFI spec (2.4a, anyway). It’s actually a pretty clever mechanism. But what it does can be described very, very simply. It says that the firmware can contain a set of signatures, and refuse to run any EFI executable which is not signed with one of those signatures.</p>
+<p>That’s it. Well, no, it really isn’t, but that’s a reasonably acceptable simplification. Security is hard, so there are all kinds of wibbly bits to implementing a really secure bootchain using Secure Boot, and mjg59 can tell you all about them, or you can pour another large shot of gin and read the whole of chapter 28. But that’s the basic idea.</p>
+<p>Using public key cryptography to verify the integrity of something is hardly a radical or evil concept. Pretty much all Linux distributions depend on it – we sign our packages and have our package managers go AWOOGA AWOOGA if you try to install a package which isn’t signed with one of our keys. This isn’t us being evil, and I don’t think anyone’s ever accused an OS of being evil for using public key cryptographic signing to establish trust in this way. Secure Boot is literally this exact same perfectly widely accepted mechanism, applied to the boot chain. Yet because a bunch of journalists //wildly// grasped the wrong end of the stick, it’s widely considered to be slightly more evil than Hitler.</p>
+<p>Secure Boot, as defined in the UEFI spec, says nothing at all about what the keys the firmware trusts should be, or where they should come from. I’m not going to go into all the goddamn details, because it gets stultifyingly boring and this post is too long already. But the executive summary is that the spec is utterly and entirely about defining a //mechanism// for doing cryptographic verification of a boot chain. It does not really even consider any kind of icky questions about the //policy// for doing so. It does nothing evil. It is as flexible as it could reasonably be, and takes care to allow for all the mechanisms involved to be configurable at multiple levels. The word ‘Microsoft’ is not mentioned. It is not in any way, shape, or form a secret agenda for Microsoft’s domination of the world. If you doubt this, at the very bloody least, go and //read// it. I’ve given you all the necessary pointers. There is literally not a single legitimate reason I can think of for anyone to be //angry// with the idea “hey, it’d be neat if there was a mechanism for optional cryptographic verification of bootloader code in this firmware specification”. None. Not one.</p>
+<p>===== Secure Boot in the real world =====</p>
+<p>Most of the unhappiness about Secure Boot is not really about Secure Boot the mechanism – whether the people expressing that unhappiness //think// it is or not – but about specific implementations of Secure Boot in the real world.</p>
+<p>The only one we really care about is Secure Boot as it’s implemented on PCs shipped with Microsoft Windows 8 or higher pre-installed.</p>
+<p>Microsoft has these things called the [[http://msdn.microsoft.com/en-us/library/windows/hardware/jj128256.aspx|Windows Hardware Certification Requirements]]. There they are. They are not Top Secret, Eyes Only, You Will Be Fed To Bill Gates’ Sharks After Reading – they’re right there on the Internet for anyone to read.</p>
+<p>If you want to get cheap volume licenses of Windows from Microsoft to pre-install on your computers and have a nice “reassuring” ‘Microsoft Approved!’ sticker or whatever on the case, you have to comply with these requirements. That’s all the force they have: they are not //actually// a part of the law of the United States or any other country, whatever some people seem to believe. Bill Gates cannot feed you to his sharks if you sell a PC that doesn’t comply with these requirements, so long as you don’t want a cheap copy of Windows to pre-install and a nice sticker. There is literally no requirement for a PC sold //outside// the Microsoft licensing program to configure Secure Boot in any particular way, or include Secure Boot at all. A PC that claims to have a UEFI 2.2 or later compliant firmware must implement Secure Boot, but can ship with it configured in literally absolutely any way it pleases (including turned off).</p>
+<p>If you’re going to have very loud opinions about Secure Boot, you have zero excuse for not going and reading the Microsoft certification requirements. Right now. I’ll wait. You can search for “Secure Boot” to get to the relevant bit. It starts at “System.Fundamentals.Firmware.UEFISecureBoot”.</p>
+<p>You should read it. But here is a summary of what it says.</p>
+<p>Computers complying with the requirements must:</p>
+<ul>
+<li>Ship with Secure Boot turned on (except for servers)</li>
+<li>Have Microsoft’s key in the list of keys they trust</li>
+<li>Disable BIOS compatibility mode when Secure Boot is enabled (actually the UEFI spec requires this too, if I read it correctly)</li>
+<li>Support signature blacklisting</li>
+</ul>
+<p><strong>x86 computers</strong> complying with the requirements must additionally:</p>
+<ul>
+<li><strong>Allow</strong> a physically present person to disable Secure Boot</li>
+<li><strong>Allow</strong> a physically present person to enable Custom Mode, and modify the list of keys the firmware trusts</li>
+</ul>
+<p><strong>ARM computers</strong> complying with the requirements must additionally:</p>
+<ul>
+<li><strong>NOT allow</strong> a physically present person to disable Secure Boot</li>
+<li><strong>NOT allow</strong> a physically present person to enable Custom Mode, and modify the list of keys the firmware trusts</li>
+</ul>
+<p>Yes. You read that correctly. The Microsoft certification requirements, for x86 machines, //explicitly require implementers to give a physically present user complete control over Secure Boot// – turn it off, or completely control the list of keys it trusts. Another important note here is that while the certification requirements state that the out-of-the-box list of trusted keys must //include// Microsoft’s key, they don’t say, for e.g., that it must //not include// any other keys. The requirements explicitly and intentionally allow for the system to ship with any number of other trusted keys, too.</p>
+<p>These requirements aren’t present entirely out of the goodness of Microsoft’s heart, or anything – they’re present in large part because other people explained to Microsoft that if they weren’t present, it’d have a hell of a lawsuit on its hands[[https://www.happyassassin.net/2014/01/25/uefi-boot-how-does-that-actually-work-then/#fn:1|2]] – but they are present. Anyone who actually understands UEFI and Secure Boot cannot possibly read the requirements any other way, they are extremely clear and unambiguous. They both clearly //intend to// and //succeed in// ensuring the owner of a certified system has complete control over Secure Boot.</p>
+<p>If you have an x86 system that claims to be Windows certified but does not allow you to disable Secure Boot, it is in direct violation of the certification requirements, and you should certainly complain very loudly to someone. If a lot of these systems exist then we clearly have a problem and it might be time for that giant lawsuit, but so far I’m not aware of this being the case. All the x86-based, Windows-certified systems I’ve seen //have// had the ‘disable Secure Boot’ option in their firmwares.</p>
+<p>Now, for ARM machines, the requirements are significantly more evil: they state exactly the opposite, that it must //not// be possible to disable Secure Boot and it must //not// be possible for the system owner to change the trusted keys. This is bad and wrong. It makes Microsoft-certified ARM systems into a closed shop. But it’s worth noting it’s no //more// bad or wrong than most other major ARM platforms. Apple locks down the bootloader on all iDevices, and most Android devices also ship with locked bootloaders.</p>
+<p>If you’re planning to buy a Microsoft-certified ARM device, be aware of this, and be aware that you will not be in control of what you can boot on it. If you don’t like this, don’t buy one. But also don’t buy an iDevice, or an Android device with a locked bootloader (you can buy Android devices with unlocked or unlockable bootloaders, still, but you have to do your research).</p>
+<p>As far as x86 devices go, though, right now, Microsoft’s certification requirements actually //explicitly protect// your right to determine what can boot on your system. This is good.</p>
+<p>===== Recommendations =====</p>
+<p>The following are AdamW’s General Recommendations On Managing System Boot, offered with absolutely no guarantees of accuracy, purity or safety.</p>
+<ul>
+<li><strong>If you can possibly manage it, have one OS per computer.</strong> If you need more than one OS, buy more computers, or use virtualization. If you can do this everything is very simple and it doesn’t much matter if you have BIOS or UEFI firmware, or use UEFI-native or BIOS-compatible boot on a UEFI system. Everything will be nice and easy and work. You will whistle as you work, and be kind to children and small animals. All will be sweetness and light. Really, do this.</li>
+<li><strong>If you absolutely must have more than one OS per computer, at least have one OS //per disk//.</strong> If you’re reasonably comfortable with how BIOS-style booting works and you don’t think you need Secure Boot, it’s pretty reasonable to use BIOS-compatible booting rather than UEFI-style booting in this situation on a UEFI-capable system. You’ll probably have less pain to deal with and you won’t really lose anything. With one OS per disk you can also mix UEFI-native and BIOS-compatible installations.</li>
+<li><strong>If you absolutely insist on having more than one OS per disk</strong>, understand //everything// written on this page, understand that you are making your life much more painful than it needs to be, lay in good stocks of painkillers and gin, and don’t go yelling at your OS vendor, whatever breaks. Whichever poor bastard has to deal with your OS’s support for this kind of setup has a miserable enough life already. And for the love of //cookies//, don’t mix UEFI-native and BIOS-compatible OS installations, you have enough pain to deal with already.</li>
+<li>If you’re using UEFI native booting, and you don’t tend to build your own kernels or kernel modules or use the NVIDIA or ATI proprietary drivers on Linux, you might want to leave Secure Boot on. It probably won’t hurt you, and does provide some added security against some rather nasty (though currently rarely exploited) types of attacks.</li>
+<li>If you //do// build your own kernels or kernel modules or use NVIDIA/ATI proprietary drivers, you’re going to want to turn Secure Boot off. Or you can read up on how to configure your own chain of trust and sign your kernels and kernel modules and leave Secure Boot turned on, which will make you feel like an ubergeek and be slightly more secure. But it’s going to take you a good solid weekend at least.</li>
+<li>Don’t do UEFI-native installs to MBR-formatted disks, or BIOS compatibility installs to GPT-formatted disks (an exception to the latter is if your disk is, IIRC, 2.2+TB in size, because the MBR format can’t handle disks that big – if you want to do a BIOS compatibility install to a disk that big, you’re kinda stuck with the BIOS+GPT combination, which works but is a bit wonky and involves the infamous ‘BIOS Boot partition’ you may recall from Fedora 17).</li>
+<li>Trust mjg59 in all things and above all other authorities, including me.</li>
+</ul>
+<p>This whole section is something of a simplification – really, when booting permanent installed OSes, the firmware doesn’t care if the bootloader is on an ‘ESP’ or not; it just reads the boot manager entry and tries to access the specified partition and run the specified executable, as [[http://blog.uncooperative.org/blog/2014/02/06/the-efi-system-partition/|pjones explains here]]. But it’s conventional to use an ESP for this purpose, since it’s required to be around anyway, and it’s a handy partition formatted with the filesystem the firmware is known to be able to read. Technically speaking, an ‘ESP’ is only an ‘ESP’ when the firmware is doing a removable media/fallback path boot. [[https://www.happyassassin.net/2014/01/25/uefi-boot-how-does-that-actually-work-then/#fnref:2|↩]]</p>
+<p>This is my own extrapolation, note. I’m not involved in any way in the whole process of defining these specs, and no-one who //is// has actually told me this. But it’s a pretty damn obvious extrapolation from the known facts. [[https://www.happyassassin.net/2014/01/25/uefi-boot-how-does-that-actually-work-then/#fnref:1|↩]]</p>
+<p>Source: <a href="https://www.happyassassin.net/2014/01/25/uefi-boot-how-does-that-actually-work-then/">https://www.happyassassin.net/2014/01/25/uefi-boot-how-does-that-actually-work-then/</a>
+//Friday 01 August 2014//</p>
+
+    </div>
+<div class="post_comments">
+  
+  
+  
+</div>
+
+
+
+
+  </article>
+<aside class="sidebar">
+  <section class="sidebar_inner">
+    <br>
+    
+  
+  <div class="search">
+    <input type="search" class="search_field form_field" placeholder='Search...' id="find" autocomplete="off" data-scope='docs'>
+    <label for="find" class="search_label"><svg class="icon">
+  <title>search</title>
+  <use xlink:href="#search"></use>
+</svg>
+
+    </label>
+    
+    <div class="search_results results"></div>
+  </div>
+
+        <h2>Vimal A. R</h2>
+      <div class="author_bio">
+        Technologist, perpetual student, teacher, continual incremental improvement.
+      </div>
+      <a href='https://arvimal.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+
+    
+    
+    <h2 class="mt-4">Recent Posts</h2>
+    <ul class="flex-column">
+      <li>
+        <a href="https://arvimal.github.io/posts/2022/08/testing-loveit/" class="nav-link" title="Testing LoveIt">Testing LoveIt</a>
+      </li>
+      <li>
+        <a href="https://arvimal.github.io/posts/2017/08/callables-in-python/" class="nav-link" title="Callables in Python">Callables in Python</a>
+      </li>
+      <li>
+        <a href="https://arvimal.github.io/posts/2017/07/writing-a-minimalistic-kernel-module/" class="nav-link" title="Writing a minimalistic kernel module in Linux - Part 1">Writing a minimalistic kernel module in Linux - Part 1</a>
+      </li>
+      <li>
+        <a href="https://arvimal.github.io/posts/2017/06/recursion-algorithm-study/" class="nav-link" title="Recursion - Algorithm Study">Recursion - Algorithm Study</a>
+      </li>
+      <li>
+        <a href="https://arvimal.github.io/posts/2017/02/selection-sort-algorithm-study/" class="nav-link" title="Selection Sort - Algorithm Study">Selection Sort - Algorithm Study</a>
+      </li>
+      <li>
+        <a href="https://arvimal.github.io/posts/2017/01/binary-search-algorithm-study/" class="nav-link" title="Binary Search - Algorithm Study">Binary Search - Algorithm Study</a>
+      </li>
+      <li>
+        <a href="https://arvimal.github.io/posts/2017/01/linear-search-algorithm-study/" class="nav-link" title="Linear Search - Algorithm Study">Linear Search - Algorithm Study</a>
+      </li>
+      <li>
+        <a href="https://arvimal.github.io/posts/2016/12/accessor-and-mutator-methods/" class="nav-link" title="Accessor and Mutator methods - Python">Accessor and Mutator methods - Python</a>
+      </li>
+    </ul>
+    <div>
+      <h2 class="mt-4 taxonomy" id="categories-section">Categories</h2>
+      <nav class="tags_nav">
+        <a href='https://arvimal.github.io/categories/programming/' class="post_tag button button_translucent" title="programming">
+          PROGRAMMING
+          <span class="button_tally">28</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/categories/ceph/' class="post_tag button button_translucent" title="ceph">
+          CEPH
+          <span class="button_tally">22</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/categories/python/' class="post_tag button button_translucent" title="python">
+          PYTHON
+          <span class="button_tally">18</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/categories/techno/' class="post_tag button button_translucent" title="techno">
+          TECHNO
+          <span class="button_tally">11</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/categories/data-structures-and-algorithms/' class="post_tag button button_translucent" title="data-structures-and-algorithms">
+          DATA-STRUCTURES-AND-ALGORITHMS
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/categories/linux/' class="post_tag button button_translucent" title="linux">
+          LINUX
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/categories/personal/' class="post_tag button button_translucent" title="personal">
+          PERSONAL
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+      </nav>
+    </div>
+    <div>
+      <h2 class="mt-4 taxonomy" id="tags-section">Tags</h2>
+      <nav class="tags_nav">
+        <a href='https://arvimal.github.io/tags/ceph/' class="post_tag button button_translucent" title="ceph">
+          CEPH
+          <span class="button_tally">17</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/python/' class="post_tag button button_translucent" title="python">
+          PYTHON
+          <span class="button_tally">11</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/programming/' class="post_tag button button_translucent" title="programming">
+          PROGRAMMING
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/osd/' class="post_tag button button_translucent" title="osd">
+          OSD
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/monitors/' class="post_tag button button_translucent" title="monitors">
+          MONITORS
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/object-oriented-programming/' class="post_tag button button_translucent" title="object-oriented-programming">
+          OBJECT-ORIENTED-PROGRAMMING
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/algorithms/' class="post_tag button button_translucent" title="algorithms">
+          ALGORITHMS
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/boot/' class="post_tag button button_translucent" title="boot">
+          BOOT
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/grub/' class="post_tag button button_translucent" title="grub">
+          GRUB
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/inheritance/' class="post_tag button button_translucent" title="inheritance">
+          INHERITANCE
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/abstract-methods/' class="post_tag button button_translucent" title="abstract-methods">
+          ABSTRACT-METHODS
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/abstractmethod/' class="post_tag button button_translucent" title="abstractmethod">
+          ABSTRACTMETHOD
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/cachefilesd/' class="post_tag button button_translucent" title="cachefilesd">
+          CACHEFILESD
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://arvimal.github.io/tags/cachefs/' class="post_tag button button_translucent" title="cachefs">
+          CACHEFS
+          <span class="button_tally">2</span>
+        </a>
+        
+        
+        <br>
+        <div class="post_tags_toggle button">All Tags</div>
+        <div class="post_tags">
+          <div class="tags_list">
+            
+            <a href='https://arvimal.github.io/tags/__base__/' class=" post_tag button button_translucent" data-position=1 title="__base__">__BASE__<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/__bases__/' class=" post_tag button button_translucent" data-position=1 title="__bases__">__BASES__<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/abstract-base-class/' class=" post_tag button button_translucent" data-position=1 title="abstract-base-class">ABSTRACT-BASE-CLASS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/abstract-methods/' class=" post_tag button button_translucent" data-position=2 title="abstract-methods">ABSTRACT-METHODS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/abstractmethod/' class=" post_tag button button_translucent" data-position=2 title="abstractmethod">ABSTRACTMETHOD<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/admin_socket/' class=" post_tag button button_translucent" data-position=1 title="admin_socket">ADMIN_SOCKET<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/admin-socket/' class=" post_tag button button_translucent" data-position=1 title="admin-socket">ADMIN-SOCKET<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/algorithms/' class=" post_tag button button_translucent" data-position=3 title="algorithms">ALGORITHMS<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/anaconda/' class=" post_tag button button_translucent" data-position=1 title="anaconda">ANACONDA<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/arvimal.github.io/' class=" post_tag button button_translucent" data-position=1 title="arvimal.github.io">ARVIMAL.GITHUB.IO<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/bash/' class=" post_tag button button_translucent" data-position=1 title="bash">BASH<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/big-o-notation/' class=" post_tag button button_translucent" data-position=1 title="big-o-notation">BIG-O-NOTATION<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/bios/' class=" post_tag button button_translucent" data-position=1 title="bios">BIOS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/blog/' class=" post_tag button button_translucent" data-position=1 title="blog">BLOG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/boot/' class=" post_tag button button_translucent" data-position=3 title="boot">BOOT<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/boot-loader-checker/' class=" post_tag button button_translucent" data-position=1 title="boot-loader-checker">BOOT-LOADER-CHECKER<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/bootloader/' class=" post_tag button button_translucent" data-position=1 title="bootloader">BOOTLOADER<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/builtins/' class=" post_tag button button_translucent" data-position=1 title="builtins">BUILTINS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/cachefilesd/' class=" post_tag button button_translucent" data-position=2 title="cachefilesd">CACHEFILESD<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/cachefs/' class=" post_tag button button_translucent" data-position=2 title="cachefs">CACHEFS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/calamari/' class=" post_tag button button_translucent" data-position=1 title="calamari">CALAMARI<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/callable/' class=" post_tag button button_translucent" data-position=1 title="callable">CALLABLE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/ceph/' class=" post_tag button button_translucent" data-position=17 title="ceph">CEPH<span class="button_tally">17</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/ceph-admin-socket/' class=" post_tag button button_translucent" data-position=1 title="ceph-admin-socket">CEPH-ADMIN-SOCKET<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/ceph-conf/' class=" post_tag button button_translucent" data-position=1 title="ceph-conf">CEPH-CONF<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/ceph-tell/' class=" post_tag button button_translucent" data-position=1 title="ceph-tell">CEPH-TELL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/classmethod/' class=" post_tag button button_translucent" data-position=1 title="classmethod">CLASSMETHOD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/code-complexity/' class=" post_tag button button_translucent" data-position=1 title="code-complexity">CODE-COMPLEXITY<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/config-show/' class=" post_tag button button_translucent" data-position=1 title="config-show">CONFIG-SHOW<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/crush/' class=" post_tag button button_translucent" data-position=1 title="crush">CRUSH<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/crush-map/' class=" post_tag button button_translucent" data-position=1 title="crush-map">CRUSH-MAP<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/data-structures/' class=" post_tag button button_translucent" data-position=1 title="data-structures">DATA-STRUCTURES<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/decorators/' class=" post_tag button button_translucent" data-position=1 title="decorators">DECORATORS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/dentry/' class=" post_tag button button_translucent" data-position=1 title="dentry">DENTRY<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/directory-entry-structure/' class=" post_tag button button_translucent" data-position=1 title="directory-entry-structure">DIRECTORY-ENTRY-STRUCTURE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/discard/' class=" post_tag button button_translucent" data-position=1 title="discard">DISCARD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/dracut/' class=" post_tag button button_translucent" data-position=1 title="dracut">DRACUT<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/efi/' class=" post_tag button button_translucent" data-position=2 title="efi">EFI<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/enumerate/' class=" post_tag button button_translucent" data-position=1 title="enumerate">ENUMERATE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/ext3/' class=" post_tag button button_translucent" data-position=1 title="ext3">EXT3<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/ext4/' class=" post_tag button button_translucent" data-position=2 title="ext4">EXT4<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/ext4_dir_entry/' class=" post_tag button button_translucent" data-position=1 title="ext4_dir_entry">EXT4_DIR_ENTRY<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/ext4_dir_entry_2/' class=" post_tag button button_translucent" data-position=1 title="ext4_dir_entry_2">EXT4_DIR_ENTRY_2<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/file-counter/' class=" post_tag button button_translucent" data-position=1 title="file-counter">FILE-COUNTER<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/file-systems/' class=" post_tag button button_translucent" data-position=2 title="file-systems">FILE-SYSTEMS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/filesystem/' class=" post_tag button button_translucent" data-position=1 title="filesystem">FILESYSTEM<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/fill-ratio/' class=" post_tag button button_translucent" data-position=1 title="fill-ratio">FILL-RATIO<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/fs-cache/' class=" post_tag button button_translucent" data-position=2 title="fs-cache">FS-CACHE<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/fscache/' class=" post_tag button button_translucent" data-position=1 title="fscache">FSCACHE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/fstrim/' class=" post_tag button button_translucent" data-position=1 title="fstrim">FSTRIM<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/functions/' class=" post_tag button button_translucent" data-position=1 title="functions">FUNCTIONS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/fuse/' class=" post_tag button button_translucent" data-position=1 title="fuse">FUSE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/gpt/' class=" post_tag button button_translucent" data-position=1 title="gpt">GPT<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/grub/' class=" post_tag button button_translucent" data-position=3 title="grub">GRUB<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/grub2/' class=" post_tag button button_translucent" data-position=2 title="grub2">GRUB2<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/grub2-mkconfig/' class=" post_tag button button_translucent" data-position=1 title="grub2-mkconfig">GRUB2-MKCONFIG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/grubx64/' class=" post_tag button button_translucent" data-position=1 title="grubx64">GRUBX64<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/guid/' class=" post_tag button button_translucent" data-position=1 title="guid">GUID<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/inheritance/' class=" post_tag button button_translucent" data-position=3 title="inheritance">INHERITANCE<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/initramfs/' class=" post_tag button button_translucent" data-position=1 title="initramfs">INITRAMFS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/initrd/' class=" post_tag button button_translucent" data-position=1 title="initrd">INITRD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/installation/' class=" post_tag button button_translucent" data-position=1 title="installation">INSTALLATION<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/kernel/' class=" post_tag button button_translucent" data-position=1 title="kernel">KERNEL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/lazy-block-group-allocation/' class=" post_tag button button_translucent" data-position=1 title="lazy-block-group-allocation">LAZY-BLOCK-GROUP-ALLOCATION<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/leveldb/' class=" post_tag button button_translucent" data-position=1 title="leveldb">LEVELDB<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/lilo/' class=" post_tag button button_translucent" data-position=1 title="lilo">LILO<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/linux/' class=" post_tag button button_translucent" data-position=1 title="linux">LINUX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/lsusb/' class=" post_tag button button_translucent" data-position=1 title="lsusb">LSUSB<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/mbr/' class=" post_tag button button_translucent" data-position=1 title="mbr">MBR<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/method-overloading/' class=" post_tag button button_translucent" data-position=1 title="method-overloading">METHOD-OVERLOADING<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/method-resolution-order/' class=" post_tag button button_translucent" data-position=1 title="method-resolution-order">METHOD-RESOLUTION-ORDER<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/mkinitrd/' class=" post_tag button button_translucent" data-position=1 title="mkinitrd">MKINITRD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/module/' class=" post_tag button button_translucent" data-position=1 title="module">MODULE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/monitors/' class=" post_tag button button_translucent" data-position=4 title="monitors">MONITORS<span class="button_tally">4</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/monmaptool/' class=" post_tag button button_translucent" data-position=1 title="monmaptool">MONMAPTOOL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/mons/' class=" post_tag button button_translucent" data-position=1 title="mons">MONS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/mro/' class=" post_tag button button_translucent" data-position=1 title="mro">MRO<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/nagios-installation/' class=" post_tag button button_translucent" data-position=1 title="nagios-installation">NAGIOS-INSTALLATION<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/name_len/' class=" post_tag button button_translucent" data-position=1 title="name_len">NAME_LEN<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/namespace/' class=" post_tag button button_translucent" data-position=1 title="namespace">NAMESPACE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/noout/' class=" post_tag button button_translucent" data-position=1 title="noout">NOOUT<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/object-oriented-programming/' class=" post_tag button button_translucent" data-position=4 title="object-oriented-programming">OBJECT-ORIENTED-PROGRAMMING<span class="button_tally">4</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/objects/' class=" post_tag button button_translucent" data-position=2 title="objects">OBJECTS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/on/' class=" post_tag button button_translucent" data-position=1 title="on">ON<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/osd/' class=" post_tag button button_translucent" data-position=5 title="osd">OSD<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/password-encrypt/' class=" post_tag button button_translucent" data-position=1 title="password-encrypt">PASSWORD-ENCRYPT<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/pg/' class=" post_tag button button_translucent" data-position=1 title="pg">PG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/placement-groups/' class=" post_tag button button_translucent" data-position=1 title="placement-groups">PLACEMENT-GROUPS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/pool/' class=" post_tag button button_translucent" data-position=1 title="pool">POOL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/programming/' class=" post_tag button button_translucent" data-position=6 title="programming">PROGRAMMING<span class="button_tally">6</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/python/' class=" post_tag button button_translucent" data-position=11 title="python">PYTHON<span class="button_tally">11</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/python-namespace/' class=" post_tag button button_translucent" data-position=1 title="python-namespace">PYTHON-NAMESPACE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/python-objects/' class=" post_tag button button_translucent" data-position=2 title="python-objects">PYTHON-OBJECTS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/rados/' class=" post_tag button button_translucent" data-position=2 title="rados">RADOS<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/rados-block-device/' class=" post_tag button button_translucent" data-position=1 title="rados-block-device">RADOS-BLOCK-DEVICE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/rados-gateway/' class=" post_tag button button_translucent" data-position=1 title="rados-gateway">RADOS-GATEWAY<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/random-number-generator/' class=" post_tag button button_translucent" data-position=1 title="random-number-generator">RANDOM-NUMBER-GENERATOR<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/range/' class=" post_tag button button_translucent" data-position=1 title="range">RANGE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/rbd/' class=" post_tag button button_translucent" data-position=1 title="rbd">RBD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/recursion/' class=" post_tag button button_translucent" data-position=1 title="recursion">RECURSION<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/rgw/' class=" post_tag button button_translucent" data-position=1 title="rgw">RGW<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/rgw-index/' class=" post_tag button button_translucent" data-position=1 title="rgw-index">RGW-INDEX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/rhel/' class=" post_tag button button_translucent" data-position=2 title="rhel">RHEL<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/runaway-process/' class=" post_tag button button_translucent" data-position=1 title="runaway-process">RUNAWAY-PROCESS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/scrubbing/' class=" post_tag button button_translucent" data-position=1 title="scrubbing">SCRUBBING<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/sharding/' class=" post_tag button button_translucent" data-position=1 title="sharding">SHARDING<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/shim/' class=" post_tag button button_translucent" data-position=1 title="shim">SHIM<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/shimx64/' class=" post_tag button button_translucent" data-position=1 title="shimx64">SHIMX64<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/staticmethod/' class=" post_tag button button_translucent" data-position=1 title="staticmethod">STATICMETHOD<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/strace/' class=" post_tag button button_translucent" data-position=1 title="strace">STRACE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/super/' class=" post_tag button button_translucent" data-position=1 title="super">SUPER<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/swap-space/' class=" post_tag button button_translucent" data-position=1 title="swap-space">SWAP-SPACE<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/testing/' class=" post_tag button button_translucent" data-position=1 title="testing">TESTING<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/trim/' class=" post_tag button button_translucent" data-position=1 title="trim">TRIM<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/uninit_bg/' class=" post_tag button button_translucent" data-position=1 title="uninit_bg">UNINIT_BG<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/usb/' class=" post_tag button button_translucent" data-position=1 title="usb">USB<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://arvimal.github.io/tags/zombie/' class=" post_tag button button_translucent" data-position=1 title="zombie">ZOMBIE<span class="button_tally">1</span>
+            </a>
+            
+            <div class="tags_sort"><span title="sort alphabetically">[A~Z]</span><span title="sort by count">[0~9]</span>
+            </div>
+            <span class="tags_hide"><svg class="icon">
+            <use xlink:href="#closeme"></use>
+          </svg></span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
+</aside>
+
+  
+</div>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.001 18.001" id="twitter">
+    <path d="M15.891 4.013c.808-.496 1.343-1.173 1.605-2.034a8.68 8.68 0 0 1-2.351.861c-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078a3.56 3.56 0 0 0-1.076 2.605c0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388a3.623 3.623 0 0 0 2.115 1.291c-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841a3.652 3.652 0 0 0 2.152.743C4.148 14.173 2.625 14.69.902 14.69c-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974a10.77 10.77 0 0 0 1.172-4.892v-.468a7.788 7.788 0 0 0 1.84-1.921 8.142 8.142 0 0 1-2.11.593z"
+      ></path>
+  </symbol>
+  <symbol aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="mail">
+    <path  d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="calendar">
+    <path d="M452 40h-24V0h-40v40H124V0H84v40H60C26.916 40 0 66.916 0 100v352c0 33.084 26.916 60 60 60h392c33.084 0 60-26.916 60-60V100c0-33.084-26.916-60-60-60zm20 412c0 11.028-8.972 20-20 20H60c-11.028 0-20-8.972-20-20V188h432v264zm0-304H40v-48c0-11.028 8.972-20 20-20h24v40h40V80h264v40h40V80h24c11.028 0 20 8.972 20 20v48z"></path>
+    <path d="M76 230h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 310h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 390h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80-80h40v40h-40z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="github">
+    <path d="M255.968 5.329C114.624 5.329 0 120.401 0 262.353c0 113.536 73.344 209.856 175.104 243.872 12.8 2.368 17.472-5.568 17.472-12.384 0-6.112-.224-22.272-.352-43.712-71.2 15.52-86.24-34.464-86.24-34.464-11.616-29.696-28.416-37.6-28.416-37.6-23.264-15.936 1.728-15.616 1.728-15.616 25.696 1.824 39.2 26.496 39.2 26.496 22.848 39.264 59.936 27.936 74.528 21.344 2.304-16.608 8.928-27.936 16.256-34.368-56.832-6.496-116.608-28.544-116.608-127.008 0-28.064 9.984-51.008 26.368-68.992-2.656-6.496-11.424-32.64 2.496-68 0 0 21.504-6.912 70.4 26.336 20.416-5.696 42.304-8.544 64.096-8.64 21.728.128 43.648 2.944 64.096 8.672 48.864-33.248 70.336-26.336 70.336-26.336 13.952 35.392 5.184 61.504 2.56 68 16.416 17.984 26.304 40.928 26.304 68.992 0 98.72-59.84 120.448-116.864 126.816 9.184 7.936 17.376 23.616 17.376 47.584 0 34.368-.32 62.08-.32 70.496 0 6.88 4.608 14.88 17.6 12.352C438.72 472.145 512 375.857 512 262.353 512 120.401 397.376 5.329 255.968 5.329z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" id="gitlab">
+    <path d="M12.3 74.7h54L43.3 3c-1-3.6-6.4-3.6-7.6 0L12.3 74.8z" />
+    <path d="M12.3 74.7L.5 111c-1 3.2 0 6.8 3 8.8l101.6 74-92.5-119z"/>
+    <path d="M105 193.7l-38.6-119h-54l92.7 119z"/>
+    <path d="M105 193.7l38.7-119H66.4l38.7 119z"/>
+    <path d="M105 193.7l38.7-119H198l-93 119z"/>
+    <path d="M198 74.7l11.6 36.2c1 3 0 6.6-3 8.6l-101.5 74 93-119z"/>
+    <path d="M198 74.7h-54.3L167 3c1.2-3.6 6.4-3.6 7.6 0L198 74.8z"/>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="rss">
+    <circle cx="3.429" cy="20.571" r="3.429"></circle>
+    <path d="M11.429 24h4.57C15.999 15.179 8.821 8.001 0 8v4.572c6.302.001 11.429 5.126 11.429 11.428z"></path>
+    <path d="M24 24C24 10.766 13.234 0 0 0v4.571c10.714 0 19.43 8.714 19.43 19.429z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="to-top">
+    <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
+    <path d="M504.971 239.029L448 182.059V84c0-46.317-37.682-84-84-84h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c19.851 0 36 16.149 36 36v108c0 6.365 2.529 12.47 7.029 16.971L454.059 256l-47.029 47.029A24.002 24.002 0 0 0 400 320v108c0 19.851-16.149 36-36 36h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c46.318 0 84-37.683 84-84v-98.059l56.971-56.971c9.372-9.372 9.372-24.568 0-33.941zM112 192V84c0-19.851 16.149-36 36-36h44c13.255 0 24-10.745 24-24S205.255 0 192 0h-44c-46.318 0-84 37.683-84 84v98.059l-56.971 56.97c-9.373 9.373-9.373 24.568 0 33.941L64 329.941V428c0 46.317 37.682 84 84 84h44c13.255 0 24-10.745 24-24s-10.745-24-24-24h-44c-19.851 0-36-16.149-36-36V320c0-6.365-2.529-12.47-7.029-16.971L57.941 256l47.029-47.029A24.002 24.002 0 0 0 112 192z"></path>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M23 2.75A2.75 2.75 0 0 0 20.25 0H8.75A2.75 2.75 0 0 0 6 2.75v13.5A2.75 2.75 0 0 0 8.75 19h11.5A2.75 2.75 0 0 0 23 16.25zM18.25 14.5h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5z"></path>
+    <path d="M8.75 20.5a4.255 4.255 0 0 1-4.25-4.25V2.75c0-.086.02-.166.025-.25H3.75A2.752 2.752 0 0 0 1 5.25v16A2.752 2.752 0 0 0 3.75 24h12a2.752 2.752 0 0 0 2.75-2.75v-.75z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" id="closeme">
+    <path d="M284.286 256.002L506.143 34.144c7.811-7.811 7.811-20.475 0-28.285-7.811-7.81-20.475-7.811-28.285 0L256 227.717 34.143 5.859c-7.811-7.811-20.475-7.811-28.285 0-7.81 7.811-7.811 20.475 0 28.285l221.857 221.857L5.858 477.859c-7.811 7.811-7.811 20.475 0 28.285a19.938 19.938 0 0 0 14.143 5.857 19.94 19.94 0 0 0 14.143-5.857L256 284.287l221.857 221.857c3.905 3.905 9.024 5.857 14.143 5.857s10.237-1.952 14.143-5.857c7.811-7.811 7.811-20.475 0-28.285L284.286 256.002z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="open-menu">
+    <path d="M492 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0-160H20C8.954 76 0 84.954 0 96s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0 320H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="instagram">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id=youtube>
+    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
+    <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="xing">
+    <path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71 55" id="discord">
+    <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" id="mastodon">
+    <path
+    fill="#ffffff"
+    d="m 15.054695,9.8859583 c -0.22611,1.1632697 -2.02517,2.4363497 -4.09138,2.6830797 -1.0774504,0.12856 -2.1382704,0.24673 -3.2694704,0.19484 -1.84996,-0.0848 -3.30971,-0.44157 -3.30971,-0.44157 0,0.1801 0.0111,0.35157 0.0333,0.51194 0.24051,1.82571 1.81034,1.93508 3.29737,1.98607 1.50088,0.0514 2.8373104,-0.37004 2.8373104,-0.37004 l 0.0617,1.35686 c 0,0 -1.0498104,0.56374 -2.9199404,0.66742 -1.03124,0.0567 -2.3117,-0.0259 -3.80308,-0.42069 -3.23454998,-0.85613 -3.79081998,-4.304 -3.87592998,-7.8024197 -0.026,-1.03871 -0.01,-2.01815 -0.01,-2.83732 0,-3.57732 2.34385998,-4.62587996 2.34385998,-4.62587996 1.18184,-0.54277 3.20976,-0.77101 5.318,-0.7882499985409 h 0.0518 C 9.8267646,0.01719834 11.856025,0.24547834 13.037775,0.78824834 c 0,0 2.34377,1.04855996 2.34377,4.62587996 0,0 0.0294,2.63937 -0.32687,4.47183"/>
+ <path
+    fill="#000000"
+    d="m 12.616925,5.6916583 v 4.3315297 h -1.71607 V 5.8189683 c 0,-0.88624 -0.37289,-1.33607 -1.1187604,-1.33607 -0.82467,0 -1.23799,0.53361 -1.23799,1.58875 v 2.30122 h -1.70594 v -2.30122 c 0,-1.05514 -0.4134,-1.58875 -1.23808,-1.58875 -0.74587,0 -1.11876,0.44983 -1.11876,1.33607 v 4.2042197 h -1.71607 V 5.6916583 c 0,-0.88527 0.22541,-1.58876 0.67817,-2.10922 0.46689,-0.52047 1.07833,-0.78727 1.83735,-0.78727 0.87816,0 1.54317,0.33752 1.98288,1.01267 l 0.42744,0.71655 0.42753,-0.71655 c 0.43961,-0.67515 1.10463,-1.01267 1.9828704,-1.01267 0.75893,0 1.37037,0.2668 1.83735,0.78727 0.45268,0.52046 0.67808,1.22395 0.67808,2.10922"/>
+  </symbol>
+</svg>
+
+<footer class="footer">
+  <div class="footer_inner wrap pale">
+    <img src='https://arvimal.github.io/icons/apple-touch-icon.png' class="icon icon_2 transparent" alt="Clarity">
+    <p>Copyright&nbsp;<span class="year"></span>&nbsp;CLARITY. All Rights Reserved</p><a class="to_top" href="#documentTop">
+  <svg class="icon">
+  <title>to-top</title>
+  <use xlink:href="#to-top"></use>
+</svg>
+
+</a>
+
+  </div>
+</footer>
+
+<script type="text/javascript" src="https://arvimal.github.io/en/js/bundle.2eb8bded826af97bed60191cec7b2f311796d0f521dabf613dbbbc48360338b7cbd4c7c95b79bf83330c134478634baab31489a5f9cbd51539fc9c07e8065f2e.js" integrity="sha512-Lri97YJq&#43;XvtYBkc7HsvMReW0PUh2r9hPbu8SDYDOLfL1MfJW3m/gzMME0R4Y0uqsxSJpfnL1RU5/JwH6AZfLg==" crossorigin="anonymous"></script>
+
+  <script src="https://arvimal.github.io/js/search.min.786102b9f5b14ee0b60197dc064e532809aec49bcc43fea72e5a513113f04b44a7241d6683d3993d5b7a48582f4986e0b9a28c72ebc48a2072c52aad8f40a2b3.js"></script>
+
+  </body>
+</html>
