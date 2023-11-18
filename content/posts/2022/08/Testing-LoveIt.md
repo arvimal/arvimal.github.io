@@ -11,8 +11,7 @@ summary: "Hugo static webpages on GitHub, with LoveIt theme"
 tags: ["testing"]
 categories: ["personal"]
 
-featuredImage: ""
-featuredImagePreview: "images/santiago-gomez-WpZmGDzOAi0.jpg"
+featuredImage: "images/santiago-gomez-WpZmGDzOAi0.jpg"
 
 hiddenFromHomePage: false
 hiddenFromSearch: false
