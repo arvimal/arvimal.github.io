@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>fstrim on Clarity</title>
+    <title>fstrim on arvimal.github.io</title>
     <link>https://arvimal.github.io/tags/fstrim/</link>
-    <description>Recent content in fstrim on Clarity</description>
+    <description>Recent content in fstrim on arvimal.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <copyright>Copyright © 2008–2023, Vimal A.R; all rights reserved.</copyright>
     <lastBuildDate>Wed, 07 Oct 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/fstrim/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ceph Rados Block Device (RBD) and TRIM</title>

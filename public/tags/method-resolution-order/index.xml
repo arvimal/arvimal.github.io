@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>method-resolution-order on Clarity</title>
+    <title>method-resolution-order on arvimal.github.io</title>
     <link>https://arvimal.github.io/tags/method-resolution-order/</link>
-    <description>Recent content in method-resolution-order on Clarity</description>
+    <description>Recent content in method-resolution-order on arvimal.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://arvimal.github.io/tags/method-resolution-order/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <copyright>Copyright © 2008–2023, Vimal A.R; all rights reserved.</copyright><atom:link href="https://arvimal.github.io/tags/method-resolution-order/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Method Resolution Order - Object Oriented Programming</title>
       <link>https://arvimal.github.io/posts/2016/05/mro-object-oriented-programming/</link>

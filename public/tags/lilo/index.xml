@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>lilo on Clarity</title>
+    <title>lilo on arvimal.github.io</title>
     <link>https://arvimal.github.io/tags/lilo/</link>
-    <description>Recent content in lilo on Clarity</description>
+    <description>Recent content in lilo on arvimal.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <copyright>Copyright © 2008–2023, Vimal A.R; all rights reserved.</copyright>
     <lastBuildDate>Fri, 15 Feb 2008 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/lilo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bootloader checker</title>

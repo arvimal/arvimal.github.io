@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>rhel on Clarity</title>
+    <title>rhel on arvimal.github.io</title>
     <link>https://arvimal.github.io/tags/rhel/</link>
-    <description>Recent content in rhel on Clarity</description>
+    <description>Recent content in rhel on arvimal.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <copyright>Copyright © 2008–2023, Vimal A.R; all rights reserved.</copyright>
     <lastBuildDate>Thu, 23 Dec 2010 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/rhel/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>lsusb and chroot in anaconda.. Is usbfs mounted in anaconda %post installation ?</title>
