@@ -2,37 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://arvimal.github.io/</loc>
-    <lastmod>2022-08-10T19:13:41+02:00</lastmod>
-  </url><url>
-    <loc>https://arvimal.github.io/categories/</loc>
-    <lastmod>2022-08-10T19:13:41+02:00</lastmod>
-  </url><url>
-    <loc>https://arvimal.github.io/categories/personal/</loc>
-    <lastmod>2022-08-10T19:13:41+02:00</lastmod>
-  </url><url>
-    <loc>https://arvimal.github.io/posts/</loc>
-    <lastmod>2022-08-10T19:13:41+02:00</lastmod>
-  </url><url>
-    <loc>https://arvimal.github.io/tags/</loc>
-    <lastmod>2022-08-10T19:13:41+02:00</lastmod>
-  </url><url>
-    <loc>https://arvimal.github.io/tags/testing/</loc>
-    <lastmod>2022-08-10T19:13:41+02:00</lastmod>
-  </url><url>
-    <loc>https://arvimal.github.io/posts/2022/08/testing-loveit/</loc>
-    <lastmod>2022-08-10T19:13:41+02:00</lastmod>
-  </url><url>
     <loc>https://arvimal.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://arvimal.github.io/about/</loc>
     <lastmod>2019-02-28T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://arvimal.github.io/</loc>
+    <lastmod>2017-08-09T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://arvimal.github.io/tags/callable/</loc>
     <lastmod>2017-08-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://arvimal.github.io/posts/2017/08/callables-in-python/</loc>
+    <lastmod>2017-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://arvimal.github.io/categories/</loc>
+    <lastmod>2017-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://arvimal.github.io/posts/</loc>
     <lastmod>2017-08-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://arvimal.github.io/categories/programming/</loc>
@@ -45,6 +33,9 @@
     <lastmod>2017-08-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://arvimal.github.io/tags/python-objects/</loc>
+    <lastmod>2017-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://arvimal.github.io/tags/</loc>
     <lastmod>2017-08-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://arvimal.github.io/tags/kernel/</loc>
@@ -566,17 +557,11 @@
   </url><url>
     <loc>https://arvimal.github.io/docs/linux-booting/readme/</loc>
   </url><url>
-    <loc>https://arvimal.github.io/posts/2022/12/writing-my-blog-article-in-obsidian/</loc>
-  </url><url>
     <loc>https://arvimal.github.io/tags/__base__/</loc>
   </url><url>
     <loc>https://arvimal.github.io/tags/__bases__/</loc>
   </url><url>
-    <loc>https://arvimal.github.io/tags/arvimal.github.io/</loc>
-  </url><url>
     <loc>https://arvimal.github.io/tags/bios/</loc>
-  </url><url>
-    <loc>https://arvimal.github.io/tags/blog/</loc>
   </url><url>
     <loc>https://arvimal.github.io/tags/boot/</loc>
   </url><url>
