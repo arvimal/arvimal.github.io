@@ -2,13 +2,12 @@
 
 [[main]]
   name = "Blog"
-  title = "blog"
   pageRef = "posts"
   weight = 10
 
 [[main]]
   name = "Topics"
-  pageRef = "topics"
+  pageRef = "categories"
   weight = 20
 
 [[main]]
