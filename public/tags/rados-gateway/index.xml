@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rados-gateway on arvimal.github.io</title>
+    <link>https://arvimal.github.io/tags/rados-gateway/</link>
+    <description>Recent content in rados-gateway on arvimal.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2023 Vimal A R</copyright>
+    <lastBuildDate>Thu, 30 Jun 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/rados-gateway/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sharding the Ceph RADOS Gateway bucket index</title>
+      <link>https://arvimal.github.io/posts/2016/06/sharding-the-ceph-rgw-bucket-index/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/06/sharding-the-ceph-rgw-bucket-index/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

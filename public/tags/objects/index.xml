@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>objects on arvimal.github.io</title>
+    <link>https://arvimal.github.io/tags/objects/</link>
+    <description>Recent content in objects on arvimal.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2023 Vimal A R</copyright>
+    <lastBuildDate>Thu, 20 Oct 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/objects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python, Objects, and some more..</title>
+      <link>https://arvimal.github.io/posts/2016/10/python-objects/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2016/10/python-objects/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Ceph Rados Block Device (RBD) and TRIM</title>
+      <link>https://arvimal.github.io/posts/2015/10/rbd-object-remain-in-pool-after-deletion/</link>
+      <pubDate>Wed, 07 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2015/10/rbd-object-remain-in-pool-after-deletion/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>
