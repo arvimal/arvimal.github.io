@@ -7,8 +7,8 @@
   weight = 10
 
 [[main]]
-  name = "Topics"
-  pageRef = "topics"
+  name = "Categories"
+  pageRef = "categories"
   weight = 20
 
 [[main]]
@@ -32,8 +32,4 @@
   title = "rss"
   weight = 60
   url = "index.xml"
-
-[[footer]]
-  name = "Privacy"
-
 
