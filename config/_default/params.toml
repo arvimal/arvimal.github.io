@@ -1,1 +1,15 @@
-colorScheme = "avocado"
+# https://blowfish.page/docs/configuration/
+
+[global]
+colorScheme = "autumn"
+smartTOC = "true"
+enableSearch = "true"
+autoSwitchAppearance = "true"
+enableCodeCopy = "true"
+
+[header]
+layout = "basic"
+
+[homepage]
+layout = "background"
+
