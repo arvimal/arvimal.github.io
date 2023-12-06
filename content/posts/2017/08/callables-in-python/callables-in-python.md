@@ -164,7 +164,9 @@ TypeError: 'new' object is not callable
 ### Example 6: Callable instance of the same class
 
 ```python
-In [4]: class new: ...: def **call**(self): ...: print("I'm callable!")
+In [4]: class new: 
+	...: def **call**(self): 
+		...: print("I'm callable!")
 
 In [5]: n = new()
 

@@ -97,7 +97,7 @@
     "keywords": ["callable","python","python-objects"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "705"
+    "wordCount": "707"
   }]
   </script>
 
@@ -509,7 +509,7 @@
 <div style="cursor: default;" class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2017-08-09 00:00:00 &#43;0000 UTC">9 August 2017</time><span class="px-2 text-primary-500">&middot;</span><span>705 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
+  <time datetime="2017-08-09 00:00:00 &#43;0000 UTC">9 August 2017</time><span class="px-2 text-primary-500">&middot;</span><span>707 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
   
 
   
@@ -781,15 +781,17 @@
     </span>        
     
 </h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="k">class</span> <span class="nc">new</span><span class="p">:</span> <span class="o">...</span><span class="p">:</span> <span class="k">def</span> <span class="o">**</span><span class="n">call</span><span class="o">**</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="o">...</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;I&#39;m callable!&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">new</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">
-</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">n</span> 
-</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="o">**</span><span class="n">main</span><span class="o">**.</span><span class="n">new</span> <span class="n">at</span> <span class="mh">0x7f7a614b1f98</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl">
-</span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">n</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln">9</span><span class="cl"><span class="n">I</span><span class="s1">&#39;m callable!</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="k">class</span> <span class="nc">new</span><span class="p">:</span> 
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">	<span class="o">...</span><span class="p">:</span> <span class="k">def</span> <span class="o">**</span><span class="n">call</span><span class="o">**</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">		<span class="o">...</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;I&#39;m callable!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">new</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">n</span> 
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="o">**</span><span class="n">main</span><span class="o">**.</span><span class="n">new</span> <span class="n">at</span> <span class="mh">0x7f7a614b1f98</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">n</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="n">I</span><span class="s1">&#39;m callable!</span>
 </span></span></code></pre></div><p><em><strong>Example 5</strong></em> and <em><strong>Example 6</strong></em> shows how a class is itself callable, but unless it carries a <code>__call__()</code> method, the instances spawned out of it are not so.</p>
 <h3 class="relative group">References 
     <div id="references" class="anchor"></div>
