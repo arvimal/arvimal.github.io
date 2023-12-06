@@ -90,7 +90,9 @@ _100 elements -> 50 elements -> 25 elements -> 12 elements -> 6 elements - 3 ele
 
 ## Code
 
-### Example 1 : (Data set sorted in Increasing order)
+### Example 1
+
+The data set is sorted in the Increasing order
 
 ```python
 def binary_search(my_list, item): 
@@ -116,7 +118,9 @@ if __name__ == "__main__":
 	binary_search(my_list, 3)
 ```
 
-### Example 2 : (Same as above, with statements on how the search progresses)
+### Example 2
+
+This is same as above, with statements on how the search progresses
 
 ```python
 def binary_search(my_list, item):
