@@ -97,7 +97,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "1311"
+    "wordCount": "1314"
   }]
   </script>
 
@@ -524,7 +524,7 @@
 <div style="cursor: default;" class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2017-01-16 00:00:00 &#43;0000 UTC">16 January 2017</time><span class="px-2 text-primary-500">&middot;</span><span>1311 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
+  <time datetime="2017-01-16 00:00:00 &#43;0000 UTC">16 January 2017</time><span class="px-2 text-primary-500">&middot;</span><span>1314 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
     
     <span id="views_posts/2017/01/binary-search-algorithm-study.md" title="views">0</span> 
     
@@ -679,8 +679,8 @@
     <li><a href="#how-does-binary-search-work">How does Binary Search work?</a></li>
     <li><a href="#code">Code</a>
       <ul>
-        <li><a href="#example-1--data-set-sorted-in-increasing-order">Example 1 : (Data set sorted in Increasing order)</a></li>
-        <li><a href="#example-2--same-as-above-with-statementson-how-the-search-progresses">Example 2 : (Same as above, with statements on how the search progresses)</a></li>
+        <li><a href="#example-1">Example 1</a></li>
+        <li><a href="#example-2">Example 2</a></li>
         <li><a href="#observations">Observations:</a></li>
         <li><a href="#references">References:</a></li>
       </ul>
@@ -712,8 +712,8 @@
     <li><a href="#how-does-binary-search-work">How does Binary Search work?</a></li>
     <li><a href="#code">Code</a>
       <ul>
-        <li><a href="#example-1--data-set-sorted-in-increasing-order">Example 1 : (Data set sorted in Increasing order)</a></li>
-        <li><a href="#example-2--same-as-above-with-statementson-how-the-search-progresses">Example 2 : (Same as above, with statements on how the search progresses)</a></li>
+        <li><a href="#example-1">Example 1</a></li>
+        <li><a href="#example-2">Example 2</a></li>
         <li><a href="#observations">Observations:</a></li>
         <li><a href="#references">References:</a></li>
       </ul>
@@ -868,16 +868,17 @@
     </span>        
     
 </h2>
-<h3 class="relative group">Example 1 : (Data set sorted in Increasing order) 
-    <div id="example-1--data-set-sorted-in-increasing-order" class="anchor"></div>
+<h3 class="relative group">Example 1 
+    <div id="example-1" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#example-1--data-set-sorted-in-increasing-order" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#example-1" aria-label="Anchor">#</a>
     </span>        
     
 </h3>
+<p>The data set is sorted in the Increasing order</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span> 
 </span></span><span class="line"><span class="ln"> 2</span><span class="cl">	<span class="n">low_position</span> <span class="o">=</span> <span class="mi">0</span> 
 </span></span><span class="line"><span class="ln"> 3</span><span class="cl">	<span class="n">high_position</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
@@ -899,16 +900,17 @@
 </span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span> 
 </span></span><span class="line"><span class="ln">20</span><span class="cl">	<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> 
 </span></span><span class="line"><span class="ln">21</span><span class="cl">	<span class="n">binary_search</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</span></span></code></pre></div><h3 class="relative group">Example 2 : (Same as above, with statements on how the search progresses) 
-    <div id="example-2--same-as-above-with-statementson-how-the-search-progresses" class="anchor"></div>
+</span></span></code></pre></div><h3 class="relative group">Example 2 
+    <div id="example-2" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#example-2--same-as-above-with-statementson-how-the-search-progresses" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#example-2" aria-label="Anchor">#</a>
     </span>        
     
 </h3>
+<p>This is same as above, with statements on how the search progresses</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
 </span></span><span class="line"><span class="ln"> 2</span><span class="cl">
 </span></span><span class="line"><span class="ln"> 3</span><span class="cl">	<span class="c1"># Find and set the low and high positions of the data set # Note that these are not the values, but just positions. </span>
