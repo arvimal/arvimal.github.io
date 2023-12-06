@@ -168,14 +168,13 @@ if __name__ == "__main__":
 my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] 
 binary_search(my_list, 13) 
 ```
-### Observations:
+### Observations
 
 1. Binary Search needs a Sorted dataset to work, either increasing or decreasing.
 2. It finds the element of interest in logarithmic time, hence is also known as, `Logarithmic Search`.
 3. Binary Search searches through a dataset of `n` elements in `log(n)` iterations, in the worst case scenario.
 
-
-### References:
+### References
 
 1. [https://en.wikipedia.org/wiki/Binary\_search\_algorithm](https://en.wikipedia.org/wiki/Binary_search_algorithm)
 2. [http://quiz.geeksforgeeks.org/binary-search/](http://quiz.geeksforgeeks.org/binary-search/)
