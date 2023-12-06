@@ -169,9 +169,6 @@ binary_search(my_list, 13)
 2. It finds the element of interest in logarithmic time, hence is also known as, `Logarithmic Search`.
 3. Binary Search searches through a dataset of `n` elements in `log(n)` iterations, in the worst case scenario.
 
-### Note:
-
-All the examples used in this blog are available at  [https://github.com/arvimal/DataStructures-and-Algorithms-in-Python](https://github.com/arvimal/DataStructures-and-Algorithms-in-Python), with more detailed notes.
 
 ### References:
 
@@ -179,3 +176,4 @@ All the examples used in this blog are available at  [https://github.com/arvima
 2. [http://quiz.geeksforgeeks.org/binary-search/](http://quiz.geeksforgeeks.org/binary-search/)
 3. [https://www.hackerearth.com/practice/algorithms/searching/binary-search/tutorial/](https://www.hackerearth.com/practice/algorithms/searching/binary-search/tutorial/)
 4. [http://research.cs.queensu.ca/home/cisc121/2006s/webnotes/search.html](http://research.cs.queensu.ca/home/cisc121/2006s/webnotes/search.html)
+5. All the examples used in this blog are available at  [https://github.com/arvimal/DataStructures-and-Algorithms-in-Python](https://github.com/arvimal/DataStructures-and-Algorithms-in-Python), with more detailed notes.
