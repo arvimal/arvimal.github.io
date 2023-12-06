@@ -43,6 +43,7 @@ For a data set of 50,000 elements, Binary Search takes `16` iterations in the w
 
 ```python
 In [1]: import math
+
 In [2]: math.log(50000, 2)
 Out[2]: 15.609640474436812
 ```
