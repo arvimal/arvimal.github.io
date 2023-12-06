@@ -9,7 +9,6 @@ tags:
   - python
   - python-objects
 date created: 01-01-2023, Sunday, 12:15 PM
-featuredImage: "images/will-africano-s4a29qbHssg.jpg"
 ---
 
 <!--more-->
