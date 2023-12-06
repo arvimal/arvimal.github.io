@@ -30,7 +30,7 @@
 [[social]]
   name = "RSS"
   title = "rss"
-  weight = 4
+  weight = 60
   url = "index.xml"
 
 [[footer]]
