@@ -2,7 +2,7 @@
 
 [[main]]
   name = "Blog"
-  pageRef = "posts"
+  pageRef = "posts/"
   weight = 10
 
 
@@ -22,7 +22,7 @@
   pageRef = "about/"
   weight = 50
 
-[[social]]
+[[main]]
   name = "RSS"
   title = "rss"
   weight = 60

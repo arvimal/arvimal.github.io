@@ -8,7 +8,10 @@ baseurl = "https://arvimal.github.io/"  # Include trailing slash
 
 languageCode = "en"
 
-introDescription = "yes"
-description = "yes"
+paginate = 10
+summaryLength = 0
+
+# introDescription = "yes"
+# description = "yes"
 usePageBundles = "yes"
 
