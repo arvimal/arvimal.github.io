@@ -12,6 +12,16 @@ layout = "basic"
 
 [homepage]
 layout = "background"
-homepageImage = "images/scott-rodgerson-lRtzEExP0H8.jpg"
+homepageImage = "images/santiago-gomez-WpZmGDzOAi0.jpg"
+cardView = "true"
 
+
+[article]
+showViews = "true"
+showLikes = "true"
+showDateUpdated = "true"
+showHero = "true"
+heroStyle = "background"
+showTableOfContents = "true"
+showRelatedContent = "true"
 
