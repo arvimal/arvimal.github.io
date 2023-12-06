@@ -1,0 +1,10 @@
+title = "arvimal.github.io"
+
+[author]
+name = "Vimal A R"
+image = "images/avatar.jpg"
+headline = ""
+bio = "Still figuring it out!"
+links = [
+  { Linkedin = "https://linkedin.com/in/arvimal" }
+]
