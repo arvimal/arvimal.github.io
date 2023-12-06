@@ -7,8 +7,8 @@
   weight = 10
 
 [[main]]
-  name = "Categories"
-  pageRef = "categories"
+  name = "Topics"
+  pageRef = "topics"
   weight = 20
 
 [[main]]
