@@ -6,7 +6,8 @@ copyright = "Copyright © 2008–2023, Vimal A.R; all rights reserved."
 # canonifyurls = true
 paginate = 10
 theme = ["github.com/chipzoller/hugo-clarity"]
-disqusShortname = ""
+introDescription = "yes"
+description = "yes"
 
 DefaultContentLanguage = "en"
 # [languages]
