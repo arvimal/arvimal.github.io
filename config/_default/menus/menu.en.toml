@@ -19,12 +19,12 @@
 
 [[main]]
   name = "About"
-  pageRef = "about/"
+  pageRef = "about"
   weight = 50
 
 [[main]]
   name = "RSS"
   title = "rss"
   weight = 60
-  url = "index.xml"
+  url = "public/index.xml"
 
