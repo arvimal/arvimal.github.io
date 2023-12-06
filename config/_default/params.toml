@@ -27,7 +27,7 @@ numberOfTagsShown = 14 # Applies for all other default & custom taxonomies. e.g 
 # Switch to `true` if you'd like to group assets with the post itself (as a "leaf bundle").
 # This can be overridden at the page level; what is set below acts as the default if no page variable is set.
 # Details on page bundles: https://gohugo.io/content-management/page-bundles/#leaf-bundles
-usePageBundles = false
+usePageBundles = true
 
 # Path variables
 #
@@ -67,7 +67,7 @@ codeLineNumbers = true
 enableMathNotation = false
 
 # directory(s) where your articles are located
-mainSections = ["posts", "docs"] # see config details here https://gohugo.io/functions/where/#mainsections
+mainSections = ["posts"] # see config details here https://gohugo.io/functions/where/#mainsections
 
 # Label Non inline images on an article body
 figurePositionShow = false # toggle on or off globally
