@@ -26,5 +26,5 @@
   name = "RSS"
   title = "rss"
   weight = 60
-  url = "public/index.xml"
+  pageRef = "public/index.xml"
 
