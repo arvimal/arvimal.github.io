@@ -24,4 +24,5 @@ showHero = "true"
 heroStyle = "background"
 showTableOfContents = "true"
 showRelatedContent = "true"
+relatedContentLimit = 3
 
