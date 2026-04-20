@@ -23,9 +23,9 @@ Decorators are written such as it returns a function, rather than output somethi
 
 _**Example 0:**_
 
-\[code language='python'\] @my\_decorator def my\_func(): print("Hello")
+```python @my\_decorator def my\_func(): print("Hello")
 
-my\_func() \[/code\]
+my\_func() ```
 
 In the above code snippet, when `my_func()` is called, the python interpreter calls the decorator function `my_decorator`, executes it, and then passes the result to `my_func()`.
 
@@ -35,11 +35,11 @@ The example above doesn't do anything worth, but the following example should he
 
 _**Example 1:**_
 
-\[code language="python"\] def my\_decorator(my\_function): def inner\_decorator(): print("This happened before!") my\_function() print("This happens after ") print("This happened at the end!") return inner\_decorator
+```python def my\_decorator(my\_function): def inner\_decorator(): print("This happened before!") my\_function() print("This happens after ") print("This happened at the end!") return inner\_decorator
 
 @my\_decorator def my\_decorated(): print("This happened!")
 
-if \_\_name\_\_ == '\_\_main\_\_': my\_decorated() \[/code\]
+if __name__ == '__main__': my\_decorated() ```
 
 ### **Components:**
 
@@ -65,19 +65,19 @@ if \_\_name\_\_ == '\_\_main\_\_': my\_decorated() \[/code\]
 
 ### **Output:**
 
-\[code language="bash"\] # python decorators-1.py This happened before! # Called from the decorator This happened! # Called from the function This happens after # Called from the decorator This happened at the end! # Called from the decorator \[/code\]
+```bash # python decorators-1.py This happened before! # Called from the decorator This happened! # Called from the function This happens after # Called from the decorator This happened at the end! # Called from the decorator ```
 
  
 
 _**Example 2:**_
 
-\[code language="python"\] def double(my\_func): def inner\_func(a, b): return 2 \* my\_func(a, b) return inner\_func
+```python def double(my\_func): def inner\_func(a, b): return 2 \* my\_func(a, b) return inner\_func
 
 @double def adder(a, b): return a + b
 
 @double def subtractor(a, b): return a - b
 
-print(adder(10, 20)) print(subtractor(6, 1)) \[/code\]
+print(adder(10, 20)) print(subtractor(6, 1)) ```
 
 ### **Components:**
 
@@ -100,7 +100,7 @@ print(adder(10, 20)) print(subtractor(6, 1)) \[/code\]
 
 ### **Output:**
 
-\[code language="bash"\] # python decorators-2.py 60 10 \[/code\]
+```bash # python decorators-2.py 60 10 ```
 
 Inbuilt decorators such as @staticmethod and @classmethod will be discussed in an upcoming post.
 

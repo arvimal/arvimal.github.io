@@ -12,6 +12,8 @@ The bash environment variable 'RANDOM' is a pseudo-random number generator built
 
 Using the command \`echo $RANDOM\`, we can generate a random number. Building a random number generator which emits a sequence of random numbers is pretty easy.
 
-\[code language="bash"\] #!/bin/bash for i in \`seq 1 10\`: do echo $RANDOM; sleep 1s; done \[/code\]
+```bash
+#!/bin/bash for i in `seq 1 10`: do echo $RANDOM; sleep 1s; done
+```
 
 The 'seq' or the 'sequential' can be used to generate a sequence of numbers.

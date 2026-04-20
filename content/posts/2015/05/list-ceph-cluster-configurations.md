@@ -18,28 +18,28 @@ This is possible by interacting directly with the monitor's unix socket file. Th
 
 The default location can vary in case you have defined it to be a different one, at the time of the installation. To know the actual socket path, use the following command:
 
-\[sourcecode language="bash" gutter="false"\]
+```bash
 
 \# ceph-conf --name mon.$(hostname -s) --show-config-value admin\_socket
 
-\[/sourcecode\]
+```
 
 This should print the location of the admin socket. In most cases, it should be something like /var/run/ceph/ceph-mon.$(hostname -s).asok
 
 Once you have the monitor admin socket, use that location to show the various configuration settings with:
 
-\[sourcecode language="bash" gutter="false"\]
+```bash
 
 \# ceph daemon /var/run/ceph/ceph-mon.\*.asok config show
 
-\[/sourcecode\]
+```
 
 The output would be long, and won't fit in a single screen. You can either pipe it to 'less' or grep for a specific value in case you know what you are looking for.
 
 For example, if I need to look at the ratio at which the OSD would be considered full, I'll be using:
 
-\[sourcecode language="bash" gutter="false"\]
+```bash
 
 #  ceph daemon /var/run/ceph/ceph-mon.\*.asok config show | grep mon\_osd\_full\_ratio
 
-\[/sourcecode\]
+```

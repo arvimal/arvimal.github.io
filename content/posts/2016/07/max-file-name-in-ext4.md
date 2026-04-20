@@ -20,7 +20,7 @@ _**A**_ recent discussion at work brought up the question "What can be the lengt
 
 In the kernel source for the 2.6 kernel series (the question was for a RHEL6/EXT4 combination), in  [fs/ext4/ext4.h](https://access.redhat.com/labs/psb/versions/kernel-2.6.32-573.el6/fs/ext4/ext4.h), we'd be able to see the following:
 
-\[code language="c"\]
+```c
 
 #define EXT4\_NAME\_LEN 255
 
@@ -28,7 +28,7 @@ struct ext4\_dir\_entry { \_\_le32 inode; /\* Inode number \*/ \_\_le16 rec\_len
 
 /\* \* The new version of the directory entry. Since EXT4 structures are \* stored in intel byte order, and the name\_len field could never be \* bigger than 255 chars, it's safe to reclaim the extra byte for the \* file\_type field. \*/
 
-struct ext4\_dir\_entry\_2 { \_\_le32 inode; /\* Inode number \*/ \_\_le16 rec\_len; /\* Directory entry length \*/ \_\_u8 name\_len; /\* Name length \*/ \_\_u8 file\_type; char name\[EXT4\_NAME\_LEN\]; /\* File name \*/ }; \[/code\] This shows that there are two versions of the directory entry structure, ie.. `ext4_dir_entry` and `ext4_dir_entry_2`
+struct ext4\_dir\_entry\_2 { \_\_le32 inode; /\* Inode number \*/ \_\_le16 rec\_len; /\* Directory entry length \*/ \_\_u8 name\_len; /\* Name length \*/ \_\_u8 file\_type; char name\[EXT4\_NAME\_LEN\]; /\* File name \*/ }; ``` This shows that there are two versions of the directory entry structure, ie.. `ext4_dir_entry` and `ext4_dir_entry_2`
 
 A directory entry structure carries the file/folder name and the corresponding inode number under every directory.
 

@@ -36,7 +36,7 @@ The major differences between an array and a list are:
 - The size of lists are not static. It can be grown or shrinked using the \`append\` and \`remove\` methods. Arrays are static in size.
 - lists can accomodate multiple data types, while arrays cannot.
 
-\[code language="python"\] In \[1\]: mylist = \[\]
+```python In \[1\]: mylist = \[\]
 
 In \[2\]: type(mylist) Out\[2\]: list
 
@@ -44,7 +44,7 @@ In \[3\]: mylist.append("string")
 
 In \[4\]: mylist.append(1000)
 
-In \[5\]: mylist Out\[5\]: \['string', 1000\] \[/code\]
+In \[5\]: mylist Out\[5\]: \['string', 1000\] ```
 
 **Time complexity of Arrays**
 
@@ -59,8 +59,8 @@ In \[5\]: mylist Out\[5\]: \['string', 1000\] \[/code\]
 
 Python comes with a module named 'array' which emulates the behavior of arrays.
 
-\[code language="python"\] In \[24\]: import array
+```python In \[24\]: import array
 
 In \[25\]: myarray = array.array('i', \[1,2,3,4\])
 
-In \[26\]: myarray Out\[26\]: array('i', \[1, 2, 3, 4\]) \[/code\]
+In \[26\]: myarray Out\[26\]: array('i', \[1, 2, 3, 4\]) ```

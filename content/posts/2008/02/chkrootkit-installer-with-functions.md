@@ -9,7 +9,7 @@ tags:
 <!--more-->
 This is an extension or a rebuild of the previous chkrootkit install script, just used functions so its somewhat simplified.... ( Or is it ..? :) )
 
-\[code language="bash"\]
+```bash
 
 #!/bin/bash
 
@@ -29,4 +29,5 @@ else echo -e "Chkrootkit not found in $DOWNLOAD\_LOCATION, exiting..\\n" fi
 
 }
 
-chkrootkit-install && chkrootkit-run; echo -e "The result is saved in $RESULT\_FILE for reference.\\n" \[/code\]
+chkrootkit-install && chkrootkit-run; echo -e "The result is saved in $RESULT\_FILE for reference.\\n"
+```

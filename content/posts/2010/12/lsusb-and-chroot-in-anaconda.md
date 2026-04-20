@@ -54,16 +54,16 @@ This will make /mnt/sysimage as the working root, ie.. where our installation wa
 The strace output will be saved to 'strace.log' which we can open up in a text editor of our choice. Opening it in 'vi', shows a lot of stuff such as the command run, the default language, location of libraries loaded, the environment variables etc.. In this case we would only need to be interested in the last parts, ie.. to know where the binary failed :
 
 ```
-15:16:17 open("/dev/bus/usb", O\_RDONLY|O\_NONBLOCK|O\_DIRECTORY) = -1 ENOENT (No such file or directory) = 03067 
-15:16:17 open("/proc/bus/usb", O\_RDONLY|O\_NONBLOCK|O\_DIRECTORY) = 33067 
-15:16:17 fstat(3, {st\_dev=makedev(0, 3), st\_ino=4026532146, st\_mode=S\_IFDIR|0555, st\_nlink=2, st\_uid=0, st\_gid=0, st\_blksize=4096, st\_blocks=0, st\_size=0, st\_atime=2009/09/25-15:16:17, st\_mtime=2009/09/25-15:16:17, st\_ctime=2009/09/25-15:16:17}) = 03067 15:16:17 fcntl(3, F\_SETFD, FD\_CLOEXEC) = 03067 15:16:17 getdents(3, {{d\_ino=4026532146, d\_off=1, d\_reclen=24, d\_name="."} {d\_ino=4026531879, d\_off=2, d\_reclen=24, d\_name=".."}}, 4096) = 483067 
-15:16:17 getdents(3, {}, 4096) = 03067 15:16:17 close(3) = 03067 15:16:17 exit\_group(1) = ? 
+15:16:17 open("/dev/bus/usb", O_RDONLY|O_NONBLOCK|O_DIRECTORY) = -1 ENOENT (No such file or directory) = 03067 
+15:16:17 open("/proc/bus/usb", O_RDONLY|O_NONBLOCK|O_DIRECTORY) = 33067 
+15:16:17 fstat(3, {st_dev=makedev(0, 3), st_ino=4026532146, st_mode=S_IFDIR|0555, st_nlink=2, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=0, st_atime=2009/09/25-15:16:17, st_mtime=2009/09/25-15:16:17, st_ctime=2009/09/25-15:16:17}) = 03067 15:16:17 fcntl(3, F_SETFD, FD_CLOEXEC) = 03067 15:16:17 getdents(3, {{d_ino=4026532146, d_off=1, d_reclen=24, d_name="."} {d_ino=4026531879, d_off=2, d_reclen=24, d_name=".."}}, 4096) = 483067 
+15:16:17 getdents(3, {}, 4096) = 03067 15:16:17 close(3) = 03067 15:16:17 exit_group(1) = ? 
 ```
 
 The above trace output shows how the 'lsusb' binary proceeded at its last time and where it failed. We can see that it went to open '/dev/bus/usb', only to find that the said location does not exist. We can understand that it is a directory from the call
 
 ```
-open("/dev/bus/usb", O\_RDONLY|O\_NONBLOCK|O\_DIRECTORY)
+open("/dev/bus/usb", O_RDONLY|O_NONBLOCK|O_DIRECTORY)
 ```
 
 Ok,, fine.. so what does it do next ?
@@ -73,7 +73,7 @@ As the next step, it tries to open '/proc/bus/usb' and it is present, which we k
 This is where we find the interesting output :
 
 ```
-getdents(3, {{d\_ino=4026532146, d\_off=1, d\_reclen=24, d\_name="."} {d\_ino=4026531879, d\_off=2, d\_reclen=24, d\_name=".."}}, 4096) = 48
+getdents(3, {{d_ino=4026532146, d_off=1, d_reclen=24, d_name="."} {d_ino=4026531879, d_off=2, d_reclen=24, d_name=".."}}, 4096) = 48
 ```
 
 As you can see in the above trace, it returns '.' and '..', which means there are nothing in /proc/bus/usb. So what we do understand is 'lsusb' refers /dev/bus/usb and /proc/bus/usb for its outputs.. If it was not able to find anything, strace would have given us an error which obviously would have made life much easier.

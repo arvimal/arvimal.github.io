@@ -88,7 +88,7 @@ Out [8]: True
 
 ***Example 2*** shows that a function when called with the parantheses (including any required arguments) is equivalent to calling the `__call__()` magic method. ie.. calling a function/class with parantheses translates to calling the `__call__()` magic method.
 
-***NOTE:*** Read more on [Magic methods in Python](https://arvimal.github.com/posts/2016/06/02/magic-methods-in-python/)
+***NOTE:*** Read more on [Magic methods in Python](https://arvimal.blog/2016/06/02/magic-methods-in-python/)
 
 ### Example 3: Non-callable Instances
 
@@ -163,9 +163,7 @@ TypeError: 'new' object is not callable
 ### Example 6: Callable instance of the same class
 
 ```python
-In [4]: class new: 
-	...: def **call**(self): 
-		...: print("I'm callable!")
+In [4]: class new: ...: def **call**(self): ...: print("I'm callable!")
 
 In [5]: n = new()
 

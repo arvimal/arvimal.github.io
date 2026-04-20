@@ -1,6 +1,8 @@
 ---
 title: "`uninit_bg` and lazy block group allocation in EXT3/4"
 date: 2016-06-30
+categories:
+  - linux
 tags:
   - "ext3"
   - "ext4"

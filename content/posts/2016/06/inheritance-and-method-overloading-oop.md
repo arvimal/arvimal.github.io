@@ -22,13 +22,13 @@ Consider the two classes and its methods defined below:
 
 _**Example 0:**_
 
-\[code language="python"\] import abc
+```python import abc
 
 class MyClass(object):
 
-\_\_metaclass\_\_ = abc.ABCMeta
+__metaclass__ = abc.ABCMeta
 
-def \_\_init\_\_(self): pass
+def __init__(self): pass
 
 def my\_set\_method(self, value): self.value = value
 
@@ -42,7 +42,7 @@ def my\_set\_method(self, value): if not isinstance(value, int): value = 0 super
 
 def printdoc(self): print("\\nDocumentation for MyChildClass()")
 
-instance\_1 = MyChildClass() instance\_1.my\_set\_method(10) print(instance\_1.my\_get\_method()) instance\_1.printdoc() \[/code\]
+instance\_1 = MyChildClass() instance\_1.my\_set\_method(10) print(instance\_1.my\_get\_method()) instance\_1.printdoc() ```
 
  
 
@@ -72,23 +72,23 @@ Inheritance is possible from python builtins, and can be overridden as well. Let
 
 _**Example 1:**_
 
-\[code language="python"\] class MyList(list):
+```python class MyList(list):
 
-def \_\_getitem\_\_(self, index): if index == 0: raise IndexError if index &gt; 0: index -= 1 return list.\_\_getitem\_\_(self, index)
+def __getitem__(self, index): if index == 0: raise IndexError if index &gt; 0: index -= 1 return list.__getitem__(self, index)
 
-def \_\_setitem\_\_(self, index, value): if index == 0: raise IndexError if index &gt; 0: index -= 1 list.\_\_setitem\_\_(self, index, value)
+def __setitem__(self, index, value): if index == 0: raise IndexError if index &gt; 0: index -= 1 list.__setitem__(self, index, value)
 
 x = MyList(\['a', 'b', 'c'\]) print(x) print("-" \* 10)
 
 x.append('d') print(x) print("-" \* 10)
 
-x.\_\_setitem\_\_(4, 'e') print(x) print("-" \* 10)
+x.__setitem__(4, 'e') print(x) print("-" \* 10)
 
-print(x\[1\]) print(x.\_\_getitem\_\_(1)) print("-" \* 10)
+print(x\[1\]) print(x.__getitem__(1)) print("-" \* 10)
 
-print(x\[4\]) print(x.\_\_getitem\_\_(4)) \[/code\] This outputs:
+print(x\[4\]) print(x.__getitem__(4)) ``` This outputs:
 
-\[code language="python"\] \['a', 'b', 'c'\] ---------- \['a', 'b', 'c', 'd'\] ---------- \['a', 'b', 'c', 'e'\] ---------- a a ---------- e e \[/code\]
+```python \['a', 'b', 'c'\] ---------- \['a', 'b', 'c', 'd'\] ---------- \['a', 'b', 'c', 'e'\] ---------- a a ---------- e e ```
 
 ### How does the code work?
 
@@ -96,11 +96,11 @@ The class `MyList()` inherits from the builtin `list`. Because of the inheritan
 
 **_NOTE: In order to see the available methods in `list`, use `dir(list)`._**
 
-1. We create two functions/methods named \`\_\_getitem\_\_()\` and \`\_\_setitem\_\_()\` to override the inherited methods.
+1. We create two functions/methods named \`__getitem__()\` and \`__setitem__()\` to override the inherited methods.
 2. Within these functions/methods, we set our own conditions.
 3. Wie later call the builtin methods directly within these functions, using
-    1. list.\_\_getitem\_\_()
-    2. list.\_\_setitem\_\_()
+    1. list.__getitem__()
+    2. list.__setitem__()
 4. We create an instance named `x` from `MyList()`.
 5. We understand that
     1. `x[1]` and `x.__getitem__(1)` are same.

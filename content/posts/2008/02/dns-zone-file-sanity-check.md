@@ -7,6 +7,8 @@ categories:
 <!--more-->
 This bash script does a sanity check for the DNS domains defined inside /var/named.
 
-\[code language="bash"\] #!/bin/bash A=\`ls -l /var/named/\*.db | awk '{print $9}' | cut -f4 -d "/" | sed 's/.db$//'\` #domain names
+```bash
+#!/bin/bash A=`ls -l /var/named/*.db | awk '{print $9}' | cut -f4 -d "/" | sed 's/.db$//'` #domain names
 
-for i in $A; do named-checkzone $i /var/named/$i.db;done \[/code\]
+for i in $A; do named-checkzone $i /var/named/$i.db;done
+```

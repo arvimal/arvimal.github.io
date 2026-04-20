@@ -37,7 +37,7 @@ The 'read\_log' line in the debug logs contain a hex value after the string "mod
 
 This program accepts three arguments, the first being the hex value we talked about, the second being the pg\_num of the pool, and the third one being the pool id.
 
-\[code language="python"\]
+```python
 
 #!/usr/bin/env python # Calculate the PG ID from the object hash # vimal@redhat.com import sys
 
@@ -45,9 +45,9 @@ def pg\_id\_calc(\*args): if any(\[len(args) == 0, len(args) > 3, len(args) < 3\
 
 def help(): print("Usage:") print("This script expects the hash (in Hex), pg\_num of the pool, and the pool id as arguments, in order") print("\\nExample:") print("./pg\_id\_calc.py 0x8e2fe5d7 2048 12") sys.exit()
 
-if \_\_name\_\_ == '\_\_main\_\_': pg\_id\_calc(\*sys.argv\[1:\])
+if __name__ == '__main__': pg\_id\_calc(\*sys.argv\[1:\])
 
-\[/code\]
+```
 
 An example of the program in action:
 

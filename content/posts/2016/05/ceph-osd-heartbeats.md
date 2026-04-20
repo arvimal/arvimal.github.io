@@ -12,7 +12,7 @@ Ceph OSD daemons need to ensure that the neighbouring OSDs are functioning prope
 
 For this, each Ceph OSD process (ceph-osd) sends a heartbeat signal to the neighbouring OSDs. By default, the heartbeat signal is sent every 6 seconds \[1\], which is configurable of course.
 
-If the heartbeat check from one OSD doesn't hear from the other within the set value for \`osd\_heartbeat\_grace\` \[2\], which is set to 20 seconds by default, the OSD that sends the heartbeat check reports the other OSD (the one that didn't respond within 20 seconds) as down, to the MONs. Once an OSD reports three times that the non-responding OSD is indeed \`down\`, the MON acknowledges it and mark the OSD as down.
+If the heartbeat check from one OSD doesn't hear from the other within the set value for \`osd_heartbeat_grace\` \[2\], which is set to 20 seconds by default, the OSD that sends the heartbeat check reports the other OSD (the one that didn't respond within 20 seconds) as down, to the MONs. Once an OSD reports three times that the non-responding OSD is indeed \`down\`, the MON acknowledges it and mark the OSD as down.
 
 The Monitor will update the Cluster map and send it over to the participating nodes in the cluster.
 

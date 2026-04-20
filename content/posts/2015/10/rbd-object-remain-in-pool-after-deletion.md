@@ -20,25 +20,25 @@ I had an RBD image from an RHCS1.3 cluster mapped to a RHEL7.1 client machine, w
 
 1.RBD block device information
 
-\[code language="bash"\] # rbd info rbd\_img rbd image 'rbd\_img': size 10240 MB in 2560 objects order 22 (4096 kB objects) block\_name\_prefix: rb.0.1fcbe.2ae8944a format: 1 \[/code\]
+```bash # rbd info rbd\_img rbd image 'rbd\_img': size 10240 MB in 2560 objects order 22 (4096 kB objects) block\_name\_prefix: rb.0.1fcbe.2ae8944a format: 1 ```
 
 An XFS file system was created on this block device, and mounted at **/test.**
 
 2.Write a file onto the RBD mapped mount point. Used ‘**dd**’ to write a 5GB file.
 
-\[code language="bash"\] # dd if=/dev/zero of=/mnt/rbd\_image.img bs=1G count=5 5+0 records in 5+0 records out 5368709120 bytes (5.4 GB) copied, 8.28731 s, 648 MB/s \[/code\]
+```bash # dd if=/dev/zero of=/mnt/rbd\_image.img bs=1G count=5 5+0 records in 5+0 records out 5368709120 bytes (5.4 GB) copied, 8.28731 s, 648 MB/s ```
 
 3.Check the objects in the backend RBD pool
 
-\[code language="bash"\] # rados -p rbd ls | wc -l &lt; Total number of objects in the 'rbd' pool&gt; \[/code\]
+```bash # rados -p rbd ls | wc -l &lt; Total number of objects in the 'rbd' pool&gt; ```
 
 4.Delete the file from the mount point.
 
-\[code language="bash"\] # rm /test/rbd\_image.img -f # ls /test/ --NO FILES LISTED-- \[/code\]
+```bash # rm /test/rbd\_image.img -f # ls /test/ --NO FILES LISTED-- ```
 
 5.List the objects in the RBD pool
 
-\[code language="bash"\] # rados -p rbd ls | wc -l < Total number of objects in the 'rbd' pool > \[/code\]
+```bash # rados -p rbd ls | wc -l < Total number of objects in the 'rbd' pool > ```
 
 The number of objects doesn’t go down as we expect, after the file deletion. It remains the same, wrt to step 3.
 
@@ -62,4 +62,4 @@ In order to clear up the underlying blocks, or actually remove them, we can rely
 
 For the TRIM commands to work, the disks and the file system has to have the support. All the modern file systems have built-in support for **TRIM**. Mount the file system with the '**discard**' option, and you're good to go.
 
-\[code language="bash"\] # mount -o discard /dev/rbd{X}{Y} /{mount-point} \[/code\]
+```bash # mount -o discard /dev/rbd{X}{Y} /{mount-point} ```

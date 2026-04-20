@@ -14,7 +14,7 @@ In short, `self` is the instance itself.
 
 Let's check the following example:
 
-\[code language="python"\] class MyClass(object): def \_\_init\_\_(self, name): self.name = name print("Initiating the instance!")
+```python class MyClass(object): def __init__(self, name): self.name = name print("Initiating the instance!")
 
 def hello(self): print(self.name)
 
@@ -22,7 +22,7 @@ myclass = MyClass("Dan Inosanto")
 
 \# Calling the \`hello\` method via the Instance \`myclass\` myclass.hello()
 
-\# Calling the \`hello\` method vai the class. MyClass.hello(myclass) \[/code\]
+\# Calling the \`hello\` method vai the class. MyClass.hello(myclass) ```
 
 The code snippet above is trivial and stupid, but I think it gets the idea across.
 
@@ -34,17 +34,17 @@ We instantiate the class `MyClass()` as `myclass` and pass the string  _**Dan
 
 Next, we call the `hello()` method through the instance. ie..
 
-\[code language="python"\] myclass.hello() \[/code\]
+```python myclass.hello() ```
 
 This should print the name we passed while instantiating `MyClass()` as `myclass` , which should be pretty obvious.
 
 The second and last instruction is doing the same thing, but in a different way.
 
-\[code language="python"\] MyClass.hello(myclass) \[/code\] Here, we call the class `MyClass()` directly as well as it's method `hello()`. Let's check out what both prints:
+```python MyClass.hello(myclass) ``` Here, we call the class `MyClass()` directly as well as it's method `hello()`. Let's check out what both prints:
 
-\[code language="bash"\] # python /tmp/test.py
+```bash # python /tmp/test.py
 
-Initiating the instance! Dan Inosanto Dan Inosanto \[/code\]
+Initiating the instance! Dan Inosanto Dan Inosanto ```
 
 As we can see, both prints the same output. This means that :
 

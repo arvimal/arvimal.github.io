@@ -17,7 +17,7 @@ A `Mutator` method, also called an `Update` method, can change the state of the
 
 Consider the following example:
 
-\[code language="python"\] In \[10\]: a = \[1,2,3,4,5\]
+```python In \[10\]: a = \[1,2,3,4,5\]
 
 In \[11\]: a.count(1) Out\[11\]: 1
 
@@ -27,7 +27,7 @@ In \[13\]: a Out\[13\]: \[1, 2, 3, 4, 5\]
 
 In \[14\]: a.append(6)
 
-In \[15\]: a Out\[15\]: \[1, 2, 3, 4, 5, 6\] \[/code\]
+In \[15\]: a Out\[15\]: \[1, 2, 3, 4, 5, 6\] ```
 
 The methods `a.count()` and `a.index()` are both `Accessor` methods since it doesn't alter the object `a` in any sense, but only pulls the relevant information.
 

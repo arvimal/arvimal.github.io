@@ -7,8 +7,6 @@ categories:
 tags:
   - "kernel"
   - "module"
-featuredImage: "images/vincentiu-solomon-ln5drpv_ImI.jpg"
-featuredImagePreview: "images/vincentiu-solomon-ln5drpv_ImI.jpg"
 
 ---
 <!--more-->

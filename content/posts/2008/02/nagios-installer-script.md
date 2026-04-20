@@ -9,7 +9,7 @@ tags:
 <!--more-->
 This is a bash script which automates the installation of Nagios. There are more things to do such as setup of service monitoring, but that's for another time.
 
-\[code language="bash"\] #!/bin/bash DOWNLOAD\_LOCATION='/root/Downloads/' NAGIOS\_URL='http://jaist.dl.sourceforge.net/sourceforge/nagios/nagios-2.9.tar.gz' APACHE\_CONF='/etc/httpd/conf/httpd.conf' NAGIOS\_PLUGIN='http://nchc.dl.sourceforge.net/sourceforge/nagiosplug/nagios-plugins-1.4.8.tar.gz' NAGIOSHOME='/usr/local/nagios' DATE=\`date +%d-%b-%Y\` FILE='/root/Nagios.txt'
+```bash #!/bin/bash DOWNLOAD\_LOCATION='/root/Downloads/' NAGIOS\_URL='http://jaist.dl.sourceforge.net/sourceforge/nagios/nagios-2.9.tar.gz' APACHE\_CONF='/etc/httpd/conf/httpd.conf' NAGIOS\_PLUGIN='http://nchc.dl.sourceforge.net/sourceforge/nagiosplug/nagios-plugins-1.4.8.tar.gz' NAGIOSHOME='/usr/local/nagios' DATE=\`date +%d-%b-%Y\` FILE='/root/Nagios.txt'
 
 ################################# # \[1\]   Installing nagios       # ################################# nagios\_download () { clear
 
@@ -95,4 +95,4 @@ echo -e "Restarting the Web-Server...please wait..\\n" /etc/init.d/httpd restart
 
 nagios\_htpasswd () { echo "\[Creating the login credentials for the nagios URL :-\]" echo "------------------------------------------------------"; echo "Username    : nagiosadmin" htpasswd -c $NAGIOSHOME/etc/htpasswd.users nagiosadmin;echo echo -e "Login to the Nagios Interface is now restricted to user 'nagiosadmin'.\\n" }
 
-nagios\_download && nagios\_usercheck && nagios\_previouscheck && nagios\_ownership && nagios\_configure && nagios\_plugins && nagios\_conf\_files && nagios\_apache && nagios\_htpasswd \[/code\]
+nagios\_download && nagios\_usercheck && nagios\_previouscheck && nagios\_ownership && nagios\_configure && nagios\_plugins && nagios\_conf\_files && nagios\_apache && nagios\_htpasswd ```

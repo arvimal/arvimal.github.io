@@ -13,7 +13,8 @@ I think its usual to get crazy ideas and work trying to implement them, especial
 
 This script counts the entire number of files irrespective the folders under the main directory you specify for this script to work on. ie.. It recursively  counts the files under a directory tree.
 
-\[code language="bash"\] #!/bin/bash
+```bash
+#!/bin/bash
 
 #  Counts the number of files recursively inside a directory    # # echo ; clear echo -e "Please enter the directory location where you want the files to be counted...\\n" ; echo
 
@@ -25,4 +26,4 @@ echo -e "There are a total of $A files inside the directory $dir...\\n"
 
 C=\`ls -Rl | grep -v ./ | grep -v total | grep . | awk '{print $8}'\`
 
-echo -e "Do you want to scan the directory for the file types?\\n" echo -e "Y/N\\n" ; read choice; if \[ $choice = Y \] ; then cd $dir ; file $C | awk '{print $1,"=======>>", $2}' > $HOME/Filetype.txt;echo -e "Output saved in file Filetype.txt.\\n" elif \[ $choice = N \] ; then echo -e "Thankyou $USER, Take care....\\n" else echo ; echo -e "Invalid choice buddy...\\n" ; echo -e "Exiting.....Bye..\\n" ;  fi \[/code\]
+echo -e "Do you want to scan the directory for the file types?\\n" echo -e "Y/N\\n" ; read choice; if \[ $choice = Y \] ; then cd $dir ; file $C | awk '{print $1,"=======>>", $2}' > $HOME/Filetype.txt;echo -e "Output saved in file Filetype.txt.\\n" elif \[ $choice = N \] ; then echo -e "Thankyou $USER, Take care....\\n" else echo ; echo -e "Invalid choice buddy...\\n" ; echo -e "Exiting.....Bye..\\n" ;  fi ```

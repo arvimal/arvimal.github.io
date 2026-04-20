@@ -16,18 +16,18 @@ As we saw in the [previous post](https://arvimal.wordpress.com/2015/05/27/how-ca
 
 To change a configuration use:
 
-\[sourcecode language="bash" gutter="false"\]
+```bash
 
 \# ceph tell mon.\* injectargs '--{tunable value\_to\_be\_set}'
 
-\[/sourcecode\]
+```
 
 For example, to change the timeout value after which an OSD is out and down, can be changed with:
 
-\[sourcecode language="bash" gutter="false"\]
+```bash
 
 \# ceph tell mon.\* injectargs '--mon\_osd\_report\_timeout 400'
 
-\[/sourcecode\]
+```
 
 By default, it is 300 seconds, ie.. 5 minute

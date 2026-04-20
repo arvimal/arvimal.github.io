@@ -94,7 +94,7 @@ def selection_sort(my_list):
     for i in range(len(my_list)): 
         smallest = find_smallest(my_list) 
         new_list.append(my_list.pop(smallest)) 
-    return new_list[code]
+    return new_list```text
 ```
 
 ## 5. Observations

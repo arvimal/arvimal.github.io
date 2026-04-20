@@ -1,10 +1,10 @@
 ---
 title: "Method Resolution Order - Object Oriented Programming"
-date: 30-05-2016
-categories: 
+date: 2016-05-30
+categories:
   - "programming"
   - "python"
-tags: 
+tags:
   - "inheritance"
   - "method-resolution-order"
   - "mro"
@@ -12,8 +12,10 @@ tags:
   - "__bases__"
   - "__base__"
 ---
+
 <!--more-->
-_**M**_ethod Resolution Order or 'MRO' in short, denotes the way a programming language resolves a method or attribute. This post looks into how Method Resolution Order works, using Python.
+
+\_**M**\_ethod Resolution Order or 'MRO' in short, denotes the way a programming language resolves a method or attribute. This post looks into how Method Resolution Order works, using Python.
 
 Python supports classes inheriting from other classes. The class being inherited is called the Parent/Super class, while the class that inherits is called the Child/Sub class.
 
@@ -21,13 +23,13 @@ While inheriting from another class, the interpreter needs a way to resolve the 
 
 _**Example 0:**_
 
-\[code language="python"\]
+```python
 
-class A(object): def my\_func(self): print("Doing this in class A")
+class A(object): def my_func(self): print("Doing this in class A")
 
-class B(A): def my\_func(self): print("Doing this in class B")
+class B(A): def my_func(self): print("Doing this in class B")
 
-my\_instance = B() my\_instance.my\_func() \[/code\]
+my_instance = B() my_instance.my_func() ```
 
 ### **Structure:**
 
@@ -47,15 +49,15 @@ To understand this in depth, let's check another example:
 
 _**Example 1:**_
 
-\[code language="python"\] class A(object): def my\_func(self): print("Doing this in Class A")
+```python class A(object): def my_func(self): print("Doing this in Class A")
 
 class B(A): pass
 
-class C(object): def my\_func(self): print("Doing this in Class C")
+class C(object): def my_func(self): print("Doing this in Class C")
 
 class D(B, C): pass
 
-my\_instance = D() my\_instance.my\_func() \[/code\]
+my_instance = D() my_instance.my_func() ```
 
 ### **Structure**_**:**_
 
@@ -86,15 +88,15 @@ Let's check another example, which can be a bit more complex.
 
 _**Example 2:**_
 
-\[code language="python"\] class A(object): def my\_func(self): print("Doing this in A")
+```python class A(object): def my_func(self): print("Doing this in A")
 
 class B(A): pass
 
-class C(A): def my\_func(self): print("doing this in C")
+class C(A): def my_func(self): print("doing this in C")
 
 class D(B, C): pass
 
-my\_instance = D() my\_instance.my\_func() \[/code\]
+my_instance = D() my_instance.my_func() ```
 
 ### **Structure:**
 
@@ -126,33 +128,33 @@ _**Class D -> Class B -> Class C -> Class A.**_
 
 **NOTE: Python provides a method for a class to lookup the Method Resolution Order. Let's recheck Example 2 using that.**
 
-\[code language="python"\] class A(object): def my\_func(self): print("Calling this from A")
+```python class A(object): def my_func(self): print("Calling this from A")
 
 class B(A): pass
 
-class C(A): def my\_func(self): print("\\nCalling this from C")
+class C(A): def my_func(self): print("\\nCalling this from C")
 
 class D(B, C): pass
 
-my\_instance = D() my\_instance.my\_func()
+my_instance = D() my_instance.my_func()
 
-print("\\nPrint the Method Resolution Order") print(D.mro()) print(D.\_\_bases\_\_) \[/code\] This should print:
+print("\\nPrint the Method Resolution Order") print(D.mro()) print(D.__bases__) ``` This should print:
 
-\[code language="python"\] # python /tmp/Example-2.py
+```python # python /tmp/Example-2.py
 
 Calling this from C
 
-Print the Method Resolution Order class '\_\_main\_\_.D', class '\_\_main\_\_.B', class '\_\_main\_\_.C', class '\_\_main\_\_.A', type 'object'
+Print the Method Resolution Order class '__main__.D', class '__main__.B', class '__main__.C', class '__main__.A', type 'object'
 
-(, ) \[/code\]
+(, ) ```
 
 ### Takeaway
 
 1. Python follows a depth-first order for resolving methods and attributes.
 2. In case of multiple inheritances where the methods happen to occur more than once, python omits the first occurrence of a class in the Method Resolution Order.
 3. The `<class>.mro()`methods helps to understand the Medthod Resolution Order.
-4. The \`\_\_bases\_\_\` and \`\_\_base\_\_\` magic methods help to understand the Base/Parent classes of a Sub/Child class.
+4. The \`__bases__\` and \`__base__\` magic methods help to understand the Base/Parent classes of a Sub/Child class.
 
 ### References
 
-1. [https://en.wikipedia.org/wiki/Multiple\_inheritance](https://en.wikipedia.org/wiki/Multiple_inheritance)
+1. [https://en.wikipedia.org/wiki/Multiple_inheritance](https://en.wikipedia.org/wiki/Multiple_inheritance)
