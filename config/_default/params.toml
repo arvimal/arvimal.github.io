@@ -1,32 +1,26 @@
-# https://imfing.github.io/hextra/docs/getting-started/
+# https://jpanther.github.io/congo/docs/configuration/
 
-defaultTheme = "system"  # system, dark, or light
+colorScheme = "ocean"
+defaultAppearance = "dark"
+autoSwitchAppearance = true
+enableSearch = true
+enableCodeCopy = true
+mainSections = ["posts"]
 
-[navbar]
-  displayTitle = true
-  displayLogo = true
-  [navbar.logo]
-    path = "images/logo.png"
-    dark = "images/logo.png"
+[homepage]
+  layout = "card"
+  showRecent = true
+  showRecentItems = 8
 
-[footer]
-  displayCopyright = true
-  displayPoweredBy = false
+[article]
+  showDate = true
+  showDateUpdated = true
+  showTableOfContents = true
+  showReadingTime = true
+  showRelatedContent = true
+  relatedContentLimit = 3
+  showEdit = false
 
-displayUpdatedDate = true
-dateFormat = "January 2, 2006"
-
-[page]
-  width = "normal"
-
-[search]
-  enable = true
-  type = "flexsearch"
-
-[editURL]
-  enable = false
-
-[blog]
-  list.displayTags = true
-  list.sortBy = "date"
-  list.sortOrder = "desc"
+[list]
+  showSummary = true
+  groupByYear = true

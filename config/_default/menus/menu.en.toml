@@ -1,7 +1,12 @@
 [[main]]
   name = "Blog"
-  url = "/posts/"
+  pageRef = "posts"
   weight = 10
+
+[[main]]
+  name = "About"
+  pageRef = "about"
+  weight = 20
 
 [[main]]
   name = "GitHub"
@@ -12,8 +17,3 @@
   name = "LinkedIn"
   url = "https://linkedin.com/in/arvimal"
   weight = 40
-
-[[main]]
-  name = "About"
-  url = "/about/"
-  weight = 50

@@ -1,5 +1,5 @@
-# https://blowfish.page/docs/getting-started/
-theme = "github.com/imfing/hextra"
+# https://jpanther.github.io/congo/docs/getting-started/
+theme = "github.com/jpanther/congo/v2"
 
 title = "arvimal.github.io"  
 copyright = "Copyright © 2008–2023, Vimal A.R; all rights reserved."
