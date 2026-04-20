@@ -1,13 +1,9 @@
-# config/_default/menus.toml
-
 [[main]]
   name = "Blog"
-  pageRef = "posts/"
+  url = "/posts/"
   weight = 10
 
-
 [[main]]
-  pre = "github"
   name = "GitHub"
   url = "https://github.com/arvimal"
   weight = 30
@@ -19,12 +15,5 @@
 
 [[main]]
   name = "About"
-  pageRef = "about"
+  url = "/about/"
   weight = 50
-
-[[main]]
-  name = "RSS"
-  title = "rss"
-  weight = 60
-  pageRef = "public/index.xml"
-

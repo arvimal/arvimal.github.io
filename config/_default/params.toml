@@ -1,28 +1,32 @@
-# https://blowfish.page/docs/configuration/
+# https://imfing.github.io/hextra/docs/getting-started/
 
-[global]
-colorScheme = "autumn"
-smartTOC = "true"
-enableSearch = "true"
-autoSwitchAppearance = "true"
-enableCodeCopy = "true"
+theme = "system"  # system, dark, or light
 
-[header]
-layout = "basic"
+[navbar]
+  displayTitle = true
+  displayLogo = true
+  [navbar.logo]
+    path = "images/logo.png"
+    dark = "images/logo.png"
 
-[homepage]
-layout = "background"
-homepageImage = "images/will-africano-s4a29qbHssg.jpg"
-cardView = "true"
+[footer]
+  displayCopyright = true
+  displayPoweredBy = false
 
+displayUpdatedDate = true
+dateFormat = "January 2, 2006"
 
-[article]
-showViews = "true"
-showLikes = "true"
-showDateUpdated = "true"
-showHero = "true"
-heroStyle = "background"
-showTableOfContents = "true"
-showRelatedContent = "true"
-relatedContentLimit = 3
+[page]
+  width = "normal"
 
+[search]
+  enable = true
+  type = "flexsearch"
+
+[editURL]
+  enable = false
+
+[blog]
+  list.displayTags = true
+  list.sortBy = "date"
+  list.sortOrder = "desc"

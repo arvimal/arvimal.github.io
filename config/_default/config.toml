@@ -1,5 +1,5 @@
 # https://blowfish.page/docs/getting-started/
-theme = "github.com/nunocoracao/blowfish/v2"
+theme = "github.com/imfing/hextra"
 
 title = "arvimal.github.io"  
 copyright = "Copyright © 2008–2023, Vimal A.R; all rights reserved."
