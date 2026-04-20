@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mkinitrd on arvimal.github.io</title>
+    <link>http://localhost:1313/tags/mkinitrd/</link>
+    <description>Recent content in Mkinitrd on arvimal.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2008–2023, Vimal A.R; all rights reserved.</copyright><atom:link href="http://localhost:1313/tags/mkinitrd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/docs/linux-booting/04-troubleshooting/regenerate-a-new-initramfs-or-initrd-in-rhel-fedora-centos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/linux-booting/04-troubleshooting/regenerate-a-new-initramfs-or-initrd-in-rhel-fedora-centos/</guid>
+      <description>
+        
+          
+            &lt;p&gt;&lt;a href=&#34;https://wiki.centos.org/TipsAndTricks/CreateNewInitrd&#34;&gt;https://wiki.centos.org/TipsAndTricks/CreateNewInitrd&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you have changed a motherboard or moved a disk to a different system it may fail to boot due to the lack of appropriate drivers in the initial RAM disk image (initramfs for CentOS 6, initrd for CentOS 5).&lt;/p&gt;
+&lt;h2 id=&#34;boot-in-rescue-mode&#34;&gt;Boot in Rescue Mode&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Boot from a CentOS installation disc (for example, CD #1 or DVD).&lt;/li&gt;
+&lt;li&gt;Type &amp;quot;&lt;strong&gt;linux rescue&lt;/strong&gt;&amp;quot; at the &amp;quot;&lt;strong&gt;boot:&lt;/strong&gt;&amp;quot; prompt.&lt;/li&gt;
+&lt;li&gt;Mount all filesystems in read-write mode.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;create-the-new-initramfs-or-initrd&#34;&gt;Create the New Initramfs or Initrd&lt;/h2&gt;
+&lt;p&gt;Change root to real root (&#39;/&#39;) on your hard disk and make the new initramfs or initrd.&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

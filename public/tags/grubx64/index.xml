@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Grubx64 on arvimal.github.io</title>
+    <link>http://localhost:1313/tags/grubx64/</link>
+    <description>Recent content in Grubx64 on arvimal.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2008–2023, Vimal A.R; all rights reserved.</copyright><atom:link href="http://localhost:1313/tags/grubx64/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/docs/linux-booting/02-boot-loaders/difference-between-grubx64-and-shimx64/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/linux-booting/02-boot-loaders/difference-between-grubx64-and-shimx64/</guid>
+      <description>
+        
+          
+            &lt;h1 id=&#34;difference-between-grubx64-and-shimx64&#34;&gt;Difference between grubx64 and shimx64?&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://askubuntu.com/questions/342365/what-is-the-difference-between-grubx64-and-shimx64&#34;&gt;https://askubuntu.com/questions/342365/what-is-the-difference-between-grubx64-and-shimx64&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Typically, &lt;code&gt;EFI/ubuntu/grubx64.efi&lt;/code&gt; on the EFI System Partition (ESP) is the GRUB binary, and &lt;code&gt;EFI/ubuntu/shimx64.efi&lt;/code&gt; is the binary for shim.&lt;/p&gt;
+&lt;p&gt;The latter is a relatively simple program that provides a way to boot on a computer with Secure Boot active. On such a computer, an unsigned version of GRUB won&#39;t launch, and signing GRUB with Microsoft&#39;s keys is impossible, so shim bridges the gap and adds its own security tools that parallel those of Secure Boot. In practice, shim registers itself with the firmware and then launches a program called &lt;code&gt;grubx64.efi&lt;/code&gt; in the directory from which it was launched, so on a computer without Secure Boot (such as a Mac), launching &lt;code&gt;shimx64.efi&lt;/code&gt; is just like launching &lt;code&gt;grubx64.efi&lt;/code&gt;. On a computer with Secure Boot active, launching &lt;code&gt;shimx64.efi&lt;/code&gt; should result in GRUB starting up, whereas launching &lt;code&gt;grubx64.efi&lt;/code&gt; directly probably won&#39;t work.&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
