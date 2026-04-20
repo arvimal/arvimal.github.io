@@ -1,6 +1,6 @@
 title = "arvimal.github.io"
 
-[author]
+[params.author]
 name = "Vimal A R"
 image = "images/avatar.jpg"
 headline = ""

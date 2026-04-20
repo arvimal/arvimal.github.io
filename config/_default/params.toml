@@ -1,12 +1,5 @@
 # https://jpanther.github.io/congo/docs/configuration/
 
-[author]
-  name = "Vimal A.R"
-  links = [
-    { github = "https://github.com/arvimal" },
-    { linkedin = "https://linkedin.com/in/arvimal" }
-  ]
-
 colorScheme = "ocean"
 defaultAppearance = "dark"
 autoSwitchAppearance = true
