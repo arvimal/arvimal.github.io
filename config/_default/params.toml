@@ -1,8 +1,8 @@
 # https://jpanther.github.io/congo/docs/configuration/
 
 colorScheme = "ocean"
-defaultAppearance = "dark"
-autoSwitchAppearance = true
+defaultAppearance = "light"
+autoSwitchAppearance = false
 enableSearch = true
 enableCodeCopy = true
 mainSections = ["posts"]
@@ -10,7 +10,7 @@ mainSections = ["posts"]
 [homepage]
   layout = "card"
   showRecent = true
-  showRecentItems = 8
+  showRecentItems = 20
 
 [article]
   showDate = true
