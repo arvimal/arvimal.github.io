@@ -22,13 +22,16 @@ In the kernel source for the 2.6 kernel series (the question was for a RHEL6/EXT
 
 ```c
 
-#define EXT4\_NAME\_LEN 255
+#define EXT4_NAME_LEN 255
 
-struct ext4\_dir\_entry { \_\_le32 inode; /\* Inode number \*/ \_\_le16 rec\_len; /\* Directory entry length \*/ \_\_le16 name\_len; /\* Name length \*/ char name\[EXT4\_NAME\_LEN\]; /\* File name \*/ };
+struct ext4_dir_entry { __le32 inode; /* Inode number */ __le16 rec_len; /* Directory entry length */ __le16 name_len; /* Name length */ char name[EXT4_NAME_LEN]; /* File name */ };
 
-/\* \* The new version of the directory entry. Since EXT4 structures are \* stored in intel byte order, and the name\_len field could never be \* bigger than 255 chars, it's safe to reclaim the extra byte for the \* file\_type field. \*/
+/* * The new version of the directory entry. Since EXT4 structures are * stored in intel byte order, and the name_len field could never be * bigger than 255 chars, it's safe to reclaim the extra byte for the * file_type field. */
 
-struct ext4\_dir\_entry\_2 { \_\_le32 inode; /\* Inode number \*/ \_\_le16 rec\_len; /\* Directory entry length \*/ \_\_u8 name\_len; /\* Name length \*/ \_\_u8 file\_type; char name\[EXT4\_NAME\_LEN\]; /\* File name \*/ }; ``` This shows that there are two versions of the directory entry structure, ie.. `ext4_dir_entry` and `ext4_dir_entry_2`
+struct ext4_dir_entry_2 { __le32 inode; /* Inode number */ __le16 rec_len; /* Directory entry length */ __u8 name_len; /* Name length */ __u8 file_type; char name[EXT4_NAME_LEN]; /* File name */ };
+```
+
+This shows that there are two versions of the directory entry structure, ie.. `ext4_dir_entry` and `ext4_dir_entry_2`
 
 A directory entry structure carries the file/folder name and the corresponding inode number under every directory.
 

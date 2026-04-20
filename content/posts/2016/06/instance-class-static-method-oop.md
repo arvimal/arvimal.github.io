@@ -24,17 +24,21 @@ Almost all methods are Instance methods since they are accessed through instance
 
 For example:
 
-```python class MyClass(object):
+```python
+class MyClass(object):
 
-def set\_val(self, val): self.value = val
+def set_val(self, val): self.value = val
 
-def get\_val(self): print(self.value) return self.value
+def get_val(self): print(self.value) return self.value
 
 a = MyClass() b = MyClass()
 
-a.set\_val(10) b.set\_val(100)
+a.set_val(10) b.set_val(100)
 
-a.get\_val() b.get\_val() ``` The above code snippet shows manipulating the two methods  `set_val()` and `get_val()` . These are done through the instances `a` and `b`. Hence these methods are called **Instance methods**.
+a.get_val() b.get_val()
+```
+
+The above code snippet shows manipulating the two methods  `set_val()` and `get_val()` . These are done through the instances `a` and `b`. Hence these methods are called **Instance methods**.
 
 **NOTE: Instance methods have `self` as their first argument. `self` is the instance itself.**
 
@@ -58,29 +62,39 @@ Attributes set explicitly under a class (not under a function) are called Class 
 
 For example:
 
-```python class MyClass(object): value = 10
+```python
+class MyClass(object): value = 10
 
-def my\_func(self): pass ``` In the code snippet above, `value = 10` is an attribute defined under the class `MyClass()` and not under any functions/methods. Hence, it's called a Class attribute. =============================
+def my_func(self): pass
+```
+
+In the code snippet above, `value = 10` is an attribute defined under the class `MyClass()` and not under any functions/methods. Hence, it's called a Class attribute. =============================
 
 Let's check out an example on static methods and class attributes:
 
-```python class MyClass(object): # A class attribute count = 0
+```python
+class MyClass(object): # A class attribute count = 0
 
 def __init__(self, name): print("An instance is created!") self.name = name MyClass.count += 1
 
-\# Our class method @staticmethod def status(): print("The total number of instances are ", MyClass.count)
+# Our class method @staticmethod def status(): print("The total number of instances are ", MyClass.count)
 
 print(MyClass.count)
 
-my\_func\_1 = MyClass("MyClass 1") my\_func\_2 = MyClass("MyClass 2") my\_func\_3 = MyClass("MyClass 3")
+my_func_1 = MyClass("MyClass 1") my_func_2 = MyClass("MyClass 2") my_func_3 = MyClass("MyClass 3")
 
-MyClass.status() print(MyClass.count) ``` This prints the following:
+MyClass.status() print(MyClass.count)
+```
 
-```bash # python statismethod.py
+This prints the following:
+
+```bash
+# python statismethod.py
 
 0 An instance is created! An instance is created! An instance is created!
 
-The total number of instances are 3 3 ```
+The total number of instances are 3 3
+```
 
 **How does the code work?**
 
@@ -94,15 +108,19 @@ The total number of instances are 3 3 ```
 
 Another example:
 
-```python class Car(object):
+```python
+class Car(object):
 
-def sound(): print("vroom!") ```
+def sound(): print("vroom!")
+```
 
 The code above shows a method which is common to all the Car instances, and is not limited to a specific instance of Car. Hence, this can be called as a staticmethod since it's not necessarily bound to a Class or Instance to be called.
 
-```python class Car(object):
+```python
+class Car(object):
 
-@staticmethod def sound(): print("vroom!") ```
+@staticmethod def sound(): print("vroom!")
+```
 
 ### Class methods
 
@@ -116,39 +134,47 @@ Class methods are used when it's not necessary to instantiate a class to access 
 
 Example:
 
-```python class MyClass(object): value = 10
+```python
+class MyClass(object): value = 10
 
-@classmethod def my\_func(cls): print("Hello") ```
+@classmethod def my_func(cls): print("Hello")
+```
 
 **NOTE: Class methods have `cls` as their first argument, instead of `self`.**
 
 Example:
 
-```python class MyClass(object): count = 0
+```python
+class MyClass(object): count = 0
 
 def __init__(self, val): self.val = val MyClass.count += 1
 
-def set\_val(self, newval): self.val = newval
+def set_val(self, newval): self.val = newval
 
-def get\_val(self): return self.val
+def get_val(self): return self.val
 
-@classmethod def get\_count(cls): return cls.count
+@classmethod def get_count(cls): return cls.count
 
-object\_1 = MyClass(10) print("\\nValue of object : %s" % object\_1.get\_val()) print(MyClass.get\_count())
+object_1 = MyClass(10) print("\\nValue of object : %s" % object_1.get_val()) print(MyClass.get_count())
 
-object\_2 = MyClass(20) print("\\nValue of object : %s" % object\_2.get\_val()) print(MyClass.get\_count())
+object_2 = MyClass(20) print("\\nValue of object : %s" % object_2.get_val()) print(MyClass.get_count())
 
-object\_3 = MyClass(40) print("\\nValue of object : %s" % object\_3.get\_val()) print(MyClass.get\_count()) ``` Here, we use a `get_count()` function to get the number of times the counter was incremented. The counter is incremented each time an instance is created.
+object_3 = MyClass(40) print("\\nValue of object : %s" % object_3.get_val()) print(MyClass.get_count())
+```
+
+Here, we use a `get_count()` function to get the number of times the counter was incremented. The counter is incremented each time an instance is created.
 
 Since the counter is not really tied with the instance but only counts the number of instance, we set it as a classmethod, and calls it each time using `MyClass.get_count()`when an instance is created. The output looks as following:
 
-```bash # python classmethod.py
+```bash
+# python classmethod.py
 
 Value of object : 10 1
 
 Value of object : 20 2
 
-Value of object : 40 3 ```
+Value of object : 40 3
+```
 
  
 

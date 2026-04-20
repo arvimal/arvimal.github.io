@@ -21,15 +21,23 @@ Let's start off with a simple example based on Inheritance, and build from there
 
 _**Example 0:**_
 
-```python class MyClass(object):
+```python
+class MyClass(object):
 
 def func(self): print("I'm being called from the Parent class!")
 
 class ChildClass(MyClass): pass
 
-my\_instance\_1 = ChildClass() my\_instance\_1.func() ``` This outputs:
+my_instance_1 = ChildClass() my_instance_1.func()
+```
 
-```python In \[18\]: %run /tmp/super-1.py I'm being called from the Parent class ``` In _**Example 0**_, we have two classes, `MyClass` and `ChildClass`. The latter inherits from the former, and the parent class `MyClass` has a method named `func` defined.
+This outputs:
+
+```python
+In [18]: %run /tmp/super-1.py I'm being called from the Parent class
+```
+
+In _**Example 0**_, we have two classes, `MyClass` and `ChildClass`. The latter inherits from the former, and the parent class `MyClass` has a method named `func` defined.
 
 Since `ChildClass` inherits from `MyClass`, the child class has access to the methods defined in the parent class. An instance is created `my_instance_2`, for `ChildClass.`
 
@@ -39,7 +47,8 @@ Building up on the first example:
 
 _**Example 1:**_
 
-```python class MyClass(object):
+```python
+class MyClass(object):
 
 def func(self): print("I'm being called from the Parent class")
 
@@ -47,11 +56,18 @@ class ChildClass(MyClass):
 
 def func(self): print("I'm being called from the Child class")
 
-my\_instance\_1 = MyClass() my\_instance\_2 = ChildClass()
+my_instance_1 = MyClass() my_instance_2 = ChildClass()
 
-my\_instance\_1.func() my\_instance\_2.func() ``` This outputs:
+my_instance_1.func() my_instance_2.func()
+```
 
-```python In \[19\]: %run /tmp/super-1.py I'm being called from the Parent class I'm being called from the Child class ``` This example has a slight difference, both the child class as well as the parent class have the same method defined, ie.. `func`. In this scenario, the parent class' method is overridden by the child class method.
+This outputs:
+
+```python
+In [19]: %run /tmp/super-1.py I'm being called from the Parent class I'm being called from the Child class
+```
+
+This example has a slight difference, both the child class as well as the parent class have the same method defined, ie.. `func`. In this scenario, the parent class' method is overridden by the child class method.
 
 ie.. if we call the `func()` method from the instance of `ChildClass`, it need not go a fetch the method from its Parent class, since it's already defined locally.
 
@@ -65,7 +81,8 @@ In such a case, the inbuilt function `super()` can be used. Let's add to the
 
 _**Example 2:**_
 
-```python class MyClass(object):
+```python
+class MyClass(object):
 
 def func(self): print("I'm being called from the Parent class")
 
@@ -73,9 +90,14 @@ class ChildClass(MyClass):
 
 def func(self): print("I'm actually being called from the Child class") print("But...") # Calling the \`func()\` method from the Parent class. super(ChildClass, self).func()
 
-my\_instance\_2 = ChildClass() my\_instance\_2.func() ``` This outputs:
+my_instance_2 = ChildClass() my_instance_2.func()
+```
 
-```python In \[21\]: %run /tmp/super-1.py I'm actually being called from the Child class But... I'm being called from the Parent class ```
+This outputs:
+
+```python
+In [21]: %run /tmp/super-1.py I'm actually being called from the Child class But... I'm being called from the Parent class
+```
 
 ### How is the code structured?
 
@@ -94,7 +116,8 @@ my\_instance\_2 = ChildClass() my\_instance\_2.func() ``` This outputs:
 
 Example 2 can also be re-written as :
 
-```python class MyClass(object):
+```python
+class MyClass(object):
 
 def func(self): print("I'm being called from the Parent class")
 
@@ -102,7 +125,8 @@ class ChildClass(MyClass):
 
 def func(self): print("I'm actually being called from the Child class") print("But...") # Calling the \`func()\` method from the Parent class. # super(ChildClass, self).func() MyClass.func(self) # Call the method directly via Parent class
 
-my\_instance\_2 = ChildClass() my\_instance\_2.func() ```
+my_instance_2 = ChildClass() my_instance_2.func()
+```
 
  
 
@@ -112,25 +136,29 @@ Let's see another example for  `super()` . This is from our previous article o
 
 _**Example 3:**_
 
-```python import abc
+```python
+import abc
 
 class MyClass(object):
 
 __metaclass__ = abc.ABCMeta
 
-def my\_set\_val(self, value): self.value = value
+def my_set_val(self, value): self.value = value
 
-def my\_get\_val(self): return self.value
+def my_get_val(self): return self.value
 
-@abc.abstractmethod def print\_doc(self): return
+@abc.abstractmethod def print_doc(self): return
 
 class MyChildClass(MyClass):
 
-def my\_set\_val(self, value): if not isinstance(value, int): value = 0 super(MyChildClass, self).my\_set\_val(self)
+def my_set_val(self, value): if not isinstance(value, int): value = 0 super(MyChildClass, self).my_set_val(self)
 
-def print\_doc(self): print("Documentation for MyChild Class")
+def print_doc(self): print("Documentation for MyChild Class")
 
-my\_instance = MyChildClass() my\_instance.my\_set\_val(100) print(my\_instance.my\_get\_val()) print(my\_instance.print\_doc()) ``` The code is already discussed [here](https://arvimal.wordpress.com/2016/06/29/inheritance-and-method-overloading-object-oriented-programming/). The `my_set_val` method is defined in both the child class as well as the parent class.
+my_instance = MyChildClass() my_instance.my_set_val(100) print(my_instance.my_get_val()) print(my_instance.print_doc())
+```
+
+The code is already discussed [here](https://arvimal.wordpress.com/2016/06/29/inheritance-and-method-overloading-object-oriented-programming/). The `my_set_val` method is defined in both the child class as well as the parent class.
 
 We overload the `my_set_val` method defined in the parent class, in the child class. But after enhancing/overloading it, we call the `my_set_val` method specifically from the Parent class using `super()` and thus enhance it.
 

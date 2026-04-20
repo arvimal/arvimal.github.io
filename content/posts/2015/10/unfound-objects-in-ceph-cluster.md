@@ -24,7 +24,9 @@ Each pool has a set of **Placement Groups** (**PG**) assigned to it at the time
 
 The PG map will have the **ACTING** and **UP** OSD sets for each PG. To understand the ACTING set and UP set for the PGs, as well as a plethora of other information, use :
 
-```bash # ceph pg dump ```
+```bash
+# ceph pg dump
+```
 
 The ACTING set is the current active set of OSDs that stores the replica sets for that particular PG. The UP set is the set of OSDs that are currently up and running. Usually, the ACTING set and UP set are the same. When an OSD in the ACTING set is not reachable, other OSDs wait for 5 minutes (which is configurable) for it to come back online (this is checked with a hearbeat).
 
@@ -46,11 +48,15 @@ But in case there are no other copies, and the OSD with the only copy is not com
 
 1\. For a new object without a previous version:
 
-```bash # ceph pg {pg.num} mark\_unfound\_lost delete ```
+```bash
+# ceph pg {pg.num} mark_unfound_lost delete
+```
 
 2\. For an object which is likely to have a previous version:
 
-```bash # ceph pg {pg.num} mark\_unfound\_lost revert ```
+```bash
+# ceph pg {pg.num} mark_unfound_lost revert
+```
 
 **NOTE:** The upstream Ceph documentation has an excellent write-up about “unfound” objects [here](http://docs.ceph.com/docs/master/rados/troubleshooting/troubleshooting-pg/#unfound-objects).
 

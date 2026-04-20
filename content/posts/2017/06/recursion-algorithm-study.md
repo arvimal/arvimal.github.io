@@ -48,7 +48,9 @@ Consider `n!`:
 
 `n!` can also be represented as:
 
-```bash n! = n * (n - 1)! ---> [Step 1] (n - 1)! = (n - 1) * (n - 2)! ---> [Step 2] (n - 2)! = (n - 2) * (n - 3)! ---> [Step 3] . .. ... (n - (n - 1)) = 1 ---> [Base case] ```
+```bash
+n! = n * (n - 1)! ---> [Step 1] (n - 1)! = (n - 1) * (n - 2)! ---> [Step 2] (n - 2)! = (n - 2) * (n - 3)! ---> [Step 3] . .. ... (n - (n - 1)) = 1 ---> [Base case]
+```
 
 Each level/step is a product of a value and all the levels below it. Hence, `Step 1` will end up moving to `Step 2` to get the factorial of elements below it, then to `Step 3` and so on.
 
@@ -58,7 +60,9 @@ ie.. the control of execution move as:
 
 In a much easier-to-grasp example, a `5!` would be:
 
-```bash 5! = 5 * 4! ---> [Step 1] 4! = 4 * 3! ---> [Step 2] 3! = 3 * 2! ---> [Step 3] 2! = 2 * 1! ---> [Step 4] 1! = 1 ---> [Step 5] / [Base case] ```
+```bash
+5! = 5 * 4! ---> [Step 1] 4! = 4 * 3! ---> [Step 2] 3! = 3 * 2! ---> [Step 3] 2! = 2 * 1! ---> [Step 4] 1! = 1 ---> [Step 5] / [Base case]
+```
 
 The order of execution will be :
 
@@ -84,29 +88,37 @@ This can be summed up using an awesome pictorial representation, from the book `
 
 * A `factorial` function in a `while` loop
 
-```python def fact(n): factorial = 1 while n > 1: factorial = factorial * n n = n - 1 return factorial
+```python
+def fact(n): factorial = 1 while n > 1: factorial = factorial * n n = n - 1 return factorial
 
-print("Factorial of {0} is {1}".format(10, fact(10))) print("Factorial of {0} is {1}".format(20, fact(20))) ```
+print("Factorial of {0} is {1}".format(10, fact(10))) print("Factorial of {0} is {1}".format(20, fact(20)))
+```
 
 * The same function above, in a `recursive` loop
 
-```python def factorial(n): if n == 0: return 1 else: return n * factorial(n - 1)
+```python
+def factorial(n): if n == 0: return 1 else: return n * factorial(n - 1)
 
-print("Factorial of {0} is {1}".format(10, factorial(10))) print("Factorial of {0} is {1}".format(20, factorial(20))) ```
+print("Factorial of {0} is {1}".format(10, factorial(10))) print("Factorial of {0} is {1}".format(20, factorial(20)))
+```
 
 ### Example 2:
 
 * A function to sum numbers in a normal `for` loop.
 
-```python def my_sum(my_list): num = 0 for i in my_list: num += i return num
+```python
+def my_sum(my_list): num = 0 for i in my_list: num += i return num
 
-print(my_sum([10, 23, 14, 12, 11, 94, 20])) ```
+print(my_sum([10, 23, 14, 12, 11, 94, 20]))
+```
 
 * The same function to add numbers, in a `recursive` loop
 
-```python def my_sum(my_list): if my_list == []: return 0 else: return my_list[0] + my_sum(my_list[1:])
+```python
+def my_sum(my_list): if my_list == []: return 0 else: return my_list[0] + my_sum(my_list[1:])
 
-print(my_sum([10, 23, 14, 12, 11, 94, 20])) ```
+print(my_sum([10, 23, 14, 12, 11, 94, 20]))
+```
 
 ## Code explanation
 

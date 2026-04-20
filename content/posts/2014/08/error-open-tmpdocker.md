@@ -15,7 +15,7 @@ c) Created a tar-ball of the filesystem with the command below:
 
 ```bash
 
-\# tar --numeric-owner --exclude=/proc --exclude=/sys --exclude=/mnt --exclude=/var/cache
+# tar --numeric-owner --exclude=/proc --exclude=/sys --exclude=/mnt --exclude=/var/cache
 
 \--exclude=/usr/share/doc --exclude=/tmp --exclude=/var/log -zcvf /mnt/rhel6.5-base.tar.gz /
 
@@ -25,7 +25,7 @@ d) Load the tar.gz image using 'docker load' (as per the man page of 'docker loa
 
 ```bash
 
-\# docker load -i rhel6.5-base.tar.gz
+# docker load -i rhel6.5-base.tar.gz
 
 ```
 
@@ -41,7 +41,7 @@ After a bit of searching and testing, I found that 'docker load -i' doesn't work
 
 ```bash
 
-\# cat rhel6.5-base.tar.gz | docker import - rhel6/6.5
+# cat rhel6.5-base.tar.gz | docker import - rhel6/6.5
 
 ```
 
@@ -49,7 +49,7 @@ This ends up with the image showing up in 'docker images'
 
 ```bash
 
-\# docker images
+# docker images
 
 REPOSITORY   TAG    IMAGE ID           CREATED                  VIRTUAL SIZE rhel6/6.1           latest  32b4b345454a  About a minute ago 1.251 GB
 

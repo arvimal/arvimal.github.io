@@ -41,11 +41,11 @@ This program accepts three arguments, the first being the hex value we talked ab
 
 #!/usr/bin/env python # Calculate the PG ID from the object hash # vimal@redhat.com import sys
 
-def pg\_id\_calc(\*args): if any(\[len(args) == 0, len(args) > 3, len(args) < 3\]): help() else: hash\_hex = args\[0\] pg\_num = int(args\[1\]) pool\_id = int(args\[2\]) hash\_dec = int(hash\_hex, 16) id\_dec = hash\_dec % pg\_num id = hex(id\_dec) pg\_id = str(pool\_id) + "." + str(id)\[2:\] print("\\nThe PG ID is %s\\n" % pg\_id)
+def pg_id_calc(*args): if any([len(args) == 0, len(args) > 3, len(args) < 3]): help() else: hash_hex = args[0] pg_num = int(args[1]) pool_id = int(args[2]) hash_dec = int(hash_hex, 16) id_dec = hash_dec % pg_num id = hex(id_dec) pg_id = str(pool_id) + "." + str(id)[2:] print("\\nThe PG ID is %s\\n" % pg_id)
 
-def help(): print("Usage:") print("This script expects the hash (in Hex), pg\_num of the pool, and the pool id as arguments, in order") print("\\nExample:") print("./pg\_id\_calc.py 0x8e2fe5d7 2048 12") sys.exit()
+def help(): print("Usage:") print("This script expects the hash (in Hex), pg_num of the pool, and the pool id as arguments, in order") print("\\nExample:") print("./pg_id_calc.py 0x8e2fe5d7 2048 12") sys.exit()
 
-if __name__ == '__main__': pg\_id\_calc(\*sys.argv\[1:\])
+if __name__ == '__main__': pg_id_calc(*sys.argv[1:])
 
 ```
 

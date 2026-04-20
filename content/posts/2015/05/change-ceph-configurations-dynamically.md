@@ -18,7 +18,7 @@ To change a configuration use:
 
 ```bash
 
-\# ceph tell mon.\* injectargs '--{tunable value\_to\_be\_set}'
+# ceph tell mon.* injectargs '--{tunable value_to_be_set}'
 
 ```
 
@@ -26,7 +26,7 @@ For example, to change the timeout value after which an OSD is out and down, can
 
 ```bash
 
-\# ceph tell mon.\* injectargs '--mon\_osd\_report\_timeout 400'
+# ceph tell mon.* injectargs '--mon_osd_report_timeout 400'
 
 ```
 

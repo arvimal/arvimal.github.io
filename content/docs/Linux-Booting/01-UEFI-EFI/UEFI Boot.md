@@ -95,7 +95,7 @@ The UEFI spec defines something called the //UEFI boot manager//. (Linux distrib
 
 “The UEFI boot manager is a firmware policy engine that can be configured by modifying architecturally defined global NVRAM variables. The boot manager will attempt to load UEFI drivers and UEFI applications (including UEFI OS boot loaders) in an order defined by the global NVRAM variables.”
 
-Well, that’s that cleared up, let’s move on. {{./icon_wink.gif}}No, not really. Let’s translate that to Human. With only a reasonable degree of simplification, you can think of the UEFI boot manager as being a boot menu. With a BIOS firmware, your firmware level ‘boot menu’ is, necessarily, the disks connected to the system at boot time – no more, no less. This is not true with a UEFI firmware.
+Well, that’s that cleared up, let’s move on. No, not really. Let’s translate that to Human. With only a reasonable degree of simplification, you can think of the UEFI boot manager as being a boot menu. With a BIOS firmware, your firmware level ‘boot menu’ is, necessarily, the disks connected to the system at boot time – no more, no less. This is not true with a UEFI firmware.
 
 The UEFI boot manager can be configured – simply put, you can add and remove entries from the ‘boot menu’. The firmware can also (it fact the spec requires it to, in various cases) effectively ‘generate’ entries in this boot menu, according to the disks attached to the system and possibly some firmware configuration settings. It can also be examined – you can look at what’s in it.
 

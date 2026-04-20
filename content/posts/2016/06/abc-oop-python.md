@@ -23,69 +23,83 @@ Python supports Abstract Classes via the module `abc` from version 2.6. Using 
 
 _**Example 0:**_
 
-```python import abc
+```python
+import abc
 
-class My\_ABC\_Class(object): __metaclass__ = abc.ABCMeta
+class My_ABC_Class(object): __metaclass__ = abc.ABCMeta
 
-@abc.abstractmethod def set\_val(self, val): return
+@abc.abstractmethod def set_val(self, val): return
 
-@abc.abstractmethod def get\_val(self): return
+@abc.abstractmethod def get_val(self): return
 
-\# Abstract Base Class defined above ^^^
+# Abstract Base Class defined above ^^^
 
-\# Custom class inheriting from the above Abstract Base Class, below
+# Custom class inheriting from the above Abstract Base Class, below
 
-class MyClass(My\_ABC\_Class):
+class MyClass(My_ABC_Class):
 
-def set\_val(self, input): self.val = input
+def set_val(self, input): self.val = input
 
-def get\_val(self): print("\\nCalling the get\_val() method") print("I'm part of the Abstract Methods defined in My\_ABC\_Class()") return self.val
+def get_val(self): print("\\nCalling the get_val() method") print("I'm part of the Abstract Methods defined in My_ABC_Class()") return self.val
 
-def hello(self): print("\\nCalling the hello() method") print("I'm \*not\* part of the Abstract Methods defined in My\_ABC\_Class()")
+def hello(self): print("\\nCalling the hello() method") print("I'm *not* part of the Abstract Methods defined in My_ABC_Class()")
 
-my\_class = MyClass()
+my_class = MyClass()
 
-my\_class.set\_val(10) print(my\_class.get\_val()) my\_class.hello() ``` In the code above, `set_val()` and `get_val()` are both abstract methods defined in the Abstract Class `My_ABC_Class()`. Hence it should be implemented in the child class inheriting from `My_ABC_Class()`.
+my_class.set_val(10) print(my_class.get_val()) my_class.hello()
+```
+
+In the code above, `set_val()` and `get_val()` are both abstract methods defined in the Abstract Class `My_ABC_Class()`. Hence it should be implemented in the child class inheriting from `My_ABC_Class()`.
 
 In the child class `MyClass()` , we have to strictly define the abstract classes defined in the Parent class. But the child class is free to implement other methods of their own. The `hello()` method is one such.
 
 This will print :
 
-```bash # python abstractclasses-1.py
+```bash
+# python abstractclasses-1.py
 
-Calling the get\_val() method I'm part of the Abstract Methods defined in My\_ABC\_Class() 10
+Calling the get_val() method I'm part of the Abstract Methods defined in My_ABC_Class() 10
 
-Calling the hello() method I'm \*not\* part of the Abstract Methods defined in My\_ABC\_Class() ``` The code gets executed properly even if the  `hello()` method is not an abstract method.
+Calling the hello() method I'm *not* part of the Abstract Methods defined in My_ABC_Class()
+```
+
+The code gets executed properly even if the  `hello()` method is not an abstract method.
 
 Let's check what happens if we don't implement a method marked as an abstract method, in the child class.
 
 _**Example 1:**_
 
-```python import abc
+```python
+import abc
 
-class My\_ABC\_Class(object): __metaclass__ = abc.ABCMeta
+class My_ABC_Class(object): __metaclass__ = abc.ABCMeta
 
-@abc.abstractmethod def set\_val(self, val): return
+@abc.abstractmethod def set_val(self, val): return
 
-@abc.abstractmethod def get\_val(self): return
+@abc.abstractmethod def get_val(self): return
 
-\# Abstract Base Class defined above ^^^
+# Abstract Base Class defined above ^^^
 
-\# Custom class inheriting from the above Abstract Base Class, below
+# Custom class inheriting from the above Abstract Base Class, below
 
-class MyClass(My\_ABC\_Class):
+class MyClass(My_ABC_Class):
 
-def set\_val(self, input): self.val = input
+def set_val(self, input): self.val = input
 
-def hello(self): print("\\nCalling the hello() method") print("I'm \*not\* part of the Abstract Methods defined in My\_ABC\_Class()")
+def hello(self): print("\\nCalling the hello() method") print("I'm *not* part of the Abstract Methods defined in My_ABC_Class()")
 
-my\_class = MyClass()
+my_class = MyClass()
 
-my\_class.set\_val(10) print(my\_class.get\_val()) my\_class.hello() ``` _**Example 1**_ is the same as _**Example 0**_ except we don't have the `get_val()` method defined in the child class.
+my_class.set_val(10) print(my_class.get_val()) my_class.hello()
+```
+
+_**Example 1**_ is the same as _**Example 0**_ except we don't have the `get_val()` method defined in the child class.
 
 This means that we're breaking the rule of abstraction. Let's see what happens:
 
-```bash # python abstractclasses-2.py Traceback (most recent call last): File "abstractclasses-2.py", line 50, in my\_class = MyClass() TypeError: Can't instantiate abstract class MyClass with abstract methods get\_val ```
+```bash
+# python abstractclasses-2.py Traceback (most recent call last): File "abstractclasses-2.py", line 50, in my_class = MyClass() TypeError: Can't instantiate abstract class MyClass with abstract methods get_val
+```
 
 The traceback clearly states that the child class `MyClass()` cannot be instantiated since it does not implement the Abstract methods defined in it's Parent class.
 
@@ -95,29 +109,37 @@ Let's use the same example, this time we're instantiating the Abstract class tho
 
 _**Example 2:**_
 
-```python import abc
+```python
+import abc
 
-class My\_ABC\_Class(object): __metaclass__ = abc.ABCMeta
+class My_ABC_Class(object): __metaclass__ = abc.ABCMeta
 
-@abc.abstractmethod def set\_val(self, val): return
+@abc.abstractmethod def set_val(self, val): return
 
-@abc.abstractmethod def get\_val(self): return
+@abc.abstractmethod def get_val(self): return
 
-\# Abstract Base Class defined above ^^^
+# Abstract Base Class defined above ^^^
 
-\# Custom class inheriting from the above Abstract Base Class, below
+# Custom class inheriting from the above Abstract Base Class, below
 
-class MyClass(My\_ABC\_Class):
+class MyClass(My_ABC_Class):
 
-def set\_val(self, input): self.val = input
+def set_val(self, input): self.val = input
 
-def hello(self): print("\\nCalling the hello() method") print("I'm \*not\* part of the Abstract Methods defined in My\_ABC\_Class()")
+def hello(self): print("\\nCalling the hello() method") print("I'm *not* part of the Abstract Methods defined in My_ABC_Class()")
 
-my\_class = My\_ABC\_Class()    # <- Instantiating the Abstract Class
+my_class = My_ABC_Class()    # <- Instantiating the Abstract Class
 
-my\_class.set\_val(10) print(my\_class.get\_val()) my\_class.hello() ``` What does this output?
+my_class.set_val(10) print(my_class.get_val()) my_class.hello()
+```
 
-```bash # python abstractclasses-3.py Traceback (most recent call last): File "abstractclasses-3.py", line 54, in <module> my\_class = My\_ABC\_Class() TypeError: Can't instantiate abstract class My\_ABC\_Class with abstract methods get\_val, set\_val ``` As expected, the Python interpreter says that it can't instantiate the abstract class My\_ABC\_Class.
+What does this output?
+
+```bash
+# python abstractclasses-3.py Traceback (most recent call last): File "abstractclasses-3.py", line 54, in <module> my_class = My_ABC_Class() TypeError: Can't instantiate abstract class My_ABC_Class with abstract methods get_val, set_val
+```
+
+As expected, the Python interpreter says that it can't instantiate the abstract class My\_ABC\_Class.
 
 ### **Takeaway:**
 

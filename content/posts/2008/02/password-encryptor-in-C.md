@@ -11,13 +11,14 @@ Some time back, I had to implement a password encryption section in one of my ba
 
 ```C
 
-#include stdlib.h #include unistd.h #include stdio.h #include crack.h #define DICTIONARY /usr/lib/cracklib\_dict
+#include stdlib.h #include unistd.h #include stdio.h #include crack.h #define DICTIONARY /usr/lib/cracklib_dict
 
-int main(int argc, char \*argv\[\]) {
+int main(int argc, char *argv[]) {
 
-char \*password; char \*problem;
+char *password; char *problem;
 
-int status = 0; printf(\\nEnter an empty password or Ctrl-D to quit.\\n); while ((password = getpass(\\nPassword: )) != NULL \*password ) { if ((problem = FascistCheck(password, DICTIONARY)) != NULL) { printf(Bad password: %s.\\n, problem); status = 1; } else { printf(Good password!\\n); } } exit(status); } ```
+int status = 0; printf(\\nEnter an empty password or Ctrl-D to quit.\\n); while ((password = getpass(\\nPassword: )) != NULL *password ) { if ((problem = FascistCheck(password, DICTIONARY)) != NULL) { printf(Bad password: %s.\\n, problem); status = 1; } else { printf(Good password!\\n); } } exit(status); }
+```
 
 Compile the code using the GNU C compiler.
 

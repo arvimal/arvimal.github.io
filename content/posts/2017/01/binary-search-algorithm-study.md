@@ -34,13 +34,21 @@ Due to the divide-and-conquer method, the maximum number of iterations needed fo
 
 Hence, for a data set of 10240 elements, Binary Search takes a maximum of `13` iterations.
 
-```python In \[1\]: import math
+```python
+In [1]: import math
 
-In \[2\]: math.log(10240, 2) Out\[2\]: 13.321928094887364 ``` For a data set of 50,000 elements, Binary Search takes `16` iterations in the worst case scenario while a Linear Search may take 50,000 iterations in a similar case.
+In [2]: math.log(10240, 2) Out[2]: 13.321928094887364
+```
 
-```python In \[1\]: import math
+For a data set of 50,000 elements, Binary Search takes `16` iterations in the worst case scenario while a Linear Search may take 50,000 iterations in a similar case.
 
-In \[2\]: math.log(50000, 2) Out\[2\]: 15.609640474436812 ``` ie.. the Worst case for Binary search takes `log(n)` iterations to find the element.
+```python
+In [1]: import math
+
+In [2]: math.log(50000, 2) Out[2]: 15.609640474436812
+```
+
+ie.. the Worst case for Binary search takes `log(n)` iterations to find the element.
 
 ### 2\. Best-case performance: O(1)
 
@@ -64,7 +72,8 @@ Binary Search uses the following method, provided the dataset is sorted.
 8. Check if the element of interest is the middle element in the new/shorter dataset.
 9. Continue till the element of interest is found.
 
-\[caption id="attachment\_2310" align="alignnone" width="1280"\]![binary_search_depiction-svg](images/binary_search_depiction-svg.png) Binary Search - Source: Wikipedia\[/caption\]
+![binary_search_depiction-svg](images/binary_search_depiction-svg.png)
+*Binary Search - Source: Wikipedia*
 
 The figure above shows how Binary Search works on a dataset of 16 elements, to find the element `7`.
 
@@ -87,45 +96,49 @@ _100 elements -> 50 elements -> 25 elements -> 12 elements -> 6 elements - 3 ele
 
 ### Example 1 : (Data set sorted in Increasing order)
 
-```python def binary\_search(my\_list, item): low\_position = 0 high\_position = len(my\_list) - 1
+```python
+def binary_search(my_list, item): low_position = 0 high_position = len(my_list) - 1
 
-while low\_position = high\_position: mid\_position = (low\_position + high\_position) // 2 mid\_element = my\_list\[mid\_position\]
+while low_position = high_position: mid_position = (low_position + high_position) // 2 mid_element = my_list[mid_position]
 
-if mid\_element == item: print("\\nYour search item {0} is at index {1}".format( item, mid\_position)) return mid\_element
+if mid_element == item: print("\\nYour search item {0} is at index {1}".format( item, mid_position)) return mid_element
 
-elif mid\_element <= item: high\_position = mid\_position - 1
+elif mid_element <= item: high_position = mid_position - 1
 
-else: low\_position = mid\_position + 1 return None
+else: low_position = mid_position + 1 return None
 
-if __name__ == "__main__": my\_list = \[1, 2, 3, 4, 5, 6\] binary\_search(my\_list, 3) ```
+if __name__ == "__main__": my_list = [1, 2, 3, 4, 5, 6] binary_search(my_list, 3)
+```
 
 ### Example 2 : (Same as above, with statements on how the search progresses)
 
-```python def binary\_search(my\_list, item):
+```python
+def binary_search(my_list, item):
 
-\# Find and set the low and high positions of the data set # Note that these are not the values, but just positions. low\_position = 0 high\_position = len(my\_list) - 1
+# Find and set the low and high positions of the data set # Note that these are not the values, but just positions. low_position = 0 high_position = len(my_list) - 1
 
-\# Calculate the Complexity import math complexity = math.ceil(math.log(len(my\_list), 2))
+# Calculate the Complexity import math complexity = math.ceil(math.log(len(my_list), 2))
 
-\# Print some info on the dataset print("\\nDataset size : {0} elements".format(len(my\_list))) print("Element of interest : {0}".format(item)) print("Maximum number of iterations to find {0} : {1}\\n".format( item, complexity))
+# Print some info on the dataset print("\\nDataset size : {0} elements".format(len(my_list))) print("Element of interest : {0}".format(item)) print("Maximum number of iterations to find {0} : {1}\\n".format( item, complexity))
 
-while low\_position <= high\_position:
+while low_position <= high_position:
 
-\# Find the middle position from the low and high positions mid\_position = (low\_position + high\_position) // 2
+# Find the middle position from the low and high positions mid_position = (low_position + high_position) // 2
 
-\# Find the element residing in the middle position of the data set. mid\_element = my\_list\[mid\_position\]
+# Find the element residing in the middle position of the data set. mid_element = my_list[mid_position]
 
-print("Element at min index : {0}".format(my\_list\[low\_position\])) print("Element at max index : {1}".format(high\_position, my\_list\[high\_position\])) print("Element at mid index {0} : {1}".format(mid\_position, mid\_element))
+print("Element at min index : {0}".format(my_list[low_position])) print("Element at max index : {1}".format(high_position, my_list[high_position])) print("Element at mid index {0} : {1}".format(mid_position, mid_element))
 
-if mid\_element == item: print("\\nYour search item {0} is at index {1}".format( item, mid\_position)) return mid\_element
+if mid_element == item: print("\\nYour search item {0} is at index {1}".format( item, mid_position)) return mid_element
 
-elif mid\_element > item: high\_position = mid\_position - 1 print("{0} in the left subset, omitting the right subset\\n".format(item))
+elif mid_element > item: high_position = mid_position - 1 print("{0} in the left subset, omitting the right subset\\n".format(item))
 
-else: low\_position = mid\_position + 1 print("{0} in the right subset, omitting the left subset\\n".format(item))
+else: low_position = mid_position + 1 print("{0} in the right subset, omitting the left subset\\n".format(item))
 
 print("Element of interest not in dataset\\n") return None
 
-if __name__ == "__main__": my\_list = \[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13\] binary\_search(my\_list, 13) ```
+if __name__ == "__main__": my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] binary_search(my_list, 13)
+```
 
 ### Observations:
 

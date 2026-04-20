@@ -20,7 +20,7 @@ The default location can vary in case you have defined it to be a different one,
 
 ```bash
 
-\# ceph-conf --name mon.$(hostname -s) --show-config-value admin\_socket
+# ceph-conf --name mon.$(hostname -s) --show-config-value admin_socket
 
 ```
 
@@ -30,7 +30,7 @@ Once you have the monitor admin socket, use that location to show the various co
 
 ```bash
 
-\# ceph daemon /var/run/ceph/ceph-mon.\*.asok config show
+# ceph daemon /var/run/ceph/ceph-mon.*.asok config show
 
 ```
 
@@ -40,6 +40,6 @@ For example, if I need to look at the ratio at which the OSD would be considered
 
 ```bash
 
-#  ceph daemon /var/run/ceph/ceph-mon.\*.asok config show | grep mon\_osd\_full\_ratio
+#  ceph daemon /var/run/ceph/ceph-mon.*.asok config show | grep mon_osd_full_ratio
 
 ```

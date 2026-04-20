@@ -54,15 +54,17 @@ Linear search progresses as following:
 
 ## Code
 
-```python def linear\_search(my\_list, item): """Linear search"""
+```python
+def linear_search(my_list, item): """Linear search"""
 
-low\_position = 0 high\_position = len(my\_list) - 1
+low_position = 0 high_position = len(my_list) - 1
 
-while low\_position < high\_position:
+while low_position < high_position:
 
-if my\_list\[low\_position\] == item: print("Your search item {0} is at position {1}".format( item, low\_position)) return low\_position else: low\_position += 1
+if my_list[low_position] == item: print("Your search item {0} is at position {1}".format( item, low_position)) return low_position else: low_position += 1
 
-if __name__ == "__main__": my\_list = \[1, 2, 3, 4, 5, 6\] linear\_search(my\_list, 5) ```
+if __name__ == "__main__": my_list = [1, 2, 3, 4, 5, 6] linear_search(my_list, 5)
+```
 
  
 

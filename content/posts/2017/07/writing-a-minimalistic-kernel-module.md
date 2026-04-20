@@ -302,9 +302,9 @@ Makefile test.c
 
 [root@centos7 test]# make -C /lib/modules/$(uname -r)/build M=$PWD modules 
 make: Entering directory `/usr/src/kernels/3.10.0-514.26.2.el7.x86_64' 
-CC \[M\] /lib/modules/3.10.0-514.26.2.el7.x86_64/test/test.o Building modules, stage 2. MODPOST 1 modules 
+CC [M] /lib/modules/3.10.0-514.26.2.el7.x86_64/test/test.o Building modules, stage 2. MODPOST 1 modules 
 CC /lib/modules/3.10.0-514.26.2.el7.x86_64/test/test.mod.o 
-LD \[M\] /lib/modules/3.10.0-514.26.2.el7.x86_64/test/test.ko 
+LD [M] /lib/modules/3.10.0-514.26.2.el7.x86_64/test/test.ko 
 make: Leaving directory \`/usr/src/kernels/3.10.0-514.26.2.el7.x86_64'
 ```
 

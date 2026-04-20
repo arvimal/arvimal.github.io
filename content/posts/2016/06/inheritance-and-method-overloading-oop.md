@@ -22,7 +22,8 @@ Consider the two classes and its methods defined below:
 
 _**Example 0:**_
 
-```python import abc
+```python
+import abc
 
 class MyClass(object):
 
@@ -30,19 +31,20 @@ __metaclass__ = abc.ABCMeta
 
 def __init__(self): pass
 
-def my\_set\_method(self, value): self.value = value
+def my_set_method(self, value): self.value = value
 
-def my\_get\_method(self): return self.value
+def my_get_method(self): return self.value
 
 @abc.abstractmethod def printdoc(self): return
 
 class MyChildClass(MyClass):
 
-def my\_set\_method(self, value): if not isinstance(value, int): value = 0 super(MyChildClass, self).my\_set\_method(self)
+def my_set_method(self, value): if not isinstance(value, int): value = 0 super(MyChildClass, self).my_set_method(self)
 
 def printdoc(self): print("\\nDocumentation for MyChildClass()")
 
-instance\_1 = MyChildClass() instance\_1.my\_set\_method(10) print(instance\_1.my\_get\_method()) instance\_1.printdoc() ```
+instance_1 = MyChildClass() instance_1.my_set_method(10) print(instance_1.my_get_method()) instance_1.printdoc()
+```
 
  
 
@@ -72,23 +74,29 @@ Inheritance is possible from python builtins, and can be overridden as well. Let
 
 _**Example 1:**_
 
-```python class MyList(list):
+```python
+class MyList(list):
 
 def __getitem__(self, index): if index == 0: raise IndexError if index &gt; 0: index -= 1 return list.__getitem__(self, index)
 
 def __setitem__(self, index, value): if index == 0: raise IndexError if index &gt; 0: index -= 1 list.__setitem__(self, index, value)
 
-x = MyList(\['a', 'b', 'c'\]) print(x) print("-" \* 10)
+x = MyList(['a', 'b', 'c']) print(x) print("-" * 10)
 
-x.append('d') print(x) print("-" \* 10)
+x.append('d') print(x) print("-" * 10)
 
-x.__setitem__(4, 'e') print(x) print("-" \* 10)
+x.__setitem__(4, 'e') print(x) print("-" * 10)
 
-print(x\[1\]) print(x.__getitem__(1)) print("-" \* 10)
+print(x[1]) print(x.__getitem__(1)) print("-" * 10)
 
-print(x\[4\]) print(x.__getitem__(4)) ``` This outputs:
+print(x[4]) print(x.__getitem__(4))
+```
 
-```python \['a', 'b', 'c'\] ---------- \['a', 'b', 'c', 'd'\] ---------- \['a', 'b', 'c', 'e'\] ---------- a a ---------- e e ```
+This outputs:
+
+```python
+['a', 'b', 'c'] ---------- ['a', 'b', 'c', 'd'] ---------- ['a', 'b', 'c', 'e'] ---------- a a ---------- e e
+```
 
 ### How does the code work?
 

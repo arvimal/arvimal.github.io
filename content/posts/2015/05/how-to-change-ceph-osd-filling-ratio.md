@@ -17,7 +17,7 @@ The 'ceph tell' is a very useful command in the sense the administrator don't ne
 
 ```bash
 
-\# ceph tell mon.\* injectargs "--mon\_osd\_full\_ratio .98"
+# ceph tell mon.* injectargs "--mon_osd_full_ratio .98"
 
 ```
 

@@ -18,7 +18,10 @@ What does the following assignment do?
 
 ```python
 
-a = 1 ``` Of course, anyone dabbled in code knows this. The statement above creates a container \`a\` and stores the value \`1\` in it.
+a = 1
+```
+
+Of course, anyone dabbled in code knows this. The statement above creates a container \`a\` and stores the value \`1\` in it.
 
 But it seem that's not exactly what's happening, at least from Python's view-point.
 
@@ -46,23 +49,31 @@ When a name that's already defined is entered at the python prompt, the interpre
 
 - A single value, available in its data section.
 
-```python In \[1\]: a = 1
+```python
+In [1]: a = 1
 
-In \[2\]: a Out\[2\]: 1 ```
+In [2]: a Out[2]: 1
+```
 
 - A single type, since the object is an instance of a pre-defined type class such as `int` , `float` etc..
 
-```python In \[3\]: type(a) Out\[3\]: int ```
+```python
+In [3]: type(a) Out[3]: int
+```
 
 - Attributes either inherited from the parent type class or defined by the user.
 
-```python In \[10\]: dir(a) Out\[10\]: \['__abs__', '__add__', '__and__', '__bool__', '__ceil__', '__class__', '__delattr__', '__dir__', '__divmod__', '__doc__', '__eq__', '__float__', ...\[content omitted\] '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 'bit\_length', 'conjugate', 'denominator', 'from\_bytes', 'imag', 'numerator', 'real', 'to\_bytes'\] ```
+```python
+In [10]: dir(a) Out[10]: ['__abs__', '__add__', '__and__', '__bool__', '__ceil__', '__class__', '__delattr__', '__dir__', '__divmod__', '__doc__', '__eq__', '__float__', ...[content omitted] '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 'bit_length', 'conjugate', 'denominator', 'from_bytes', 'imag', 'numerator', 'real', 'to_bytes']
+```
 
 - One or more base classes. All [new-stlye classes](https://www.python.org/doc/newstyle/) in Python ultimately inherits from the `object` class.
 
-```python In \[4\]: type(a) Out\[4\]: int
+```python
+In [4]: type(a) Out[4]: int
 
-In \[5\]: int.mro() Out\[5\]: \[int, object\] ```
+In [5]: int.mro() Out[5]: [int, object]
+```
 
 * * *
 
@@ -72,7 +83,9 @@ In \[5\]: int.mro() Out\[5\]: \[int, object\] ```
 
 - A unique ID representing the object.
 
-```python In \[6\]: id(a) Out\[6\]: 140090033476640 ```
+```python
+In [6]: id(a) Out[6]: 140090033476640
+```
 
 - Zero, One, or more names.
     - Use `dir()` to check the current namespace.
@@ -100,27 +113,29 @@ If the assignment `1` happens to be at a python prompt, it echoes the literal b
 
 **Ans:** It's perfectly fine to have more than one reference to a single object. The example below should explain things very well.
 
-```python In \[1\]: a = 5000
+```python
+In [1]: a = 5000
 
-In \[2\]: id(a) Out\[2\]: 140441367080400
+In [2]: id(a) Out[2]: 140441367080400
 
-In \[3\]: b = a
+In [3]: b = a
 
-In \[4\]: b Out\[4\]: 5000
+In [4]: b Out[4]: 5000
 
-In \[5\]: id(b) Out\[5\]: 140441367080400
+In [5]: id(b) Out[5]: 140441367080400
 
-In \[6\]: c = 5000
+In [6]: c = 5000
 
-In \[7\]: id(c) Out\[7\]: 140441367080432
+In [7]: id(c) Out[7]: 140441367080432
 
-In \[8\]: a is b Out\[8\]: True
+In [8]: a is b Out[8]: True
 
-In \[9\]: a == b Out\[9\]: True
+In [9]: a == b Out[9]: True
 
-In \[10\]: a is c Out\[10\]: False
+In [10]: a is c Out[10]: False
 
-In \[11\]: a == c Out\[11\]: True ```
+In [11]: a == c Out[11]: True
+```
 
 The example shown above creates an object with value `5000` and assign it a name `a` in the current namespace. We checked the identifier of the object using `id(a)` and found out it to be `140441367080400`.
 

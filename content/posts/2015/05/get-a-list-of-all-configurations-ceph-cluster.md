@@ -17,11 +17,15 @@ The admin socket file exists for both the monitors and the OSD nodes. The monito
 
 - Listing of the admin socket on a monitor node
 
-```bash # ls /var/run/ceph/ -l total 4 srwxr-xr-x. 1 root root 0 May 13 05:13 ceph-mon.hp-m300-2.asok -rw-r--r--. 1 root root 7 May 13 05:13 mon.hp-m300-2.pid ```
+```bash
+# ls /var/run/ceph/ -l total 4 srwxr-xr-x. 1 root root 0 May 13 05:13 ceph-mon.hp-m300-2.asok -rw-r--r--. 1 root root 7 May 13 05:13 mon.hp-m300-2.pid
+```
 
 - Listing of the admin sockets on an OSD node
 
-```bash # ls -l /var/run/ceph/ total 20 srwxr-xr-x. 1 root root 0 May  8 02:42 ceph-osd.0.asok srwxr-xr-x. 1 root root 0 May 26 11:18 ceph-osd.2.asok srwxr-xr-x. 1 root root 0 May 26 11:18 ceph-osd.3.asok srwxr-xr-x. 1 root root 0 May  8 02:42 ceph-osd.4.asok srwxr-xr-x. 1 root root 0 May 26 11:18 ceph-osd.5.asok -rw-r--r--. 1 root root 8 May  8 02:42 osd.0.pid -rw-r--r--. 1 root root 8 May 26 11:18 osd.2.pid -rw-r--r--. 1 root root 8 May 26 11:18 osd.3.pid -rw-r--r--. 1 root root 8 May  8 02:42 osd.4.pid -rw-r--r--. 1 root root 8 May 26 11:18 osd.5.pid ```
+```bash
+# ls -l /var/run/ceph/ total 20 srwxr-xr-x. 1 root root 0 May  8 02:42 ceph-osd.0.asok srwxr-xr-x. 1 root root 0 May 26 11:18 ceph-osd.2.asok srwxr-xr-x. 1 root root 0 May 26 11:18 ceph-osd.3.asok srwxr-xr-x. 1 root root 0 May  8 02:42 ceph-osd.4.asok srwxr-xr-x. 1 root root 0 May 26 11:18 ceph-osd.5.asok -rw-r--r--. 1 root root 8 May  8 02:42 osd.0.pid -rw-r--r--. 1 root root 8 May 26 11:18 osd.2.pid -rw-r--r--. 1 root root 8 May 26 11:18 osd.3.pid -rw-r--r--. 1 root root 8 May  8 02:42 osd.4.pid -rw-r--r--. 1 root root 8 May 26 11:18 osd.5.pid
+```
 
 For example, consider that we have changed the 'mon\_osd\_full\_ratio' value, and need to confirm that the cluster has picked up the change.
 
@@ -29,7 +33,7 @@ We can get a listing of the active configured settings and grep out the setting 
 
 ```bash
 
-\# ceph daemon /var/run/ceph/ceph-mon.\*.asok config show
+# ceph daemon /var/run/ceph/ceph-mon.*.asok config show
 
 ```
 
@@ -37,7 +41,7 @@ The above command prints out a listing of all the active configurations and thei
 
 ```bash
 
-\# ceph daemon /var/run/ceph/ceph-mon.\*.asok config show | grep mon\_osd\_full\_ratio
+# ceph daemon /var/run/ceph/ceph-mon.*.asok config show | grep mon_osd_full_ratio
 
 ```
 
@@ -49,7 +53,7 @@ NOTE: In case you are probing a particular OSD, please make sure to use the OSD 
 
 ```bash
 
-\# ceph osd tree
+# ceph osd tree
 
 ```
 
@@ -57,7 +61,7 @@ Example: We try probing the OSD admin socket on its node, for 'mon\_osd\_full\_r
 
 ```bash
 
-\# ceph daemon /var/run/ceph/ceph-osd.5.asok config show | grep mon\_osd\_full\_ratio
+# ceph daemon /var/run/ceph/ceph-osd.5.asok config show | grep mon_osd_full_ratio
 
 ```
 
@@ -65,7 +69,7 @@ NOTE: Another command exists which should print the same configuration settings,
 
 ```bash
 
-\# ceph daemon osd.5 config show
+# ceph daemon osd.5 config show
 
 ```
 

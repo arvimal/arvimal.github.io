@@ -29,7 +29,8 @@ class A(object): def my_func(self): print("Doing this in class A")
 
 class B(A): def my_func(self): print("Doing this in class B")
 
-my_instance = B() my_instance.my_func() ```
+my_instance = B() my_instance.my_func()
+```
 
 ### **Structure:**
 
@@ -49,7 +50,8 @@ To understand this in depth, let's check another example:
 
 _**Example 1:**_
 
-```python class A(object): def my_func(self): print("Doing this in Class A")
+```python
+class A(object): def my_func(self): print("Doing this in Class A")
 
 class B(A): pass
 
@@ -57,7 +59,8 @@ class C(object): def my_func(self): print("Doing this in Class C")
 
 class D(B, C): pass
 
-my_instance = D() my_instance.my_func() ```
+my_instance = D() my_instance.my_func()
+```
 
 ### **Structure**_**:**_
 
@@ -88,7 +91,8 @@ Let's check another example, which can be a bit more complex.
 
 _**Example 2:**_
 
-```python class A(object): def my_func(self): print("Doing this in A")
+```python
+class A(object): def my_func(self): print("Doing this in A")
 
 class B(A): pass
 
@@ -96,7 +100,8 @@ class C(A): def my_func(self): print("doing this in C")
 
 class D(B, C): pass
 
-my_instance = D() my_instance.my_func() ```
+my_instance = D() my_instance.my_func()
+```
 
 ### **Structure:**
 
@@ -128,7 +133,8 @@ _**Class D -> Class B -> Class C -> Class A.**_
 
 **NOTE: Python provides a method for a class to lookup the Method Resolution Order. Let's recheck Example 2 using that.**
 
-```python class A(object): def my_func(self): print("Calling this from A")
+```python
+class A(object): def my_func(self): print("Calling this from A")
 
 class B(A): pass
 
@@ -138,15 +144,20 @@ class D(B, C): pass
 
 my_instance = D() my_instance.my_func()
 
-print("\\nPrint the Method Resolution Order") print(D.mro()) print(D.__bases__) ``` This should print:
+print("\\nPrint the Method Resolution Order") print(D.mro()) print(D.__bases__)
+```
 
-```python # python /tmp/Example-2.py
+This should print:
+
+```python
+# python /tmp/Example-2.py
 
 Calling this from C
 
 Print the Method Resolution Order class '__main__.D', class '__main__.B', class '__main__.C', class '__main__.A', type 'object'
 
-(, ) ```
+(, )
+```
 
 ### Takeaway
 

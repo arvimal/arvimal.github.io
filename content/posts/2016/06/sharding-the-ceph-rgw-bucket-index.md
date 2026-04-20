@@ -39,9 +39,12 @@ Sharding is configured with the tunable `bucket_index_max_shards` . By default
     ```
 3. Use the bucket ID to get more information, including the number of shards.
 
-```bash radosgw-admin metadata get bucket.instance:my-new-bucket:default.2670570.1 { "key": "bucket.instance:my-new-bucket:default.2670570.1", "ver": { "tag": "\_xILkVKbfQD7reDFSOB4a5VU", "ver": 1 }, "mtime": 1458940225, "data": { "bucket\_info": { "bucket": { "name": "my-new-bucket", "pool": ".rgw.buckets", "data\_extra\_pool": ".rgw.buckets.extra", "index\_pool": ".rgw.buckets.index", "marker": "default.2670570.1", "bucket\_id": "default.2670570.1" }, "creation\_time": 1458940225, "owner": "rgw\_user", "flags": 0, "region": "default", "placement\_rule": "default-placement", "has\_instance\_obj": "true", "quota": { "enabled": false, "max\_size\_kb": -1, "max\_objects": -1 }, "num\_shards": 0, "bi\_shard\_hash\_type": 0 }, "attrs": \[ { "key": "user.rgw.acl", "val": "AgKPAAAAAgIaAAAACAAAAHJnd191c2VyCgAAAEZpcnN0IFVzZXIDA2kAAAABAQAAAAgAAAByZ3dfdXNlcg8AAAABAAAACAAAAHJnd191c2VyAwM6AAAAAgIEAAAAAAAAAAgAAAByZ3dfdXNlcgAAAAAAAAAAAgIEAAAADwAAAAoAAABGaXJzdCBVc2VyAAAAAAAAAAA=" }, { "key": "user.rgw.idtag", "val": "" }, { "key": "user.rgw.manifest", "val": "" } \] } }
+```bash
+radosgw-admin metadata get bucket.instance:my-new-bucket:default.2670570.1 { "key": "bucket.instance:my-new-bucket:default.2670570.1", "ver": { "tag": "_xILkVKbfQD7reDFSOB4a5VU", "ver": 1 }, "mtime": 1458940225, "data": { "bucket_info": { "bucket": { "name": "my-new-bucket", "pool": ".rgw.buckets", "data_extra_pool": ".rgw.buckets.extra", "index_pool": ".rgw.buckets.index", "marker": "default.2670570.1", "bucket_id": "default.2670570.1" }, "creation_time": 1458940225, "owner": "rgw_user", "flags": 0, "region": "default", "placement_rule": "default-placement", "has_instance_obj": "true", "quota": { "enabled": false, "max_size_kb": -1, "max_objects": -1 }, "num_shards": 0, "bi_shard_hash_type": 0 }, "attrs": [ { "key": "user.rgw.acl", "val": "AgKPAAAAAgIaAAAACAAAAHJnd191c2VyCgAAAEZpcnN0IFVzZXIDA2kAAAABAQAAAAgAAAByZ3dfdXNlcg8AAAABAAAACAAAAHJnd191c2VyAwM6AAAAAgIEAAAAAAAAAAgAAAByZ3dfdXNlcgAAAAAAAAAAAgIEAAAADwAAAAoAAABGaXJzdCBVc2VyAAAAAAAAAAA=" }, { "key": "user.rgw.idtag", "val": "" }, { "key": "user.rgw.manifest", "val": "" } ] } }
 
-``` Note that \`num\_shards\` is set to 0, which means that sharding is not enabled.
+```
+
+Note that \`num\_shards\` is set to 0, which means that sharding is not enabled.
 
 ### How to configure Sharding?
 
@@ -49,13 +52,20 @@ To configure sharding, we need to first dump the region info.
 
 **NOTE:** By default, RGW has a region named `default` even if regions are not configured.
 
-```bash # radosgw-admin region get > /tmp/region.txt
+```bash
+# radosgw-admin region get > /tmp/region.txt
 
-\# cat /tmp/region.txt { "name": "default", "api\_name": "", "is\_master": "true", "endpoints": \[\], "hostnames": \[\], "master\_zone": "", "zones": \[ { "name": "default", "endpoints": \[\], "log\_meta": "false", "log\_data": "false", "bucket\_index\_max\_shards": 0 } \], "placement\_targets": \[ { "name": "default-placement", "tags": \[\] } \], "default\_placement": "default-placement" }
+# cat /tmp/region.txt { "name": "default", "api_name": "", "is_master": "true", "endpoints": [], "hostnames": [], "master_zone": "", "zones": [ { "name": "default", "endpoints": [], "log_meta": "false", "log_data": "false", "bucket_index_max_shards": 0 } ], "placement_targets": [ { "name": "default-placement", "tags": [] } ], "default_placement": "default-placement" }
 
-``` Edit the file /tmp/region.txt, change the value for \`bucket\_index\_max\_shards\` to the needed shard value (we're setting it to 8 in this example), and inject it back to the region.
+```
 
-```bash # radosgw-admin region set < /tmp/region.txt { "name": "default", "api\_name": "", "is\_master": "true", "endpoints": \[\], "hostnames": \[\], "master\_zone": "", "zones": \[ { "name": "default", "endpoints": \[\], "log\_meta": "false", "log\_data": "false", "bucket\_index\_max\_shards": 8 } \], "placement\_targets": \[ { "name": "default-placement", "tags": \[\] } \], "default\_placement": "default-placement" } ``` Reference:
+Edit the file /tmp/region.txt, change the value for \`bucket\_index\_max\_shards\` to the needed shard value (we're setting it to 8 in this example), and inject it back to the region.
+
+```bash
+# radosgw-admin region set < /tmp/region.txt { "name": "default", "api_name": "", "is_master": "true", "endpoints": [], "hostnames": [], "master_zone": "", "zones": [ { "name": "default", "endpoints": [], "log_meta": "false", "log_data": "false", "bucket_index_max_shards": 8 } ], "placement_targets": [ { "name": "default-placement", "tags": [] } ], "default_placement": "default-placement" }
+```
+
+Reference:
 
 1. [Red Hat Ceph Storage 1.3 Rados Gateway documentation](https://access.redhat.com/documentation/en/red-hat-ceph-storage/version-1.3/red-hat-ceph-storage-13-ceph-object-gateway-for-rhel-x86-64/#configure-bucket-sharding)
 2. [https://en.wikipedia.org/wiki/Shard\_(database\_architecture)](https://en.wikipedia.org/wiki/Shard_(database_architecture))

@@ -19,31 +19,41 @@ Python is mostly objects and method calls done on objects. Many available functi
 
 _**Example 0:**_
 
-```python In \[1\]: my\_var = "Hello!"
+```python
+In [1]: my_var = "Hello!"
 
-In \[2\]: print(my\_var) Hello!
+In [2]: print(my_var) Hello!
 
-In \[3\]: my\_var.__repr__() Out\[3\]: "'Hello!'" ``` As we can see, the `__repr__()` magic method can be called to print the object, ie.. it is bound to the `print()` keyword.
+In [3]: my_var.__repr__() Out[3]: "'Hello!'"
+```
+
+As we can see, the `__repr__()` magic method can be called to print the object, ie.. it is bound to the `print()` keyword.
 
 This is true for many other builtin keywords/operators as well.
 
 _**Example 1:**_
 
-```python In \[22\]: my\_var = "Hello, " In \[23\]: my\_var1 = "How are you?"
+```python
+In [22]: my_var = "Hello, " In [23]: my_var1 = "How are you?"
 
-In \[24\]: my\_var + my\_var1 Out\[24\]: 'Hello, How are you?'
+In [24]: my_var + my_var1 Out[24]: 'Hello, How are you?'
 
-In \[25\]: my\_var.__add__(my\_var1) Out\[25\]: 'Hello, How are you?' ``` Here, Python interprets the `+` sign as a mapping to the magic method `__add__()`, and calls it on the L-value (Left hand object value) `my_var`, with the R-value (Right hand object value) as the argument.
+In [25]: my_var.__add__(my_var1) Out[25]: 'Hello, How are you?'
+```
+
+Here, Python interprets the `+` sign as a mapping to the magic method `__add__()`, and calls it on the L-value (Left hand object value) `my_var`, with the R-value (Right hand object value) as the argument.
 
 When a builtin function is called on an object, in many cases it is mapped to the magic method.
 
 _**Example 2:**_
 
-```python In \[69\]: my\_list\_1 = \['a', 'b', 'c', 'd'\]
+```python
+In [69]: my_list_1 = ['a', 'b', 'c', 'd']
 
-In \[70\]: 'a' in my\_list\_1 Out\[70\]: True
+In [70]: 'a' in my_list_1 Out[70]: True
 
-In \[71\]: my\_list\_1.__contains__("a") Out\[71\]: True ```
+In [71]: my_list_1.__contains__("a") Out[71]: True
+```
 
 The `in` builtin is mapped to the `__contains__()`method.
 
@@ -51,13 +61,14 @@ The methods available for an object should mostly be dependent on the type of th
 
 _**Example 3:**_
 
-```python In \[59\]: my\_num = 1
+```python
+In [59]: my_num = 1
 
-In \[60\]: type(my\_num) Out\[60\]: int
+In [60]: type(my_num) Out[60]: int
 
-In \[61\]: my\_num.__doc__ Out\[61\]: Out\[61\]: "int(x=0) -> int or long\\nint(x, base=10) -> int or long\\n\\nConvert a number or string to an integer, or return 0 if no arguments\\nare given. ....>>>
+In [61]: my_num.__doc__ Out[61]: Out[61]: "int(x=0) -> int or long\\nint(x, base=10) -> int or long\\n\\nConvert a number or string to an integer, or return 0 if no arguments\\nare given. ....>>>
 
-In \[62\]: help(my\_num) class int(object) | int(x=0) -> int or long | int(x, base=10) -> int or long | | Convert a number or string to an integer, or return 0 if no arguments | are given. If x is floating point, the conversion truncates towards zero. | If x is outside the integer range, the function returns a long instead.
+In [62]: help(my_num) class int(object) | int(x=0) -> int or long | int(x, base=10) -> int or long | | Convert a number or string to an integer, or return 0 if no arguments | are given. If x is floating point, the conversion truncates towards zero. | If x is outside the integer range, the function returns a long instead.
 
 ```
 
@@ -75,21 +86,29 @@ Hence, _**magic methods**_ can be said to be _**Syntactic sugar.**_ But it's n
 
 _**Example 4:**_
 
-```python def my\_decorator(my\_function): def inner\_decorator(): print("This happened before!") my\_function() print("This happens after ") print("This happened at the end!") return inner\_decorator
+```python
+def my_decorator(my_function): def inner_decorator(): print("This happened before!") my_function() print("This happens after ") print("This happened at the end!") return inner_decorator
 
-def my\_decorated(): print("This happened!")
+def my_decorated(): print("This happened!")
 
-var = my\_decorator(my\_decorated)
+var = my_decorator(my_decorated)
 
-if __name__ == '__main__': var() ``` The example above borrows from one of the examples in the post on [Decorators](https://arvimal.wordpress.com/2016/05/30/decorators-object-oriented-programming/).
+if __name__ == '__main__': var()
+```
+
+The example above borrows from one of the examples in the post on [Decorators](https://arvimal.wordpress.com/2016/05/30/decorators-object-oriented-programming/).
 
 Here, `my_decorator()` is a decorator and is used to decorate `my_decorated()`. But rather than calling the decorator function `my_decorator()` with the argument `my_decorated()`, the above code can be syntactically sugar-coated as below:
 
-```python def my\_decorator(my\_function): def inner\_decorator(): print("This happened before!") my\_function() print("This happens after ") print("This happened at the end!") return inner\_decorator
+```python
+def my_decorator(my_function): def inner_decorator(): print("This happened before!") my_function() print("This happens after ") print("This happened at the end!") return inner_decorator
 
-@my\_decorator def my\_decorated(): print("This happened!")
+@my_decorator def my_decorated(): print("This happened!")
 
-if __name__ == '__main__': my\_decorated() ``` Observing both code snippets, the decorator is syntactically sugar coated and called as:
+if __name__ == '__main__': my_decorated()
+```
+
+Observing both code snippets, the decorator is syntactically sugar coated and called as:
 
 **@my\_decorator**
 
