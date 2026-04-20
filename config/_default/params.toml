@@ -1,6 +1,6 @@
 # https://imfing.github.io/hextra/docs/getting-started/
 
-theme = "system"  # system, dark, or light
+defaultTheme = "system"  # system, dark, or light
 
 [navbar]
   displayTitle = true
