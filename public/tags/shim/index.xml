@@ -1,12 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Shim on arvimal.github.io</title><link>https://arvimal.github.io/tags/shim/</link><description>Recent content in Shim on arvimal.github.io</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>© 2026 Vimal A R</copyright><atom:link href="https://arvimal.github.io/tags/shim/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://arvimal.github.io/docs/linux-booting/02-boot-loaders/difference-between-grubx64-and-shimx64/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://arvimal.github.io/docs/linux-booting/02-boot-loaders/difference-between-grubx64-and-shimx64/</guid><description>&lt;h1 class="relative group"&gt;Difference between grubx64 and shimx64?
- &lt;div id="difference-between-grubx64-and-shimx64" class="anchor"&gt;&lt;/div&gt;
- 
- &lt;span
- class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
- &lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#difference-between-grubx64-and-shimx64" aria-label="Anchor"&gt;#&lt;/a&gt;
- &lt;/span&gt;
- 
-&lt;/h1&gt;
-&lt;p&gt;&lt;a href="https://askubuntu.com/questions/342365/what-is-the-difference-between-grubx64-and-shimx64" target="_blank" rel="noreferrer"&gt;https://askubuntu.com/questions/342365/what-is-the-difference-between-grubx64-and-shimx64&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Typically, &lt;code&gt;EFI/ubuntu/grubx64.efi&lt;/code&gt; on the EFI System Partition (ESP) is the GRUB binary, and &lt;code&gt;EFI/ubuntu/shimx64.efi&lt;/code&gt; is the binary for shim.&lt;/p&gt;
-&lt;p&gt;The latter is a relatively simple program that provides a way to boot on a computer with Secure Boot active. On such a computer, an unsigned version of GRUB won't launch, and signing GRUB with Microsoft's keys is impossible, so shim bridges the gap and adds its own security tools that parallel those of Secure Boot. In practice, shim registers itself with the firmware and then launches a program called &lt;code&gt;grubx64.efi&lt;/code&gt; in the directory from which it was launched, so on a computer without Secure Boot (such as a Mac), launching &lt;code&gt;shimx64.efi&lt;/code&gt; is just like launching &lt;code&gt;grubx64.efi&lt;/code&gt;. On a computer with Secure Boot active, launching &lt;code&gt;shimx64.efi&lt;/code&gt; should result in GRUB starting up, whereas launching &lt;code&gt;grubx64.efi&lt;/code&gt; directly probably won't work.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shim on arvimal.github.io</title>
+    <link>https://arvimal.github.io/tags/shim/</link>
+    <description>Recent content in Shim on arvimal.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2026 Vimal A R</copyright>
+    <atom:link href="https://arvimal.github.io/tags/shim/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title></title>
+      <link>https://arvimal.github.io/docs/linux-booting/02-boot-loaders/difference-between-grubx64-and-shimx64/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/docs/linux-booting/02-boot-loaders/difference-between-grubx64-and-shimx64/</guid>
+      <description>&lt;h1 class=&#34;relative group&#34;&gt;Difference between grubx64 and shimx64?&#xA;    &lt;div id=&#34;difference-between-grubx64-and-shimx64&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;    &lt;span&#xA;        class=&#34;absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none&#34;&gt;&#xA;        &lt;a class=&#34;text-primary-300 dark:text-neutral-700 !no-underline&#34; href=&#34;#difference-between-grubx64-and-shimx64&#34; aria-label=&#34;Anchor&#34;&gt;#&lt;/a&gt;&#xA;    &lt;/span&gt;&#xA;    &#xA;&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://askubuntu.com/questions/342365/what-is-the-difference-between-grubx64-and-shimx64&#34;  target=&#34;_blank&#34; rel=&#34;noreferrer&#34;&gt;https://askubuntu.com/questions/342365/what-is-the-difference-between-grubx64-and-shimx64&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Typically, &lt;code&gt;EFI/ubuntu/grubx64.efi&lt;/code&gt; on the EFI System Partition (ESP) is the GRUB binary, and &lt;code&gt;EFI/ubuntu/shimx64.efi&lt;/code&gt; is the binary for shim.&lt;/p&gt;&#xA;&lt;p&gt;The latter is a relatively simple program that provides a way to boot on a computer with Secure Boot active. On such a computer, an unsigned version of GRUB won&#39;t launch, and signing GRUB with Microsoft&#39;s keys is impossible, so shim bridges the gap and adds its own security tools that parallel those of Secure Boot. In practice, shim registers itself with the firmware and then launches a program called &lt;code&gt;grubx64.efi&lt;/code&gt; in the directory from which it was launched, so on a computer without Secure Boot (such as a Mac), launching &lt;code&gt;shimx64.efi&lt;/code&gt; is just like launching &lt;code&gt;grubx64.efi&lt;/code&gt;. On a computer with Secure Boot active, launching &lt;code&gt;shimx64.efi&lt;/code&gt; should result in GRUB starting up, whereas launching &lt;code&gt;grubx64.efi&lt;/code&gt; directly probably won&#39;t work.&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

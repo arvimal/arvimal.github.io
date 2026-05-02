@@ -1,53 +1,1530 @@
-<!doctype html><html lang=en dir=ltr class=scroll-smooth data-default-appearance=dark data-auto-appearance=true><head><meta charset=utf-8><meta http-equiv=content-language content="en"><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="ie=edge"><meta name=theme-color><title>&#183; arvimal.github.io</title><meta name=title content=" &#183; arvimal.github.io"><link rel=canonical href=https://arvimal.github.io/docs/linux-booting/00-boot-process/00-linux-booting/><meta name=author content="Vimal A R"><link href=https://linkedin.com/in/arvimal rel=me><link href=https://github.com/arvimal rel=me><meta property="og:url" content="https://arvimal.github.io/docs/linux-booting/00-boot-process/00-linux-booting/"><meta property="og:site_name" content="arvimal.github.io"><meta property="og:title" content="arvimal.github.io"><meta property="og:description" content="The Linux Boot process # 1. Power up the machine
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="en">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title> &middot; arvimal.github.io</title>
+    <meta name="title" content=" &middot; arvimal.github.io">
+  
+
+  
+  
+  
+  
+  
+  <link rel="canonical" href="https://arvimal.github.io/docs/linux-booting/00-boot-process/00-linux-booting/">
+  
+  
+
+  
+  
+    <meta name="author" content="Vimal A R">
+  
+  
+    
+      
+        
+          <link href="https://linkedin.com/in/arvimal" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://github.com/arvimal" rel="me">
+        
+      
+    
+  
+
+  
+  <meta property="og:url" content="https://arvimal.github.io/docs/linux-booting/00-boot-process/00-linux-booting/">
+  <meta property="og:site_name" content="arvimal.github.io">
+  <meta property="og:title" content="arvimal.github.io">
+  <meta property="og:description" content="The Linux Boot process # 1. Power up the machine
 The Boot process starts when a user powers up the machine.
 2. Power supply starts up, and regulates itself into the operating voltage.
 This may take less than a millisecond.
 3. The Power supply system sends the PowerGood signal to the Motherboard.
-The ATX specification defines the Power-Good signal as a +5-volt (V) signal generated in the power supply when it has passed its internal self-tests and the output voltages have sthbilized."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta name=twitter:card content="summary"><meta name=twitter:title content="arvimal.github.io"><meta name=twitter:description content="The Linux Boot process # 1. Power up the machine
+The ATX specification defines the Power-Good signal as a &#43;5-volt (V) signal generated in the power supply when it has passed its internal self-tests and the output voltages have sthbilized.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="arvimal.github.io">
+  <meta name="twitter:description" content="The Linux Boot process # 1. Power up the machine
 The Boot process starts when a user powers up the machine.
 2. Power supply starts up, and regulates itself into the operating voltage.
 This may take less than a millisecond.
 3. The Power supply system sends the PowerGood signal to the Motherboard.
-The ATX specification defines the Power-Good signal as a +5-volt (V) signal generated in the power supply when it has passed its internal self-tests and the output voltages have sthbilized."><link type=text/css rel=stylesheet href=/css/main.bundle.min.df2fffb65dda2b0cdaa0982ee2fb0282843ff5644257ee9719567a132e597dce1b36bed1665908b3c8dc93033bc1dc359a9d4fbc93249298c3a0aa840387d11f.css integrity="sha512-3y//tl3aKwzaoJgu4vsCgoQ/9WRCV+6XGVZ6Ey5Zfc4bNr7RZlkIs8jckwM7wdw1mp1PvJMkkpjDoKqEA4fRHw=="><script type=text/javascript src=/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js integrity="sha512-b0EXSzoFtoCCD+CMrb+l+3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script><script src=/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7+kfJ6kKCJxQGC+8wm+Bz9JucDjDTGNew=="></script><script defer type=text/javascript id=script-bundle src=/js/main.bundle.min.4c6b36324987fc05dd8cd58437946294b6f2e315675cef16098738373ac2a0fe600416b00e13a1a8687c872f82868f7a0ece1e4ae0b9ea6ead63721f5e8b6748.js integrity="sha512-TGs2MkmH/AXdjNWEN5RilLby4xVnXO8WCYc4NzrCoP5gBBawDhOhqGh8hy+Cho96Ds4eSuC56m6tY3IfXotnSA==" data-copy=Copy data-copied=Copied></script><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><script type=application/ld+json>[{"@context":"https://schema.org","@type":"Article","articleSection":"Docs","name":"","headline":"","inLanguage":"en","url":"https://arvimal.github.io/docs/linux-booting/00-boot-process/00-linux-booting/","author":{"@type":"Person","name":"Vimal A R"},"mainEntityOfPage":"true","wordCount":"4941"}]</script><script data-goatcounter=https://arvimal.goatcounter.com/count async src=//gc.zgo.at/count.js></script></head><body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral bf-scrollbar"><div id=the-top class="absolute flex self-center"><a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600" href=#main-content><span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
-Skip to main content</a></div><div class="main-menu flex items-center w-full gap-2 p-1 pl-0"><a href=/ class="text-base font-medium truncate min-w-0 shrink">arvimal.github.io</a><div class="flex items-center ms-auto"><div class="hidden md:flex"><nav class="flex items-center gap-x-5 h-12"><a href=/posts/ class="flex items-center bf-icon-color-hover" aria-label=Blog title=Posts><span class="text-base font-medium break-normal">Blog
-</span></a><a href=/about/ class="flex items-center bf-icon-color-hover" aria-label=About title><span class="text-base font-medium break-normal">About
-</span></a><a href=https://github.com/arvimal target=_blank class="flex items-center bf-icon-color-hover" aria-label=GitHub title><span class="text-base font-medium break-normal">GitHub
-</span></a><a href=https://linkedin.com/in/arvimal target=_blank class="flex items-center bf-icon-color-hover" aria-label=LinkedIn title><span class="text-base font-medium break-normal">LinkedIn
-</span></a><button id=search-button aria-label=Search class="text-base bf-icon-color-hover" title="Search (/)">
-<span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9.0 208 0S0 93.1.0 208s93.1 208 208 208c48.3.0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9.0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7.0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7.0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg></span></button><div class="flex items-center"><button id=appearance-switcher aria-label="Dark mode switcher" type=button class="text-base bf-icon-color-hover"><div class="flex items-center justify-center dark:hidden"><span class="relative block icon"><svg viewBox="0 0 512 512"><path fill="currentColor" d="M32 256C32 132.2 132.3 32 255.8 32c11.36.0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z"/></svg></span></div><div class="items-center justify-center hidden dark:flex"><span class="relative block icon"><svg viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02.0-95.1 42.98-95.1 95.1s41.2 96.9 95.1 96.9 95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347l-63.2-91.9 63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89 164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6 12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256 2.74 347.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7 19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109 109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69.0-127.1-57.31-127.1-127.1.0-70.69 57.31-127.1 127.1-127.1S383.1 186.2 383.1 256c0 70.7-56.4 127.1-127.1 127.1z"/></svg></span></div></button></div></nav></div><div class="flex md:hidden"><div class="flex items-center h-14 gap-4"><button id=search-button-mobile aria-label=Search class="flex items-center justify-center bf-icon-color-hover" title="Search (/)">
-<span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9.0 208 0S0 93.1.0 208s93.1 208 208 208c48.3.0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9.0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7.0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7.0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
-</span></button>
-<button id=appearance-switcher-mobile type=button aria-label="Dark mode switcher" class="flex items-center justify-center text-neutral-900 hover:text-primary-600 dark:text-neutral-200 dark:hover:text-primary-400"><div class=dark:hidden><span class="relative block icon"><svg viewBox="0 0 512 512"><path fill="currentColor" d="M32 256C32 132.2 132.3 32 255.8 32c11.36.0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z"/></svg></span></div><div class="hidden dark:block"><span class="relative block icon"><svg viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02.0-95.1 42.98-95.1 95.1s41.2 96.9 95.1 96.9 95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347l-63.2-91.9 63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89 164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6 12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256 2.74 347.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7 19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109 109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69.0-127.1-57.31-127.1-127.1.0-70.69 57.31-127.1 127.1-127.1S383.1 186.2 383.1 256c0 70.7-56.4 127.1-127.1 127.1z"/></svg></span></div></button>
-<input type=checkbox id=mobile-menu-toggle autocomplete=off class="hidden peer">
-<label for=mobile-menu-toggle class="flex items-center justify-center cursor-pointer bf-icon-color-hover"><span class="relative block icon"><svg viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416c17.7.0 32 14.33 32 32 0 17.7-14.3 32-32 32H32C14.33 128 0 113.7.0 96zM0 256c0-17.7 14.33-32 32-32H416c17.7.0 32 14.3 32 32s-14.3 32-32 32H32c-17.67.0-32-14.3-32-32zM416 448H32c-17.67.0-32-14.3-32-32s14.33-32 32-32H416c17.7.0 32 14.3 32 32s-14.3 32-32 32z"/></svg></span></label><div role=dialog aria-modal=true style=scrollbar-gutter:stable class="fixed inset-0 z-50 invisible overflow-y-auto px-6 py-20 opacity-0 transition-[opacity,visibility] duration-300 peer-checked:visible peer-checked:opacity-100 bg-neutral-50/97 dark:bg-neutral-900/99
-bf-scrollbar"><label for=mobile-menu-toggle class="fixed end-8 top-5 flex items-center justify-center z-50 h-12 w-12 cursor-pointer select-none rounded-full bf-icon-color-hover border bf-border-color bf-border-color-hover bg-neutral-50 dark:bg-neutral-900"><span class="relative block icon"><svg viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75.0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3 54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75.0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75.0-45.25s32.75-12.5 45.25.0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25.0s12.5 32.75.0 45.25l-105.4 105.4L310.6 361.4z"/></svg></span></label><nav class="mx-auto max-w-md space-y-6"><div class=px-2><a href=/posts/ aria-label=Blog class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200"><span title=Posts class="text-2xl font-bold tracking-tight">Blog</span></a></div><div class=px-2><a href=/about/ aria-label=About class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200"><span title class="text-2xl font-bold tracking-tight">About</span></a></div><div class=px-2><a href=https://github.com/arvimal aria-label=GitHub target=_blank class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200"><span title class="text-2xl font-bold tracking-tight">GitHub</span></a></div><div class=px-2><a href=https://linkedin.com/in/arvimal aria-label=LinkedIn target=_blank class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200"><span title class="text-2xl font-bold tracking-tight">LinkedIn</span></a></div></nav></div></div></div></div></div><div class="relative flex flex-col grow"><main id=main-content class=grow><article><header id=single_header class="mt-5 max-w-prose"><h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral"></h1><div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden"><div class="flex flex-row flex-wrap items-center"><time datetime=0001-01-01T00:00:00+00:00>1 January 0001</time><span class="px-2 text-primary-500">&#183;</span><span>4941 words</span><span class="px-2 text-primary-500">&#183;</span><span title="Reading time">24 mins</span></div></div><div class="flex author"><img class="!mt-0 !mb-0 h-24 w-24 rounded-full me-4" width=96 height=96 alt="Vimal A R" src=/images/avatar_hu_60654d0697ca6b7a.jpg data-zoom-src=/images/avatar_hu_51e7cd146504919.jpg><div class=place-self-center><div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">Author</div><div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">Vimal A R</div><div class="text-sm text-neutral-700 dark:text-neutral-400">Still figuring it out!</div><div class="text-2xl sm:text-lg"><div class="flex flex-wrap text-neutral-400 dark:text-neutral-500 space-x-2"><a class="hover:text-primary-700 dark:hover:text-primary-400" href=https://linkedin.com/in/arvimal target=_blank aria-label=Linkedin title=Linkedin rel="me noopener noreferrer"><span class="inline-block align-text-bottom"><span class="relative block icon"><svg viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5.0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6.0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3.0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2.0 38.5 17.3 38.5 38.5.0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6.0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2.0 79.7 44.3 79.7 101.9V416z"/></svg>
-</span></span></a><a class="hover:text-primary-700 dark:hover:text-primary-400" href=https://github.com/arvimal target=_blank aria-label=Github title=Github rel="me noopener noreferrer"><span class="inline-block align-text-bottom"><span class="relative block icon"><svg viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6.0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6.0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3.0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1.0-6.2-.3-40.4-.3-61.4.0.0-70 15-84.7-29.8.0.0-11.4-29.1-27.8-36.6.0.0-22.9-15.7 1.6-15.4.0.0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5.0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9.0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4.0 33.7-.3 75.4-.3 83.6.0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6.0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9.0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span></span></a></div></div></div></div><div class=mb-5></div></header><section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row"><div class="order-first lg:ms-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs"><div class="toc ps-5 print:hidden lg:sticky lg:top-10"><details open id=TOCView class="toc-right mt-0 overflow-y-auto overscroll-contain bf-scrollbar rounded-lg -ms-5 ps-5 pe-2 hidden lg:block"><summary class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">Table of Contents</summary><div class="min-w-[220px] py-2 border-dotted border-s-1 -ms-5 ps-5 dark:border-neutral-600"><nav id=TableOfContents><ul><li><ul><li><a href=#notes>Notes</a></li><li><a href=#appendix>Appendix</a></li></ul></li><li><a href=#date-created-13-11-2022-sunday-0418-pm>date created: 13-11-2022, Sunday, 04:18 PM</a></li></ul><ul><li><a href=#initramfs>initramfs</a></li><li><a href=#date-created-12-11-2022-saturday-0855-pm>date created: 12-11-2022, Saturday, 08:55 PM</a></li></ul></nav></div></details><details class="toc-inside mt-0 overflow-hidden rounded-lg -ms-5 ps-5 lg:hidden"><summary class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">Table of Contents</summary><div class="py-2 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600"><nav id=TableOfContents><ul><li><ul><li><a href=#notes>Notes</a></li><li><a href=#appendix>Appendix</a></li></ul></li><li><a href=#date-created-13-11-2022-sunday-0418-pm>date created: 13-11-2022, Sunday, 04:18 PM</a></li></ul><ul><li><a href=#initramfs>initramfs</a></li><li><a href=#date-created-12-11-2022-saturday-0855-pm>date created: 12-11-2022, Saturday, 08:55 PM</a></li></ul></nav></div></details></div></div><div class="min-w-0 min-h-0 max-w-fit"><div class="article-content max-w-prose mb-20"><h1 class="relative group">The Linux Boot process<div id=the-linux-boot-process class=anchor></div><span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"><a class="text-primary-300 dark:text-neutral-700 !no-underline" href=#the-linux-boot-process aria-label=Anchor>#</a></span></h1><p><strong>1. Power up the machine</strong></p><p>The Boot process starts when a user powers up the machine.</p><p><strong>2. Power supply starts up, and regulates itself into the operating voltage.</strong></p><p>This may take less than a millisecond.</p><p><strong>3. The Power supply system sends the <a href=https://en.wikipedia.org/wiki/Power_good_signal target=_blank rel=noreferrer>PowerGood</a> signal to the Motherboard.</strong></p><ul><li><p>The ATX specification defines the Power-Good signal as a +5-volt (V) signal generated in the power supply when it has passed its internal self-tests and the output voltages have sthbilized.</p></li><li><p>The Power Good signal (power-good) prevents a computer from attempting to operate on improper voltages and damage itself by alerting it to an improper power supply.</p></li></ul><p><strong>4. The Motherboard starts the Processor, once it receives the <code>Power Good</code> signal.</strong></p><p><strong>5. The Processor resets its internal registers, and fill it with pre-defined information.</strong></p><ul><li>80386 series and later series set the following registers and corresponding data.</li></ul><div class=highlight-wrapper><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=ln>1</span><span class=cl>        IP (16 Bit register)           - 0xfff0
-</span></span><span class=line><span class=ln>2</span><span class=cl>        CS selector (16 Bit register)  - 0xf000
-</span></span><span class=line><span class=ln>3</span><span class=cl>        CS base (16 Bit register)      - 0xffff0000</span></span></code></pre></div></div><p><strong>6. The Processor starts in <a href=https://en.wikipedia.org/wiki/Real_mode target=_blank rel=noreferrer>Real Mode</a>.</strong></p><ul><li><code>Real</code> mode is characterised by a 20-bit segmented memory address space (giving exactly 1 MiB of addressable memory).</li><li>This gives it unlimited direct software access to all addressable memory, the I/O addresses, and hardware.</li><li><code>Real</code> mode provides no support for memory protection, multitasking, or code privilege levels. Thus, all x86 CPUs start in <code>Real mode</code> with no memory protection, fixed 64 KiB segments, and only 20-bit (1024 KiB = 1 MiB) addressing.</li></ul><p><strong>7. The x86 CPU adds both the</strong>CS Selector<strong>and</strong>CS Base<strong>register contents and expects to find the first instruction after reset, there.</strong></p><ul><li>All the registers, while in 8086, were 16-bit registers.</li><li>This meant that only 64KiB addresses could be addressed in a single go.</li><li>The CS (Code Segment) registers had two types (Selector and Base) each 16 bits long.</li><li>These together (16 bits + 16 bits) were able to address 32 bit address locations.</li><li>Hence, the 8086 and any x86 CPUs were able to address approximately 4GB of memory.</li><li>Before starting up, the x86 CPU had cleared its registers and set it to the following values</li></ul><div class=highlight-wrapper><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=ln>1</span><span class=cl>        IP (16 Bit register)           - 0xfff0
-</span></span><span class=line><span class=ln>2</span><span class=cl>        CS selector (16 Bit register)  - 0xf000
-</span></span><span class=line><span class=ln>3</span><span class=cl>        CS base (16 Bit register)      - 0xffff0000</span></span></code></pre></div></div><p>Adding <code>CS Selector</code> and <code>CS Base</code> values gives <code>0xfffffff0</code>, which is <code>4 GB - 16 Bytes</code>.</p><div class=highlight-wrapper><div class=highlight><pre tabindex=0 class=chroma><code class=language-python3 data-lang=python3><span class=line><span class=ln>1</span><span class=cl><span class=n>In</span> <span class=p>[</span><span class=mi>4</span><span class=p>]:</span> <span class=nb>hex</span><span class=p>(</span><span class=mh>0xffff0000</span> <span class=o>+</span> <span class=mh>0xfff0</span><span class=p>)</span>
-</span></span><span class=line><span class=ln>2</span><span class=cl><span class=n>Out</span><span class=p>[</span><span class=mi>4</span><span class=p>]:</span> <span class=s1>&#39;0xfffffff0&#39;</span></span></span></code></pre></div></div><p>This address is called the <code>Reset vector</code>. The reset vector is the default location a central processing unit will go to find the first instruction it will execute after a reset. The reset vector is a pointer or address, where the CPU should always begin as soon as it is able to execute instructions.</p><p>The address contains a <code>jump</code> instruction, which points to the BIOS entry point in a <code>Read-Only Memory</code> chip (ROM) on the Motherboard. The BIOS is initialised and it starts up.</p><p><strong>8. BIOS starts</strong></p><ul><li>Once the BIOS starts, it does the <code>Power-On Self Test</code> and verifies all hardware.</li><li>Information on the bootable disk or boot order is maintained in the BIOS.</li><li>If the boot device is a disk, the BIOS tries to find a boot sector. An HDD sector is 512 Bytes.</li><li>On HDDs partitioned with MBR partitioning tables, the first 446 Bytes of the first sector contains the <code>BootStrap</code> code.</li><li>On systems using GRUB, the first stage of GRUB is located here, and <strong>is</strong> the <code>Bootstrap</code> code.</li></ul><p><strong>NOTE:</strong>
-BIOS/UEFI cannot directly go ahead and read a disk, unless it has some way of addressing them. Almost all HDD manufacturers provide disk hardware that enable BIOS to utilise them, and access the HDD sectors through LBA (Logical Block Addressing). This is comparatively slow, but helps the BIOS to read the disks and pass control over to a Boot Loader.</p><p><strong>9. BIOS hands over control to the <code>Boot Sector code</code> (aka <code>Master Boot Code</code>) (GRUB Stage1)</strong></p><ul><li>BIOS loads the first sector (Sector #0 of 512B) of the bootable disk into RAM.</li><li>It reads the <code>Bootstrap</code> code (<code>boot.img</code>, in case of GRUB) residing within the first 446 Bytes.</li><li>The control is passed on to the <code>Bootstrap</code> code (boot.img) (GRUB Stage1), and executes in memory.</li></ul><p><strong>10. GRUB starts</strong></p><ul><li><p>Once BIOS reads the first sector of the bootable disk via LBA addressing method, the Boot Strap code is called and executed (GRUB Stage1).</p></li><li><p>Stage 1 : (<code>boot.img</code> in MBR BootStrap code area, ie.. Sector #0)</p><ul><li><code>boot.img</code> is stored in the master boot record (MBR) or optionally in any of the volume boot records (VBRs), and addresses the next stage by an LBA48 address (thus, the 1024-cylinder limitation of GRUB legacy is avoided).</li><li>The Stage1 is configured (automatically) to load the first sector of core.img (core.img = Stage 1.5)</li></ul></li><li><p>Stage 1.5: (<code>core.img</code> - Sector #1 to #62) (Can contain drivers to access partitions with Filesystems, for Grub)</p><ul><li><code>core.img</code> is by default written to the sectors between the MBR and the first partition, when these sectors are free and available.</li><li>For legacy reasons, the first partition of a hard drive does not begin at sector #1 (counting begins with 0) but starts at sector #63. This leaves 62 sectors of empty space not part of any partition or file system, and therefore not prone to any problems related with it.</li><li>Once executed, <code>core.img</code> will load its configuration file and any other modules needed, particularly file system drivers; at installation time, it is generated from diskboot.img and configured to load the stage 2 by its file path.</li></ul></li><li><p>Stage 2: (In /boot/grub/)</p><ul><li>GRUB uses the filesystem drivers to access the filesystem partitions, and reads <code>grub.conf</code>.</li><li>Files belonging to Stage 2 are all in <code>/boot/grub</code>, which is a subdirectory of the /boot directory</li><li>This includes the configuration file <code>grub.cfg</code>, the kernels (vmlinuz), and the initrd files etc..</li><li>The GRUB menu as per <code>grub.conf</code> is shown and user selects a kernel to boot from.</li></ul></li></ul><p><strong>11. GRUB loads the selected/default kernel loads, and initrd.</strong></p><ul><li>GRUB reads the entry for the kernel selected (by the user or default kernel), and loads the kernel mentioned with directive <code>linux16</code> to memory.</li><li>The kernel takes into consideration the kernel parameters set for <code>vmlinuz</code>, and acts accordingly.</li></ul><hr><p><strong>NOTE:</strong> Some info on <code>grub.conf</code> and its parameters.</p><ul><li>The location where GRUB searches for the kernel and initrd, is set with the parameter <code>set root='hd0, msdos1'</code>. This is the GRUB root, or the location where GRUB intends to find the kernel and initrd.</li><li>The <code>search</code> parameter in grub.conf sets the way the GRUB root should be checked, and the disk UUID it should check. This filesystem is where GRUB expects to find the kernel and initrd.</li><li>The <code>search</code> keyword follows with the <code>vmlinuz</code> path, and initrd path. A vmlinuz and kernel parameters example:</li></ul><div class=highlight-wrapper><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=ln>1</span><span class=cl>`/vmlinuz-3.10.0-693.el7.x86_64 root=/dev/mapper/rhel_dell--r430--19-root ro crashkernel=auto rd.lvm.lv=rhel_dell-r430-19/root rd.lvm.lv=rhel_dell-r430-19/swap rhgb quiet LANG=en_US.UTF-8`
-</span></span><span class=line><span class=ln>2</span><span class=cl>`initrd16 /initramfs-3.10.0-693.el7.x86_64.img`</span></span></code></pre></div></div><ul><li>Note that the kernel parameters mention <code>ro</code> (read-only). This is normal, and it instructs the kernel to read the root filesystem as read-only so that the filesystem checker can run its checks safely. After the filesystem check, the root filesystem will be mounted as read-write.</li><li>If the kernel comes upon any parameters that it doesn't understand, it saves it and passes it to <code>init</code> (or systemd), in order to process later.</li><li>If the vmlinuz path starts with a slash ('/') as in <code>/vmlinuz-3.10.0-693.el7.x86_64</code>, it means that the /boot/ partition is different than the root partition ('/'). If /boot/ was on the same partition as root ('/'), the entry would have been <code>/boot/vmlinuz-3.10.0...</code>.</li></ul><hr><ul><li>Grub (not the kernel) loads both the <code>Kernel</code> and the <code>initrd</code> file, as listed in <code>grub.conf</code>.</li><li>Initrd contains the necessary drivers for the kernel, to access the connected devices as well as form a virtual filesystem in memory.</li><li>With a virtual filesystem running in memory, the kernel initializes <code>/sbin/init</code> (which was part of the initrd file).</li></ul><p><strong>12. <code>init</code> or <code>systemd</code> starts</strong></p><ul><li>The kernel looks for an <code>init</code> binary in the following locations:<ul><li>/sbin/init</li><li>/etc/init</li><li>/bin/init</li><li>/bin/sh</li></ul></li></ul><blockquote><p><strong>NOTE:</strong>
-If the directive <code>init=&lt;path></code> is passed to grub via grub.conf (or
+The ATX specification defines the Power-Good signal as a &#43;5-volt (V) signal generated in the power supply when it has passed its internal self-tests and the output voltages have sthbilized.">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.df2fffb65dda2b0cdaa0982ee2fb0282843ff5644257ee9719567a132e597dce1b36bed1665908b3c8dc93033bc1dc359a9d4fbc93249298c3a0aa840387d11f.css"
+    integrity="sha512-3y//tl3aKwzaoJgu4vsCgoQ/9WRCV&#43;6XGVZ6Ey5Zfc4bNr7RZlkIs8jckwM7wdw1mp1PvJMkkpjDoKqEA4fRHw==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
+    integrity="sha512-b0EXSzoFtoCCD&#43;CMrb&#43;l&#43;3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script>
+  
+  
+  
+  
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+  
+
+  
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.4c6b36324987fc05dd8cd58437946294b6f2e315675cef16098738373ac2a0fe600416b00e13a1a8687c872f82868f7a0ece1e4ae0b9ea6ead63721f5e8b6748.js"
+      integrity="sha512-TGs2MkmH/AXdjNWEN5RilLby4xVnXO8WCYc4NzrCoP5gBBawDhOhqGh8hy&#43;Cho96Ds4eSuC56m6tY3IfXotnSA=="
+      data-copy="Copy"
+      data-copied="Copied"></script>
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Docs",
+    "name": "",
+    "headline": "",
+    
+    "inLanguage": "en",
+    "url" : "https://arvimal.github.io/docs/linux-booting/00-boot-process/00-linux-booting/",
+    "author" : {
+      "@type": "Person",
+      "name": "Vimal A R"
+    },
+    
+    
+    
+    
+    
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "4941"
+  }]
+  </script>
+
+
+
+  
+  
+    
+
+
+
+
+  
+
+  
+  
+    
+<script data-goatcounter="https://arvimal.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+
+  
+
+  
+  
+
+  
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral bf-scrollbar">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        Skip to main content
+      </a>
+    </div>
+    
+    
+      <div class="main-menu flex items-center w-full gap-2 p-1 pl-0">
+  
+  
+    <a href="/" class="text-base font-medium truncate min-w-0 shrink">
+      arvimal.github.io
+    </a>
+  
+  <div class="flex items-center ms-auto">
+    <div class="hidden md:flex">
+      <nav class="flex items-center gap-x-5 h-12">
+  
+    
+      
+  
+    <a
+      href="/posts/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="Blog"
+      title="Posts">
+      
+      
+        <span class="text-base font-medium break-normal">
+          Blog
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="/about/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="About"
+      title="">
+      
+      
+        <span class="text-base font-medium break-normal">
+          About
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="https://github.com/arvimal"
+      
+        target="_blank"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="GitHub"
+      title="">
+      
+      
+        <span class="text-base font-medium break-normal">
+          GitHub
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="https://linkedin.com/in/arvimal"
+      
+        target="_blank"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="LinkedIn"
+      title="">
+      
+      
+        <span class="text-base font-medium break-normal">
+          LinkedIn
+        </span>
+      
+    </a>
+  
+
+    
+  
+
+  
+
+  
+
+  
+    <button
+      id="search-button"
+      aria-label="Search"
+      class="text-base bf-icon-color-hover"
+      title="Search (/)">
+      <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+    </button>
+  
+
+  
+    <div class="flex items-center">
+      <button
+        id="appearance-switcher"
+        aria-label="Dark mode switcher"
+        type="button"
+        class="text-base bf-icon-color-hover">
+        <div class="flex items-center justify-center dark:hidden">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+        </div>
+      </button>
+    </div>
+  
+</nav>
+
+
+
+    </div>
+    <div class="flex md:hidden">
+      <div class="flex items-center h-14 gap-4">
+  
+    <button
+      id="search-button-mobile"
+      aria-label="Search"
+      class="flex items-center justify-center bf-icon-color-hover"
+      title="Search (/)">
+      <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+    </button>
+  
+
+  
+    <button
+      id="appearance-switcher-mobile"
+      type="button"
+      aria-label="Dark mode switcher"
+      class="flex items-center justify-center text-neutral-900 hover:text-primary-600 dark:text-neutral-200 dark:hover:text-primary-400">
+      <div class="dark:hidden">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+      </div>
+      <div class="hidden dark:block">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+      </div>
+    </button>
+  
+
+  
+    <input type="checkbox" id="mobile-menu-toggle" autocomplete="off" class="hidden peer">
+    <label for="mobile-menu-toggle" class="flex items-center justify-center cursor-pointer bf-icon-color-hover">
+      <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+    </label>
+
+    <div
+      role="dialog"
+      aria-modal="true"
+      style="scrollbar-gutter: stable;"
+      class="fixed inset-0 z-50 invisible overflow-y-auto px-6 py-20 opacity-0 transition-[opacity,visibility] duration-300 peer-checked:visible peer-checked:opacity-100 bg-neutral-50/97 dark:bg-neutral-900/99
+      bf-scrollbar">
+      <label
+        for="mobile-menu-toggle"
+        class="fixed end-8 top-5 flex items-center justify-center z-50 h-12 w-12 cursor-pointer select-none rounded-full bf-icon-color-hover border bf-border-color bf-border-color-hover bg-neutral-50 dark:bg-neutral-900">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </label>
+      <nav class="mx-auto max-w-md space-y-6">
+        
+  
+    
+    <div class="px-2">
+      <a
+        href="/posts/"
+        aria-label="Blog"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="Posts" class="text-2xl font-bold tracking-tight">
+          Blog
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="/about/"
+        aria-label="About"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="" class="text-2xl font-bold tracking-tight">
+          About
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="https://github.com/arvimal"
+        aria-label="GitHub"
+        
+          target="_blank"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="" class="text-2xl font-bold tracking-tight">
+          GitHub
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="https://linkedin.com/in/arvimal"
+        aria-label="LinkedIn"
+        
+          target="_blank"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="" class="text-2xl font-bold tracking-tight">
+          LinkedIn
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+
+        
+  
+
+        
+  
+
+      </nav>
+    </div>
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<div class="single_hero_background nozoom fixed inset-x-0 top-0 h-[800px]">
+  
+  <div
+    class="from-neutral absolute inset-0 bg-gradient-to-t to-transparent mix-blend-normal dark:from-neutral-800"></div>
+  <div
+    class="from-neutral to-neutral absolute inset-0 bg-gradient-to-t opacity-30 mix-blend-normal dark:from-neutral-800 dark:to-neutral-800 dark:opacity-60"></div>
+</div>
+
+
+  <div
+    id="background-blur"
+    class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-xl bg-neutral-100/75 dark:bg-neutral-800/60"></div>
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/background-blur.min.605b3b942818f0ab5a717ae446135ec46b8ee5a2ad12ae56fb90dc2a76ce30c388f9fec8bcc18db15bd47e3fa8a09d779fa12aa9c184cf614a315bc72c6c163d.js"
+    integrity="sha512-YFs7lCgY8KtacXrkRhNexGuO5aKtEq5W&#43;5DcKnbOMMOI&#43;f7IvMGNsVvUfj&#43;ooJ13n6EqqcGEz2FKMVvHLGwWPQ=="
+    data-blur-id="background-blur"
+    data-image-id="background-image-main"
+    ></script>
+
+
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="0001-01-01T00:00:00&#43;00:00">1 January 0001</time><span class="px-2 text-primary-500">&middot;</span><span>4941 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">24 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+    
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+      
+      
+        
+        
+        
+      
+      <img
+        class="!mt-0 !mb-0 h-24 w-24 rounded-full me-4"
+        width="96"
+        height="96"
+        alt="Vimal A R"
+        src="/images/avatar_hu_60654d0697ca6b7a.jpg"
+        data-zoom-src="/images/avatar_hu_51e7cd146504919.jpg">
+    
+  
+  <div class="place-self-center">
+    
+      <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+        Author
+      </div>
+      <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+        Vimal A R
+      </div>
+    
+    
+      <div class="text-sm text-neutral-700 dark:text-neutral-400">Still figuring it out!</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500 space-x-2">
+    
+      
+        
+        <a
+          class=" hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://linkedin.com/in/arvimal"
+          
+          target="_blank"
+          aria-label="Linkedin"
+          title="Linkedin"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        
+        <a
+          class=" hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/arvimal"
+          
+          target="_blank"
+          aria-label="Github"
+          title="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+  
+
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+        <div class="order-first lg:ms-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+          <div class="toc ps-5 print:hidden lg:sticky lg:top-10">
+            <details
+  open
+  id="TOCView"
+  class="toc-right mt-0 overflow-y-auto overscroll-contain bf-scrollbar rounded-lg -ms-5 ps-5 pe-2 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#notes">Notes</a></li>
+        <li><a href="#appendix">Appendix</a></li>
+      </ul>
+    </li>
+    <li><a href="#date-created-13-11-2022-sunday-0418-pm">date created: 13-11-2022, Sunday, 04:18 PM</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#initramfs">initramfs</a></li>
+    <li><a href="#date-created-12-11-2022-saturday-0855-pm">date created: 12-11-2022, Saturday, 08:55 PM</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg -ms-5 ps-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#notes">Notes</a></li>
+        <li><a href="#appendix">Appendix</a></li>
+      </ul>
+    </li>
+    <li><a href="#date-created-13-11-2022-sunday-0418-pm">date created: 13-11-2022, Sunday, 04:18 PM</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#initramfs">initramfs</a></li>
+    <li><a href="#date-created-12-11-2022-saturday-0855-pm">date created: 12-11-2022, Saturday, 08:55 PM</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+
+
+          </div>
+        </div>
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          
+<h1 class="relative group">The Linux Boot process
+    <div id="the-linux-boot-process" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-linux-boot-process" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+<p><strong>1. Power up the machine</strong></p>
+<p>The Boot process starts when a user powers up the machine.</p>
+<p><strong>2. Power supply starts up, and regulates itself into the operating voltage.</strong></p>
+<p>This may take less than a millisecond.</p>
+<p><strong>3. The Power supply system sends the <a href="https://en.wikipedia.org/wiki/Power_good_signal"  target="_blank" rel="noreferrer">PowerGood</a> signal to the Motherboard.</strong></p>
+<ul>
+<li>
+<p>The ATX specification defines the Power-Good signal as a +5-volt (V) signal generated in the power supply when it has passed its internal self-tests and the output voltages have sthbilized.</p>
+</li>
+<li>
+<p>The Power Good signal (power-good) prevents a computer from attempting to operate on improper voltages and damage itself by alerting it to an improper power supply.</p>
+</li>
+</ul>
+<p><strong>4. The Motherboard starts the Processor, once it receives the <code>Power Good</code> signal.</strong></p>
+<p><strong>5. The Processor resets its internal registers, and fill it with pre-defined information.</strong></p>
+<ul>
+<li>80386 series and later series set the following registers and corresponding data.</li>
+</ul>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="ln">1</span><span class="cl">        IP (16 Bit register)           - 0xfff0
+</span></span><span class="line"><span class="ln">2</span><span class="cl">        CS selector (16 Bit register)  - 0xf000
+</span></span><span class="line"><span class="ln">3</span><span class="cl">        CS base (16 Bit register)      - 0xffff0000</span></span></code></pre></div></div>
+<p><strong>6. The Processor starts in <a href="https://en.wikipedia.org/wiki/Real_mode"  target="_blank" rel="noreferrer">Real Mode</a>.</strong></p>
+<ul>
+<li><code>Real</code> mode is characterised by a 20-bit segmented memory address space (giving exactly 1 MiB of addressable memory).</li>
+<li>This gives it unlimited direct software access to all addressable memory, the I/O addresses, and hardware.</li>
+<li><code>Real</code> mode provides no support for memory protection, multitasking, or code privilege levels. Thus, all x86 CPUs start in <code>Real mode</code> with no memory protection, fixed 64 KiB segments, and only 20-bit (1024 KiB = 1 MiB) addressing.</li>
+</ul>
+<p><strong>7. The x86 CPU adds both the</strong>CS Selector<strong>and</strong>CS Base<strong>register contents and expects to find the first instruction after reset, there.</strong></p>
+<ul>
+<li>All the registers, while in 8086, were 16-bit registers.</li>
+<li>This meant that only 64KiB addresses could be addressed in a single go.</li>
+<li>The CS (Code Segment) registers had two types (Selector and Base) each 16 bits long.</li>
+<li>These together (16 bits + 16 bits) were able to address 32 bit address locations.</li>
+<li>Hence, the 8086 and any x86 CPUs were able to address approximately 4GB of memory.</li>
+<li>Before starting up, the x86 CPU had cleared its registers and set it to the following values</li>
+</ul>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="ln">1</span><span class="cl">        IP (16 Bit register)           - 0xfff0
+</span></span><span class="line"><span class="ln">2</span><span class="cl">        CS selector (16 Bit register)  - 0xf000
+</span></span><span class="line"><span class="ln">3</span><span class="cl">        CS base (16 Bit register)      - 0xffff0000</span></span></code></pre></div></div>
+<p>Adding <code>CS Selector</code> and <code>CS Base</code> values gives <code>0xfffffff0</code>, which is <code>4 GB - 16 Bytes</code>.</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python3" data-lang="python3"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="nb">hex</span><span class="p">(</span><span class="mh">0xffff0000</span> <span class="o">+</span> <span class="mh">0xfff0</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="s1">&#39;0xfffffff0&#39;</span></span></span></code></pre></div></div>
+<p>This address is called the <code>Reset vector</code>. The reset vector is the default location a central processing unit will go to find the first instruction it will execute after a reset. The reset vector is a pointer or address, where the CPU should always begin as soon as it is able to execute instructions.</p>
+<p>The address contains a <code>jump</code> instruction, which points to the BIOS entry point in a <code>Read-Only Memory</code> chip (ROM) on the Motherboard. The BIOS is initialised and it starts up.</p>
+<p><strong>8. BIOS starts</strong></p>
+<ul>
+<li>Once the BIOS starts, it does the <code>Power-On Self Test</code> and verifies all hardware.</li>
+<li>Information on the bootable disk or boot order is maintained in the BIOS.</li>
+<li>If the boot device is a disk, the BIOS tries to find a boot sector. An HDD sector is 512 Bytes.</li>
+<li>On HDDs partitioned with MBR partitioning tables, the first 446 Bytes of the first sector contains the <code>BootStrap</code> code.</li>
+<li>On systems using GRUB, the first stage of GRUB is located here, and <strong>is</strong> the <code>Bootstrap</code> code.</li>
+</ul>
+<p><strong>NOTE:</strong>
+BIOS/UEFI cannot directly go ahead and read a disk, unless it has some way of addressing them. Almost all HDD manufacturers provide disk hardware that enable BIOS to utilise them, and access the HDD sectors through LBA (Logical Block Addressing). This is comparatively slow, but helps the BIOS to read the disks and pass control over to a Boot Loader.</p>
+<p><strong>9. BIOS hands over control to the <code>Boot Sector code</code> (aka <code>Master Boot Code</code>) (GRUB Stage1)</strong></p>
+<ul>
+<li>BIOS loads the first sector (Sector #0 of 512B) of the bootable disk into RAM.</li>
+<li>It reads the <code>Bootstrap</code> code (<code>boot.img</code>, in case of GRUB) residing within the first 446 Bytes.</li>
+<li>The control is passed on to the <code>Bootstrap</code> code (boot.img) (GRUB Stage1), and executes in memory.</li>
+</ul>
+<p><strong>10. GRUB starts</strong></p>
+<ul>
+<li>
+<p>Once BIOS reads the first sector of the bootable disk via LBA addressing method, the Boot Strap code is called and executed (GRUB Stage1).</p>
+</li>
+<li>
+<p>Stage 1 : (<code>boot.img</code> in MBR BootStrap code area, ie.. Sector #0)</p>
+<ul>
+<li><code>boot.img</code> is stored in the master boot record (MBR) or optionally in any of the volume boot records (VBRs), and addresses the next stage by an LBA48 address (thus, the 1024-cylinder limitation of GRUB legacy is avoided).</li>
+<li>The Stage1 is configured (automatically) to load the first sector of core.img (core.img = Stage 1.5)</li>
+</ul>
+</li>
+<li>
+<p>Stage 1.5: (<code>core.img</code> - Sector #1 to #62) (Can contain drivers to access partitions with Filesystems, for Grub)</p>
+<ul>
+<li><code>core.img</code> is by default written to the sectors between the MBR and the first partition, when these sectors are free and available.</li>
+<li>For legacy reasons, the first partition of a hard drive does not begin at sector #1 (counting begins with 0) but starts at sector #63. This leaves 62 sectors of empty space not part of any partition or file system, and therefore not prone to any problems related with it.</li>
+<li>Once executed, <code>core.img</code> will load its configuration file and any other modules needed, particularly file system drivers; at installation time, it is generated from diskboot.img and configured to load the stage 2 by its file path.</li>
+</ul>
+</li>
+<li>
+<p>Stage 2: (In /boot/grub/)</p>
+<ul>
+<li>GRUB uses the filesystem drivers to access the filesystem partitions, and reads <code>grub.conf</code>.</li>
+<li>Files belonging to Stage 2 are all in <code>/boot/grub</code>, which is a subdirectory of the /boot directory</li>
+<li>This includes the configuration file <code>grub.cfg</code>, the kernels (vmlinuz), and the initrd files etc..</li>
+<li>The GRUB menu as per <code>grub.conf</code> is shown and user selects a kernel to boot from.</li>
+</ul>
+</li>
+</ul>
+<p><strong>11. GRUB loads the selected/default kernel loads, and initrd.</strong></p>
+<ul>
+<li>GRUB reads the entry for the kernel selected (by the user or default kernel), and loads the kernel mentioned with directive <code>linux16</code> to memory.</li>
+<li>The kernel takes into consideration the kernel parameters set for <code>vmlinuz</code>, and acts accordingly.</li>
+</ul>
+<hr>
+<p><strong>NOTE:</strong> Some info on <code>grub.conf</code> and its parameters.</p>
+<ul>
+<li>The location where GRUB searches for the kernel and initrd, is set with the parameter <code>set root='hd0, msdos1'</code>. This is the GRUB root, or the location where GRUB intends to find the kernel and initrd.</li>
+<li>The <code>search</code> parameter in grub.conf sets the way the GRUB root should be checked, and the disk UUID it should check. This filesystem is where GRUB expects to find the kernel and initrd.</li>
+<li>The <code>search</code> keyword follows with the <code>vmlinuz</code> path, and initrd path. A vmlinuz and kernel parameters example:</li>
+</ul>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="ln">1</span><span class="cl">`/vmlinuz-3.10.0-693.el7.x86_64 root=/dev/mapper/rhel_dell--r430--19-root ro crashkernel=auto rd.lvm.lv=rhel_dell-r430-19/root rd.lvm.lv=rhel_dell-r430-19/swap rhgb quiet LANG=en_US.UTF-8`
+</span></span><span class="line"><span class="ln">2</span><span class="cl">`initrd16 /initramfs-3.10.0-693.el7.x86_64.img`</span></span></code></pre></div></div>
+<ul>
+<li>Note that the kernel parameters mention <code>ro</code> (read-only). This is normal, and it instructs the kernel to read the root filesystem as read-only so that the filesystem checker can run its checks safely. After the filesystem check, the root filesystem will be mounted as read-write.</li>
+<li>If the kernel comes upon any parameters that it doesn't understand, it saves it and passes it to <code>init</code> (or systemd), in order to process later.</li>
+<li>If the vmlinuz path starts with a slash ('/') as in <code>/vmlinuz-3.10.0-693.el7.x86_64</code>, it means that the /boot/ partition is different than the root partition ('/'). If /boot/ was on the same partition as root ('/'), the entry would have been <code>/boot/vmlinuz-3.10.0...</code>.</li>
+</ul>
+<hr>
+<ul>
+<li>Grub (not the kernel) loads both the <code>Kernel</code> and the <code>initrd</code> file, as listed in <code>grub.conf</code>.</li>
+<li>Initrd contains the necessary drivers for the kernel, to access the connected devices as well as form a virtual filesystem in memory.</li>
+<li>With a virtual filesystem running in memory, the kernel initializes <code>/sbin/init</code> (which was part of the initrd file).</li>
+</ul>
+<p><strong>12. <code>init</code> or <code>systemd</code> starts</strong></p>
+<ul>
+<li>The kernel looks for an <code>init</code> binary in the following locations:
+<ul>
+<li>/sbin/init</li>
+<li>/etc/init</li>
+<li>/bin/init</li>
+<li>/bin/sh</li>
+</ul>
+</li>
+</ul>
+<blockquote><p><strong>NOTE:</strong>
+If the directive <code>init=&lt;path&gt;</code> is passed to grub via grub.conf (or
 editing at boot time),Grub loads that specific binary as the first process.
-Else, it looks for an <code>init</code> binary at the locations above.</p></blockquote><ul><li><code>/sbin/init</code> starts<ul><li>On systemd machines, <code>/sbin/init</code> is usually a symlink to <code>/usr/lib/systemd/systemd</code>.</li><li><code>init</code> reads <code>/etc/inittab</code> for run levels, and go to the specific runlevel locations at <code>/etc/init.d/</code> to start the scripts marked to startup in that level.</li><li>On Systemd machines, <code>Systemd</code> looks for the targets it has to reach (/usr/lib/systemd/system/default.target), and starts the units for it. By default, Systemd is configured to reach the <code>multi-user</code> target, and starts the services for it, and presents the login prompt.</li></ul></li></ul><p><strong>13. <code>mgetty</code>, <code>systemd-getty-generator</code>, <code>login</code>, and <code>PAM</code></strong></p><ul><li><p>On SystemV machines with older <code>init</code>, <code>init</code> loads <code>mgetty</code> or <code>agetty</code>.</p><ul><li><code>agetty</code> takes control of the <code>login</code> binary</li><li>It presents a login prompt to the user, in the virtual console.</li><li>The user login credentials are passed to PAM settings in /etc/pam.d/</li><li>PAM checks /etc/passwd, and /etc/shadow for user info.</li><li>If the user info is correct, the shell set in /etc/passwd is spawned.</li><li>If not, <code>login</code> terminates and control is passed back to <code>agetty</code>.</li><li><code>agetty</code> takes control over <code>login</code> and presents the user with a prompt.</li></ul></li><li><p>On Systemd machines, <code>systemd</code> loads <code>systemd-getty-generator</code>.</p><ul><li><code>systemd-getty-generator</code> takes control over the <code>login</code> binary.</li><li>The rest are similar to the sequence above.</li></ul></li></ul><hr><hr><h3 class="relative group">Notes<div id=notes class=anchor></div><span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"><a class="text-primary-300 dark:text-neutral-700 !no-underline" href=#notes aria-label=Anchor>#</a></span></h3><p><strong>1. History of Real Mode</strong></p><ol><li>The <em>80286</em> series of processors introduced the <code>Protected Mode</code> of operation.</li><li><code>Real Mode</code> was the operational mode available before <code>Protected Mode</code> emerged in 80826.</li><li><code>Protected Mode</code> enabled features such as virtual memory, paging etc.., and these were not available in <code>Real Mode</code> mode of operation.</li><li>Backward compatibility is a design decision in x86 series, hence it was a requirement to get any software written for processor series before 80286 to be able to run on any x86 series. The existing system software which were written for <code>Real Mode</code> would have to be re-written to use the <code>Protected Mode</code>.</li><li>Hence, to maintain backward compatibility with all previous series as well as for using the existing system software, all x86 processors from <code>80286</code> till the latest x86 64-bit processors (those using Protected mode), start in <code>Real Mode</code>.</li><li>The Processor switches from <code>Real Mode</code> to <code>Protected Mode</code> after the system software sets up a few descriptor tables and enables the Protection Enable (PE) bit in the control register 0 (CR0).</li></ol><p><strong>2. Why was the change to Protected mode required?</strong></p><ol><li>The Intel 8086, the predecessor to the 80286, was originally designed with a 20-bit address bus for its memory.</li><li>This allowed the processor to access 220 bytes of memory, equivalent to 1 megabyte.</li><li>At the time, 1 MB of memory was considered a relatively large amount of memory, so the designers of the IBM Personal Computer reserved the first 640 kilobytes for use by applications and the operating system, and the remaining 384 kilobytes for the BIOS and memory for add-on devices.</li><li>As the cost of memory decreased and memory use increased, the 1 MB limitation became a significant problem. Intel intended to solve this limitation along with others with the release of the 286, through the <code>Protected Mode</code>.</li></ol><p><strong>3. How does Real mode address memory?</strong></p><ol><li><code>Real Mode</code> was the only mode available in the series prior 80286, ie.. 8086.</li><li>This series had 20-bit address buses capable of addressing 1MiB of Memory, but had only 16-bit CPU registers that could load upto 64KiB of memory at a time.</li><li>This meant that, even though the bus had the width to accomodate a larger bit size and access the memory, the Processor registers were not big enough to load the data in a single go.</li><li>Hence, 8086 processors used a method known as <a href=https://en.wikipedia.org/wiki/Memory_segmentation target=_blank rel=noreferrer>Memory Segmentation</a>.</li><li>In 8086, Memory segmenatation worked by creating 64KiB chunks of the 1MiB data space, and loading it as required.</li></ol><p><strong>4. 80826 series provides memory protection compared to 8086, what is it?</strong></p><ol><li>Memory segmentation is the process of dividing the system memory into sections.</li><li>8086 series used this technique to address a memory of 1MiB when its registers were only capable of storing 64KiB.</li><li>In a system that uses memory segmentation, a reference to the memory location would include a value that points to a segment and an offset. This enables the processor to read the entire segment.</li><li>The <code>Memory Management Unit</code> is responsible for mapping the segments to the actual locations in RAM, as well as checking the access permissions for that specific memory location.</li><li>The Memory Segmentation used by 8086 did not provide any protection. ie. it didn't have a mechanism to prevent access to specific memory segments. Any software running on these processors can access any memory segments as it chose, even if those were not in use by the said system software.</li><li>The lack of Memory protection in 8086 prevented features such as Virtual Memory from being realized.</li><li>80826 came with the <code>Protected Mode</code> of operation which brought in memory protection and features such as virtual memory, paging etc.</li><li>As said earlier, due to backward compatibility, 80286 still started up in <code>Real mode</code> even though it came with <code>Protected Mode</code>.</li></ol><p><strong>5. Master Boot Record</strong></p><ol><li>A master boot record (MBR) is a special type of boot sector at the very beginning of a partitioned storage device.</li><li>The MBR holds the information on how the partitions are organized on that medium.</li><li>The organization of the partition table in the MBR limits the maximum addressable storage space of a disk to 2 TiB (232 × 512 bytes)</li><li>The first <code>446 Bytes</code> of the sector of an MBR partitioned disk, contains the <code>Bootstrap</code> code.</li><li>The next <code>four 16 Bytes</code> contains the four partition entries. Hence the limit of four primary partitions.</li><li>The final <code>two bytes</code> contain the <code>Boot signature</code>, which denotes the disk is bootable and acts as an indicator that the sector is ending here.</li></ol><p>Thus, <strong>Total size =<code>446 + (4 x16) + 2</code> = 512 Bytes</strong></p><p><strong>NOTE:</strong> GPT (Guid Partition Table) is a replacement to MBR. Some of the differences between MBR and GPT are:</p><ul><li><p>MBR uses 32-bit addresses, hence is limited to read upto 2TiB of disk space (2**32 - 1)</p></li><li><p>GPT uses 64-bit addresses and can address larger disks.</p></li><li><p>MBR uses the Cylinder-Head-Sector (CHS) mode for disk access, which is not always correct due to outer cylinders being large than inner ones and thus the number of sectors per cylinder being different.</p></li><li><p>GPT uses Logical-Block-Address (LBA) mode which is more accurate than GPT.</p></li><li><p>GPT still maintains the MBR structure in Sector #0 to maintain backward compatibility. ie.. in LBA #0.</p></li><li><p>GPT header is in LBA #1, the Partition table is at LBA #2, and the filesystem starts from LBA #34.</p></li></ul><p><strong>6. Why does GRUB have multiple stages?</strong></p><ol><li>GRUB has multiple stages, <code>Stage 1</code> being in the <code>Bootstrap</code> section of the first sector of MBR formatted bootable disk.</li><li>The Bootstrap code has only a space of around 446 Bytes.</li><li>This is enough for simple bootloaders, but not so for bootloaders that support Menu-drive selection, supports multiple filesystems etc.</li><li>Hence, the first stage of Grub exists in the Bootstrap code area, and the remaining at multiple locations such as the sectors between Sector #0 and Filesystem partition, as well as the Active partition.</li><li>Although every MBR formatted HDD contains an MBR, the master boot code is used only if the disk contains the active, primary partition.</li></ol><p><strong>7. Difference between GRUB1 (Legacy) and GRUB2</strong></p><ol><li>GRUB1 works only on x86 and x86_64 architecture. GRUB2 works on multiple architectures including SPARC and PowerPC.</li><li>GRUB1 supported only MBR and BIOS, while GRUB2 supports MBR, GPT, EFI, BIOS, OpenFirmware etc..</li><li>GRUB1 supported boot from normal filesystems, while GRUB2 supports reading LVM, RAID etc..</li><li>GRUB1 could only read a few filesystems such as EXT, XFS, JFS, FAT, ReiserFS etc.., while GRUB2 supports additional FS such as Apple FS, NTFS etc.</li></ol><p><strong>8. Difference between MBR and GPT partition methods</strong></p><ol><li>MBR (also called msdos partitions) uses 32-bits to store Block (LBA) addresses. For HDDs with 512 byte sectors, the MBR partition table entries allow a single partition upto 2TB.</li><li>GPT (Guid Partition Table) use logical block addressing (LBA) in place of the historical cylinder-head-sector (CHS) addressing.</li><li>On a system using GPT, the MBR is still maintained for backward compatibility. The protective MBR is contained in LBA 0, the GPT header is in LBA 1, and the GPT header has a pointer to the partition table, or Partition Entry Array, typically LBA 2.</li><li>The UEFI specification stipulates that a minimum of 16,384 bytes, regardless of sector size, be allocated for the Partition Entry Array.</li><li>On a disk having 512-byte sectors, a partition entry array size of 16,384 bytes and the minimum size of 128 bytes for each partition entry, LBA 34 is the first usable sector on the disk.</li></ol><p><strong>9. Difference between BIOS and EFI firmware systems</strong></p><p><strong>10. Troubleshooting GRUB</strong></p><ol><li><p>Press <code>e</code> from GRUB menu, to enter the GRUB configuration and edit it.</p></li><li><p>Check the GRUB root where GRUB checks for the UUID, at the <strong>set root=<code>hd&lt;X>, &lt;type></code></strong> parameter. The <code>type</code> would be usually <code>msdos</code> for MBR partitions and <code>gpt</code> for GPT partitions.</p></li><li><p>Press <code>Ctrl + C</code> to access the GRUB command prompt.</p><ul><li><code>ls</code> and <code>ls -l</code> (for more details) to list the partitions on the disks, on the machine.</li></ul></li><li><p>Update/Edit grub.cfg</p><ul><li>Any changes to grub.cfg won't be permanent. Hence, don't directly edit it.</li><li>Add changes in /etc/default/grub</li><li>Run <code>grub2-mkconfig > /etc/grub2.cfg</code> to update the changes to grub2.cfg.</li></ul></li><li><p>GRUB 2 works as:</p></li></ol><ul><li>/etc/default/grub contains customizations</li><li>/etc/grub.d/ scripts contain GRUB menu information and operating system boot scripts.</li><li>When the command <code>grub2-mkconfig > /etc/grub2.cfg</code> is run, it reads the contents of the grub file and the grub.d scripts and creates the grub.cfg file.</li></ul><hr><hr><h3 class="relative group">Appendix<div id=appendix class=anchor></div><span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"><a class="text-primary-300 dark:text-neutral-700 !no-underline" href=#appendix aria-label=Anchor>#</a></span></h3><ol><li><a href=https://en.wikipedia.org/wiki/Power_good_signal target=_blank rel=noreferrer>https://en.wikipedia.org/wiki/Power_good_signal</a></li><li><a href=https://en.wikipedia.org/wiki/Real_mode target=_blank rel=noreferrer>https://en.wikipedia.org/wiki/Real_mode</a></li><li><a href=https://en.wikipedia.org/wiki/Protected_mode target=_blank rel=noreferrer>https://en.wikipedia.org/wiki/Protected_mode</a></li><li><a href=https://en.wikipedia.org/wiki/Memory_segmentation target=_blank rel=noreferrer>https://en.wikipedia.org/wiki/Memory_segmentation</a></li><li><a href=https://en.wikipedia.org/wiki/Master_boot_record target=_blank rel=noreferrer>https://en.wikipedia.org/wiki/Master_boot_record</a></li><li><a href=https://technet.microsoft.com/en-us/library/cc976786.aspx target=_blank rel=noreferrer>https://technet.microsoft.com/en-us/library/cc976786.aspx</a></li></ol><hr><h2 class="relative group">date created: 13-11-2022, Sunday, 04:18 PM<div id=date-created-13-11-2022-sunday-0418-pm class=anchor></div><span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"><a class="text-primary-300 dark:text-neutral-700 !no-underline" href=#date-created-13-11-2022-sunday-0418-pm aria-label=Anchor>#</a></span></h2><h1 class="relative group">Arch boot process<div id=arch-boot-process class=anchor></div><span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"><a class="text-primary-300 dark:text-neutral-700 !no-underline" href=#arch-boot-process aria-label=Anchor>#</a></span></h1><p><a href=https://wiki.archlinux.org/index.php/Arch_boot_process#Boot_loader target=_blank rel=noreferrer>https://wiki.archlinux.org/index.php/Arch_boot_process#Boot_loader</a></p><p>Since each OS or vendor can maintain its own files within the <a href=https://wiki.archlinux.org/index.php/EFI_system_partition target=_blank rel=noreferrer>EFI system partition</a> without affecting the other, multi-booting using UEFI is just a matter of launching a different EFI application corresponding to the particular operating system's boot loader. This removes the need for relying on <a href=https://en.wikipedia.org/wiki/Chain_loading target=_blank rel=noreferrer>chain loading</a> mechanisms of one <a href=https://wiki.archlinux.org/index.php/Arch_boot_process target=_blank rel=noreferrer>boot loader</a> to load another OS.</p><p>See also <a href=https://wiki.archlinux.org/index.php/Dual_boot_with_Windows target=_blank rel=noreferrer>Dual boot with Windows</a>.</p><p>A boot loader is a piece of software started by the firmware (<a href=https://en.wikipedia.org/wiki/BIOS target=_blank rel=noreferrer>BIOS</a> or <a href=https://wiki.archlinux.org/index.php/UEFI target=_blank rel=noreferrer>UEFI</a>). It is responsible for loading the kernel with the wanted <a href=https://wiki.archlinux.org/index.php/Kernel_parameters target=_blank rel=noreferrer>kernel parameters</a>, and <a href=https://wiki.archlinux.org/index.php/Mkinitcpio target=_blank rel=noreferrer>initial RAM disk</a> based on configuration files. In the case of UEFI, the kernel itself can be directly launched by the UEFI using the EFI boot stub. A separate boot loader or boot manager can still be used for the purpose of editing kernel parameters before booting.</p><p><strong>Warning:</strong> A boot loader must be able to access the kernel and initramfs image(s), otherwise the system will not boot. Thus, in a typical setup, it must support accessing <code>/boot</code>. That means it must have support for everything starting from the block devices, stacked block devices (LVM, RAID, dm-crypt, LUKS, etc) and ending with the file system on which the kernel(s) and initramfs image(s) reside.</p><ol><li>A <a href=https://www.rodsbooks.com/efi-bootloaders/principles.html target=_blank rel=noreferrer>boot manager</a>. It can only launch other EFI applications, for example, Linux kernel images built with <code>CONFIG_EFI_STUB=y</code> and Windows <code>bootmgfw.efi</code>.</li></ol><p>The <a href=https://wiki.archlinux.org/index.php/Kernel target=_blank rel=noreferrer>kernel</a> is the core of an operating system. It functions on a low level (kernelspace) interacting between the hardware of the machine and the programs which use the hardware to run. The kernel temporarily stops programs to run other programs in the meantime, which is known as <a href=https://en.wikipedia.org/wiki/Preemption_%28computing%29 target=_blank rel=noreferrer>preemption</a>. This creates the illusion of many tasks being executed simultaneously, even on single-core CPUs. The kernel uses the CPU scheduler to decide which program takes priority at any given moment.</p><h2 class="relative group">initramfs<div id=initramfs class=anchor></div><span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"><a class="text-primary-300 dark:text-neutral-700 !no-underline" href=#initramfs aria-label=Anchor>#</a></span></h2><p>After the <a href=https://wiki.archlinux.org/index.php/Arch_boot_process target=_blank rel=noreferrer>boot loader</a> loads the <a href=https://wiki.archlinux.org/index.php/Kernel target=_blank rel=noreferrer>kernel</a> and possible initramfs files and executes the kernel, the kernel unpacks the initramfs (initial RAM filesystem) archives into the (then empty) rootfs (initial root filesystem, specifically a ramfs or tmpfs). The first extracted initramfs is the one embedded in the kernel binary during the kernel build, then possible external initramfs files are extracted. Thus files in the external initramfs overwrite files with the same name in the embedded initramfs. The kernel then executes <code>/init</code> (in the rootfs) as the first process. The early userspace starts.</p><p>Arch Linux uses an empty archive for the builtin initramfs (which is the default when building Linux). See <a href=https://wiki.archlinux.org/index.php/Mkinitcpio target=_blank rel=noreferrer>mkinitcpio</a> for more and Arch-specific info about the external initramfs.</p><p>The purpose of the initramfs is to bootstrap the system to the point where it can access the root filesystem (see <a href=https://wiki.archlinux.org/index.php/FHS target=_blank rel=noreferrer>FHS</a> for details). This means that any modules that are required for devices like IDE, SCSI, SATA, USB/FW (if booting from an external drive) must be loadable from the initramfs if not built into the kernel; once the proper modules are loaded (either explicitly via a program or script, or implicitly via <a href=https://wiki.archlinux.org/index.php/Udev target=_blank rel=noreferrer>udev</a>), the boot process continues. For this reason, the initramfs only needs to contain the modules necessary to access the root filesystem; it does not need to contain every module one would ever want to use. The majority of modules will be loaded later on by udev, during the init process.</p><p>At the final stage of early userspace, the real root is mounted, and then replaces the initial root filesystem. <code>/sbin/init</code> is executed, replacing the <code>/init</code> process. Arch uses <a href=https://wiki.archlinux.org/index.php/Systemd target=_blank rel=noreferrer>systemd</a> as the default <a href=https://wiki.archlinux.org/index.php/Init target=_blank rel=noreferrer>init</a>.</p><p><a href=https://wiki.archlinux.org/index.php/Init target=_blank rel=noreferrer>init</a> calls <a href=https://wiki.archlinux.org/index.php/Getty target=_blank rel=noreferrer>getty</a> once for each <a href=https://en.wikipedia.org/wiki/Virtual_console target=_blank rel=noreferrer>virtual terminal</a> (typically six of them), which initializes each tty and asks for a username and password. Once the username and password are provided, getty checks them against <code>/etc/passwd</code> and <code>/etc/shadow</code>, then calls <a href=https://wiki.archlinux.org/index.php/Arch_boot_process target=_blank rel=noreferrer>login</a>. Alternatively, getty may start a display manager if one is present on the system.</p><p>A <a href=https://wiki.archlinux.org/index.php/Display_manager target=_blank rel=noreferrer>display manager</a> can be configured to replace the getty login prompt on a tty.</p><p>In order to automatically initialize a display manager after booting, it is necessary to manually enable the service unit through <a href=https://wiki.archlinux.org/index.php/Systemd target=_blank rel=noreferrer>systemd</a>. For more information on enabling and starting service units, see <a href=https://wiki.archlinux.org/index.php/Systemd target=_blank rel=noreferrer>systemd#Using units</a>.</p><p>The login program begins a session for the user by setting environment variables and starting the user's shell, based on <code>/etc/passwd</code>.</p><p>The login program displays the contents of <a href=https://en.wikipedia.org/wiki/motd_%28Unix%29 target=_blank rel=noreferrer>/etc/motd</a> (message of the day) after a successful login, just before it executes the login shell. It is a good place to display your Terms of Service to remind users of your local policies or anything you wish to tell them.</p><p>Once the user's <a href=https://wiki.archlinux.org/index.php/Shell target=_blank rel=noreferrer>shell</a> is started, it will typically run a runtime configuration file, such as <a href=https://wiki.archlinux.org/index.php/Bashrc target=_blank rel=noreferrer>bashrc</a>, before presenting a prompt to the user. If the account is configured to <a href=https://wiki.archlinux.org/index.php/Start_X_at_login target=_blank rel=noreferrer>Start X at login</a>, the runtime configuration file will call <a href=https://wiki.archlinux.org/index.php/Startx target=_blank rel=noreferrer>startx</a> or <a href=https://wiki.archlinux.org/index.php/Xinit target=_blank rel=noreferrer>xinit</a>.</p><p><a href=https://wiki.archlinux.org/index.php/Xinit target=_blank rel=noreferrer>xinit</a> runs the user's <a href=https://wiki.archlinux.org/index.php/Xinitrc target=_blank rel=noreferrer>xinitrc</a> runtime configuration file, which normally starts a <a href=https://wiki.archlinux.org/index.php/Window_manager target=_blank rel=noreferrer>window manager</a>. When the user is finished and exits the window manager, xinit, startx, the shell, and login will terminate in that order, returning to <a href=https://wiki.archlinux.org/index.php/Arch_boot_process target=_blank rel=noreferrer>getty</a>.</p><hr><h2 class="relative group">date created: 12-11-2022, Saturday, 08:55 PM<div id=date-created-12-11-2022-saturday-0855-pm class=anchor></div><span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"><a class="text-primary-300 dark:text-neutral-700 !no-underline" href=#date-created-12-11-2022-saturday-0855-pm aria-label=Anchor>#</a></span></h2><p>All modern personal computer <a href=https://en.wikipedia.org/wiki/Operating_system title="Operating system" target=_blank rel=noreferrer>operating systems</a> support GPT. Some, including <a href=https://en.wikipedia.org/wiki/MacOS title=MacOS target=_blank rel=noreferrer>macOS</a> and <a href=https://en.wikipedia.org/wiki/Microsoft_Windows title="Microsoft Windows" target=_blank rel=noreferrer>Microsoft Windows</a> on the x86 architecture, support booting from GPT partitions only on systems with EFI firmware, but <a href=https://en.wikipedia.org/wiki/FreeBSD title=FreeBSD target=_blank rel=noreferrer>FreeBSD</a> and most <a href=https://en.wikipedia.org/wiki/Linux_distribution title="Linux distribution" target=_blank rel=noreferrer>Linux distributions</a> can boot from GPT partitions on systems with either the BIOS or the EFI firmware interface.</p><p>The Master Boot Record (MBR) partitioning scheme, widely used since the early 1980s, imposed limitations for use of modern hardware. The available size for block addresses and related information is limited to 32 bits. For hard disks with 512‑byte sectors, the MBR partition table entries allow a maximum size of 2 <a href=https://en.wikipedia.org/wiki/Tebibyte title=Tebibyte target=_blank rel=noreferrer>TiB</a> (2³² × 512‑bytes) or 2.20 <a href=https://en.wikipedia.org/wiki/Terabyte title=Terabyte target=_blank rel=noreferrer>TB</a> (2.20 × 10¹² bytes).<sup id=cite_ref-UEFIFAQ_1-0><a href=https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-UEFIFAQ-1>[1]</a></sup></p><p>In the late 1990s, <a href=https://en.wikipedia.org/wiki/Intel title=Intel target=_blank rel=noreferrer>Intel</a> developed a new partition table format as part of what eventually became the <a href=https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface title="Unified Extensible Firmware Interface" target=_blank rel=noreferrer>Unified Extensible Firmware Interface</a> (UEFI). The GUID Partition Table is specified in chapter 5 of the UEFI 2.8 specification.<sup id=cite_ref-UEFI2.8_2-0><a href=https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-UEFI2.8-2>[2]</a></sup> GPT uses 64 bits for logical block addresses, allowing a maximum disk size of 2<sup>64</sup> sectors. For disks with 512‑byte sectors, the maximum size is 8 <a href=https://en.wikipedia.org/wiki/ZiB title=ZiB target=_blank rel=noreferrer>ZiB</a> (2<sup>64</sup> × 512‑bytes) or 9.44 <a href=https://en.wikipedia.org/wiki/Zettabyte title=Zettabyte target=_blank rel=noreferrer>ZB</a> (9.44 × 10²¹ bytes).<sup id=cite_ref-UEFIFAQ_1-1><a href=https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-UEFIFAQ-1>[1]</a></sup> For disks with 4,096‑byte sectors the maximum size is 64 <a href=https://en.wikipedia.org/wiki/ZiB title=ZiB target=_blank rel=noreferrer>ZiB</a> (2<sup>64</sup> × 4,096‑bytes) or 75.6 <a href=https://en.wikipedia.org/wiki/Zettabyte title=Zettabyte target=_blank rel=noreferrer>ZB</a> (75.6 × 10²¹ bytes).</p><p>In 2010, hard-disk manufacturers introduced drives with 4,096‑byte sectors (<a href=https://en.wikipedia.org/wiki/Advanced_Format title="Advanced Format" target=_blank rel=noreferrer>Advanced Format</a>).<sup id=cite_ref-bittech_3-0><a href=https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-bittech-3>[3]</a></sup> For compatibility with legacy hardware and software, those drives include an emulation technology (<a href=https://en.wikipedia.org/wiki/Advanced_Format#512e title="Advanced Format" target=_blank rel=noreferrer>512e</a>) that presents 512‑byte sectors to the entity accessing the hard drive, despite their underlying 4,096‑byte physical sectors.<sup id=cite_ref-anandAF_4-0><a href=https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-anandAF-4>[4]</a></sup></p><p>Like MBR, GPTs use <a href=https://en.wikipedia.org/wiki/Logical_block_addressing title="Logical block addressing" target=_blank rel=noreferrer>logical block addressing</a> (LBA) in place of the historical <a href=https://en.wikipedia.org/wiki/Cylinder-head-sector title=Cylinder-head-sector target=_blank rel=noreferrer>cylinder-head-sector</a> (CHS) addressing. The protective MBR is stored at LBA 0, and the GPT header is in LBA 1. The GPT header has a <a href=https://en.wikipedia.org/wiki/Pointer_%28computer_programming%29 title="Pointer (computer programming)" target=_blank rel=noreferrer>pointer</a> to the partition table (<em>Partition Entry Array</em>), which is typically at LBA 2. Each entry on the partition table has a size of 128 bytes. The UEFI specification stipulates that a minimum of 16,384 bytes, regardless of sector size, are allocated for the Partition Entry Array.<sup id=cite_ref-uefi_spec_5-0><a href=https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-uefi_spec-5>[5]</a></sup> Thus, on a disk with 512-byte sectors, at least 32 sectors are used for the Partition Entry Array, and the first usable block is at LBA 34 or higher, while on a 4,096-byte sectors disk, at least 4 sectors are used for the Partition Entry Array, and the first usable block is at LBA 6 or higher.</p><p>For limited backward compatibility, the space of the legacy <a href=https://en.wikipedia.org/wiki/Master_boot_record title="Master boot record" target=_blank rel=noreferrer>Master Boot Record</a> (MBR) is still reserved in the GPT specification, but it is now used in a way that prevents MBR-based disk utilities from misrecognizing and possibly overwriting GPT disks. This is referred to as a <em>protective MBR</em>.<sup id=cite_ref-IBMLargeDrivesGPT_6-0><a href=https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-IBMLargeDrivesGPT-6>[6]</a></sup></p><p>A single partition of type <a href=https://en.wikipedia.org/wiki/Partition_type#PID_EEh title="Partition type" target=_blank rel=noreferrer>EEh</a>, encompassing the entire GPT drive (where "entire" actually means as much of the drive as can be represented in an MBR), is indicated and identifies it as GPT. Operating systems and tools which cannot read GPT disks will generally recognize the disk as containing one partition of unknown type and no empty space, and will typically refuse to modify the disk unless the user explicitly requests and confirms the deletion of this partition. This minimizes accidental erasures.<sup id=cite_ref-IBMLargeDrivesGPT_6-1><a href=https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-IBMLargeDrivesGPT-6>[6]</a></sup> Furthermore, GPT-aware OSes may check the protective MBR and if the enclosed partition type is not of type EEh or if there are multiple partitions defined on the target device, the OS may refuse to manipulate the partition table.<sup id=cite_ref-tn2166_7-0><a href=https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-tn2166-7>[7]</a></sup></p><p>If the actual size of the disk exceeds the maximum partition size representable using the legacy 32-bit LBA entries in the MBR partition table, the recorded size of this partition is clipped at the maximum, thereby ignoring the rest of the disk. This amounts to a maximum reported size of 2 TiB, assuming a disk with 512 bytes per sector (see <a href=https://en.wikipedia.org/wiki/512e title=512e target=_blank rel=noreferrer>512e</a>). It would result in 16 TiB with 4 KiB sectors (<a href=https://en.wikipedia.org/wiki/4Kn title=4Kn target=_blank rel=noreferrer>4Kn</a>), but since many older operating systems and tools are hard coded for a sector size of 512 bytes or are limited to 32-bit calculations, exceeding the 2 TiB limit could cause compatibility problems.<sup id=cite_ref-IBMLargeDrivesGPT_6-2><a href=https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-IBMLargeDrivesGPT-6>[6]</a></sup></p><p>In operating systems that support GPT-based boot through BIOS services rather than EFI, the first sector may also still be used to store the first stage of the bootloader code, but modified to recognize GPT partitions. The bootloader in the MBR must not assume a sector size of 512 bytes.<sup id=cite_ref-IBMLargeDrivesGPT_6-3><a href=https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-IBMLargeDrivesGPT-6>[6]</a></sup></p><p>The partition table header defines the usable blocks on the disk. It also defines the number and size of the partition entries that make up the partition table (offsets 80 and 84 in the table).<sup id=cite_ref-UEFI2.8_2-1><a href=https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-UEFI2.8-2>[2]</a></sup><sup><span title="Page: 119">: 119 </span></sup> </p><p>After the header, the Partition Entry Array describes partitions, using a minimum size of 128 bytes for each entry block.<sup id=cite_ref-9><a href=https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-9>[8]</a></sup> The starting location of the array on disk, and the size of each entry, are given in the GPT header. The first 16 bytes of each entry designate the partition type's globally unique identifier (GUID). For example, the GUID for an <a href=https://en.wikipedia.org/wiki/EFI_system_partition title="EFI system partition" target=_blank rel=noreferrer>EFI system partition</a> is C12A7328-F81F-11D2-BA4B-00A0C93EC93B. The second 16 bytes are a GUID unique to the partition. Then follow the starting and ending 64 bit LBAs, partition attributes, and the 36 character (max.) <a href=https://en.wikipedia.org/wiki/Unicode title=Unicode target=_blank rel=noreferrer>Unicode</a> partition name. As is the nature and purpose of GUIDs and as per RFC 4122, no central registry is needed to ensure the uniqueness of the GUID partition type designators.<sup id=cite_ref-RFC_4122_10-0><a href=https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-RFC_4122-10>[9]</a></sup><sup id=cite_ref-UEFI2.8_2-2><a href=https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-UEFI2.8-2>[2]</a></sup><sup>: <span title='Page / location: 2200
-Quotation : "All EFI GUIDs (Globally Unique Identifiers) have the format described in RFC 4122 and comply with the referenced algorithms for generating GUIDs."'>2200</span> </sup> </p><p>The 64-bit partition table attributes are shared between 48-bit common attributes for all partition types, and 16-bit type-specific attributes:</p><p>Windows 7 and earlier do not support UEFI on 32-bit platforms, and therefore do not allow booting from GPT partitions.<sup id=cite_ref-GPTFAQ_28-0><a href=https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-GPTFAQ-28>[27]</a></sup></p><p>Each partition has a "partition type GUID" that identifies the type of the partition and therefore partitions of the same type will all have the same "partition type GUID". Each partition also has a "partition unique GUID" as a separate entry, which as the name implies is a unique id for each partition.</p><h1 class="relative group">How to know if I'm booting using UEFI?<div id=how-to-know-if-im-booting-using-uefi class=anchor></div><span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"><a class="text-primary-300 dark:text-neutral-700 !no-underline" href=#how-to-know-if-im-booting-using-uefi aria-label=Anchor>#</a></span></h1><p><a href=https://unix.stackexchange.com/questions/148356/how-to-know-if-im-booting-using-uefi target=_blank rel=noreferrer>https://unix.stackexchange.com/questions/148356/how-to-know-if-im-booting-using-uefi</a></p><p><strong>First method:</strong></p><p>Ok, I booted up my UEFI box to check. First clue, near the top of <code>dmesg</code>. This shouldn't appear if you're booted via BIOS:</p><div class=highlight-wrapper><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=ln>1</span><span class=cl>[    0.000000] efi: EFI v2.31 by American Megatrends
-</span></span><span class=line><span class=ln>2</span><span class=cl>[    0.000000] efi:  ACPI=0xd8769000  ACPI 2.0=0xd8769000  SMBIOS=0xd96d4a98 
-</span></span><span class=line><span class=ln>3</span><span class=cl>[    0.000000] efi: mem00: type=6, attr=0x800000000000000f, range=[0x0000000000000000-0x0000000000001000) (0MB)
-</span></span><span class=line><span class=ln>4</span><span class=cl>⋮</span></span></code></pre></div></div><p><strong>Second method:</strong></p><div class=highlight-wrapper><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=ln>1</span><span class=cl>$ sudo efibootmgr
-</span></span><span class=line><span class=ln>2</span><span class=cl>BootCurrent: 0000
-</span></span><span class=line><span class=ln>3</span><span class=cl>Timeout: 0 seconds
-</span></span><span class=line><span class=ln>4</span><span class=cl>BootOrder: 0000
-</span></span><span class=line><span class=ln>5</span><span class=cl>Boot0000* debian</span></span></code></pre></div></div><p>If you are not, then the following should appear:</p><div class=highlight-wrapper><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=ln>1</span><span class=cl>$ sudo efibootmgr        
-</span></span><span class=line><span class=ln>2</span><span class=cl>
-</span></span><span class=line><span class=ln>3</span><span class=cl>EFI variables are not supported on this system.</span></span></code></pre></div></div><p>Note that you'll have to have the efibootmgr package installed. You can also attempt to list the EFI variables:</p><div class=highlight-wrapper><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=ln>1</span><span class=cl>$ efivar -l 
-</span></span><span class=line><span class=ln>2</span><span class=cl>... over 100 lines of output ...</span></span></code></pre></div></div><p><strong>Third method:</strong></p><p>Check if you have a <code>/boot/efi</code>:</p><div class=highlight-wrapper><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=ln>1</span><span class=cl>$ df -h --local | grep /boot
-</span></span><span class=line><span class=ln>2</span><span class=cl>/dev/sda2       229M   31M  187M  14% /boot
-</span></span><span class=line><span class=ln>3</span><span class=cl>/dev/sda1       120M  250K  119M   1% /boot/efi</span></span></code></pre></div></div><p>Inside that partition should be the files that UEFI executes to boot.</p><p>If using any of these methods the relevant entries doesn't appear, is very likely you are not using UEFI.</p></div></div></section><footer class="pt-8 max-w-prose print:hidden"><div class=pt-8><hr class="border-dotted border-neutral-300 dark:border-neutral-600"><div class="flex justify-between pt-3"><span class="flex flex-col"><a class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400" href=/docs/linux-booting/00-boot-process/check-if-your-computer-uses-uefi-or-bios/><span class=leading-6><span class="inline-block rtl:rotate-180">&larr;</span>&ensp;
-</span></a><span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400"><time datetime=0001-01-01T00:00:00+00:00>1 January 0001</time>
-</span></span><span class="flex flex-col items-end"><a class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400" href=/docs/linux-booting/00-boot-process/00-boot-process/><span class=leading-6>&ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
-</span></a><span class="me-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400"><time datetime=0001-01-01T00:00:00+00:00>1 January 0001</time></span></span></div></div></footer></article><div id=scroll-to-top class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200"><a href=#the-top class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400" aria-label="Scroll to top" title="Scroll to top">&uarr;</a></div></main><footer id=site-footer class="py-10 print:hidden"><div class="flex items-center justify-between"><p class="text-sm text-neutral-500 dark:text-neutral-400">&copy;
-2026
-Vimal A R</p><p class="text-xs text-neutral-500 dark:text-neutral-400">Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://gohugo.io/ target=_blank rel="noopener noreferrer">Hugo</a> & <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://blowfish.page/ target=_blank rel="noopener noreferrer">Blowfish</a></p></div><script>mediumZoom(document.querySelectorAll("img:not(.nozoom)"),{margin:24,background:"rgba(0,0,0,0.5)",scrollOffset:0})</script></footer><div id=search-wrapper class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500" data-url=https://arvimal.github.io/><div id=search-modal class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"><header class="relative z-10 flex items-center justify-between flex-none px-2"><form class="flex items-center flex-auto min-w-0"><div class="flex items-center justify-center w-8 h-8 text-neutral-400"><span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9.0 208 0S0 93.1.0 208s93.1 208 208 208c48.3.0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9.0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7.0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7.0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg></span></div><input type=search id=search-query class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent" placeholder=Search tabindex=0></form><button id=close-search-button class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400" title="Close (Esc)">
-<span class="relative block icon"><svg viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75.0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3 54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75.0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75.0-45.25s32.75-12.5 45.25.0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25.0s12.5 32.75.0 45.25l-105.4 105.4L310.6 361.4z"/></svg></span></button></header><section class="flex-auto px-2 overflow-auto"><ul id=search-results></ul></section></div></div></div></body></html>
+Else, it looks for an <code>init</code> binary at the locations above.</p>
+</blockquote><ul>
+<li><code>/sbin/init</code> starts
+<ul>
+<li>On systemd machines, <code>/sbin/init</code> is usually a symlink to <code>/usr/lib/systemd/systemd</code>.</li>
+<li><code>init</code> reads <code>/etc/inittab</code> for run levels, and go to the specific runlevel locations at <code>/etc/init.d/</code> to start the scripts marked to startup in that level.</li>
+<li>On Systemd machines, <code>Systemd</code> looks for the targets it has to reach (/usr/lib/systemd/system/default.target), and starts the units for it. By default, Systemd is configured to reach the <code>multi-user</code> target, and starts the services for it, and presents the login prompt.</li>
+</ul>
+</li>
+</ul>
+<p><strong>13. <code>mgetty</code>, <code>systemd-getty-generator</code>, <code>login</code>, and <code>PAM</code></strong></p>
+<ul>
+<li>
+<p>On SystemV machines with older <code>init</code>, <code>init</code> loads <code>mgetty</code> or <code>agetty</code>.</p>
+<ul>
+<li><code>agetty</code> takes control of the <code>login</code> binary</li>
+<li>It presents a login prompt to the user, in the virtual console.</li>
+<li>The user login credentials are passed to PAM settings in /etc/pam.d/</li>
+<li>PAM checks /etc/passwd, and /etc/shadow for user info.</li>
+<li>If the user info is correct, the shell set in /etc/passwd is spawned.</li>
+<li>If not, <code>login</code> terminates and control is passed back to <code>agetty</code>.</li>
+<li><code>agetty</code> takes control over <code>login</code> and presents the user with a prompt.</li>
+</ul>
+</li>
+<li>
+<p>On Systemd machines, <code>systemd</code> loads <code>systemd-getty-generator</code>.</p>
+<ul>
+<li><code>systemd-getty-generator</code> takes control over the <code>login</code> binary.</li>
+<li>The rest are similar to the sequence above.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<hr>
+
+<h3 class="relative group">Notes
+    <div id="notes" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#notes" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p><strong>1. History of Real Mode</strong></p>
+<ol>
+<li>The <em>80286</em> series of processors introduced the <code>Protected Mode</code> of operation.</li>
+<li><code>Real Mode</code> was the operational mode available before <code>Protected Mode</code> emerged in 80826.</li>
+<li><code>Protected Mode</code> enabled features such as virtual memory, paging etc.., and these were not available in <code>Real Mode</code> mode of operation.</li>
+<li>Backward compatibility is a design decision in x86 series, hence it was a requirement to get any software written for processor series before 80286 to be able to run on any x86 series. The existing system software which were written for <code>Real Mode</code> would have to be re-written to use the <code>Protected Mode</code>.</li>
+<li>Hence, to maintain backward compatibility with all previous series as well as for using the existing system software, all x86 processors from <code>80286</code> till the latest x86 64-bit processors (those using Protected mode), start in <code>Real Mode</code>.</li>
+<li>The Processor switches from <code>Real Mode</code> to <code>Protected Mode</code> after the system software sets up a few descriptor tables and enables the Protection Enable (PE) bit in the control register 0 (CR0).</li>
+</ol>
+<p><strong>2. Why was the change to Protected mode required?</strong></p>
+<ol>
+<li>The Intel 8086, the predecessor to the 80286, was originally designed with a 20-bit address bus for its memory.</li>
+<li>This allowed the processor to access 220 bytes of memory, equivalent to 1 megabyte.</li>
+<li>At the time, 1 MB of memory was considered a relatively large amount of memory, so the designers of the IBM Personal Computer reserved the first 640 kilobytes for use by applications and the operating system, and the remaining 384 kilobytes for the BIOS and memory for add-on devices.</li>
+<li>As the cost of memory decreased and memory use increased, the 1 MB limitation became a significant problem. Intel intended to solve this limitation along with others with the release of the 286, through the <code>Protected Mode</code>.</li>
+</ol>
+<p><strong>3. How does Real mode address memory?</strong></p>
+<ol>
+<li><code>Real Mode</code> was the only mode available in the series prior 80286, ie.. 8086.</li>
+<li>This series had 20-bit address buses capable of addressing 1MiB of Memory, but had only 16-bit CPU registers that could load upto 64KiB of memory at a time.</li>
+<li>This meant that, even though the bus had the width to accomodate a larger bit size and access the memory, the Processor registers were not big enough to load the data in a single go.</li>
+<li>Hence, 8086 processors used a method known as <a href="https://en.wikipedia.org/wiki/Memory_segmentation"  target="_blank" rel="noreferrer">Memory Segmentation</a>.</li>
+<li>In 8086, Memory segmenatation worked by creating 64KiB chunks of the 1MiB data space, and loading it as required.</li>
+</ol>
+<p><strong>4. 80826 series provides memory protection compared to 8086, what is it?</strong></p>
+<ol>
+<li>Memory segmentation is the process of dividing the system memory into sections.</li>
+<li>8086 series used this technique to address a memory of 1MiB when its registers were only capable of storing 64KiB.</li>
+<li>In a system that uses memory segmentation, a reference to the memory location would include a value that points to a segment and an offset. This enables the processor to read the entire segment.</li>
+<li>The <code>Memory Management Unit</code> is responsible for mapping the segments to the actual locations in RAM, as well as checking the access permissions for that specific memory location.</li>
+<li>The Memory Segmentation used by 8086 did not provide any protection. ie. it didn't have a mechanism to prevent access to specific memory segments. Any software running on these processors can access any memory segments as it chose, even if those were not in use by the said system software.</li>
+<li>The lack of Memory protection in 8086 prevented features such as Virtual Memory from being realized.</li>
+<li>80826 came with the <code>Protected Mode</code> of operation which brought in memory protection and features such as virtual memory, paging etc.</li>
+<li>As said earlier, due to backward compatibility, 80286 still started up in <code>Real mode</code> even though it came with <code>Protected Mode</code>.</li>
+</ol>
+<p><strong>5. Master Boot Record</strong></p>
+<ol>
+<li>A master boot record (MBR) is a special type of boot sector at the very beginning of a partitioned storage device.</li>
+<li>The MBR holds the information on how the partitions are organized on that medium.</li>
+<li>The organization of the partition table in the MBR limits the maximum addressable storage space of a disk to 2 TiB (232 × 512 bytes)</li>
+<li>The first <code>446 Bytes</code> of the sector of an MBR partitioned disk, contains the <code>Bootstrap</code> code.</li>
+<li>The next <code>four 16 Bytes</code> contains the four partition entries. Hence the limit of four primary partitions.</li>
+<li>The final <code>two bytes</code> contain the <code>Boot signature</code>, which denotes the disk is bootable and acts as an indicator that the sector is ending here.</li>
+</ol>
+<p>Thus, <strong>Total size =<code>446 + (4 x16) + 2</code> = 512 Bytes</strong></p>
+<p><strong>NOTE:</strong> GPT (Guid Partition Table) is a replacement to MBR. Some of the differences between MBR and GPT are:</p>
+<ul>
+<li>
+<p>MBR uses 32-bit addresses, hence is limited to read upto 2TiB of disk space (2**32 - 1)</p>
+</li>
+<li>
+<p>GPT uses 64-bit addresses and can address larger disks.</p>
+</li>
+<li>
+<p>MBR uses the Cylinder-Head-Sector (CHS) mode for disk access, which is not always correct due to outer cylinders being large than inner ones and thus the number of sectors per cylinder being different.</p>
+</li>
+<li>
+<p>GPT uses Logical-Block-Address (LBA) mode which is more accurate than GPT.</p>
+</li>
+<li>
+<p>GPT still maintains the MBR structure in Sector #0 to maintain backward compatibility. ie.. in LBA #0.</p>
+</li>
+<li>
+<p>GPT header is in LBA #1, the Partition table is at LBA #2, and the filesystem starts from LBA #34.</p>
+</li>
+</ul>
+<p><strong>6. Why does GRUB have multiple stages?</strong></p>
+<ol>
+<li>GRUB has multiple stages, <code>Stage 1</code> being in the <code>Bootstrap</code> section of the first sector of MBR formatted bootable disk.</li>
+<li>The Bootstrap code has only a space of around 446 Bytes.</li>
+<li>This is enough for simple bootloaders, but not so for bootloaders that support Menu-drive selection, supports multiple filesystems etc.</li>
+<li>Hence, the first stage of Grub exists in the Bootstrap code area, and the remaining at multiple locations such as the sectors between Sector #0 and Filesystem partition, as well as the Active partition.</li>
+<li>Although every MBR formatted HDD contains an MBR, the master boot code is used only if the disk contains the active, primary partition.</li>
+</ol>
+<p><strong>7. Difference between GRUB1 (Legacy) and GRUB2</strong></p>
+<ol>
+<li>GRUB1 works only on x86 and x86_64 architecture. GRUB2 works on multiple architectures including SPARC and PowerPC.</li>
+<li>GRUB1 supported only MBR and BIOS, while GRUB2 supports MBR, GPT, EFI, BIOS, OpenFirmware etc..</li>
+<li>GRUB1 supported boot from normal filesystems, while GRUB2 supports reading LVM, RAID etc..</li>
+<li>GRUB1 could only read a few filesystems such as EXT, XFS, JFS, FAT, ReiserFS etc.., while GRUB2 supports additional FS such as Apple FS, NTFS etc.</li>
+</ol>
+<p><strong>8. Difference between MBR and GPT partition methods</strong></p>
+<ol>
+<li>MBR (also called msdos partitions) uses 32-bits to store Block (LBA) addresses. For HDDs with 512 byte sectors, the MBR partition table entries allow a single partition upto 2TB.</li>
+<li>GPT (Guid Partition Table) use logical block addressing (LBA) in place of the historical cylinder-head-sector (CHS) addressing.</li>
+<li>On a system using GPT, the MBR is still maintained for backward compatibility. The protective MBR is contained in LBA 0, the GPT header is in LBA 1, and the GPT header has a pointer to the partition table, or Partition Entry Array, typically LBA 2.</li>
+<li>The UEFI specification stipulates that a minimum of 16,384 bytes, regardless of sector size, be allocated for the Partition Entry Array.</li>
+<li>On a disk having 512-byte sectors, a partition entry array size of 16,384 bytes and the minimum size of 128 bytes for each partition entry, LBA 34 is the first usable sector on the disk.</li>
+</ol>
+<p><strong>9. Difference between BIOS and EFI firmware systems</strong></p>
+<p><strong>10. Troubleshooting GRUB</strong></p>
+<ol>
+<li>
+<p>Press <code>e</code> from GRUB menu, to enter the GRUB configuration and edit it.</p>
+</li>
+<li>
+<p>Check the GRUB root where GRUB checks for the UUID, at the <strong>set root=<code>hd&lt;X&gt;, &lt;type&gt;</code></strong> parameter. The <code>type</code> would be usually <code>msdos</code> for MBR partitions and <code>gpt</code> for GPT partitions.</p>
+</li>
+<li>
+<p>Press <code>Ctrl + C</code> to access the GRUB command prompt.</p>
+<ul>
+<li><code>ls</code> and <code>ls -l</code> (for more details) to list the partitions on the disks, on the machine.</li>
+</ul>
+</li>
+<li>
+<p>Update/Edit grub.cfg</p>
+<ul>
+<li>Any changes to grub.cfg won't be permanent. Hence, don't directly edit it.</li>
+<li>Add changes in /etc/default/grub</li>
+<li>Run <code>grub2-mkconfig &gt; /etc/grub2.cfg</code> to update the changes to grub2.cfg.</li>
+</ul>
+</li>
+<li>
+<p>GRUB 2 works as:</p>
+</li>
+</ol>
+<ul>
+<li>/etc/default/grub contains customizations</li>
+<li>/etc/grub.d/ scripts contain GRUB menu information and operating system boot scripts.</li>
+<li>When the command <code>grub2-mkconfig &gt; /etc/grub2.cfg</code> is run, it reads the contents of the grub file and the grub.d scripts and creates the grub.cfg file.</li>
+</ul>
+<hr>
+<hr>
+
+<h3 class="relative group">Appendix
+    <div id="appendix" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#appendix" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Power_good_signal"  target="_blank" rel="noreferrer">https://en.wikipedia.org/wiki/Power_good_signal</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Real_mode"  target="_blank" rel="noreferrer">https://en.wikipedia.org/wiki/Real_mode</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Protected_mode"  target="_blank" rel="noreferrer">https://en.wikipedia.org/wiki/Protected_mode</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Memory_segmentation"  target="_blank" rel="noreferrer">https://en.wikipedia.org/wiki/Memory_segmentation</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Master_boot_record"  target="_blank" rel="noreferrer">https://en.wikipedia.org/wiki/Master_boot_record</a></li>
+<li><a href="https://technet.microsoft.com/en-us/library/cc976786.aspx"  target="_blank" rel="noreferrer">https://technet.microsoft.com/en-us/library/cc976786.aspx</a></li>
+</ol>
+<hr>
+
+<h2 class="relative group">date created: 13-11-2022, Sunday, 04:18 PM
+    <div id="date-created-13-11-2022-sunday-0418-pm" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#date-created-13-11-2022-sunday-0418-pm" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+
+<h1 class="relative group">Arch boot process
+    <div id="arch-boot-process" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#arch-boot-process" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+<p><a href="https://wiki.archlinux.org/index.php/Arch_boot_process#Boot_loader"  target="_blank" rel="noreferrer">https://wiki.archlinux.org/index.php/Arch_boot_process#Boot_loader</a></p>
+<p>Since each OS or vendor can maintain its own files within the <a href="https://wiki.archlinux.org/index.php/EFI_system_partition"  target="_blank" rel="noreferrer">EFI system partition</a> without affecting the other, multi-booting using UEFI is just a matter of launching a different EFI application corresponding to the particular operating system's boot loader. This removes the need for relying on <a href="https://en.wikipedia.org/wiki/Chain_loading"  target="_blank" rel="noreferrer">chain loading</a> mechanisms of one <a href="https://wiki.archlinux.org/index.php/Arch_boot_process"  target="_blank" rel="noreferrer">boot loader</a> to load another OS.</p>
+<p>See also <a href="https://wiki.archlinux.org/index.php/Dual_boot_with_Windows"  target="_blank" rel="noreferrer">Dual boot with Windows</a>.</p>
+<p>A boot loader is a piece of software started by the firmware (<a href="https://en.wikipedia.org/wiki/BIOS"  target="_blank" rel="noreferrer">BIOS</a> or <a href="https://wiki.archlinux.org/index.php/UEFI"  target="_blank" rel="noreferrer">UEFI</a>). It is responsible for loading the kernel with the wanted <a href="https://wiki.archlinux.org/index.php/Kernel_parameters"  target="_blank" rel="noreferrer">kernel parameters</a>, and <a href="https://wiki.archlinux.org/index.php/Mkinitcpio"  target="_blank" rel="noreferrer">initial RAM disk</a> based on configuration files. In the case of UEFI, the kernel itself can be directly launched by the UEFI using the EFI boot stub. A separate boot loader or boot manager can still be used for the purpose of editing kernel parameters before booting.</p>
+<p><strong>Warning:</strong> A boot loader must be able to access the kernel and initramfs image(s), otherwise the system will not boot. Thus, in a typical setup, it must support accessing <code>/boot</code>. That means it must have support for everything starting from the block devices, stacked block devices (LVM, RAID, dm-crypt, LUKS, etc) and ending with the file system on which the kernel(s) and initramfs image(s) reside.</p>
+<ol>
+<li>A <a href="https://www.rodsbooks.com/efi-bootloaders/principles.html"  target="_blank" rel="noreferrer">boot manager</a>. It can only launch other EFI applications, for example, Linux kernel images built with <code>CONFIG_EFI_STUB=y</code> and Windows <code>bootmgfw.efi</code>.</li>
+</ol>
+<p>The <a href="https://wiki.archlinux.org/index.php/Kernel"  target="_blank" rel="noreferrer">kernel</a> is the core of an operating system. It functions on a low level (kernelspace) interacting between the hardware of the machine and the programs which use the hardware to run. The kernel temporarily stops programs to run other programs in the meantime, which is known as <a href="https://en.wikipedia.org/wiki/Preemption_%28computing%29"  target="_blank" rel="noreferrer">preemption</a>. This creates the illusion of many tasks being executed simultaneously, even on single-core CPUs. The kernel uses the CPU scheduler to decide which program takes priority at any given moment.</p>
+
+<h2 class="relative group">initramfs
+    <div id="initramfs" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#initramfs" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>After the <a href="https://wiki.archlinux.org/index.php/Arch_boot_process"  target="_blank" rel="noreferrer">boot loader</a> loads the <a href="https://wiki.archlinux.org/index.php/Kernel"  target="_blank" rel="noreferrer">kernel</a> and possible initramfs files and executes the kernel, the kernel unpacks the initramfs (initial RAM filesystem) archives into the (then empty) rootfs (initial root filesystem, specifically a ramfs or tmpfs). The first extracted initramfs is the one embedded in the kernel binary during the kernel build, then possible external initramfs files are extracted. Thus files in the external initramfs overwrite files with the same name in the embedded initramfs. The kernel then executes <code>/init</code> (in the rootfs) as the first process. The early userspace starts.</p>
+<p>Arch Linux uses an empty archive for the builtin initramfs (which is the default when building Linux). See <a href="https://wiki.archlinux.org/index.php/Mkinitcpio"  target="_blank" rel="noreferrer">mkinitcpio</a> for more and Arch-specific info about the external initramfs.</p>
+<p>The purpose of the initramfs is to bootstrap the system to the point where it can access the root filesystem (see <a href="https://wiki.archlinux.org/index.php/FHS"  target="_blank" rel="noreferrer">FHS</a> for details). This means that any modules that are required for devices like IDE, SCSI, SATA, USB/FW (if booting from an external drive) must be loadable from the initramfs if not built into the kernel; once the proper modules are loaded (either explicitly via a program or script, or implicitly via <a href="https://wiki.archlinux.org/index.php/Udev"  target="_blank" rel="noreferrer">udev</a>), the boot process continues. For this reason, the initramfs only needs to contain the modules necessary to access the root filesystem; it does not need to contain every module one would ever want to use. The majority of modules will be loaded later on by udev, during the init process.</p>
+<p>At the final stage of early userspace, the real root is mounted, and then replaces the initial root filesystem. <code>/sbin/init</code> is executed, replacing the <code>/init</code> process. Arch uses <a href="https://wiki.archlinux.org/index.php/Systemd"  target="_blank" rel="noreferrer">systemd</a> as the default <a href="https://wiki.archlinux.org/index.php/Init"  target="_blank" rel="noreferrer">init</a>.</p>
+<p><a href="https://wiki.archlinux.org/index.php/Init"  target="_blank" rel="noreferrer">init</a> calls <a href="https://wiki.archlinux.org/index.php/Getty"  target="_blank" rel="noreferrer">getty</a> once for each <a href="https://en.wikipedia.org/wiki/Virtual_console"  target="_blank" rel="noreferrer">virtual terminal</a> (typically six of them), which initializes each tty and asks for a username and password. Once the username and password are provided, getty checks them against <code>/etc/passwd</code> and <code>/etc/shadow</code>, then calls <a href="https://wiki.archlinux.org/index.php/Arch_boot_process"  target="_blank" rel="noreferrer">login</a>. Alternatively, getty may start a display manager if one is present on the system.</p>
+<p>A <a href="https://wiki.archlinux.org/index.php/Display_manager"  target="_blank" rel="noreferrer">display manager</a> can be configured to replace the getty login prompt on a tty.</p>
+<p>In order to automatically initialize a display manager after booting, it is necessary to manually enable the service unit through <a href="https://wiki.archlinux.org/index.php/Systemd"  target="_blank" rel="noreferrer">systemd</a>. For more information on enabling and starting service units, see <a href="https://wiki.archlinux.org/index.php/Systemd"  target="_blank" rel="noreferrer">systemd#Using units</a>.</p>
+<p>The login program begins a session for the user by setting environment variables and starting the user's shell, based on <code>/etc/passwd</code>.</p>
+<p>The login program displays the contents of <a href="https://en.wikipedia.org/wiki/motd_%28Unix%29"  target="_blank" rel="noreferrer">/etc/motd</a> (message of the day) after a successful login, just before it executes the login shell. It is a good place to display your Terms of Service to remind users of your local policies or anything you wish to tell them.</p>
+<p>Once the user's <a href="https://wiki.archlinux.org/index.php/Shell"  target="_blank" rel="noreferrer">shell</a> is started, it will typically run a runtime configuration file, such as <a href="https://wiki.archlinux.org/index.php/Bashrc"  target="_blank" rel="noreferrer">bashrc</a>, before presenting a prompt to the user. If the account is configured to <a href="https://wiki.archlinux.org/index.php/Start_X_at_login"  target="_blank" rel="noreferrer">Start X at login</a>, the runtime configuration file will call <a href="https://wiki.archlinux.org/index.php/Startx"  target="_blank" rel="noreferrer">startx</a> or <a href="https://wiki.archlinux.org/index.php/Xinit"  target="_blank" rel="noreferrer">xinit</a>.</p>
+<p><a href="https://wiki.archlinux.org/index.php/Xinit"  target="_blank" rel="noreferrer">xinit</a> runs the user's <a href="https://wiki.archlinux.org/index.php/Xinitrc"  target="_blank" rel="noreferrer">xinitrc</a> runtime configuration file, which normally starts a <a href="https://wiki.archlinux.org/index.php/Window_manager"  target="_blank" rel="noreferrer">window manager</a>. When the user is finished and exits the window manager, xinit, startx, the shell, and login will terminate in that order, returning to <a href="https://wiki.archlinux.org/index.php/Arch_boot_process"  target="_blank" rel="noreferrer">getty</a>.</p>
+<hr>
+
+<h2 class="relative group">date created: 12-11-2022, Saturday, 08:55 PM
+    <div id="date-created-12-11-2022-saturday-0855-pm" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#date-created-12-11-2022-saturday-0855-pm" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>All modern personal computer <a href="https://en.wikipedia.org/wiki/Operating_system" title="Operating system" target="_blank" rel="noreferrer">operating systems</a> support GPT. Some, including <a href="https://en.wikipedia.org/wiki/MacOS" title="MacOS" target="_blank" rel="noreferrer">macOS</a> and <a href="https://en.wikipedia.org/wiki/Microsoft_Windows" title="Microsoft Windows" target="_blank" rel="noreferrer">Microsoft Windows</a> on the x86 architecture, support booting from GPT partitions only on systems with EFI firmware, but <a href="https://en.wikipedia.org/wiki/FreeBSD" title="FreeBSD" target="_blank" rel="noreferrer">FreeBSD</a> and most <a href="https://en.wikipedia.org/wiki/Linux_distribution" title="Linux distribution" target="_blank" rel="noreferrer">Linux distributions</a> can boot from GPT partitions on systems with either the BIOS or the EFI firmware interface.</p>
+<p>The Master Boot Record (MBR) partitioning scheme, widely used since the early 1980s, imposed limitations for use of modern hardware. The available size for block addresses and related information is limited to 32 bits. For hard disks with 512‑byte sectors, the MBR partition table entries allow a maximum size of 2 <a href="https://en.wikipedia.org/wiki/Tebibyte" title="Tebibyte" target="_blank" rel="noreferrer">TiB</a> (2³² × 512‑bytes) or 2.20 <a href="https://en.wikipedia.org/wiki/Terabyte" title="Terabyte" target="_blank" rel="noreferrer">TB</a> (2.20 × 10¹² bytes).<sup id="cite_ref-UEFIFAQ_1-0"><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-UEFIFAQ-1">[1]</a></sup></p>
+<p>In the late 1990s, <a href="https://en.wikipedia.org/wiki/Intel" title="Intel" target="_blank" rel="noreferrer">Intel</a> developed a new partition table format as part of what eventually became the <a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface" title="Unified Extensible Firmware Interface" target="_blank" rel="noreferrer">Unified Extensible Firmware Interface</a> (UEFI). The GUID Partition Table is specified in chapter 5 of the UEFI 2.8 specification.<sup id="cite_ref-UEFI2.8_2-0"><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-UEFI2.8-2">[2]</a></sup> GPT uses 64 bits for logical block addresses, allowing a maximum disk size of 2<sup>64</sup> sectors. For disks with 512‑byte sectors, the maximum size is 8 <a href="https://en.wikipedia.org/wiki/ZiB" title="ZiB" target="_blank" rel="noreferrer">ZiB</a> (2<sup>64</sup> × 512‑bytes) or 9.44 <a href="https://en.wikipedia.org/wiki/Zettabyte" title="Zettabyte" target="_blank" rel="noreferrer">ZB</a> (9.44 × 10²¹ bytes).<sup id="cite_ref-UEFIFAQ_1-1"><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-UEFIFAQ-1">[1]</a></sup> For disks with 4,096‑byte sectors the maximum size is 64 <a href="https://en.wikipedia.org/wiki/ZiB" title="ZiB" target="_blank" rel="noreferrer">ZiB</a> (2<sup>64</sup> × 4,096‑bytes) or 75.6 <a href="https://en.wikipedia.org/wiki/Zettabyte" title="Zettabyte" target="_blank" rel="noreferrer">ZB</a> (75.6 × 10²¹ bytes).</p>
+<p>In 2010, hard-disk manufacturers introduced drives with 4,096‑byte sectors (<a href="https://en.wikipedia.org/wiki/Advanced_Format" title="Advanced Format" target="_blank" rel="noreferrer">Advanced Format</a>).<sup id="cite_ref-bittech_3-0"><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-bittech-3">[3]</a></sup> For compatibility with legacy hardware and software, those drives include an emulation technology (<a href="https://en.wikipedia.org/wiki/Advanced_Format#512e" title="Advanced Format" target="_blank" rel="noreferrer">512e</a>) that presents 512‑byte sectors to the entity accessing the hard drive, despite their underlying 4,096‑byte physical sectors.<sup id="cite_ref-anandAF_4-0"><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-anandAF-4">[4]</a></sup></p>
+<p>Like MBR, GPTs use <a href="https://en.wikipedia.org/wiki/Logical_block_addressing" title="Logical block addressing" target="_blank" rel="noreferrer">logical block addressing</a> (LBA) in place of the historical <a href="https://en.wikipedia.org/wiki/Cylinder-head-sector" title="Cylinder-head-sector" target="_blank" rel="noreferrer">cylinder-head-sector</a> (CHS) addressing. The protective MBR is stored at LBA 0, and the GPT header is in LBA 1. The GPT header has a <a href="https://en.wikipedia.org/wiki/Pointer_%28computer_programming%29" title="Pointer (computer programming)" target="_blank" rel="noreferrer">pointer</a> to the partition table (<em>Partition Entry Array</em>), which is typically at LBA 2. Each entry on the partition table has a size of 128 bytes. The UEFI specification stipulates that a minimum of 16,384 bytes, regardless of sector size, are allocated for the Partition Entry Array.<sup id="cite_ref-uefi_spec_5-0"><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-uefi_spec-5">[5]</a></sup> Thus, on a disk with 512-byte sectors, at least 32 sectors are used for the Partition Entry Array, and the first usable block is at LBA 34 or higher, while on a 4,096-byte sectors disk, at least 4 sectors are used for the Partition Entry Array, and the first usable block is at LBA 6 or higher.</p>
+<p>For limited backward compatibility, the space of the legacy <a href="https://en.wikipedia.org/wiki/Master_boot_record" title="Master boot record" target="_blank" rel="noreferrer">Master Boot Record</a> (MBR) is still reserved in the GPT specification, but it is now used in a way that prevents MBR-based disk utilities from misrecognizing and possibly overwriting GPT disks. This is referred to as a <em>protective MBR</em>.<sup id="cite_ref-IBMLargeDrivesGPT_6-0"><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-IBMLargeDrivesGPT-6">[6]</a></sup></p>
+<p>A single partition of type <a href="https://en.wikipedia.org/wiki/Partition_type#PID_EEh" title="Partition type" target="_blank" rel="noreferrer">EEh</a>, encompassing the entire GPT drive (where &quot;entire&quot; actually means as much of the drive as can be represented in an MBR), is indicated and identifies it as GPT. Operating systems and tools which cannot read GPT disks will generally recognize the disk as containing one partition of unknown type and no empty space, and will typically refuse to modify the disk unless the user explicitly requests and confirms the deletion of this partition. This minimizes accidental erasures.<sup id="cite_ref-IBMLargeDrivesGPT_6-1"><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-IBMLargeDrivesGPT-6">[6]</a></sup> Furthermore, GPT-aware OSes may check the protective MBR and if the enclosed partition type is not of type EEh or if there are multiple partitions defined on the target device, the OS may refuse to manipulate the partition table.<sup id="cite_ref-tn2166_7-0"><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-tn2166-7">[7]</a></sup></p>
+<p>If the actual size of the disk exceeds the maximum partition size representable using the legacy 32-bit LBA entries in the MBR partition table, the recorded size of this partition is clipped at the maximum, thereby ignoring the rest of the disk. This amounts to a maximum reported size of 2 TiB, assuming a disk with 512 bytes per sector (see <a href="https://en.wikipedia.org/wiki/512e" title="512e" target="_blank" rel="noreferrer">512e</a>). It would result in 16 TiB with 4 KiB sectors (<a href="https://en.wikipedia.org/wiki/4Kn" title="4Kn" target="_blank" rel="noreferrer">4Kn</a>), but since many older operating systems and tools are hard coded for a sector size of 512 bytes or are limited to 32-bit calculations, exceeding the 2 TiB limit could cause compatibility problems.<sup id="cite_ref-IBMLargeDrivesGPT_6-2"><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-IBMLargeDrivesGPT-6">[6]</a></sup></p>
+<p>In operating systems that support GPT-based boot through BIOS services rather than EFI, the first sector may also still be used to store the first stage of the bootloader code, but modified to recognize GPT partitions. The bootloader in the MBR must not assume a sector size of 512 bytes.<sup id="cite_ref-IBMLargeDrivesGPT_6-3"><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-IBMLargeDrivesGPT-6">[6]</a></sup></p>
+<p>The partition table header defines the usable blocks on the disk. It also defines the number and size of the partition entries that make up the partition table (offsets 80 and 84 in the table).<sup id="cite_ref-UEFI2.8_2-1"><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-UEFI2.8-2">[2]</a></sup><sup><span title="Page: 119">: 119 </span></sup> </p>
+<p>After the header, the Partition Entry Array describes partitions, using a minimum size of 128 bytes for each entry block.<sup id="cite_ref-9"><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-9">[8]</a></sup> The starting location of the array on disk, and the size of each entry, are given in the GPT header. The first 16 bytes of each entry designate the partition type's globally unique identifier (GUID). For example, the GUID for an <a href="https://en.wikipedia.org/wiki/EFI_system_partition" title="EFI system partition" target="_blank" rel="noreferrer">EFI system partition</a> is C12A7328-F81F-11D2-BA4B-00A0C93EC93B. The second 16 bytes are a GUID unique to the partition. Then follow the starting and ending 64 bit LBAs, partition attributes, and the 36 character (max.) <a href="https://en.wikipedia.org/wiki/Unicode" title="Unicode" target="_blank" rel="noreferrer">Unicode</a> partition name. As is the nature and purpose of GUIDs and as per RFC 4122, no central registry is needed to ensure the uniqueness of the GUID partition type designators.<sup id="cite_ref-RFC_4122_10-0"><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-RFC_4122-10">[9]</a></sup><sup id="cite_ref-UEFI2.8_2-2"><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-UEFI2.8-2">[2]</a></sup><sup>: <span title="Page / location: 2200
+Quotation : &quot;All EFI GUIDs (Globally Unique Identifiers) have the format described in RFC 4122 and comply with the referenced algorithms for generating GUIDs.&quot;">2200</span> </sup> </p>
+<p>The 64-bit partition table attributes are shared between 48-bit common attributes for all partition types, and 16-bit type-specific attributes:</p>
+<p>Windows 7 and earlier do not support UEFI on 32-bit platforms, and therefore do not allow booting from GPT partitions.<sup id="cite_ref-GPTFAQ_28-0"><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table#cite_note-GPTFAQ-28">[27]</a></sup></p>
+<p>Each partition has a &quot;partition type GUID&quot; that identifies the type of the partition and therefore partitions of the same type will all have the same &quot;partition type GUID&quot;. Each partition also has a &quot;partition unique GUID&quot; as a separate entry, which as the name implies is a unique id for each partition.</p>
+
+<h1 class="relative group">How to know if I'm booting using UEFI?
+    <div id="how-to-know-if-im-booting-using-uefi" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#how-to-know-if-im-booting-using-uefi" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+<p><a href="https://unix.stackexchange.com/questions/148356/how-to-know-if-im-booting-using-uefi"  target="_blank" rel="noreferrer">https://unix.stackexchange.com/questions/148356/how-to-know-if-im-booting-using-uefi</a></p>
+<p><strong>First method:</strong></p>
+<p>Ok, I booted up my UEFI box to check. First clue, near the top of <code>dmesg</code>. This shouldn't appear if you're booted via BIOS:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="ln">1</span><span class="cl">[    0.000000] efi: EFI v2.31 by American Megatrends
+</span></span><span class="line"><span class="ln">2</span><span class="cl">[    0.000000] efi:  ACPI=0xd8769000  ACPI 2.0=0xd8769000  SMBIOS=0xd96d4a98 
+</span></span><span class="line"><span class="ln">3</span><span class="cl">[    0.000000] efi: mem00: type=6, attr=0x800000000000000f, range=[0x0000000000000000-0x0000000000001000) (0MB)
+</span></span><span class="line"><span class="ln">4</span><span class="cl">⋮</span></span></code></pre></div></div>
+<p><strong>Second method:</strong></p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="ln">1</span><span class="cl">$ sudo efibootmgr
+</span></span><span class="line"><span class="ln">2</span><span class="cl">BootCurrent: 0000
+</span></span><span class="line"><span class="ln">3</span><span class="cl">Timeout: 0 seconds
+</span></span><span class="line"><span class="ln">4</span><span class="cl">BootOrder: 0000
+</span></span><span class="line"><span class="ln">5</span><span class="cl">Boot0000* debian</span></span></code></pre></div></div>
+<p>If you are not, then the following should appear:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="ln">1</span><span class="cl">$ sudo efibootmgr        
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl">EFI variables are not supported on this system.</span></span></code></pre></div></div>
+<p>Note that you'll have to have the efibootmgr package installed. You can also attempt to list the EFI variables:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="ln">1</span><span class="cl">$ efivar -l 
+</span></span><span class="line"><span class="ln">2</span><span class="cl">... over 100 lines of output ...</span></span></code></pre></div></div>
+<p><strong>Third method:</strong></p>
+<p>Check if you have a <code>/boot/efi</code>:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="ln">1</span><span class="cl">$ df -h --local | grep /boot
+</span></span><span class="line"><span class="ln">2</span><span class="cl">/dev/sda2       229M   31M  187M  14% /boot
+</span></span><span class="line"><span class="ln">3</span><span class="cl">/dev/sda1       120M  250K  119M   1% /boot/efi</span></span></code></pre></div></div>
+<p>Inside that partition should be the files that UEFI executes to boot.</p>
+<p>If using any of these methods the relevant entries doesn't appear, is very likely you are not using UEFI.</p>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+
+        
+  
+  
+
+
+      </div>
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+      <div class="flex justify-between pt-3">
+        <span class="flex flex-col">
+          
+            <a
+              class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/docs/linux-booting/00-boot-process/check-if-your-computer-uses-uefi-or-bios/">
+              <span class="leading-6">
+                <span class="inline-block rtl:rotate-180">&larr;</span>&ensp;
+              </span>
+            </a>
+            
+              <span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="0001-01-01T00:00:00&#43;00:00">1 January 0001</time>
+              </span>
+            
+          
+        </span>
+        <span class="flex flex-col items-end">
+          
+            <a
+              class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/docs/linux-booting/00-boot-process/00-boot-process/">
+              <span class="leading-6">
+                &ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
+              </span>
+            </a>
+            
+              <span class="me-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="0001-01-01T00:00:00&#43;00:00">1 January 0001</time>
+              </span>
+            
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top"
+    title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2026
+          Vimal A R
+      </p>
+    
+
+    
+    
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">
+        
+        
+        Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+      </p>
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="https://arvimal.github.io/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
+</html>

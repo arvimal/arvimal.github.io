@@ -16,6 +16,8 @@ mainSections = ["posts"]
   showMoreLinkDest = "/posts"
 
 [article]
+  showHero = true
+  heroStyle = "thumbAndBackground"
   showDate = true
   showDateUpdated = true
   showTableOfContents = true

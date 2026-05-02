@@ -1,22 +1,1060 @@
-<!doctype html><html lang=en dir=ltr class=scroll-smooth data-default-appearance=dark data-auto-appearance=true><head><meta charset=utf-8><meta http-equiv=content-language content="en"><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="ie=edge"><meta name=theme-color><title>&#183; arvimal.github.io</title><meta name=title content=" &#183; arvimal.github.io"><link rel=canonical href=https://arvimal.github.io/docs/linux-booting/01-uefi-efi/linux-on-your-laptop-a-closer-look-at-efi-boot-options/><meta name=author content="Vimal A R"><link href=https://linkedin.com/in/arvimal rel=me><link href=https://github.com/arvimal rel=me><meta property="og:url" content="https://arvimal.github.io/docs/linux-booting/01-uefi-efi/linux-on-your-laptop-a-closer-look-at-efi-boot-options/"><meta property="og:site_name" content="arvimal.github.io"><meta property="og:title" content="arvimal.github.io"><meta property="og:description" content="Linux on your laptop: A closer look at EFI boot options # https://www.zdnet.com/article/linux-on-your-laptop-a-closer-look-at-efi-boot-options/
-For some time now I have gotten a slow but steady volume of requests that I write about UEFI firmware and EFI boot relative to installing and maintaining Linux. As a result of a casual comment I made in a recent post about installing Linux on a new laptop, the volume has gone up considerably."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta name=twitter:card content="summary"><meta name=twitter:title content="arvimal.github.io"><meta name=twitter:description content="Linux on your laptop: A closer look at EFI boot options # https://www.zdnet.com/article/linux-on-your-laptop-a-closer-look-at-efi-boot-options/
-For some time now I have gotten a slow but steady volume of requests that I write about UEFI firmware and EFI boot relative to installing and maintaining Linux. As a result of a casual comment I made in a recent post about installing Linux on a new laptop, the volume has gone up considerably."><link type=text/css rel=stylesheet href=/css/main.bundle.min.df2fffb65dda2b0cdaa0982ee2fb0282843ff5644257ee9719567a132e597dce1b36bed1665908b3c8dc93033bc1dc359a9d4fbc93249298c3a0aa840387d11f.css integrity="sha512-3y//tl3aKwzaoJgu4vsCgoQ/9WRCV+6XGVZ6Ey5Zfc4bNr7RZlkIs8jckwM7wdw1mp1PvJMkkpjDoKqEA4fRHw=="><script type=text/javascript src=/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js integrity="sha512-b0EXSzoFtoCCD+CMrb+l+3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script><script src=/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7+kfJ6kKCJxQGC+8wm+Bz9JucDjDTGNew=="></script><script defer type=text/javascript id=script-bundle src=/js/main.bundle.min.4c6b36324987fc05dd8cd58437946294b6f2e315675cef16098738373ac2a0fe600416b00e13a1a8687c872f82868f7a0ece1e4ae0b9ea6ead63721f5e8b6748.js integrity="sha512-TGs2MkmH/AXdjNWEN5RilLby4xVnXO8WCYc4NzrCoP5gBBawDhOhqGh8hy+Cho96Ds4eSuC56m6tY3IfXotnSA==" data-copy=Copy data-copied=Copied></script><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><script type=application/ld+json>[{"@context":"https://schema.org","@type":"Article","articleSection":"Docs","name":"","headline":"","inLanguage":"en","url":"https://arvimal.github.io/docs/linux-booting/01-uefi-efi/linux-on-your-laptop-a-closer-look-at-efi-boot-options/","author":{"@type":"Person","name":"Vimal A R"},"mainEntityOfPage":"true","wordCount":"2401"}]</script><script data-goatcounter=https://arvimal.goatcounter.com/count async src=//gc.zgo.at/count.js></script></head><body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral bf-scrollbar"><div id=the-top class="absolute flex self-center"><a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600" href=#main-content><span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
-Skip to main content</a></div><div class="main-menu flex items-center w-full gap-2 p-1 pl-0"><a href=/ class="text-base font-medium truncate min-w-0 shrink">arvimal.github.io</a><div class="flex items-center ms-auto"><div class="hidden md:flex"><nav class="flex items-center gap-x-5 h-12"><a href=/posts/ class="flex items-center bf-icon-color-hover" aria-label=Blog title=Posts><span class="text-base font-medium break-normal">Blog
-</span></a><a href=/about/ class="flex items-center bf-icon-color-hover" aria-label=About title><span class="text-base font-medium break-normal">About
-</span></a><a href=https://github.com/arvimal target=_blank class="flex items-center bf-icon-color-hover" aria-label=GitHub title><span class="text-base font-medium break-normal">GitHub
-</span></a><a href=https://linkedin.com/in/arvimal target=_blank class="flex items-center bf-icon-color-hover" aria-label=LinkedIn title><span class="text-base font-medium break-normal">LinkedIn
-</span></a><button id=search-button aria-label=Search class="text-base bf-icon-color-hover" title="Search (/)">
-<span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9.0 208 0S0 93.1.0 208s93.1 208 208 208c48.3.0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9.0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7.0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7.0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg></span></button><div class="flex items-center"><button id=appearance-switcher aria-label="Dark mode switcher" type=button class="text-base bf-icon-color-hover"><div class="flex items-center justify-center dark:hidden"><span class="relative block icon"><svg viewBox="0 0 512 512"><path fill="currentColor" d="M32 256C32 132.2 132.3 32 255.8 32c11.36.0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z"/></svg></span></div><div class="items-center justify-center hidden dark:flex"><span class="relative block icon"><svg viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02.0-95.1 42.98-95.1 95.1s41.2 96.9 95.1 96.9 95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347l-63.2-91.9 63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89 164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6 12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256 2.74 347.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7 19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109 109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69.0-127.1-57.31-127.1-127.1.0-70.69 57.31-127.1 127.1-127.1S383.1 186.2 383.1 256c0 70.7-56.4 127.1-127.1 127.1z"/></svg></span></div></button></div></nav></div><div class="flex md:hidden"><div class="flex items-center h-14 gap-4"><button id=search-button-mobile aria-label=Search class="flex items-center justify-center bf-icon-color-hover" title="Search (/)">
-<span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9.0 208 0S0 93.1.0 208s93.1 208 208 208c48.3.0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9.0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7.0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7.0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
-</span></button>
-<button id=appearance-switcher-mobile type=button aria-label="Dark mode switcher" class="flex items-center justify-center text-neutral-900 hover:text-primary-600 dark:text-neutral-200 dark:hover:text-primary-400"><div class=dark:hidden><span class="relative block icon"><svg viewBox="0 0 512 512"><path fill="currentColor" d="M32 256C32 132.2 132.3 32 255.8 32c11.36.0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z"/></svg></span></div><div class="hidden dark:block"><span class="relative block icon"><svg viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02.0-95.1 42.98-95.1 95.1s41.2 96.9 95.1 96.9 95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347l-63.2-91.9 63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89 164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6 12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256 2.74 347.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7 19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109 109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69.0-127.1-57.31-127.1-127.1.0-70.69 57.31-127.1 127.1-127.1S383.1 186.2 383.1 256c0 70.7-56.4 127.1-127.1 127.1z"/></svg></span></div></button>
-<input type=checkbox id=mobile-menu-toggle autocomplete=off class="hidden peer">
-<label for=mobile-menu-toggle class="flex items-center justify-center cursor-pointer bf-icon-color-hover"><span class="relative block icon"><svg viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416c17.7.0 32 14.33 32 32 0 17.7-14.3 32-32 32H32C14.33 128 0 113.7.0 96zM0 256c0-17.7 14.33-32 32-32H416c17.7.0 32 14.3 32 32s-14.3 32-32 32H32c-17.67.0-32-14.3-32-32zM416 448H32c-17.67.0-32-14.3-32-32s14.33-32 32-32H416c17.7.0 32 14.3 32 32s-14.3 32-32 32z"/></svg></span></label><div role=dialog aria-modal=true style=scrollbar-gutter:stable class="fixed inset-0 z-50 invisible overflow-y-auto px-6 py-20 opacity-0 transition-[opacity,visibility] duration-300 peer-checked:visible peer-checked:opacity-100 bg-neutral-50/97 dark:bg-neutral-900/99
-bf-scrollbar"><label for=mobile-menu-toggle class="fixed end-8 top-5 flex items-center justify-center z-50 h-12 w-12 cursor-pointer select-none rounded-full bf-icon-color-hover border bf-border-color bf-border-color-hover bg-neutral-50 dark:bg-neutral-900"><span class="relative block icon"><svg viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75.0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3 54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75.0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75.0-45.25s32.75-12.5 45.25.0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25.0s12.5 32.75.0 45.25l-105.4 105.4L310.6 361.4z"/></svg></span></label><nav class="mx-auto max-w-md space-y-6"><div class=px-2><a href=/posts/ aria-label=Blog class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200"><span title=Posts class="text-2xl font-bold tracking-tight">Blog</span></a></div><div class=px-2><a href=/about/ aria-label=About class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200"><span title class="text-2xl font-bold tracking-tight">About</span></a></div><div class=px-2><a href=https://github.com/arvimal aria-label=GitHub target=_blank class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200"><span title class="text-2xl font-bold tracking-tight">GitHub</span></a></div><div class=px-2><a href=https://linkedin.com/in/arvimal aria-label=LinkedIn target=_blank class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200"><span title class="text-2xl font-bold tracking-tight">LinkedIn</span></a></div></nav></div></div></div></div></div><div class="relative flex flex-col grow"><main id=main-content class=grow><article><header id=single_header class="mt-5 max-w-prose"><h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral"></h1><div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden"><div class="flex flex-row flex-wrap items-center"><time datetime=0001-01-01T00:00:00+00:00>1 January 0001</time><span class="px-2 text-primary-500">&#183;</span><span>2401 words</span><span class="px-2 text-primary-500">&#183;</span><span title="Reading time">12 mins</span></div></div><div class="flex author"><img class="!mt-0 !mb-0 h-24 w-24 rounded-full me-4" width=96 height=96 alt="Vimal A R" src=/images/avatar_hu_60654d0697ca6b7a.jpg data-zoom-src=/images/avatar_hu_51e7cd146504919.jpg><div class=place-self-center><div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">Author</div><div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">Vimal A R</div><div class="text-sm text-neutral-700 dark:text-neutral-400">Still figuring it out!</div><div class="text-2xl sm:text-lg"><div class="flex flex-wrap text-neutral-400 dark:text-neutral-500 space-x-2"><a class="hover:text-primary-700 dark:hover:text-primary-400" href=https://linkedin.com/in/arvimal target=_blank aria-label=Linkedin title=Linkedin rel="me noopener noreferrer"><span class="inline-block align-text-bottom"><span class="relative block icon"><svg viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5.0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6.0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3.0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2.0 38.5 17.3 38.5 38.5.0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6.0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2.0 79.7 44.3 79.7 101.9V416z"/></svg>
-</span></span></a><a class="hover:text-primary-700 dark:hover:text-primary-400" href=https://github.com/arvimal target=_blank aria-label=Github title=Github rel="me noopener noreferrer"><span class="inline-block align-text-bottom"><span class="relative block icon"><svg viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6.0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6.0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3.0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1.0-6.2-.3-40.4-.3-61.4.0.0-70 15-84.7-29.8.0.0-11.4-29.1-27.8-36.6.0.0-22.9-15.7 1.6-15.4.0.0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5.0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9.0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4.0 33.7-.3 75.4-.3 83.6.0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6.0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9.0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span></span></a></div></div></div></div><div class=mb-5></div></header><section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row"><div class="min-w-0 min-h-0 max-w-fit"><div class="article-content max-w-prose mb-20"><h1 class="relative group">Linux on your laptop: A closer look at EFI boot options<div id=linux-on-your-laptop-a-closer-look-at-efi-boot-options class=anchor></div><span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"><a class="text-primary-300 dark:text-neutral-700 !no-underline" href=#linux-on-your-laptop-a-closer-look-at-efi-boot-options aria-label=Anchor>#</a></span></h1><p><a href=https://www.zdnet.com/article/linux-on-your-laptop-a-closer-look-at-efi-boot-options/ target=_blank rel=noreferrer>https://www.zdnet.com/article/linux-on-your-laptop-a-closer-look-at-efi-boot-options/</a></p><p>For some time now I have gotten a slow but steady volume of requests that I write about UEFI firmware and EFI boot relative to installing and maintaining Linux. As a result of a casual comment I made in a recent post about <a href=https://www.zdnet.com/article/installing-linux-on-a-new-hp-pavilion-14-laptop/ target=_blank rel=noreferrer>installing Linux on a new laptop</a>, the volume has gone up considerably.</p><p>So in this post I will review and explain some of what I consider to be the most important points about UEFI firmware and Linux systems. I intend for this to be a relatively short post, but once I get started you never know... so you might want to get a cup of coffee before starting to read.</p><p>First, the specific aspect of UEFI firmware that I am concerned with here is the boot sequence, and how to use it with Linux. There is a lot more to UEFI (EFI) than that, but I will not be addressing any of that here.</p><p><strong>SEE: <a href="http://www.techrepublic.com/resource-library/whitepapers/20-quick-tips-to-make-linux-networking-easier/?ftag=CMG-01-10aaa1b" target=_blank rel=noreferrer>20 quick tips to make Linux networking easier</a> (free PDF)</strong></p><p>What I am going to look at is how the boot sequence differs from the previous standard, and how it should be configured and managed for a Linux installation. I am likely to use the terms "EFI" and "UEFI" interchangeably in this post; that is certainly not correct in general, but for purposes of what I am writing they both mean more or less the same thing.</p><p>Before EFI, the standard boot process for virtually all PC systems was called "MBR", for Master Boot Record; today you are likely to hear it referred to as "Legacy Boot". This process depended on using the first physical block on a disk to hold some information needed to boot the computer (thus the name Master Boot Record); specifically, it held the disk address at which the actual bootloader could be found, and the partition table that defined the layout of the disk. Using this information, the PC firmware could find and execute the bootloader, which would then bring up the computer and run the operating system.</p><p>This system had a number of rather obvious weaknesses and shortcomings. One of the biggest was that you could only have one bootable object on each physical disk drive (at least as far as the firmware boot was concerned). Another was that if that first sector on the disk became corrupted somehow, you were in deep trouble.</p><p>Over time, as part of the Extensible Firmware Interface, a new approach to boot configuration was developed. Rather than storing critical boot configuration information in a single "magic" location, EFI uses a dedicated "EFI boot partition" on the desk. This is a completely normal, standard disk partition, the same as which may be used to hold the operating system or system recovery data.</p><p>The only requirement is that it be FAT formatted, and it should have the <em>boot</em> and <em>esp</em> partition flags set (esp stands for EFI System Partition). The specific data and programs necessary for booting is then kept in directories on this partition, typically in directories named to indicate what they are for. So if you have a Windows system, you would typically find directories called 'Boot' and 'Microsoft'<strong>,</strong> and perhaps one named for the manufacturer of the hardware, such as HP. If you have a Linux system, you would find directories called opensuse, debian, ubuntu, or any number of others depending on what particular Linux distribution you are using.</p><p>It should be obvious from the description so far that it is perfectly possible with the EFI boot configuration to have multiple boot objects on a single disk drive.</p><p>Before going any further, I should make it clear that if you install Linux as the only operating system on a PC, it is not necessary to know all of this configuration information in detail. The installer should take care of setting all of this up, including creating the EFI boot partition (or using an existing EFI boot partition), and further configuring the system boot list so that whatever system you install becomes the default boot target.</p><p>If you were to take a brand new computer with UEFI firmware, and load it from scratch with any of the current major Linux distributions, it would all be set up, configured, and working just as it is when you purchase a new computer preloaded with Windows (or when you load a computer from scratch with Windows). It is only when you want to have more than one bootable operating system – especially when you want to have both Linux and Windows on the same computer – that things may become more complicated.</p><p>The problems that arise with such "multiboot" systems are generally related to getting the boot priority list defined correctly.</p><p>When you buy a new computer with Windows, this list typically includes the Windows bootloader on the primary disk, and then perhaps some other peripheral devices such as USB, network interfaces and such. When you install Linux alongside Windows on such a computer, the installer will add the necessary information to the EFI boot partition, but if the boot priority list is not changed, then when the system is rebooted after installation it will simply boot Windows again, and you are likely to think that the installation didn't work.</p><p>There are several ways to modify this boot priority list, but exactly which ones are available and whether or how they work depends on the firmware of the system you are using, and this is where things can get really messy. There are just about as many different UEFI firmware implementations as there are PC manufacturers, and the manufacturers have shown a great deal of creativity in the details of this firmware.</p><p>First, in the simplest case, there is a software utility included with Linux called <em>efibootmgr</em> that can be used to modify, add or delete the boot priority list. If this utility works properly, and the changes it makes are permanent on the system, then you would have no other problems to deal with, and after installing it would boot Linux and you would be happy. Unfortunately, while this is sometimes the case it is frequently not. The most common reason for this is that changes made by software utilities are not actually permanently stored by the system BIOS, so when the computer is rebooted the boot priority list is restored to whatever it was before, which generally means that Windows gets booted again.</p><p>The other common way of modifying the boot priority list is via the computer BIOS configuration program. The details of how to do this are different for every manufacturer, but the general procedure is approximately the same. First you have to press the BIOS configuration key (usually F2, but not always, unfortunately) during system power-on (POST). Then choose the Boot item from the BIOS configuration menu, which should get you to a list of boot targets presented in priority order. Then you need to modify that list; sometimes this can be done directly in that screen, via the usual F5/F6 up/down key process, and sometimes you need to proceed one level deeper to be able to do that. I wish I could give more specific and detailed information about this, but it really is different on every system (sometimes even on different systems produced by the same manufacturer), so you just need to proceed carefully and figure out the steps as you go.</p><p>I have seen a few rare cases of systems where neither of these methods works, or at least they don't seem to be permanent, and the system keeps reverting to booting Windows. Again, there are two ways to proceed in this case. The first is by simply pressing the "boot selection" key during POST (power-on). Exactly which key this is varies, I have seen it be F12, F9, Esc, and probably one or two others. Whichever key it turns out to be, when you hit it during POST you should get a list of bootable objects defined in the EFI boot priority list, so assuming your Linux installation worked you should see it listed there. I have known of people who were satisfied with this solution, and would just use the computer this way and have to press boot select each time they wanted to boot Linux.</p><p>The alternative is to actually modify the files in the EFI boot partition, so that the (unchangeable) Windows boot procedure would actually boot Linux. This involves overwriting the Windows file bootmgfw.efi with the Linux file grubx64.efi. I have done this, especially in the early days of EFI boot, and it works, but I strongly advise you to be extremely careful if you try it, and make sure that you keep a copy of the original bootmgfw.efi file. Finally, just as a final (depressing) warning, I have also seen systems where this seemed to work, at least for a while, but then at some unpredictable point the boot process seemed to notice that something had changed and it restored bootmgfw.efi to its original state – thus losing the Linux boot configuration again. Sigh.</p><p>So, that's the basics of EFI boot, and how it can be configured. But there are some important variations possible, and some caveats to be aware of.</p><p>At the beginning of the description, I said that when you install Linux it will add the necessary boot information to an existing EFI boot partition alongside any existing configuration of Windows or other Linux distributions. In fact you may have more than one EFI boot partition on a disk, so you might choose to create a new (additional) EFI boot partition, and use that for your Linux installation. Some Linux distributions (notably Fedora and its derivatives) do this by default, while others give you the option of doing it, and will simply add to the first existing EFI boot partition if you don't do so. A few distributions (notably Ubuntu and its derivatives) don't give you a choice, they just install to the first EFI boot partition. This is probably ok, unless... (read on)</p><p>As I mentioned at the beginning, most Linux distributions use a unique name, usually derived from the name of the distribution, for their EFI boot directory. Unfortunately not all of them do; in particular, Linux Mint and a few other Ubuntu derivates still use the name <em>ubuntu</em> for the boot directory. This is not a problem, unless you try to install two distributions which both use the same name for that directory; then the second installation will overwrite the first, and you will end up only being able to boot one of them. In this case you are basically forced to use a separate EFI boot partition for at least one of them, which is what I did with my new HP laptop, which kicked off all the latest excitement that led to this article.</p><p>The last thing to mention here is that the Linux utility for creating the EFI boot configuration has been improved quite a bit over the past few years. It no longer requires a long and complex sequence of command line options to specify the configuration, it is able to create a functional minimum configuration entirely on its own. So if something happens and your boot data gets corrupted or destroyed, you can recreate it, in the correct location, by simply running "grub-install /dev/xxx" (or grub2-install, depending on the distribution), where the xxx is replaced by your primary disk name, generally sda.</p><p>This covers the general overview of EFI booting, and how to configure (or coax) it into working for Linux/Windows dual boot (or multi-boot). Please note that one thing I did not talk about here are "boot fix" utilities, which claim to create or repair such a configuration for you. There are a few simple reasons for this; first, I don't like them, because I don't like things in general that supposedly offer a "magic fix" to a difficult problem; second, because as can be seen from the post, the details of EFI boot configuration are still changing, and a "magic utility" which works today may well not work tomorrow, or which works for one distribution or for dual boot, might not work for another distribution or for multi-boot (more than two boot objects). I think it is much more advisable to actually take the time to understand what you are doing if you are this deep into system administration, so that you know what to change, how to change it, and how to fix it if something goes wrong. Call me old-fashioned.</p><p>Oh, one last thing. There is also a utility package available called <a href=http://www.rodsbooks.com/refind/ target=_blank rel=noreferrer>rEFInd</a> that will help you set up and manage EFI boot configuration. I have used it, and it works (or did when I last used it several years ago), so if you are struggling and can't get anything to work, that might be worth a try. I don't consider it to be a "magic utility", because you can see everything that it does, and the accompanying documentation explains it all. Basically it tries to install itself as the first boot object, and then make a list of all the other possible boot targets on your computer and present them to you for selection. If it works, that's fine – and it is actually a good way to learn how all of this works – but I am not convinced that it is really necessary anymore. Most systems today come with EFI firmware that is sufficiently configurable that you can set up a properly working system without too much trouble, in which case rEFInd is generally overkill.</p><p>I hope this information is useful to some people. I realize that it is rather dry and technical, but that's just the way EFI boot is. If I have anything significantly wrong, feel free to post comments and corrections. There is obviously more that could be said about this, but I think this is more than enough for now. I hope to follow up on this post with another, which describes and discusses the specific way that I set up the Grub configuration file on my multi-boot EFI systems, if there is sufficient interest in that. It's not standard, and it is a bit of work to maintain it, but I think it has some advantages.</p></div></div></section><footer class="pt-8 max-w-prose print:hidden"><div class=pt-8><hr class="border-dotted border-neutral-300 dark:border-neutral-600"><div class="flex justify-between pt-3"><span class="flex flex-col"><a class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400" href=/docs/linux-booting/01-uefi-efi/secure-boot-with-qemu-and-uefi/><span class=leading-6><span class="inline-block rtl:rotate-180">&larr;</span>&ensp;
-</span></a><span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400"><time datetime=0001-01-01T00:00:00+00:00>1 January 0001</time>
-</span></span><span class="flex flex-col items-end"><a class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400" href=/docs/linux-booting/00-boot-process/the-kernel-newbie-corner-initrd-and-initramfs/><span class=leading-6>&ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
-</span></a><span class="me-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400"><time datetime=0001-01-01T00:00:00+00:00>1 January 0001</time></span></span></div></div></footer></article><div id=scroll-to-top class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200"><a href=#the-top class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400" aria-label="Scroll to top" title="Scroll to top">&uarr;</a></div></main><footer id=site-footer class="py-10 print:hidden"><div class="flex items-center justify-between"><p class="text-sm text-neutral-500 dark:text-neutral-400">&copy;
-2026
-Vimal A R</p><p class="text-xs text-neutral-500 dark:text-neutral-400">Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://gohugo.io/ target=_blank rel="noopener noreferrer">Hugo</a> & <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://blowfish.page/ target=_blank rel="noopener noreferrer">Blowfish</a></p></div><script>mediumZoom(document.querySelectorAll("img:not(.nozoom)"),{margin:24,background:"rgba(0,0,0,0.5)",scrollOffset:0})</script></footer><div id=search-wrapper class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500" data-url=https://arvimal.github.io/><div id=search-modal class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"><header class="relative z-10 flex items-center justify-between flex-none px-2"><form class="flex items-center flex-auto min-w-0"><div class="flex items-center justify-center w-8 h-8 text-neutral-400"><span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9.0 208 0S0 93.1.0 208s93.1 208 208 208c48.3.0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9.0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7.0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7.0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg></span></div><input type=search id=search-query class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent" placeholder=Search tabindex=0></form><button id=close-search-button class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400" title="Close (Esc)">
-<span class="relative block icon"><svg viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75.0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3 54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75.0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75.0-45.25s32.75-12.5 45.25.0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25.0s12.5 32.75.0 45.25l-105.4 105.4L310.6 361.4z"/></svg></span></button></header><section class="flex-auto px-2 overflow-auto"><ul id=search-results></ul></section></div></div></div></body></html>
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="en">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title> &middot; arvimal.github.io</title>
+    <meta name="title" content=" &middot; arvimal.github.io">
+  
+
+  
+  
+  
+  
+  
+  <link rel="canonical" href="https://arvimal.github.io/docs/linux-booting/01-uefi-efi/linux-on-your-laptop-a-closer-look-at-efi-boot-options/">
+  
+  
+
+  
+  
+    <meta name="author" content="Vimal A R">
+  
+  
+    
+      
+        
+          <link href="https://linkedin.com/in/arvimal" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://github.com/arvimal" rel="me">
+        
+      
+    
+  
+
+  
+  <meta property="og:url" content="https://arvimal.github.io/docs/linux-booting/01-uefi-efi/linux-on-your-laptop-a-closer-look-at-efi-boot-options/">
+  <meta property="og:site_name" content="arvimal.github.io">
+  <meta property="og:title" content="arvimal.github.io">
+  <meta property="og:description" content="Linux on your laptop: A closer look at EFI boot options # https://www.zdnet.com/article/linux-on-your-laptop-a-closer-look-at-efi-boot-options/
+For some time now I have gotten a slow but steady volume of requests that I write about UEFI firmware and EFI boot relative to installing and maintaining Linux. As a result of a casual comment I made in a recent post about installing Linux on a new laptop, the volume has gone up considerably.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="arvimal.github.io">
+  <meta name="twitter:description" content="Linux on your laptop: A closer look at EFI boot options # https://www.zdnet.com/article/linux-on-your-laptop-a-closer-look-at-efi-boot-options/
+For some time now I have gotten a slow but steady volume of requests that I write about UEFI firmware and EFI boot relative to installing and maintaining Linux. As a result of a casual comment I made in a recent post about installing Linux on a new laptop, the volume has gone up considerably.">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.df2fffb65dda2b0cdaa0982ee2fb0282843ff5644257ee9719567a132e597dce1b36bed1665908b3c8dc93033bc1dc359a9d4fbc93249298c3a0aa840387d11f.css"
+    integrity="sha512-3y//tl3aKwzaoJgu4vsCgoQ/9WRCV&#43;6XGVZ6Ey5Zfc4bNr7RZlkIs8jckwM7wdw1mp1PvJMkkpjDoKqEA4fRHw==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
+    integrity="sha512-b0EXSzoFtoCCD&#43;CMrb&#43;l&#43;3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script>
+  
+  
+  
+  
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+  
+
+  
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.4c6b36324987fc05dd8cd58437946294b6f2e315675cef16098738373ac2a0fe600416b00e13a1a8687c872f82868f7a0ece1e4ae0b9ea6ead63721f5e8b6748.js"
+      integrity="sha512-TGs2MkmH/AXdjNWEN5RilLby4xVnXO8WCYc4NzrCoP5gBBawDhOhqGh8hy&#43;Cho96Ds4eSuC56m6tY3IfXotnSA=="
+      data-copy="Copy"
+      data-copied="Copied"></script>
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Docs",
+    "name": "",
+    "headline": "",
+    
+    "inLanguage": "en",
+    "url" : "https://arvimal.github.io/docs/linux-booting/01-uefi-efi/linux-on-your-laptop-a-closer-look-at-efi-boot-options/",
+    "author" : {
+      "@type": "Person",
+      "name": "Vimal A R"
+    },
+    
+    
+    
+    
+    
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "2401"
+  }]
+  </script>
+
+
+
+  
+  
+    
+
+
+
+
+  
+
+  
+  
+    
+<script data-goatcounter="https://arvimal.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+
+  
+
+  
+  
+
+  
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral bf-scrollbar">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        Skip to main content
+      </a>
+    </div>
+    
+    
+      <div class="main-menu flex items-center w-full gap-2 p-1 pl-0">
+  
+  
+    <a href="/" class="text-base font-medium truncate min-w-0 shrink">
+      arvimal.github.io
+    </a>
+  
+  <div class="flex items-center ms-auto">
+    <div class="hidden md:flex">
+      <nav class="flex items-center gap-x-5 h-12">
+  
+    
+      
+  
+    <a
+      href="/posts/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="Blog"
+      title="Posts">
+      
+      
+        <span class="text-base font-medium break-normal">
+          Blog
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="/about/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="About"
+      title="">
+      
+      
+        <span class="text-base font-medium break-normal">
+          About
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="https://github.com/arvimal"
+      
+        target="_blank"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="GitHub"
+      title="">
+      
+      
+        <span class="text-base font-medium break-normal">
+          GitHub
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="https://linkedin.com/in/arvimal"
+      
+        target="_blank"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="LinkedIn"
+      title="">
+      
+      
+        <span class="text-base font-medium break-normal">
+          LinkedIn
+        </span>
+      
+    </a>
+  
+
+    
+  
+
+  
+
+  
+
+  
+    <button
+      id="search-button"
+      aria-label="Search"
+      class="text-base bf-icon-color-hover"
+      title="Search (/)">
+      <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+    </button>
+  
+
+  
+    <div class="flex items-center">
+      <button
+        id="appearance-switcher"
+        aria-label="Dark mode switcher"
+        type="button"
+        class="text-base bf-icon-color-hover">
+        <div class="flex items-center justify-center dark:hidden">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+        </div>
+      </button>
+    </div>
+  
+</nav>
+
+
+
+    </div>
+    <div class="flex md:hidden">
+      <div class="flex items-center h-14 gap-4">
+  
+    <button
+      id="search-button-mobile"
+      aria-label="Search"
+      class="flex items-center justify-center bf-icon-color-hover"
+      title="Search (/)">
+      <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+    </button>
+  
+
+  
+    <button
+      id="appearance-switcher-mobile"
+      type="button"
+      aria-label="Dark mode switcher"
+      class="flex items-center justify-center text-neutral-900 hover:text-primary-600 dark:text-neutral-200 dark:hover:text-primary-400">
+      <div class="dark:hidden">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+      </div>
+      <div class="hidden dark:block">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+      </div>
+    </button>
+  
+
+  
+    <input type="checkbox" id="mobile-menu-toggle" autocomplete="off" class="hidden peer">
+    <label for="mobile-menu-toggle" class="flex items-center justify-center cursor-pointer bf-icon-color-hover">
+      <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+    </label>
+
+    <div
+      role="dialog"
+      aria-modal="true"
+      style="scrollbar-gutter: stable;"
+      class="fixed inset-0 z-50 invisible overflow-y-auto px-6 py-20 opacity-0 transition-[opacity,visibility] duration-300 peer-checked:visible peer-checked:opacity-100 bg-neutral-50/97 dark:bg-neutral-900/99
+      bf-scrollbar">
+      <label
+        for="mobile-menu-toggle"
+        class="fixed end-8 top-5 flex items-center justify-center z-50 h-12 w-12 cursor-pointer select-none rounded-full bf-icon-color-hover border bf-border-color bf-border-color-hover bg-neutral-50 dark:bg-neutral-900">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </label>
+      <nav class="mx-auto max-w-md space-y-6">
+        
+  
+    
+    <div class="px-2">
+      <a
+        href="/posts/"
+        aria-label="Blog"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="Posts" class="text-2xl font-bold tracking-tight">
+          Blog
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="/about/"
+        aria-label="About"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="" class="text-2xl font-bold tracking-tight">
+          About
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="https://github.com/arvimal"
+        aria-label="GitHub"
+        
+          target="_blank"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="" class="text-2xl font-bold tracking-tight">
+          GitHub
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="https://linkedin.com/in/arvimal"
+        aria-label="LinkedIn"
+        
+          target="_blank"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="" class="text-2xl font-bold tracking-tight">
+          LinkedIn
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+
+        
+  
+
+        
+  
+
+      </nav>
+    </div>
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<div class="single_hero_background nozoom fixed inset-x-0 top-0 h-[800px]">
+  
+  <div
+    class="from-neutral absolute inset-0 bg-gradient-to-t to-transparent mix-blend-normal dark:from-neutral-800"></div>
+  <div
+    class="from-neutral to-neutral absolute inset-0 bg-gradient-to-t opacity-30 mix-blend-normal dark:from-neutral-800 dark:to-neutral-800 dark:opacity-60"></div>
+</div>
+
+
+  <div
+    id="background-blur"
+    class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-xl bg-neutral-100/75 dark:bg-neutral-800/60"></div>
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/background-blur.min.605b3b942818f0ab5a717ae446135ec46b8ee5a2ad12ae56fb90dc2a76ce30c388f9fec8bcc18db15bd47e3fa8a09d779fa12aa9c184cf614a315bc72c6c163d.js"
+    integrity="sha512-YFs7lCgY8KtacXrkRhNexGuO5aKtEq5W&#43;5DcKnbOMMOI&#43;f7IvMGNsVvUfj&#43;ooJ13n6EqqcGEz2FKMVvHLGwWPQ=="
+    data-blur-id="background-blur"
+    data-image-id="background-image-main"
+    ></script>
+
+
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="0001-01-01T00:00:00&#43;00:00">1 January 0001</time><span class="px-2 text-primary-500">&middot;</span><span>2401 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">12 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+    
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+      
+      
+        
+        
+        
+      
+      <img
+        class="!mt-0 !mb-0 h-24 w-24 rounded-full me-4"
+        width="96"
+        height="96"
+        alt="Vimal A R"
+        src="/images/avatar_hu_60654d0697ca6b7a.jpg"
+        data-zoom-src="/images/avatar_hu_51e7cd146504919.jpg">
+    
+  
+  <div class="place-self-center">
+    
+      <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+        Author
+      </div>
+      <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+        Vimal A R
+      </div>
+    
+    
+      <div class="text-sm text-neutral-700 dark:text-neutral-400">Still figuring it out!</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500 space-x-2">
+    
+      
+        
+        <a
+          class=" hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://linkedin.com/in/arvimal"
+          
+          target="_blank"
+          aria-label="Linkedin"
+          title="Linkedin"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        
+        <a
+          class=" hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/arvimal"
+          
+          target="_blank"
+          aria-label="Github"
+          title="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+  
+
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          
+<h1 class="relative group">Linux on your laptop: A closer look at EFI boot options
+    <div id="linux-on-your-laptop-a-closer-look-at-efi-boot-options" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#linux-on-your-laptop-a-closer-look-at-efi-boot-options" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+<p><a href="https://www.zdnet.com/article/linux-on-your-laptop-a-closer-look-at-efi-boot-options/"  target="_blank" rel="noreferrer">https://www.zdnet.com/article/linux-on-your-laptop-a-closer-look-at-efi-boot-options/</a></p>
+<p>For some time now I have gotten a slow but steady volume of requests that I write about UEFI firmware and EFI boot relative to installing and maintaining Linux. As a result of a casual comment I made in a recent post about <a href="https://www.zdnet.com/article/installing-linux-on-a-new-hp-pavilion-14-laptop/"  target="_blank" rel="noreferrer">installing Linux on a new laptop</a>, the volume has gone up considerably.</p>
+<p>So in this post I will review and explain some of what I consider to be the most important points about UEFI firmware and Linux systems. I intend for this to be a relatively short post, but once I get started you never know... so you might want to get a cup of coffee before starting to read.</p>
+<p>First, the specific aspect of UEFI firmware that I am concerned with here is the boot sequence, and how to use it with Linux. There is a lot more to UEFI (EFI) than that, but I will not be addressing any of that here.</p>
+<p><strong>SEE: <a href="http://www.techrepublic.com/resource-library/whitepapers/20-quick-tips-to-make-linux-networking-easier/?ftag=CMG-01-10aaa1b"  target="_blank" rel="noreferrer">20 quick tips to make Linux networking easier</a> (free PDF)</strong></p>
+<p>What I am going to look at is how the boot sequence differs from the previous standard, and how it should be configured and managed for a Linux installation. I am likely to use the terms &quot;EFI&quot; and &quot;UEFI&quot; interchangeably in this post; that is certainly not correct in general, but for purposes of what I am writing they both mean more or less the same thing.</p>
+<p>Before EFI, the standard boot process for virtually all PC systems was called &quot;MBR&quot;, for Master Boot Record; today you are likely to hear it referred to as &quot;Legacy Boot&quot;. This process depended on using the first physical block on a disk to hold some information needed to boot the computer (thus the name Master Boot Record); specifically, it held the disk address at which the actual bootloader could be found, and the partition table that defined the layout of the disk. Using this information, the PC firmware could find and execute the bootloader, which would then bring up the computer and run the operating system.</p>
+<p>This system had a number of rather obvious weaknesses and shortcomings. One of the biggest was that you could only have one bootable object on each physical disk drive (at least as far as the firmware boot was concerned). Another was that if that first sector on the disk became corrupted somehow, you were in deep trouble.</p>
+<p>Over time, as part of the Extensible Firmware Interface, a new approach to boot configuration was developed. Rather than storing critical boot configuration information in a single &quot;magic&quot; location, EFI uses a dedicated &quot;EFI boot partition&quot; on the desk. This is a completely normal, standard disk partition, the same as which may be used to hold the operating system or system recovery data.</p>
+<p>The only requirement is that it be FAT formatted, and it should have the <em>boot</em> and <em>esp</em> partition flags set (esp stands for EFI System Partition). The specific data and programs necessary for booting is then kept in directories on this partition, typically in directories named to indicate what they are for. So if you have a Windows system, you would typically find directories called 'Boot' and 'Microsoft'<strong>,</strong> and perhaps one named for the manufacturer of the hardware, such as HP. If you have a Linux system, you would find directories called opensuse, debian, ubuntu, or any number of others depending on what particular Linux distribution you are using.</p>
+<p>It should be obvious from the description so far that it is perfectly possible with the EFI boot configuration to have multiple boot objects on a single disk drive.</p>
+<p>Before going any further, I should make it clear that if you install Linux as the only operating system on a PC, it is not necessary to know all of this configuration information in detail. The installer should take care of setting all of this up, including creating the EFI boot partition (or using an existing EFI boot partition), and further configuring the system boot list so that whatever system you install becomes the default boot target.</p>
+<p>If you were to take a brand new computer with UEFI firmware, and load it from scratch with any of the current major Linux distributions, it would all be set up, configured, and working just as it is when you purchase a new computer preloaded with Windows (or when you load a computer from scratch with Windows). It is only when you want to have more than one bootable operating system – especially when you want to have both Linux and Windows on the same computer – that things may become more complicated.</p>
+<p>The problems that arise with such &quot;multiboot&quot; systems are generally related to getting the boot priority list defined correctly.</p>
+<p>When you buy a new computer with Windows, this list typically includes the Windows bootloader on the primary disk, and then perhaps some other peripheral devices such as USB, network interfaces and such. When you install Linux alongside Windows on such a computer, the installer will add the necessary information to the EFI boot partition, but if the boot priority list is not changed, then when the system is rebooted after installation it will simply boot Windows again, and you are likely to think that the installation didn't work.</p>
+<p>There are several ways to modify this boot priority list, but exactly which ones are available and whether or how they work depends on the firmware of the system you are using, and this is where things can get really messy. There are just about as many different UEFI firmware implementations as there are PC manufacturers, and the manufacturers have shown a great deal of creativity in the details of this firmware.</p>
+<p>First, in the simplest case, there is a software utility included with Linux called <em>efibootmgr</em> that can be used to modify, add or delete the boot priority list. If this utility works properly, and the changes it makes are permanent on the system, then you would have no other problems to deal with, and after installing it would boot Linux and you would be happy. Unfortunately, while this is sometimes the case it is frequently not. The most common reason for this is that changes made by software utilities are not actually permanently stored by the system BIOS, so when the computer is rebooted the boot priority list is restored to whatever it was before, which generally means that Windows gets booted again.</p>
+<p>The other common way of modifying the boot priority list is via the computer BIOS configuration program. The details of how to do this are different for every manufacturer, but the general procedure is approximately the same. First you have to press the BIOS configuration key (usually F2, but not always, unfortunately) during system power-on (POST). Then choose the Boot item from the BIOS configuration menu, which should get you to a list of boot targets presented in priority order. Then you need to modify that list; sometimes this can be done directly in that screen, via the usual F5/F6 up/down key process, and sometimes you need to proceed one level deeper to be able to do that. I wish I could give more specific and detailed information about this, but it really is different on every system (sometimes even on different systems produced by the same manufacturer), so you just need to proceed carefully and figure out the steps as you go.</p>
+<p>I have seen a few rare cases of systems where neither of these methods works, or at least they don't seem to be permanent, and the system keeps reverting to booting Windows. Again, there are two ways to proceed in this case. The first is by simply pressing the &quot;boot selection&quot; key during POST (power-on). Exactly which key this is varies, I have seen it be F12, F9, Esc, and probably one or two others. Whichever key it turns out to be, when you hit it during POST you should get a list of bootable objects defined in the EFI boot priority list, so assuming your Linux installation worked you should see it listed there. I have known of people who were satisfied with this solution, and would just use the computer this way and have to press boot select each time they wanted to boot Linux.</p>
+<p>The alternative is to actually modify the files in the EFI boot partition, so that the (unchangeable) Windows boot procedure would actually boot Linux. This involves overwriting the Windows file bootmgfw.efi with the Linux file grubx64.efi. I have done this, especially in the early days of EFI boot, and it works, but I strongly advise you to be extremely careful if you try it, and make sure that you keep a copy of the original bootmgfw.efi file. Finally, just as a final (depressing) warning, I have also seen systems where this seemed to work, at least for a while, but then at some unpredictable point the boot process seemed to notice that something had changed and it restored bootmgfw.efi to its original state – thus losing the Linux boot configuration again. Sigh.</p>
+<p>So, that's the basics of EFI boot, and how it can be configured. But there are some important variations possible, and some caveats to be aware of.</p>
+<p>At the beginning of the description, I said that when you install Linux it will add the necessary boot information to an existing EFI boot partition alongside any existing configuration of Windows or other Linux distributions. In fact you may have more than one EFI boot partition on a disk, so you might choose to create a new (additional) EFI boot partition, and use that for your Linux installation. Some Linux distributions (notably Fedora and its derivatives) do this by default, while others give you the option of doing it, and will simply add to the first existing EFI boot partition if you don't do so. A few distributions (notably Ubuntu and its derivatives) don't give you a choice, they just install to the first EFI boot partition. This is probably ok, unless... (read on)</p>
+<p>As I mentioned at the beginning, most Linux distributions use a unique name, usually derived from the name of the distribution, for their EFI boot directory. Unfortunately not all of them do; in particular, Linux Mint and a few other Ubuntu derivates still use the name <em>ubuntu</em> for the boot directory. This is not a problem, unless you try to install two distributions which both use the same name for that directory; then the second installation will overwrite the first, and you will end up only being able to boot one of them. In this case you are basically forced to use a separate EFI boot partition for at least one of them, which is what I did with my new HP laptop, which kicked off all the latest excitement that led to this article.</p>
+<p>The last thing to mention here is that the Linux utility for creating the EFI boot configuration has been improved quite a bit over the past few years. It no longer requires a long and complex sequence of command line options to specify the configuration, it is able to create a functional minimum configuration entirely on its own. So if something happens and your boot data gets corrupted or destroyed, you can recreate it, in the correct location, by simply running &quot;grub-install /dev/xxx&quot; (or grub2-install, depending on the distribution), where the xxx is replaced by your primary disk name, generally sda.</p>
+<p>This covers the general overview of EFI booting, and how to configure (or coax) it into working for Linux/Windows dual boot (or multi-boot). Please note that one thing I did not talk about here are &quot;boot fix&quot; utilities, which claim to create or repair such a configuration for you. There are a few simple reasons for this; first, I don't like them, because I don't like things in general that supposedly offer a &quot;magic fix&quot; to a difficult problem; second, because as can be seen from the post, the details of EFI boot configuration are still changing, and a &quot;magic utility&quot; which works today may well not work tomorrow, or which works for one distribution or for dual boot, might not work for another distribution or for multi-boot (more than two boot objects). I think it is much more advisable to actually take the time to understand what you are doing if you are this deep into system administration, so that you know what to change, how to change it, and how to fix it if something goes wrong. Call me old-fashioned.</p>
+<p>Oh, one last thing. There is also a utility package available called <a href="http://www.rodsbooks.com/refind/"  target="_blank" rel="noreferrer">rEFInd</a> that will help you set up and manage EFI boot configuration. I have used it, and it works (or did when I last used it several years ago), so if you are struggling and can't get anything to work, that might be worth a try. I don't consider it to be a &quot;magic utility&quot;, because you can see everything that it does, and the accompanying documentation explains it all. Basically it tries to install itself as the first boot object, and then make a list of all the other possible boot targets on your computer and present them to you for selection. If it works, that's fine – and it is actually a good way to learn how all of this works – but I am not convinced that it is really necessary anymore. Most systems today come with EFI firmware that is sufficiently configurable that you can set up a properly working system without too much trouble, in which case rEFInd is generally overkill.</p>
+<p>I hope this information is useful to some people. I realize that it is rather dry and technical, but that's just the way EFI boot is. If I have anything significantly wrong, feel free to post comments and corrections. There is obviously more that could be said about this, but I think this is more than enough for now. I hope to follow up on this post with another, which describes and discusses the specific way that I set up the Grub configuration file on my multi-boot EFI systems, if there is sufficient interest in that. It's not standard, and it is a bit of work to maintain it, but I think it has some advantages.</p>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+
+        
+  
+  
+
+
+      </div>
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+      <div class="flex justify-between pt-3">
+        <span class="flex flex-col">
+          
+            <a
+              class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/docs/linux-booting/01-uefi-efi/secure-boot-with-qemu-and-uefi/">
+              <span class="leading-6">
+                <span class="inline-block rtl:rotate-180">&larr;</span>&ensp;
+              </span>
+            </a>
+            
+              <span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="0001-01-01T00:00:00&#43;00:00">1 January 0001</time>
+              </span>
+            
+          
+        </span>
+        <span class="flex flex-col items-end">
+          
+            <a
+              class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/docs/linux-booting/00-boot-process/the-kernel-newbie-corner-initrd-and-initramfs/">
+              <span class="leading-6">
+                &ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
+              </span>
+            </a>
+            
+              <span class="me-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="0001-01-01T00:00:00&#43;00:00">1 January 0001</time>
+              </span>
+            
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top"
+    title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2026
+          Vimal A R
+      </p>
+    
+
+    
+    
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">
+        
+        
+        Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+      </p>
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="https://arvimal.github.io/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
+</html>

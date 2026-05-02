@@ -1,1 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Random-Number-Generator on arvimal.github.io</title><link>https://arvimal.github.io/tags/random-number-generator/</link><description>Recent content in Random-Number-Generator on arvimal.github.io</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>© 2026 Vimal A R</copyright><lastBuildDate>Wed, 13 Feb 2008 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/random-number-generator/index.xml" rel="self" type="application/rss+xml"/><item><title>A random number generator in Bash</title><link>https://arvimal.github.io/posts/2008/02/bash-script-for-generating-random-number/</link><pubDate>Wed, 13 Feb 2008 00:00:00 +0000</pubDate><guid>https://arvimal.github.io/posts/2008/02/bash-script-for-generating-random-number/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Random-Number-Generator on arvimal.github.io</title>
+    <link>https://arvimal.github.io/tags/random-number-generator/</link>
+    <description>Recent content in Random-Number-Generator on arvimal.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2026 Vimal A R</copyright>
+    <lastBuildDate>Wed, 13 Feb 2008 00:00:00 +0000</lastBuildDate><atom:link href="https://arvimal.github.io/tags/random-number-generator/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A random number generator in Bash</title>
+      <link>https://arvimal.github.io/posts/2008/02/bash-script-for-generating-random-number/</link>
+      <pubDate>Wed, 13 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://arvimal.github.io/posts/2008/02/bash-script-for-generating-random-number/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2008/02/bash-script-for-generating-random-number/featured.jpg" />
+    </item>
+    
+  </channel>
+</rss>
