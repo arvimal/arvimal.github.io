@@ -24,3 +24,6 @@ mainSections = ["posts"]
 [list]
   showSummary = true
   groupByYear = true
+
+[analytics.goatcounter]
+  code = "arvimal"
