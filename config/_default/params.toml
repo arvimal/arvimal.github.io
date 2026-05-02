@@ -1,16 +1,18 @@
-# https://jpanther.github.io/congo/docs/configuration/
+# https://blowfish.page/docs/configuration/
 
-colorScheme = "ocean"
-defaultAppearance = "light"
-autoSwitchAppearance = false
+colorScheme = "slate"
+defaultAppearance = "dark"
+autoSwitchAppearance = true
 enableSearch = true
 enableCodeCopy = true
 mainSections = ["posts"]
 
 [homepage]
-  layout = "card"
+  layout = "profile"
   showRecent = true
-  showRecentItems = 20
+  showRecentItems = 10
+  showMoreLink = true
+  showMoreLinkDest = "/posts"
 
 [article]
   showDate = true
@@ -20,7 +22,12 @@ mainSections = ["posts"]
   showRelatedContent = true
   relatedContentLimit = 3
   showEdit = false
+  showWordCount = true
 
 [list]
   showSummary = true
   groupByYear = true
+  showTableOfContents = false
+
+[analytics.goatcounter]
+  code = "arvimal"
