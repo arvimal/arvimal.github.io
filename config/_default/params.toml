@@ -8,7 +8,8 @@ enableCodeCopy = true
 mainSections = ["posts"]
 
 [homepage]
-  layout = "profile"
+  layout = "hero"
+  homepageImage = "images/will-africano-s4a29qbHssg.jpg"
   showRecent = true
   showRecentItems = 10
   showMoreLink = true
@@ -28,6 +29,7 @@ mainSections = ["posts"]
   showSummary = true
   groupByYear = true
   showTableOfContents = false
+  cardView = true
 
 [analytics.goatcounter]
   code = "arvimal"
