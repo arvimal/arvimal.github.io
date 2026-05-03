@@ -16,7 +16,7 @@
       
       <guid>https://arvimal.github.io/posts/2015/09/listing-osd-nodes-scriptable/</guid>
       <description></description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2015/09/listing-osd-nodes-scriptable/featured.jpg" />
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       
       <guid>https://arvimal.github.io/posts/2015/08/map-journal-disk-of-a-ceph-osd/</guid>
       <description></description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2015/08/map-journal-disk-of-a-ceph-osd/featured.jpg" />
     </item>
     
     <item>
@@ -46,7 +46,7 @@
       
       <guid>https://arvimal.github.io/posts/2015/05/osds-noout-status/</guid>
       <description></description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2015/05/osds-noout-status/featured.jpg" />
     </item>
     
     <item>
@@ -66,7 +66,7 @@
       
       <guid>https://arvimal.github.io/posts/2015/05/remove-a-host-from-ceph-cluster/</guid>
       <description></description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2015/05/remove-a-host-from-ceph-cluster/featured.jpg" />
     </item>
     
   </channel>

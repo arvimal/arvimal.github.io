@@ -16,7 +16,7 @@
       
       <guid>https://arvimal.github.io/posts/2016/10/python-objects/</guid>
       <description></description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2016/10/python-objects/featured.jpg" />
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       
       <guid>https://arvimal.github.io/posts/2015/10/rbd-object-remain-in-pool-after-deletion/</guid>
       <description></description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2015/10/rbd-object-remain-in-pool-after-deletion/featured.jpg" />
     </item>
     
   </channel>

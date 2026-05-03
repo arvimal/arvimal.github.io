@@ -62,9 +62,11 @@
     <meta property="article:tag" content="Boot-Loader-Checker">
     <meta property="article:tag" content="Grub">
     <meta property="article:tag" content="Lilo">
+    <meta property="og:image" content="https://arvimal.github.io/posts/2008/02/bootloader-checker/featured.jpg">
 
   
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://arvimal.github.io/posts/2008/02/bootloader-checker/featured.jpg">
   <meta name="twitter:title" content="Bootloader checker">
 
   
@@ -76,15 +78,9 @@
     
   
     
-      
-    
   
     
-      
-    
   
-  
-    
   
 
   
@@ -611,6 +607,12 @@
 
 
   
+    
+    
+      
+      
+    
+  
 
 
 
@@ -632,22 +634,49 @@
 
 
 
-  
-  
-
 
 
 
   
+    
+    
+      
+      
+    
+  
 
 
 
 
 
+
+  <div class="overflow-hidden rounded-md h-36 md:h-56 lg:h-72 nozoom">
+    <img
+      src="/posts/2008/02/bootloader-checker/featured_hu_db3ec3a3c88370f2.jpg"
+      role="presentation"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      class="w-full h-full nozoom object-cover"
+      >
+  </div>
 
 
 
 <div class="single_hero_background nozoom fixed inset-x-0 top-0 h-[800px]">
+  
+    
+    
+    
+    <img
+      id="background-image-main"
+      src="/posts/2008/02/bootloader-checker/featured_hu_db3ec3a3c88370f2.jpg"
+      role="presentation"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      class="absolute inset-0 h-full w-full object-cover"
+      >
   
   <div
     class="from-neutral absolute inset-0 bg-gradient-to-t to-transparent mix-blend-normal dark:from-neutral-800"></div>
@@ -667,7 +696,7 @@
     integrity="sha512-YFs7lCgY8KtacXrkRhNexGuO5aKtEq5W&#43;5DcKnbOMMOI&#43;f7IvMGNsVvUfj&#43;ooJ13n6EqqcGEz2FKMVvHLGwWPQ=="
     data-blur-id="background-blur"
     data-image-id="background-image-main"
-    ></script>
+    data-image-url="/posts/2008/02/bootloader-checker/featured.jpg"></script>
 
 
       
@@ -924,135 +953,6 @@
     <header>
       <a
         
-          href="/docs/linux-booting/02-boot-loaders/difference-between-grubx64-and-shimx64/"
-        
-        class="not-prose before:absolute before:inset-0 decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 hover:underline hover:underline-offset-2">
-        <h2>
-          
-          
-        </h2>
-      </a>
-    </header>
-    <div class="text-sm text-neutral-500 dark:text-neutral-400">
-      
-
-
-
-
-
-
-
-  
-
-  
-  
-  
-    
-  
-
-  
-
-  
-    
-  
-
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  <div class="flex flex-row flex-wrap items-center">
-    
-    
-      <time datetime="0001-01-01T00:00:00&#43;00:00">1 January 0001</time><span class="px-2 text-primary-500">&middot;</span><span>309 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
-    
-
-    
-    
-  </div>
-
-  
-
-  
-  
-
-
-    </div>
-    
-      <div class="article-link__summary prose dark:prose-invert mt-1 line-clamp-5">
-        Difference between grubx64 and shimx64? # https://askubuntu.com/questions/342365/what-is-the-difference-between-grubx64-and-shimx64
-Typically, EFI/ubuntu/grubx64.efi on the EFI System Partition (ESP) is the GRUB binary, and EFI/ubuntu/shimx64.efi is the binary for shim.
-The latter is a relatively simple program that provides a way to boot on a computer with Secure Boot active. On such a computer, an unsigned version of GRUB won't launch, and signing GRUB with Microsoft's keys is impossible, so shim bridges the gap and adds its own security tools that parallel those of Secure Boot. In practice, shim registers itself with the firmware and then launches a program called grubx64.efi in the directory from which it was launched, so on a computer without Secure Boot (such as a Mac), launching shimx64.efi is just like launching grubx64.efi. On a computer with Secure Boot active, launching shimx64.efi should result in GRUB starting up, whereas launching grubx64.efi directly probably won't work.
-
-      </div>
-    
-  </div>
-  <div class="px-6 pt-4 pb-2"></div>
-</article>
-
-      
-        
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-  
-    
-    
-      
-    
-      
-    
-      
-    
-  
-
-  
-  
-    
-    
-  
-
-  
-  
-    
-  
-
-
-
-<article
-  class="article-link--related relative min-h-full min-w-full overflow-hidden rounded-lg border border-neutral-300 dark:border-neutral-600">
-  
-  
-  <div class="p-4">
-    <header>
-      <a
-        
           href="/docs/linux-booting/02-boot-loaders/02-grub2/"
         
         class="not-prose before:absolute before:inset-0 decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 hover:underline hover:underline-offset-2">
@@ -1129,6 +1029,135 @@ The latter is a relatively simple program that provides a way to boot on a compu
 Note: This is an RHCSA 7 exam objective.
 Presentation of GRUB2 # GRUB2 is the new Linux bootloader. GRUB2 stands for GRand Unified Bootloader version 2.
 As GRUB was not maintained for some time and lacked some critical features like GPT management needed to handle disks bigger than 2.4TB, it was decided to start a new version from scratch with modularity in mind.
+
+      </div>
+    
+  </div>
+  <div class="px-6 pt-4 pb-2"></div>
+</article>
+
+      
+        
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+    
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+    
+    
+  
+
+  
+  
+    
+  
+
+
+
+<article
+  class="article-link--related relative min-h-full min-w-full overflow-hidden rounded-lg border border-neutral-300 dark:border-neutral-600">
+  
+  
+  <div class="p-4">
+    <header>
+      <a
+        
+          href="/docs/linux-booting/02-boot-loaders/difference-between-grubx64-and-shimx64/"
+        
+        class="not-prose before:absolute before:inset-0 decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 hover:underline hover:underline-offset-2">
+        <h2>
+          
+          
+        </h2>
+      </a>
+    </header>
+    <div class="text-sm text-neutral-500 dark:text-neutral-400">
+      
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="0001-01-01T00:00:00&#43;00:00">1 January 0001</time><span class="px-2 text-primary-500">&middot;</span><span>309 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+
+    </div>
+    
+      <div class="article-link__summary prose dark:prose-invert mt-1 line-clamp-5">
+        Difference between grubx64 and shimx64? # https://askubuntu.com/questions/342365/what-is-the-difference-between-grubx64-and-shimx64
+Typically, EFI/ubuntu/grubx64.efi on the EFI System Partition (ESP) is the GRUB binary, and EFI/ubuntu/shimx64.efi is the binary for shim.
+The latter is a relatively simple program that provides a way to boot on a computer with Secure Boot active. On such a computer, an unsigned version of GRUB won't launch, and signing GRUB with Microsoft's keys is impossible, so shim bridges the gap and adds its own security tools that parallel those of Secure Boot. In practice, shim registers itself with the firmware and then launches a program called grubx64.efi in the directory from which it was launched, so on a computer without Secure Boot (such as a Mac), launching shimx64.efi is just like launching grubx64.efi. On a computer with Secure Boot active, launching shimx64.efi should result in GRUB starting up, whereas launching grubx64.efi directly probably won't work.
 
       </div>
     

@@ -36,7 +36,7 @@
       
       <guid>https://arvimal.github.io/posts/2016/05/ceph-check/</guid>
       <description></description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2016/05/ceph-check/featured.jpg" />
     </item>
     
     <item>
@@ -56,7 +56,7 @@
       
       <guid>https://arvimal.github.io/posts/2015/10/list-ceph-pools-with-snapshots-and-rbd/</guid>
       <description></description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2015/10/list-ceph-pools-with-snapshots-and-rbd/featured.jpg" />
     </item>
     
     <item>
@@ -76,7 +76,7 @@
       
       <guid>https://arvimal.github.io/posts/2015/10/rbd-object-remain-in-pool-after-deletion/</guid>
       <description></description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2015/10/rbd-object-remain-in-pool-after-deletion/featured.jpg" />
     </item>
     
     <item>
@@ -96,7 +96,7 @@
       
       <guid>https://arvimal.github.io/posts/2015/09/listing-osd-nodes-scriptable/</guid>
       <description></description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2015/09/listing-osd-nodes-scriptable/featured.jpg" />
     </item>
     
     <item>
@@ -146,7 +146,7 @@
       
       <guid>https://arvimal.github.io/posts/2015/07/compact-a-ceph-monitor-data-store/</guid>
       <description></description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2015/07/compact-a-ceph-monitor-data-store/featured.jpg" />
     </item>
     
     <item>
@@ -176,7 +176,7 @@
       
       <guid>https://arvimal.github.io/posts/2015/05/osds-noout-status/</guid>
       <description></description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2015/05/osds-noout-status/featured.jpg" />
     </item>
     
     <item>
@@ -186,7 +186,7 @@
       
       <guid>https://arvimal.github.io/posts/2015/05/change-ceph-configurations-dynamically/</guid>
       <description></description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2015/05/change-ceph-configurations-dynamically/featured.jpg" />
     </item>
     
     <item>
@@ -216,7 +216,7 @@
       
       <guid>https://arvimal.github.io/posts/2015/05/remove-a-host-from-ceph-cluster/</guid>
       <description></description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2015/05/remove-a-host-from-ceph-cluster/featured.jpg" />
     </item>
     
     <item>

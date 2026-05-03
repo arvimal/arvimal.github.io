@@ -16,7 +16,7 @@
       
       <guid>https://arvimal.github.io/posts/2016/07/max-file-name-in-ext4/</guid>
       <description></description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2016/07/max-file-name-in-ext4/featured.jpg" />
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       
       <guid>https://arvimal.github.io/posts/2016/06/uninit-bg-and-lazy-block-group-allocation/</guid>
       <description></description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://arvimal.github.io/posts/2016/06/uninit-bg-and-lazy-block-group-allocation/featured.jpg" />
     </item>
     
   </channel>
